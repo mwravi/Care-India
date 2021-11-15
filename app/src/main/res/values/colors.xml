@@ -21,4 +21,7 @@
     <color name="blue">#0067b8</color>
     <color name="darkgrey">#808080</color>
     <color name="LightGrey">#e1e1e1</color>
+    <color name="red">#FC6042</color>
+    <color name="spinnerlabelclr">#646464</color>
+    <color name="spinnerbaseclr">#B2B2B2</color>
 </resources>

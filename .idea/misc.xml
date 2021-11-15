@@ -4,8 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/btn_background.xml" value="0.16927083333333334" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/ic_calender.xml" value="0.190625" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/vertical_scrollview_thumb.xml" value="0.190625" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/vertical_scrollview_track.xml" value="0.190625" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/white_custom.xml" value="0.16927083333333334" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_login.xml" value="0.18" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_signup.xml" value="0.22" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/my_spinner_dashboard.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/my_spinner_space_dashboard.xml" value="0.20416666666666666" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/new_login_layout.xml" value="0.17" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/toolbar_layout.xml" value="0.1431159420289855" />
         <entry key="..\:/Project Care India/app/src/main/res/drawable/btn_background.xml" value="0.2203125" />

@@ -26,6 +26,8 @@
             </intent-filter>
         </activity>
         <activity
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
             android:name=".views.activities.MainActivity"
             android:exported="true" />
     </application>
