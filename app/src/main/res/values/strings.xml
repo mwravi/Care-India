@@ -5,4 +5,6 @@
     <string name="password">Password</string>
     <string name="btn_login">Login</string>
     <string name="signup">SignUp</string>
+    <string name="create_new">Click here for register</string>
+    <string name="act_login">Already have account? Log In</string>
 </resources>

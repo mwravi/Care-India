@@ -1,8 +1,9 @@
 package com.Careindia.lifeskills.views.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.Careindia.lifeskills.R
+import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class SignupActivity : AppCompatActivity() {
 
@@ -12,7 +13,7 @@ class SignupActivity : AppCompatActivity() {
         setContentView(R.layout.activity_signup)
 
 
-
+        tv_title.text = "SignUp"
 
 
     }

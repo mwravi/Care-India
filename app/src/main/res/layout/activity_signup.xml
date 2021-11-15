@@ -16,100 +16,154 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <EditText
-        android:id="@+id/etfname"
-        style="@style/LoginEdittextStyle"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edt_bg"
-        android:hint="Enter first name"
-        android:inputType="text"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fnameError"
+        style="@style/TextInputLayout"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include" />
+        app:layout_constraintTop_toBottomOf="@+id/include">
 
-    <EditText
-        android:id="@+id/etlast"
-        style="@style/LoginEdittextStyle"
-        android:layout_marginStart="24dp"
+        <EditText
+            android:id="@+id/etfname"
+            style="@style/EditTextStyle"
+            android:hint="Enter first name"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+<com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/lnameError"
+        style="@style/TextInputLayout"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edt_bg"
-        android:hint="Enter last name"
-        android:inputType="text"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etfname" />
+        app:layout_constraintTop_toBottomOf="@+id/fnameError">
 
-    <EditText
-        android:id="@+id/etphone"
-        style="@style/LoginEdittextStyle"
-        android:layout_marginStart="24dp"
+        <EditText
+            android:id="@+id/etlastname"
+            style="@style/EditTextStyle"
+            android:hint="Enter last name"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+<com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phoneError"
+        style="@style/TextInputLayout"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edt_bg"
-        android:hint="Enter Mobile No."
-        android:inputType="text"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etlast" />
+        app:layout_constraintTop_toBottomOf="@+id/lnameError">
 
-    <EditText
-        android:id="@+id/etemail"
-        style="@style/LoginEdittextStyle"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edt_bg"
-        android:hint="Enter email id"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etphone" />
+        <EditText
+            android:id="@+id/etphone"
+            style="@style/EditTextStyle"
+            android:hint="Enter mobile no"
+            android:inputType="text"
+            android:maxLines="1"
+            android:singleLine="true" />
 
-    <EditText
-        android:id="@+id/etpwd"
-        style="@style/LoginEdittextStyle"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edt_bg"
-        android:hint="Enter Password"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etemail" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/etCpwd"
-        style="@style/LoginEdittextStyle"
-        android:layout_marginStart="24dp"
+<com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailError"
+        style="@style/TextInputLayout"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edt_bg"
-        android:hint="Enter Confirm Password"
-        android:inputType="text"
+        android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etpwd" />
+        app:layout_constraintTop_toBottomOf="@+id/phoneError">
+
+        <EditText
+            android:id="@+id/etemail"
+            style="@style/EditTextStyle"
+            android:hint="Enter email id"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+<com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/pwdError"
+        style="@style/TextInputLayout"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailError">
+
+        <EditText
+            android:id="@+id/etpwd"
+            style="@style/EditTextStyle"
+            android:hint="Enter password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+<com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/cpwdError"
+        style="@style/TextInputLayout"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pwdError">
+
+        <EditText
+            android:id="@+id/etcpwd"
+            style="@style/EditTextStyle"
+            android:hint="Enter confirm password"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:singleLine="true" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_signup"
         style="@style/ButtonTextStyle"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="59dp"
-        android:layout_marginEnd="24dp"
+        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/btn_background"
         android:text="@string/signup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCpwd" />
+        app:layout_constraintTop_toBottomOf="@+id/cpwdError" />
 
+
+    <TextView
+        android:id="@+id/login"
+        style="@style/TextViewStyle"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="@string/act_login"
+        android:textColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_signup" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

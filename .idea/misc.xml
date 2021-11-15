@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_login.xml" value="0.22" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/btn_background.xml" value="0.16927083333333334" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_signup.xml" value="0.22" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/new_login_layout.xml" value="0.17" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/toolbar_layout.xml" value="0.1431159420289855" />
         <entry key="..\:/Project Care India/app/src/main/res/drawable/btn_background.xml" value="0.2203125" />
         <entry key="..\:/Project Care India/app/src/main/res/drawable/button_color.xml" value="0.2203125" />

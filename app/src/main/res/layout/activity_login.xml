@@ -1,71 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".views.activities.LoginActivity">
 
 
-    <include
-        android:id="@+id/include2"
-        layout="@layout/toolbar_layout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <TextView
-        android:id="@+id/tv_logo"
+    <androidx.cardview.widget.CardView
+        xmlns:Card_View="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:gravity="center"
-        android:text="@string/app_name"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
-        android:textSize="@dimen/_23ssp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include2" />
+        android:layout_height="350dp"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:padding="10dp"
+        Card_View:cardCornerRadius="10dp"
+        Card_View:cardElevation="20dp"
+        tools:ignore="MissingConstraints">
 
-    <EditText
-        android:id="@+id/etUsername"
-        style="@style/LoginEdittextStyle"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="223dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edt_bg"
-        android:hint="@string/please_enter_email"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/etPassword"
-        style="@style/LoginEdittextStyle"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/edt_bg"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etUsername" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/emailError"
+                style="@style/TextInputLayout">
 
-    <Button
-        android:id="@+id/btn_login"
-        style="@style/ButtonTextStyle"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="59dp"
-        android:layout_marginEnd="24dp"
-        android:text="@string/btn_login"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+                <EditText
+                    android:id="@+id/email"
+                    style="@style/EditTextStyle"
+                    android:hint="User Name"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/passError"
+                style="@style/TextInputLayout"
+                app:passwordToggleEnabled="true">
+
+                <EditText
+                    android:id="@+id/password"
+                    style="@style/EditTextStyle"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/btn_login"
+                style="@style/ButtonTextStyle"
+                android:layout_margin="20dp"
+                android:background="@drawable/btn_background"
+                android:text="@string/login" />
+
+            <TextView
+                android:id="@+id/register"
+                style="@style/TextViewStyle"
+                android:gravity="center"
+                android:text="@string/create_new"
+                android:textColor="@color/blue" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

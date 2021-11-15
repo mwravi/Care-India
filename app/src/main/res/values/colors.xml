@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FEAE1E</color>
+    <color name="colorPrimary">#e4701d</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#000000</color>
 
@@ -12,9 +12,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+
     <color name="btnunPressed">#F7F7F7</color>
     <color name="light_gray">#CECDCD</color>
     <color name="grey">#DADADA</color>
     <color name="button_bgcolor">#FEAE1E</color>
     <color name="btnPressed">#23B574</color>
+    <color name="blue">#0067b8</color>
+    <color name="darkgrey">#808080</color>
+    <color name="LightGrey">#e1e1e1</color>
 </resources>
