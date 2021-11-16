@@ -1,16 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string-array name="yes_no">
-    <item >Yes</item>
-    <item >No</item>
-  </string-array>
-<string-array name="spin_SupervisingFC">
-    <item >Mr. Ramlal Singh</item>
-    <item >Mr. Devendra Kumar</item>
-    <item >Mr. Sanjay Kumar</item>
-  </string-array>
-
-
-
+    <string-array name="yes_no">
+        <item >Yes</item>
+        <item >No</item>
+    </string-array>
+    <string-array name="spin_SupervisingFC">
+        <item >Mr. Ramlal Singh</item>
+        <item >Mr. Devendra Kumar</item>
+        <item >Mr. Sanjay Kumar</item>
+    </string-array>
+    <string-array name="spin_sexrepo">
+        <item >Male</item>
+        <item >Female</item>
+        <item >Other</item>
+    </string-array>
+    <string-array name="spin_casterespo">
+        <item >SC</item>
+        <item >ST</item>
+        <item >OBC</item>
+        <item >General</item>
+        <item >Others</item>
+    </string-array>
+    <string-array name="spin_marital">
+        <item >Married</item>
+        <item >Single</item>
+        <item >Divorced</item>
+        <item >Widow / Widower</item>
+    </string-array>
+    <string-array name="spin_state">
+        <item >Andhra Pradesh</item>
+        <item >Delhi</item>
+        <item >Himachal Pradesh</item>
+        <item >Jharkhand</item>
+        <item >Jammu and Kashmir</item>
+        <item >Maharashtra</item>
+        <item >Uttaranchal</item>
+        <item >Uttar Pradesh</item>
+        <item >West Bengal</item>
+    </string-array>
+    <string-array name="spin_education">
+        <item >Class(II)</item>
+        <item >Class(V)</item>
+        <item >Class(VI)</item>
+        <item >Class(VII)</item>
+        <item >Class(VIII)</item>
+        <item >Secondary(Class X)</item>
+        <item >Diploma</item>
+        <item >Bachelors Degree</item>
+        <item >Master Degree</item>
+    </string-array>
+    <string-array name="language">
+        <item >English</item>
+        <item >Hindi</item>
+    </string-array>
+    <string-array name="secondary_source_income">
+        <item >Agriculture Activities</item>
+        <item >Organic Agriculture Activities</item>
+        <item >Manufacturing - Handloom</item>
+        <item >Trading - all types</item>
+        <item >Services - all types</item>
+        <item >Salaried Job-Government</item>
+    </string-array>
 
 </resources>
