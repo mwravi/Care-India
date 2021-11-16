@@ -8,6 +8,8 @@
     <string name="create_new">Click here for register</string>
     <string name="act_login">Already have account? Log In</string>
     <string name="date_of_filling_the_form">Date of filling the form</string>
+    <string name="name_crp">Name of CRP filling the form</string>
+    <string name="Supervising_FC">Name of Supervising Field Coordinator</string>
     <string name="date_format">dd-mm-yyyy</string>
     <string name="select">Select</string>
     <string name="save">Save</string>
@@ -86,5 +88,71 @@
     <string name="contact_number">18d.Contact number/Alternate contact number</string>
     <string name="role_of_member_in_group">18e.Role/position of the member in the group</string>
     <string name="do_you_have_savings_bank_account">18f.Do you have savings bank account?</string>
+
+    <string name="hh_id">HH ID</string>
+    <string name="im_id">IM ID</string>
+    <string name="community_name">Community Name:Block</string>
+    <string name="name_of_beneficiary">Name of Candidate/Beneficiary</string>
+    <string name="age">Age</string>
+    <string name="gender">Gender</string>
+    <string name="contact_no">Contact_number</string>
+    <string name="member_of_any_shg_jlg_cig">Member of any SHG/JLG/CIG</string>
+    <string name="social_category">Social Category</string>
+    <string name="caste_and_income_certificate">Caste and Income certificate?</string>
+    <string name="do_you_have_valid_aadhar_card">Do you have valid Aadhar card?</string>
+    <string name="do_you_have_valid_pan_card">Do you have valid PAN card?</string>
+    <string name="do_you_have_bank_account">Do they have bank account?</string>
+    <string name="are_you_interested_in_starting_new_business">Are you interested in starting new business?</string>
+    <string name="what_kind_of_business_related_skill_training_needed">What kind of business/business related skill training needed?</string>
+    <string name="do_they_have_their_business_plan">Do they have their business plan?</string>
+    <string name="what_is_the_range_of_investment_it_require">What is the range of investment it require (in thousands)?</string>
+    <string name="are_they_ready_to_invest">Are they ready to invest?</string>
+    <string name="how_much_you_will_invest">How much you will invest?</string>
+    <string name="how_are_they_planning_their_investment">How are they planning their investment?</string>
+    <string name="how_much_financial_assistance_is_required">How much financial assistance is required?</string>
+    <string name="any_expected_support">Any expected support</string>
+    <string name="are_you_interested_in_availing_loans_or_subsidies">Are you interested in availing loans or subsidies?</string>
+    <string name="how_much_they_have_invested">How much they have invested?</string>
+    <string name="what_kind_of_business_is_it">What kind of business is it?</string>
+    <string name="is_the_business_registered">Is the business registered</string>
+    <string name="stage_of_self_employment_enterprise_idea">Stage of Self-employment / enterprise idea</string>
+    <string name="are_they_availing_loans_already">Are they availing loans already?</string>
+    <string name="from_where_have_availed_loans">From where have availed loans?</string>
+    <string name="are_they_expecting_any_financial_assistance">Are they expecting any financial assistance?</string>
+    <string name="amount_of_financial_assistance_required">Amount of financial assistance required?</string>
+    <string name="Those_self_employed_require_any_support">Those Self employed require any support?</string>
+
+    <string name="q301_what_is_the_tenure_of_the_president_office_bearer_in_complete_years">Q301. What is the tenure of the President/Office bearer (in complete years)</string>
+    <string name="q302_has_there_been_any_rotation_of_the_roles_of_the_member_in_last_one_year">Q302. Has there been any rotation of the roles of the member (in last one year)</string>
+    <string name="q303_has_there_been_any_election_for_the_office_bearer">Q303. Has there been any election for the office bearer</string>
+    <string name="q304_in_what_frequency_the_election_for_office_bearer_happens_in_complete_years">Q304. In what frequency the election for office bearer happens?(in complete years)</string>
+    <string name="q305_does_your_sangha_have_a_common_group_bank_account">Q305. Does your Sangha have a common (group) bank account</string>
+    <string name="q305a_what_are_the_challenges_in_opening_bank_account">Q305a. what are the challenges in opening bank account</string>
+    <string name="q306_how_much_does_each_member_contribute_to_group_savings">Q306. How much does each member contribute to group savings</string>
+    <string name="q306a_please_specify_the_others_in_inr">Q306a. Please specify the others (in INR)</string>
+    <string name="q307_in_what_frequency_the_members_contribute_to_the_group_savings">Q307. In what frequency the members contribute to the group savings</string>
+    <string name="q307a_please_specify_others">Q307a. Please specify others</string>
+    <string name="q308_are_the_members_regularly_saving_as_per_the_group_decision">Q308. Are the members regularly saving (as per the group decision)?</string>
+    <string name="q309a_from_where_the_members_avail_the_loan">Q309a. From where the members avail the loan?</string>
+    <string name="q309b_please_specify_others">Q309b. Please specify others</string>
+    <string name="q310_what_are_the_challenges_in_availing_loan_minimum_1_and_maximum_upto_3_responses_possible">Q310. What are the challenges in availing loan (minimum 1 and maximum upto 3 responses possible)</string>
+    <string name="q401_are_meetings_conducted_in_your_sangha_group_collective">Q401. Are meetings conducted in your Sangha/group/collective?</string>
+    <string name="q402_what_is_the_frequency_of_meetings">Q402. What is the frequency of meetings?</string>
+    <string name="q402a_please_specify_others">Q402a. Please specify others</string>
+    <string name="q403_regularity_of_members_attending_meeting">Q403. Regularity of members attending meeting</string>
+    <string name="q404_does_the_meetings_happen_as_per_the_schedule_check_meeting_register">Q404. Does the meetings happen as per the schedule (check meeting register)</string>
+    <string name="q405_does_your_sangha_group_collective_have_a_record_book_check_for_the_record_book">Q405. Does your Sangha/group/ collective have a record book? (check for the record book)</string>
+    <string name="q406_is_the_record_book_register_updated_in_every_meeting">Q406. Is the record book /register updated in every meeting?</string>
+    <string name="q501_has_the_sangha_group_collective_established_any_linkage_with_options_below">Q501. Has the Sangha/group/collective established any linkage with (options below)</string>
+    <string name="q501a_please_specify_the_others">Q501a. Please specify the others</string>
+    <string name="q501b_what_service_services_you_are_getting_through_this_linkage_more_than_one_response_upto_three_is_possible">Q501b. What service/services you are getting through this linkage(more than one response upto three is possible).</string>
+    <string name="q502_is_your_sangha_collective_currently_availing_any_services_schemes">Q502. Is your sangha /collective currently availing any services/ schemes</string>
+    <string name="q502a_please_provide_details_of_the_service_scheme_that_you_are_availing_more_than_one_response_upto_three_is_possible">Q502a. Please provide details of the service/scheme that you are availing (more than one response upto three is possible)</string>
+    <string name="q502b_from_which_department_service_provider_you_are_availing_this_scheme_service">Q502b. From which department/service provider you are availing this scheme/service?</string>
+    <string name="q601_is_your_sangha_collective_members_interested_in_taking_up_any_collective_enterprise_business">Q601. Is your Sangha / collective members interested in taking up any collective enterprise/business</string>
+    <string name="q602a_please_specify_others">Q602a. Please specify others</string>
+    <string name="q602_what_business_would_the_collective_plan_to_do_if_given_an_opportunity">Q602. What business would the collective plan to do (if given an opportunity)</string>
+
+
 
 </resources>

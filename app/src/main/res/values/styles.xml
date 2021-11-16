@@ -35,6 +35,17 @@
         <item name="android:layout_marginTop">5dp</item>
     </style>
 
+    <style name="TextViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:padding">@dimen/_5sdp</item>
+        <item name="android:paddingLeft">@dimen/_10sdp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginStart">@dimen/_5sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_5sdp</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
 
     <style name="NewSimpleText">
         <item name="android:layout_gravity">center_vertical</item>
@@ -68,15 +79,15 @@
 
     <style name="EditTextStyle">
         <item name="android:textSize">15sp</item>
-        <item name="android:textColor">@color/darkgrey</item>
+        <item name="android:textColor">@color/black</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">@dimen/_30sdp</item>
         <item name="android:padding">@dimen/_5sdp</item>
         <item name="android:background">@color/light_gray</item>
         <item name="android:inputType">text</item>
-        <item name="hintTextColor">@color/LightGrey</item>
+        <item name="hintTextColor">@color/colorPrimary</item>
 
     </style>
 
@@ -166,14 +177,14 @@
     </style>
 
     <style name="SpinnerViewDashboard">
-    <item name="android:layout_width">match_parent</item>
-    <item name="android:minHeight">50dp</item>
-    <item name="android:layout_height">wrap_content</item>
-    <item name="android:textSize">13sp</item>
-    <item name="android:gravity">center_vertical</item>
-    <item name="android:layout_gravity">center_vertical</item>
-    <item name="android:textColor">@color/black</item>
-</style>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 
     <style name="SpinnerView">
         <item name="android:gravity">left</item>
@@ -194,29 +205,14 @@
 
     <style name="TextInputStyle">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:textColorHint">@color/darkgrey</item>
-        <item name="boxStrokeWidth">0dp</item>
-        <item name="boxStrokeWidthFocused">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColorHint">@color/black</item>
         <item name="android:padding">@dimen/_5sdp</item>
         <item name="android:layout_marginStart">@dimen/_5sdp</item>
         <item name="android:layout_marginEnd">@dimen/_5sdp</item>
         <item name="android:background">@color/light_gray</item>
         <item name="android:layout_marginTop">8dp</item>
     </style>
-
-    <style name="TextViewStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">15sp</item>
-        <item name="android:padding">@dimen/_10sdp</item>
-        <item name="android:textColor">@color/darkgrey</item>
-        <item name="android:layout_marginStart">@dimen/_5sdp</item>
-        <item name="android:layout_marginEnd">@dimen/_5sdp</item>
-        <item name="android:layout_marginTop">8dp</item>
-        <item name="android:background">@color/light_gray</item>
-    </style>
-
 
 </resources>
 

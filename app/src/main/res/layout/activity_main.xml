@@ -15,11 +15,10 @@
     <ScrollView
         style="@style/ScrolllViewStyle"
         android:layout_weight="1"
-        android:fadeScrollbars="false"
-        android:scrollbarThumbVertical="@drawable/vertical_scrollview_thumb"
-        android:scrollbarTrackVertical="@drawable/vertical_scrollview_track">
+        android:fadeScrollbars="false">
 
-
+<!--        android:scrollbarThumbVertical="@drawable/vertical_scrollview_thumb"-->
+<!--        android:scrollbarTrackVertical="@drawable/vertical_scrollview_track-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,7 +86,7 @@
             <TableRow style="@style/Tablerow">
 
                 <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_language"
+                    android:id="@+id/spin_name_crp"
                     style="@style/SpinnerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -99,7 +98,7 @@
                     app:ms_enableErrorLabel="false"
                     app:ms_enableFloatingLabel="true"
                     app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="Name of CRP filling the form"
+                    app:ms_floatingLabelText="@string/name_crp"
                     app:ms_multiline="false"
                     app:ms_thickness="0dp" />
 
@@ -121,7 +120,7 @@
                     app:ms_enableErrorLabel="false"
                     app:ms_enableFloatingLabel="true"
                     app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="Name of Supervising Field Coordinator"
+                    app:ms_floatingLabelText="@string/Supervising_FC"
                     app:ms_multiline="false"
                     app:ms_thickness="0dp" />
 
@@ -186,8 +185,8 @@
                     android:id="@+id/et_agerespo"
                     style="@style/EditTextStyle"
                     android:inputType="number"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:digits="1234567890"
+                    android:maxLength="2" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -242,8 +241,8 @@
                     android:id="@+id/et_contactnorespo"
                     style="@style/EditTextStyle"
                     android:inputType="number"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:digits="1234567890"
+                    android:maxLength="10" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -275,9 +274,8 @@
                 <EditText
                     android:id="@+id/et_specify"
                     style="@style/EditTextStyle"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -397,9 +395,8 @@
                 <EditText
                     android:id="@+id/et_specifyo"
                     style="@style/EditTextStyle"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -425,9 +422,8 @@
                 <EditText
                     android:id="@+id/et_specifyoo"
                     style="@style/EditTextStyle"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -455,9 +451,8 @@
                 <EditText
                     android:id="@+id/et_specify_o"
                     style="@style/EditTextStyle"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -484,9 +479,8 @@
                 <EditText
                     android:id="@+id/et_specif_perfer_lang"
                     style="@style/EditTextStyle"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -512,9 +506,8 @@
                 <EditText
                     android:id="@+id/et_specif_perfer_lang_mob_use"
                     style="@style/EditTextStyle"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -600,9 +593,8 @@
                 <EditText
                     android:id="@+id/et_specif_sell_waste_collect"
                     style="@style/EditTextStyle"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -635,9 +627,8 @@
                 <EditText
                     android:id="@+id/et_specif_source_income"
                     style="@style/EditTextStyle"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -651,8 +642,8 @@
                     android:id="@+id/et_no_days_job"
                     style="@style/EditTextStyle"
                     android:inputType="number"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:digits="1234567890"
+                    android:maxLength="2" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -665,8 +656,8 @@
                     android:id="@+id/et_avg_daily_income"
                     style="@style/EditTextStyle"
                     android:inputType="number"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:digits="1234567890"
+                    android:maxLength="4" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -718,9 +709,8 @@
                 <EditText
                     android:id="@+id/et_specif_source_secondary_income"
                     style="@style/EditTextStyle"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -962,9 +952,8 @@
                 <EditText
                     android:id="@+id/et_skills_jobs_picking"
                     style="@style/EditTextStyle"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

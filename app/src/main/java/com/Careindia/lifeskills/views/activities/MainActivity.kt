@@ -17,10 +17,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         validate = Validate(this)
-
-        validate!!.dynamicRadio(this, checkRadio, resources.getStringArray(R.array.yes_no))
-        validate!!.fillCheckBoxes(this, multiCheck, resources.getStringArray(R.array.language))
-
         tv_title.text = "Home"
 
 
@@ -54,9 +50,9 @@ class MainActivity : AppCompatActivity() {
         }
         validate!!.fillSpinnerLanguage(
             this,
-            spin_language,
+            spin_name_crp,
             resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
+            resources.getStringArray(R.array.spin_name_crp)
         )
         validate!!.fillSpinnerLanguage(
             this,
@@ -117,13 +113,13 @@ class MainActivity : AppCompatActivity() {
             this,
             spin_cate_picker_belong,
             resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
+            resources.getStringArray(R.array.spin_cate_picker_belong)
         )
         validate!!.fillSpinnerLanguage(
             this,
             spin_source_income,
             resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
+            resources.getStringArray(R.array.spin_source_income)
         )
         validate!!.fillSpinnerLanguage(
             this,
@@ -135,7 +131,7 @@ class MainActivity : AppCompatActivity() {
             this,
             spin_what_secondary_income,
             resources.getString(R.string.select),
-            resources.getStringArray(R.array.secondary_source_income)
+            resources.getStringArray(R.array.spin_source_income)
         )
         validate!!.fillSpinnerLanguage(
             this,
@@ -195,7 +191,7 @@ class MainActivity : AppCompatActivity() {
             this,
             spin_alternative_get_opportunity,
             resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
+            resources.getStringArray(R.array.spin_alternative_get_opportunity)
         )
         validate!!.fillSpinnerLanguage(
             this,
@@ -207,13 +203,13 @@ class MainActivity : AppCompatActivity() {
             this,
             spin_type_emp,
             resources.getString(R.string.select),
-            resources.getStringArray(R.array.secondary_source_income)
+            resources.getStringArray(R.array.spin_type_emp)
         )
         validate!!.fillSpinnerLanguage(
             this,
             spin_sell_waste_collect,
             resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
+            resources.getStringArray(R.array.spin_sell_waste_collect)
         )
 
         validate!!.fillCheckBoxes(
@@ -227,6 +223,9 @@ class MainActivity : AppCompatActivity() {
             prefer_comni_speaking,
             resources.getStringArray(R.array.language)
         )
+
+        validate!!.dynamicRadio(this, checkRadio, resources.getStringArray(R.array.yes_no))
+        validate!!.fillCheckBoxes(this, multiCheck, resources.getStringArray(R.array.language))
         validate!!.fillCheckBoxes(
             this,
             lang_prefer_mobile_use,
@@ -235,7 +234,7 @@ class MainActivity : AppCompatActivity() {
         validate!!.fillCheckBoxes(
             this,
             skills_jobs_picking,
-            resources.getStringArray(R.array.language)
+            resources.getStringArray(R.array.skills_jobs_picking)
         )
 
     }

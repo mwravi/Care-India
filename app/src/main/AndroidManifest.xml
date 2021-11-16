@@ -9,13 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CareIndia">
-
-
         <activity
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:name=".views.activities.CollectiveProfileActivity"
+            android:name=".views.activities.PrimaryDataActivity"
             android:exported="true" />
+        <activity
+            android:name=".views.activities.CollectiveProfileActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".views.activities.SignupActivity"
             android:exported="true"

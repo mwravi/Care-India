@@ -5,53 +5,54 @@
         <item >No</item>
     </string-array>
     <string-array name="spin_SupervisingFC">
-        <item >Mr. Ramlal Singh</item>
-        <item >Mr. Devendra Kumar</item>
-        <item >Mr. Sanjay Kumar</item>
+        <item >Narendran BS</item>
+        <item >Manohar Rao</item>
     </string-array>
     <string-array name="spin_sexrepo">
         <item >Male</item>
         <item >Female</item>
-        <item >Other</item>
+        <item >Transgender</item>
     </string-array>
     <string-array name="spin_casterespo">
         <item >SC</item>
         <item >ST</item>
         <item >OBC</item>
         <item >General</item>
-        <item >Others</item>
     </string-array>
     <string-array name="spin_marital">
         <item >Married</item>
-        <item >Single</item>
-        <item >Divorced</item>
-        <item >Widow / Widower</item>
+        <item >Unmarried</item>
+        <item >Divorced/Separated</item>
+        <item >Widow/Widower</item>
     </string-array>
     <string-array name="spin_state">
+        <item >Karnataka</item>
+        <item >Tamil Nadu</item>
         <item >Andhra Pradesh</item>
-        <item >Delhi</item>
-        <item >Himachal Pradesh</item>
-        <item >Jharkhand</item>
-        <item >Jammu and Kashmir</item>
+        <item >Kerala</item>
         <item >Maharashtra</item>
-        <item >Uttaranchal</item>
-        <item >Uttar Pradesh</item>
         <item >West Bengal</item>
+        <item >Odisha</item>
+        <item >Assam</item>
+        <item >Bihar</item>
+        <item >Other (specify)</item>
     </string-array>
-    <string-array name="spin_education">
-        <item >Class(II)</item>
-        <item >Class(V)</item>
-        <item >Class(VI)</item>
-        <item >Class(VII)</item>
-        <item >Class(VIII)</item>
-        <item >Secondary(Class X)</item>
-        <item >Diploma</item>
-        <item >Bachelors Degree</item>
-        <item >Master Degree</item>
-    </string-array>
+        <string-array name="spin_education">
+            <item >Lower primary (1-5)</item>
+            <item >Upper primary (6-7)</item>
+            <item >Secondary (8-10)</item>
+            <item >Senior secondary (11-12)</item>
+            <item >Above senior secondary</item>
+            <item >No formal education</item>
+        </string-array>
     <string-array name="language">
+        <item >Kannada</item>
+        <item >Tamil</item>
+        <item >Telugu</item>
         <item >English</item>
         <item >Hindi</item>
+        <item >Bengali</item>
+        <item >Others (specify)</item>
     </string-array>
     <string-array name="secondary_source_income">
         <item >Agriculture Activities</item>
@@ -61,5 +62,64 @@
         <item >Services - all types</item>
         <item >Salaried Job-Government</item>
     </string-array>
+
+    <string-array name="spin_name_crp">
+        <item >Aruna</item>
+        <item >Padmavathi</item>
+        <item >Jayanthi</item>
+        <item >Guruswamy S.</item>
+        <item >M.K. Kalpana</item>
+        <item >Kusuma</item>
+        <item >Ravichandra A.</item>
+    </string-array>
+    <string-array name="spin_cate_picker_belong">
+        <item >Informal street waste collector</item>
+        <item >Itinerant buyer</item>
+        <item >Sorters in scrap shops</item>
+        <item >Sorters in DWCC</item>
+        <item >Currently not a waste picker</item>
+    </string-array>
+    <string-array name="spin_type_emp">
+        <item >Regular</item>
+        <item >Irregular</item>
+    </string-array>
+
+    <string-array name="spin_sell_waste_collect">
+        <item >DWCC</item>
+        <item >To any scrap shop</item>
+        <item >To your employer</item>
+        <item >Others (specify)</item>
+    </string-array>
+    <string-array name="spin_alternative_get_opportunity">
+        <item >Labourer</item>
+        <item >Business</item>
+        <item >Job</item>
+    </string-array>
+    <string-array name="spin_source_income">
+        <item >Waste picker</item>
+        <item >Sorter</item>
+        <item >Driver</item>
+        <item >Daily wage labour</item>
+        <item >Housemaid</item>
+        <item >Petty shop keeper</item>
+        <item >No source of income</item>
+        <item >Other source of income (specify)</item>
+    </string-array>
+    <string-array name="skills_jobs_picking">
+        <item >Making agarbatti, papad, pickle</item>
+        <item >Making handicrafts or bamboo items</item>
+        <item >Tailoring</item>
+        <item >Beautician</item>
+        <item >Carpenter</item>
+        <item >Plumber</item>
+        <item >Painter</item>
+        <item >Electrician</item>
+        <item >Clinic compounder</item>
+        <item >Driver</item>
+        <item >Security guard</item>
+        <item >Others</item>
+    </string-array>
+
+
 
 </resources>
