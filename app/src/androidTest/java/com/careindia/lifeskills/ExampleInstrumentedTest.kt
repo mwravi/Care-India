@@ -1,4 +1,4 @@
-package com.Careindia.lifeskills
+package com.careindia.lifeskills
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

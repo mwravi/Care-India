@@ -1,4 +1,4 @@
-package com.Careindia.lifeskills.utils
+package com.careindia.lifeskills.utils
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -7,7 +7,7 @@ import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Context
 import android.view.ViewGroup
 import android.widget.*
-import com.Careindia.lifeskills.R
+import com.careindia.lifeskills.R
 import java.text.SimpleDateFormat
 import java.util.*
 

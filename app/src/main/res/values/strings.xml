@@ -7,25 +7,26 @@
     <string name="signup">SignUp</string>
     <string name="create_new">Click here for register</string>
     <string name="act_login">Already have account? Log In</string>
-    <string name="date_of_filling_the_form">Date of filling the form</string>
-    <string name="name_crp">Name of CRP filling the form</string>
-    <string name="Supervising_FC">Name of Supervising Field Coordinator</string>
+    <string name="date_of_filling_the_form">Q101. Date of filling the form</string>
+    <string name="name_crp">Q102. Name of CRP filling the form</string>
+    <string name="Supervising_FC">Q103. Name of Supervising Field Coordinator</string>
     <string name="date_format">dd-mm-yyyy</string>
     <string name="select">Select</string>
     <string name="save">Save</string>
-    <string name="name_respondent">Name of the respondent</string>
-    <string name="household_id">Household Unique ID</string>
-    <string name="sex_respo">Sex of the respondent</string>
-    <string name="age_respondent">Age of the respondent</string>
-    <string name="catse_respo">Caste of the respondent</string>
-    <string name="marital_status">Marital status of the respondent</string>
-    <string name="contact_no_respondent">Contact number of the respondent</string>
-    <string name="state_belong">Which State you belong to originally</string>
+    <string name="next">Next</string>
+    <string name="name_respondent">Q201. Name of the respondent</string>
+    <string name="household_id">Q104. Household Unique ID</string>
+    <string name="sex_respo">Q203. Sex of the respondent</string>
+    <string name="age_respondent">Q204. Age of the respondent (in completed years)</string>
+    <string name="catse_respo">Q205. Caste of the respondent</string>
+    <string name="marital_status">Q206. Marital status of the respondent</string>
+    <string name="contact_no_respondent">Q207. Contact number of the respondent</string>
+    <string name="state_belong">Q209. Which State you belong to originally</string>
     <string name="please_specify">Please specify others</string>
-    <string name="long_stay">How long have you been staying in Bangalore (in years)</string>
-    <string name="read_write">Can you read and write?</string>
-    <string name="highest_education">What is your highest level of education?</string>
-    <string name="acess_smart_phone">Do you have acess to smart phone?</string>
+    <string name="long_stay">Q210. How long have you been staying in Bangalore (in years)</string>
+    <string name="read_write">Q211. Can you read and write?</string>
+    <string name="highest_education">Q212. What is your highest level of education?</string>
+    <string name="acess_smart_phone">Q213. Do you have acess to smart phone?</string>
     <string name="acess_mobile_data">Do you have acess to mobile data ?</string>
     <string name="language_speak">Which language/s you can speak?</string>
     <string name="language_read">Which language/s you can read?</string>
@@ -153,6 +154,5 @@
     <string name="q602a_please_specify_others">Q602a. Please specify others</string>
     <string name="q602_what_business_would_the_collective_plan_to_do_if_given_an_opportunity">Q602. What business would the collective plan to do (if given an opportunity)</string>
 
-
-
+    <string name="empty_email">Please enter Email ID</string>
 </resources>

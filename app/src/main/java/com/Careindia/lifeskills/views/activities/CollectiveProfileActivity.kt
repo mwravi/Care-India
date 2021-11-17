@@ -1,8 +1,8 @@
-package com.Careindia.lifeskills.views.activities
+package com.careindia.lifeskills.views.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.Careindia.lifeskills.R
+import com.careindia.lifeskills.R
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class CollectiveProfileActivity : AppCompatActivity() {

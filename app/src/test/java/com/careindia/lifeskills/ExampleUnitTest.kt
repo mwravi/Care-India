@@ -1,4 +1,4 @@
-package com.Careindia.lifeskills
+package com.careindia.lifeskills
 
 import org.junit.Test
 
