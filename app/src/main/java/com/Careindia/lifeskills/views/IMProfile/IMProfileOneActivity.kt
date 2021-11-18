@@ -28,10 +28,8 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
 
     override fun initializeController() {
 
-//apply click on view
+      //apply click on view
         applyClickOnView()
-
-
 
         et_formfilngjgDate.setOnClickListener {
             validate!!.datePickerwithmindate(
@@ -161,7 +159,10 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
 
             value = 0
             return value
-        }else if(Integer.parseInt(et_agerespo.text.toString()) <= 18 || Integer.parseInt(et_agerespo.text.toString()) >= 65){
+        } else if (Integer.parseInt(et_agerespo.text.toString()) <= 18 || Integer.parseInt(
+                et_agerespo.text.toString()
+            ) >= 65
+        ) {
             Toast.makeText(this, "(Q204) Input value between 18-65", Toast.LENGTH_SHORT).show()
             value = 0
             return value
@@ -181,7 +182,8 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
             value = 0
             return value
         } else if (et_contactnorespo.text.toString().trim().length < 10) {
-            Toast.makeText(this, "(Q207) Input proper 10 digit mobile no.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "(Q207) Input proper 10 digit mobile no.", Toast.LENGTH_SHORT)
+                .show()
 
             value = 0
             return value
@@ -203,8 +205,15 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
             value = 0
             return value
 
-        }else if(Integer.parseInt(et_long_stay.text.toString()) <= 0 || Integer.parseInt(et_long_stay.text.toString()) >= 99){
-            Toast.makeText(this, "(Q210) Input value between 0-99 and that should be less", Toast.LENGTH_SHORT).show()
+        } else if (Integer.parseInt(et_long_stay.text.toString()) <= 0 || Integer.parseInt(
+                et_long_stay.text.toString()
+            ) >= 99
+        ) {
+            Toast.makeText(
+                this,
+                "(Q210) Input value between 0-99 and that should be less",
+                Toast.LENGTH_SHORT
+            ).show()
             value = 0
             return value
         } else if (spin_can_read.selectedItemPosition == 0) {
