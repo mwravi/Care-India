@@ -1,0 +1,33 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/TableRowStyle"
+    android:background="@color/white"
+    android:layout_marginTop="5dp">
+
+    <TextView style="@style/NewSimpleTextMargin"
+        android:layout_weight=".1"
+      />
+
+    <Button
+        android:id="@+id/btn_prev"
+        style="@style/ButtonTextStyle"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:text="@string/previous" />
+    <TextView style="@style/NewSimpleTextMargin"
+        android:layout_weight=".1"
+        />
+    <Button
+        android:id="@+id/btn_save"
+        style="@style/ButtonTextStyle"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:text="@string/save_and_next" />
+
+    <TextView style="@style/NewSimpleTextMargin"
+        android:layout_weight=".1"
+        />
+
+</LinearLayout>

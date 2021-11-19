@@ -1,6 +1,7 @@
 package com.careindia.lifeskills.di
 
-import com.careindia.lifeskills.views.IMProfile.IMProfileRequest
+import com.careindia.lifeskills.views.improfile.IMProfileRequest
+import com.careindia.lifeskills.views.loginscreen.LoginRequest
 import org.koin.dsl.module.module
 import org.koin.experimental.builder.factory
 
@@ -11,9 +12,9 @@ import org.koin.experimental.builder.factory
  */
 
 val apiRequest= module {
-//    factory<RegistrationRequest>()
+    factory <LoginRequest>()
     factory <IMProfileRequest>()
-
+//    factory<RegistrationRequest>()
 
 }
 val dataModules = listOf(

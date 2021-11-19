@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.careindia.lifeskills.R
-import com.careindia.lifeskills.views.IMProfile.IMProfileOneActivity
+import com.careindia.lifeskills.views.improfile.IMProfileOneActivity
 import kotlinx.android.synthetic.main.activity_signup.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 

@@ -1,4 +1,4 @@
-package com.careindia.lifeskills.views.IMProfile
+package com.careindia.lifeskills.views.improfile
 
 import com.google.gson.annotations.SerializedName
 

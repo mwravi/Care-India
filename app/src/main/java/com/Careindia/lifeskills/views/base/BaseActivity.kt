@@ -1,4 +1,4 @@
-package com.careindia.lifeskills.ui.base
+package com.careindia.lifeskills.views.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

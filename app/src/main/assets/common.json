@@ -1,0 +1,4814 @@
+[
+  {
+    "uid": "1",
+    "flag": "1",
+    "id": "1",
+    "value": "Aruna"
+  },
+  {
+    "uid": "2",
+    "flag": "1",
+    "id": "2",
+    "value": "Padmavathi"
+  },
+  {
+    "uid": "3",
+    "flag": "1",
+    "id": "3",
+    "value": "Jayanthi"
+  },
+  {
+    "uid": "4",
+    "flag": "1",
+    "id": "4",
+    "value": "Guruswamy S."
+  },
+  {
+    "uid": "5",
+    "flag": "1",
+    "id": "5",
+    "value": "M.K. Kalpana"
+  },
+  {
+    "uid": "6",
+    "flag": "1",
+    "id": "6",
+    "value": "Kusuma"
+  },
+  {
+    "uid": "7",
+    "flag": "1",
+    "id": "7",
+    "value": "Ravichandra A."
+  },
+  {
+    "uid": "8",
+    "flag": "1",
+    "id": "8",
+    "value": "Sindhu V."
+  },
+  {
+    "uid": "9",
+    "flag": "1",
+    "id": "9",
+    "value": "Stallamary"
+  },
+  {
+    "uid": "10",
+    "flag": "1",
+    "id": "10",
+    "value": "Yallamma R."
+  },
+  {
+    "uid": "11",
+    "flag": "1",
+    "id": "11",
+    "value": "Lata"
+  },
+  {
+    "uid": "12",
+    "flag": "1",
+    "id": "12",
+    "value": "Nagaratna"
+  },
+  {
+    "uid": "13",
+    "flag": "1",
+    "id": "13",
+    "value": "Kavitha V"
+  },
+  {
+    "uid": "14",
+    "flag": "1",
+    "id": "14",
+    "value": "Jyothi C"
+  },
+  {
+    "uid": "15",
+    "flag": "1",
+    "id": "15",
+    "value": "Sashikala"
+  },
+  {
+    "uid": "16",
+    "flag": "1",
+    "id": "16",
+    "value": "Devarajama"
+  },
+  {
+    "uid": "17",
+    "flag": "1",
+    "id": "17",
+    "value": "Mahantesh PM"
+  },
+  {
+    "uid": "18",
+    "flag": "1",
+    "id": "18",
+    "value": "Umme Hani"
+  },
+  {
+    "uid": "19",
+    "flag": "1",
+    "id": "19",
+    "value": "Mala B"
+  },
+  {
+    "uid": "20",
+    "flag": "1",
+    "id": "20",
+    "value": "Manjula"
+  },
+  {
+    "uid": "21",
+    "flag": "1",
+    "id": "21",
+    "value": "Nethravathi N"
+  },
+  {
+    "uid": "22",
+    "flag": "2",
+    "id": "1",
+    "value": "Narendran B S"
+  },
+  {
+    "uid": "23",
+    "flag": "2",
+    "id": "2",
+    "value": "Manoharrao B"
+  },
+  {
+    "uid": "24",
+    "flag": "2",
+    "id": "3",
+    "value": "Sagaya Shanthy"
+  },
+  {
+    "uid": "25",
+    "flag": "3",
+    "id": "1",
+    "value": "Bangalore Urban"
+  },
+  {
+    "uid": "26",
+    "flag": "3",
+    "id": "2",
+    "value": "Bangalore Rural"
+  },
+  {
+    "uid": "27",
+    "flag": "4",
+    "id": "1",
+    "value": "Bangalore East"
+  },
+  {
+    "uid": "28",
+    "flag": "4",
+    "id": "2",
+    "value": "Bangalore West"
+  },
+  {
+    "uid": "29",
+    "flag": "4",
+    "id": "3",
+    "value": "Bangalore South"
+  },
+  {
+    "uid": "30",
+    "flag": "4",
+    "id": "4",
+    "value": "Yelahanka"
+  },
+  {
+    "uid": "31",
+    "flag": "4",
+    "id": "5",
+    "value": "Dasarahalli"
+  },
+  {
+    "uid": "32",
+    "flag": "4",
+    "id": "6",
+    "value": "RajaRajeshwari Nagar"
+  },
+  {
+    "uid": "33",
+    "flag": "4",
+    "id": "7",
+    "value": "Mahadevapura"
+  },
+  {
+    "uid": "34",
+    "flag": "4",
+    "id": "8",
+    "value": "Bommanahalli"
+  },
+  {
+    "uid": "35",
+    "flag": "5",
+    "id": "1",
+    "value": "Kempegowda Ward"
+  },
+  {
+    "uid": "36",
+    "flag": "5",
+    "id": "2",
+    "value": "Chowdeswari Ward"
+  },
+  {
+    "uid": "37",
+    "flag": "5",
+    "id": "3",
+    "value": "Atturu"
+  },
+  {
+    "uid": "38",
+    "flag": "5",
+    "id": "4",
+    "value": "Yelahanka Satellite Town"
+  },
+  {
+    "uid": "39",
+    "flag": "5",
+    "id": "5",
+    "value": "Jakkuru"
+  },
+  {
+    "uid": "40",
+    "flag": "5",
+    "id": "6",
+    "value": "Thanisandra"
+  },
+  {
+    "uid": "41",
+    "flag": "5",
+    "id": "7",
+    "value": "Byatarayanapura"
+  },
+  {
+    "uid": "42",
+    "flag": "5",
+    "id": "8",
+    "value": "Kodigehalli"
+  },
+  {
+    "uid": "43",
+    "flag": "5",
+    "id": "9",
+    "value": "Vidyaranyapura"
+  },
+  {
+    "uid": "44",
+    "flag": "5",
+    "id": "10",
+    "value": "Dodda Bommasandra"
+  },
+  {
+    "uid": "45",
+    "flag": "5",
+    "id": "11",
+    "value": "Kuvempu Nagar"
+  },
+  {
+    "uid": "46",
+    "flag": "5",
+    "id": "12",
+    "value": "Shettihalli"
+  },
+  {
+    "uid": "47",
+    "flag": "5",
+    "id": "13",
+    "value": "Mallasandra"
+  },
+  {
+    "uid": "48",
+    "flag": "5",
+    "id": "14",
+    "value": "Bagalakunte"
+  },
+  {
+    "uid": "49",
+    "flag": "5",
+    "id": "15",
+    "value": "T Dasarahalli"
+  },
+  {
+    "uid": "50",
+    "flag": "5",
+    "id": "16",
+    "value": "Jalahalli"
+  },
+  {
+    "uid": "51",
+    "flag": "5",
+    "id": "17",
+    "value": "J P Park"
+  },
+  {
+    "uid": "52",
+    "flag": "5",
+    "id": "18",
+    "value": "Radhakrishna Temple Ward"
+  },
+  {
+    "uid": "53",
+    "flag": "5",
+    "id": "19",
+    "value": "Sanjaya Nagar"
+  },
+  {
+    "uid": "54",
+    "flag": "5",
+    "id": "20",
+    "value": "Ganga Nagar"
+  },
+  {
+    "uid": "55",
+    "flag": "5",
+    "id": "21",
+    "value": "Hebbala"
+  },
+  {
+    "uid": "56",
+    "flag": "5",
+    "id": "22",
+    "value": "Vishwanath Nagenahalli"
+  },
+  {
+    "uid": "57",
+    "flag": "5",
+    "id": "23",
+    "value": "Nagavara"
+  },
+  {
+    "uid": "58",
+    "flag": "5",
+    "id": "24",
+    "value": "HBR Layout"
+  },
+  {
+    "uid": "59",
+    "flag": "5",
+    "id": "25",
+    "value": "Horamavu"
+  },
+  {
+    "uid": "60",
+    "flag": "5",
+    "id": "26",
+    "value": "Ramamurthy Nagar"
+  },
+  {
+    "uid": "61",
+    "flag": "5",
+    "id": "27",
+    "value": "Banasavadi"
+  },
+  {
+    "uid": "62",
+    "flag": "5",
+    "id": "28",
+    "value": "Kammanahalli"
+  },
+  {
+    "uid": "63",
+    "flag": "5",
+    "id": "29",
+    "value": "Kacharkanahalli"
+  },
+  {
+    "uid": "64",
+    "flag": "5",
+    "id": "30",
+    "value": "Kadugondanahalli"
+  },
+  {
+    "uid": "65",
+    "flag": "5",
+    "id": "31",
+    "value": "Kushal Nagar"
+  },
+  {
+    "uid": "66",
+    "flag": "5",
+    "id": "32",
+    "value": "Kaval Bairasandra"
+  },
+  {
+    "uid": "67",
+    "flag": "5",
+    "id": "33",
+    "value": "Manorayana Palya"
+  },
+  {
+    "uid": "68",
+    "flag": "5",
+    "id": "34",
+    "value": "Gangenahalli"
+  },
+  {
+    "uid": "69",
+    "flag": "5",
+    "id": "35",
+    "value": "Aramane Nagara"
+  },
+  {
+    "uid": "70",
+    "flag": "5",
+    "id": "36",
+    "value": "Mattikere"
+  },
+  {
+    "uid": "71",
+    "flag": "5",
+    "id": "37",
+    "value": "Yeshwanthpura"
+  },
+  {
+    "uid": "72",
+    "flag": "5",
+    "id": "38",
+    "value": "HMT Ward"
+  },
+  {
+    "uid": "73",
+    "flag": "5",
+    "id": "39",
+    "value": "Chokkasandra"
+  },
+  {
+    "uid": "74",
+    "flag": "5",
+    "id": "40",
+    "value": "Dodda Bidarakallu"
+  },
+  {
+    "uid": "75",
+    "flag": "5",
+    "id": "41",
+    "value": "Peenya Industrial Area"
+  },
+  {
+    "uid": "76",
+    "flag": "5",
+    "id": "42",
+    "value": "Lakshmi Devi Nagar"
+  },
+  {
+    "uid": "77",
+    "flag": "5",
+    "id": "43",
+    "value": "Nandini Layout"
+  },
+  {
+    "uid": "78",
+    "flag": "5",
+    "id": "44",
+    "value": "Marappana Palya"
+  },
+  {
+    "uid": "79",
+    "flag": "5",
+    "id": "45",
+    "value": "Malleshwaram"
+  },
+  {
+    "uid": "80",
+    "flag": "5",
+    "id": "46",
+    "value": "Jayachamarajendra Nagar"
+  },
+  {
+    "uid": "81",
+    "flag": "5",
+    "id": "47",
+    "value": "Devara Jeevanahalli"
+  },
+  {
+    "uid": "82",
+    "flag": "5",
+    "id": "48",
+    "value": "Muneshwara Nagar"
+  },
+  {
+    "uid": "83",
+    "flag": "5",
+    "id": "49",
+    "value": "Lingarajapura"
+  },
+  {
+    "uid": "84",
+    "flag": "5",
+    "id": "50",
+    "value": "Benniganahalli"
+  },
+  {
+    "uid": "85",
+    "flag": "5",
+    "id": "51",
+    "value": "Vijnanapura"
+  },
+  {
+    "uid": "86",
+    "flag": "5",
+    "id": "52",
+    "value": "KR Puram"
+  },
+  {
+    "uid": "87",
+    "flag": "5",
+    "id": "53",
+    "value": "Basavanapura"
+  },
+  {
+    "uid": "88",
+    "flag": "5",
+    "id": "54",
+    "value": "Hudi"
+  },
+  {
+    "uid": "89",
+    "flag": "5",
+    "id": "55",
+    "value": "Devasandra"
+  },
+  {
+    "uid": "90",
+    "flag": "5",
+    "id": "56",
+    "value": "A Narayanapura"
+  },
+  {
+    "uid": "91",
+    "flag": "5",
+    "id": "57",
+    "value": "C.V. Raman Nagar"
+  },
+  {
+    "uid": "92",
+    "flag": "5",
+    "id": "58",
+    "value": "New Tippa Sandra"
+  },
+  {
+    "uid": "93",
+    "flag": "5",
+    "id": "59",
+    "value": "Maruthi Seva Nagar"
+  },
+  {
+    "uid": "94",
+    "flag": "5",
+    "id": "60",
+    "value": "Sagayara Puram"
+  },
+  {
+    "uid": "95",
+    "flag": "5",
+    "id": "61",
+    "value": "SK Garden"
+  },
+  {
+    "uid": "96",
+    "flag": "5",
+    "id": "62",
+    "value": "Ramaswamy Palya"
+  },
+  {
+    "uid": "97",
+    "flag": "5",
+    "id": "63",
+    "value": "Jaya Mahal"
+  },
+  {
+    "uid": "98",
+    "flag": "5",
+    "id": "64",
+    "value": "Raj Mahal Guttahalli"
+  },
+  {
+    "uid": "99",
+    "flag": "5",
+    "id": "65",
+    "value": "Kadu Malleshwar Ward"
+  },
+  {
+    "uid": "100",
+    "flag": "5",
+    "id": "66",
+    "value": "Subramanya Nagar"
+  },
+  {
+    "uid": "101",
+    "flag": "5",
+    "id": "67",
+    "value": "Nagapura"
+  },
+  {
+    "uid": "102",
+    "flag": "5",
+    "id": "68",
+    "value": "Mahalakshmipuram"
+  },
+  {
+    "uid": "103",
+    "flag": "5",
+    "id": "69",
+    "value": "Laggere"
+  },
+  {
+    "uid": "104",
+    "flag": "5",
+    "id": "70",
+    "value": "Rajagopal Nagar"
+  },
+  {
+    "uid": "105",
+    "flag": "5",
+    "id": "71",
+    "value": "Hegganahalli"
+  },
+  {
+    "uid": "106",
+    "flag": "5",
+    "id": "72",
+    "value": "Herohalli"
+  },
+  {
+    "uid": "107",
+    "flag": "5",
+    "id": "73",
+    "value": "Kottegepalya"
+  },
+  {
+    "uid": "108",
+    "flag": "5",
+    "id": "74",
+    "value": "Shakthi Ganapathi Nagar"
+  },
+  {
+    "uid": "109",
+    "flag": "5",
+    "id": "75",
+    "value": "Shankar Matt"
+  },
+  {
+    "uid": "110",
+    "flag": "5",
+    "id": "76",
+    "value": "Gayithri Nagar"
+  },
+  {
+    "uid": "111",
+    "flag": "5",
+    "id": "77",
+    "value": "Dattatreya Temple Ward"
+  },
+  {
+    "uid": "112",
+    "flag": "5",
+    "id": "78",
+    "value": "Pulakeshi Nagar"
+  },
+  {
+    "uid": "113",
+    "flag": "5",
+    "id": "79",
+    "value": "Sarvagna Nagar"
+  },
+  {
+    "uid": "114",
+    "flag": "5",
+    "id": "80",
+    "value": "Hoysala Nagar"
+  },
+  {
+    "uid": "115",
+    "flag": "5",
+    "id": "81",
+    "value": "Vijnana Nagar"
+  },
+  {
+    "uid": "116",
+    "flag": "5",
+    "id": "82",
+    "value": "Garudachar palya"
+  },
+  {
+    "uid": "117",
+    "flag": "5",
+    "id": "83",
+    "value": "Kadugodi"
+  },
+  {
+    "uid": "118",
+    "flag": "5",
+    "id": "84",
+    "value": "Hagadur"
+  },
+  {
+    "uid": "119",
+    "flag": "5",
+    "id": "85",
+    "value": "Dodda Nekkundi"
+  },
+  {
+    "uid": "120",
+    "flag": "5",
+    "id": "86",
+    "value": "Marathahalli"
+  },
+  {
+    "uid": "121",
+    "flag": "5",
+    "id": "87",
+    "value": "HAL Airport"
+  },
+  {
+    "uid": "122",
+    "flag": "5",
+    "id": "88",
+    "value": "Jeevanbhima Nagar"
+  },
+  {
+    "uid": "123",
+    "flag": "5",
+    "id": "89",
+    "value": "Jogupalya"
+  },
+  {
+    "uid": "124",
+    "flag": "5",
+    "id": "90",
+    "value": "Halsoor"
+  },
+  {
+    "uid": "125",
+    "flag": "5",
+    "id": "91",
+    "value": "Bharathi Nagar"
+  },
+  {
+    "uid": "126",
+    "flag": "5",
+    "id": "92",
+    "value": "Shivaji Nagar"
+  },
+  {
+    "uid": "127",
+    "flag": "5",
+    "id": "93",
+    "value": "Vasanth Nagar"
+  },
+  {
+    "uid": "128",
+    "flag": "5",
+    "id": "94",
+    "value": "Gandhi Nagar"
+  },
+  {
+    "uid": "129",
+    "flag": "5",
+    "id": "95",
+    "value": "Subhash Nagar"
+  },
+  {
+    "uid": "130",
+    "flag": "5",
+    "id": "96",
+    "value": "Okalipuram"
+  },
+  {
+    "uid": "131",
+    "flag": "5",
+    "id": "97",
+    "value": "Dayananda Nagar"
+  },
+  {
+    "uid": "132",
+    "flag": "5",
+    "id": "98",
+    "value": "Prakash Nagar"
+  },
+  {
+    "uid": "133",
+    "flag": "5",
+    "id": "99",
+    "value": "Rajaji Nagar"
+  },
+  {
+    "uid": "134",
+    "flag": "5",
+    "id": "100",
+    "value": "Basaveshwara Nagar"
+  },
+  {
+    "uid": "135",
+    "flag": "5",
+    "id": "101",
+    "value": "Kamakshipalya"
+  },
+  {
+    "uid": "136",
+    "flag": "5",
+    "id": "102",
+    "value": "Vrisahbhavathi Nagar"
+  },
+  {
+    "uid": "137",
+    "flag": "5",
+    "id": "103",
+    "value": "Kaveripura"
+  },
+  {
+    "uid": "138",
+    "flag": "5",
+    "id": "104",
+    "value": "Govindaraja Nagar"
+  },
+  {
+    "uid": "139",
+    "flag": "5",
+    "id": "105",
+    "value": "Agrahara Dasarahalli"
+  },
+  {
+    "uid": "140",
+    "flag": "5",
+    "id": "106",
+    "value": "Dr.Raj Kumar Ward"
+  },
+  {
+    "uid": "141",
+    "flag": "5",
+    "id": "107",
+    "value": "Shiva Nagar"
+  },
+  {
+    "uid": "142",
+    "flag": "5",
+    "id": "108",
+    "value": "Sri Rama Mandir Ward"
+  },
+  {
+    "uid": "143",
+    "flag": "5",
+    "id": "109",
+    "value": "Chickpete"
+  },
+  {
+    "uid": "144",
+    "flag": "5",
+    "id": "110",
+    "value": "Sampangiram Nagar"
+  },
+  {
+    "uid": "145",
+    "flag": "5",
+    "id": "111",
+    "value": "Shantala Nagar"
+  },
+  {
+    "uid": "146",
+    "flag": "5",
+    "id": "112",
+    "value": "Domlur"
+  },
+  {
+    "uid": "147",
+    "flag": "5",
+    "id": "113",
+    "value": "Konena Agrahara"
+  },
+  {
+    "uid": "148",
+    "flag": "5",
+    "id": "114",
+    "value": "Agaram"
+  },
+  {
+    "uid": "149",
+    "flag": "5",
+    "id": "115",
+    "value": "Vannar Pet"
+  },
+  {
+    "uid": "150",
+    "flag": "5",
+    "id": "116",
+    "value": "Nilasandra"
+  },
+  {
+    "uid": "151",
+    "flag": "5",
+    "id": "117",
+    "value": "Shanthi Nagar"
+  },
+  {
+    "uid": "152",
+    "flag": "5",
+    "id": "118",
+    "value": "Sudham Nagar"
+  },
+  {
+    "uid": "153",
+    "flag": "5",
+    "id": "119",
+    "value": "Dharmaraya Swamy Temple"
+  },
+  {
+    "uid": "154",
+    "flag": "5",
+    "id": "120",
+    "value": "Cottonpete"
+  },
+  {
+    "uid": "155",
+    "flag": "5",
+    "id": "121",
+    "value": "Binni Pete"
+  },
+  {
+    "uid": "156",
+    "flag": "5",
+    "id": "122",
+    "value": "Kempapura Agrahara"
+  },
+  {
+    "uid": "157",
+    "flag": "5",
+    "id": "123",
+    "value": "Vijayanagar"
+  },
+  {
+    "uid": "158",
+    "flag": "5",
+    "id": "124",
+    "value": "Hosahalli"
+  },
+  {
+    "uid": "159",
+    "flag": "5",
+    "id": "125",
+    "value": "Marenahalli"
+  },
+  {
+    "uid": "160",
+    "flag": "5",
+    "id": "126",
+    "value": "Maruthi Mandir Ward"
+  },
+  {
+    "uid": "161",
+    "flag": "5",
+    "id": "127",
+    "value": "Mudalapalya"
+  },
+  {
+    "uid": "162",
+    "flag": "5",
+    "id": "128",
+    "value": "Nagarabhavi"
+  },
+  {
+    "uid": "163",
+    "flag": "5",
+    "id": "129",
+    "value": "Jnana Bharathi Ward"
+  },
+  {
+    "uid": "164",
+    "flag": "5",
+    "id": "130",
+    "value": "Ullalu"
+  },
+  {
+    "uid": "165",
+    "flag": "5",
+    "id": "131",
+    "value": "Nayandahalli"
+  },
+  {
+    "uid": "166",
+    "flag": "5",
+    "id": "132",
+    "value": "Attiguppe"
+  },
+  {
+    "uid": "167",
+    "flag": "5",
+    "id": "133",
+    "value": "Hampi Nagar"
+  },
+  {
+    "uid": "168",
+    "flag": "5",
+    "id": "134",
+    "value": "Bapuji Nagar"
+  },
+  {
+    "uid": "169",
+    "flag": "5",
+    "id": "135",
+    "value": "Padarayanapura"
+  },
+  {
+    "uid": "170",
+    "flag": "5",
+    "id": "136",
+    "value": "Jagajivanaram Nagar"
+  },
+  {
+    "uid": "171",
+    "flag": "5",
+    "id": "137",
+    "value": "Rayapuram"
+  },
+  {
+    "uid": "172",
+    "flag": "5",
+    "id": "138",
+    "value": "Chelavadi Palya"
+  },
+  {
+    "uid": "173",
+    "flag": "5",
+    "id": "139",
+    "value": "KR Market"
+  },
+  {
+    "uid": "174",
+    "flag": "5",
+    "id": "140",
+    "value": "Chamraja Pet"
+  },
+  {
+    "uid": "175",
+    "flag": "5",
+    "id": "141",
+    "value": "Azad Nagar"
+  },
+  {
+    "uid": "176",
+    "flag": "5",
+    "id": "142",
+    "value": "Sunkenahalli"
+  },
+  {
+    "uid": "177",
+    "flag": "5",
+    "id": "143",
+    "value": "Vishveshwara Puram"
+  },
+  {
+    "uid": "178",
+    "flag": "5",
+    "id": "144",
+    "value": "Siddapura"
+  },
+  {
+    "uid": "179",
+    "flag": "5",
+    "id": "145",
+    "value": "Hombegowda Nagar"
+  },
+  {
+    "uid": "180",
+    "flag": "5",
+    "id": "146",
+    "value": "Lakkasandra"
+  },
+  {
+    "uid": "181",
+    "flag": "5",
+    "id": "147",
+    "value": "Adugodi"
+  },
+  {
+    "uid": "182",
+    "flag": "5",
+    "id": "148",
+    "value": "Ejipura"
+  },
+  {
+    "uid": "183",
+    "flag": "5",
+    "id": "149",
+    "value": "Varthur"
+  },
+  {
+    "uid": "184",
+    "flag": "5",
+    "id": "150",
+    "value": "Bellanduru"
+  },
+  {
+    "uid": "185",
+    "flag": "5",
+    "id": "151",
+    "value": "Koramangala"
+  },
+  {
+    "uid": "186",
+    "flag": "5",
+    "id": "152",
+    "value": "Suddagunte Palya"
+  },
+  {
+    "uid": "187",
+    "flag": "5",
+    "id": "153",
+    "value": "Jayanagar"
+  },
+  {
+    "uid": "188",
+    "flag": "5",
+    "id": "154",
+    "value": "Basavanagudi"
+  },
+  {
+    "uid": "189",
+    "flag": "5",
+    "id": "155",
+    "value": "Hanumanth Nagar"
+  },
+  {
+    "uid": "190",
+    "flag": "5",
+    "id": "156",
+    "value": "Sri Nagar"
+  },
+  {
+    "uid": "191",
+    "flag": "5",
+    "id": "157",
+    "value": "Gali Anjenaya Temple Ward"
+  },
+  {
+    "uid": "192",
+    "flag": "5",
+    "id": "158",
+    "value": "Deepanjali Nagar"
+  },
+  {
+    "uid": "193",
+    "flag": "5",
+    "id": "159",
+    "value": "Kengeri"
+  },
+  {
+    "uid": "194",
+    "flag": "5",
+    "id": "160",
+    "value": "Rajarajeshawari Nagar"
+  },
+  {
+    "uid": "195",
+    "flag": "5",
+    "id": "161",
+    "value": "Hosakerehalli"
+  },
+  {
+    "uid": "196",
+    "flag": "5",
+    "id": "162",
+    "value": "Giri Nagar"
+  },
+  {
+    "uid": "197",
+    "flag": "5",
+    "id": "163",
+    "value": "Katriguppe"
+  },
+  {
+    "uid": "198",
+    "flag": "5",
+    "id": "164",
+    "value": "Vidya Peeta Ward"
+  },
+  {
+    "uid": "199",
+    "flag": "5",
+    "id": "165",
+    "value": "Ganesh Mandir Ward"
+  },
+  {
+    "uid": "200",
+    "flag": "5",
+    "id": "166",
+    "value": "Kari Sandra"
+  },
+  {
+    "uid": "201",
+    "flag": "5",
+    "id": "167",
+    "value": "Yediyur"
+  },
+  {
+    "uid": "202",
+    "flag": "5",
+    "id": "168",
+    "value": "Pattabhi Ram Nagar"
+  },
+  {
+    "uid": "203",
+    "flag": "5",
+    "id": "169",
+    "value": "Byra Sandra"
+  },
+  {
+    "uid": "204",
+    "flag": "5",
+    "id": "170",
+    "value": "Jayanagar East"
+  },
+  {
+    "uid": "205",
+    "flag": "5",
+    "id": "171",
+    "value": "Gurappana Palya"
+  },
+  {
+    "uid": "206",
+    "flag": "5",
+    "id": "172",
+    "value": "Madivala"
+  },
+  {
+    "uid": "207",
+    "flag": "5",
+    "id": "173",
+    "value": "Jakka Sandra"
+  },
+  {
+    "uid": "208",
+    "flag": "5",
+    "id": "174",
+    "value": "HSR Layout"
+  },
+  {
+    "uid": "209",
+    "flag": "5",
+    "id": "175",
+    "value": "Bommanahalli"
+  },
+  {
+    "uid": "210",
+    "flag": "5",
+    "id": "176",
+    "value": "BTM Layout"
+  },
+  {
+    "uid": "211",
+    "flag": "5",
+    "id": "177",
+    "value": "JP Nagar"
+  },
+  {
+    "uid": "212",
+    "flag": "5",
+    "id": "178",
+    "value": "Sarakki"
+  },
+  {
+    "uid": "213",
+    "flag": "5",
+    "id": "179",
+    "value": "Shakambari Nagar"
+  },
+  {
+    "uid": "214",
+    "flag": "5",
+    "id": "180",
+    "value": "Banashankari Temple Ward"
+  },
+  {
+    "uid": "215",
+    "flag": "5",
+    "id": "181",
+    "value": "Kumara Swamy Layout"
+  },
+  {
+    "uid": "216",
+    "flag": "5",
+    "id": "182",
+    "value": "Padmanabha Nagar"
+  },
+  {
+    "uid": "217",
+    "flag": "5",
+    "id": "183",
+    "value": "Chikkala Sandra"
+  },
+  {
+    "uid": "218",
+    "flag": "5",
+    "id": "184",
+    "value": "Uttarahalli"
+  },
+  {
+    "uid": "219",
+    "flag": "5",
+    "id": "185",
+    "value": "Yelchenahalli"
+  },
+  {
+    "uid": "220",
+    "flag": "5",
+    "id": "186",
+    "value": "Jaraganahalli"
+  },
+  {
+    "uid": "221",
+    "flag": "5",
+    "id": "187",
+    "value": "Puttenahalli"
+  },
+  {
+    "uid": "222",
+    "flag": "5",
+    "id": "188",
+    "value": "Bilekhalli"
+  },
+  {
+    "uid": "223",
+    "flag": "5",
+    "id": "189",
+    "value": "Honga Sandra"
+  },
+  {
+    "uid": "224",
+    "flag": "5",
+    "id": "190",
+    "value": "Mangammana Palya"
+  },
+  {
+    "uid": "225",
+    "flag": "5",
+    "id": "191",
+    "value": "Singa Sandra"
+  },
+  {
+    "uid": "226",
+    "flag": "5",
+    "id": "192",
+    "value": "Begur"
+  },
+  {
+    "uid": "227",
+    "flag": "5",
+    "id": "193",
+    "value": "Arakere"
+  },
+  {
+    "uid": "228",
+    "flag": "5",
+    "id": "194",
+    "value": "Gottigere"
+  },
+  {
+    "uid": "229",
+    "flag": "5",
+    "id": "195",
+    "value": "Konankunte"
+  },
+  {
+    "uid": "230",
+    "flag": "5",
+    "id": "196",
+    "value": "Anjanapura"
+  },
+  {
+    "uid": "231",
+    "flag": "5",
+    "id": "197",
+    "value": "Vasanthpura"
+  },
+  {
+    "uid": "232",
+    "flag": "5",
+    "id": "198",
+    "value": "Hemmigepura"
+  },
+  {
+    "uid": "233",
+    "flag": "5",
+    "id": "199",
+    "value": "Sajjepalya (W73)"
+  },
+  {
+    "uid": "234",
+    "flag": "5",
+    "id": "200",
+    "value": "Summanahalli (W73)"
+  },
+  {
+    "uid": "235",
+    "flag": "5",
+    "id": "201",
+    "value": "Sunkathakatte (W73)"
+  },
+  {
+    "uid": "236",
+    "flag": "5",
+    "id": "202",
+    "value": "Chiranheevi layout (W7)"
+  },
+  {
+    "uid": "237",
+    "flag": "5",
+    "id": "203",
+    "value": "Kunthigrama (W21)"
+  },
+  {
+    "uid": "238",
+    "flag": "5",
+    "id": "204",
+    "value": "Veeranapalaya (W21)"
+  },
+  {
+    "uid": "239",
+    "flag": "6",
+    "id": "1",
+    "value": "Kadabagere cross"
+  },
+  {
+    "uid": "240",
+    "flag": "6",
+    "id": "2",
+    "value": "Giddenahalli"
+  },
+  {
+    "uid": "241",
+    "flag": "6",
+    "id": "3",
+    "value": "Machovalli"
+  },
+  {
+    "uid": "242",
+    "flag": "6",
+    "id": "4",
+    "value": "Lakshmipura"
+  },
+  {
+    "uid": "243",
+    "flag": "6",
+    "id": "5",
+    "value": "Vishveshwaraiah"
+  },
+  {
+    "uid": "244",
+    "flag": "6",
+    "id": "6",
+    "value": "Thymagondlu"
+  },
+  {
+    "uid": "245",
+    "flag": "6",
+    "id": "7",
+    "value": "Nelamangala"
+  },
+  {
+    "uid": "246",
+    "flag": "7",
+    "id": "1",
+    "value": "Self Help Group (SHG)"
+  },
+  {
+    "uid": "247",
+    "flag": "7",
+    "id": "2",
+    "value": "Common Interest Group (CIG)"
+  },
+  {
+    "uid": "248",
+    "flag": "7",
+    "id": "3",
+    "value": "Joint Liability Group (JLG)"
+  },
+  {
+    "uid": "249",
+    "flag": "7",
+    "id": "4",
+    "value": "Others"
+  },
+  {
+    "uid": "250",
+    "flag": "8",
+    "id": "1",
+    "value": "Registered"
+  },
+  {
+    "uid": "251",
+    "flag": "8",
+    "id": "2",
+    "value": "Unregistered"
+  },
+  {
+    "uid": "252",
+    "flag": "8",
+    "id": "3",
+    "value": "Others (specify)"
+  },
+  {
+    "uid": "253",
+    "flag": "9",
+    "id": "1",
+    "value": "Male"
+  },
+  {
+    "uid": "254",
+    "flag": "9",
+    "id": "2",
+    "value": "Female"
+  },
+  {
+    "uid": "255",
+    "flag": "9",
+    "id": "3",
+    "value": "Transgender"
+  },
+  {
+    "uid": "256",
+    "flag": "10",
+    "id": "1",
+    "value": "Male"
+  },
+  {
+    "uid": "257",
+    "flag": "10",
+    "id": "2",
+    "value": "Female"
+  },
+  {
+    "uid": "258",
+    "flag": "10",
+    "id": "3",
+    "value": "Transgender"
+  },
+  {
+    "uid": "259",
+    "flag": "11",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "260",
+    "flag": "11",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "261",
+    "flag": "12",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "262",
+    "flag": "12",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "263",
+    "flag": "13",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "264",
+    "flag": "13",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "265",
+    "flag": "14",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "266",
+    "flag": "14",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "267",
+    "flag": "15",
+    "id": "1",
+    "value": "50 INR"
+  },
+  {
+    "uid": "268",
+    "flag": "15",
+    "id": "2",
+    "value": "100 INR"
+  },
+  {
+    "uid": "269",
+    "flag": "15",
+    "id": "3",
+    "value": "200 INR"
+  },
+  {
+    "uid": "270",
+    "flag": "15",
+    "id": "4",
+    "value": "500 INR"
+  },
+  {
+    "uid": "271",
+    "flag": "15",
+    "id": "5",
+    "value": "Others (specify)"
+  },
+  {
+    "uid": "272",
+    "flag": "16",
+    "id": "1",
+    "value": "Weekly"
+  },
+  {
+    "uid": "273",
+    "flag": "16",
+    "id": "2",
+    "value": "Once in 15 days"
+  },
+  {
+    "uid": "274",
+    "flag": "16",
+    "id": "3",
+    "value": "Monthly"
+  },
+  {
+    "uid": "275",
+    "flag": "16",
+    "id": "4",
+    "value": "Once in two months"
+  },
+  {
+    "uid": "276",
+    "flag": "16",
+    "id": "5",
+    "value": "Others"
+  },
+  {
+    "uid": "277",
+    "flag": "17",
+    "id": "1",
+    "value": " Yes, the members save regularly"
+  },
+  {
+    "uid": "278",
+    "flag": "17",
+    "id": "2",
+    "value": " No, the members don�t save on a regular basis"
+  },
+  {
+    "uid": "279",
+    "flag": "17",
+    "id": "3",
+    "value": "Others (specify)"
+  },
+  {
+    "uid": "280",
+    "flag": "19",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "281",
+    "flag": "19",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "282",
+    "flag": "20",
+    "id": "1",
+    "value": "Loan from bank"
+  },
+  {
+    "uid": "283",
+    "flag": "20",
+    "id": "2",
+    "value": "Loan from group"
+  },
+  {
+    "uid": "284",
+    "flag": "20",
+    "id": "3",
+    "value": "Both from bank and group"
+  },
+  {
+    "uid": "285",
+    "flag": "20",
+    "id": "4",
+    "value": "Other source (specify)"
+  },
+  {
+    "uid": "286",
+    "flag": "21",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "287",
+    "flag": "21",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "288",
+    "flag": "22",
+    "id": "1",
+    "value": "Weekly"
+  },
+  {
+    "uid": "289",
+    "flag": "22",
+    "id": "2",
+    "value": "Fortnightly (once in 15 days)"
+  },
+  {
+    "uid": "290",
+    "flag": "22",
+    "id": "3",
+    "value": "Monthly"
+  },
+  {
+    "uid": "291",
+    "flag": "22",
+    "id": "4",
+    "value": "Others (specify)"
+  },
+  {
+    "uid": "292",
+    "flag": "23",
+    "id": "1",
+    "value": " Regular (consider this, if more than 50% of members"
+  },
+  {
+    "uid": "293",
+    "flag": "23",
+    "id": "2",
+    "value": " Irregular (consider this, less than 50% of members)"
+  },
+  {
+    "uid": "294",
+    "flag": "24",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "295",
+    "flag": "24",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "296",
+    "flag": "25",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "297",
+    "flag": "25",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "298",
+    "flag": "26",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "299",
+    "flag": "26",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "300",
+    "flag": "27",
+    "id": "1",
+    "value": "\tTraining Institutes\n\n\n\n\n"
+  },
+  {
+    "uid": "301",
+    "flag": "27",
+    "id": "2",
+    "value": "Employers"
+  },
+  {
+    "uid": "302",
+    "flag": "27",
+    "id": "3",
+    "value": "NGO"
+  },
+  {
+    "uid": "303",
+    "flag": "27",
+    "id": "4",
+    "value": "Govt. service provider"
+  },
+  {
+    "uid": "304",
+    "flag": "27",
+    "id": "5",
+    "value": "Private organization"
+  },
+  {
+    "uid": "305",
+    "flag": "27",
+    "id": "6",
+    "value": "Financial Institutions"
+  },
+  {
+    "uid": "306",
+    "flag": "27",
+    "id": "7",
+    "value": "Others (specify)"
+  },
+  {
+    "uid": "307",
+    "flag": "27",
+    "id": "8",
+    "value": "Not established any linkage"
+  },
+  {
+    "uid": "308",
+    "flag": "28",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "309",
+    "flag": "28",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "310",
+    "flag": "29",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "311",
+    "flag": "29",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "312",
+    "flag": "30",
+    "id": "1",
+    "value": "Setting up own grocery shop"
+  },
+  {
+    "uid": "313",
+    "flag": "30",
+    "id": "2",
+    "value": "Starting own beauty parlour"
+  },
+  {
+    "uid": "314",
+    "flag": "30",
+    "id": "3",
+    "value": "Start basket/flower/any decorative item making"
+  },
+  {
+    "uid": "315",
+    "flag": "30",
+    "id": "4",
+    "value": "Setting up own food stall"
+  },
+  {
+    "uid": "316",
+    "flag": "30",
+    "id": "5",
+    "value": "Setting up own tailoring shop"
+  },
+  {
+    "uid": "317",
+    "flag": "30",
+    "id": "6",
+    "value": " Start making agarbatti, soap, papad, pickle"
+  },
+  {
+    "uid": "318",
+    "flag": "30",
+    "id": "7",
+    "value": "Starting own bamboo business"
+  },
+  {
+    "uid": "319",
+    "flag": "30",
+    "id": "8",
+    "value": "Starting own travel agency"
+  },
+  {
+    "uid": "320",
+    "flag": "30",
+    "id": "9",
+    "value": "Setting up own poultry shop"
+  },
+  {
+    "uid": "321",
+    "flag": "30",
+    "id": "10",
+    "value": "Starting food making/home delivery business"
+  },
+  {
+    "uid": "322",
+    "flag": "30",
+    "id": "11",
+    "value": "Setting up own vegetable shop"
+  },
+  {
+    "uid": "323",
+    "flag": "30",
+    "id": "12",
+    "value": "Recycling of waste business"
+  },
+  {
+    "uid": "324",
+    "flag": "30",
+    "id": "13",
+    "value": "Starting own garage shop"
+  },
+  {
+    "uid": "325",
+    "flag": "30",
+    "id": "14",
+    "value": "Others (specify)"
+  },
+  {
+    "uid": "326",
+    "flag": "31",
+    "id": "1",
+    "value": "Aruna"
+  },
+  {
+    "uid": "327",
+    "flag": "31",
+    "id": "2",
+    "value": "Balakrishna Padmavathi"
+  },
+  {
+    "uid": "328",
+    "flag": "31",
+    "id": "3",
+    "value": "R.Brindha Jayanthi"
+  },
+  {
+    "uid": "329",
+    "flag": "31",
+    "id": "4",
+    "value": "Guruswamy S."
+  },
+  {
+    "uid": "330",
+    "flag": "31",
+    "id": "5",
+    "value": "M.K. Kalpana"
+  },
+  {
+    "uid": "331",
+    "flag": "31",
+    "id": "6",
+    "value": "Kusuma"
+  },
+  {
+    "uid": "332",
+    "flag": "31",
+    "id": "7",
+    "value": "Ravichandra A."
+  },
+  {
+    "uid": "333",
+    "flag": "31",
+    "id": "8",
+    "value": "Sindhu V."
+  },
+  {
+    "uid": "334",
+    "flag": "31",
+    "id": "9",
+    "value": "Stallamary"
+  },
+  {
+    "uid": "335",
+    "flag": "31",
+    "id": "10",
+    "value": "Yallamma R."
+  },
+  {
+    "uid": "336",
+    "flag": "31",
+    "id": "11",
+    "value": "Lata"
+  },
+  {
+    "uid": "337",
+    "flag": "31",
+    "id": "12",
+    "value": "Nagaratna"
+  },
+  {
+    "uid": "338",
+    "flag": "31",
+    "id": "13",
+    "value": "Kavitha V"
+  },
+  {
+    "uid": "339",
+    "flag": "31",
+    "id": "14",
+    "value": "Jyothi C"
+  },
+  {
+    "uid": "340",
+    "flag": "31",
+    "id": "15",
+    "value": "Sashikala"
+  },
+  {
+    "uid": "341",
+    "flag": "31",
+    "id": "16",
+    "value": "Devarajama"
+  },
+  {
+    "uid": "342",
+    "flag": "31",
+    "id": "17",
+    "value": "Mahantesh PM"
+  },
+  {
+    "uid": "343",
+    "flag": "31",
+    "id": "18",
+    "value": "Umme Hani"
+  },
+  {
+    "uid": "344",
+    "flag": "31",
+    "id": "19",
+    "value": "Mala B"
+  },
+  {
+    "uid": "345",
+    "flag": "31",
+    "id": "20",
+    "value": "Manjula"
+  },
+  {
+    "uid": "346",
+    "flag": "31",
+    "id": "21",
+    "value": "Nethravathi N"
+  },
+  {
+    "uid": "347",
+    "flag": "32",
+    "id": "1",
+    "value": "Narendran B S"
+  },
+  {
+    "uid": "348",
+    "flag": "32",
+    "id": "2",
+    "value": "Manoharrao B"
+  },
+  {
+    "uid": "349",
+    "flag": "33",
+    "id": "1",
+    "value": "Bangalore Urban"
+  },
+  {
+    "uid": "350",
+    "flag": "33",
+    "id": "2",
+    "value": "Bangalore Rural"
+  },
+  {
+    "uid": "351",
+    "flag": "34",
+    "id": "1",
+    "value": "Bangalore East"
+  },
+  {
+    "uid": "352",
+    "flag": "34",
+    "id": "2",
+    "value": "Bangalore West"
+  },
+  {
+    "uid": "353",
+    "flag": "34",
+    "id": "3",
+    "value": "Bangalore South"
+  },
+  {
+    "uid": "354",
+    "flag": "34",
+    "id": "4",
+    "value": "Yelahanka"
+  },
+  {
+    "uid": "355",
+    "flag": "34",
+    "id": "5",
+    "value": "Dasarahalli"
+  },
+  {
+    "uid": "356",
+    "flag": "34",
+    "id": "6",
+    "value": "RajaRajeshwari Nagar"
+  },
+  {
+    "uid": "357",
+    "flag": "34",
+    "id": "7",
+    "value": "Mahadevapura"
+  },
+  {
+    "uid": "358",
+    "flag": "34",
+    "id": "8",
+    "value": "Bommanahalli"
+  },
+  {
+    "uid": "359",
+    "flag": "35",
+    "id": "1",
+    "value": "Kempegowda Ward"
+  },
+  {
+    "uid": "360",
+    "flag": "35",
+    "id": "2",
+    "value": "Chowdeswari Ward"
+  },
+  {
+    "uid": "361",
+    "flag": "35",
+    "id": "3",
+    "value": "Atturu"
+  },
+  {
+    "uid": "362",
+    "flag": "35",
+    "id": "4",
+    "value": "Yelahanka Satellite Town"
+  },
+  {
+    "uid": "363",
+    "flag": "35",
+    "id": "5",
+    "value": "Jakkuru"
+  },
+  {
+    "uid": "364",
+    "flag": "35",
+    "id": "6",
+    "value": "Thanisandra"
+  },
+  {
+    "uid": "365",
+    "flag": "35",
+    "id": "7",
+    "value": "Byatarayanapura"
+  },
+  {
+    "uid": "366",
+    "flag": "35",
+    "id": "8",
+    "value": "Kodigehalli"
+  },
+  {
+    "uid": "367",
+    "flag": "35",
+    "id": "9",
+    "value": "Vidyaranyapura"
+  },
+  {
+    "uid": "368",
+    "flag": "35",
+    "id": "10",
+    "value": "Dodda Bommasandra"
+  },
+  {
+    "uid": "369",
+    "flag": "35",
+    "id": "11",
+    "value": "Kuvempu Nagar"
+  },
+  {
+    "uid": "370",
+    "flag": "35",
+    "id": "12",
+    "value": "Shettihalli"
+  },
+  {
+    "uid": "371",
+    "flag": "35",
+    "id": "13",
+    "value": "Mallasandra"
+  },
+  {
+    "uid": "372",
+    "flag": "35",
+    "id": "14",
+    "value": "Bagalakunte"
+  },
+  {
+    "uid": "373",
+    "flag": "35",
+    "id": "15",
+    "value": "T Dasarahalli"
+  },
+  {
+    "uid": "374",
+    "flag": "35",
+    "id": "16",
+    "value": "Jalahalli"
+  },
+  {
+    "uid": "375",
+    "flag": "35",
+    "id": "17",
+    "value": "J P Park"
+  },
+  {
+    "uid": "376",
+    "flag": "35",
+    "id": "18",
+    "value": "Radhakrishna Temple Ward"
+  },
+  {
+    "uid": "377",
+    "flag": "35",
+    "id": "19",
+    "value": "Sanjaya Nagar"
+  },
+  {
+    "uid": "378",
+    "flag": "35",
+    "id": "20",
+    "value": "Ganga Nagar"
+  },
+  {
+    "uid": "379",
+    "flag": "35",
+    "id": "21",
+    "value": "Hebbala"
+  },
+  {
+    "uid": "380",
+    "flag": "35",
+    "id": "22",
+    "value": "Vishwanath Nagenahalli"
+  },
+  {
+    "uid": "381",
+    "flag": "35",
+    "id": "23",
+    "value": "Nagavara"
+  },
+  {
+    "uid": "382",
+    "flag": "35",
+    "id": "24",
+    "value": "HBR Layout"
+  },
+  {
+    "uid": "383",
+    "flag": "35",
+    "id": "25",
+    "value": "Horamavu"
+  },
+  {
+    "uid": "384",
+    "flag": "35",
+    "id": "26",
+    "value": "Ramamurthy Nagar"
+  },
+  {
+    "uid": "385",
+    "flag": "35",
+    "id": "27",
+    "value": "Banasavadi"
+  },
+  {
+    "uid": "386",
+    "flag": "35",
+    "id": "28",
+    "value": "Kammanahalli"
+  },
+  {
+    "uid": "387",
+    "flag": "35",
+    "id": "29",
+    "value": "Kacharkanahalli"
+  },
+  {
+    "uid": "388",
+    "flag": "35",
+    "id": "30",
+    "value": "Kadugondanahalli"
+  },
+  {
+    "uid": "389",
+    "flag": "35",
+    "id": "31",
+    "value": "Kushal Nagar"
+  },
+  {
+    "uid": "390",
+    "flag": "35",
+    "id": "32",
+    "value": "Kaval Bairasandra"
+  },
+  {
+    "uid": "391",
+    "flag": "35",
+    "id": "33",
+    "value": "Manorayana Palya"
+  },
+  {
+    "uid": "392",
+    "flag": "35",
+    "id": "34",
+    "value": "Gangenahalli"
+  },
+  {
+    "uid": "393",
+    "flag": "35",
+    "id": "35",
+    "value": "Aramane Nagara"
+  },
+  {
+    "uid": "394",
+    "flag": "35",
+    "id": "36",
+    "value": "Mattikere"
+  },
+  {
+    "uid": "395",
+    "flag": "35",
+    "id": "37",
+    "value": "Yeshwanthpura"
+  },
+  {
+    "uid": "396",
+    "flag": "35",
+    "id": "38",
+    "value": "HMT Ward"
+  },
+  {
+    "uid": "397",
+    "flag": "35",
+    "id": "39",
+    "value": "Chokkasandra"
+  },
+  {
+    "uid": "398",
+    "flag": "35",
+    "id": "40",
+    "value": "Dodda Bidarakallu"
+  },
+  {
+    "uid": "399",
+    "flag": "35",
+    "id": "41",
+    "value": "Peenya Industrial Area"
+  },
+  {
+    "uid": "400",
+    "flag": "35",
+    "id": "42",
+    "value": "Lakshmi Devi Nagar"
+  },
+  {
+    "uid": "401",
+    "flag": "35",
+    "id": "43",
+    "value": "Nandini Layout"
+  },
+  {
+    "uid": "402",
+    "flag": "35",
+    "id": "44",
+    "value": "Marappana Palya"
+  },
+  {
+    "uid": "403",
+    "flag": "35",
+    "id": "45",
+    "value": "Malleshwaram"
+  },
+  {
+    "uid": "404",
+    "flag": "35",
+    "id": "46",
+    "value": "Jayachamarajendra Nagar"
+  },
+  {
+    "uid": "405",
+    "flag": "35",
+    "id": "47",
+    "value": "Devara Jeevanahalli"
+  },
+  {
+    "uid": "406",
+    "flag": "35",
+    "id": "48",
+    "value": "Muneshwara Nagar"
+  },
+  {
+    "uid": "407",
+    "flag": "35",
+    "id": "49",
+    "value": "Lingarajapura"
+  },
+  {
+    "uid": "408",
+    "flag": "35",
+    "id": "50",
+    "value": "Benniganahalli"
+  },
+  {
+    "uid": "409",
+    "flag": "35",
+    "id": "51",
+    "value": "Vijnanapura"
+  },
+  {
+    "uid": "410",
+    "flag": "35",
+    "id": "52",
+    "value": "KR Puram"
+  },
+  {
+    "uid": "411",
+    "flag": "35",
+    "id": "53",
+    "value": "Basavanapura"
+  },
+  {
+    "uid": "412",
+    "flag": "35",
+    "id": "54",
+    "value": "Hudi"
+  },
+  {
+    "uid": "413",
+    "flag": "35",
+    "id": "55",
+    "value": "Devasandra"
+  },
+  {
+    "uid": "414",
+    "flag": "35",
+    "id": "56",
+    "value": "A Narayanapura"
+  },
+  {
+    "uid": "415",
+    "flag": "35",
+    "id": "57",
+    "value": "C.V. Raman Nagar"
+  },
+  {
+    "uid": "416",
+    "flag": "35",
+    "id": "58",
+    "value": "New Tippa Sandra"
+  },
+  {
+    "uid": "417",
+    "flag": "35",
+    "id": "59",
+    "value": "Maruthi Seva Nagar"
+  },
+  {
+    "uid": "418",
+    "flag": "35",
+    "id": "60",
+    "value": "Sagayara Puram"
+  },
+  {
+    "uid": "419",
+    "flag": "35",
+    "id": "61",
+    "value": "SK Garden"
+  },
+  {
+    "uid": "420",
+    "flag": "35",
+    "id": "62",
+    "value": "Ramaswamy Palya"
+  },
+  {
+    "uid": "421",
+    "flag": "35",
+    "id": "63",
+    "value": "Jaya Mahal"
+  },
+  {
+    "uid": "422",
+    "flag": "35",
+    "id": "64",
+    "value": "Raj Mahal Guttahalli"
+  },
+  {
+    "uid": "423",
+    "flag": "35",
+    "id": "65",
+    "value": "Kadu Malleshwar Ward"
+  },
+  {
+    "uid": "424",
+    "flag": "35",
+    "id": "66",
+    "value": "Subramanya Nagar"
+  },
+  {
+    "uid": "425",
+    "flag": "35",
+    "id": "67",
+    "value": "Nagapura"
+  },
+  {
+    "uid": "426",
+    "flag": "35",
+    "id": "68",
+    "value": "Mahalakshmipuram"
+  },
+  {
+    "uid": "427",
+    "flag": "35",
+    "id": "69",
+    "value": "Laggere"
+  },
+  {
+    "uid": "428",
+    "flag": "35",
+    "id": "70",
+    "value": "Rajagopal Nagar"
+  },
+  {
+    "uid": "429",
+    "flag": "35",
+    "id": "71",
+    "value": "Hegganahalli"
+  },
+  {
+    "uid": "430",
+    "flag": "35",
+    "id": "72",
+    "value": "Herohalli"
+  },
+  {
+    "uid": "431",
+    "flag": "35",
+    "id": "73",
+    "value": "Kottegepalya"
+  },
+  {
+    "uid": "432",
+    "flag": "35",
+    "id": "74",
+    "value": "Shakthi Ganapathi Nagar"
+  },
+  {
+    "uid": "433",
+    "flag": "35",
+    "id": "75",
+    "value": "Shankar Matt"
+  },
+  {
+    "uid": "434",
+    "flag": "35",
+    "id": "76",
+    "value": "Gayithri Nagar"
+  },
+  {
+    "uid": "435",
+    "flag": "35",
+    "id": "77",
+    "value": "Dattatreya Temple Ward"
+  },
+  {
+    "uid": "436",
+    "flag": "35",
+    "id": "78",
+    "value": "Pulakeshi Nagar"
+  },
+  {
+    "uid": "437",
+    "flag": "35",
+    "id": "79",
+    "value": "Sarvagna Nagar"
+  },
+  {
+    "uid": "438",
+    "flag": "35",
+    "id": "80",
+    "value": "Hoysala Nagar"
+  },
+  {
+    "uid": "439",
+    "flag": "35",
+    "id": "81",
+    "value": "Vijnana Nagar"
+  },
+  {
+    "uid": "440",
+    "flag": "35",
+    "id": "82",
+    "value": "Garudachar palya"
+  },
+  {
+    "uid": "441",
+    "flag": "35",
+    "id": "83",
+    "value": "Kadugodi"
+  },
+  {
+    "uid": "442",
+    "flag": "35",
+    "id": "84",
+    "value": "Hagadur"
+  },
+  {
+    "uid": "443",
+    "flag": "35",
+    "id": "85",
+    "value": "Dodda Nekkundi"
+  },
+  {
+    "uid": "444",
+    "flag": "35",
+    "id": "86",
+    "value": "Marathahalli"
+  },
+  {
+    "uid": "445",
+    "flag": "35",
+    "id": "87",
+    "value": "HAL Airport"
+  },
+  {
+    "uid": "446",
+    "flag": "35",
+    "id": "88",
+    "value": "Jeevanbhima Nagar"
+  },
+  {
+    "uid": "447",
+    "flag": "35",
+    "id": "89",
+    "value": "Jogupalya"
+  },
+  {
+    "uid": "448",
+    "flag": "35",
+    "id": "90",
+    "value": "Halsoor"
+  },
+  {
+    "uid": "449",
+    "flag": "35",
+    "id": "91",
+    "value": "Bharathi Nagar"
+  },
+  {
+    "uid": "450",
+    "flag": "35",
+    "id": "92",
+    "value": "Shivaji Nagar"
+  },
+  {
+    "uid": "451",
+    "flag": "35",
+    "id": "93",
+    "value": "Vasanth Nagar"
+  },
+  {
+    "uid": "452",
+    "flag": "35",
+    "id": "94",
+    "value": "Gandhi Nagar"
+  },
+  {
+    "uid": "453",
+    "flag": "35",
+    "id": "95",
+    "value": "Subhash Nagar"
+  },
+  {
+    "uid": "454",
+    "flag": "35",
+    "id": "96",
+    "value": "Okalipuram"
+  },
+  {
+    "uid": "455",
+    "flag": "35",
+    "id": "97",
+    "value": "Dayananda Nagar"
+  },
+  {
+    "uid": "456",
+    "flag": "35",
+    "id": "98",
+    "value": "Prakash Nagar"
+  },
+  {
+    "uid": "457",
+    "flag": "35",
+    "id": "99",
+    "value": "Rajaji Nagar"
+  },
+  {
+    "uid": "458",
+    "flag": "35",
+    "id": "100",
+    "value": "Basaveshwara Nagar"
+  },
+  {
+    "uid": "459",
+    "flag": "35",
+    "id": "101",
+    "value": "Kamakshipalya"
+  },
+  {
+    "uid": "460",
+    "flag": "35",
+    "id": "102",
+    "value": "Vrisahbhavathi Nagar"
+  },
+  {
+    "uid": "461",
+    "flag": "35",
+    "id": "103",
+    "value": "Kaveripura"
+  },
+  {
+    "uid": "462",
+    "flag": "35",
+    "id": "104",
+    "value": "Govindaraja Nagar"
+  },
+  {
+    "uid": "463",
+    "flag": "35",
+    "id": "105",
+    "value": "Agrahara Dasarahalli"
+  },
+  {
+    "uid": "464",
+    "flag": "35",
+    "id": "106",
+    "value": "Dr.Raj Kumar Ward"
+  },
+  {
+    "uid": "465",
+    "flag": "35",
+    "id": "107",
+    "value": "Shiva Nagar"
+  },
+  {
+    "uid": "466",
+    "flag": "35",
+    "id": "108",
+    "value": "Sri Rama Mandir Ward"
+  },
+  {
+    "uid": "467",
+    "flag": "35",
+    "id": "109",
+    "value": "Chickpete"
+  },
+  {
+    "uid": "468",
+    "flag": "35",
+    "id": "110",
+    "value": "Sampangiram Nagar"
+  },
+  {
+    "uid": "469",
+    "flag": "35",
+    "id": "111",
+    "value": "Shantala Nagar"
+  },
+  {
+    "uid": "470",
+    "flag": "35",
+    "id": "112",
+    "value": "Domlur"
+  },
+  {
+    "uid": "471",
+    "flag": "35",
+    "id": "113",
+    "value": "Konena Agrahara"
+  },
+  {
+    "uid": "472",
+    "flag": "35",
+    "id": "114",
+    "value": "Agaram"
+  },
+  {
+    "uid": "473",
+    "flag": "35",
+    "id": "115",
+    "value": "Vannar Pet"
+  },
+  {
+    "uid": "474",
+    "flag": "35",
+    "id": "116",
+    "value": "Nilasandra"
+  },
+  {
+    "uid": "475",
+    "flag": "35",
+    "id": "117",
+    "value": "Shanthi Nagar"
+  },
+  {
+    "uid": "476",
+    "flag": "35",
+    "id": "118",
+    "value": "Sudham Nagar"
+  },
+  {
+    "uid": "477",
+    "flag": "35",
+    "id": "119",
+    "value": "Dharmaraya Swamy Temple"
+  },
+  {
+    "uid": "478",
+    "flag": "35",
+    "id": "120",
+    "value": "Cottonpete"
+  },
+  {
+    "uid": "479",
+    "flag": "35",
+    "id": "121",
+    "value": "Binni Pete"
+  },
+  {
+    "uid": "480",
+    "flag": "35",
+    "id": "122",
+    "value": "Kempapura Agrahara"
+  },
+  {
+    "uid": "481",
+    "flag": "35",
+    "id": "123",
+    "value": "Vijayanagar"
+  },
+  {
+    "uid": "482",
+    "flag": "35",
+    "id": "124",
+    "value": "Hosahalli"
+  },
+  {
+    "uid": "483",
+    "flag": "35",
+    "id": "125",
+    "value": "Marenahalli"
+  },
+  {
+    "uid": "484",
+    "flag": "35",
+    "id": "126",
+    "value": "Maruthi Mandir Ward"
+  },
+  {
+    "uid": "485",
+    "flag": "35",
+    "id": "127",
+    "value": "Mudalapalya"
+  },
+  {
+    "uid": "486",
+    "flag": "35",
+    "id": "128",
+    "value": "Nagarabhavi"
+  },
+  {
+    "uid": "487",
+    "flag": "35",
+    "id": "129",
+    "value": "Jnana Bharathi Ward"
+  },
+  {
+    "uid": "488",
+    "flag": "35",
+    "id": "130",
+    "value": "Ullalu"
+  },
+  {
+    "uid": "489",
+    "flag": "35",
+    "id": "131",
+    "value": "Nayandahalli"
+  },
+  {
+    "uid": "490",
+    "flag": "35",
+    "id": "132",
+    "value": "Attiguppe"
+  },
+  {
+    "uid": "491",
+    "flag": "35",
+    "id": "133",
+    "value": "Hampi Nagar"
+  },
+  {
+    "uid": "492",
+    "flag": "35",
+    "id": "134",
+    "value": "Bapuji Nagar"
+  },
+  {
+    "uid": "493",
+    "flag": "35",
+    "id": "135",
+    "value": "Padarayanapura"
+  },
+  {
+    "uid": "494",
+    "flag": "35",
+    "id": "136",
+    "value": "Jagajivanaram Nagar"
+  },
+  {
+    "uid": "495",
+    "flag": "35",
+    "id": "137",
+    "value": "Rayapuram"
+  },
+  {
+    "uid": "496",
+    "flag": "35",
+    "id": "138",
+    "value": "Chelavadi Palya"
+  },
+  {
+    "uid": "497",
+    "flag": "35",
+    "id": "139",
+    "value": "KR Market"
+  },
+  {
+    "uid": "498",
+    "flag": "35",
+    "id": "140",
+    "value": "Chamraja Pet"
+  },
+  {
+    "uid": "499",
+    "flag": "35",
+    "id": "141",
+    "value": "Azad Nagar"
+  },
+  {
+    "uid": "500",
+    "flag": "35",
+    "id": "142",
+    "value": "Sunkenahalli"
+  },
+  {
+    "uid": "501",
+    "flag": "35",
+    "id": "143",
+    "value": "Vishveshwara Puram"
+  },
+  {
+    "uid": "502",
+    "flag": "35",
+    "id": "144",
+    "value": "Siddapura"
+  },
+  {
+    "uid": "503",
+    "flag": "35",
+    "id": "145",
+    "value": "Hombegowda Nagar"
+  },
+  {
+    "uid": "504",
+    "flag": "35",
+    "id": "146",
+    "value": "Lakkasandra"
+  },
+  {
+    "uid": "505",
+    "flag": "35",
+    "id": "147",
+    "value": "Adugodi"
+  },
+  {
+    "uid": "506",
+    "flag": "35",
+    "id": "148",
+    "value": "Ejipura"
+  },
+  {
+    "uid": "507",
+    "flag": "35",
+    "id": "149",
+    "value": "Varthur"
+  },
+  {
+    "uid": "508",
+    "flag": "35",
+    "id": "150",
+    "value": "Bellanduru"
+  },
+  {
+    "uid": "509",
+    "flag": "35",
+    "id": "151",
+    "value": "Koramangala"
+  },
+  {
+    "uid": "510",
+    "flag": "35",
+    "id": "152",
+    "value": "Suddagunte Palya"
+  },
+  {
+    "uid": "511",
+    "flag": "35",
+    "id": "153",
+    "value": "Jayanagar"
+  },
+  {
+    "uid": "512",
+    "flag": "35",
+    "id": "154",
+    "value": "Basavanagudi"
+  },
+  {
+    "uid": "513",
+    "flag": "35",
+    "id": "155",
+    "value": "Hanumanth Nagar"
+  },
+  {
+    "uid": "514",
+    "flag": "35",
+    "id": "156",
+    "value": "Sri Nagar"
+  },
+  {
+    "uid": "515",
+    "flag": "35",
+    "id": "157",
+    "value": "Gali Anjenaya Temple Ward"
+  },
+  {
+    "uid": "516",
+    "flag": "35",
+    "id": "158",
+    "value": "Deepanjali Nagar"
+  },
+  {
+    "uid": "517",
+    "flag": "35",
+    "id": "159",
+    "value": "Kengeri"
+  },
+  {
+    "uid": "518",
+    "flag": "35",
+    "id": "160",
+    "value": "Rajarajeshawari Nagar"
+  },
+  {
+    "uid": "519",
+    "flag": "35",
+    "id": "161",
+    "value": "Hosakerehalli"
+  },
+  {
+    "uid": "520",
+    "flag": "35",
+    "id": "162",
+    "value": "Giri Nagar"
+  },
+  {
+    "uid": "521",
+    "flag": "35",
+    "id": "163",
+    "value": "Katriguppe"
+  },
+  {
+    "uid": "522",
+    "flag": "35",
+    "id": "164",
+    "value": "Vidya Peeta Ward"
+  },
+  {
+    "uid": "523",
+    "flag": "35",
+    "id": "165",
+    "value": "Ganesh Mandir Ward"
+  },
+  {
+    "uid": "524",
+    "flag": "35",
+    "id": "166",
+    "value": "Kari Sandra"
+  },
+  {
+    "uid": "525",
+    "flag": "35",
+    "id": "167",
+    "value": "Yediyur"
+  },
+  {
+    "uid": "526",
+    "flag": "35",
+    "id": "168",
+    "value": "Pattabhi Ram Nagar"
+  },
+  {
+    "uid": "527",
+    "flag": "35",
+    "id": "169",
+    "value": "Byra Sandra"
+  },
+  {
+    "uid": "528",
+    "flag": "35",
+    "id": "170",
+    "value": "Jayanagar East"
+  },
+  {
+    "uid": "529",
+    "flag": "35",
+    "id": "171",
+    "value": "Gurappana Palya"
+  },
+  {
+    "uid": "530",
+    "flag": "35",
+    "id": "172",
+    "value": "Madivala"
+  },
+  {
+    "uid": "531",
+    "flag": "35",
+    "id": "173",
+    "value": "Jakka Sandra"
+  },
+  {
+    "uid": "532",
+    "flag": "35",
+    "id": "174",
+    "value": "HSR Layout"
+  },
+  {
+    "uid": "533",
+    "flag": "35",
+    "id": "175",
+    "value": "Bommanahalli"
+  },
+  {
+    "uid": "534",
+    "flag": "35",
+    "id": "176",
+    "value": "BTM Layout"
+  },
+  {
+    "uid": "535",
+    "flag": "35",
+    "id": "177",
+    "value": "JP Nagar"
+  },
+  {
+    "uid": "536",
+    "flag": "35",
+    "id": "178",
+    "value": "Sarakki"
+  },
+  {
+    "uid": "537",
+    "flag": "35",
+    "id": "179",
+    "value": "Shakambari Nagar"
+  },
+  {
+    "uid": "538",
+    "flag": "35",
+    "id": "180",
+    "value": "Banashankari Temple Ward"
+  },
+  {
+    "uid": "539",
+    "flag": "35",
+    "id": "181",
+    "value": "Kumara Swamy Layout"
+  },
+  {
+    "uid": "540",
+    "flag": "35",
+    "id": "182",
+    "value": "Padmanabha Nagar"
+  },
+  {
+    "uid": "541",
+    "flag": "35",
+    "id": "183",
+    "value": "Chikkala Sandra"
+  },
+  {
+    "uid": "542",
+    "flag": "35",
+    "id": "184",
+    "value": "Uttarahalli"
+  },
+  {
+    "uid": "543",
+    "flag": "35",
+    "id": "185",
+    "value": "Yelchenahalli"
+  },
+  {
+    "uid": "544",
+    "flag": "35",
+    "id": "186",
+    "value": "Jaraganahalli"
+  },
+  {
+    "uid": "545",
+    "flag": "35",
+    "id": "187",
+    "value": "Puttenahalli"
+  },
+  {
+    "uid": "546",
+    "flag": "35",
+    "id": "188",
+    "value": "Bilekhalli"
+  },
+  {
+    "uid": "547",
+    "flag": "35",
+    "id": "189",
+    "value": "Honga Sandra"
+  },
+  {
+    "uid": "548",
+    "flag": "35",
+    "id": "190",
+    "value": "Mangammana Palya"
+  },
+  {
+    "uid": "549",
+    "flag": "35",
+    "id": "191",
+    "value": "Singa Sandra"
+  },
+  {
+    "uid": "550",
+    "flag": "35",
+    "id": "192",
+    "value": "Begur"
+  },
+  {
+    "uid": "551",
+    "flag": "35",
+    "id": "193",
+    "value": "Arakere"
+  },
+  {
+    "uid": "552",
+    "flag": "35",
+    "id": "194",
+    "value": "Gottigere"
+  },
+  {
+    "uid": "553",
+    "flag": "35",
+    "id": "195",
+    "value": "Konankunte"
+  },
+  {
+    "uid": "554",
+    "flag": "35",
+    "id": "196",
+    "value": "Anjanapura"
+  },
+  {
+    "uid": "555",
+    "flag": "35",
+    "id": "197",
+    "value": "Vasanthpura"
+  },
+  {
+    "uid": "556",
+    "flag": "35",
+    "id": "198",
+    "value": "Hemmigepura"
+  },
+  {
+    "uid": "557",
+    "flag": "35",
+    "id": "199",
+    "value": "Sajjepalya (W73)"
+  },
+  {
+    "uid": "558",
+    "flag": "35",
+    "id": "200",
+    "value": "Summanahalli (W73)"
+  },
+  {
+    "uid": "559",
+    "flag": "35",
+    "id": "201",
+    "value": "Sunkathakatte (W73)"
+  },
+  {
+    "uid": "560",
+    "flag": "35",
+    "id": "202",
+    "value": "Chiranheevi layout (W7)"
+  },
+  {
+    "uid": "561",
+    "flag": "35",
+    "id": "203",
+    "value": "Kunthigrama (W21)"
+  },
+  {
+    "uid": "562",
+    "flag": "35",
+    "id": "204",
+    "value": "Veeranapalaya (W21)"
+  },
+  {
+    "uid": "563",
+    "flag": "36",
+    "id": "1",
+    "value": "Kadabagere cross"
+  },
+  {
+    "uid": "564",
+    "flag": "36",
+    "id": "2",
+    "value": "Giddenahalli"
+  },
+  {
+    "uid": "565",
+    "flag": "36",
+    "id": "3",
+    "value": "Machovalli"
+  },
+  {
+    "uid": "566",
+    "flag": "36",
+    "id": "4",
+    "value": "Lakshmipura"
+  },
+  {
+    "uid": "567",
+    "flag": "36",
+    "id": "5",
+    "value": "Vishveshwaraiah"
+  },
+  {
+    "uid": "568",
+    "flag": "36",
+    "id": "6",
+    "value": "Thymagondlu"
+  },
+  {
+    "uid": "569",
+    "flag": "36",
+    "id": "7",
+    "value": "Nelamangala"
+  },
+  {
+    "uid": "570",
+    "flag": "37",
+    "id": "1",
+    "value": "Male"
+  },
+  {
+    "uid": "571",
+    "flag": "37",
+    "id": "2",
+    "value": "Female"
+  },
+  {
+    "uid": "572",
+    "flag": "37",
+    "id": "3",
+    "value": "Transgender"
+  },
+  {
+    "uid": "573",
+    "flag": "38",
+    "id": "1",
+    "value": "Own pucca house"
+  },
+  {
+    "uid": "574",
+    "flag": "38",
+    "id": "2",
+    "value": "Rented pucca house"
+  },
+  {
+    "uid": "575",
+    "flag": "38",
+    "id": "3",
+    "value": "Colony/house provided by government"
+  },
+  {
+    "uid": "576",
+    "flag": "38",
+    "id": "4",
+    "value": "Own kutcha house"
+  },
+  {
+    "uid": "577",
+    "flag": "38",
+    "id": "5",
+    "value": "Rented kutcha house"
+  },
+  {
+    "uid": "578",
+    "flag": "38",
+    "id": "6",
+    "value": "Hut/tent/squatter"
+  },
+  {
+    "uid": "579",
+    "flag": "38",
+    "id": "7",
+    "value": "Other (specify)"
+  },
+  {
+    "uid": "580",
+    "flag": "39",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "581",
+    "flag": "39",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "582",
+    "flag": "40",
+    "id": "1",
+    "value": "BPL card"
+  },
+  {
+    "uid": "583",
+    "flag": "40",
+    "id": "2",
+    "value": "APL card"
+  },
+  {
+    "uid": "584",
+    "flag": "40",
+    "id": "3",
+    "value": "Antodaya card"
+  },
+  {
+    "uid": "585",
+    "flag": "40",
+    "id": "4",
+    "value": "No ration card"
+  },
+  {
+    "uid": "586",
+    "flag": "41",
+    "id": "1",
+    "value": "Aruna"
+  },
+  {
+    "uid": "587",
+    "flag": "41",
+    "id": "2",
+    "value": "Padmavathi"
+  },
+  {
+    "uid": "588",
+    "flag": "41",
+    "id": "3",
+    "value": "Jayanthi"
+  },
+  {
+    "uid": "589",
+    "flag": "41",
+    "id": "4",
+    "value": "Guruswamy S."
+  },
+  {
+    "uid": "590",
+    "flag": "41",
+    "id": "5",
+    "value": "M.K. Kalpana"
+  },
+  {
+    "uid": "591",
+    "flag": "41",
+    "id": "6",
+    "value": "Kusuma"
+  },
+  {
+    "uid": "592",
+    "flag": "41",
+    "id": "7",
+    "value": "Ravichandra A."
+  },
+  {
+    "uid": "593",
+    "flag": "41",
+    "id": "8",
+    "value": "Sindhu V."
+  },
+  {
+    "uid": "594",
+    "flag": "41",
+    "id": "9",
+    "value": "Stallamary"
+  },
+  {
+    "uid": "595",
+    "flag": "41",
+    "id": "10",
+    "value": "Yallamma R."
+  },
+  {
+    "uid": "596",
+    "flag": "41",
+    "id": "11",
+    "value": "1Lata"
+  },
+  {
+    "uid": "597",
+    "flag": "41",
+    "id": "12",
+    "value": "1Nagaratna"
+  },
+  {
+    "uid": "598",
+    "flag": "41",
+    "id": "13",
+    "value": "1Kavitha V"
+  },
+  {
+    "uid": "599",
+    "flag": "41",
+    "id": "14",
+    "value": "1Jyothi C"
+  },
+  {
+    "uid": "600",
+    "flag": "41",
+    "id": "15",
+    "value": "1Sashikala"
+  },
+  {
+    "uid": "601",
+    "flag": "41",
+    "id": "16",
+    "value": "1Devarajama"
+  },
+  {
+    "uid": "602",
+    "flag": "41",
+    "id": "17",
+    "value": "1Mahantesh PM"
+  },
+  {
+    "uid": "603",
+    "flag": "41",
+    "id": "18",
+    "value": "1Umme Hani"
+  },
+  {
+    "uid": "604",
+    "flag": "41",
+    "id": "19",
+    "value": "1Mala B"
+  },
+  {
+    "uid": "605",
+    "flag": "41",
+    "id": "20",
+    "value": "2Manjula"
+  },
+  {
+    "uid": "606",
+    "flag": "41",
+    "id": "21",
+    "value": "2Nethravathi N"
+  },
+  {
+    "uid": "607",
+    "flag": "42",
+    "id": "1",
+    "value": "Narendran BS"
+  },
+  {
+    "uid": "608",
+    "flag": "42",
+    "id": "2",
+    "value": "Manohar Rao"
+  },
+  {
+    "uid": "609",
+    "flag": "43",
+    "id": "1",
+    "value": "Male"
+  },
+  {
+    "uid": "610",
+    "flag": "43",
+    "id": "2",
+    "value": "Female"
+  },
+  {
+    "uid": "611",
+    "flag": "43",
+    "id": "3",
+    "value": "Transgender"
+  },
+  {
+    "uid": "612",
+    "flag": "44",
+    "id": "1",
+    "value": "SC"
+  },
+  {
+    "uid": "613",
+    "flag": "44",
+    "id": "2",
+    "value": "ST"
+  },
+  {
+    "uid": "614",
+    "flag": "44",
+    "id": "3",
+    "value": "OBC"
+  },
+  {
+    "uid": "615",
+    "flag": "44",
+    "id": "4",
+    "value": "General"
+  },
+  {
+    "uid": "616",
+    "flag": "45",
+    "id": "1",
+    "value": "Married"
+  },
+  {
+    "uid": "617",
+    "flag": "45",
+    "id": "2",
+    "value": "Unmarried"
+  },
+  {
+    "uid": "618",
+    "flag": "45",
+    "id": "3",
+    "value": "Divorced/Separated"
+  },
+  {
+    "uid": "619",
+    "flag": "45",
+    "id": "4",
+    "value": "Widow/Widower"
+  },
+  {
+    "uid": "620",
+    "flag": "46",
+    "id": "1",
+    "value": "Karnataka"
+  },
+  {
+    "uid": "621",
+    "flag": "46",
+    "id": "2",
+    "value": "Tamil Nadu"
+  },
+  {
+    "uid": "622",
+    "flag": "46",
+    "id": "3",
+    "value": "Andhra Pradesh"
+  },
+  {
+    "uid": "623",
+    "flag": "46",
+    "id": "4",
+    "value": "Kerala"
+  },
+  {
+    "uid": "624",
+    "flag": "46",
+    "id": "5",
+    "value": "Maharashtra"
+  },
+  {
+    "uid": "625",
+    "flag": "46",
+    "id": "6",
+    "value": "West Bengal"
+  },
+  {
+    "uid": "626",
+    "flag": "46",
+    "id": "7",
+    "value": "Odisha"
+  },
+  {
+    "uid": "627",
+    "flag": "46",
+    "id": "8",
+    "value": "Assam"
+  },
+  {
+    "uid": "628",
+    "flag": "46",
+    "id": "9",
+    "value": "Bihar"
+  },
+  {
+    "uid": "629",
+    "flag": "46",
+    "id": "10",
+    "value": "Other (specify)"
+  },
+  {
+    "uid": "630",
+    "flag": "47",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "631",
+    "flag": "47",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "632",
+    "flag": "48",
+    "id": "1",
+    "value": "Lower primary (1-5)"
+  },
+  {
+    "uid": "633",
+    "flag": "48",
+    "id": "2",
+    "value": "Upper primary (6-7)"
+  },
+  {
+    "uid": "634",
+    "flag": "48",
+    "id": "3",
+    "value": "Secondary (8-10)"
+  },
+  {
+    "uid": "635",
+    "flag": "48",
+    "id": "4",
+    "value": "Senior secondary (11-12)"
+  },
+  {
+    "uid": "636",
+    "flag": "48",
+    "id": "5",
+    "value": "Above senior secondary"
+  },
+  {
+    "uid": "637",
+    "flag": "48",
+    "id": "6",
+    "value": "No formal education"
+  },
+  {
+    "uid": "638",
+    "flag": "49",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "639",
+    "flag": "49",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "640",
+    "flag": "50",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "641",
+    "flag": "50",
+    "id": "0",
+    "value": "No"
+  },
+  {
+    "uid": "642",
+    "flag": "51",
+    "id": "1",
+    "value": "Kannada"
+  },
+  {
+    "uid": "643",
+    "flag": "51",
+    "id": "2",
+    "value": "Tamil"
+  },
+  {
+    "uid": "644",
+    "flag": "51",
+    "id": "3",
+    "value": "Telugu"
+  },
+  {
+    "uid": "645",
+    "flag": "51",
+    "id": "4",
+    "value": "Hindi"
+  },
+  {
+    "uid": "646",
+    "flag": "51",
+    "id": "5",
+    "value": "English"
+  },
+  {
+    "uid": "647",
+    "flag": "51",
+    "id": "6",
+    "value": "Bengali"
+  },
+  {
+    "uid": "648",
+    "flag": "51",
+    "id": "7",
+    "value": "Others (specify)"
+  },
+  {
+    "uid": "649",
+    "flag": "52",
+    "id": "1",
+    "value": "Kannada"
+  },
+  {
+    "uid": "650",
+    "flag": "52",
+    "id": "2",
+    "value": "Tamil"
+  },
+  {
+    "uid": "651",
+    "flag": "52",
+    "id": "3",
+    "value": "Telugu"
+  },
+  {
+    "uid": "652",
+    "flag": "52",
+    "id": "4",
+    "value": "Hindi"
+  },
+  {
+    "uid": "653",
+    "flag": "52",
+    "id": "5",
+    "value": "English"
+  },
+  {
+    "uid": "654",
+    "flag": "52",
+    "id": "6",
+    "value": "Bengali"
+  },
+  {
+    "uid": "655",
+    "flag": "52",
+    "id": "7",
+    "value": "Others (specify)"
+  },
+  {
+    "uid": "656",
+    "flag": "53",
+    "id": "1",
+    "value": "Kannada"
+  },
+  {
+    "uid": "657",
+    "flag": "53",
+    "id": "2",
+    "value": "Tamil"
+  },
+  {
+    "uid": "658",
+    "flag": "53",
+    "id": "3",
+    "value": "Telugu"
+  },
+  {
+    "uid": "659",
+    "flag": "53",
+    "id": "4",
+    "value": "Hindi"
+  },
+  {
+    "uid": "660",
+    "flag": "53",
+    "id": "5",
+    "value": "English"
+  },
+  {
+    "uid": "661",
+    "flag": "53",
+    "id": "6",
+    "value": "Bengali"
+  },
+  {
+    "uid": "662",
+    "flag": "53",
+    "id": "7",
+    "value": "Others (specify)"
+  },
+  {
+    "uid": "663",
+    "flag": "54",
+    "id": "1",
+    "value": "Kannada"
+  },
+  {
+    "uid": "664",
+    "flag": "54",
+    "id": "2",
+    "value": "Tamil"
+  },
+  {
+    "uid": "665",
+    "flag": "54",
+    "id": "3",
+    "value": "Telugu"
+  },
+  {
+    "uid": "666",
+    "flag": "54",
+    "id": "4",
+    "value": "Hindi"
+  },
+  {
+    "uid": "667",
+    "flag": "54",
+    "id": "5",
+    "value": "English"
+  },
+  {
+    "uid": "668",
+    "flag": "54",
+    "id": "6",
+    "value": "Bengali"
+  },
+  {
+    "uid": "669",
+    "flag": "54",
+    "id": "7",
+    "value": "Others (specify)"
+  },
+  {
+    "uid": "670",
+    "flag": "55",
+    "id": "1",
+    "value": "Kannada"
+  },
+  {
+    "uid": "671",
+    "flag": "55",
+    "id": "2",
+    "value": "Tamil"
+  },
+  {
+    "uid": "672",
+    "flag": "55",
+    "id": "3",
+    "value": "Telugu"
+  },
+  {
+    "uid": "673",
+    "flag": "55",
+    "id": "4",
+    "value": "Hindi"
+  },
+  {
+    "uid": "674",
+    "flag": "55",
+    "id": "5",
+    "value": "English"
+  },
+  {
+    "uid": "675",
+    "flag": "55",
+    "id": "6",
+    "value": "Bengali"
+  },
+  {
+    "uid": "676",
+    "flag": "55",
+    "id": "7",
+    "value": "Others (specify)"
+  },
+  {
+    "uid": "677",
+    "flag": "56",
+    "id": "1",
+    "value": "Informal street waste collector"
+  },
+  {
+    "uid": "678",
+    "flag": "56",
+    "id": "2",
+    "value": "Itinerant buyer"
+  },
+  {
+    "uid": "679",
+    "flag": "56",
+    "id": "3",
+    "value": "Sorters in scrap shops"
+  },
+  {
+    "uid": "680",
+    "flag": "56",
+    "id": "4",
+    "value": "Sorters in DWCC"
+  },
+  {
+    "uid": "681",
+    "flag": "56",
+    "id": "5",
+    "value": "Currently not a waste picker"
+  },
+  {
+    "uid": "682",
+    "flag": "57",
+    "id": "1",
+    "value": "Regular"
+  },
+  {
+    "uid": "683",
+    "flag": "57",
+    "id": "2",
+    "value": "Irregular"
+  },
+  {
+    "uid": "684",
+    "flag": "58",
+    "id": "1",
+    "value": "DWCC"
+  },
+  {
+    "uid": "685",
+    "flag": "58",
+    "id": "2",
+    "value": "To any scrap shop"
+  },
+  {
+    "uid": "686",
+    "flag": "58",
+    "id": "3",
+    "value": "To your employer"
+  },
+  {
+    "uid": "687",
+    "flag": "58",
+    "id": "4",
+    "value": "Others (specify)"
+  },
+  {
+    "uid": "688",
+    "flag": "59",
+    "id": "1",
+    "value": "Waste picker"
+  },
+  {
+    "uid": "689",
+    "flag": "59",
+    "id": "2",
+    "value": "Sorter"
+  },
+  {
+    "uid": "690",
+    "flag": "59",
+    "id": "3",
+    "value": "Driver"
+  },
+  {
+    "uid": "691",
+    "flag": "59",
+    "id": "4",
+    "value": "Daily wage labour"
+  },
+  {
+    "uid": "692",
+    "flag": "59",
+    "id": "5",
+    "value": "Housemaid"
+  },
+  {
+    "uid": "693",
+    "flag": "59",
+    "id": "6",
+    "value": "Petty shop keeper"
+  },
+  {
+    "uid": "694",
+    "flag": "59",
+    "id": "7",
+    "value": "No source of income"
+  },
+  {
+    "uid": "695",
+    "flag": "59",
+    "id": "8",
+    "value": "Other source of income (specify)"
+  },
+  {
+    "uid": "696",
+    "flag": "60",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "697",
+    "flag": "60",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "698",
+    "flag": "61",
+    "id": "1",
+    "value": "Waste picker"
+  },
+  {
+    "uid": "699",
+    "flag": "61",
+    "id": "2",
+    "value": "Sorter"
+  },
+  {
+    "uid": "700",
+    "flag": "61",
+    "id": "3",
+    "value": "Driver"
+  },
+  {
+    "uid": "701",
+    "flag": "61",
+    "id": "4",
+    "value": "Daily wage labour"
+  },
+  {
+    "uid": "702",
+    "flag": "61",
+    "id": "5",
+    "value": "Housemaid"
+  },
+  {
+    "uid": "703",
+    "flag": "61",
+    "id": "6",
+    "value": "Petty shop keeper"
+  },
+  {
+    "uid": "704",
+    "flag": "61",
+    "id": "7",
+    "value": "Other source of income (specify)"
+  },
+  {
+    "uid": "705",
+    "flag": "62",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "706",
+    "flag": "62",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "707",
+    "flag": "63",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "708",
+    "flag": "63",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "709",
+    "flag": "64",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "710",
+    "flag": "64",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "711",
+    "flag": "65",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "712",
+    "flag": "65",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "713",
+    "flag": "66",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "714",
+    "flag": "66",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "715",
+    "flag": "67",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "716",
+    "flag": "67",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "717",
+    "flag": "68",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "718",
+    "flag": "68",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "719",
+    "flag": "69",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "720",
+    "flag": "69",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "721",
+    "flag": "70",
+    "id": "1",
+    "value": "Making agarbatti, papad, pickle"
+  },
+  {
+    "uid": "722",
+    "flag": "70",
+    "id": "2",
+    "value": "Making handicrafts or bamboo items"
+  },
+  {
+    "uid": "723",
+    "flag": "70",
+    "id": "3",
+    "value": "Tailoring"
+  },
+  {
+    "uid": "724",
+    "flag": "70",
+    "id": "4",
+    "value": "Beautician"
+  },
+  {
+    "uid": "725",
+    "flag": "70",
+    "id": "5",
+    "value": "Carpenter"
+  },
+  {
+    "uid": "726",
+    "flag": "70",
+    "id": "6",
+    "value": "Plumber"
+  },
+  {
+    "uid": "727",
+    "flag": "70",
+    "id": "7",
+    "value": "Painter"
+  },
+  {
+    "uid": "728",
+    "flag": "70",
+    "id": "8",
+    "value": "Electrician"
+  },
+  {
+    "uid": "729",
+    "flag": "70",
+    "id": "9",
+    "value": "Clinic compounder"
+  },
+  {
+    "uid": "730",
+    "flag": "70",
+    "id": "10",
+    "value": "Driver"
+  },
+  {
+    "uid": "731",
+    "flag": "70",
+    "id": "11",
+    "value": "Security guard"
+  },
+  {
+    "uid": "732",
+    "flag": "70",
+    "id": "12",
+    "value": "Others"
+  },
+  {
+    "uid": "733",
+    "flag": "70",
+    "id": "13",
+    "value": "No I don't possess any other skill"
+  },
+  {
+    "uid": "734",
+    "flag": "71",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "735",
+    "flag": "71",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "736",
+    "flag": "72",
+    "id": "1",
+    "value": "Labourer"
+  },
+  {
+    "uid": "737",
+    "flag": "72",
+    "id": "2",
+    "value": "Business"
+  },
+  {
+    "uid": "738",
+    "flag": "72",
+    "id": "3",
+    "value": "Job"
+  },
+  {
+    "uid": "739",
+    "flag": "73",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "740",
+    "flag": "73",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "741",
+    "flag": "74",
+    "id": "1",
+    "value": "Ward"
+  },
+  {
+    "uid": "742",
+    "flag": "74",
+    "id": "2",
+    "value": "Panchayat"
+  },
+  {
+    "uid": "743",
+    "flag": "75",
+    "id": "1",
+    "value": "Men"
+  },
+  {
+    "uid": "744",
+    "flag": "75",
+    "id": "2",
+    "value": "Women"
+  },
+  {
+    "uid": "745",
+    "flag": "75",
+    "id": "3",
+    "value": "Transgender"
+  },
+  {
+    "uid": "746",
+    "flag": "75",
+    "id": "4",
+    "value": "Non-conforming"
+  },
+  {
+    "uid": "747",
+    "flag": "75",
+    "id": "5",
+    "value": "Prefer not to say"
+  },
+  {
+    "uid": "748",
+    "flag": "76",
+    "id": "1",
+    "value": "SHG"
+  },
+  {
+    "uid": "749",
+    "flag": "76",
+    "id": "2",
+    "value": "JLG"
+  },
+  {
+    "uid": "750",
+    "flag": "76",
+    "id": "3",
+    "value": "CLG"
+  },
+  {
+    "uid": "751",
+    "flag": "76",
+    "id": "4",
+    "value": "None"
+  },
+  {
+    "uid": "752",
+    "flag": "77",
+    "id": "1",
+    "value": "SC"
+  },
+  {
+    "uid": "753",
+    "flag": "77",
+    "id": "2",
+    "value": "ST"
+  },
+  {
+    "uid": "754",
+    "flag": "77",
+    "id": "3",
+    "value": "OBC"
+  },
+  {
+    "uid": "755",
+    "flag": "77",
+    "id": "4",
+    "value": "General"
+  },
+  {
+    "uid": "756",
+    "flag": "78",
+    "id": "1",
+    "value": "Caste Certifiacte"
+  },
+  {
+    "uid": "757",
+    "flag": "78",
+    "id": "2",
+    "value": "Income Certificate"
+  },
+  {
+    "uid": "758",
+    "flag": "79",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "759",
+    "flag": "79",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "760",
+    "flag": "80",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "761",
+    "flag": "80",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "762",
+    "flag": "82",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "763",
+    "flag": "82",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "764",
+    "flag": "83",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "765",
+    "flag": "83",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "766",
+    "flag": "84",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "767",
+    "flag": "84",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "768",
+    "flag": "85",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "769",
+    "flag": "85",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "770",
+    "flag": "86",
+    "id": "1",
+    "value": "More than 75% by self"
+  },
+  {
+    "uid": "771",
+    "flag": "86",
+    "id": "2",
+    "value": "50% - 75% by self"
+  },
+  {
+    "uid": "772",
+    "flag": "86",
+    "id": "3",
+    "value": "25% - 50% by self"
+  },
+  {
+    "uid": "773",
+    "flag": "86",
+    "id": "4",
+    "value": "Less than 25% by self"
+  },
+  {
+    "uid": "774",
+    "flag": "86",
+    "id": "5",
+    "value": "Not willing to invest own funds"
+  },
+  {
+    "uid": "775",
+    "flag": "87",
+    "id": "1",
+    "value": "Self"
+  },
+  {
+    "uid": "776",
+    "flag": "87",
+    "id": "2",
+    "value": "Subsidy"
+  },
+  {
+    "uid": "777",
+    "flag": "87",
+    "id": "3",
+    "value": "Loan"
+  },
+  {
+    "uid": "778",
+    "flag": "87",
+    "id": "4",
+    "value": "None"
+  },
+  {
+    "uid": "779",
+    "flag": "88",
+    "id": "1",
+    "value": "Machinery"
+  },
+  {
+    "uid": "780",
+    "flag": "88",
+    "id": "2",
+    "value": "Training"
+  },
+  {
+    "uid": "781",
+    "flag": "88",
+    "id": "3",
+    "value": "Supply"
+  },
+  {
+    "uid": "782",
+    "flag": "88",
+    "id": "4",
+    "value": "Marketing"
+  },
+  {
+    "uid": "783",
+    "flag": "88",
+    "id": "5",
+    "value": "Branding"
+  },
+  {
+    "uid": "784",
+    "flag": "89",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "785",
+    "flag": "89",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "786",
+    "flag": "90",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "787",
+    "flag": "90",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "788",
+    "flag": "91",
+    "id": "1",
+    "value": "Pilot completed"
+  },
+  {
+    "uid": "789",
+    "flag": "91",
+    "id": "2",
+    "value": "Under pilot phase"
+  },
+  {
+    "uid": "790",
+    "flag": "91",
+    "id": "3",
+    "value": "Enterprise idea finalized"
+  },
+  {
+    "uid": "791",
+    "flag": "91",
+    "id": "4",
+    "value": "Ideation phase"
+  },
+  {
+    "uid": "792",
+    "flag": "91",
+    "id": "5",
+    "value": "No enterprise ideas"
+  },
+  {
+    "uid": "793",
+    "flag": "92",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "794",
+    "flag": "92",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "795",
+    "flag": "93",
+    "id": "1",
+    "value": "Yes"
+  },
+  {
+    "uid": "796",
+    "flag": "93",
+    "id": "2",
+    "value": "No"
+  },
+  {
+    "uid": "797",
+    "flag": "94",
+    "id": "1",
+    "value": "Machinery"
+  },
+  {
+    "uid": "798",
+    "flag": "94",
+    "id": "2",
+    "value": "Training"
+  },
+  {
+    "uid": "799",
+    "flag": "94",
+    "id": "3",
+    "value": "Support in procurement"
+  },
+  {
+    "uid": "800",
+    "flag": "94",
+    "id": "4",
+    "value": "Marketing"
+  },
+  {
+    "uid": "801",
+    "flag": "94",
+    "id": "5",
+    "value": "Branding"
+  },
+  {
+    "uid": "802",
+    "flag": "94",
+    "id": "6",
+    "value": "Finance"
+  }
+]

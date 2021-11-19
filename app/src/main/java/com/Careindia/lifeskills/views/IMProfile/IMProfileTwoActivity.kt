@@ -1,13 +1,15 @@
-package com.careindia.lifeskills.views.IMProfile
+package com.careindia.lifeskills.views.improfile
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.careindia.lifeskills.R
-import com.careindia.lifeskills.ui.base.BaseActivity
+import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.views.activities.MainActivity
+import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_improfile_two.*
+import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
@@ -90,16 +92,24 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
      * Click on view
      */
     private fun applyClickOnView() {
-        btn_next.setOnClickListener(this)
+        btn_save.setOnClickListener(this)
 
     }
 
     override fun onClick(view: View?) {
         when (view?.id) {
-            R.id.btn_next -> {
+            R.id.btn_save -> {
                 var intent = Intent(this, MainActivity::class.java)
                 startActivity(intent)
+                finish()
             }
         }
+    }
+
+
+    override fun onBackPressed() {
+        val intent = Intent(this, HomeDashboardActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

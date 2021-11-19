@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#e4701d</color>
-    <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#000000</color>
+
+    <color name="colorPrimary">#E36F1E</color>
+    <color name="colorPrimaryDark">#1C1D30</color>
+    <color name="colorAccent">#1C1D30</color>
 
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
@@ -24,4 +25,20 @@
     <color name="red">#FC6042</color>
     <color name="spinnerlabelclr">#646464</color>
     <color name="spinnerbaseclr">#B2B2B2</color>
+    <color name="dashboard_bg">#1C1D30</color>
+    <color name="tiles_bg_color">#F7F8FB</color>
+    <color name="text_clr">#001833</color>
+
+    <color name="splashText">#181D2D</color>
+    <color name="background">#E5E5E5</color>
+    <color name="bg_black">#1C1D30</color>
+    <color name="border_grey">#D2D2D2</color>
+    <color name="black_text">#333333</color>
+    <color name="grey_text">#333333</color>
+
+    <color name="signin_yellow">#E4701E</color>
+    <color name="color_darkgrey">#AAAAAA</color>
+    <color name="color_lightgrey">#C1C7D0</color>
+    <color name="dark_blue">#324A59</color>
+
 </resources>

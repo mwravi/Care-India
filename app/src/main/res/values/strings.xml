@@ -60,35 +60,6 @@
     <string name="member_CIG_SHG">Are you a member of any collective such as CIG/SHG/JLG/DWCC?</string>
     <string name="name_collective_part">What is the name of the collective that you are part of?</string>
 
-    ///////////Sudeep///////////////////////////
-    <string name="date_of_filling_the_form_profile">1.Date of filling the form</string>
-    <string name="name_of_crp_filling">2.Name of CRP filling the form</string>
-    <string name="name_of_supervising_care_india">3.Name of supervising CARE India staff</string>
-    <string name="name_of_district">4.Name of District</string>
-    <string name="name_of_zone">5.Name of Zone</string>
-    <string name="name_of_bbmp_ward">6.Name of BBMP Ward</string>
-    <string name="name_of_panchayat">7.Name of Panchayat</string>
-    <string name="name_of_locality">8.Name of Locality</string>
-    <string name="collective_unique_id">9.Collective Unique ID</string>
-    <string name="name_of_group_collective_sangha">10.Name of your Group/Collective/Sangha</string>
-    <string name="date_of_formation_of_group">11.Date of formation of the group/collective</string>
-    <string name="please_specify_others">12.Please specify others</string>
-    <string name="is_your_griup_registered">13.Is your group/collective registered?</string>
-    <string name="please_specify_others_registered">13a.Please specify others</string>
-    <string name="what_is_the_objective_of_group">14.What is the objective/purpose of the group</string>
-    <string name="name_of_head_group">15.Name of the Head of the group/collective</string>
-    <string name="sex_of_head_of_group">16.Sex of the Head of the group/collective</string>
-    <string name="total_no_of_members_in_group">17.Total number of members in the group/collective</string>
-    <string name="total_no_of_male_members_in_group">17a.Total number of male members in the group/collective</string>
-    <string name="total_no_of_female_members_in_group">17b.Total number of female members in the group/collective</string>
-    <string name="total_no_of_transgender_members_in_group">17c.Total number of transgender members in the group/collective</string>
-    <string name="name_of_the_member">18.Name of the Member</string>
-    <string name="individual_member_id">18a.Individual Member ID</string>
-    <string name="sex_of_the_member">18b.Sex of the Member</string>
-    <string name="age_of_the_member">18c.Age of the Member(in complete years)</string>
-    <string name="contact_number">18d.Contact number/Alternate contact number</string>
-    <string name="role_of_member_in_group">18e.Role/position of the member in the group</string>
-    <string name="do_you_have_savings_bank_account">18f.Do you have savings bank account?</string>
 
     <string name="hh_id">HH ID</string>
     <string name="im_id">IM ID</string>
@@ -123,6 +94,86 @@
     <string name="amount_of_financial_assistance_required">Amount of financial assistance required?</string>
     <string name="Those_self_employed_require_any_support">Those Self employed require any support?</string>
 
+
+    <string name="empty_email">Please enter Email ID</string>
+    <string name="attendce_sestion_trckr"><![CDATA[Attendence & \nSesstion Tracker]]></string>
+
+
+    <!--vimal-->
+    <string name="q101_date_of_filling_the_form">Q101. Date of filling the form</string>
+    <string name="Name_of_CRP_filling_the_form">Q102. Name of CRP filling the form</string>
+    <string name="Name_of_supervising_field_cordinator">Q103. Name of supervising Field Coordinator</string>
+    <string name="Name_of_distric">Q104. Name of District</string>
+    <string name="Name_of_zone">Q105. Name of Zone</string>
+    <string name="Name_of_bbmp_ward">Q106. Name of BBMP Ward</string>
+    <string name="Name_of_panchayat">Q107. Name of Panchayat</string>
+    <string name="q108_name_of_locality">Q108. Name of Locality</string>
+    <string name="hh_name">Q110. Name of Head of the Household</string>
+    <string name="hh_sex">Q111. Sex of the Head of the Household</string>
+    <string name="total_adult">Q201. Total number of adult members in family (18 years and above)</string>
+    <string name="adult_male">Q201a. Number of adult male members (18 years and above)</string>
+    <string name="adult_female">Q201b. Number of adult female members (18 years and above)</string>
+    <string name="adolescent_boys_girls">Q202. Total number of adolescent boys and girls (15-18 years)</string>
+    <string name="adolescent_boys">Q202a. Number of adolescent boys between 15 to 18 years</string>
+    <string name="adolescent_girls">Q202b. Number of adolescent girls between 15 to 18 years</string>
+    <string name="total_children">Q203. Total number of children (below 15 years)</string>
+    <string name="male_children">Q203a. Number of male children (below 15 years)</string>
+    <string name="female_children">Q203b. Number of female children (below 15 years)</string>
+    <string name="total_earning_member">Q204. Total number of earning members</string>
+    <string name="male_earning_member">Q204a. Number of male earning members</string>
+    <string name="female_earning_member">Q204b. Number of female earning members</string>
+    <string name="type_of_dwelling">Q301. Type of dwelling</string>
+    <string name="if_other_type_of_dwelling">Q301a. Please specify if other type of dwelling</string>
+    <string name="is_your_dwelling_place_registered">Q302. Is your dwelling place registered?</string>
+    <string name="hh_ration_card">Q401. Do your household have a Ration card?</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="change_lives_save_lives">Change Lives Save lives</string>
+    <string name="save_and_next"><![CDATA[Save & Next]]></string>
+    <string name="type_here">Type here....</string>
+    <string name="inner_details">Inner Details</string>
+    <string name="first_name">First name</string>
+    <string name="last_name">Last name</string>
+    <string name="account_information">Account Information</string>
+    <string name="email">Email</string>
+    <string name="details">Details</string>
+    <string name="heart_attack_or_angina">Heart Attack or Angina</string>
+    <string name="stroke">Stroke</string>
+    <string name="perpheral_vascular_disease">Perpheral Vascular Disease</string>
+    <string name="min_8_character_1_number_case_sensitive">(min. 8 character 1 number case- sensitive)</string>
+    <string name="date_of_birth">Date of birth</string>
+
+    ///////////Sudeep///////////////////////////
+    <string name="date_of_filling_the_form_profile">Q101. Date of filling the form</string>
+    <string name="name_of_crp_filling">Q102.Name of CRP filling the form</string>
+    <string name="name_of_supervising_care_india">Q103.Name of supervising CARE India staff</string>
+    <string name="name_of_district">Q104.Name of District</string>
+    <string name="name_of_zone">Q105.Name of Zone</string>
+    <string name="name_of_bbmp_ward">Q106.Name of BBMP Ward</string>
+    <string name="name_of_panchayat">Q107.Name of Panchayat</string>
+    <string name="name_of_locality">Q108.Name of Locality</string>
+    <string name="collective_unique_id">Q109.Collective Unique ID</string>
+    <string name="name_of_group_collective_sangha">Q110.Name of your Group/Collective/Sangha</string>
+    <string name="date_of_formation_of_group">Q111.Date of formation of the group/collective</string>
+    <string name="please_specify_others">Q112a.Please specify others</string>
+    <string name="is_your_griup_registered">Q113.Is your group/collective registered?</string>
+    <string name="please_specify_others_registered">Q113a.Please specify others</string>
+    <string name="what_is_the_objective_of_group">Q114.What is the objective/purpose of the group</string>
+    <string name="name_of_head_group">Q201.Name of the Head of the group/collective</string>
+    <string name="sex_of_head_of_group">Q202.Sex of the Head of the group/collective</string>
+    <string name="total_no_of_members_in_group">Q203.Total number of members in the group/collective</string>
+    <string name="total_no_of_male_members_in_group">Q203a.Total number of male members in the group/collective</string>
+    <string name="total_no_of_female_members_in_group">Q203b.Total number of female members in the group/collective</string>
+    <string name="total_no_of_transgender_members_in_group">Q203c.Total number of transgender members in the group/collective</string>
+    <string name="name_of_the_member">Q204.Name of the Member</string>
+    <string name="individual_member_id">Q204a.Individual Member ID</string>
+    <string name="sex_of_the_member">Q204b.Sex of the Member</string>
+    <string name="age_of_the_member">Q204c.Age of the Member(in complete years)</string>
+    <string name="contact_number">Q204d.Contact number/Alternate contact number</string>
+    <string name="role_of_member_in_group">Q204e.Role/position of the member in the group</string>
+    <string name="do_you_have_savings_bank_account">Q204f.Do you have savings bank account?</string>
+    <string name="aadhar_no">Q204g.What is your Adhar card no. ?</string>
+
     <string name="q301_what_is_the_tenure_of_the_president_office_bearer_in_complete_years">Q301. What is the tenure of the President/Office bearer (in complete years)</string>
     <string name="q302_has_there_been_any_rotation_of_the_roles_of_the_member_in_last_one_year">Q302. Has there been any rotation of the roles of the member (in last one year)</string>
     <string name="q303_has_there_been_any_election_for_the_office_bearer">Q303. Has there been any election for the office bearer</string>
@@ -153,6 +204,14 @@
     <string name="q601_is_your_sangha_collective_members_interested_in_taking_up_any_collective_enterprise_business">Q601. Is your Sangha / collective members interested in taking up any collective enterprise/business</string>
     <string name="q602a_please_specify_others">Q602a. Please specify others</string>
     <string name="q602_what_business_would_the_collective_plan_to_do_if_given_an_opportunity">Q602. What business would the collective plan to do (if given an opportunity)</string>
+    <string name="colective_profile_list">Colective Profile List</string>
+    <string name="colective_profile">Colective Profile</string>
 
-    <string name="empty_email">Please enter Email ID</string>
+    <string name="sign_in">Sign in</string>
+    <string name="welcome_back">Welcome Back</string>
+    <string name="forgetpassword"><u>Forgot Password?</u></string>
+    <string name="email_address">Email address</string>
+    <string name="enter_date">Select Date</string>
+    <string name="previous">Previous</string>
+
 </resources>

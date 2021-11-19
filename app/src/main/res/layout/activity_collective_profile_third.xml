@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <ScrollView
+        style="@style/ScrolllViewStyle"
+        android:layout_weight="1"
+        android:fadeScrollbars="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/TextInputStyle"
+
+                >
+
+
+                <EditText
+                    android:id="@+id/et_tenure"
+                    style="@style/EditTextStyle"
+                    android:hint="@string/q301_what_is_the_tenure_of_the_president_office_bearer_in_complete_years"
+
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TableRow style="@style/Tablerow">
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_rotation_of_roles"
+                    style="@style/SpinnerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingRight="@dimen/_10sdp"
+                    app:ms_alignLabels="false"
+                    app:ms_arrowColor="@color/colorPrimary"
+                    app:ms_arrowSize="12dp"
+                    app:ms_baseColor="@color/colorPrimary"
+                    app:ms_enableErrorLabel="false"
+                    app:ms_enableFloatingLabel="true"
+                    app:ms_floatingLabelColor="@color/colorPrimary"
+                    app:ms_floatingLabelText="@string/q302_has_there_been_any_rotation_of_the_roles_of_the_member_in_last_one_year"
+                    app:ms_multiline="false"
+                    app:ms_thickness="0dp" />
+
+
+            </TableRow>
+
+            <TableRow style="@style/Tablerow">
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_office_bearer"
+                    style="@style/SpinnerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingRight="@dimen/_10sdp"
+                    app:ms_alignLabels="false"
+                    app:ms_arrowColor="@color/colorPrimary"
+                    app:ms_arrowSize="12dp"
+                    app:ms_baseColor="@color/colorPrimary"
+                    app:ms_enableErrorLabel="false"
+                    app:ms_enableFloatingLabel="true"
+                    app:ms_floatingLabelColor="@color/colorPrimary"
+                    app:ms_floatingLabelText="@string/q303_has_there_been_any_election_for_the_office_bearer"
+                    app:ms_multiline="false"
+                    app:ms_thickness="0dp" />
+
+
+            </TableRow>
+
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/TextInputStyle"
+
+                >
+
+
+                <EditText
+                    android:id="@+id/et_bearer_happens"
+                    style="@style/EditTextStyle"
+                    android:hint="@string/q304_in_what_frequency_the_election_for_office_bearer_happens_in_complete_years"
+
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TableRow style="@style/Tablerow">
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_bank_account"
+                    style="@style/SpinnerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingRight="@dimen/_10sdp"
+                    app:ms_alignLabels="false"
+                    app:ms_arrowColor="@color/colorPrimary"
+                    app:ms_arrowSize="12dp"
+                    app:ms_baseColor="@color/colorPrimary"
+                    app:ms_enableErrorLabel="false"
+                    app:ms_enableFloatingLabel="true"
+                    app:ms_floatingLabelColor="@color/colorPrimary"
+                    app:ms_floatingLabelText="@string/q305_does_your_sangha_have_a_common_group_bank_account"
+                    app:ms_multiline="false"
+                    app:ms_thickness="0dp" />
+
+
+            </TableRow>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/TextInputStyle"
+
+                >
+
+
+                <EditText
+                    android:id="@+id/et_bank_account"
+                    style="@style/EditTextStyle"
+                    android:hint="@string/q305a_what_are_the_challenges_in_opening_bank_account"
+
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <TableRow style="@style/Tablerow">
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_group_savings"
+                    style="@style/SpinnerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingRight="@dimen/_10sdp"
+                    app:ms_alignLabels="false"
+                    app:ms_arrowColor="@color/colorPrimary"
+                    app:ms_arrowSize="12dp"
+                    app:ms_baseColor="@color/colorPrimary"
+                    app:ms_enableErrorLabel="false"
+                    app:ms_enableFloatingLabel="true"
+                    app:ms_floatingLabelColor="@color/colorPrimary"
+                    app:ms_floatingLabelText="@string/q306_how_much_does_each_member_contribute_to_group_savings"
+                    app:ms_multiline="false"
+                    app:ms_thickness="0dp" />
+
+
+            </TableRow>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/TextInputStyle"
+
+                >
+
+
+                <EditText
+                    android:id="@+id/et_other_inr"
+                    style="@style/EditTextStyle"
+                    android:hint="@string/q306a_please_specify_the_others_in_inr"
+
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TableRow style="@style/Tablerow">
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_frequency_group_savings"
+                    style="@style/SpinnerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingRight="@dimen/_10sdp"
+                    app:ms_alignLabels="false"
+                    app:ms_arrowColor="@color/colorPrimary"
+                    app:ms_arrowSize="12dp"
+                    app:ms_baseColor="@color/colorPrimary"
+                    app:ms_enableErrorLabel="false"
+                    app:ms_enableFloatingLabel="true"
+                    app:ms_floatingLabelColor="@color/colorPrimary"
+                    app:ms_floatingLabelText="@string/q307_in_what_frequency_the_members_contribute_to_the_group_savings"
+                    app:ms_multiline="false"
+                    app:ms_thickness="0dp" />
+
+
+            </TableRow>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/TextInputStyle"
+
+                >
+
+
+                <EditText
+                    android:id="@+id/et_other_frequency"
+                    style="@style/EditTextStyle"
+                    android:hint="@string/q307a_please_specify_others"
+
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TableRow style="@style/Tablerow">
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_regular_savings"
+                    style="@style/SpinnerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingRight="@dimen/_10sdp"
+                    app:ms_alignLabels="false"
+                    app:ms_arrowColor="@color/colorPrimary"
+                    app:ms_arrowSize="12dp"
+                    app:ms_baseColor="@color/colorPrimary"
+                    app:ms_enableErrorLabel="false"
+                    app:ms_enableFloatingLabel="true"
+                    app:ms_floatingLabelColor="@color/colorPrimary"
+                    app:ms_floatingLabelText="@string/q308_are_the_members_regularly_saving_as_per_the_group_decision"
+                    app:ms_multiline="false"
+                    app:ms_thickness="0dp" />
+
+
+            </TableRow>
+
+            <TableRow style="@style/Tablerow">
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_avial_loan"
+                    style="@style/SpinnerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingRight="@dimen/_10sdp"
+                    app:ms_alignLabels="false"
+                    app:ms_arrowColor="@color/colorPrimary"
+                    app:ms_arrowSize="12dp"
+                    app:ms_baseColor="@color/colorPrimary"
+                    app:ms_enableErrorLabel="false"
+                    app:ms_enableFloatingLabel="true"
+                    app:ms_floatingLabelColor="@color/colorPrimary"
+                    app:ms_floatingLabelText="@string/q309a_from_where_the_members_avail_the_loan"
+                    app:ms_multiline="false"
+                    app:ms_thickness="0dp" />
+
+
+            </TableRow>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/TextInputStyle"
+
+                >
+
+
+                <EditText
+                    android:id="@+id/et_other_specify_q309b"
+                    style="@style/EditTextStyle"
+                    android:hint="@string/q309b_please_specify_others"
+
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout style="@style/TextInputStyle"
+
+                >
+
+
+                <EditText
+                    android:id="@+id/et_challenges"
+                    style="@style/EditTextStyle"
+                    android:hint="@string/q310_what_are_the_challenges_in_availing_loan_minimum_1_and_maximum_upto_3_responses_possible"
+
+                    />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TableRow
+        style="@style/TableRowStyle"
+        android:layout_margin="@dimen/_10sdp">
+
+        <include layout="@layout/buttons_save_cancel" />
+
+    </TableRow>
+
+</LinearLayout>

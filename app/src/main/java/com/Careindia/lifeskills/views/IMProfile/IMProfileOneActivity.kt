@@ -1,13 +1,15 @@
-package com.careindia.lifeskills.views.IMProfile
+package com.careindia.lifeskills.views.improfile
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import com.careindia.lifeskills.R
-import com.careindia.lifeskills.ui.base.BaseActivity
+import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.utils.Validate
+import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_improfile_one.*
+import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -101,18 +103,19 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
      * Click on view
      */
     private fun applyClickOnView() {
-        btn_next.setOnClickListener(this)
+        btn_save.setOnClickListener(this)
 
     }
 
     override fun onClick(view: View?) {
         when (view?.id) {
-            R.id.btn_next -> {
-                if (imProfileViewModel.isValid()) {
-
-                }
+            R.id.btn_save -> {
+//                if (imProfileViewModel.isValid()) {
+//
+//                }
                 var intent = Intent(this, IMProfileTwoActivity::class.java)
                 startActivity(intent)
+                finish()
 //                if (CheckValidation() == 1) {
 
 //                }
@@ -234,5 +237,11 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
 
         }
         return value
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, HomeDashboardActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

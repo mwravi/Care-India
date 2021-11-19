@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".views.IMProfile.IMProfileTwoActivity">
+    tools:context=".views.improfile.IMProfileTwoActivity">
 
     <include
         android:id="@+id/include"
@@ -310,11 +310,12 @@
 
     </ScrollView>
 
-    <Button
-        android:id="@+id/btn_next"
-        style="@style/ButtonTextStyle"
-        android:layout_margin="20dp"
-        android:background="@drawable/btn_background"
-        android:text="@string/next" />
+    <TableRow
+        style="@style/TableRowStyle"
+        android:layout_margin="@dimen/_10sdp">
+
+        <include layout="@layout/buttons_save_cancel" />
+
+    </TableRow>
 
 </LinearLayout>

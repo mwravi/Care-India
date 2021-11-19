@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.utils.Validate
+import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
@@ -25,8 +26,6 @@ class MainActivity : AppCompatActivity() {
     fun initCall(){
 
         btn_save.setOnClickListener {
-            var intent = Intent(this, CollectiveProfileActivity::class.java)
-            startActivity(intent)
 
         }
 
@@ -133,6 +132,13 @@ class MainActivity : AppCompatActivity() {
             resources.getStringArray(R.array.skills_jobs_picking)
         )
 
+    }
+
+
+    override fun onBackPressed() {
+        val intent = Intent(this, HomeDashboardActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 }

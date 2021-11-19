@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <ScrollView
+        style="@style/ScrolllViewStyle"
+        android:layout_weight="1"
+        android:layout_margin="@dimen/_10sdp"
+        android:scrollbars="none">
+
+             <LinearLayout
+                android:id="@+id/lay_hh_details"
+                 style="@style/LinearLayoutStyle"
+                 android:padding="@dimen/_5sdp"
+                 android:background="@drawable/box_background">
+
+                <LinearLayout
+                    android:id="@+id/lay_formfillingdate"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        android:id="@+id/tv_formfillingdate"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/q101_date_of_filling_the_form" />
+
+                    <EditText
+                        android:id="@+id/et_formfillingDate"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/enter_date"
+                        android:inputType="date"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:drawableEnd="@drawable/ic_calender"
+                        android:minHeight="@dimen/_35sdp" />
+
+                </LinearLayout>
+
+
+                 <LinearLayout
+                     android:id="@+id/lay_crpName"
+                     style="@style/LinearLayoutStyle">
+
+                     <TextView
+                         android:id="@+id/tv_crpName"
+                         style="@style/TextViewStyleNew"
+                         android:text="@string/Name_of_CRP_filling_the_form" />
+
+                     <fr.ganfra.materialspinner.MaterialSpinner
+                         android:id="@+id/spin_crpfillingform"
+                         style="@style/SpinnerViewNew" />
+
+                 </LinearLayout>
+
+
+                 <LinearLayout
+                     android:id="@+id/lay_sfcName"
+                     style="@style/LinearLayoutStyle">
+
+                     <TextView
+                         android:id="@+id/tv_sfcName"
+                         style="@style/TextViewStyleNew"
+                         android:text="@string/Name_of_supervising_field_cordinator" />
+
+                     <fr.ganfra.materialspinner.MaterialSpinner
+                         android:id="@+id/spin_SupervisingFC"
+                         style="@style/SpinnerViewNew" />
+
+                 </LinearLayout>
+
+
+                 <LinearLayout
+                     android:id="@+id/lay_DistricName"
+                     style="@style/LinearLayoutStyle">
+
+                     <TextView
+                         android:id="@+id/tv_DistricName"
+                         style="@style/TextViewStyleNew"
+                         android:text="@string/Name_of_distric" />
+
+                     <fr.ganfra.materialspinner.MaterialSpinner
+                         android:id="@+id/spin_districtname"
+                         style="@style/SpinnerViewNew" />
+
+                 </LinearLayout>
+
+
+                 <LinearLayout
+                     android:id="@+id/lay_NameofZone"
+                     style="@style/LinearLayoutStyle">
+
+                     <TextView
+                         android:id="@+id/tv_NameofZone"
+                         style="@style/TextViewStyleNew"
+                         android:text="@string/Name_of_zone" />
+
+                     <fr.ganfra.materialspinner.MaterialSpinner
+                         android:id="@+id/spin_zone"
+                         style="@style/SpinnerViewNew" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:id="@+id/lay_bbmpName"
+                     style="@style/LinearLayoutStyle">
+
+                     <TextView
+                         android:id="@+id/tv_bbmpName"
+                         style="@style/TextViewStyleNew"
+                         android:text="@string/Name_of_bbmp_ward" />
+
+                     <fr.ganfra.materialspinner.MaterialSpinner
+                         android:id="@+id/spin_bbmp"
+                         style="@style/SpinnerViewNew" />
+
+                 </LinearLayout>
+
+
+                 <LinearLayout
+                     android:id="@+id/lay_panchayatName"
+                     style="@style/LinearLayoutStyle">
+
+                     <TextView
+                         android:id="@+id/tv_panchayatName"
+                         style="@style/TextViewStyleNew"
+                         android:text="@string/Name_of_panchayat" />
+
+                     <fr.ganfra.materialspinner.MaterialSpinner
+                         android:id="@+id/spin_panchayatname"
+                         style="@style/SpinnerViewNew" />
+
+                 </LinearLayout>
+
+
+                 <LinearLayout
+                     android:id="@+id/lay_localityname"
+                     style="@style/LinearLayoutStyle">
+
+                     <TextView
+                         android:id="@+id/tv_localityname"
+                         style="@style/TextViewStyleNew"
+                         android:text="@string/q108_name_of_locality" />
+
+                     <EditText
+                         android:id="@+id/et_localityname"
+                         style="@style/EditTextStyleNew"
+                         android:hint="@string/type_here"
+                         android:inputType="text"
+                         android:maxLength="30"
+                         android:minHeight="@dimen/_35sdp" />
+
+                 </LinearLayout>
+
+
+                 <LinearLayout
+                     android:id="@+id/lay_hhName"
+                     style="@style/LinearLayoutStyle">
+
+                     <TextView
+                         android:id="@+id/tv_hhName"
+                         style="@style/TextViewStyleNew"
+                         android:text="@string/hh_name" />
+
+                     <EditText
+                         android:id="@+id/et_hhName"
+                         style="@style/EditTextStyleNew"
+                         android:hint="@string/type_here"
+                         android:inputType="textPersonName"
+                         android:maxLength="20"
+                         android:minHeight="@dimen/_35sdp" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:id="@+id/lay_hhSex"
+                     style="@style/LinearLayoutStyle">
+
+                     <TextView
+                         android:id="@+id/tv_hhSex"
+                         style="@style/TextViewStyleNew"
+                         android:text="@string/hh_sex" />
+
+                     <fr.ganfra.materialspinner.MaterialSpinner
+                         android:id="@+id/spin_hhSex"
+                         style="@style/SpinnerViewNew" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:id="@+id/lay_totalAdult"
+                     style="@style/LinearLayoutStyle">
+
+                     <TextView
+                         android:id="@+id/tv_totalAdult"
+                         style="@style/TextViewStyleNew"
+                         android:text="@string/total_adult" />
+
+                     <EditText
+                         android:id="@+id/et_totalAdult"
+                         style="@style/EditTextStyleNew"
+                         android:hint="@string/type_here"
+                         android:inputType="number"
+                         android:maxLength="3"
+                         android:minHeight="@dimen/_35sdp" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:id="@+id/lay_adultMale"
+                     style="@style/LinearLayoutStyle">
+
+                     <TextView
+                         android:id="@+id/tv_adultMale"
+                         style="@style/TextViewStyleNew"
+                         android:text="@string/adult_male" />
+
+                     <EditText
+                         android:id="@+id/et_adultMale"
+                         style="@style/EditTextStyleNew"
+                         android:hint="@string/type_here"
+                         android:inputType="number"
+                         android:maxLength="3"
+                         android:minHeight="@dimen/_35sdp" />
+
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:id="@+id/lay_adultFemale"
+                     style="@style/LinearLayoutStyle">
+
+                     <TextView
+                         android:id="@+id/tv_adultFemale"
+                         style="@style/TextViewStyleNew"
+                         android:text="@string/adult_female" />
+
+                     <EditText
+                         android:id="@+id/et_adultFemale"
+                         style="@style/EditTextStyleNew"
+                         android:hint="@string/type_here"
+                         android:inputType="number"
+                         android:maxLength="3"
+                         android:minHeight="@dimen/_35sdp" />
+
+                 </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TableRow
+        style="@style/TableRowStyle"
+        android:layout_margin="@dimen/_10sdp">
+
+        <include layout="@layout/buttons_save_cancel" />
+
+    </TableRow>
+
+</LinearLayout>

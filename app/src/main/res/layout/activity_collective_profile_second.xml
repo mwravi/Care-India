@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+   >
+
+    <include layout="@layout/toolbar_layout" />
+
+    <ScrollView
+        style="@style/ScrolllViewStyle"
+        android:layout_weight="1"
+        android:fadeScrollbars="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:orientation="vertical">
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tbl_head_group_name"
+                style="@style/TextInputStyle"
+                android:hint="@string/name_of_head_group">
+
+                <EditText
+                    android:id="@+id/et_head_group_name"
+                    style="@style/EditTextStyle"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text"
+                    android:maxLength="20" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TableRow
+                android:id="@+id/tbl_head_group_sex"
+                style="@style/Tablerow">
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_head_group_sex"
+                    style="@style/SpinnerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingEnd="@dimen/_10sdp"
+                    app:ms_alignLabels="false"
+                    app:ms_arrowColor="@color/colorPrimary"
+                    app:ms_arrowSize="12dp"
+                    app:ms_baseColor="@color/colorPrimary"
+                    app:ms_enableErrorLabel="false"
+                    app:ms_enableFloatingLabel="true"
+                    app:ms_floatingLabelColor="@color/colorPrimary"
+                    app:ms_floatingLabelText="@string/sex_of_head_of_group"
+                    app:ms_multiline="false"
+                    app:ms_thickness="0dp" />
+
+            </TableRow>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tbl_total_no_of_members"
+                style="@style/TextInputStyle"
+                android:hint="@string/total_no_of_members_in_group">
+
+                <EditText
+                    android:id="@+id/et_total_no_of_members"
+                    style="@style/EditTextStyle"
+                    android:inputType="number"
+                    android:maxLength="2" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tbl_male_members"
+                style="@style/TextInputStyle"
+                android:hint="@string/total_no_of_male_members_in_group">
+
+                <EditText
+                    android:id="@+id/et_male_members"
+                    style="@style/EditTextStyle"
+                    android:inputType="number"
+                    android:maxLength="2" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tbl_female_members"
+                style="@style/TextInputStyle"
+                android:hint="@string/total_no_of_female_members_in_group">
+
+                <EditText
+                    android:id="@+id/et_female_members"
+                    style="@style/EditTextStyle"
+                    android:inputType="number"
+                    android:maxLength="2" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tbl_transgender_members"
+                style="@style/TextInputStyle"
+                android:hint="@string/total_no_of_transgender_members_in_group">
+
+                <EditText
+                    android:id="@+id/et_transgender_members"
+                    style="@style/EditTextStyle"
+                    android:inputType="number"
+                    android:maxLength="2" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tbl_member_name"
+                style="@style/TextInputStyle"
+                android:hint="@string/name_of_the_member">
+
+                <EditText
+                    android:id="@+id/et_member_name"
+                    style="@style/EditTextStyle"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tbl_member_id"
+                style="@style/TextInputStyle"
+                android:hint="@string/individual_member_id">
+
+
+                <EditText
+                    android:id="@+id/et_member_id"
+                    style="@style/EditTextStyle"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                    android:inputType="text"
+                    android:maxLength="14" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TableRow
+                android:id="@+id/tbl_member_sex"
+                style="@style/Tablerow">
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_member_sex"
+                    style="@style/SpinnerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingEnd="@dimen/_10sdp"
+                    app:ms_alignLabels="false"
+                    app:ms_arrowColor="@color/colorPrimary"
+                    app:ms_arrowSize="12dp"
+                    app:ms_baseColor="@color/colorPrimary"
+                    app:ms_enableErrorLabel="false"
+                    app:ms_enableFloatingLabel="true"
+                    app:ms_floatingLabelColor="@color/colorPrimary"
+                    app:ms_floatingLabelText="@string/sex_of_the_member"
+                    app:ms_multiline="false"
+                    app:ms_thickness="0dp" />
+
+            </TableRow>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tbl_member_age"
+                style="@style/TextInputStyle"
+                android:hint="@string/age_of_the_member">
+
+                <EditText
+                    android:id="@+id/et_member_age"
+                    style="@style/EditTextStyle"
+                    android:inputType="number"
+                    android:maxLength="2" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tbl_contact_number"
+                style="@style/TextInputStyle"
+                android:hint="@string/contact_number">
+
+                <EditText
+                    android:id="@+id/et_contact_number"
+                    style="@style/EditTextStyle"
+                    android:inputType="number"
+                    android:maxLength="10" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tbl_role_of_member"
+                style="@style/TextInputStyle"
+                android:hint="@string/role_of_member_in_group">
+
+
+                <EditText
+                    android:id="@+id/et_role_of_member"
+                    style="@style/EditTextStyle"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text"
+                    android:maxLength="20" />
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TableRow
+                android:id="@+id/tbl_savings_account"
+                style="@style/Tablerow">
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_savings_account"
+                    style="@style/SpinnerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingEnd="@dimen/_10sdp"
+                    app:ms_alignLabels="false"
+                    app:ms_arrowColor="@color/colorPrimary"
+                    app:ms_arrowSize="12dp"
+                    app:ms_baseColor="@color/colorPrimary"
+                    app:ms_enableErrorLabel="false"
+                    app:ms_enableFloatingLabel="true"
+                    app:ms_floatingLabelColor="@color/colorPrimary"
+                    app:ms_floatingLabelText="@string/do_you_have_savings_bank_account"
+                    app:ms_multiline="false"
+                    app:ms_thickness="0dp" />
+
+            </TableRow>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TableRow
+        style="@style/TableRowStyle"
+        android:layout_margin="@dimen/_10sdp">
+
+        <include layout="@layout/buttons_save_cancel" />
+
+    </TableRow>
+
+</LinearLayout>

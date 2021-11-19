@@ -5,9 +5,12 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.content.Context
+import android.graphics.Typeface
+import android.util.TypedValue
 import android.view.ViewGroup
 import android.widget.*
 import com.careindia.lifeskills.R
+import com.careindia.lifeskills.entity.MstCommonEntity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -154,32 +157,6 @@ init {
 
     }
 
-    fun GetAnswerTypeCheckBoxButtonID(linear: LinearLayout): String {
-        var QusAns = ""
-        for (i in 0 until linear.childCount) {
-
-            val checkbox = linear.getChildAt(i) as CheckBox
-            if (checkbox.isChecked) {
-                if (QusAns.length == 0) {
-                    QusAns = checkbox.id.toString()
-                } else {
-                    QusAns = (QusAns
-                            + ","
-                            + checkbox.id.toString())
-                }
-            }
-        }
-        return QusAns
-    }
-
-    fun SetAnswerTypeCheckBoxButton(layout: LinearLayout, value: String?) {
-
-        for (i in 0 until layout.childCount) {
-
-            val chkbox = layout.getChildAt(i) as CheckBox
-            chkbox.setChecked(check(chkbox.id, value))
-        }
-    }
 
     fun check(ID: Int, Value: String?): Boolean {
         var iValue = false
@@ -217,5 +194,135 @@ init {
         spin.setAdapter(adapter)
 
 //        spin.adapter = adapter
+    }
+
+
+
+
+    fun fillSpinner(
+        activity: Activity,
+        spin: Spinner,
+        Header: String?,
+        data: List<MstCommonEntity>?
+    ) {
+
+        val adapter: ArrayAdapter<String?>
+        val sValue = arrayOfNulls<String>(data!!.size + 1)
+        if (Header != null && Header.length > 0) {
+            sValue[0] = Header
+        } else {
+            sValue[0] = activity.resources.getString(R.string.select)
+        }
+        for (i in data.indices) {
+            sValue[i + 1] = data[i].value!!.trim()
+        }
+        adapter = ArrayAdapter(
+            activity,
+            R.layout.my_spinner_space_dashboard, sValue
+        )
+        adapter.setDropDownViewResource(R.layout.my_spinner_dashboard)
+        spin.setAdapter(adapter)
+//        spin.adapter = adapter
+    }
+
+    fun dynamicMultiCheck(context: Context, liear: LinearLayout, data: List<MstCommonEntity>?) {
+        if (data != null) {
+            val iGen = data.size
+            val value = arrayOfNulls<String>(iGen + 1)
+            for (i in 0 until data.size) {
+                val multicheck1 = CheckBox(context)
+                multicheck1.layoutParams =
+                    LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
+
+                multicheck1.setText(data.get(i).value)
+                multicheck1.id = data.get(i).id!!
+
+                if (liear != null) {
+                    liear.addView(multicheck1)
+                }
+
+            }
+
+        }
+
+    }
+
+    fun GetAnswerTypeCheckBoxButtonID(linear: LinearLayout): String {
+        var QusAns = ""
+        for (i in 0 until linear.childCount) {
+
+            val checkbox = linear.getChildAt(i) as CheckBox
+            if (checkbox.isChecked) {
+                if (QusAns.length == 0) {
+                    QusAns = checkbox.id.toString()
+                } else {
+                    QusAns = (QusAns
+                            + ","
+                            + checkbox.id.toString())
+                }
+            }
+        }
+        return QusAns
+    }
+
+    fun SetAnswerTypeCheckBoxButton(layout: LinearLayout, value: String?) {
+
+        for (i in 0 until layout.childCount) {
+
+            val chkbox = layout.getChildAt(i) as CheckBox
+            chkbox.setChecked(check(chkbox.id, value))
+        }
+    }
+
+    fun fillradio(
+        Radio: RadioGroup,
+        value: Int,
+        data: List<MstCommonEntity>?,
+        activity: Activity
+    ) {
+
+        Radio.removeAllViews()
+        Radio.clearCheck()
+        if (!data.isNullOrEmpty()) {
+            val rb = arrayOfNulls<RadioButton>(data.size)
+            for (i in data.indices) {
+                rb[i] = RadioButton(activity)
+                val params = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    1f
+                )
+                rb[i]!!.setLayoutParams(params)
+                Radio.addView(rb[i])
+                //                rb[i].setButtonDrawable(R.drawable.radio_check);
+                rb[i]!!.setText(data.get(i).value)
+                rb[i]!!.setId(data.get(i).id!!.toInt())
+                rb[i]!!.setTextColor(activity.resources.getColor(R.color.black))
+                rb[i]!!.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL)
+                rb[i]!!.setTextSize(
+                    TypedValue.COMPLEX_UNIT_PX,
+                    activity.resources.getDimension(R.dimen.radio)
+                )
+                Radio.setPadding(20, 5, 20, 5)
+                //                }
+                if (value == data.get(i).id) {
+                    rb[i]!!.setChecked(true)
+                }
+            }
+        }
+    }
+
+    fun SetAnswerTypeRadioButton(radioGroup: RadioGroup, data: Int) {
+
+        for (i in 0 until radioGroup.childCount) {
+
+            val radioButton1 = radioGroup.getChildAt(i) as RadioButton
+            if (radioButton1.id == data) {
+                radioButton1.isChecked = true
+            }
+        }
     }
 }

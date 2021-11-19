@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".views.activities.MainActivity">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <ScrollView
+        style="@style/ScrolllViewStyle"
+        android:layout_weight="1"
+        android:fadeScrollbars="false">
+
+        <LinearLayout
+            style="@style/LinearLayoutStyle"
+            android:layout_margin="@dimen/_10sdp">
+
+            <TextView
+                style="@style/TextViewTitleStyle"
+                android:text="@string/inner_details" />
+
+            <LinearLayout
+                android:id="@+id/lay_inner_details"
+                style="@style/LinearLayoutStyle"
+                android:background="@drawable/box_background"
+                android:padding="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:id="@+id/lay_first_name"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/first_name" />
+
+                    <EditText
+                        android:id="@+id/et_first_name"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="textPersonName"
+                        android:maxLength="20" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_last_name"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/last_name" />
+
+                    <EditText
+                        android:id="@+id/et_last_name"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="textPersonName"
+                        android:maxLength="20"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_dob"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/date_of_birth" />
+
+                    <EditText
+                        android:id="@+id/et_dob"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="textPersonName"
+                        android:maxLength="20"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/TextViewTitleStyle"
+                android:text="@string/account_information" />
+
+            <LinearLayout
+                android:id="@+id/lay_accnt_info"
+                style="@style/LinearLayoutStyle"
+                android:background="@drawable/box_background"
+                android:padding="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:id="@+id/lay_email"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/email" />
+
+                    <EditText
+                        android:id="@+id/et_email"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@_ "
+                        android:hint="@string/type_here"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_password"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/password" />
+
+                    <EditText
+                        android:id="@+id/et_password"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="textPassword"
+                        android:maxLength="12" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:layout_marginTop="0dp"
+                        android:text="@string/min_8_character_1_number_case_sensitive" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                style="@style/TextViewTitleStyle"
+                android:text="@string/details" />
+
+            <LinearLayout
+                android:id="@+id/lay_details"
+                style="@style/LinearLayoutStyle"
+                android:background="@drawable/box_background"
+                android:padding="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_20sdp">
+
+                <TableRow
+                    android:id="@+id/tbl_heart_attack"
+                    style="@style/TableRowStyle"
+                    android:layout_marginTop="0dp">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/heart_attack_or_angina" />
+
+                    <CheckBox
+                        android:id="@+id/chk_heart_attack"
+                        style="@style/CheckBox"
+                        android:layout_width="wrap_content"
+                        android:button="@drawable/checkbox_selector" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/border_grey" />
+
+                <TableRow
+                    android:id="@+id/tbl_stroke"
+                    style="@style/TableRowStyle"
+                    android:layout_marginTop="0dp">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:text="@string/stroke" />
+
+                    <CheckBox
+                        android:id="@+id/chk_stroke"
+                        style="@style/CheckBox"
+                        android:layout_width="wrap_content"
+                        android:button="@drawable/checkbox_selector" />
+
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/border_grey" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TableRow
+        style="@style/TableRowStyle"
+        android:layout_margin="@dimen/_10sdp">
+
+        <include layout="@layout/buttons_save_cancel" />
+
+    </TableRow>
+
+</LinearLayout>

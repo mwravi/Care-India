@@ -1,7 +1,9 @@
 package com.careindia.lifeskills.di
 
 
+import com.careindia.lifeskills.views.loginscreen.LoginRepository
 import org.koin.dsl.module.module
+import org.koin.experimental.builder.single
 
 /**
  * single: It creates a singleton that can be used across the app as a singular instance.
@@ -9,9 +11,8 @@ import org.koin.dsl.module.module
  */
 
 val repository = module {
+    single<LoginRepository>()
 //    single<RegisterRepository>()
-//    single<LoginRepository>()
-
 
 
 }
