@@ -7,496 +7,496 @@
     android:orientation="vertical"
     tools:context=".views.activities.MainActivity">
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar_layout" />
-
-
-    <ScrollView
-        style="@style/ScrolllViewStyle"
-        android:layout_weight="1"
-        android:fadeScrollbars="false">
-
-        <!--        android:scrollbarThumbVertical="@drawable/vertical_scrollview_thumb"-->
-        <!--        android:scrollbarTrackVertical="@drawable/vertical_scrollview_track-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5sdp"
-            android:orientation="vertical">
-
-            <!--<LinearLayout
-                android:id="@+id/lay_frmationDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="@dimen/_5sdp"
-                android:visibility="gone">
-
-                <TableRow
-                    style="@style/Tablerow"
-                    android:minHeight="0dp">
-
-                    <TextView
-                        android:id="@+id/tv_formationdate"
-                        style="@style/TextViewStylestrik"
-                        android:layout_marginLeft="@dimen/_2sdp"
-                        android:text="@string/date_of_filling_the_form"
-                        android:textSize="@dimen/_10ssp" />
-
-                    <TextView style="@style/AsterikStyle" />
-
-                </TableRow>
-
-                <TableRow
-                    style="@style/Tablerow"
-                    android:layout_marginTop="0dp">
-
-
-                    <EditText
-                        android:id="@+id/et_formfilngDate"
-                        style="@style/EditTextStyle"
-                        android:clickable="false"
-                        android:drawableRight="@drawable/ic_calender"
-                        android:focusable="false"
-                        android:hint="@string/date_format"
-                        android:textSize="@dimen/_12ssp" />
-
-                </TableRow>
-
-            </LinearLayout>-->
-
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/no_days_monthError"
-                style="@style/TextInputStyle"
-                android:hint="@string/no_days_month_primary_job">
-
-                <EditText
-                    android:id="@+id/et_no_days_job"
-                    style="@style/EditTextStyle"
-                    android:digits="1234567890"
-                    android:inputType="number"
-                    android:maxLength="2" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/avg_daily_incomeError"
-                style="@style/TextInputStyle"
-                android:hint="@string/avg_daily_income_primary_job">
-
-                <EditText
-                    android:id="@+id/et_avg_daily_income"
-                    style="@style/EditTextStyle"
-                    android:digits="1234567890"
-                    android:inputType="number"
-                    android:maxLength="4" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TableRow style="@style/Tablerow">
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_secondary_income"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/secondary_income"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
-
-            <TableRow style="@style/Tablerow">
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_what_secondary_income"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/what_secondry_income"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/specify_source_secondary_income"
-                style="@style/TextInputStyle"
-                android:hint="@string/please_specify">
-
-                <EditText
-                    android:id="@+id/et_specif_source_secondary_income"
-                    style="@style/EditTextStyle"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:inputType="text" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/days_secondary_jobError"
-                style="@style/TextInputStyle"
-                android:hint="@string/no_days_secondary_job">
-
-                <EditText
-                    android:id="@+id/et_days_secondary_job"
-                    style="@style/EditTextStyle"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/avg_daily_secondry_incomeError"
-                style="@style/TextInputStyle"
-                android:hint="@string/avg_daily_secondry_income">
-
-                <EditText
-                    android:id="@+id/et_avg_daily_secondry_income"
-                    style="@style/EditTextStyle"
-                    android:inputType="number"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TableRow style="@style/Tablerow">
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_have_adhar"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/have_adhar_card"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
-
-            <TableRow style="@style/Tablerow">
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_have_voter"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/have_voter_card"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
-
-            <TableRow style="@style/Tablerow">
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_have_pan"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/have_pan_card"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
-
-            <TableRow style="@style/Tablerow">
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_have_income"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/income_certi"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
-
-            <TableRow style="@style/Tablerow">
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_have_caste"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/caste_certi"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
-
-            <TableRow style="@style/Tablerow">
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_svg_bank_act"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/svg_bank_act"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
-
-            <TableRow style="@style/Tablerow">
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_availed_services_past"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/availed_services_past"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/service_provider_departmentError"
-                style="@style/TextInputStyle"
-                android:hint="@string/service_provider_department">
-
-                <EditText
-                    android:id="@+id/et_service_provider_department"
-                    style="@style/EditTextStyle"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TableRow style="@style/Tablerow">
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_avail_any_scheme"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/avail_any_scheme"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/details_service_availError"
-                style="@style/TextInputStyle"
-                android:hint="@string/details_service_avail">
-
-                <EditText
-                    android:id="@+id/et_details_service_avail"
-                    style="@style/EditTextStyle"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
-                style="@style/Tablerow"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/TextViewStyle"
-                    android:text="@string/skills_jobs_picking" />
-
-                <LinearLayout
-                    android:id="@+id/skills_jobs_picking"
-                    style="@style/CheckBox"
-                    android:orientation="vertical" />
-            </LinearLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/specify_skills_jobs_pickingError"
-                style="@style/TextInputStyle"
-                android:hint="@string/please_specify">
-
-                <EditText
-                    android:id="@+id/et_skills_jobs_picking"
-                    style="@style/EditTextStyle"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:inputType="text" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <TableRow style="@style/Tablerow">
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_new_jobs_business"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/new_jobs_business"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
-
-            <TableRow style="@style/Tablerow">
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_alternative_get_opportunity"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/alternative_get_opportunity"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
-
-            <TableRow style="@style/Tablerow">
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_member_cig_shg"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/member_CIG_SHG"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/name_collective_partError"
-                style="@style/TextInputStyle"
-                android:hint="@string/name_collective_part">
-
-                <EditText
-                    android:id="@+id/et_name_collective_part"
-                    style="@style/EditTextStyle"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <LinearLayout
-                style="@style/Tablerow"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/TextViewStyle"
-                    android:text="Whats your name?" />
-
-                <RadioGroup
-                    android:id="@+id/checkRadio"
-                    style="@style/radioGroupStyle">
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-
-            <!--            LinearLayout-->
-            <!--                android:id="@+id/multiCheck"-->
-            <!--                style="@style/CheckBox"-->
-            <!--                android:orientation="vertical" />-->
-
-
-        </LinearLayout>
-
-    </ScrollView>
-
-    <Button
-        android:id="@+id/btn_save"
-        style="@style/ButtonTextStyle"
-        android:layout_margin="20dp"
-        android:background="@drawable/btn_background"
-        android:text="@string/save" />
+<!--    <include-->
+<!--        android:id="@+id/include"-->
+<!--        layout="@layout/toolbar_layout" />-->
+
+
+<!--    <ScrollView-->
+<!--        style="@style/ScrolllViewStyle"-->
+<!--        android:layout_weight="1"-->
+<!--        android:fadeScrollbars="false">-->
+
+<!--        &lt;!&ndash;        android:scrollbarThumbVertical="@drawable/vertical_scrollview_thumb"&ndash;&gt;-->
+<!--        &lt;!&ndash;        android:scrollbarTrackVertical="@drawable/vertical_scrollview_track&ndash;&gt;-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_margin="@dimen/_5sdp"-->
+<!--            android:orientation="vertical">-->
+
+<!--            &lt;!&ndash;<LinearLayout-->
+<!--                android:id="@+id/lay_frmationDate"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="vertical"-->
+<!--                android:padding="@dimen/_5sdp"-->
+<!--                android:visibility="gone">-->
+
+<!--                <TableRow-->
+<!--                    style="@style/Tablerow"-->
+<!--                    android:minHeight="0dp">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tv_formationdate"-->
+<!--                        style="@style/TextViewStylestrik"-->
+<!--                        android:layout_marginLeft="@dimen/_2sdp"-->
+<!--                        android:text="@string/date_of_filling_the_form"-->
+<!--                        android:textSize="@dimen/_10ssp" />-->
+
+<!--                    <TextView style="@style/AsterikStyle" />-->
+
+<!--                </TableRow>-->
+
+<!--                <TableRow-->
+<!--                    style="@style/Tablerow"-->
+<!--                    android:layout_marginTop="0dp">-->
+
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/et_formfilngDate"-->
+<!--                        style="@style/EditTextStyle"-->
+<!--                        android:clickable="false"-->
+<!--                        android:drawableRight="@drawable/ic_calender"-->
+<!--                        android:focusable="false"-->
+<!--                        android:hint="@string/date_format"-->
+<!--                        android:textSize="@dimen/_12ssp" />-->
+
+<!--                </TableRow>-->
+
+<!--            </LinearLayout>&ndash;&gt;-->
+
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/no_days_monthError"-->
+<!--                style="@style/TextInputStyle"-->
+<!--                android:hint="@string/no_days_month_primary_job">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/et_no_days_job"-->
+<!--                    style="@style/EditTextStyle"-->
+<!--                    android:digits="1234567890"-->
+<!--                    android:inputType="number"-->
+<!--                    android:maxLength="2" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/avg_daily_incomeError"-->
+<!--                style="@style/TextInputStyle"-->
+<!--                android:hint="@string/avg_daily_income_primary_job">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/et_avg_daily_income"-->
+<!--                    style="@style/EditTextStyle"-->
+<!--                    android:digits="1234567890"-->
+<!--                    android:inputType="number"-->
+<!--                    android:maxLength="4" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <TableRow style="@style/Tablerow">-->
+
+<!--                <fr.ganfra.materialspinner.MaterialSpinner-->
+<!--                    android:id="@+id/spin_secondary_income"-->
+<!--                    style="@style/SpinnerView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingRight="@dimen/_10sdp"-->
+<!--                    app:ms_alignLabels="false"-->
+<!--                    app:ms_arrowColor="@color/colorPrimary"-->
+<!--                    app:ms_arrowSize="12dp"-->
+<!--                    app:ms_baseColor="@color/colorPrimary"-->
+<!--                    app:ms_enableErrorLabel="false"-->
+<!--                    app:ms_enableFloatingLabel="true"-->
+<!--                    app:ms_floatingLabelColor="@color/colorPrimary"-->
+<!--                    app:ms_floatingLabelText="@string/secondary_income"-->
+<!--                    app:ms_multiline="false"-->
+<!--                    app:ms_thickness="0dp" />-->
+<!--            </TableRow>-->
+
+<!--            <TableRow style="@style/Tablerow">-->
+
+<!--                <fr.ganfra.materialspinner.MaterialSpinner-->
+<!--                    android:id="@+id/spin_what_secondary_income"-->
+<!--                    style="@style/SpinnerView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingRight="@dimen/_10sdp"-->
+<!--                    app:ms_alignLabels="false"-->
+<!--                    app:ms_arrowColor="@color/colorPrimary"-->
+<!--                    app:ms_arrowSize="12dp"-->
+<!--                    app:ms_baseColor="@color/colorPrimary"-->
+<!--                    app:ms_enableErrorLabel="false"-->
+<!--                    app:ms_enableFloatingLabel="true"-->
+<!--                    app:ms_floatingLabelColor="@color/colorPrimary"-->
+<!--                    app:ms_floatingLabelText="@string/what_secondry_income"-->
+<!--                    app:ms_multiline="false"-->
+<!--                    app:ms_thickness="0dp" />-->
+<!--            </TableRow>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/specify_source_secondary_income"-->
+<!--                style="@style/TextInputStyle"-->
+<!--                android:hint="@string/please_specify">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/et_specif_source_secondary_income"-->
+<!--                    style="@style/EditTextStyle"-->
+<!--                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "-->
+<!--                    android:inputType="text" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/days_secondary_jobError"-->
+<!--                style="@style/TextInputStyle"-->
+<!--                android:hint="@string/no_days_secondary_job">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/et_days_secondary_job"-->
+<!--                    style="@style/EditTextStyle"-->
+<!--                    android:inputType="number"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:singleLine="true" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/avg_daily_secondry_incomeError"-->
+<!--                style="@style/TextInputStyle"-->
+<!--                android:hint="@string/avg_daily_secondry_income">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/et_avg_daily_secondry_income"-->
+<!--                    style="@style/EditTextStyle"-->
+<!--                    android:inputType="number"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:singleLine="true" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <TableRow style="@style/Tablerow">-->
+
+<!--                <fr.ganfra.materialspinner.MaterialSpinner-->
+<!--                    android:id="@+id/spin_have_adhar"-->
+<!--                    style="@style/SpinnerView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingRight="@dimen/_10sdp"-->
+<!--                    app:ms_alignLabels="false"-->
+<!--                    app:ms_arrowColor="@color/colorPrimary"-->
+<!--                    app:ms_arrowSize="12dp"-->
+<!--                    app:ms_baseColor="@color/colorPrimary"-->
+<!--                    app:ms_enableErrorLabel="false"-->
+<!--                    app:ms_enableFloatingLabel="true"-->
+<!--                    app:ms_floatingLabelColor="@color/colorPrimary"-->
+<!--                    app:ms_floatingLabelText="@string/have_adhar_card"-->
+<!--                    app:ms_multiline="false"-->
+<!--                    app:ms_thickness="0dp" />-->
+<!--            </TableRow>-->
+
+<!--            <TableRow style="@style/Tablerow">-->
+
+<!--                <fr.ganfra.materialspinner.MaterialSpinner-->
+<!--                    android:id="@+id/spin_have_voter"-->
+<!--                    style="@style/SpinnerView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingRight="@dimen/_10sdp"-->
+<!--                    app:ms_alignLabels="false"-->
+<!--                    app:ms_arrowColor="@color/colorPrimary"-->
+<!--                    app:ms_arrowSize="12dp"-->
+<!--                    app:ms_baseColor="@color/colorPrimary"-->
+<!--                    app:ms_enableErrorLabel="false"-->
+<!--                    app:ms_enableFloatingLabel="true"-->
+<!--                    app:ms_floatingLabelColor="@color/colorPrimary"-->
+<!--                    app:ms_floatingLabelText="@string/have_voter_card"-->
+<!--                    app:ms_multiline="false"-->
+<!--                    app:ms_thickness="0dp" />-->
+<!--            </TableRow>-->
+
+<!--            <TableRow style="@style/Tablerow">-->
+
+<!--                <fr.ganfra.materialspinner.MaterialSpinner-->
+<!--                    android:id="@+id/spin_have_pan"-->
+<!--                    style="@style/SpinnerView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingRight="@dimen/_10sdp"-->
+<!--                    app:ms_alignLabels="false"-->
+<!--                    app:ms_arrowColor="@color/colorPrimary"-->
+<!--                    app:ms_arrowSize="12dp"-->
+<!--                    app:ms_baseColor="@color/colorPrimary"-->
+<!--                    app:ms_enableErrorLabel="false"-->
+<!--                    app:ms_enableFloatingLabel="true"-->
+<!--                    app:ms_floatingLabelColor="@color/colorPrimary"-->
+<!--                    app:ms_floatingLabelText="@string/have_pan_card"-->
+<!--                    app:ms_multiline="false"-->
+<!--                    app:ms_thickness="0dp" />-->
+<!--            </TableRow>-->
+
+<!--            <TableRow style="@style/Tablerow">-->
+
+<!--                <fr.ganfra.materialspinner.MaterialSpinner-->
+<!--                    android:id="@+id/spin_have_income"-->
+<!--                    style="@style/SpinnerView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingRight="@dimen/_10sdp"-->
+<!--                    app:ms_alignLabels="false"-->
+<!--                    app:ms_arrowColor="@color/colorPrimary"-->
+<!--                    app:ms_arrowSize="12dp"-->
+<!--                    app:ms_baseColor="@color/colorPrimary"-->
+<!--                    app:ms_enableErrorLabel="false"-->
+<!--                    app:ms_enableFloatingLabel="true"-->
+<!--                    app:ms_floatingLabelColor="@color/colorPrimary"-->
+<!--                    app:ms_floatingLabelText="@string/income_certi"-->
+<!--                    app:ms_multiline="false"-->
+<!--                    app:ms_thickness="0dp" />-->
+<!--            </TableRow>-->
+
+<!--            <TableRow style="@style/Tablerow">-->
+
+<!--                <fr.ganfra.materialspinner.MaterialSpinner-->
+<!--                    android:id="@+id/spin_have_caste"-->
+<!--                    style="@style/SpinnerView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingRight="@dimen/_10sdp"-->
+<!--                    app:ms_alignLabels="false"-->
+<!--                    app:ms_arrowColor="@color/colorPrimary"-->
+<!--                    app:ms_arrowSize="12dp"-->
+<!--                    app:ms_baseColor="@color/colorPrimary"-->
+<!--                    app:ms_enableErrorLabel="false"-->
+<!--                    app:ms_enableFloatingLabel="true"-->
+<!--                    app:ms_floatingLabelColor="@color/colorPrimary"-->
+<!--                    app:ms_floatingLabelText="@string/caste_certi"-->
+<!--                    app:ms_multiline="false"-->
+<!--                    app:ms_thickness="0dp" />-->
+<!--            </TableRow>-->
+
+<!--            <TableRow style="@style/Tablerow">-->
+
+<!--                <fr.ganfra.materialspinner.MaterialSpinner-->
+<!--                    android:id="@+id/spin_svg_bank_act"-->
+<!--                    style="@style/SpinnerView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingRight="@dimen/_10sdp"-->
+<!--                    app:ms_alignLabels="false"-->
+<!--                    app:ms_arrowColor="@color/colorPrimary"-->
+<!--                    app:ms_arrowSize="12dp"-->
+<!--                    app:ms_baseColor="@color/colorPrimary"-->
+<!--                    app:ms_enableErrorLabel="false"-->
+<!--                    app:ms_enableFloatingLabel="true"-->
+<!--                    app:ms_floatingLabelColor="@color/colorPrimary"-->
+<!--                    app:ms_floatingLabelText="@string/svg_bank_act"-->
+<!--                    app:ms_multiline="false"-->
+<!--                    app:ms_thickness="0dp" />-->
+<!--            </TableRow>-->
+
+<!--            <TableRow style="@style/Tablerow">-->
+
+<!--                <fr.ganfra.materialspinner.MaterialSpinner-->
+<!--                    android:id="@+id/spin_availed_services_past"-->
+<!--                    style="@style/SpinnerView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingRight="@dimen/_10sdp"-->
+<!--                    app:ms_alignLabels="false"-->
+<!--                    app:ms_arrowColor="@color/colorPrimary"-->
+<!--                    app:ms_arrowSize="12dp"-->
+<!--                    app:ms_baseColor="@color/colorPrimary"-->
+<!--                    app:ms_enableErrorLabel="false"-->
+<!--                    app:ms_enableFloatingLabel="true"-->
+<!--                    app:ms_floatingLabelColor="@color/colorPrimary"-->
+<!--                    app:ms_floatingLabelText="@string/availed_services_past"-->
+<!--                    app:ms_multiline="false"-->
+<!--                    app:ms_thickness="0dp" />-->
+<!--            </TableRow>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/service_provider_departmentError"-->
+<!--                style="@style/TextInputStyle"-->
+<!--                android:hint="@string/service_provider_department">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/et_service_provider_department"-->
+<!--                    style="@style/EditTextStyle"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:singleLine="true" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <TableRow style="@style/Tablerow">-->
+
+<!--                <fr.ganfra.materialspinner.MaterialSpinner-->
+<!--                    android:id="@+id/spin_avail_any_scheme"-->
+<!--                    style="@style/SpinnerView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingRight="@dimen/_10sdp"-->
+<!--                    app:ms_alignLabels="false"-->
+<!--                    app:ms_arrowColor="@color/colorPrimary"-->
+<!--                    app:ms_arrowSize="12dp"-->
+<!--                    app:ms_baseColor="@color/colorPrimary"-->
+<!--                    app:ms_enableErrorLabel="false"-->
+<!--                    app:ms_enableFloatingLabel="true"-->
+<!--                    app:ms_floatingLabelColor="@color/colorPrimary"-->
+<!--                    app:ms_floatingLabelText="@string/avail_any_scheme"-->
+<!--                    app:ms_multiline="false"-->
+<!--                    app:ms_thickness="0dp" />-->
+<!--            </TableRow>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/details_service_availError"-->
+<!--                style="@style/TextInputStyle"-->
+<!--                android:hint="@string/details_service_avail">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/et_details_service_avail"-->
+<!--                    style="@style/EditTextStyle"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:singleLine="true" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <LinearLayout-->
+<!--                style="@style/Tablerow"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    style="@style/TextViewStyle"-->
+<!--                    android:text="@string/skills_jobs_picking" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/skills_jobs_picking"-->
+<!--                    style="@style/CheckBox"-->
+<!--                    android:orientation="vertical" />-->
+<!--            </LinearLayout>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/specify_skills_jobs_pickingError"-->
+<!--                style="@style/TextInputStyle"-->
+<!--                android:hint="@string/please_specify">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/et_skills_jobs_picking"-->
+<!--                    style="@style/EditTextStyle"-->
+<!--                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "-->
+<!--                    android:inputType="text" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <TableRow style="@style/Tablerow">-->
+
+<!--                <fr.ganfra.materialspinner.MaterialSpinner-->
+<!--                    android:id="@+id/spin_new_jobs_business"-->
+<!--                    style="@style/SpinnerView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingRight="@dimen/_10sdp"-->
+<!--                    app:ms_alignLabels="false"-->
+<!--                    app:ms_arrowColor="@color/colorPrimary"-->
+<!--                    app:ms_arrowSize="12dp"-->
+<!--                    app:ms_baseColor="@color/colorPrimary"-->
+<!--                    app:ms_enableErrorLabel="false"-->
+<!--                    app:ms_enableFloatingLabel="true"-->
+<!--                    app:ms_floatingLabelColor="@color/colorPrimary"-->
+<!--                    app:ms_floatingLabelText="@string/new_jobs_business"-->
+<!--                    app:ms_multiline="false"-->
+<!--                    app:ms_thickness="0dp" />-->
+<!--            </TableRow>-->
+
+<!--            <TableRow style="@style/Tablerow">-->
+
+<!--                <fr.ganfra.materialspinner.MaterialSpinner-->
+<!--                    android:id="@+id/spin_alternative_get_opportunity"-->
+<!--                    style="@style/SpinnerView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingRight="@dimen/_10sdp"-->
+<!--                    app:ms_alignLabels="false"-->
+<!--                    app:ms_arrowColor="@color/colorPrimary"-->
+<!--                    app:ms_arrowSize="12dp"-->
+<!--                    app:ms_baseColor="@color/colorPrimary"-->
+<!--                    app:ms_enableErrorLabel="false"-->
+<!--                    app:ms_enableFloatingLabel="true"-->
+<!--                    app:ms_floatingLabelColor="@color/colorPrimary"-->
+<!--                    app:ms_floatingLabelText="@string/alternative_get_opportunity"-->
+<!--                    app:ms_multiline="false"-->
+<!--                    app:ms_thickness="0dp" />-->
+<!--            </TableRow>-->
+
+<!--            <TableRow style="@style/Tablerow">-->
+
+<!--                <fr.ganfra.materialspinner.MaterialSpinner-->
+<!--                    android:id="@+id/spin_member_cig_shg"-->
+<!--                    style="@style/SpinnerView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:paddingRight="@dimen/_10sdp"-->
+<!--                    app:ms_alignLabels="false"-->
+<!--                    app:ms_arrowColor="@color/colorPrimary"-->
+<!--                    app:ms_arrowSize="12dp"-->
+<!--                    app:ms_baseColor="@color/colorPrimary"-->
+<!--                    app:ms_enableErrorLabel="false"-->
+<!--                    app:ms_enableFloatingLabel="true"-->
+<!--                    app:ms_floatingLabelColor="@color/colorPrimary"-->
+<!--                    app:ms_floatingLabelText="@string/member_CIG_SHG"-->
+<!--                    app:ms_multiline="false"-->
+<!--                    app:ms_thickness="0dp" />-->
+<!--            </TableRow>-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:id="@+id/name_collective_partError"-->
+<!--                style="@style/TextInputStyle"-->
+<!--                android:hint="@string/name_collective_part">-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/et_name_collective_part"-->
+<!--                    style="@style/EditTextStyle"-->
+<!--                    android:inputType="text"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:singleLine="true" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--            <LinearLayout-->
+<!--                style="@style/Tablerow"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    style="@style/TextViewStyle"-->
+<!--                    android:text="Whats your name?" />-->
+
+<!--                <RadioGroup-->
+<!--                    android:id="@+id/checkRadio"-->
+<!--                    style="@style/radioGroupStyle">-->
+
+<!--                </RadioGroup>-->
+
+<!--            </LinearLayout>-->
+
+
+<!--            &lt;!&ndash;            LinearLayout&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:id="@+id/multiCheck"&ndash;&gt;-->
+<!--            &lt;!&ndash;                style="@style/CheckBox"&ndash;&gt;-->
+<!--            &lt;!&ndash;                android:orientation="vertical" />&ndash;&gt;-->
+
+
+<!--        </LinearLayout>-->
+
+<!--    </ScrollView>-->
+
+<!--    <Button-->
+<!--        android:id="@+id/btn_save"-->
+<!--        style="@style/ButtonTextStyle"-->
+<!--        android:layout_margin="20dp"-->
+<!--        android:background="@drawable/btn_background"-->
+<!--        android:text="@string/save" />-->
 
 </LinearLayout>

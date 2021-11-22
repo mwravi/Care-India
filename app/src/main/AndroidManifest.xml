@@ -13,11 +13,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:name=".views.improfile.IMProfileListActivity"
+            android:name=".views.improfile.IMProfileThirdActivity"
             android:exported="true" />
+        <activity
+            android:name=".views.improfile.IMProfileListActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".views.homescreen.HomeDashboardActivity"
             android:exported="true"

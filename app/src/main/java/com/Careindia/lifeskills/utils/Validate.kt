@@ -4,15 +4,23 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
+import android.app.Dialog
 import android.content.Context
 import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
+import android.util.Patterns
 import android.util.TypedValue
+import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import android.widget.*
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.entity.MstCommonEntity
+import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.regex.Pattern
 
 class Validate(context: Context) {
     lateinit var context: Context
@@ -315,6 +323,67 @@ init {
         }
     }
 
+
+    fun fillSpinner(
+        activity: Activity,
+        spin: Spinner,
+        Header: String?,
+        mstCommonViewModel: MstCommonViewModel?,
+        flag:Int
+    ) {
+        var data: List<MstCommonEntity>? = null
+        data =
+            mstCommonViewModel!!.getMstCommon(flag)
+        val adapter: ArrayAdapter<String?>
+        val sValue = arrayOfNulls<String>(data.size + 1)
+        if (Header != null && Header.length > 0) {
+            sValue[0] = Header
+        } else {
+            sValue[0] = activity.resources.getString(R.string.select)
+        }
+        for (i in data.indices) {
+            sValue[i + 1] = data[i].value!!.trim()
+        }
+        adapter = ArrayAdapter(
+            activity,
+            R.layout.my_spinner_space_dashboard, sValue
+        )
+        adapter.setDropDownViewResource(R.layout.my_spinner_dashboard)
+        spin.setAdapter(adapter)
+//        spin.adapter = adapter
+    }
+
+    fun returnID(spin: Spinner, mstCommonViewModel: MstCommonViewModel?,
+                 flag:Int): Int {
+        var data: List<MstCommonEntity>? = null
+        data =
+            mstCommonViewModel!!.getMstCommon(flag)
+        var pos = spin.getSelectedItemPosition()
+        var id = 0
+
+        if (!data.isNullOrEmpty()) {
+            if (pos > 0) id = data.get(pos - 1).id!!
+        }
+        return id
+    }
+
+    fun returnpos(id: Int? , mstCommonViewModel: MstCommonViewModel?,
+                  flag:Int): Int {
+        var data: List<MstCommonEntity>? = null
+        data =
+            mstCommonViewModel!!.getMstCommon(flag)
+        var pos = 0
+        if (!data.isNullOrEmpty()) {
+            if (id!! > 0) {
+                for (i in data.indices) {
+                    if (id == data.get(i).id)
+                        pos = i + 1
+                }
+            }
+        }
+        return pos
+    }
+
     fun SetAnswerTypeRadioButton(radioGroup: RadioGroup, data: Int) {
 
         for (i in 0 until radioGroup.childCount) {
@@ -323,6 +392,161 @@ init {
             if (radioButton1.id == data) {
                 radioButton1.isChecked = true
             }
+        }
+    }
+
+    fun GetAnswerTypeRadioButtonID(radioGroup: RadioGroup): Int {
+        var ID = 0
+
+        for (i in 0 until radioGroup.childCount) {
+
+            val radioButton1 = radioGroup.getChildAt(i) as RadioButton
+            if (radioButton1.isChecked) {
+                ID = radioButton1.id
+
+            }
+        }
+        return ID
+    }
+
+    fun CustomAlertEdit(
+        activity: Activity,
+        et: EditText,
+        msg: String?
+    ) { // Create custom dialog object
+        val dialog = Dialog(activity)
+        // hide to default title for Dialog
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        // inflate the layout dialog_layout.xml and set it as contentView
+        val inflater =
+            activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view: View = inflater.inflate(R.layout.dialog_layout, null, false)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.setContentView(view)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(0))
+        val txtTitle = dialog
+            .findViewById<View>(R.id.txt_alert_message) as TextView
+        txtTitle.text = msg
+        val btnok =
+            dialog.findViewById<View>(R.id.btn_ok) as Button
+        btnok.setOnClickListener {
+            // Dismiss the dialog
+            dialog.dismiss()
+            et.performClick()
+            et.requestFocus()
+            et.setText("")
+        }
+        // Display the dialog
+        dialog.show()
+    }
+fun CustomAlertCheckbox(
+        activity: Activity,
+        et: LinearLayout,
+        msg: String?
+    ) { // Create custom dialog object
+        val dialog = Dialog(activity)
+        // hide to default title for Dialog
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        // inflate the layout dialog_layout.xml and set it as contentView
+        val inflater =
+            activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view: View = inflater.inflate(R.layout.dialog_layout, null, false)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.setContentView(view)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(0))
+        val txtTitle = dialog
+            .findViewById<View>(R.id.txt_alert_message) as TextView
+        txtTitle.text = msg
+        val btnok =
+            dialog.findViewById<View>(R.id.btn_ok) as Button
+        btnok.setOnClickListener {
+            // Dismiss the dialog
+            dialog.dismiss()
+            et.performClick()
+            et.requestFocus()
+        }
+        // Display the dialog
+        dialog.show()
+    }
+
+    fun CustomAlertSpinner(
+        activity: Activity,
+        spin: Spinner,
+        msg: String?
+    ) { // Create custom dialog object
+        val dialog = Dialog(activity)
+        // hide to default title for Dialog
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        // inflate the layout dialog_layout.xml and set it as contentView
+        val inflater = activity
+            .getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view: View = inflater.inflate(R.layout.dialog_layout, null, false)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.setContentView(view)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(0))
+        val txtTitle = dialog
+            .findViewById<View>(R.id.txt_alert_message) as TextView
+        txtTitle.text = msg
+        val btnok =
+            dialog.findViewById<View>(R.id.btn_ok) as Button
+        btnok.setOnClickListener {
+            btnok.setTextColor(activity.resources.getColor(R.color.white))
+            // Dismiss the dialog
+            dialog.dismiss()
+            spin.performClick()
+            spin.requestFocus()
+        }
+        // Display the dialog
+        dialog.show()
+    }
+
+    fun CustomAlert(
+        context: Context,
+        msg: String?
+    ) { // Create custom dialog object
+        val dialog = Dialog(context)
+        // hide to default title for Dialog
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        // inflate the layout dialog_layout.xml and set it as contentView
+        val inflater =
+            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view: View = inflater.inflate(R.layout.dialog_layout, null, false)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.setContentView(view)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(0))
+        val txtTitle = dialog
+            .findViewById<View>(R.id.txt_alert_message) as TextView
+        txtTitle.text = msg
+        val btnok =
+            dialog.findViewById<View>(R.id.btn_ok) as Button
+        btnok.setOnClickListener {
+            btnok.setTextColor(context.resources.getColor(R.color.white))
+            dialog.dismiss()
+        }
+        // Display the dialog
+        dialog.show()
+    }
+
+    fun checkmobileno(mobileno: String): Int {
+
+        if (mobileno != null && !mobileno.equals("null") && mobileno.length > 0) {
+            var pattern = Pattern.compile("[6-9]{1}[0-9]{9}")
+            var matcher = pattern.matcher(mobileno)
+            // Check if pattern matches
+            if (matcher.matches()) {
+                return 1
+            } else {
+                return 0
+            }
+        }
+        return 0
+    }
+
+    fun isValidEmail(target: CharSequence?): Boolean {
+        return if (target == null) {
+            false
+        } else {
+            Patterns.EMAIL_ADDRESS.matcher(target).matches()
         }
     }
 }

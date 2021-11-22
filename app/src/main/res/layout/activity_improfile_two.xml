@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".views.improfile.IMProfileTwoActivity">
 
@@ -14,37 +14,29 @@
 
     <ScrollView
         style="@style/ScrolllViewStyle"
+        android:layout_margin="@dimen/_10sdp"
         android:layout_weight="1"
-        android:fadeScrollbars="false">
+        android:scrollbars="none">
 
-        <!--        android:scrollbarThumbVertical="@drawable/vertical_scrollview_thumb"-->
-        <!--        android:scrollbarTrackVertical="@drawable/vertical_scrollview_track-->
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5sdp"
-            android:orientation="vertical">
+            style="@style/LinearLayoutStyle"
+            android:background="@drawable/box_background"
+            android:padding="@dimen/_10sdp">
 
+            <LinearLayout
+                android:id="@+id/lay_spin_acess_mob_data"
+                style="@style/LinearLayoutStyle">
 
-            <TableRow style="@style/Tablerow">
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/acess_mobile_data" />
 
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_acess_mob_data"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/acess_mobile_data"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
 
             <LinearLayout
                 style="@style/Tablerow"
@@ -58,20 +50,33 @@
                     android:id="@+id/multiCheck"
                     style="@style/CheckBox"
                     android:orientation="vertical" />
+
+
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/specifyoError"
-                style="@style/TextInputStyle"
-                android:hint="@string/please_specify">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="#CDCBCB" />
+
+            <LinearLayout
+                android:id="@+id/lay_et_specify"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/please_specify_speak" />
 
                 <EditText
-                    android:id="@+id/et_specifyo"
-                    style="@style/EditTextStyle"
+                    android:id="@+id/et_specify"
+                    style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
                     android:inputType="text" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
 
             <LinearLayout
                 style="@style/Tablerow"
@@ -85,20 +90,32 @@
                     android:id="@+id/multiCheck_lang_read"
                     style="@style/CheckBox"
                     android:orientation="vertical" />
+
+
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/specifyooError"
-                style="@style/TextInputStyle"
-                android:hint="@string/please_specify">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="#CDCBCB" />
+
+            <LinearLayout
+                android:id="@+id/lay_et_specifyread"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/please_specify_read" />
 
                 <EditText
-                    android:id="@+id/et_specifyoo"
-                    style="@style/EditTextStyle"
+                    android:id="@+id/et_specifyread"
+                    style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
                     android:inputType="text" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
 
             <LinearLayout
@@ -113,21 +130,32 @@
                     android:id="@+id/lang_write"
                     style="@style/CheckBox"
                     android:orientation="vertical" />
+
+
             </LinearLayout>
 
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="#CDCBCB" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/specify_oError"
-                style="@style/TextInputStyle"
-                android:hint="@string/please_specify">
+            <LinearLayout
+                android:id="@+id/lay_et_specifywrite"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/please_specify_write" />
 
                 <EditText
-                    android:id="@+id/et_specify_o"
-                    style="@style/EditTextStyle"
+                    android:id="@+id/et_specifywrite"
+                    style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
                     android:inputType="text" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
 
             <LinearLayout
@@ -142,20 +170,32 @@
                     android:id="@+id/prefer_comni_speaking"
                     style="@style/CheckBox"
                     android:orientation="vertical" />
+
+
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/specify_perder_langError"
-                style="@style/TextInputStyle"
-                android:hint="@string/please_specify">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="#CDCBCB" />
+
+            <LinearLayout
+                android:id="@+id/lay_et_specifyprefer"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/please_specify_communi" />
 
                 <EditText
-                    android:id="@+id/et_specif_perfer_lang"
-                    style="@style/EditTextStyle"
+                    android:id="@+id/et_specifyprefer"
+                    style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
                     android:inputType="text" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
             <LinearLayout
                 style="@style/Tablerow"
@@ -169,142 +209,141 @@
                     android:id="@+id/lang_prefer_mobile_use"
                     style="@style/CheckBox"
                     android:orientation="vertical" />
+
+
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/specify_perder_lang_mob_useError"
-                style="@style/TextInputStyle"
-                android:hint="@string/please_specify">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="#CDCBCB" />
+
+            <LinearLayout
+                android:id="@+id/lay_et_specify_perfer_mob"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/please_specify_mobile" />
 
                 <EditText
-                    android:id="@+id/et_specif_perfer_lang_mob_use"
-                    style="@style/EditTextStyle"
+                    android:id="@+id/et_specify_perfer_mob"
+                    style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
                     android:inputType="text" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
-            <TableRow style="@style/Tablerow">
+            <LinearLayout
+                android:id="@+id/lay_spin_cate_picker_belong"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/category_waste_picker_belong" />
 
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_cate_picker_belong"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/category_waste_picker_belong"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
+                    style="@style/SpinnerViewNew" />
 
-            <TableRow style="@style/Tablerow">
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_spin_type_emp"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/type_emp" />
 
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_type_emp"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/type_emp"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
+                    style="@style/SpinnerViewNew" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/waste_pickError"
-                style="@style/TextInputStyle"
-                android:hint="@string/wastes_pick_sort">
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_et_waste_pick"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/wastes_pick_sort" />
 
                 <EditText
                     android:id="@+id/et_waste_pick"
-                    style="@style/EditTextStyle"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:singleLine="true" />
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
-            <TableRow style="@style/Tablerow">
+            <LinearLayout
+                android:id="@+id/lay_spin_sell_waste_collect"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/sell_waste_collect" />
 
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_sell_waste_collect"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/sell_waste_collect"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
+                    style="@style/SpinnerViewNew" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/specify_sell_waste_collect"
-                style="@style/TextInputStyle"
-                android:hint="@string/please_specify">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_et_specify_sell_waste_collect"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/please_specify_waste" />
 
                 <EditText
-                    android:id="@+id/et_specif_sell_waste_collect"
-                    style="@style/EditTextStyle"
+                    android:id="@+id/et_specify_sell_waste_collect"
+                    style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
                     android:inputType="text" />
 
-            </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/lay_spin_source_income"
+                style="@style/LinearLayoutStyle">
 
-            <TableRow style="@style/Tablerow">
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/source_income" />
 
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_source_income"
-                    style="@style/SpinnerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/_10sdp"
-                    app:ms_alignLabels="false"
-                    app:ms_arrowColor="@color/colorPrimary"
-                    app:ms_arrowSize="12dp"
-                    app:ms_baseColor="@color/colorPrimary"
-                    app:ms_enableErrorLabel="false"
-                    app:ms_enableFloatingLabel="true"
-                    app:ms_floatingLabelColor="@color/colorPrimary"
-                    app:ms_floatingLabelText="@string/source_income"
-                    app:ms_multiline="false"
-                    app:ms_thickness="0dp" />
-            </TableRow>
+                    style="@style/SpinnerViewNew" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/specify_source_income"
-                style="@style/TextInputStyle"
-                android:hint="@string/please_specify">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_et_specif_source_income"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/please_specify_source_income" />
 
                 <EditText
                     android:id="@+id/et_specif_source_income"
-                    style="@style/EditTextStyle"
+                    style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
                     android:inputType="text" />
 
-            </com.google.android.material.textfield.TextInputLayout>
-
+            </LinearLayout>
 
         </LinearLayout>
 

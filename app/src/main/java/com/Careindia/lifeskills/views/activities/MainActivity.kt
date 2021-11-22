@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         validate = Validate(this)
-        tv_title.text = "Home"
+//        tv_title.text = "Home"
 
 
         initCall()
@@ -25,9 +25,9 @@ class MainActivity : AppCompatActivity() {
 
     fun initCall(){
 
-        btn_save.setOnClickListener {
-
-        }
+//        btn_save.setOnClickListener {
+//
+//        }
 
         /*et_formfilngDate.setOnClickListener {
             validate!!.datePickerwithmindate(
@@ -41,96 +41,96 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        validate!!.fillSpinnerLanguage(
-            this,
-            spin_secondary_income,
-            resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
-        )
-        validate!!.fillSpinnerLanguage(
-            this,
-            spin_what_secondary_income,
-            resources.getString(R.string.select),
-            resources.getStringArray(R.array.spin_source_income)
-        )
-        validate!!.fillSpinnerLanguage(
-            this,
-            spin_have_adhar,
-            resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
-        )
-        validate!!.fillSpinnerLanguage(
-            this,
-            spin_have_voter,
-            resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
-        )
-        validate!!.fillSpinnerLanguage(
-            this,
-            spin_have_pan,
-            resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
-        )
-        validate!!.fillSpinnerLanguage(
-            this,
-            spin_have_income,
-            resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
-        )
-        validate!!.fillSpinnerLanguage(
-            this,
-            spin_have_caste,
-            resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
-        )
-        validate!!.fillSpinnerLanguage(
-            this,
-            spin_svg_bank_act,
-            resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
-        )
-        validate!!.fillSpinnerLanguage(
-            this,
-            spin_availed_services_past,
-            resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
-        )
-        validate!!.fillSpinnerLanguage(
-            this,
-            spin_avail_any_scheme,
-            resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
-        )
-        validate!!.fillSpinnerLanguage(
-            this,
-            spin_new_jobs_business,
-            resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
-        )
-        validate!!.fillSpinnerLanguage(
-            this,
-            spin_alternative_get_opportunity,
-            resources.getString(R.string.select),
-            resources.getStringArray(R.array.spin_alternative_get_opportunity)
-        )
-        validate!!.fillSpinnerLanguage(
-            this,
-            spin_member_cig_shg,
-            resources.getString(R.string.select),
-            resources.getStringArray(R.array.yes_no)
-        )
-
-
-
-
-        validate!!.dynamicRadio(this, checkRadio, resources.getStringArray(R.array.yes_no))
-
-
-        validate!!.fillCheckBoxes(
-            this,
-            skills_jobs_picking,
-            resources.getStringArray(R.array.skills_jobs_picking)
-        )
+//        validate!!.fillSpinnerLanguage(
+//            this,
+//            spin_secondary_income,
+//            resources.getString(R.string.select),
+//            resources.getStringArray(R.array.yes_no)
+//        )
+//        validate!!.fillSpinnerLanguage(
+//            this,
+//            spin_what_secondary_income,
+//            resources.getString(R.string.select),
+//            resources.getStringArray(R.array.spin_source_income)
+//        )
+//        validate!!.fillSpinnerLanguage(
+//            this,
+//            spin_have_adhar,
+//            resources.getString(R.string.select),
+//            resources.getStringArray(R.array.yes_no)
+//        )
+//        validate!!.fillSpinnerLanguage(
+//            this,
+//            spin_have_voter,
+//            resources.getString(R.string.select),
+//            resources.getStringArray(R.array.yes_no)
+//        )
+//        validate!!.fillSpinnerLanguage(
+//            this,
+//            spin_have_pan,
+//            resources.getString(R.string.select),
+//            resources.getStringArray(R.array.yes_no)
+//        )
+//        validate!!.fillSpinnerLanguage(
+//            this,
+//            spin_have_income,
+//            resources.getString(R.string.select),
+//            resources.getStringArray(R.array.yes_no)
+//        )
+//        validate!!.fillSpinnerLanguage(
+//            this,
+//            spin_have_caste,
+//            resources.getString(R.string.select),
+//            resources.getStringArray(R.array.yes_no)
+//        )
+//        validate!!.fillSpinnerLanguage(
+//            this,
+//            spin_svg_bank_act,
+//            resources.getString(R.string.select),
+//            resources.getStringArray(R.array.yes_no)
+//        )
+//        validate!!.fillSpinnerLanguage(
+//            this,
+//            spin_availed_services_past,
+//            resources.getString(R.string.select),
+//            resources.getStringArray(R.array.yes_no)
+//        )
+//        validate!!.fillSpinnerLanguage(
+//            this,
+//            spin_avail_any_scheme,
+//            resources.getString(R.string.select),
+//            resources.getStringArray(R.array.yes_no)
+//        )
+//        validate!!.fillSpinnerLanguage(
+//            this,
+//            spin_new_jobs_business,
+//            resources.getString(R.string.select),
+//            resources.getStringArray(R.array.yes_no)
+//        )
+//        validate!!.fillSpinnerLanguage(
+//            this,
+//            spin_alternative_get_opportunity,
+//            resources.getString(R.string.select),
+//            resources.getStringArray(R.array.spin_alternative_get_opportunity)
+//        )
+//        validate!!.fillSpinnerLanguage(
+//            this,
+//            spin_member_cig_shg,
+//            resources.getString(R.string.select),
+//            resources.getStringArray(R.array.yes_no)
+//        )
+//
+//
+//
+//
+//        validate!!.dynamicRadio(this, checkRadio, resources.getStringArray(R.array.yes_no))
+//
+//
+//        validate!!.fillCheckBoxes(
+//            this,
+//            skills_jobs_picking,
+//            resources.getStringArray(R.array.skills_jobs_picking)
+//        )
 
     }
 

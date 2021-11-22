@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".views.improfile.IMProfileThirdActivity">
+
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar_layout" />
+
+
+    <ScrollView
+        style="@style/ScrolllViewStyle"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            style="@style/LinearLayoutStyle"
+            android:background="@drawable/box_background"
+            android:padding="@dimen/_10sdp">
+
+            <LinearLayout
+                android:id="@+id/lay_et_no_days_job"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/no_days_month_primary_job" />
+
+                <EditText
+                    android:id="@+id/et_no_days_job"
+                    style="@style/EditTextStyleNew"
+                    android:digits="1234567890"
+                    android:hint="@string/type_here"
+                    android:inputType="number"
+                    android:maxLength="2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_et_avg_daily_income"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/avg_daily_income_primary_job" />
+
+                <EditText
+                    android:id="@+id/et_avg_daily_income"
+                    style="@style/EditTextStyleNew"
+                    android:digits="1234567890"
+                    android:hint="@string/type_here"
+                    android:inputType="number"
+                    android:maxLength="4" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_spin_secondary_income"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/secondary_income" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_secondary_income"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_spin_what_secondary_income"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/what_secondry_income" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_what_secondary_income"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_et_specify_source_secondary_income"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/please_specify_secondry_income" />
+
+                <EditText
+                    android:id="@+id/et_specify_source_secondary_income"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_et_days_secondary_job"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/no_days_secondary_job" />
+
+                <EditText
+                    android:id="@+id/et_days_secondary_job"
+                    style="@style/EditTextStyleNew"
+                    android:digits="0123456789"
+                    android:hint="@string/type_here"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_et_avg_daily_secondry_income"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/avg_daily_secondry_income" />
+
+                <EditText
+                    android:id="@+id/et_avg_daily_secondry_income"
+                    style="@style/EditTextStyleNew"
+                    android:digits="0123456789"
+                    android:hint="@string/type_here"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:singleLine="true" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_spin_have_adhar"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/have_adhar_card" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_have_adhar"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_spin_have_voter"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/have_voter_card" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_have_voter"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_spin_have_pan"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/have_pan_card" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_have_pan"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_spin_have_income"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/income_certi" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_have_income"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_spin_have_caste"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/caste_certi" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_have_caste"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_spin_svg_bank_act"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/svg_bank_act" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_svg_bank_act"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_spin_availed_services_past"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/availed_services_past" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_availed_services_past"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_et_service_provider_department"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/service_provider_department" />
+
+                <EditText
+                    android:id="@+id/et_service_provider_department"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_spin_avail_any_scheme"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/avail_any_scheme" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_avail_any_scheme"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_et_details_service_avail"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/details_service_avail" />
+
+                <EditText
+                    android:id="@+id/et_details_service_avail"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                style="@style/Tablerow"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextViewStyle"
+                    android:text="@string/skills_jobs_picking" />
+
+                <LinearLayout
+                    android:id="@+id/skills_jobs_picking"
+                    style="@style/CheckBox"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="#CDCBCB" />
+
+            <LinearLayout
+                android:id="@+id/lay_et_specify"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/please_specify_skill_job" />
+
+                <EditText
+                    android:id="@+id/et_skills_jobs_picking"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_spin_new_jobs_business"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/new_jobs_business" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_new_jobs_business"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_spin_alternative_get_opportunity"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/alternative_get_opportunity" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_alternative_get_opportunity"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_spin_member_cig_shg"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/member_CIG_SHG" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_member_cig_shg"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_et_name_collective_part"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/name_collective_part" />
+
+                <EditText
+                    android:id="@+id/et_name_collective_part"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TableRow
+        style="@style/TableRowStyle"
+        android:layout_margin="@dimen/_10sdp">
+
+        <include layout="@layout/buttons_save_cancel" />
+
+    </TableRow>
+
+</LinearLayout>
