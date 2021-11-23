@@ -1,4 +1,4 @@
-package com.careindia.lifeskills.views.householdscreen
+package com.careindia.lifeskills.views.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
+import com.careindia.lifeskills.views.adapter.HouseholdProfileAdapter
 import kotlinx.android.synthetic.main.activity_primary_data_list.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 

@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <include layout="@layout/toolbar_layout" />
 
@@ -193,7 +192,7 @@
 
                 <TextView
                     style="@style/TextViewStyleNew"
-                    android:text="@string/how_much_financial_assistance_is_required" />
+                    android:text="@string/how_much_they_have_invested" />
 
                 <EditText
                     android:id="@+id/et_how_much_they_invested"

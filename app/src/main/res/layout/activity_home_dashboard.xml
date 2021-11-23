@@ -11,13 +11,20 @@
     <!--        layout="@layout/toolbLar_layout" />-->
 
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/linear_synjhjcd"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_height="0dp"
+        android:layout_weight=".1"
+        android:orientation="horizontal"
         android:background="@drawable/dashboard_top_bg">
 
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
         <TextView
             android:id="@+id/tv_wlcm"
             android:layout_width="wrap_content"
@@ -26,34 +33,37 @@
             android:layout_marginStart="@dimen/_20sdp"
             android:text="Welcome!" />
 
-        <ImageView
-            android:id="@+id/iv_prf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/_30sdp"
-            android:src="@drawable/ic_profile" />
+
 
         <TextView
             android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_wlcm"
             android:layout_marginStart="@dimen/_20sdp"
             android:fontFamily="@font/firasans_bold"
             android:text="Subham Sharma"
             android:textColor="@color/text_clr"
             android:textSize="@dimen/_16ssp" />
 
+        </LinearLayout>
 
-    </RelativeLayout>
+        <ImageView
+            android:id="@+id/iv_prf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_profile" />
+
+
+    </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/_5sdp"
         android:background="@drawable/dashborad_dark_bg"
         android:orientation="vertical">
 

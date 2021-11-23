@@ -34,8 +34,8 @@
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
                     android:inputType="number"
-                    android:maxLength="3"
-                    android:minHeight="@dimen/_35sdp" />
+                    android:maxLength="2"
+                    />
 
             </LinearLayout>
 
@@ -54,8 +54,7 @@
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
                     android:inputType="number"
-                    android:maxLength="3"
-                    android:minHeight="@dimen/_35sdp" />
+                    android:maxLength="2" />
 
             </LinearLayout>
 
@@ -74,8 +73,7 @@
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
                     android:inputType="number"
-                    android:maxLength="3"
-                    android:minHeight="@dimen/_35sdp" />
+                    android:maxLength="2" />
 
             </LinearLayout>
 
@@ -94,8 +92,7 @@
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
                     android:inputType="number"
-                    android:maxLength="3"
-                    android:minHeight="@dimen/_35sdp" />
+                    android:maxLength="2" />
 
             </LinearLayout>
 
@@ -114,8 +111,7 @@
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
                     android:inputType="number"
-                    android:maxLength="3"
-                    android:minHeight="@dimen/_35sdp" />
+                    android:maxLength="2" />
 
             </LinearLayout>
 
@@ -134,8 +130,7 @@
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
                     android:inputType="number"
-                    android:maxLength="3"
-                    android:minHeight="@dimen/_35sdp" />
+                    android:maxLength="2" />
 
             </LinearLayout>
 
@@ -153,8 +148,7 @@
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
                     android:inputType="number"
-                    android:maxLength="3"
-                    android:minHeight="@dimen/_35sdp" />
+                    android:maxLength="2" />
 
             </LinearLayout>
 
@@ -172,8 +166,7 @@
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
                     android:inputType="number"
-                    android:maxLength="3"
-                    android:minHeight="@dimen/_35sdp" />
+                    android:maxLength="2" />
 
             </LinearLayout>
 
@@ -191,8 +184,7 @@
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
                     android:inputType="number"
-                    android:maxLength="3"
-                    android:minHeight="@dimen/_35sdp" />
+                    android:maxLength="2" />
 
             </LinearLayout>
 
@@ -225,9 +217,8 @@
                     android:id="@+id/et_othertypeofdwelling"
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
-                    android:inputType="number"
-                    android:maxLength="3"
-                    android:minHeight="@dimen/_35sdp" />
+                    android:inputType="text"
+                    android:maxLength="50"/>
 
             </LinearLayout>
 
@@ -242,7 +233,6 @@
 
                 <RadioGroup
                     android:id="@+id/rg_dwelling_place_registered"
-                    android:minHeight="@dimen/_35sdp"
                     style="@style/radioGroupStyle">
 
                 </RadioGroup>

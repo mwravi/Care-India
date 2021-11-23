@@ -4,13 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.careindia.lifeskills.R
-import com.careindia.lifeskills.views.activities.MainActivity
-import com.careindia.lifeskills.views.householdscreen.HouseholdProfileListActivity
+import com.careindia.lifeskills.views.activities.HouseholdProfileListActivity
+import com.careindia.lifeskills.views.primarydatascreen.PrimaryDataListActivity
 import com.careindia.lifeskills.views.collectiveProfile.CollectiveProfileListActivity
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.improfile.IMProfileListActivity
 import com.careindia.lifeskills.views.loginscreen.LoginActivity
-import com.careindia.lifeskills.views.primarydatascreen.PrimaryDataListActivity
 import kotlinx.android.synthetic.main.activity_home_dashboard.*
 
 class HomeDashboardActivity : BaseActivity(), View.OnClickListener  {

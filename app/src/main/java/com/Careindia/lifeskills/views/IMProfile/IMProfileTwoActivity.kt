@@ -10,6 +10,7 @@ import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
+import kotlinx.android.synthetic.main.activity_improfile_third.*
 import kotlinx.android.synthetic.main.activity_improfile_two.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
@@ -44,33 +45,42 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
 
         validate!!.fillSpinner(
             this,
-            spin_cate_picker_belong,
+            spin_state,
             resources.getString(R.string.select),
             mstCommonViewModel,
-            56
+            46
         )
         validate!!.fillSpinner(
             this,
-            spin_source_income,
+            spin_access_sphone,
             resources.getString(R.string.select),
             mstCommonViewModel,
-            59
+            47
+        )
+        validate!!.fillSpinner(
+            this,
+            spin_education,
+            resources.getString(R.string.select),
+            mstCommonViewModel,
+            48
+        )
+        validate!!.fillSpinner(
+            this,
+            spin_education,
+            resources.getString(R.string.select),
+            mstCommonViewModel,
+            48
+        )
+        validate!!.fillSpinner(
+            this,
+            spin_can_read,
+            resources.getString(R.string.select),
+            mstCommonViewModel,
+            49
         )
 
-        validate!!.fillSpinner(
-            this,
-            spin_type_emp,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            57
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_sell_waste_collect,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            58
-        )
+
+
         validate!!.fillSpinner(
             this,
             spin_acess_mob_data,
@@ -79,23 +89,12 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             60
         )
 
-        validate!!.fillCheckBoxes(
-            this,
-            multiCheck_lang_read,
-            resources.getStringArray(R.array.language)
-        )
-        validate!!.fillCheckBoxes(this, lang_write, resources.getStringArray(R.array.language))
-        validate!!.fillCheckBoxes(
-            this,
-            prefer_comni_speaking,
-            resources.getStringArray(R.array.language)
-        )
-        validate!!.fillCheckBoxes(
-            this,
-            lang_prefer_mobile_use,
-            resources.getStringArray(R.array.language)
-        )
-        validate!!.fillCheckBoxes(this, multiCheck, resources.getStringArray(R.array.language))
+
+        validate!!.dynamicMultiCheck(this, multiCheck_lang_read, mstCommonViewModel,51)
+        validate!!.dynamicMultiCheck(this, lang_write, mstCommonViewModel,52)
+        validate!!.dynamicMultiCheck(this, prefer_comni_speaking, mstCommonViewModel,53)
+        validate!!.dynamicMultiCheck(this, multiCheck, mstCommonViewModel,54)
+
     }
 
 
@@ -103,18 +102,25 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
      * Click on view
      */
     private fun applyClickOnView() {
+        btn_prev.setOnClickListener(this)
         btn_save.setOnClickListener(this)
 
     }
 
     override fun onClick(view: View?) {
         when (view?.id) {
-            R.id.btn_save -> {
-                if (checkValidation() == 1) {
+            R.id.btn_prev -> {
+//                if (checkValidation() == 1) {
+                    var intent = Intent(this, IMProfileOneActivity::class.java)
+                    startActivity(intent)
+                    finish()
+//                }
+            } R.id.btn_save -> {
+//                if (checkValidation() == 1) {
                     var intent = Intent(this, IMProfileThirdActivity::class.java)
                     startActivity(intent)
                     finish()
-                }
+//                }
             }
         }
     }
@@ -122,7 +128,66 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
     private fun checkValidation(): Int {
         var value = 1
 
-        if (spin_acess_mob_data.selectedItemPosition == 0) {
+
+         if (spin_state.selectedItemPosition == 0) {
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_state,
+                resources.getString(R.string.plz_select_state)
+            )
+            value = 0
+
+        } else if (et_specify_state.text.toString().isEmpty()) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_specify_state,
+                resources.getString(R.string.plz_specify_othr)
+            )
+            value = 0
+        } else if (et_long_stay.text.toString().isEmpty()) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_long_stay,
+                resources.getString(R.string.plz_entr_sty_long)
+            )
+            value = 0
+
+        } else if (Integer.parseInt(et_long_stay.text.toString()) <= 0 || Integer.parseInt(
+                et_long_stay.text.toString()
+            ) >= 99
+        ) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_long_stay,
+                resources.getString(R.string.plz_entr_less_input)
+            )
+            value = 0
+
+
+        } else if (spin_can_read.selectedItemPosition == 0) {
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_can_read,
+                resources.getString(R.string.plz_read_write)
+            )
+            value = 0
+        } else if (spin_education.selectedItemPosition == 0) {
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_education,
+                resources.getString(R.string.plz_select_education)
+            )
+            value = 0
+        } else if (spin_access_sphone.selectedItemPosition == 0) {
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_access_sphone,
+                resources.getString(R.string.plz_select_smartphone)
+            )
+
+            value = 0
+
+        }else if (spin_acess_mob_data.selectedItemPosition == 0) {
             validate!!.CustomAlertSpinner(
                 this,
                 spin_acess_mob_data,
@@ -131,9 +196,8 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             value = 0
 
         } else if (validate!!.GetAnswerTypeCheckBoxButtonID(multiCheck).isEmpty()) {
-            validate!!.CustomAlertCheckbox(
+            validate!!.CustomAlert(
                 this,
-                multiCheck,
                 resources.getString(R.string.plz_select_speack_lang)
             )
             value = 0
@@ -145,9 +209,8 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
         } else if (validate!!.GetAnswerTypeCheckBoxButtonID(multiCheck_lang_read).isEmpty()) {
-            validate!!.CustomAlertCheckbox(
+            validate!!.CustomAlert(
                 this,
-                multiCheck_lang_read,
                 resources.getString(R.string.plz_select_read_lang)
             )
             value = 0
@@ -160,9 +223,8 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
         } else if (validate!!.GetAnswerTypeCheckBoxButtonID(lang_write).isEmpty()) {
-            validate!!.CustomAlertCheckbox(
+            validate!!.CustomAlert(
                 this,
-                lang_write,
                 resources.getString(R.string.plz_select_write_lang)
             )
             value = 0
@@ -176,9 +238,8 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
         } else if (validate!!.GetAnswerTypeCheckBoxButtonID(prefer_comni_speaking).isEmpty()) {
-            validate!!.CustomAlertCheckbox(
+            validate!!.CustomAlert(
                 this,
-                prefer_comni_speaking,
                 resources.getString(R.string.plz_select_communication_lang)
             )
             value = 0
@@ -191,77 +252,10 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(lang_prefer_mobile_use).isEmpty()) {
-            validate!!.CustomAlertCheckbox(
-                this,
-                lang_prefer_mobile_use,
-                resources.getString(R.string.plz_select_mobiledata_lang)
-            )
-            value = 0
-        } else if (et_specify_perfer_mob.text.toString().isEmpty()) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_specify_perfer_mob,
-                resources.getString(R.string.plz_specify_othr)
-            )
-            value = 0
-        } else if (spin_cate_picker_belong.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_cate_picker_belong,
-                resources.getString(R.string.plz_select_waste_pickr)
-            )
-            value = 0
-        } else if (spin_type_emp.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_type_emp,
-                resources.getString(R.string.plz_select_employmentr)
-            )
-            value = 0
-        } else if (et_waste_pick.text.toString().isEmpty()) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_waste_pick,
-                resources.getString(R.string.plz_select_wastes_pick)
-            )
-            value = 0
-
-        } else if (spin_sell_waste_collect.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_sell_waste_collect,
-                resources.getString(R.string.plz_select_dispose_wastes)
-            )
-            value = 0
-
-
-        } else if (et_specify_sell_waste_collect.text.toString().isEmpty()) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_specify_sell_waste_collect,
-                resources.getString(R.string.plz_specify_othr)
-            )
-            value = 0
-
-        } else if (spin_source_income.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_source_income,
-                resources.getString(R.string.plz_select_source_income)
-            )
-            value = 0
-        } else if (et_specif_source_income.text.toString().isEmpty()) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_specif_source_income,
-                resources.getString(R.string.plz_specify_othr)
-            )
-            value = 0
-
         }
         return value
     }
+
 
     override fun onBackPressed() {
         val intent = Intent(this, HomeDashboardActivity::class.java)

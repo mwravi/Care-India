@@ -13,17 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:name=".views.improfile.IMProfileThirdActivity"
+            android:name=".views.improfile.IMProfileFifthActivity"
             android:exported="true" />
         <activity
-            android:name=".views.improfile.IMProfileListActivity"
-            android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:name=".views.improfile.IMProfileFourthActivity"
+            android:exported="true" />
         <activity
             android:name=".views.homescreen.HomeDashboardActivity"
             android:exported="true"
@@ -40,11 +39,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".views.activities.MainActivity"
-            android:exported="true"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".views.loginscreen.LoginActivity"
             android:exported="true"
@@ -111,17 +105,27 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.householdscreen.HouseholdProfileFirstActivity"
+            android:name=".views.activities.HouseholdProfileFirstActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.householdscreen.HouseholdProfileSecondActivity"
+            android:name=".views.activities.HouseholdProfileSecondActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".views.householdscreen.HouseholdProfileListActivity"
+            android:name=".views.activities.HouseholdProfileListActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".views.improfile.IMProfileListActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".views.improfile.IMProfileThirdActivity"
             android:exported="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />

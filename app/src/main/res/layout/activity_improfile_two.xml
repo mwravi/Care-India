@@ -24,6 +24,97 @@
             android:padding="@dimen/_10sdp">
 
             <LinearLayout
+                android:id="@+id/lay_spin_state"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/state_belong" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_state"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_et_specify_state"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/please_specify_statte" />
+
+                <EditText
+                    android:id="@+id/et_specify_state"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_et_long_stay"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/long_stay" />
+
+                <EditText
+                    android:id="@+id/et_long_stay"
+                    style="@style/EditTextStyleNew"
+                    android:digits="1234567890"
+                    android:inputType="number"
+                    android:maxLength="2" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_spin_can_read"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/read_write" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_can_read"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_spin_education"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/highest_education" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_education"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_spin_access_sphone"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/acess_smart_phone" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_access_sphone"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/lay_spin_acess_mob_data"
                 style="@style/LinearLayoutStyle">
 
@@ -39,7 +130,8 @@
 
 
             <LinearLayout
-                style="@style/Tablerow"
+                style="@style/CheckBox"
+                android:background="@drawable/box_background"
                 android:orientation="vertical">
 
                 <TextView
@@ -79,7 +171,8 @@
 
 
             <LinearLayout
-                style="@style/Tablerow"
+                style="@style/CheckBox"
+                android:background="@drawable/box_background"
                 android:orientation="vertical">
 
                 <TextView
@@ -119,7 +212,8 @@
 
 
             <LinearLayout
-                style="@style/Tablerow"
+                style="@style/CheckBox"
+                android:background="@drawable/box_background"
                 android:orientation="vertical">
 
                 <TextView
@@ -159,7 +253,8 @@
 
 
             <LinearLayout
-                style="@style/Tablerow"
+                style="@style/CheckBox"
+                android:background="@drawable/box_background"
                 android:orientation="vertical">
 
                 <TextView
@@ -197,153 +292,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                style="@style/Tablerow"
-                android:orientation="vertical">
 
-                <TextView
-                    style="@style/TextViewStyle"
-                    android:text="@string/language_prefer_mobile_use" />
-
-                <LinearLayout
-                    android:id="@+id/lang_prefer_mobile_use"
-                    style="@style/CheckBox"
-                    android:orientation="vertical" />
-
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/_4sdp"
-                android:background="#CDCBCB" />
-
-            <LinearLayout
-                android:id="@+id/lay_et_specify_perfer_mob"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/please_specify_mobile" />
-
-                <EditText
-                    android:id="@+id/et_specify_perfer_mob"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_spin_cate_picker_belong"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/category_waste_picker_belong" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_cate_picker_belong"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_spin_type_emp"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/type_emp" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_type_emp"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_et_waste_pick"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/wastes_pick_sort" />
-
-                <EditText
-                    android:id="@+id/et_waste_pick"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_spin_sell_waste_collect"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/sell_waste_collect" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_sell_waste_collect"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_et_specify_sell_waste_collect"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/please_specify_waste" />
-
-                <EditText
-                    android:id="@+id/et_specify_sell_waste_collect"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_spin_source_income"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/source_income" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_source_income"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_et_specif_source_income"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/please_specify_source_income" />
-
-                <EditText
-                    android:id="@+id/et_specif_source_income"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text" />
-
-            </LinearLayout>
 
         </LinearLayout>
 

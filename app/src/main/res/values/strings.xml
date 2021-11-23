@@ -60,6 +60,7 @@
     <string name="member_CIG_SHG">46. Are you a member of any collective such as CIG/SHG/JLG/DWCC?</string>
     <string name="name_collective_part">47. What is the name of the collective that you are part of?</string>
 
+
     <string name="hh_id">HH ID</string>
     <string name="im_id">IM ID</string>
     <string name="community_name">Community Name:Block</string>
@@ -93,8 +94,10 @@
     <string name="amount_of_financial_assistance_required">Amount of financial assistance required?</string>
     <string name="Those_self_employed_require_any_support">Those Self employed require any support?</string>
 
+
     <string name="empty_email">Please enter Email ID</string>
     <string name="attendce_sestion_trckr"><![CDATA[Attendence & \nSesstion Tracker]]></string>
+
 
     <!--vimal-->
     <string name="q101_date_of_filling_the_form">Q101. Date of filling the form</string>
@@ -210,7 +213,63 @@
     <string name="email_address">Email address</string>
     <string name="enter_date">Select Date</string>
     <string name="previous">Previous</string>
+    <string name="q112_what_type_of_collective_group_it_is">Q112. What type of collective/group it is?</string>
+
+    <string name="please_enter">Please Enter</string>
+    <string name="please_select">Please Select</string>
+    <string name="sum_of_collective_member">Total number of members in the group/collective must be equal to sum of Total number of male members,female members and transgender members in the group/collective</string>
+    <string name="valid_age_of_the_member">Age of the member must be between 18-65 year</string>
+    <string name="valid_mobile_no">valid mobile number</string>
+    <string name="adult_female_and_adult_male_total">Total number of adult members in family must be equal to the sum of number of adult male members and adult female members</string>
+    <string name="hhh_unique_id">Q109. Household Unique ID</string>
+    <string name="valid_adolsent_boys_girls">Total number of adolescent boys and girls must be equal to sum of number of adolescent boys and adolescent girls</string>
+    <string name="valid_total_children">Total number of children must be equal to sum of number of male children and female children</string>
+    <string name="valid_earning_member">Total number of earning members must be equal to sum of number of male earning member and female earning member</string>
+    <string name="valid_tenure_of_the_president_office_bearer_in_complete_years">Tenure of the President/Office bearer must be between 1-5 year</string>
+    <string name="q308a_please_specify_others">Q308a. Please specify others</string>
+    <string name="q309_are_members_avail_the_loan">Q309. Are the members able to easily avail loan?</string>
+    <string name="valid_frequency_the_election_for_office_bearer_happens_in_complete_years">Frequency of the election for office bearer must be between 1-10 year</string>
+    <string name="primary_data_list">Primary Data List</string>
+    <string name="primary_data">Primary Data</string>
+    <string name="please_enter_hh_id">Please enter household unique id</string>
+    <string name="please_enter_valid_hh_id">Please enter valid household unique id</string>
     <string name="ok">OK</string>
+    <string name="please_enter_im_id">Please enter individual member id</string>
+    <string name="please_enter_valid_im_id">Please enter valid individual member id</string>
+    <string name="please_enter_community_name">Please enter community name</string>
+    <string name="please_enter_beneficiary_name">Please enter beneficiary name</string>
+    <string name="please_enter_age">Please enter age</string>
+    <string name="please_enter_valid_age">Please enter age between 18 and 65</string>
+    <string name="please_select_gender">Please select gender</string>
+    <string name="please_enter_contact_number">Please enter contact number</string>
+    <string name="please_enter_valid_contact_number">Please enter valid contact number</string>
+    <string name="please_select_member_shg_jlg_clg">Please select member of any shg/jlg/clg</string>
+    <string name="please_select_social_category">Please select social category</string>
+    <string name="please_select_caste_and_income_certificate">Please select caste and income certificate</string>
+    <string name="please_select_aadhar_card">Please select do you have aadhar card</string>
+    <string name="please_select_pan_card">Please select do you have pan card</string>
+    <string name="please_select_bank_account">Please select do you have bank account</string>
+    <string name="please_select_new_business">Please select are you interested in starting new business</string>
+    <string name="please_enter_kind_of_business">Please enter kind of business</string>
+    <string name="please_select_business_plan">Please select do you have their business plan</string>
+    <string name="please_enter_range_of_investment">Please enter range of investment</string>
+    <string name="please_select_ready_to_invest">Please select are they ready to invest</string>
+    <string name="please_select_how_much_you_will_invest">Please select how much you will invest</string>
+    <string name="please_select_how_they_planning_their_investment">Please select how they planning their investment</string>
+    <string name="please_enter_how_much_financial_assistance_is_required">Please enter how much financial assistance is required</string>
+    <string name="please_select_expected_support">Please select expected support</string>
+    <string name="please_select_availing_loans">Please select are you interested in availing loans or subsidies</string>
+    <string name="please_enter_how_much_they_have_invested">Please enter how much they have invested</string>
+    <string name="please_enter_what_kind_of_business_it_is">Please enter what kind of business it is</string>
+    <string name="please_select_is_the_business_registered">Please select is the business registered</string>
+    <string name="please_select_stage_of_self_employment_enterprise_idea">Please select stage of self-employment / enterprise idea</string>
+    <string name="please_select_are_they_availing_loans_already">Please select are they availing loans already</string>
+    <string name="please_enter_from_where_have_availed_loans">Please enter from where have availed loans</string>
+    <string name="please_select_are_they_expecting_any_financial_assistance">Please select are they expecting any financial assistance</string>
+    <string name="please_enter_amount_of_financial_assistance_required">Please enter amount of financial assistance required</string>
+    <string name="please_select_Those_self_employed_require_any_support">Please select those self employed require any support</string>
+    //ravi
+
     <string name="plz_enter_date">Please enter the date of filling form</string>
     <string name="plz_enter_name_crp">Please enter the name of CRP filling the form</string>
     <string name="plz_enter_name_superng_coordntr">Please enter the name of supervising field coordinator</string>
@@ -270,4 +329,10 @@
     <string name="please_specify_source_income">26a. Please specify others</string>
     <string name="please_specify_secondry_income">30a. Please specify others</string>
     <string name="please_specify_skill_job">43a. Please specify others</string>
+    <string name="please_entr_input_months">Please enter the Input value between 1–29</string>
+    <string name="please_entr_input_daily">Please enter the Input value between 50–9999</string>
+
+    <string name="please_prvd_service_detail">Please provide details of the service/scheme that you are availing.</string>
+
+
 </resources>

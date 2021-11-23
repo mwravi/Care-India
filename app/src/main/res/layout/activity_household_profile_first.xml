@@ -34,8 +34,7 @@
                         android:inputType="date"
                         android:clickable="false"
                         android:focusable="false"
-                        android:drawableEnd="@drawable/ic_calender"
-                        android:minHeight="@dimen/_35sdp" />
+                        android:drawableEnd="@drawable/ic_calender" />
 
                 </LinearLayout>
 
@@ -149,11 +148,29 @@
                          style="@style/EditTextStyleNew"
                          android:hint="@string/type_here"
                          android:inputType="text"
-                         android:maxLength="30"
-                         android:minHeight="@dimen/_35sdp" />
+                         android:maxLength="50"
+                         />
 
                  </LinearLayout>
 
+                 <LinearLayout
+                     android:id="@+id/lay_hh_id"
+                     style="@style/LinearLayoutStyle">
+
+                     <TextView
+                         android:id="@+id/tv_hh_id"
+                         style="@style/TextViewStyleNew"
+                         android:text="@string/hhh_unique_id" />
+
+                     <EditText
+                         android:id="@+id/et_hh_unique_id"
+                         style="@style/EditTextStyleNew"
+                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                         android:hint="@string/type_here"
+                         android:inputType="text"
+                         android:maxLength="14" />
+
+                 </LinearLayout>
 
                  <LinearLayout
                      android:id="@+id/lay_hhName"
@@ -169,8 +186,9 @@
                          style="@style/EditTextStyleNew"
                          android:hint="@string/type_here"
                          android:inputType="textPersonName"
+                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                          android:maxLength="20"
-                         android:minHeight="@dimen/_35sdp" />
+                         />
 
                  </LinearLayout>
 
@@ -203,8 +221,7 @@
                          style="@style/EditTextStyleNew"
                          android:hint="@string/type_here"
                          android:inputType="number"
-                         android:maxLength="3"
-                         android:minHeight="@dimen/_35sdp" />
+                         android:maxLength="2" />
 
                  </LinearLayout>
 
@@ -222,8 +239,7 @@
                          style="@style/EditTextStyleNew"
                          android:hint="@string/type_here"
                          android:inputType="number"
-                         android:maxLength="3"
-                         android:minHeight="@dimen/_35sdp" />
+                         android:maxLength="2" />
 
                  </LinearLayout>
 
@@ -241,8 +257,8 @@
                          style="@style/EditTextStyleNew"
                          android:hint="@string/type_here"
                          android:inputType="number"
-                         android:maxLength="3"
-                         android:minHeight="@dimen/_35sdp" />
+                         android:maxLength="2"
+                        />
 
                  </LinearLayout>
 

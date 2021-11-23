@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/white"
+android:orientation="vertical"
+tools:context=".views.improfile.IMProfileFourthActivity">
+
+<include
+    android:id="@+id/include"
+    layout="@layout/toolbar_layout" />
+
+
+<ScrollView
+    style="@style/ScrolllViewStyle"
+    android:layout_margin="@dimen/_10sdp"
+    android:layout_weight="1"
+    android:scrollbars="none">
+
+    <LinearLayout
+        style="@style/LinearLayoutStyle"
+        android:background="@drawable/box_background"
+        android:padding="@dimen/_10sdp">
+
+
+        <LinearLayout
+            android:id="@+id/lay_et_days_secondary_job"
+            style="@style/LinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyleNew"
+                android:text="@string/no_days_secondary_job" />
+
+            <EditText
+                android:id="@+id/et_days_secondary_job"
+                style="@style/EditTextStyleNew"
+                android:digits="0123456789"
+                android:hint="@string/type_here"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_et_avg_daily_secondry_income"
+            style="@style/LinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyleNew"
+                android:text="@string/avg_daily_secondry_income" />
+
+            <EditText
+                android:id="@+id/et_avg_daily_secondry_income"
+                style="@style/EditTextStyleNew"
+                android:digits="0123456789"
+                android:hint="@string/type_here"
+                android:inputType="number"
+                android:maxLines="1"
+                android:singleLine="true" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lay_spin_have_adhar"
+            style="@style/LinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyleNew"
+                android:text="@string/have_adhar_card" />
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_have_adhar"
+                style="@style/SpinnerViewNew" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_spin_have_voter"
+            style="@style/LinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyleNew"
+                android:text="@string/have_voter_card" />
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_have_voter"
+                style="@style/SpinnerViewNew" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_spin_have_pan"
+            style="@style/LinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyleNew"
+                android:text="@string/have_pan_card" />
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_have_pan"
+                style="@style/SpinnerViewNew" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_spin_have_income"
+            style="@style/LinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyleNew"
+                android:text="@string/income_certi" />
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_have_income"
+                style="@style/SpinnerViewNew" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_spin_have_caste"
+            style="@style/LinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyleNew"
+                android:text="@string/caste_certi" />
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_have_caste"
+                style="@style/SpinnerViewNew" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_spin_svg_bank_act"
+            style="@style/LinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyleNew"
+                android:text="@string/svg_bank_act" />
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_svg_bank_act"
+                style="@style/SpinnerViewNew" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/lay_spin_availed_services_past"
+            style="@style/LinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyleNew"
+                android:text="@string/availed_services_past" />
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_availed_services_past"
+                style="@style/SpinnerViewNew" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/lay_et_service_provider_department"
+            style="@style/LinearLayoutStyle">
+
+            <TextView
+                style="@style/TextViewStyleNew"
+                android:text="@string/service_provider_department" />
+
+            <EditText
+                android:id="@+id/et_service_provider_department"
+                style="@style/EditTextStyleNew"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                android:hint="@string/type_here"
+                android:inputType="text" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</ScrollView>
+
+    <TableRow
+        style="@style/TableRowStyle"
+        android:layout_margin="@dimen/_10sdp">
+
+        <include layout="@layout/buttons_save_cancel" />
+
+    </TableRow>
+
+</LinearLayout>

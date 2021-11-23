@@ -38,18 +38,13 @@
     <style name="TextViewStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/_12ssp</item>
-        <item name="android:fontFamily">@font/firasans_regular</item>
-        <item name="android:textColor">@color/black_text</item>
-    </style>
-    <style name="TextViewStyleNew">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">@dimen/_12ssp</item>
-        <item name="android:textColor">@color/black_text</item>
-        <item name="android:fontFamily">@font/firasans_regular</item>
-        <item name="android:minHeight">@dimen/_20sdp</item>
-        <item name="android:padding">@dimen/_2sdp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:padding">@dimen/_5sdp</item>
+        <item name="android:paddingLeft">@dimen/_10sdp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginStart">@dimen/_5sdp</item>
+        <item name="android:layout_marginEnd">@dimen/_5sdp</item>
+        <item name="android:layout_marginTop">8dp</item>
     </style>
 
     <style name="NewSimpleText">
@@ -111,7 +106,7 @@
         <item name="android:layout_marginTop">8dp</item>
         <item name="android:layout_marginStart">@dimen/_5sdp</item>
         <item name="android:layout_marginEnd">@dimen/_5sdp</item>
-        <item name="android:background">@color/white</item>
+        <item name="android:background">@color/light_gray</item>
     </style>
     <style name="TextViewStylestrik">
         <item name="android:layout_width">wrap_content</item>
@@ -153,7 +148,7 @@
         <item name="minHeight">40dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:paddingTop">4dp</item>
         <item name="android:paddingLeft">3dp</item>
         <item name="android:gravity">center_vertical</item>
@@ -165,7 +160,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:minHeight">50dp</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">13sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:textColor">@color/black</item>
@@ -214,7 +209,15 @@
         <item name="android:fontFamily">@font/firasans_regular</item>
         <item name="android:minHeight">@dimen/_35sdp</item>
     </style>
-
+    <style name="TextViewStyleNew">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/black_text</item>
+        <item name="android:fontFamily">@font/firasans_regular</item>
+        <item name="android:minHeight">@dimen/_20sdp</item>
+        <item name="android:padding">@dimen/_2sdp</item>
+    </style>
 
     <style name="TextViewTitleStyle">
         <item name="android:layout_width">match_parent</item>
@@ -241,7 +244,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:minHeight">@dimen/_35sdp</item>
-        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textSize">@dimen/_18ssp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textColorHint">@color/grey_text</item>
         <item name="android:padding">@dimen/_3sdp</item>

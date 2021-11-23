@@ -6,8 +6,6 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
-import com.careindia.lifeskills.views.primarydatascreen.PrimaryDataAdapter
-import com.careindia.lifeskills.views.primarydatascreen.PrimaryDataFirstActivity
 import kotlinx.android.synthetic.main.activity_primary_data_list.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 

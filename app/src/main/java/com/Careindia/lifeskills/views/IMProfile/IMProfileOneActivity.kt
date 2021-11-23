@@ -86,41 +86,7 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
             45
         )
 
-        validate!!.fillSpinner(
-            this,
-            spin_state,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            46
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_access_sphone,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            47
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_education,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            48
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_education,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            48
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_can_read,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            49
-        )
+
 
 
     }
@@ -129,6 +95,7 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
      * Click on view
      */
     private fun applyClickOnView() {
+        btn_prev.visibility=View.GONE
         btn_save.setOnClickListener(this)
 
     }
@@ -140,11 +107,11 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
 //
 //                }
 
-                if (checkValidation() == 1) {
+//                if (checkValidation() == 1) {
                     var intent = Intent(this, IMProfileTwoActivity::class.java)
                     startActivity(intent)
                     finish()
-                }
+//                }
             }
         }
     }
@@ -213,7 +180,6 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-
         } else if (spin_casterespo.selectedItemPosition == 0) {
             validate!!.CustomAlertSpinner(
                 this,
@@ -246,182 +212,15 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
                 et_contactnorespo,
                 resources.getString(R.string.plz_enter_contct_no_proper)
             )
-            value = 0
-        } else if (spin_state.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_state,
-                resources.getString(R.string.plz_select_state)
-            )
-            value = 0
-
-        } else if (et_specify.text.toString().isEmpty()) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_specify,
-                resources.getString(R.string.plz_specify_othr)
-            )
-            value = 0
-        } else if (et_long_stay.text.toString().isEmpty()) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_long_stay,
-                resources.getString(R.string.plz_entr_sty_long)
-            )
-            value = 0
-
-        } else if (Integer.parseInt(et_long_stay.text.toString()) <= 0 || Integer.parseInt(
-                et_long_stay.text.toString()
-            ) >= 99
-        ) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_long_stay,
-                resources.getString(R.string.plz_entr_less_input)
-            )
-            value = 0
 
 
-        } else if (spin_can_read.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_can_read,
-                resources.getString(R.string.plz_read_write)
-            )
-            value = 0
-        } else if (spin_education.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_education,
-                resources.getString(R.string.plz_select_education)
-            )
-            value = 0
-        } else if (spin_access_sphone.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_access_sphone,
-                resources.getString(R.string.plz_select_smartphone)
-            )
             value = 0
         }
         return value
     }
 
 
-    private fun CheckValidationd(): Int {
-        var value = 1
 
-        if (et_formfilngjgDate.text.toString().trim().length == 0) {
-            Toast.makeText(this, "(Q101) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-        } else if (spin_name_crp.selectedItemPosition == 0) {
-            Toast.makeText(this, "(Q102) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-        } else if (spin_SupervisingFC.selectedItemPosition == 0) {
-            Toast.makeText(this, "(Q103) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-        } else if (ethouseid.text.toString().trim().length == 0) {
-            Toast.makeText(this, "(Q104) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-        } else if (et_namerespo.text.toString().trim().length == 0) {
-            Toast.makeText(this, "(Q201) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-        } else if (spin_sexrepo.selectedItemPosition == 0) {
-            Toast.makeText(this, "(Q203) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-        } else if (et_agerespo.text.toString().trim().length == 0) {
-            Toast.makeText(this, "(Q204) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-        } else if (Integer.parseInt(et_agerespo.text.toString()) <= 18 || Integer.parseInt(
-                et_agerespo.text.toString()
-            ) >= 65
-        ) {
-            Toast.makeText(this, "(Q204) Input value between 18-65", Toast.LENGTH_SHORT).show()
-            value = 0
-            return value
-        } else if (spin_casterespo.selectedItemPosition == 0) {
-            Toast.makeText(this, "(Q205) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-        } else if (spin_marital.selectedItemPosition == 0) {
-            Toast.makeText(this, "(Q206) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-        } else if (et_contactnorespo.text.toString().trim().length == 0) {
-            Toast.makeText(this, "(Q207) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-        } else if (et_contactnorespo.text.toString().trim().length < 10) {
-            Toast.makeText(this, "(Q207) Input proper 10 digit mobile no.", Toast.LENGTH_SHORT)
-                .show()
-
-            value = 0
-            return value
-        } else if (spin_state.selectedItemPosition == 0) {
-            Toast.makeText(this, "(Q209) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-
-
-        } else if (et_specify.text.toString().trim().length == 0) {
-            Toast.makeText(this, "(Q209a) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-        } else if (et_long_stay.text.toString().trim().length == 0) {
-            Toast.makeText(this, "(Q210) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-
-        } else if (Integer.parseInt(et_long_stay.text.toString()) <= 0 || Integer.parseInt(
-                et_long_stay.text.toString()
-            ) >= 99
-        ) {
-            Toast.makeText(
-                this,
-                "(Q210) Input value between 0-99 and that should be less",
-                Toast.LENGTH_SHORT
-            ).show()
-            value = 0
-            return value
-        } else if (spin_can_read.selectedItemPosition == 0) {
-            Toast.makeText(this, "(Q211) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-        } else if (spin_education.selectedItemPosition == 0) {
-            Toast.makeText(this, "(Q212) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-        } else if (spin_access_sphone.selectedItemPosition == 0) {
-            Toast.makeText(this, "(Q213) Please answer this question.", Toast.LENGTH_SHORT).show()
-
-            value = 0
-            return value
-
-        }
-        return value
-    }
 
     override fun onBackPressed() {
         val intent = Intent(this, HomeDashboardActivity::class.java)

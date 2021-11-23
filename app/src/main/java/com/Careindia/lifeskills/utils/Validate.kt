@@ -166,6 +166,7 @@ init {
     }
 
 
+
     fun check(ID: Int, Value: String?): Boolean {
         var iValue = false
         if (Value != null && !Value.equals("null", ignoreCase = true) && Value.length > 0) {
@@ -233,97 +234,6 @@ init {
 //        spin.adapter = adapter
     }
 
-    fun dynamicMultiCheck(context: Context, liear: LinearLayout, data: List<MstCommonEntity>?) {
-        if (data != null) {
-            val iGen = data.size
-            val value = arrayOfNulls<String>(iGen + 1)
-            for (i in 0 until data.size) {
-                val multicheck1 = CheckBox(context)
-                multicheck1.layoutParams =
-                    LinearLayout.LayoutParams(
-                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                        ViewGroup.LayoutParams.WRAP_CONTENT
-                    )
-
-                multicheck1.setText(data.get(i).value)
-                multicheck1.id = data.get(i).id!!
-
-                if (liear != null) {
-                    liear.addView(multicheck1)
-                }
-
-            }
-
-        }
-
-    }
-
-    fun GetAnswerTypeCheckBoxButtonID(linear: LinearLayout): String {
-        var QusAns = ""
-        for (i in 0 until linear.childCount) {
-
-            val checkbox = linear.getChildAt(i) as CheckBox
-            if (checkbox.isChecked) {
-                if (QusAns.length == 0) {
-                    QusAns = checkbox.id.toString()
-                } else {
-                    QusAns = (QusAns
-                            + ","
-                            + checkbox.id.toString())
-                }
-            }
-        }
-        return QusAns
-    }
-
-    fun SetAnswerTypeCheckBoxButton(layout: LinearLayout, value: String?) {
-
-        for (i in 0 until layout.childCount) {
-
-            val chkbox = layout.getChildAt(i) as CheckBox
-            chkbox.setChecked(check(chkbox.id, value))
-        }
-    }
-
-    fun fillradio(
-        Radio: RadioGroup,
-        value: Int,
-        data: List<MstCommonEntity>?,
-        activity: Activity
-    ) {
-
-        Radio.removeAllViews()
-        Radio.clearCheck()
-        if (!data.isNullOrEmpty()) {
-            val rb = arrayOfNulls<RadioButton>(data.size)
-            for (i in data.indices) {
-                rb[i] = RadioButton(activity)
-                val params = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    1f
-                )
-                rb[i]!!.setLayoutParams(params)
-                Radio.addView(rb[i])
-                //                rb[i].setButtonDrawable(R.drawable.radio_check);
-                rb[i]!!.setText(data.get(i).value)
-                rb[i]!!.setId(data.get(i).id!!.toInt())
-                rb[i]!!.setTextColor(activity.resources.getColor(R.color.black))
-                rb[i]!!.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL)
-                rb[i]!!.setTextSize(
-                    TypedValue.COMPLEX_UNIT_PX,
-                    activity.resources.getDimension(R.dimen.radio)
-                )
-                Radio.setPadding(20, 5, 20, 5)
-                //                }
-                if (value == data.get(i).id) {
-                    rb[i]!!.setChecked(true)
-                }
-            }
-        }
-    }
-
-
     fun fillSpinner(
         activity: Activity,
         spin: Spinner,
@@ -384,6 +294,76 @@ init {
         return pos
     }
 
+
+
+    fun GetAnswerTypeCheckBoxButtonID(linear: LinearLayout): String {
+        var QusAns = ""
+        for (i in 0 until linear.childCount) {
+
+            val checkbox = linear.getChildAt(i) as CheckBox
+            if (checkbox.isChecked) {
+                if (QusAns.length == 0) {
+                    QusAns = checkbox.id.toString()
+                } else {
+                    QusAns = (QusAns
+                            + ","
+                            + checkbox.id.toString())
+                }
+            }
+        }
+        return QusAns
+    }
+
+    fun SetAnswerTypeCheckBoxButton(layout: LinearLayout, value: String?) {
+
+        for (i in 0 until layout.childCount) {
+
+            val chkbox = layout.getChildAt(i) as CheckBox
+            chkbox.setChecked(check(chkbox.id, value))
+        }
+    }
+
+    fun fillradio(
+        Radio: RadioGroup,
+        value: Int,
+        mstCommonViewModel: MstCommonViewModel?,
+        flag:Int,
+        activity: Activity
+    ) {
+        var data: List<MstCommonEntity>? = null
+        data =
+            mstCommonViewModel!!.getMstCommon(flag)
+        Radio.removeAllViews()
+        Radio.clearCheck()
+        if (!data.isNullOrEmpty()) {
+            val rb = arrayOfNulls<RadioButton>(data.size)
+            for (i in data.indices) {
+                rb[i] = RadioButton(activity)
+                val params = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    1f
+                )
+                rb[i]!!.setLayoutParams(params)
+                Radio.addView(rb[i])
+                //                rb[i].setButtonDrawable(R.drawable.radio_check);
+                rb[i]!!.setText(data.get(i).value)
+                rb[i]!!.setId(data.get(i).id!!.toInt())
+                rb[i]!!.setTextColor(activity.resources.getColor(R.color.black))
+                rb[i]!!.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL)
+                rb[i]!!.setTextSize(
+                    TypedValue.COMPLEX_UNIT_PX,
+                    activity.resources.getDimension(R.dimen.radio)
+                )
+                Radio.setPadding(20, 5, 20, 5)
+                //                }
+                if (value == data.get(i).id) {
+                    rb[i]!!.setChecked(true)
+                }
+            }
+        }
+    }
+
     fun SetAnswerTypeRadioButton(radioGroup: RadioGroup, data: Int) {
 
         for (i in 0 until radioGroup.childCount) {
@@ -394,6 +374,8 @@ init {
             }
         }
     }
+
+
 
     fun GetAnswerTypeRadioButtonID(radioGroup: RadioGroup): Int {
         var ID = 0
@@ -439,36 +421,8 @@ init {
         // Display the dialog
         dialog.show()
     }
-fun CustomAlertCheckbox(
-        activity: Activity,
-        et: LinearLayout,
-        msg: String?
-    ) { // Create custom dialog object
-        val dialog = Dialog(activity)
-        // hide to default title for Dialog
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        // inflate the layout dialog_layout.xml and set it as contentView
-        val inflater =
-            activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view: View = inflater.inflate(R.layout.dialog_layout, null, false)
-        dialog.setCanceledOnTouchOutside(false)
-        dialog.setContentView(view)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(0))
-        val txtTitle = dialog
-            .findViewById<View>(R.id.txt_alert_message) as TextView
-        txtTitle.text = msg
-        val btnok =
-            dialog.findViewById<View>(R.id.btn_ok) as Button
-        btnok.setOnClickListener {
-            // Dismiss the dialog
-            dialog.dismiss()
-            et.performClick()
-            et.requestFocus()
-        }
-        // Display the dialog
-        dialog.show()
-    }
 
+    @SuppressLint("ServiceCast")
     fun CustomAlertSpinner(
         activity: Activity,
         spin: Spinner,
@@ -548,5 +502,45 @@ fun CustomAlertCheckbox(
         } else {
             Patterns.EMAIL_ADDRESS.matcher(target).matches()
         }
+    }
+
+    fun dynamicMultiCheck(context: Context, liear: LinearLayout,    mstCommonViewModel: MstCommonViewModel?,
+                          flag:Int) {
+        var data: List<MstCommonEntity>? = null
+        data =
+            mstCommonViewModel!!.getMstCommon(flag)
+        if (data != null) {
+            val iGen = data.size
+            val value = arrayOfNulls<String>(iGen + 1)
+            for (i in 0 until data.size) {
+                val multicheck1 = CheckBox(context)
+                multicheck1.layoutParams =
+                    LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
+
+                multicheck1.setText(data.get(i).value?.trim())
+                multicheck1.id = data.get(i).id!!
+
+                if (liear != null) {
+                    liear.addView(multicheck1)
+                }
+
+            }
+
+        }
+
+    }
+
+    fun returnIntegerValue(myString: String?): Int {
+        var iValue = 0
+        if (myString != null && !myString.equals("null", ignoreCase = true) && myString.length > 0) {
+            //   if (CheckNumbers(myString)==true) {
+            iValue = Integer.valueOf(myString)
+
+        }
+        return iValue
+
     }
 }

@@ -1,4 +1,4 @@
-package com.careindia.lifeskills.views.primarydatascreen
+package com.careindia.lifeskills.views.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
