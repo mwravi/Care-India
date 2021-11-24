@@ -41,11 +41,11 @@ class HouseholdProfileSecondActivity : AppCompatActivity() {
             startActivity(intent)
         }*/
 
-        btn_save.setOnClickListener {
-            if (CheckValidation()==0) {
-
-            }
-        }
+//        btn_save.setOnClickListener {
+//            if (CheckValidation()==0) {
+//
+//            }
+//        }
 
       /*  btn_cancel.setOnClickListener {
             val intent = Intent(this, HouseholdProfileFirstActivity::class.java)

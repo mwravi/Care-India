@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="householdProfileViewModel"
@@ -9,6 +10,7 @@
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:viewBindingIgnore="true"
     android:orientation="vertical">
 
     <include layout="@layout/toolbar_layout" />
@@ -39,10 +41,8 @@
                         style="@style/EditTextStyleNew"
                         android:hint="@string/enter_date"
                         android:text="@={householdProfileViewModel.date}"
-                        android:inputType="date"
-                        android:clickable="false"
-                        android:focusable="false"
-                        android:drawableEnd="@drawable/ic_calender" />
+                        android:inputType="text"
+                         />
 
                 </LinearLayout>
 
@@ -228,9 +228,9 @@
             style="@style/ButtonTextStyle"
             android:layout_height="@dimen/_30sdp"
             android:layout_width="0dp"
+            android:onClick="@{()->householdProfileViewModel.saveandUpdateHHProfile()}"
             android:layout_weight="1"
-            android:onClick="@{()->householdProfileViewModel.saveandUpdateHHProfile}"
-            android:text="@={householdProfileViewModel.saveandnext}" />
+            android:text="@={householdProfileViewModel.saveandnextText}" />
 
         <TextView style="@style/NewSimpleTextMargin"
             android:layout_weight=".1"

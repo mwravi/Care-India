@@ -1,6 +1,7 @@
 package com.careindia.lifeskills.viewmodel
 
 
+import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,18 +12,17 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileRepository): ViewModel(){
+class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileRepository): ViewModel() {
 
     val hhProfileData = hhrepository.hhProfileData
 
 
     val Date = MutableLiveData<String?>()
 
-
-    val saveandnext = MutableLiveData<String>()
+    val saveandnextText = MutableLiveData<String>()
 
     init {
-        saveandnext.value = "Save & Next"
+        saveandnextText.value = "Save & Next"
     }
 
     fun saveandUpdateHHProfile(){
@@ -36,6 +36,7 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
             hhrepository.insert(hhProfileEntity)
         }
     }
+
 
 
 }

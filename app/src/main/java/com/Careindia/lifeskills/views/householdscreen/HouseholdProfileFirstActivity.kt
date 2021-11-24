@@ -44,7 +44,7 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
             )
         binding.householdProfileViewModel = householdProfileViewModel
         binding.lifecycleOwner = this
-
+        showLiveData()
         //  val hhdao:HouseholdProfileDao =
 
 
@@ -70,9 +70,9 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun initializeController() {
-        applyClickOnView()
-        fillSpinner()
-        fillRadio()
+//        applyClickOnView()
+//        fillSpinner()
+//        fillRadio()
     }
 
     private fun applyClickOnView() {

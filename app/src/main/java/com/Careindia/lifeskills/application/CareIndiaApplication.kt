@@ -20,9 +20,11 @@ class CareIndiaApplication : MultiDexApplication() {
         super.onCreate()
         myApplication = this
 
-
-        database = AppDataBase.getDatabase(myApplication)
-
+//        database = AppDataBase.getDatabase(myApplication)
+        database =
+            Room.databaseBuilder(applicationContext, AppDataBase::class.java, DB_NAME)
+                .fallbackToDestructiveMigration()
+                .allowMainThreadQueries().build()
 
         if (Build.VERSION.SDK_INT >= 24) {
             val builder = StrictMode.VmPolicy.Builder()
