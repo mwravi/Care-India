@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="householdProfileViewModel"
+            type="com.careindia.lifeskills.viewmodel.HouseholdProfileViewModel" />
+    </data>
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -15,7 +22,7 @@
              <LinearLayout
                 android:id="@+id/lay_hh_details"
                  style="@style/LinearLayoutStyle"
-                 android:padding="@dimen/_5sdp"
+                 android:padding="@dimen/_10sdp"
                  android:background="@drawable/box_background">
 
                 <LinearLayout
@@ -31,6 +38,7 @@
                         android:id="@+id/et_formfillingDate"
                         style="@style/EditTextStyleNew"
                         android:hint="@string/enter_date"
+                        android:text="@={householdProfileViewModel.date}"
                         android:inputType="date"
                         android:clickable="false"
                         android:focusable="false"
@@ -192,76 +200,6 @@
 
                  </LinearLayout>
 
-                 <LinearLayout
-                     android:id="@+id/lay_hhSex"
-                     style="@style/LinearLayoutStyle">
-
-                     <TextView
-                         android:id="@+id/tv_hhSex"
-                         style="@style/TextViewStyleNew"
-                         android:text="@string/hh_sex" />
-
-                     <fr.ganfra.materialspinner.MaterialSpinner
-                         android:id="@+id/spin_hhSex"
-                         style="@style/SpinnerViewNew" />
-
-                 </LinearLayout>
-
-                 <LinearLayout
-                     android:id="@+id/lay_totalAdult"
-                     style="@style/LinearLayoutStyle">
-
-                     <TextView
-                         android:id="@+id/tv_totalAdult"
-                         style="@style/TextViewStyleNew"
-                         android:text="@string/total_adult" />
-
-                     <EditText
-                         android:id="@+id/et_totalAdult"
-                         style="@style/EditTextStyleNew"
-                         android:hint="@string/type_here"
-                         android:inputType="number"
-                         android:maxLength="2" />
-
-                 </LinearLayout>
-
-                 <LinearLayout
-                     android:id="@+id/lay_adultMale"
-                     style="@style/LinearLayoutStyle">
-
-                     <TextView
-                         android:id="@+id/tv_adultMale"
-                         style="@style/TextViewStyleNew"
-                         android:text="@string/adult_male" />
-
-                     <EditText
-                         android:id="@+id/et_adultMale"
-                         style="@style/EditTextStyleNew"
-                         android:hint="@string/type_here"
-                         android:inputType="number"
-                         android:maxLength="2" />
-
-                 </LinearLayout>
-
-                 <LinearLayout
-                     android:id="@+id/lay_adultFemale"
-                     style="@style/LinearLayoutStyle">
-
-                     <TextView
-                         android:id="@+id/tv_adultFemale"
-                         style="@style/TextViewStyleNew"
-                         android:text="@string/adult_female" />
-
-                     <EditText
-                         android:id="@+id/et_adultFemale"
-                         style="@style/EditTextStyleNew"
-                         android:hint="@string/type_here"
-                         android:inputType="number"
-                         android:maxLength="2"
-                        />
-
-                 </LinearLayout>
-
         </LinearLayout>
 
     </ScrollView>
@@ -270,8 +208,35 @@
         style="@style/TableRowStyle"
         android:layout_margin="@dimen/_10sdp">
 
-        <include layout="@layout/buttons_save_cancel" />
+        <TextView style="@style/NewSimpleTextMargin"
+            android:layout_weight=".1"
+            />
+
+        <Button
+            android:id="@+id/btn_prev"
+            style="@style/ButtonTextStyle"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/previous" />
+
+        <TextView style="@style/NewSimpleTextMargin"
+            android:layout_weight=".1"
+            />
+        <Button
+            android:id="@+id/btn_save"
+            style="@style/ButtonTextStyle"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:onClick="@{()->householdProfileViewModel.saveandUpdateHHProfile}"
+            android:text="@={householdProfileViewModel.saveandnext}" />
+
+        <TextView style="@style/NewSimpleTextMargin"
+            android:layout_weight=".1"
+            />
 
     </TableRow>
 
 </LinearLayout>
+</layout>

@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
+import com.careindia.lifeskills.entity.IndividualProfileEntity
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
@@ -13,12 +14,15 @@ import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_improfile_one.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
     var validate: Validate? = null
     private val imProfileViewModel by viewModel<IMProfileViewModel>()
     lateinit var mstCommonViewModel: MstCommonViewModel
+    var imProfileGUID = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,6 +32,10 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
         tv_title.text = "IM Profile"
 
         initializeController()
+
+        GlobalScope.launch {
+
+        }
     }
 
 
@@ -115,6 +123,33 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
             }
         }
     }
+
+    private fun saveData(){
+        var save = 0
+        imProfileGUID = validate!!.random()
+
+        var imProfileEntity = IndividualProfileEntity(
+            0,
+            imProfileGUID,
+            "","","","",0,"",0,
+            validate!!.returnStringValue(et_formfilngjgDate.text.toString()),
+            validate!!.returnStringValue(ethouseid.text.toString()),
+            "",
+            validate!!.returnID(spin_name_crp, mstCommonViewModel, 41).toString(),
+            validate!!.returnID(spin_sexrepo, mstCommonViewModel, 43),
+            Integer.parseInt(et_agerespo.text.toString()),
+            validate!!.returnID(spin_casterespo, mstCommonViewModel, 44),
+            validate!!.returnID(spin_marital, mstCommonViewModel, 45),
+            validate!!.returnStringValue(et_contactnorespo.text.toString()),"",0,0,0,0,
+            0,0,"","","","",
+"",0,0,"",0,0,0,0,
+            0,0,0,0,0,0,0,0,
+            0,0,0,"","",0,"","",
+            "",0,"",0,"","",0,"",
+            0,0)
+    }
+
+
 
     private fun checkValidation(): Int {
         var value = 1

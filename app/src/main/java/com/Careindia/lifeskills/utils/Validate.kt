@@ -6,6 +6,7 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.app.Dialog
 import android.content.Context
+import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
 import android.util.Patterns
@@ -23,11 +24,39 @@ import java.util.*
 import java.util.regex.Pattern
 
 class Validate(context: Context) {
+    val MyPREFERENCES = "CARESP"
+    lateinit var sharedpreferences: SharedPreferences
+    lateinit var editor: SharedPreferences.Editor
     lateinit var context: Context
 
-init {
-    this.context = context
-}
+    init {
+        this.context = context
+        sharedpreferences = context.getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE)
+        editor = sharedpreferences.edit()
+    }
+
+    fun SaveSharepreferenceString(key: String, Value: String) {
+        editor.putString(key, Value)
+        editor.commit()
+    }
+
+    fun RetriveSharepreferenceString(key: String): String? {
+        return sharedpreferences.getString(key, "")
+    }
+
+    fun SaveSharepreferenceInt(key: String, iValue: Int) {
+        editor.putInt(key, iValue)
+        editor.commit()
+    }
+
+    fun RetriveSharepreferenceInt(key: String): Int {
+        return sharedpreferences.getInt(key, 0)
+    }
+
+    fun ClearSharedPrefrence() {
+        editor.clear()
+        editor.commit()
+    }
 
     fun datePickerwithmindate(sec: Long, date1: EditText) {
         val myCalendar = Calendar.getInstance()
@@ -542,5 +571,37 @@ init {
         }
         return iValue
 
+    }
+
+    fun returnStringValue(myString: String?): String {
+        var iValue = ""
+        if (myString != null && !myString.equals("null", ignoreCase = true) && myString.length > 0) {
+            iValue = myString
+        }
+        return iValue
+
+    }
+
+    val currentdatetime: String
+        get() {
+            val sdf = SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.US)
+
+            return sdf.format(Date())
+        }
+
+    fun random(): String {
+        val chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".toCharArray()
+        val sb = StringBuilder()
+        val random = Random()
+        for (i in 0..29) {
+            val c = chars[random.nextInt(chars.size)]
+            sb.append(c)
+        }
+
+
+        val dateFormat = SimpleDateFormat("yyyyMMddHHmmssSS")
+        val date = Date()
+        val SDateString = dateFormat.format(date)
+        return sb.toString() + SDateString
     }
 }

@@ -5,11 +5,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
+import com.careindia.lifeskills.entity.IndividualProfileEntity
 import com.careindia.lifeskills.entity.MstCommonEntity
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
+import kotlinx.android.synthetic.main.activity_improfile_one.*
 import kotlinx.android.synthetic.main.activity_improfile_third.*
 import kotlinx.android.synthetic.main.activity_improfile_two.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
@@ -19,7 +21,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
     var validate: Validate? = null
     lateinit var mstCommonViewModel: MstCommonViewModel
     var dataspin_gender: List<MstCommonEntity>? = null
-
+    var imProfileGUID = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -123,6 +125,32 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
 //                }
             }
         }
+    }
+
+
+    private fun saveData(){
+        var save = 0
+        imProfileGUID = validate!!.random()
+
+        var imProfileEntity = IndividualProfileEntity(
+            0,
+            imProfileGUID,
+            "","","","",0,"",0,
+            validate!!.returnStringValue(et_formfilngjgDate.text.toString()),
+            validate!!.returnStringValue(ethouseid.text.toString()),
+            "",
+            validate!!.returnID(spin_name_crp, mstCommonViewModel, 41).toString(),
+            validate!!.returnID(spin_sexrepo, mstCommonViewModel, 43),
+            Integer.parseInt(et_agerespo.text.toString()),
+            validate!!.returnID(spin_casterespo, mstCommonViewModel, 44),
+            validate!!.returnID(spin_marital, mstCommonViewModel, 45),
+            validate!!.returnStringValue(et_contactnorespo.text.toString()),"",0,0,0,0,
+            0,0,"","","","",
+            "",0,0,"",0,0,0,0,
+            0,0,0,0,0,0,0,0,
+            0,0,0,"","",0,"","",
+            "",0,"",0,"","",0,"",
+            0,0)
     }
 
     private fun checkValidation(): Int {
