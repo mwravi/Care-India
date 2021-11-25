@@ -1,7 +1,6 @@
 package com.careindia.lifeskills.views.improfile
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
@@ -10,7 +9,6 @@ import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_improfile_fourth.*
-import kotlinx.android.synthetic.main.activity_improfile_third.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 

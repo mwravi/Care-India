@@ -5,15 +5,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
-import com.careindia.lifeskills.application.CareIndiaApplication
-import com.careindia.lifeskills.entity.MstCommonEntity
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import kotlinx.android.synthetic.main.activity_collective_profile_first.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
-import java.io.IOException
-import java.io.InputStream
-import com.google.gson.Gson
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 
 

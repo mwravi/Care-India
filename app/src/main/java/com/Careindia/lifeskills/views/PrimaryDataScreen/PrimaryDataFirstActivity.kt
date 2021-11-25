@@ -6,7 +6,6 @@ import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.utils.Validate
-import com.careindia.lifeskills.entity.MstCommonEntity
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_primary_data_first.*

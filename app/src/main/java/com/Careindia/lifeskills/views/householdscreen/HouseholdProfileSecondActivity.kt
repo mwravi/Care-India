@@ -1,6 +1,5 @@
 package com.careindia.lifeskills.views.activities
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
@@ -8,9 +7,7 @@ import com.careindia.lifeskills.R
 import com.careindia.lifeskills.entity.MstCommonEntity
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
-import kotlinx.android.synthetic.main.activity_household_profile_first.*
 import kotlinx.android.synthetic.main.activity_household_profile_second.*
-import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class HouseholdProfileSecondActivity : AppCompatActivity() {

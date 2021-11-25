@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
-import kotlinx.android.synthetic.main.activity_collective_profile_second.*
 import kotlinx.android.synthetic.main.activity_collective_profile_third.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*

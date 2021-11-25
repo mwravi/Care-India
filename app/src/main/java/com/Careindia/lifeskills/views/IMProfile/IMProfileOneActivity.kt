@@ -3,7 +3,6 @@ package com.careindia.lifeskills.views.improfile
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.entity.IndividualProfileEntity

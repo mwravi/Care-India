@@ -1,26 +1,39 @@
 package com.careindia.lifeskills.viewmodel
 
 
-import android.app.Application
-import android.content.Context
+import android.app.Activity
+import android.os.DropBoxManager
+import android.widget.ArrayAdapter
 import android.widget.Spinner
-import androidx.databinding.Bindable
-import androidx.databinding.Observable
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.careindia.lifeskills.R
 import com.careindia.lifeskills.entity.HouseholdProfileEntity
+import com.careindia.lifeskills.entity.MstCommonEntity
 import com.careindia.lifeskills.repository.HouseholdProfileRepository
+import com.careindia.lifeskills.utils.Entry
 import com.careindia.lifeskills.utils.Validate
-import kotlinx.android.synthetic.main.activity_household_profile_first.*
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.NonDisposableHandle.parent
 import kotlinx.coroutines.launch
-import org.koin.dsl.module.applicationContext
 
 
-class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileRepository): ViewModel() {
+ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileRepository): ViewModel() {
     var validate: Validate? = null
+
+    /* BIND SPINNER DATA TO THESE PROJECTS */
+    val users : List<MstCommonEntity> = hhrepository.getallData(2)
+
+    /* BIND SELECTED PROJECT TO THIS VARIABLE */
+//     val selectedProject: MstCommonEntity;
+
+    var entry: MutableLiveData<Entry> = MutableLiveData()
+
+    var abcjay = hhrepository.getallData(45)
+
+
+
     val hhProfileData = hhrepository.hhProfileData
 
 
@@ -29,26 +42,22 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
 
     val saveandnextText = MutableLiveData<String>()
 
+
+
     init {
-//        validate = Validate(HouseholdProfileViewModel)
+//        validate = Validate(this)
 
         saveandnextText.value = "Save & Next"
     }
 
 
-//    fun datePickerProfile(){
-//        validate!!.datePickerwithmindate(
-//            validate!!.Daybetweentime("01-01-1990"),
-//            et_formfillingDate
-//        )
-//    }
-
 
     fun saveandUpdateHHProfile(){
         val date:String = Date.value!!
-        val spinData:Spinner? = itemSelectedPosition.value!!
+        val spindata:String = entry.value.toString()!!
+//        val spinData:Spinner? = itemSelectedPosition.value!!
         insert(HouseholdProfileEntity(0,"",
-            spinData.toString(),"","",0,"",0,date,"","",0,0,0,0,0,0,0,0,0,0,0,0,0,"",0,0,0,"",0,"",0,0))
+            "","","",0,"",0,date,"",spindata,0,0,0,0,0,0,0,0,0,0,0,0,0,"",0,0,0,"",0,"",0,0))
         Date.value = null
     }
 
@@ -58,6 +67,35 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
         }
     }
 
+
+
+
+
+    fun fillSpinner(
+        activity: Activity,
+        spin: Spinner,
+        Header: String?,
+        data: List<MstCommonEntity>?
+    ) {
+
+        val adapter: ArrayAdapter<String?>
+        val sValue = arrayOfNulls<String>(data!!.size + 1)
+        if (Header != null && Header.length > 0) {
+            sValue[0] = Header
+        } else {
+            sValue[0] = activity.resources.getString(R.string.select)
+        }
+        for (i in data.indices) {
+            sValue[i + 1] = data[i].value!!.trim()
+        }
+        adapter = ArrayAdapter(
+            activity,
+            R.layout.my_spinner_space_dashboard, sValue
+        )
+        adapter.setDropDownViewResource(R.layout.my_spinner_dashboard)
+        spin.setAdapter(adapter)
+//        spin.adapter = adapter
+    }
 
 
 //    android:onItemSelected="@{(parent,view,pos,id)->viewModel.onSelectItem(parent,view,pos,id)}"

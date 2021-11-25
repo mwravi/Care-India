@@ -9,13 +9,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
+import com.careindia.lifeskills.application.CareIndiaApplication
 import com.careindia.lifeskills.database.AppDataBase
 import com.careindia.lifeskills.databinding.ActivityHouseholdProfileFirstBinding
 import com.careindia.lifeskills.entity.HouseholdProfileEntity
 import com.careindia.lifeskills.repository.HouseholdProfileRepository
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.HouseholdProfileViewModel
-import com.careindia.lifeskills.viewmodel.HouseholdProfileViewModelFactory
+import com.careindia.lifeskills.viewmodelfactory.HouseholdProfileViewModelFactory
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_household_profile_first.*
@@ -23,6 +24,7 @@ import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
     private lateinit var binding: ActivityHouseholdProfileFirstBinding
+    public var instance: AppDataBase? = null
     var validate: Validate? = null
     lateinit var mstCommonViewModel: MstCommonViewModel
     lateinit var householdProfileEntity: HouseholdProfileEntity
@@ -35,17 +37,23 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
 
         householdProfileViewModel = ViewModelProviders.of(this).get(HouseholdProfileViewModel::class.java)*/
 
+
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_household_profile_first)
-        val hhdao = AppDataBase.getDatabase(this).hhProfileDao()
-        val hhRepository = HouseholdProfileRepository(hhdao)
+        instance = AppDataBase.getDatabase(this)
+//        val hhdao = instance!!.hhProfileDao()
+//        val mstcmnDoa = instance!!.mstCommonDao()
+
+       val hhdao = CareIndiaApplication.database?.hhProfileDao()!!
+       val mstcmnDoa = CareIndiaApplication.database?.mstCommonDao()!!
+
+        val hhRepository = HouseholdProfileRepository(hhdao,mstcmnDoa)
         householdProfileViewModel =
-            ViewModelProvider(this, HouseholdProfileViewModelFactory(hhRepository)).get(
-                HouseholdProfileViewModel::class.java
-            )
+            ViewModelProvider(this,
+                HouseholdProfileViewModelFactory(hhRepository))[HouseholdProfileViewModel::class.java]
         binding.householdProfileViewModel = householdProfileViewModel
         binding.lifecycleOwner = this
         showLiveData()
-        //  val hhdao:HouseholdProfileDao =
 
 
         tv_title.text = "Household Profile"
@@ -75,8 +83,6 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
         applyClickOnView()
         fillSpinner()
         fillRadio()
-
-        householdProfileViewModel.saveandUpdateHHProfile()
     }
 
     private fun applyClickOnView() {
@@ -104,13 +110,13 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
 
     fun fillSpinner() {
 
-        validate!!.fillSpinner(
-            this,
-            spin_crpfillingform,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            1
-        )
+//        validate!!.fillSpinner(
+//            this,
+//            spin_crpfillingform,
+//            resources.getString(R.string.select),
+//            mstCommonViewModel,
+//            1
+//        )
         validate!!.fillSpinner(
             this,
             spin_SupervisingFC,

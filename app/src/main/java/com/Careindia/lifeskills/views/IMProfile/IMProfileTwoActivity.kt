@@ -12,7 +12,6 @@ import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_improfile_one.*
-import kotlinx.android.synthetic.main.activity_improfile_third.*
 import kotlinx.android.synthetic.main.activity_improfile_two.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*

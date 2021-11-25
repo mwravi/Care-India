@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="householdProfileViewModel"
@@ -42,6 +42,7 @@
                         android:hint="@string/enter_date"
                         android:focusable="false"
                         android:clickable="false"
+                        android:drawableEnd="@drawable/ic_calender"
                         android:text="@={householdProfileViewModel.date}"
                         android:inputType="date"
                          />
@@ -60,7 +61,10 @@
 
                      <fr.ganfra.materialspinner.MaterialSpinner
                          android:id="@+id/spin_crpfillingform"
-                         style="@style/SpinnerViewNew" />
+                         style="@style/SpinnerViewNew"
+                         bind:users="@{householdProfileViewModel.users}"
+                         bind:selectedUser="@={householdProfileViewModel.entry.value}"
+                         />
 
                  </LinearLayout>
 
