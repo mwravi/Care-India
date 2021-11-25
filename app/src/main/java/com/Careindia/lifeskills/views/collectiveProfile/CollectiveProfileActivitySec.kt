@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
-import kotlinx.android.synthetic.main.activity_collective_profile_first.*
 import kotlinx.android.synthetic.main.activity_collective_profile_second.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
@@ -28,8 +27,17 @@ class CollectiveProfileActivitySec : AppCompatActivity() {
     }
 
     fun initCall() {
+
+        et_date_of_group_formation.setOnClickListener {
+            validate!!.datePickerwithmindate(
+                validate!!.Daybetweentime("01-01-1990"),
+                et_date_of_group_formation
+            )
+
+
+        }
         btn_save.setOnClickListener {
-           val intent = Intent(this, CollectiveProfileActivitythird::class.java)
+           val intent = Intent(this, CollectiveProfileActivityThird::class.java)
             if (CheckValidation()==0) {
                 startActivity(intent)
                 finish()
@@ -40,7 +48,21 @@ class CollectiveProfileActivitySec : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
+        validate!!.fillSpinner(
+            this,
+            spin_collective_group,
+            resources.getString(R.string.select),
+            mstCommonViewModel,
+            7
+        )
 
+        validate!!.fillSpinner(
+            this,
+            spin_group_registered,
+            resources.getString(R.string.select),
+            mstCommonViewModel,
+            8
+        )
         validate!!.fillSpinner(
             this,
             spin_head_group_sex,
@@ -49,20 +71,7 @@ class CollectiveProfileActivitySec : AppCompatActivity() {
             9
         )
 
-        validate!!.fillSpinner(
-            this,
-            spin_member_sex,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            10
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_savings_account,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            11
-        )
+
     }
 
     fun CheckValidation():Int {
@@ -70,7 +79,42 @@ class CollectiveProfileActivitySec : AppCompatActivity() {
         validate!!.returnIntegerValue(et_transgender_members.text.toString())
 
         var iValue = 0;
-        if (et_head_group_name.text.toString().length == 0) {
+         if (et_date_of_group_formation.text.toString().length == 0) {
+            iValue = 1
+            validate!!.CustomAlertEdit(
+                this,
+                et_date_of_group_formation,
+                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.date_of_formation_of_group),
+            )
+        } else if (spin_collective_group.selectedItemPosition == 0) {
+            iValue = 1
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_collective_group,
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q112_what_type_of_collective_group_it_is),
+            )
+        } else if (et_specify_others_group.text.toString().length == 0 ) {
+            iValue = 1
+            validate!!.CustomAlertEdit(
+                this,
+                et_specify_others_group,
+                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.please_specify_others),
+            )
+        }else if (spin_group_registered.selectedItemPosition == 0) {
+            iValue = 1
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_group_registered,
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.is_your_griup_registered),
+            )
+        } else if (et_specify_others_group_registered.text.toString().length == 0 ) {
+            iValue = 1
+            validate!!.CustomAlertEdit(
+                this,
+                et_specify_others_group_registered,
+                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.please_specify_others_registered),
+            )
+        } else if (et_head_group_name.text.toString().length == 0) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
@@ -112,70 +156,7 @@ class CollectiveProfileActivitySec : AppCompatActivity() {
                 et_transgender_members,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.total_no_of_transgender_members_in_group),
             )
-        }  else if (et_member_name.text.toString().length == 0 ) {
-            iValue = 1
-            validate!!.CustomAlertEdit(
-                this,
-                et_member_name,
-                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.name_of_the_member),
-            )
-        } else if (et_member_id.text.toString().length == 0 ) {
-            iValue = 1
-            validate!!.CustomAlertEdit(
-                this,
-                et_member_id,
-                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.individual_member_id),
-            )
-        } else if (spin_member_sex.selectedItemPosition == 0) {
-            iValue = 1
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_member_sex,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.sex_of_the_member),
-            )
-        }else if (et_member_age.text.toString().length == 0 ) {
-            iValue = 1
-            validate!!.CustomAlertEdit(
-                this,
-                et_member_age,
-                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.age_of_the_member),
-            )
-        } else if (validate!!.returnIntegerValue(et_member_age.text.toString())<18 || validate!!.returnIntegerValue(et_member_age.text.toString())>65) {
-            iValue = 1
-            validate!!.CustomAlertEdit(
-                this,
-                et_member_age,
-                resources.getString(R.string.valid_age_of_the_member),
-            )
-        } else if (et_contact_number.text.toString().length == 0 ) {
-            iValue = 1
-            validate!!.CustomAlertEdit(
-                this,
-                et_contact_number,
-                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.contact_number),
-            )
-        } else if (validate!!.checkmobileno(et_contact_number.text.toString()) == 0) {
-            iValue = 1
-            validate!!.CustomAlertEdit(
-                this,
-                et_contact_number,
-                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.valid_mobile_no),
-            )
-        }else if (et_role_of_member.text.toString().length == 0 ) {
-            iValue = 1
-            validate!!.CustomAlertEdit(
-                this,
-                et_role_of_member,
-                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.role_of_member_in_group),
-            )
-        } else if (spin_savings_account.selectedItemPosition == 0) {
-            iValue = 1
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_savings_account,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.do_you_have_savings_bank_account),
-            )
-        }  else if (validate!!.returnIntegerValue(et_total_no_of_members.text.toString())!=sumofMember) {
+        }   else if (validate!!.returnIntegerValue(et_total_no_of_members.text.toString())!=sumofMember) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,

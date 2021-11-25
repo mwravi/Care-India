@@ -40,8 +40,10 @@
                         android:id="@+id/et_formfillingDate"
                         style="@style/EditTextStyleNew"
                         android:hint="@string/enter_date"
+                        android:focusable="false"
+                        android:clickable="false"
                         android:text="@={householdProfileViewModel.date}"
-                        android:inputType="text"
+                        android:inputType="date"
                          />
 
                 </LinearLayout>

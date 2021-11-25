@@ -29,78 +29,67 @@ class CollectiveProfileActivityFourth : AppCompatActivity() {
 
     fun initCall() {
         btn_save.setOnClickListener {
-               if (CheckValidation()==0) {
-                 }
+           /*    if (CheckValidation()==0) {
+                 }*/
+
+            val intent = Intent(this, CollectiveProfileActivityFifth::class.java)
+            startActivity(intent)
+            finish()
         }
         btn_prev.setOnClickListener {
-            val intent = Intent(this, CollectiveProfileActivitythird::class.java)
+            val intent = Intent(this, CollectiveProfileActivityThird::class.java)
             startActivity(intent)
             finish()
         }
 
         validate!!.fillSpinner(
             this,
-            spin_meeting_conducted,
+            spin_bank_account,
             resources.getString(R.string.select),
             mstCommonViewModel,
-            21
+            14
         )
 
         validate!!.fillSpinner(
             this,
-            spin_frequency_of_meetings,
+            spin_group_savings,
             resources.getString(R.string.select),
             mstCommonViewModel,
-            22
+            15
         )
 
         validate!!.fillSpinner(
             this,
-            spin_attending_meeting,
+            spin_frequency_group_savings,
             resources.getString(R.string.select),
             mstCommonViewModel,
-            23
+            16
         )
 
         validate!!.fillSpinner(
             this,
-            spin_meeting_schedule,
+            spin_regular_savings,
             resources.getString(R.string.select),
             mstCommonViewModel,
-            24
+            17
         )
         validate!!.fillSpinner(
             this,
-            spin_record_book,
+            spin_avial_loan,
             resources.getString(R.string.select),
             mstCommonViewModel,
-            25
+            19
         )
         validate!!.fillSpinner(
             this,
-            spin_record_book_update,
+            spin_easily_avial_loan,
             resources.getString(R.string.select),
             mstCommonViewModel,
-            26
-        )
-        validate!!.dynamicMultiCheck(this, chk_options_below, mstCommonViewModel,27)
-
-        validate!!.fillSpinner(
-            this,
-            spin_services_schemes,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            28
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_enterprise_business,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            29
+            19
         )
 
-        validate!!.dynamicMultiCheck(this, chk_collective_plan, mstCommonViewModel,30)
+
+
 
 
 
@@ -109,105 +98,85 @@ class CollectiveProfileActivityFourth : AppCompatActivity() {
     fun CheckValidation():Int {
 
         var iValue = 0;
-       if (spin_meeting_conducted.selectedItemPosition == 0) {
+
+         if (spin_bank_account.selectedItemPosition == 0) {
             iValue = 1
             validate!!.CustomAlertSpinner(
                 this,
-                spin_meeting_conducted,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q401_are_meetings_conducted_in_your_sangha_group_collective),
+                spin_bank_account,
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q305_does_your_sangha_have_a_common_group_bank_account),
             )
-        } else if (spin_frequency_of_meetings.selectedItemPosition == 0) {
-            iValue = 1
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_frequency_of_meetings,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q402_what_is_the_frequency_of_meetings),
-            )
-        }  else if (et_other_q402a.text.toString().length == 0) {
+        } else if (et_cbank_account.text.toString().length == 0) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
-                et_other_q402a,
-                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q402a_please_specify_others),
+                et_cbank_account,
+                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q305a_what_are_the_challenges_in_opening_bank_account),
             )
-        }  else if (spin_attending_meeting.selectedItemPosition == 0) {
+        } else if (spin_group_savings.selectedItemPosition == 0) {
             iValue = 1
             validate!!.CustomAlertSpinner(
                 this,
-                spin_attending_meeting,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q403_regularity_of_members_attending_meeting),
+                spin_group_savings,
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q306_how_much_does_each_member_contribute_to_group_savings),
             )
-        } else if (spin_meeting_schedule.selectedItemPosition == 0) {
-            iValue = 1
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_meeting_schedule,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q404_does_the_meetings_happen_as_per_the_schedule_check_meeting_register),
-            )
-        }  else if (spin_record_book.selectedItemPosition == 0) {
-            iValue = 1
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_record_book,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q405_does_your_sangha_group_collective_have_a_record_book_check_for_the_record_book),
-            )
-        } else if (spin_record_book_update.selectedItemPosition == 0) {
-            iValue = 1
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_record_book_update,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q406_is_the_record_book_register_updated_in_every_meeting),
-            )
-        } else if (et_other_q501a.text.toString().length == 0 ) {
+        } else if (et_other_inr.text.toString().length == 0) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
-                et_other_q501a,
-                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q501a_please_specify_the_others),
+                et_other_inr,
+                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q306a_please_specify_the_others_in_inr),
             )
-        } else if (et_other_q501b.text.toString().length == 0 ) {
-           iValue = 1
-           validate!!.CustomAlertEdit(
-               this,
-               et_other_q501b,
-               resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q501b_what_service_services_you_are_getting_through_this_linkage_more_than_one_response_upto_three_is_possible),
-           )
-       } else if (spin_services_schemes.selectedItemPosition == 0) {
+        } else if (spin_frequency_group_savings.selectedItemPosition == 0) {
             iValue = 1
             validate!!.CustomAlertSpinner(
                 this,
-                spin_services_schemes,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q502_is_your_sangha_collective_currently_availing_any_services_schemes),
+                spin_frequency_group_savings,
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q307_in_what_frequency_the_members_contribute_to_the_group_savings),
             )
-        }  else if (et_details_service.text.toString().length == 0 ) {
+        } else if (et_other_frequency.text.toString().length == 0) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
-                et_details_service,
-                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q502a_please_provide_details_of_the_service_scheme_that_you_are_availing_more_than_one_response_upto_three_is_possible),
+                et_other_frequency,
+                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q307a_please_specify_others),
             )
-        } else if (et_service_provider.text.toString().length == 0 ) {
+        } else if (spin_regular_savings.selectedItemPosition == 0) {
+            iValue = 1
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_regular_savings,
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q308_are_the_members_regularly_saving_as_per_the_group_decision),
+            )
+        } else if (et_other_frequency1.text.toString().length == 0) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
-                et_service_provider,
-                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q502b_from_which_department_service_provider_you_are_availing_this_scheme_service),
+                et_other_frequency1,
+                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q308a_please_specify_others),
             )
-        } else if (spin_enterprise_business.selectedItemPosition == 0) {
-           iValue = 1
-           validate!!.CustomAlertSpinner(
-               this,
-               spin_enterprise_business,
-               resources.getString(R.string.please_select) + " " + resources.getString(R.string.q601_is_your_sangha_collective_members_interested_in_taking_up_any_collective_enterprise_business),
-           )
-       } else if (et_others_q602a.text.toString().length == 0 ) {
-           iValue = 1
-           validate!!.CustomAlertEdit(
-               this,
-               et_others_q602a,
-               resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q602a_please_specify_others),
-           )
-       }
+        } else if (spin_easily_avial_loan.selectedItemPosition == 0) {
+            iValue = 1
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_easily_avial_loan,
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q309_are_members_avail_the_loan),
+            )
+        } else if (spin_avial_loan.selectedItemPosition == 0) {
+            iValue = 1
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_avial_loan,
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q309a_from_where_the_members_avail_the_loan),
+            )
+        } else if (et_other_specify_q309b.text.toString().length == 0) {
+            iValue = 1
+            validate!!.CustomAlertEdit(
+                this,
+                et_other_specify_q309b,
+                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q309b_please_specify_others),
+            )
+        }
         return iValue;
     }
 

@@ -8,13 +8,13 @@
 
     <ScrollView
         style="@style/ScrolllViewStyle"
-        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/box_background"
+        android:layout_margin="@dimen/_5sdp"
         android:layout_weight="1"
         android:scrollbars="none">
 
         <LinearLayout
             style="@style/LinearLayoutStyle"
-            android:background="@drawable/box_background"
             android:padding="@dimen/_10sdp">
 
             <LinearLayout
@@ -187,94 +187,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/lay_date_of_group_formation"
-                style="@style/LinearLayoutStyle">
 
-                <TextView
-                    android:id="@+id/tv_date_of_group_formation"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/date_of_formation_of_group" />
-
-                <EditText
-                    android:id="@+id/et_date_of_group_formation"
-                    style="@style/EditTextStyleNew"
-                    android:clickable="false"
-                    android:drawableEnd="@drawable/ic_calender"
-                    android:focusable="false"
-                    android:hint="@string/enter_date" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_collective_group"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_collective_group"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q112_what_type_of_collective_group_it_is" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_collective_group"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_specify_others_group"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_specify_others_group"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/please_specify_others" />
-
-                <EditText
-                    android:id="@+id/et_specify_others_group"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/enter_date"
-                    android:inputType="text"
-                    android:maxLength="20" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_group_registered"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_group_registered"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/is_your_griup_registered" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_group_registered"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_specify_others_group_registered"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_specify_others_group_registered"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/please_specify_others_registered" />
-
-                <EditText
-                    android:id="@+id/et_specify_others_group_registered"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/enter_date"
-                    android:inputType="text"
-                    android:maxLength="20" />
-
-            </LinearLayout>
 
         </LinearLayout>
 

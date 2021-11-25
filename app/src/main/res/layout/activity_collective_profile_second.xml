@@ -9,14 +9,103 @@
 
     <ScrollView
         style="@style/ScrolllViewStyle"
-        android:layout_margin="@dimen/_10sdp"
+        android:background="@drawable/box_background"
+        android:layout_margin="@dimen/_5sdp"
         android:layout_weight="1"
         android:scrollbars="none">
 
         <LinearLayout
             style="@style/LinearLayoutStyle"
-            android:background="@drawable/box_background"
             android:padding="@dimen/_10sdp">
+
+            <LinearLayout
+                android:id="@+id/lay_date_of_group_formation"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_date_of_group_formation"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/date_of_formation_of_group" />
+
+                <EditText
+                    android:id="@+id/et_date_of_group_formation"
+                    style="@style/EditTextStyleNew"
+                    android:clickable="false"
+                    android:drawableEnd="@drawable/ic_calender"
+                    android:focusable="false"
+                    android:hint="@string/enter_date" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_collective_group"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_collective_group"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q112_what_type_of_collective_group_it_is" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_collective_group"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_specify_others_group"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_specify_others_group"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/please_specify_others" />
+
+                <EditText
+                    android:id="@+id/et_specify_others_group"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/enter_date"
+                    android:inputType="text"
+                    android:maxLength="20" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_group_registered"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_group_registered"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/is_your_griup_registered" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_group_registered"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_specify_others_group_registered"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_specify_others_group_registered"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/please_specify_others_registered" />
+
+                <EditText
+                    android:id="@+id/et_specify_others_group_registered"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/enter_date"
+                    android:inputType="text"
+                    android:maxLength="20" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/lay_head_group_name"
@@ -124,126 +213,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/lay_member_name"
-                style="@style/LinearLayoutStyle">
 
-                <TextView
-                    android:id="@+id/tv_member_name"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/name_of_the_member" />
-
-                <EditText
-                    android:id="@+id/et_member_name"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:inputType="text"
-                    android:maxLength="50"  />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_member_id"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_member_id"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/individual_member_id" />
-
-                <EditText
-                    android:id="@+id/et_member_id"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                    android:inputType="text"
-                    android:maxLength="14"   />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_member_sex"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_member_sex"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/sex_of_the_member" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_member_sex"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_member_age"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_member_age"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/age_of_the_member" />
-
-                <EditText
-                    android:id="@+id/et_member_age"
-                    style="@style/EditTextStyleNew"
-                    android:inputType="number"
-                    android:maxLength="2"   />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_contact_number"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_contact_number"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/contact_number" />
-
-                <EditText
-                    android:id="@+id/et_contact_number"
-                    style="@style/EditTextStyleNew"
-                    android:inputType="number"
-                    android:maxLength="10"   />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_role_of_member"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_role_of_member"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/role_of_member_in_group" />
-
-                <EditText
-                    android:id="@+id/et_role_of_member"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:inputType="text"
-                    android:maxLength="20"  />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_savings_account"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_savings_account"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/do_you_have_savings_bank_account" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_savings_account"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
 
         </LinearLayout>
 

@@ -7,6 +7,7 @@ import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.database.AppDataBase
 import com.careindia.lifeskills.databinding.ActivityHouseholdProfileFirstBinding
@@ -31,8 +32,7 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         /*setContentView(R.layout.activity_household_profile_first)
         validate = Validate(this)
-        mstCommonViewModel =
-            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
+
         householdProfileViewModel = ViewModelProviders.of(this).get(HouseholdProfileViewModel::class.java)*/
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_household_profile_first)
@@ -49,16 +49,18 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
 
 
         tv_title.text = "Household Profile"
-
+        validate = Validate(this)
+        mstCommonViewModel =
+            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
 
         initializeController()
 
-//        et_formfillingDate.setOnClickListener {
-//            validate!!.datePickerwithmindate(
-//                validate!!.Daybetweentime("01-01-1990"),
-//                et_formfillingDate
-//            )
-//        }
+        et_formfillingDate.setOnClickListener {
+            validate!!.datePickerwithmindate(
+                validate!!.Daybetweentime("01-01-1990"),
+                et_formfillingDate
+            )
+        }
     }
 
 
@@ -70,9 +72,11 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun initializeController() {
-//        applyClickOnView()
-//        fillSpinner()
-//        fillRadio()
+        applyClickOnView()
+        fillSpinner()
+        fillRadio()
+
+        householdProfileViewModel.saveandUpdateHHProfile()
     }
 
     private fun applyClickOnView() {

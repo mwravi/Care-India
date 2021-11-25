@@ -49,14 +49,7 @@ class CollectiveProfileActivity : AppCompatActivity() {
                 et_date_of_filling
             )
         }
-            et_date_of_group_formation.setOnClickListener {
-                validate!!.datePickerwithmindate(
-                    validate!!.Daybetweentime("01-01-1990"),
-                    et_date_of_group_formation
-                )
 
-
-        }
 
         validate!!.fillSpinner(
             this,
@@ -103,21 +96,7 @@ class CollectiveProfileActivity : AppCompatActivity() {
             mstCommonViewModel,
             6
         )
-        validate!!.fillSpinner(
-            this,
-            spin_collective_group,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            7
-        )
 
-        validate!!.fillSpinner(
-            this,
-            spin_group_registered,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            8
-        )
     }
 
         fun CheckValidation():Int {
@@ -191,41 +170,6 @@ class CollectiveProfileActivity : AppCompatActivity() {
                     this,
                     et_group_collective_name,
                     resources.getString(R.string.please_enter) + " " + resources.getString(R.string.name_of_group_collective_sangha),
-                )
-            } else if (et_date_of_group_formation.text.toString().length == 0) {
-                iValue = 1
-                validate!!.CustomAlertEdit(
-                    this,
-                    et_date_of_group_formation,
-                    resources.getString(R.string.please_enter) + " " + resources.getString(R.string.date_of_formation_of_group),
-                )
-            } else if (spin_collective_group.selectedItemPosition == 0) {
-                iValue = 1
-                validate!!.CustomAlertSpinner(
-                    this,
-                    spin_collective_group,
-                    resources.getString(R.string.please_select) + " " + resources.getString(R.string.q112_what_type_of_collective_group_it_is),
-                )
-            } else if (et_specify_others_group.text.toString().length == 0 ) {
-                iValue = 1
-                validate!!.CustomAlertEdit(
-                    this,
-                    et_specify_others_group,
-                    resources.getString(R.string.please_enter) + " " + resources.getString(R.string.please_specify_others),
-                )
-            }else if (spin_group_registered.selectedItemPosition == 0) {
-                iValue = 1
-                validate!!.CustomAlertSpinner(
-                    this,
-                    spin_group_registered,
-                    resources.getString(R.string.please_select) + " " + resources.getString(R.string.is_your_griup_registered),
-                )
-            } else if (et_specify_others_group_registered.text.toString().length == 0 ) {
-                iValue = 1
-                validate!!.CustomAlertEdit(
-                    this,
-                    et_specify_others_group_registered,
-                    resources.getString(R.string.please_enter) + " " + resources.getString(R.string.please_specify_others_registered),
                 )
             }
             return iValue;

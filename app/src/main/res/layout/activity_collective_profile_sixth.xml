@@ -18,33 +18,39 @@
             style="@style/LinearLayoutStyle"
             android:padding="@dimen/_10sdp">
 
+
+
+
+
             <LinearLayout
-                android:id="@+id/lay_bank_account"
+                android:id="@+id/lay_other_q501"
                 style="@style/LinearLayoutStyle">
 
                 <TextView
-                    android:id="@+id/tv_bank_account"
+                    android:id="@+id/tv_options_below"
                     style="@style/TextViewStyleNew"
-                    android:text="@string/q305_does_your_sangha_have_a_common_group_bank_account" />
+                    android:text="@string/q501_has_the_sangha_group_collective_established_any_linkage_with_options_below" />
 
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_bank_account"
-                    style="@style/SpinnerViewNew" />
+
+                <LinearLayout
+                    android:id="@+id/chk_options_below"
+                    style="@style/CheckBox"
+                    android:background="@drawable/box_background"
+                    android:orientation="vertical" />
 
             </LinearLayout>
 
-
             <LinearLayout
-                android:id="@+id/lay_cbank_account"
+                android:id="@+id/lay_other_q501a"
                 style="@style/LinearLayoutStyle">
 
                 <TextView
-                    android:id="@+id/tv_cbank_account"
+                    android:id="@+id/tv_other_q501a"
                     style="@style/TextViewStyleNew"
-                    android:text="@string/q305a_what_are_the_challenges_in_opening_bank_account" />
+                    android:text="@string/q501a_please_specify_the_others" />
 
                 <EditText
-                    android:id="@+id/et_cbank_account"
+                    android:id="@+id/et_other_q501a"
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
@@ -55,32 +61,16 @@
 
 
             <LinearLayout
-                android:id="@+id/lay_group_savings"
+                android:id="@+id/lay_other_q501b"
                 style="@style/LinearLayoutStyle">
 
                 <TextView
-                    android:id="@+id/tv_group_savings"
+                    android:id="@+id/tv_other_q501b"
                     style="@style/TextViewStyleNew"
-                    android:text="@string/q306_how_much_does_each_member_contribute_to_group_savings" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_group_savings"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_other_inr"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_other_inr"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q306a_please_specify_the_others_in_inr" />
+                    android:text="@string/q501b_what_service_services_you_are_getting_through_this_linkage_more_than_one_response_upto_three_is_possible" />
 
                 <EditText
-                    android:id="@+id/et_other_inr"
+                    android:id="@+id/et_other_q501b"
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
@@ -91,32 +81,32 @@
 
 
             <LinearLayout
-                android:id="@+id/lay_frequency_group_savings"
+                android:id="@+id/lay_services_schemes"
                 style="@style/LinearLayoutStyle">
 
                 <TextView
-                    android:id="@+id/tv_frequency_group_savings"
+                    android:id="@+id/tv_services_schemes"
                     style="@style/TextViewStyleNew"
-                    android:text="@string/q307_in_what_frequency_the_members_contribute_to_the_group_savings" />
+                    android:text="@string/q502_is_your_sangha_collective_currently_availing_any_services_schemes" />
 
                 <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_frequency_group_savings"
+                    android:id="@+id/spin_services_schemes"
                     style="@style/SpinnerViewNew" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:id="@+id/lay_other_frequency"
+                android:id="@+id/lay_details_service"
                 style="@style/LinearLayoutStyle">
 
                 <TextView
-                    android:id="@+id/tv_other_frequency"
+                    android:id="@+id/tv_details_service"
                     style="@style/TextViewStyleNew"
-                    android:text="@string/q307a_please_specify_others" />
+                    android:text="@string/q502a_please_provide_details_of_the_service_scheme_that_you_are_availing_more_than_one_response_upto_three_is_possible" />
 
                 <EditText
-                    android:id="@+id/et_other_frequency"
+                    android:id="@+id/et_details_service"
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
@@ -127,82 +117,16 @@
 
 
             <LinearLayout
-                android:id="@+id/lay_regular_savings"
+                android:id="@+id/lay_service_provider"
                 style="@style/LinearLayoutStyle">
 
                 <TextView
-                    android:id="@+id/tv_regular_savings"
+                    android:id="@+id/tv_service_provider"
                     style="@style/TextViewStyleNew"
-                    android:text="@string/q308_are_the_members_regularly_saving_as_per_the_group_decision" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_regular_savings"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_other_frequency1"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_other_frequency1"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q308a_please_specify_others" />
+                    android:text="@string/q502b_from_which_department_service_provider_you_are_availing_this_scheme_service" />
 
                 <EditText
-                    android:id="@+id/et_other_frequency1"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_easily_avial_loan"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_easily_avial_loan"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q309_are_members_avail_the_loan" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_easily_avial_loan"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_avial_loan"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_avial_loan"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q309a_from_where_the_members_avail_the_loan" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_avial_loan"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_other_specify_q309b"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_other_specify_q309b"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q309b_please_specify_others" />
-
-                <EditText
-                    android:id="@+id/et_other_specify_q309b"
+                    android:id="@+id/et_service_provider"
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
@@ -212,7 +136,56 @@
             </LinearLayout>
 
 
+            <LinearLayout
+                android:id="@+id/lay_enterprise_business"
+                style="@style/LinearLayoutStyle">
 
+                <TextView
+                    android:id="@+id/tv_enterprise_business"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q601_is_your_sangha_collective_members_interested_in_taking_up_any_collective_enterprise_business" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_enterprise_business"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_others_q602"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_collective_plan"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q602_what_business_would_the_collective_plan_to_do_if_given_an_opportunity" />
+
+
+                <LinearLayout
+                    android:id="@+id/chk_collective_plan"
+                    style="@style/CheckBox"
+                    android:background="@drawable/box_background"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_others_q602a"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_others_q602a"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q602a_please_specify_others" />
+
+                <EditText
+                    android:id="@+id/et_others_q602a"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+            </LinearLayout>
 
 
         </LinearLayout>
