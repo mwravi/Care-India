@@ -306,6 +306,7 @@ class Validate(context: Context) {
         return id
     }
 
+
     fun returnpos(id: Int? , mstCommonViewModel: MstCommonViewModel?,
                   flag:Int): Int {
         var data: List<MstCommonEntity>? = null

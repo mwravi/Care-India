@@ -3,44 +3,63 @@ package com.careindia.lifeskills.views.improfile
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
+import com.careindia.lifeskills.application.CareIndiaApplication
+import com.careindia.lifeskills.databinding.ActivityImprofileOneBinding
 import com.careindia.lifeskills.entity.IndividualProfileEntity
+import com.careindia.lifeskills.repository.IndividualProfileRepository
 import com.careindia.lifeskills.utils.Validate
+import com.careindia.lifeskills.viewmodel.IndividualProfileViewModel
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
+import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_improfile_one.*
-import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import org.koin.android.viewmodel.ext.android.viewModel
 
 class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityImprofileOneBinding
     var validate: Validate? = null
-    private val imProfileViewModel by viewModel<IMProfileViewModel>()
     lateinit var mstCommonViewModel: MstCommonViewModel
+    lateinit var imProfileViewModel: IndividualProfileViewModel
     var imProfileGUID = ""
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_improfile_one)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_improfile_one)
         validate = Validate(this)
         tv_title.text = "IM Profile"
 
+        mstCommonViewModel =
+            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
+
+        val improfiledao = CareIndiaApplication.database?.imProfileDao()
+        val commondao = CareIndiaApplication.database?.mstCommonDao()
+        val improfileRepository = IndividualProfileRepository(improfiledao!!, commondao!!)
+
+        imProfileViewModel = ViewModelProvider(
+            this,
+            IndividualViewModelFactory(improfileRepository)
+        )[IndividualProfileViewModel::class.java]
+        binding.individualProfileViewModel = imProfileViewModel
+        binding.lifecycleOwner = this
+
+
+
         initializeController()
-
-        GlobalScope.launch {
-
-        }
+//        GlobalScope.launch {
+//
+//        }
     }
 
 
     override fun initializeController() {
-        mstCommonViewModel =
-            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
 
 
         //apply click on view
@@ -94,15 +113,13 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
         )
 
 
-
-
     }
 
     /**
      * Click on view
      */
     private fun applyClickOnView() {
-        btn_prev.visibility=View.GONE
+        btn_prev.visibility = View.GONE
         btn_save.setOnClickListener(this)
 
     }
@@ -110,27 +127,32 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.btn_save -> {
+                imProfileViewModel.saveandUpdateCollectiveProfile()
+                val intent = Intent(this, IMProfileTwoActivity::class.java)
+                startActivity(intent)
+                finish()
+
 //                if (imProfileViewModel.isValid()) {
 //
 //                }
 
 //                if (checkValidation() == 1) {
-                    var intent = Intent(this, IMProfileTwoActivity::class.java)
-                    startActivity(intent)
-                    finish()
+//                var intent = Intent(this, IMProfileTwoActivity::class.java)
+//                startActivity(intent)
+//                finish()
 //                }
             }
         }
     }
 
-    private fun saveData(){
+    private fun saveData() {
         var save = 0
         imProfileGUID = validate!!.random()
 
         var imProfileEntity = IndividualProfileEntity(
             0,
             imProfileGUID,
-            "","","","",0,"",0,
+            "", "", "", "", 0, "", 0,
             validate!!.returnStringValue(et_formfilngjgDate.text.toString()),
             validate!!.returnStringValue(ethouseid.text.toString()),
             "",
@@ -139,15 +161,15 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
             Integer.parseInt(et_agerespo.text.toString()),
             validate!!.returnID(spin_casterespo, mstCommonViewModel, 44),
             validate!!.returnID(spin_marital, mstCommonViewModel, 45),
-            validate!!.returnStringValue(et_contactnorespo.text.toString()),"",0,0,0,0,
-            0,0,"","","","",
-"",0,0,"",0,0,0,0,
-            0,0,0,0,0,0,0,0,
-            0,0,0,"","",0,"","",
-            "",0,"",0,"","",0,"",
-            0,0)
+            validate!!.returnStringValue(et_contactnorespo.text.toString()), "", 0, 0, 0, 0,
+            0, 0, "", "", "", "",
+            "", 0, 0, "", 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, "", "", 0, "", "",
+            "", 0, "", 0, "", "", 0, "",
+            0, 0
+        )
     }
-
 
 
     private fun checkValidation(): Int {
@@ -252,8 +274,6 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
         }
         return value
     }
-
-
 
 
     override fun onBackPressed() {
