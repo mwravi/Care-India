@@ -9,6 +9,7 @@ import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_improfile_fifth.*
+import kotlinx.android.synthetic.main.activity_improfile_fourth.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
@@ -33,20 +34,21 @@ class IMProfileFifthActivity : BaseActivity(),View.OnClickListener {
         //apply click on view
         applyClickOnView()
 
-        validate!!.fillSpinner(
-            this,
-            spin_avail_any_scheme,
-            resources.getString(R.string.select),
+        validate!!.fillradio(
+            rg_avail_any_scheme,
+            -1,
             mstCommonViewModel,
-            69
+            69,
+            this
         )
-        validate!!.fillSpinner(
-            this,
-            spin_new_jobs_business,
-            resources.getString(R.string.select),
+validate!!.fillradio(
+    rg_new_jobs_business,
+            -1,
             mstCommonViewModel,
-            69
+            69,
+            this
         )
+
         validate!!.fillSpinner(
             this,
             spin_alternative_get_opportunity,
@@ -54,13 +56,15 @@ class IMProfileFifthActivity : BaseActivity(),View.OnClickListener {
             mstCommonViewModel,
             72
         )
-        validate!!.fillSpinner(
-            this,
-            spin_member_cig_shg,
-            resources.getString(R.string.select),
+
+        validate!!.fillradio(
+            rg_member_cig_shg,
+            -1,
             mstCommonViewModel,
-            68
+            68,
+            this
         )
+
 
 
 //        validate!!.dynamicRadio(this, checkRadio, resources.getStringArray(R.array.yes_no))
@@ -102,10 +106,9 @@ class IMProfileFifthActivity : BaseActivity(),View.OnClickListener {
     private fun checkValidation(): Int {
         var value = 1
 
-         if (spin_avail_any_scheme.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
+         if (validate!!.GetAnswerTypeRadioButtonID(rg_avail_any_scheme) == 0) {
+            validate!!.CustomAlert(
                 this,
-                spin_avail_any_scheme,
                 resources.getString(R.string.plz_select_availing_scheme)
             )
             value = 0
@@ -126,20 +129,18 @@ class IMProfileFifthActivity : BaseActivity(),View.OnClickListener {
             )
             value = 0
         } else if (et_skills_jobs_picking.text.toString().isEmpty()) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_skills_jobs_picking,
-                resources.getString(R.string.plz_specify_othr)
-            )
-            value = 0
-
-        } else if (spin_new_jobs_business.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_new_jobs_business,
-                resources.getString(R.string.plz_select_interested_newjob)
-            )
-            value = 0
+             validate!!.CustomAlertEdit(
+                 this,
+                 et_skills_jobs_picking,
+                 resources.getString(R.string.plz_specify_othr)
+             )
+             value = 0
+         }else if (validate!!.GetAnswerTypeRadioButtonID(rg_new_jobs_business) == 0) {
+                 validate!!.CustomAlert(
+                     this,
+                     resources.getString(R.string.plz_select_interested_newjob)
+                 )
+                 value = 0
         } else if (spin_alternative_get_opportunity.selectedItemPosition == 0) {
             validate!!.CustomAlertSpinner(
                 this,
@@ -147,14 +148,13 @@ class IMProfileFifthActivity : BaseActivity(),View.OnClickListener {
                 resources.getString(R.string.plz_select_alternative_jobbussi)
             )
             value = 0
-        } else if (spin_member_cig_shg.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_member_cig_shg,
-                resources.getString(R.string.plz_select_member_cig_shg)
-            )
-            value = 0
 
+         }else if (validate!!.GetAnswerTypeRadioButtonID(rg_member_cig_shg) == 0) {
+             validate!!.CustomAlert(
+                 this,
+                 resources.getString(R.string.plz_select_member_cig_shg)
+             )
+             value = 0
         } else if (et_name_collective_part.text.toString().isEmpty()) {
             validate!!.CustomAlertEdit(
                 this,

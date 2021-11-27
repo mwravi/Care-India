@@ -11,9 +11,14 @@ import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
+import kotlinx.android.synthetic.main.activity_household_profile_first.*
 import kotlinx.android.synthetic.main.activity_improfile_one.*
 import kotlinx.android.synthetic.main.activity_improfile_two.*
+import kotlinx.android.synthetic.main.activity_improfile_two.multiCheck
+import kotlinx.android.synthetic.main.activity_primary_data_first.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
+import kotlinx.android.synthetic.main.buttons_save_cancel.btn_prev
+import kotlinx.android.synthetic.main.buttons_save_cancel.btn_save
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
@@ -51,13 +56,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             mstCommonViewModel,
             46
         )
-        validate!!.fillSpinner(
-            this,
-            spin_access_sphone,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            47
-        )
+
         validate!!.fillSpinner(
             this,
             spin_education,
@@ -65,36 +64,36 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             mstCommonViewModel,
             48
         )
-        validate!!.fillSpinner(
-            this,
-            spin_education,
-            resources.getString(R.string.select),
+
+        validate!!.fillradio(
+            rg_can_read,
+            -1,
             mstCommonViewModel,
-            48
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_can_read,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            49
+            49,
+            this
         )
 
-
-
-        validate!!.fillSpinner(
-            this,
-            spin_acess_mob_data,
-            resources.getString(R.string.select),
+        validate!!.fillradio(
+            rg_access_sphone,
+            -1,
             mstCommonViewModel,
-            60
+            47,
+            this
+        )
+validate!!.fillradio(
+            rg_acess_mob_data,
+            -1,
+            mstCommonViewModel,
+            60,
+            this
         )
 
 
-        validate!!.dynamicMultiCheck(this, multiCheck_lang_read, mstCommonViewModel,51)
-        validate!!.dynamicMultiCheck(this, lang_write, mstCommonViewModel,52)
-        validate!!.dynamicMultiCheck(this, prefer_comni_speaking, mstCommonViewModel,53)
-        validate!!.dynamicMultiCheck(this, multiCheck, mstCommonViewModel,54)
+
+        validate!!.dynamicMultiCheck(this, multiCheck_lang_read, mstCommonViewModel, 51)
+        validate!!.dynamicMultiCheck(this, lang_write, mstCommonViewModel, 52)
+        validate!!.dynamicMultiCheck(this, prefer_comni_speaking, mstCommonViewModel, 53)
+        validate!!.dynamicMultiCheck(this, multiCheck, mstCommonViewModel, 54)
 
     }
 
@@ -112,29 +111,30 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         when (view?.id) {
             R.id.btn_prev -> {
 //                if (checkValidation() == 1) {
-                    var intent = Intent(this, IMProfileOneActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                var intent = Intent(this, IMProfileOneActivity::class.java)
+                startActivity(intent)
+                finish()
 //                }
-            } R.id.btn_save -> {
+            }
+            R.id.btn_save -> {
 //                if (checkValidation() == 1) {
-                    var intent = Intent(this, IMProfileThirdActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                var intent = Intent(this, IMProfileThirdActivity::class.java)
+                startActivity(intent)
+                finish()
 //                }
             }
         }
     }
 
 
-    private fun saveData(){
+    private fun saveData() {
         var save = 0
         imProfileGUID = validate!!.random()
 
         var imProfileEntity = IndividualProfileEntity(
             0,
             imProfileGUID,
-            "","","","",0,"",0,
+            "", "", "", "", 0, "", 0,
             validate!!.returnStringValue(et_formfilngjgDate.text.toString()),
             validate!!.returnStringValue(ethouseid.text.toString()),
             "",
@@ -143,20 +143,21 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             Integer.parseInt(et_agerespo.text.toString()),
             validate!!.returnID(spin_casterespo, mstCommonViewModel, 44),
             validate!!.returnID(spin_marital, mstCommonViewModel, 45),
-            validate!!.returnStringValue(et_contactnorespo.text.toString()),"",0,0,0,0,
-            0,0,"","","","",
-            "",0,0,"",0,0,0,0,
-            0,0,0,0,0,0,0,0,
-            0,0,0,"","",0,"","",
-            "",0,"",0,"","",0,"",
-            0,0)
+            validate!!.returnStringValue(et_contactnorespo.text.toString()), "", 0, 0, 0, 0,
+            0, 0, "", "", "", "",
+            "", 0, 0, "", 0, 0, 0, 0,
+            0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, "", "", 0, "", "",
+            "", 0, "", 0, "", "", 0, "",
+            0, 0
+        )
     }
 
     private fun checkValidation(): Int {
         var value = 1
 
 
-         if (spin_state.selectedItemPosition == 0) {
+        if (spin_state.selectedItemPosition == 0) {
             validate!!.CustomAlertSpinner(
                 this,
                 spin_state,
@@ -191,10 +192,9 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             value = 0
 
 
-        } else if (spin_can_read.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_can_read) == 0) {
+            validate!!.CustomAlert(
                 this,
-                spin_can_read,
                 resources.getString(R.string.plz_read_write)
             )
             value = 0
@@ -205,19 +205,17 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.plz_select_education)
             )
             value = 0
-        } else if (spin_access_sphone.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_access_sphone) == 0) {
+            validate!!.CustomAlert(
                 this,
-                spin_access_sphone,
                 resources.getString(R.string.plz_select_smartphone)
             )
 
             value = 0
 
-        }else if (spin_acess_mob_data.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_acess_mob_data) == 0) {
+            validate!!.CustomAlert(
                 this,
-                spin_acess_mob_data,
                 resources.getString(R.string.plz_select_mobiledata)
             )
             value = 0

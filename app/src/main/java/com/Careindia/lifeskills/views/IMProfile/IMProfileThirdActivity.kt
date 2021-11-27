@@ -9,6 +9,7 @@ import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_improfile_third.*
+import kotlinx.android.synthetic.main.activity_improfile_two.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
@@ -51,12 +52,19 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
             59
         )
 
-        validate!!.fillSpinner(
-            this,
-            spin_type_emp,
-            resources.getString(R.string.select),
+        validate!!.fillradio(
+            rg_type_emp,
+            -1,
             mstCommonViewModel,
-            57
+            57,
+            this
+        )
+        validate!!.fillradio(
+            rg_secondary_income,
+            -1,
+            mstCommonViewModel,
+            60,
+            this
         )
         validate!!.fillSpinner(
             this,
@@ -66,14 +74,6 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
             58
         )
 
-
-        validate!!.fillSpinner(
-            this,
-            spin_secondary_income,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            60
-        )
         validate!!.fillSpinner(
             this,
             spin_what_secondary_income,
@@ -138,10 +138,9 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.plz_select_waste_pickr)
             )
             value = 0
-        } else if (spin_type_emp.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_type_emp) == 0) {
+            validate!!.CustomAlert(
                 this,
-                spin_type_emp,
                 resources.getString(R.string.plz_select_employmentr)
             )
             value = 0
@@ -209,10 +208,9 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-        } else if (spin_secondary_income.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_secondary_income) == 0) {
+            validate!!.CustomAlert(
                 this,
-                spin_secondary_income,
                 resources.getString(R.string.plz_select_mobiledata)
             )
             value = 0

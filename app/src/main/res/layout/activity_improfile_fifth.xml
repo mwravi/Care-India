@@ -30,12 +30,15 @@ tools:context=".views.improfile.IMProfileFourthActivity">
             <TextView
                 style="@style/TextViewStyleNew"
                 android:text="@string/avail_any_scheme" />
-
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/spin_avail_any_scheme"
-                style="@style/SpinnerViewNew" />
+            <RadioGroup
+                android:id="@+id/rg_avail_any_scheme"
+                style="@style/radioGroupStyle" />
 
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D8D6D6"/>
 
         <LinearLayout
             android:id="@+id/lay_et_details_service_avail"
@@ -101,11 +104,16 @@ tools:context=".views.improfile.IMProfileFourthActivity">
                 style="@style/TextViewStyleNew"
                 android:text="@string/new_jobs_business" />
 
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/spin_new_jobs_business"
-                style="@style/SpinnerViewNew" />
+
+            <RadioGroup
+                android:id="@+id/rg_new_jobs_business"
+                style="@style/radioGroupStyle" />
 
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D8D6D6"/>
 
         <LinearLayout
             android:id="@+id/lay_spin_alternative_get_opportunity"
@@ -129,11 +137,15 @@ tools:context=".views.improfile.IMProfileFourthActivity">
                 style="@style/TextViewStyleNew"
                 android:text="@string/member_CIG_SHG" />
 
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/spin_member_cig_shg"
-                style="@style/SpinnerViewNew" />
+            <RadioGroup
+                android:id="@+id/rg_member_cig_shg"
+                style="@style/radioGroupStyle" />
 
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#D8D6D6"/>
 
 
         <LinearLayout

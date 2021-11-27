@@ -73,18 +73,22 @@
 
 
             <LinearLayout
-                android:id="@+id/lay_spin_can_read"
+                android:id="@+id/lay_can_read"
                 style="@style/LinearLayoutStyle">
 
                 <TextView
                     style="@style/TextViewStyleNew"
                     android:text="@string/read_write" />
 
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_can_read"
-                    style="@style/SpinnerViewNew" />
+                <RadioGroup
+                    android:id="@+id/rg_can_read"
+                    style="@style/radioGroupStyle" />
 
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D8D6D6"/>
 
             <LinearLayout
                 android:id="@+id/lay_spin_education"
@@ -101,33 +105,42 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/lay_spin_access_sphone"
+                android:id="@+id/lay_access_sphone"
                 style="@style/LinearLayoutStyle">
 
                 <TextView
                     style="@style/TextViewStyleNew"
                     android:text="@string/acess_smart_phone" />
 
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_access_sphone"
-                    style="@style/SpinnerViewNew" />
+
+                <RadioGroup
+                    android:id="@+id/rg_access_sphone"
+                    style="@style/radioGroupStyle" />
 
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D8D6D6"/>
 
             <LinearLayout
-                android:id="@+id/lay_spin_acess_mob_data"
+                android:id="@+id/lay_acess_mob_data"
                 style="@style/LinearLayoutStyle">
 
                 <TextView
                     style="@style/TextViewStyleNew"
                     android:text="@string/acess_mobile_data" />
 
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_acess_mob_data"
-                    style="@style/SpinnerViewNew" />
+
+                <RadioGroup
+                    android:id="@+id/rg_acess_mob_data"
+                    style="@style/radioGroupStyle" />
 
             </LinearLayout>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D8D6D6"/>
 
             <LinearLayout
                 style="@style/CheckBox"

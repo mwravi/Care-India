@@ -80,18 +80,23 @@
 
 
             <LinearLayout
-                android:id="@+id/lay_spin_type_emp"
+                android:id="@+id/lay_type_emp"
                 style="@style/LinearLayoutStyle">
 
                 <TextView
                     style="@style/TextViewStyleNew"
                     android:text="@string/type_emp" />
 
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_type_emp"
-                    style="@style/SpinnerViewNew" />
+
+                <RadioGroup
+                    android:id="@+id/rg_type_emp"
+                    style="@style/radioGroupStyle" />
 
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D8D6D6"/>
 
 
             <LinearLayout
@@ -211,18 +216,22 @@
 
 
             <LinearLayout
-                android:id="@+id/lay_spin_secondary_income"
+                android:id="@+id/lay_secondary_income"
                 style="@style/LinearLayoutStyle">
 
                 <TextView
                     style="@style/TextViewStyleNew"
                     android:text="@string/secondary_income" />
 
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_secondary_income"
-                    style="@style/SpinnerViewNew" />
+                <RadioGroup
+                    android:id="@+id/rg_secondary_income"
+                    style="@style/radioGroupStyle" />
 
             </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#D8D6D6"/>
 
             <LinearLayout
                 android:id="@+id/lay_spin_what_secondary_income"

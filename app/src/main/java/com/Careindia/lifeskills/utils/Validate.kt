@@ -562,6 +562,37 @@ class Validate(context: Context) {
 
     }
 
+fun dynamicMultiCheckChange(context: Context, liear: CheckBox,    mstCommonViewModel: MstCommonViewModel?,
+                          flag:Int) {
+    liear as LinearLayout
+        var data: List<MstCommonEntity>? = null
+        data =
+            mstCommonViewModel!!.getMstCommon(flag)
+        if (data != null) {
+            val iGen = data.size
+            val value = arrayOfNulls<String>(iGen + 1)
+            for (i in 0 until data.size) {
+                val multicheck1 = CheckBox(context)
+                multicheck1.layoutParams =
+                    LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT,
+                        ViewGroup.LayoutParams.WRAP_CONTENT
+                    )
+
+                multicheck1.setText(data.get(i).value?.trim())
+                multicheck1.id = data.get(i).id!!
+
+                if (liear != null) {
+
+                    liear.addView(multicheck1)
+                }
+
+            }
+
+        }
+
+    }
+
     fun returnIntegerValue(myString: String?): Int {
         var iValue = 0
         if (myString != null && !myString.equals("null", ignoreCase = true) && myString.length > 0) {

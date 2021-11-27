@@ -9,6 +9,7 @@ import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_improfile_fourth.*
+import kotlinx.android.synthetic.main.activity_improfile_third.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
@@ -33,56 +34,57 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
         //apply click on view
         applyClickOnView()
 
-        validate!!.fillSpinner(
-            this,
-            spin_have_adhar,
-            resources.getString(R.string.select),
+
+        validate!!.fillradio(
+            rg_have_adhar,
+            -1,
             mstCommonViewModel,
-            62
+            62,
+            this
+        )
+        validate!!.fillradio(
+            rg_have_voter,
+            -1,
+            mstCommonViewModel,
+            63,
+            this
+        )
+        validate!!.fillradio(
+            rg_have_pan,
+            -1,
+            mstCommonViewModel,
+            64,
+            this
+        )
+       validate!!.fillradio(
+            rg_have_income,
+            -1,
+            mstCommonViewModel,
+            65,
+            this
+        )
+         validate!!.fillradio(
+             rg_have_caste,
+            -1,
+            mstCommonViewModel,
+            66,
+            this
+        )
+        validate!!.fillradio(
+            rg_svg_bank_act,
+            -1,
+            mstCommonViewModel,
+            67,
+            this
+        )
+        validate!!.fillradio(
+            rg_availed_services_past,
+            -1,
+            mstCommonViewModel,
+            68,
+            this
         )
 
-        validate!!.fillSpinner(
-            this,
-            spin_have_voter,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            63
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_have_pan,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            64
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_have_income,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            65
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_have_caste,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            66
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_svg_bank_act,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            67
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_availed_services_past,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            68
-        )
 
     }
     /**
@@ -145,52 +147,46 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.please_entr_input_daily)
             )
             value = 0
-        } else if (spin_have_adhar.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_adhar) == 0) {
+            validate!!.CustomAlert(
                 this,
-                spin_have_adhar,
                 resources.getString(R.string.plz_ans_adhar)
             )
             value = 0
-        } else if (spin_have_voter.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_voter) == 0) {
+            validate!!.CustomAlert(
                 this,
-                spin_have_voter,
                 resources.getString(R.string.plz_ans_icard)
             )
             value = 0
-        } else if (spin_have_pan.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
+
+         } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_pan) == 0) {
+            validate!!.CustomAlert(
                 this,
-                spin_have_pan,
                 resources.getString(R.string.plz_ans_pan)
             )
             value = 0
-        } else if (spin_have_income.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
+              } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_income) == 0) {
+            validate!!.CustomAlert(
                 this,
-                spin_have_income,
                 resources.getString(R.string.plz_ans_incm_certict)
             )
             value = 0
-        } else if (spin_have_caste.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
+              } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_caste) == 0) {
+            validate!!.CustomAlert(
                 this,
-                spin_have_caste,
                 resources.getString(R.string.plz_ans_caste_certict)
             )
             value = 0
-        } else if (spin_svg_bank_act.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
+              } else if (validate!!.GetAnswerTypeRadioButtonID(rg_svg_bank_act) == 0) {
+            validate!!.CustomAlert(
                 this,
-                spin_svg_bank_act,
                 resources.getString(R.string.plz_ans_bank_acct)
             )
             value = 0
-        } else if (spin_availed_services_past.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
+              } else if (validate!!.GetAnswerTypeRadioButtonID(rg_availed_services_past) == 0) {
+            validate!!.CustomAlert(
                 this,
-                spin_availed_services_past,
                 resources.getString(R.string.plz_services_past_month)
             )
             value = 0

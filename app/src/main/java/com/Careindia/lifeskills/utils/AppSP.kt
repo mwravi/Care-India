@@ -4,4 +4,5 @@ object AppSP {
 
     val HHGUID = "HHGUID"
     val userId = "userId"
+    val CollectiveGUID = "CollectiveGUID"
 }

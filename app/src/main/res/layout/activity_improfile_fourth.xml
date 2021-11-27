@@ -64,104 +64,138 @@ tools:context=".views.improfile.IMProfileFourthActivity">
 
 
         <LinearLayout
-            android:id="@+id/lay_spin_have_adhar"
+            android:id="@+id/lay_have_adhar"
             style="@style/LinearLayoutStyle">
 
             <TextView
                 style="@style/TextViewStyleNew"
                 android:text="@string/have_adhar_card" />
 
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/spin_have_adhar"
-                style="@style/SpinnerViewNew" />
+            <RadioGroup
+                android:id="@+id/rg_have_adhar"
+                style="@style/radioGroupStyle" />
 
         </LinearLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="#D8D6D6"/>
         <LinearLayout
-            android:id="@+id/lay_spin_have_voter"
+            android:id="@+id/lay_have_voter"
             style="@style/LinearLayoutStyle">
 
             <TextView
                 style="@style/TextViewStyleNew"
                 android:text="@string/have_voter_card" />
 
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/spin_have_voter"
-                style="@style/SpinnerViewNew" />
+            <RadioGroup
+                android:id="@+id/rg_have_voter"
+                style="@style/radioGroupStyle" />
 
         </LinearLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="#D8D6D6"/>
         <LinearLayout
-            android:id="@+id/lay_spin_have_pan"
+            android:id="@+id/lay_have_pan"
             style="@style/LinearLayoutStyle">
 
             <TextView
                 style="@style/TextViewStyleNew"
                 android:text="@string/have_pan_card" />
 
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/spin_have_pan"
-                style="@style/SpinnerViewNew" />
+
+            <RadioGroup
+                android:id="@+id/rg_have_pan"
+                style="@style/radioGroupStyle" />
 
         </LinearLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="#D8D6D6"/>
         <LinearLayout
-            android:id="@+id/lay_spin_have_income"
+            android:id="@+id/lay_have_income"
             style="@style/LinearLayoutStyle">
 
             <TextView
                 style="@style/TextViewStyleNew"
                 android:text="@string/income_certi" />
 
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/spin_have_income"
-                style="@style/SpinnerViewNew" />
+            <RadioGroup
+                android:id="@+id/rg_have_income"
+                style="@style/radioGroupStyle" />
+
 
         </LinearLayout>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="#D8D6D6"/>
         <LinearLayout
-            android:id="@+id/lay_spin_have_caste"
+            android:id="@+id/lay_have_caste"
             style="@style/LinearLayoutStyle">
 
             <TextView
                 style="@style/TextViewStyleNew"
                 android:text="@string/caste_certi" />
 
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/spin_have_caste"
-                style="@style/SpinnerViewNew" />
+            <RadioGroup
+                android:id="@+id/rg_have_caste"
+                style="@style/radioGroupStyle" />
 
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="#D8D6D6"/>
 
         <LinearLayout
-            android:id="@+id/lay_spin_svg_bank_act"
+            android:id="@+id/lay_svg_bank_act"
             style="@style/LinearLayoutStyle">
 
             <TextView
                 style="@style/TextViewStyleNew"
                 android:text="@string/svg_bank_act" />
 
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/spin_svg_bank_act"
-                style="@style/SpinnerViewNew" />
+
+            <RadioGroup
+                android:id="@+id/rg_svg_bank_act"
+                style="@style/radioGroupStyle" />
 
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="#D8D6D6"/>
 
         <LinearLayout
-            android:id="@+id/lay_spin_availed_services_past"
+            android:id="@+id/lay_availed_services_past"
             style="@style/LinearLayoutStyle">
 
             <TextView
                 style="@style/TextViewStyleNew"
                 android:text="@string/availed_services_past" />
 
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/spin_availed_services_past"
-                style="@style/SpinnerViewNew" />
+
+            <RadioGroup
+                android:id="@+id/rg_availed_services_past"
+                style="@style/radioGroupStyle" />
 
         </LinearLayout>
 
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="#D8D6D6"/>
         <LinearLayout
             android:id="@+id/lay_et_service_provider_department"
             style="@style/LinearLayoutStyle">

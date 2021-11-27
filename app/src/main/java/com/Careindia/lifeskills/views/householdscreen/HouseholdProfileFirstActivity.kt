@@ -20,7 +20,13 @@ import com.careindia.lifeskills.viewmodelfactory.HouseholdProfileViewModelFactor
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_household_profile_first.*
+import kotlinx.android.synthetic.main.activity_household_profile_first.multiCheck
+import kotlinx.android.synthetic.main.activity_improfile_two.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
+import android.widget.CompoundButton
+import kotlinx.android.synthetic.main.activity_household_profile_first.rg_pan_card
+import kotlinx.android.synthetic.main.activity_primary_data_first.*
+
 
 class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
     private lateinit var binding: ActivityHouseholdProfileFirstBinding
@@ -108,6 +114,8 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
+
+
     fun fillSpinner() {
 
 //        validate!!.fillSpinner(
@@ -117,6 +125,16 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
 //            mstCommonViewModel,
 //            1
 //        )
+
+        validate!!.fillradio(
+            rg_pan_card,
+            -1,
+            mstCommonViewModel,
+            80,
+            this
+        )
+        validate!!.dynamicMultiCheck(this, multiCheck, mstCommonViewModel,54)
+
         validate!!.fillSpinner(
             this,
             spin_SupervisingFC,
