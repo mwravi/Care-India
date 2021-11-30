@@ -42,7 +42,6 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
 
 
     fun saveandUpdateHHProfile() {
-        validate!!.CustomAlert(mContext,"JAYHO")
         val date: String = Date.value!!
 
         insert(
@@ -91,13 +90,6 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
         }
     }
 
-    fun onCheckedChange(button: CompoundButton?, check: Boolean) {
-        Log.d("CAREINDIA ", "onCheckedChange: $check")
-    }
-    fun onSplitTypeChanged(radioGroup: RadioGroup?, id: Int) {
-        Log.d("CAREINDIA ", "onRADIOChecked: $id")
-    }
-
 
 
     fun GetAnswerTypeCheckBoxButtonID(linear: LinearLayout): String {
@@ -119,19 +111,6 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
         return QusAns
 
     }
-
-
-
-//    android:onItemSelected="@{(parent,view,pos,id)->viewModel.onSelectItem(parent,view,pos,id)}"
-//    public void onSelectItem(AdapterView<?> parent, View view, int pos, long id) {
-////    pos get selected item position
-//     view.getText() get lable of selected item
-//     parent.getAdapter().getItem(pos) get item by pos
-//     parent.getAdapter().getCount() get item count
-//     parent.getCount() get item count
-//     parent.getSelectedItem() get selected item
-//     and other... }
-//    }
 
 
 }

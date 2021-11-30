@@ -2,6 +2,7 @@ package com.careindia.lifeskills.viewmodel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import com.careindia.lifeskills.entity.MstCommonEntity
 import com.careindia.lifeskills.repository.MstCommonRepository
 
@@ -20,5 +21,8 @@ class MstCommonViewModel : AndroidViewModel {
         return mstCommonRepository!!.getCount()
     }
 
+    fun getMstCommondata(flag: Int): LiveData<List<MstCommonEntity>> {
+        return mstCommonRepository!!.getMstCommondata(flag)
+    }
 
 }

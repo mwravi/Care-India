@@ -1,5 +1,6 @@
 package com.careindia.lifeskills.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -19,6 +20,7 @@ interface MstCommonDao {
 
     @Query("DELETE FROM mst_common")
     fun deleteAll()
-
+    @Query("select * from mst_common where flag=:flag")
+    fun getMstCommondata(flag: Int): LiveData<List<MstCommonEntity>>
 
 }

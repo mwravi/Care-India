@@ -6,7 +6,8 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "tblProfileIndividual")
 data class IndividualProfileEntity(
-    @PrimaryKey @ColumnInfo(name = "uid") val uid: Int,
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "uid") val uid: Int,
     @ColumnInfo(name = "IndGUID") val IndGUID: String?="",
     @ColumnInfo(name = "HHGUID") val HHGUID: String?="",
     @ColumnInfo(name = "StateCode") val StateCode: String?="",

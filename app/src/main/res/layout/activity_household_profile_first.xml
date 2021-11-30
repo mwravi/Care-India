@@ -69,65 +69,7 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    style="@style/CheckBox"
-                    android:background="@drawable/box_background"
-                    android:orientation="vertical">
 
-                    <TextView
-                        style="@style/TextViewStyle"
-                        android:text="@string/language_speak" />
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onCheckedChanged="@{(compoundButton, checked) -> householdProfileViewModel.onCheckedChange(compoundButton, checked)}" />
-
-                 <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onCheckedChanged="@{(compoundButton, checked) -> householdProfileViewModel.onCheckedChange(compoundButton, checked)}" />
-
-                 <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:onCheckedChanged="@{(compoundButton, checked) -> householdProfileViewModel.onCheckedChange(compoundButton, checked)}" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lay_pan_card"
-                    style="@style/LinearLayoutStyle">
-
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/do_you_have_valid_pan_card" />
-
-                    <RadioGroup
-                        android:id="@+id/rg_pan_card"
-                        style="@style/radioGroupStyle"
-                        android:onCheckedChanged="@{householdProfileViewModel.onSplitTypeChanged}"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/CheckBox"
-                    android:background="@drawable/box_background"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/TextViewStyle"
-                        android:text="@string/language_speak" />
-
-                    <LinearLayout
-                        android:id="@+id/multiCheck"
-                        style="@style/CheckBox"
-                        android:onClick="@{()->householdProfileViewModel.GetAnswerTypeCheckBoxButtonID(multiCheck)}"
-                        android:orientation="vertical"/>
-
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/lay_sfcName"

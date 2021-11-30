@@ -1,181 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/white"
-android:orientation="vertical"
-tools:context=".views.improfile.IMProfileFourthActivity">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-<include
-    android:id="@+id/include"
-    layout="@layout/toolbar_layout" />
+    <data>
+        <variable
+            name="individualProfileViewModel"
+            type="com.careindia.lifeskills.viewmodel.IndividualProfileViewModel" />
+    </data>
 
-
-<ScrollView
-    style="@style/ScrolllViewStyle"
-    android:layout_margin="@dimen/_10sdp"
-    android:layout_weight="1"
-    android:scrollbars="none">
 
     <LinearLayout
-        style="@style/LinearLayoutStyle"
-        android:background="@drawable/box_background"
-        android:padding="@dimen/_10sdp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".views.improfile.IMProfileFourthActivity">
 
-        <LinearLayout
-            android:id="@+id/lay_spin_avail_any_scheme"
-            style="@style/LinearLayoutStyle">
-
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/avail_any_scheme" />
-            <RadioGroup
-                android:id="@+id/rg_avail_any_scheme"
-                style="@style/radioGroupStyle" />
-
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#D8D6D6"/>
-
-        <LinearLayout
-            android:id="@+id/lay_et_details_service_avail"
-            style="@style/LinearLayoutStyle">
-
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/details_service_avail" />
-
-            <EditText
-                android:id="@+id/et_details_service_avail"
-                style="@style/EditTextStyleNew"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                android:hint="@string/type_here"
-                android:inputType="text" />
-
-        </LinearLayout>
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar_layout" />
 
 
-        <LinearLayout
-            android:background="@color/white"
-            style="@style/Tablerow"
-            android:orientation="vertical">
-
-            <TextView
-                style="@style/TextViewStyle"
-                android:text="@string/skills_jobs_picking" />
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:scrollbars="none">
 
             <LinearLayout
-                android:id="@+id/skills_jobs_picking"
-                style="@style/CheckBox"
-                android:orientation="vertical" />
-        </LinearLayout>
+                style="@style/LinearLayoutStyle"
+                android:background="@drawable/box_background"
+                android:padding="@dimen/_10sdp">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:background="#CDCBCB" />
+                <LinearLayout
+                    android:id="@+id/lay_spin_avail_any_scheme"
+                    style="@style/LinearLayoutStyle">
 
-        <LinearLayout
-            android:id="@+id/lay_et_specify"
-            style="@style/LinearLayoutStyle">
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/avail_any_scheme" />
+                    <RadioGroup
+                        android:id="@+id/rg_avail_any_scheme"
+                        style="@style/radioGroupStyle" />
 
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/please_specify_skill_job" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#D8D6D6"/>
 
-            <EditText
-                android:id="@+id/et_skills_jobs_picking"
-                style="@style/EditTextStyleNew"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                android:hint="@string/type_here"
-                android:inputType="text" />
+                <LinearLayout
+                    android:id="@+id/lay_et_details_service_avail"
+                    style="@style/LinearLayoutStyle">
 
-        </LinearLayout>
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/details_service_avail" />
 
-        <LinearLayout
-            android:id="@+id/lay_spin_new_jobs_business"
-            style="@style/LinearLayoutStyle">
+                    <EditText
+                        android:id="@+id/et_details_service_avail"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:text="@={individualProfileViewModel.AvailSchemeDetail}"
+                        android:inputType="text" />
 
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/new_jobs_business" />
-
-
-            <RadioGroup
-                android:id="@+id/rg_new_jobs_business"
-                style="@style/radioGroupStyle" />
-
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#D8D6D6"/>
-
-        <LinearLayout
-            android:id="@+id/lay_spin_alternative_get_opportunity"
-            style="@style/LinearLayoutStyle">
-
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/alternative_get_opportunity" />
-
-            <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/spin_alternative_get_opportunity"
-                style="@style/SpinnerViewNew" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lay_spin_member_cig_shg"
-            style="@style/LinearLayoutStyle">
-
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/member_CIG_SHG" />
-
-            <RadioGroup
-                android:id="@+id/rg_member_cig_shg"
-                style="@style/radioGroupStyle" />
-
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#D8D6D6"/>
+                </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/lay_et_name_collective_part"
-            style="@style/LinearLayoutStyle">
+                <LinearLayout
+                    style="@style/CheckBox"
+                    android:background="@drawable/box_background"
+                    android:orientation="vertical">
 
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/name_collective_part" />
+                    <TextView
+                        style="@style/TextViewStyle"
+                        android:text="@string/skills_jobs_picking" />
 
-            <EditText
-                android:id="@+id/et_name_collective_part"
-                style="@style/EditTextStyleNew"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                android:hint="@string/type_here"
-                android:inputType="text" />
+                    <LinearLayout
+                        android:id="@+id/skills_jobs_picking"
+                        style="@style/CheckBox"
+                        android:orientation="vertical" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:background="#CDCBCB" />
+
+                <LinearLayout
+                    android:id="@+id/lay_et_specify"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/please_specify_skill_job" />
+
+                    <EditText
+                        android:id="@+id/et_skills_jobs_picking"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:text="@={individualProfileViewModel.SpecifySkillJob}"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_spin_new_jobs_business"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/new_jobs_business" />
 
 
-        </LinearLayout>
+                    <RadioGroup
+                        android:id="@+id/rg_new_jobs_business"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#D8D6D6"/>
+
+                <LinearLayout
+                    android:id="@+id/lay_spin_alternative_get_opportunity"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/alternative_get_opportunity" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_alternative_get_opportunity"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={individualProfileViewModel.AlterGetOpport}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_spin_member_cig_shg"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/member_CIG_SHG" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_member_cig_shg"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#D8D6D6"/>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_et_name_collective_part"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/name_collective_part" />
+
+                    <EditText
+                        android:id="@+id/et_name_collective_part"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:text="@={individualProfileViewModel.CollectiveMember}"
+                        android:inputType="text" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
+
+            <TextView style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1"
+                />
+
+            <Button
+                android:id="@+id/btn_prev"
+                style="@style/ButtonTextStyle"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/previous" />
+
+            <TextView style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1"
+                />
+            <Button
+                android:id="@+id/btn_save"
+                style="@style/ButtonTextStyle"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@={individualProfileViewModel.saveandnextText}" />
+
+            <TextView style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1"
+                />
+
+        </TableRow>
 
     </LinearLayout>
 
-</ScrollView>
-
-    <TableRow
-        style="@style/TableRowStyle"
-        android:layout_margin="@dimen/_10sdp">
-
-        <include layout="@layout/buttons_save_cancel" />
-
-    </TableRow>
-
-</LinearLayout>
+</layout>

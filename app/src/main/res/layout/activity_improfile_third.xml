@@ -1,282 +1,330 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-    tools:context=".views.improfile.IMProfileThirdActivity">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="individualProfileViewModel"
+            type="com.careindia.lifeskills.viewmodel.IndividualProfileViewModel" />
+    </data>
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar_layout" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".views.improfile.IMProfileThirdActivity">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar_layout" />
 
 
-    <ScrollView
-        style="@style/ScrolllViewStyle"
-        android:layout_margin="@dimen/_10sdp"
-        android:layout_weight="1"
-        android:scrollbars="none">
-
-        <LinearLayout
-            style="@style/LinearLayoutStyle"
-            android:background="@drawable/box_background"
-            android:padding="@dimen/_10sdp">
-
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:scrollbars="none">
 
             <LinearLayout
-                style="@style/CheckBox"
+                style="@style/LinearLayoutStyle"
                 android:background="@drawable/box_background"
-                android:orientation="vertical">
+                android:padding="@dimen/_10sdp">
 
-                <TextView
-                    style="@style/TextViewStyle"
-                    android:text="@string/language_prefer_mobile_use" />
 
                 <LinearLayout
-                    android:id="@+id/lang_prefer_mobile_use"
                     style="@style/CheckBox"
-                    android:orientation="vertical" />
+                    android:background="@drawable/box_background"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextViewStyle"
+                        android:text="@string/language_prefer_mobile_use" />
+
+                    <LinearLayout
+                        android:id="@+id/lang_prefer_mobile_use"
+                        style="@style/CheckBox"
+                        android:orientation="vertical" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:background="#CDCBCB" />
+
+                <LinearLayout
+                    android:id="@+id/lay_et_specify_perfer_mob"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/please_specify_mobile" />
+
+                    <EditText
+                        android:id="@+id/et_specify_perfer_mob"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:text="@={individualProfileViewModel.SpecifyMobileLaung}"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_spin_cate_picker_belong"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/category_waste_picker_belong" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_cate_picker_belong"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={individualProfileViewModel.WastePick}"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_type_emp"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/type_emp" />
+
+
+                    <RadioGroup
+                        android:id="@+id/rg_type_emp"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#D8D6D6"/>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_et_waste_pick"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/wastes_pick_sort" />
+
+                    <EditText
+                        android:id="@+id/et_waste_pick"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:text="@={individualProfileViewModel.KindWaste}"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_spin_sell_waste_collect"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/sell_waste_collect" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_sell_waste_collect"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={individualProfileViewModel.WASTEDISPOSAL}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_et_specify_sell_waste_collect"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/please_specify_waste" />
+
+                    <EditText
+                        android:id="@+id/et_specify_sell_waste_collect"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:text="@={individualProfileViewModel.SpecifySellWaste}"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_spin_source_income"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/source_income" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_source_income"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={individualProfileViewModel.PrimaryOccup}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_et_specif_source_income"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/please_specify_source_income" />
+
+                    <EditText
+                        android:id="@+id/et_specif_source_income"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:text="@={individualProfileViewModel.SpecifyPrimaryOccup}"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_et_no_days_job"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/no_days_month_primary_job" />
+
+                    <EditText
+                        android:id="@+id/et_no_days_job"
+                        style="@style/EditTextStyleNew"
+                        android:digits="1234567890"
+                        android:hint="@string/type_here"
+                        android:text="@={individualProfileViewModel.DayPrimaryJob}"
+                        android:inputType="number"
+                        android:maxLength="2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_et_avg_daily_income"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/avg_daily_income_primary_job" />
+
+                    <EditText
+                        android:id="@+id/et_avg_daily_income"
+                        style="@style/EditTextStyleNew"
+                        android:digits="1234567890"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:text="@={individualProfileViewModel.DailyIncome}"
+                        android:maxLength="4" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_secondary_income"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/secondary_income" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_secondary_income"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#D8D6D6"/>
+
+                <LinearLayout
+                    android:id="@+id/lay_spin_what_secondary_income"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/what_secondry_income" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_what_secondary_income"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={individualProfileViewModel.SecSourceIncom}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_et_specify_source_secondary_income"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/please_specify_secondry_income" />
+
+                    <EditText
+                        android:id="@+id/et_specify_source_secondary_income"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:text="@={individualProfileViewModel.specifySecondaryIncome}"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+
 
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="@dimen/_4sdp"
-                android:background="#CDCBCB" />
+        </ScrollView>
+
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
+
+            <TextView style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1"
+                />
+
+            <Button
+                android:id="@+id/btn_prev"
+                style="@style/ButtonTextStyle"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/previous" />
+
+            <TextView style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1"
+                />
+            <Button
+                android:id="@+id/btn_save"
+                style="@style/ButtonTextStyle"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@={individualProfileViewModel.saveandnextText}" />
+
+            <TextView style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1"
+                />
+
+        </TableRow>
+
+    </LinearLayout>
+
+</layout>
 
-            <LinearLayout
-                android:id="@+id/lay_et_specify_perfer_mob"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/please_specify_mobile" />
-
-                <EditText
-                    android:id="@+id/et_specify_perfer_mob"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_spin_cate_picker_belong"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/category_waste_picker_belong" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_cate_picker_belong"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_type_emp"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/type_emp" />
-
-
-                <RadioGroup
-                    android:id="@+id/rg_type_emp"
-                    style="@style/radioGroupStyle" />
-
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#D8D6D6"/>
-
-
-            <LinearLayout
-                android:id="@+id/lay_et_waste_pick"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/wastes_pick_sort" />
-
-                <EditText
-                    android:id="@+id/et_waste_pick"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_spin_sell_waste_collect"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/sell_waste_collect" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_sell_waste_collect"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_et_specify_sell_waste_collect"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/please_specify_waste" />
-
-                <EditText
-                    android:id="@+id/et_specify_sell_waste_collect"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_spin_source_income"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/source_income" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_source_income"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_et_specif_source_income"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/please_specify_source_income" />
-
-                <EditText
-                    android:id="@+id/et_specif_source_income"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_et_no_days_job"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/no_days_month_primary_job" />
-
-                <EditText
-                    android:id="@+id/et_no_days_job"
-                    style="@style/EditTextStyleNew"
-                    android:digits="1234567890"
-                    android:hint="@string/type_here"
-                    android:inputType="number"
-                    android:maxLength="2" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_et_avg_daily_income"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/avg_daily_income_primary_job" />
-
-                <EditText
-                    android:id="@+id/et_avg_daily_income"
-                    style="@style/EditTextStyleNew"
-                    android:digits="1234567890"
-                    android:hint="@string/type_here"
-                    android:inputType="number"
-                    android:maxLength="4" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_secondary_income"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/secondary_income" />
-
-                <RadioGroup
-                    android:id="@+id/rg_secondary_income"
-                    style="@style/radioGroupStyle" />
-
-            </LinearLayout>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#D8D6D6"/>
-
-            <LinearLayout
-                android:id="@+id/lay_spin_what_secondary_income"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/what_secondry_income" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_what_secondary_income"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_et_specify_source_secondary_income"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/please_specify_secondry_income" />
-
-                <EditText
-                    android:id="@+id/et_specify_source_secondary_income"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text" />
-
-            </LinearLayout>
-
-
-
-
-        </LinearLayout>
-
-    </ScrollView>
-
-    <TableRow
-        style="@style/TableRowStyle"
-        android:layout_margin="@dimen/_10sdp">
-
-        <include layout="@layout/buttons_save_cancel" />
-
-    </TableRow>
-
-</LinearLayout>

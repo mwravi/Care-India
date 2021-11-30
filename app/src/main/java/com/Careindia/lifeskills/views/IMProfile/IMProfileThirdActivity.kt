@@ -3,54 +3,73 @@ package com.careindia.lifeskills.views.improfile
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
+import com.careindia.lifeskills.application.CareIndiaApplication
+import com.careindia.lifeskills.databinding.ActivityImprofileThirdBinding
+import com.careindia.lifeskills.repository.IndividualProfileRepository
+import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
+import com.careindia.lifeskills.viewmodel.IndividualProfileViewModel
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
+import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
+import kotlinx.android.synthetic.main.activity_improfile_one.*
 import kotlinx.android.synthetic.main.activity_improfile_third.*
+import kotlinx.android.synthetic.main.activity_improfile_third.btn_prev
+import kotlinx.android.synthetic.main.activity_improfile_third.btn_save
 import kotlinx.android.synthetic.main.activity_improfile_two.*
-import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityImprofileThirdBinding
     var validate: Validate? = null
     lateinit var mstCommonViewModel: MstCommonViewModel
+    lateinit var imProfileViewModel: IndividualProfileViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_improfile_third)
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_improfile_third)
         validate = Validate(this)
         tv_title.text = "IM Profile"
+
+        mstCommonViewModel =
+            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
+
+        val improfiledao = CareIndiaApplication.database?.imProfileDao()
+        val commondao = CareIndiaApplication.database?.mstCommonDao()
+        val improfileRepository = IndividualProfileRepository(improfiledao!!, commondao!!)
+
+        imProfileViewModel = ViewModelProvider(
+            this,
+            IndividualViewModelFactory(improfileRepository)
+        )[IndividualProfileViewModel::class.java]
+        binding.individualProfileViewModel = imProfileViewModel
+        binding.lifecycleOwner = this
+
         initializeController()
     }
 
     override fun initializeController() {
-        mstCommonViewModel =
-            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
-
-
         //apply click on view
         applyClickOnView()
 
+        // fill spinner view
+        fillSpinner()
+        if(validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) !=null && validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.trim().length>0) {
+            showLiveData()
+        }
 
 
         validate!!.dynamicMultiCheck(this, lang_prefer_mobile_use, mstCommonViewModel,55)
-        validate!!.fillSpinner(
-            this,
-            spin_cate_picker_belong,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            56
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_source_income,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            59
-        )
+
+
 
         validate!!.fillradio(
             rg_type_emp,
@@ -66,23 +85,18 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
             60,
             this
         )
-        validate!!.fillSpinner(
-            this,
-            spin_sell_waste_collect,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            58
-        )
-
-        validate!!.fillSpinner(
-            this,
-            spin_what_secondary_income,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            61
-        )
 
     }
+
+    fun fillSpinner(){
+        bindCommonTable("Select",spin_cate_picker_belong,56)
+        bindCommonTable("Select",spin_source_income,59)
+        bindCommonTable("Select",spin_sell_waste_collect,58)
+        bindCommonTable("Select",spin_what_secondary_income,61)
+    }
+
+
+
 
 
     /**
@@ -97,15 +111,17 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.btn_save -> {
-//                if (checkValidation() == 1) {
+                if (checkValidation() == 1) {
+                    sendData()
+                    imProfileViewModel.updateThirdData()
                     val intent = Intent(this, IMProfileFourthActivity::class.java)
                     startActivity(intent)
                     finish()
-//                }
+                }
             }
             R.id.btn_prev -> {
                 if (checkValidation() == 1) {
-                    var intent = Intent(this, IMProfileListActivity::class.java)
+                    var intent = Intent(this, IMProfileTwoActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
@@ -114,6 +130,30 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
 
 
     }
+
+
+    fun showLiveData() {
+        val idvProfileGuid = validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)
+        imProfileViewModel.getIdvProfiledatabyGuid(validate!!.returnStringValue(idvProfileGuid)).observe(this, Observer {
+            if (it != null && it.size>0) {
+//                et_long_stay.setText(validate!!.returnStringValue(it.get(0).ResidingSince.toString()))
+//                spin_state.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).StateID.toString()),46))
+//                spin_education.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).Education.toString()),48))
+
+            }
+        })
+
+    }
+
+
+    fun sendData(){
+        imProfileViewModel.collectiveProfileThirdData(
+            validate!!.GetAnswerTypeCheckBoxButtonID(lang_prefer_mobile_use),
+            validate!!.GetAnswerTypeRadioButtonID(rg_type_emp),
+            validate!!.GetAnswerTypeRadioButtonID(rg_secondary_income)
+        )
+    }
+
 
     private fun checkValidation(): Int {
         var value = 1
@@ -232,6 +272,46 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
 
         }
         return value
+    }
+
+
+
+
+
+
+    fun bindCommonTable(strValue: String, spin: Spinner, flag: Int) {
+        mstCommonViewModel.getMstCommondata(flag).observe(this, androidx.lifecycle.Observer {
+            if (it != null) {
+                val iGen = it.size
+                val name = arrayOfNulls<String>(iGen + 1)
+                name[0] = strValue
+
+                for (i in 0 until it.size) {
+                    name[i + 1] = it.get(i).value
+                }
+                val adapter_category = ArrayAdapter<String>(
+                    this,
+                    R.layout.my_spinner_space_dashboard, name
+                )
+                adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
+                spin.adapter = adapter_category
+            }
+        })
+        /*if (distric>0) {
+            spin_district_name.setSelection(returnpos(distric, 3))
+        }*/
+    }
+
+
+    fun returnpos(id: Int,flag: Int): Int {
+        val combobox = mstCommonViewModel.getMstCommon(flag)
+        var posi = 0
+        for (i in 0 until combobox.size) {
+            if (id == combobox[i].id) {
+                posi = i + 1
+            }
+        }
+        return posi
     }
 
 

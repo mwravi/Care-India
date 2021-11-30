@@ -1,229 +1,267 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@color/white"
-android:orientation="vertical"
-tools:context=".views.improfile.IMProfileFourthActivity">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-<include
-    android:id="@+id/include"
-    layout="@layout/toolbar_layout" />
-
-
-<ScrollView
-    style="@style/ScrolllViewStyle"
-    android:layout_margin="@dimen/_10sdp"
-    android:layout_weight="1"
-    android:scrollbars="none">
+    <data>
+        <variable
+            name="individualProfileViewModel"
+            type="com.careindia.lifeskills.viewmodel.IndividualProfileViewModel" />
+    </data>
 
     <LinearLayout
-        style="@style/LinearLayoutStyle"
-        android:background="@drawable/box_background"
-        android:padding="@dimen/_10sdp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".views.improfile.IMProfileFourthActivity">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar_layout" />
 
 
-        <LinearLayout
-            android:id="@+id/lay_et_days_secondary_job"
-            style="@style/LinearLayoutStyle">
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:scrollbars="none">
 
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/no_days_secondary_job" />
-
-            <EditText
-                android:id="@+id/et_days_secondary_job"
-                style="@style/EditTextStyleNew"
-                android:digits="0123456789"
-                android:hint="@string/type_here"
-                android:inputType="number"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/lay_et_avg_daily_secondry_income"
-            style="@style/LinearLayoutStyle">
-
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/avg_daily_secondry_income" />
-
-            <EditText
-                android:id="@+id/et_avg_daily_secondry_income"
-                style="@style/EditTextStyleNew"
-                android:digits="0123456789"
-                android:hint="@string/type_here"
-                android:inputType="number"
-                android:maxLines="1"
-                android:singleLine="true" />
-
-        </LinearLayout>
+            <LinearLayout
+                style="@style/LinearLayoutStyle"
+                android:background="@drawable/box_background"
+                android:padding="@dimen/_10sdp">
 
 
-        <LinearLayout
-            android:id="@+id/lay_have_adhar"
-            style="@style/LinearLayoutStyle">
+                <LinearLayout
+                    android:id="@+id/lay_et_days_secondary_job"
+                    style="@style/LinearLayoutStyle">
 
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/have_adhar_card" />
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/no_days_secondary_job" />
 
-            <RadioGroup
-                android:id="@+id/rg_have_adhar"
-                style="@style/radioGroupStyle" />
+                    <EditText
+                        android:id="@+id/et_days_secondary_job"
+                        style="@style/EditTextStyleNew"
+                        android:digits="0123456789"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:text="@={individualProfileViewModel.WorkingDaysSecondaryJob}"
+                        android:singleLine="true" />
 
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="#D8D6D6"/>
-        <LinearLayout
-            android:id="@+id/lay_have_voter"
-            style="@style/LinearLayoutStyle">
+                </LinearLayout>
 
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/have_voter_card" />
+                <LinearLayout
+                    android:id="@+id/lay_et_avg_daily_secondry_income"
+                    style="@style/LinearLayoutStyle">
 
-            <RadioGroup
-                android:id="@+id/rg_have_voter"
-                style="@style/radioGroupStyle" />
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/avg_daily_secondry_income" />
 
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="#D8D6D6"/>
-        <LinearLayout
-            android:id="@+id/lay_have_pan"
-            style="@style/LinearLayoutStyle">
+                    <EditText
+                        android:id="@+id/et_avg_daily_secondry_income"
+                        style="@style/EditTextStyleNew"
+                        android:digits="0123456789"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:text="@={individualProfileViewModel.AvgDailySecIncome}"
+                        android:singleLine="true" />
 
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/have_pan_card" />
+                </LinearLayout>
 
 
-            <RadioGroup
-                android:id="@+id/rg_have_pan"
-                style="@style/radioGroupStyle" />
+                <LinearLayout
+                    android:id="@+id/lay_have_adhar"
+                    style="@style/LinearLayoutStyle">
 
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="#D8D6D6"/>
-        <LinearLayout
-            android:id="@+id/lay_have_income"
-            style="@style/LinearLayoutStyle">
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/have_adhar_card" />
 
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/income_certi" />
+                    <RadioGroup
+                        android:id="@+id/rg_have_adhar"
+                        style="@style/radioGroupStyle" />
 
-            <RadioGroup
-                android:id="@+id/rg_have_income"
-                style="@style/radioGroupStyle" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="#D8D6D6"/>
+                <LinearLayout
+                    android:id="@+id/lay_have_voter"
+                    style="@style/LinearLayoutStyle">
 
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/have_voter_card" />
 
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="#D8D6D6"/>
-        <LinearLayout
-            android:id="@+id/lay_have_caste"
-            style="@style/LinearLayoutStyle">
+                    <RadioGroup
+                        android:id="@+id/rg_have_voter"
+                        style="@style/radioGroupStyle" />
 
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/caste_certi" />
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="#D8D6D6"/>
+                <LinearLayout
+                    android:id="@+id/lay_have_pan"
+                    style="@style/LinearLayoutStyle">
 
-            <RadioGroup
-                android:id="@+id/rg_have_caste"
-                style="@style/radioGroupStyle" />
-
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="#D8D6D6"/>
-
-        <LinearLayout
-            android:id="@+id/lay_svg_bank_act"
-            style="@style/LinearLayoutStyle">
-
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/svg_bank_act" />
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/have_pan_card" />
 
 
-            <RadioGroup
-                android:id="@+id/rg_svg_bank_act"
-                style="@style/radioGroupStyle" />
+                    <RadioGroup
+                        android:id="@+id/rg_have_pan"
+                        style="@style/radioGroupStyle" />
 
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="#D8D6D6"/>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="#D8D6D6"/>
+                <LinearLayout
+                    android:id="@+id/lay_have_income"
+                    style="@style/LinearLayoutStyle">
 
-        <LinearLayout
-            android:id="@+id/lay_availed_services_past"
-            style="@style/LinearLayoutStyle">
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/income_certi" />
 
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/availed_services_past" />
-
-
-            <RadioGroup
-                android:id="@+id/rg_availed_services_past"
-                style="@style/radioGroupStyle" />
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginBottom="@dimen/_5sdp"
-            android:background="#D8D6D6"/>
-        <LinearLayout
-            android:id="@+id/lay_et_service_provider_department"
-            style="@style/LinearLayoutStyle">
-
-            <TextView
-                style="@style/TextViewStyleNew"
-                android:text="@string/service_provider_department" />
-
-            <EditText
-                android:id="@+id/et_service_provider_department"
-                style="@style/EditTextStyleNew"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                android:hint="@string/type_here"
-                android:inputType="text" />
-
-        </LinearLayout>
+                    <RadioGroup
+                        android:id="@+id/rg_have_income"
+                        style="@style/radioGroupStyle" />
 
 
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="#D8D6D6"/>
+                <LinearLayout
+                    android:id="@+id/lay_have_caste"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/caste_certi" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_have_caste"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="#D8D6D6"/>
+
+                <LinearLayout
+                    android:id="@+id/lay_svg_bank_act"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/svg_bank_act" />
+
+
+                    <RadioGroup
+                        android:id="@+id/rg_svg_bank_act"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="#D8D6D6"/>
+
+                <LinearLayout
+                    android:id="@+id/lay_availed_services_past"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/availed_services_past" />
+
+
+                    <RadioGroup
+                        android:id="@+id/rg_availed_services_past"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="#D8D6D6"/>
+                <LinearLayout
+                    android:id="@+id/lay_et_service_provider_department"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/service_provider_department" />
+
+                    <EditText
+                        android:id="@+id/et_service_provider_department"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:text="@={individualProfileViewModel.DetailServiceProviderDep}"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
+
+            <TextView style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1"
+                />
+
+            <Button
+                android:id="@+id/btn_prev"
+                style="@style/ButtonTextStyle"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/previous" />
+
+            <TextView style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1"
+                />
+            <Button
+                android:id="@+id/btn_save"
+                style="@style/ButtonTextStyle"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@={individualProfileViewModel.saveandnextText}" />
+
+            <TextView style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1"
+                />
+
+        </TableRow>
     </LinearLayout>
 
-</ScrollView>
-
-    <TableRow
-        style="@style/TableRowStyle"
-        android:layout_margin="@dimen/_10sdp">
-
-        <include layout="@layout/buttons_save_cancel" />
-
-    </TableRow>
-
-</LinearLayout>
+</layout>

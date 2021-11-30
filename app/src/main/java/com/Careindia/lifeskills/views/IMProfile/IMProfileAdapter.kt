@@ -1,31 +1,50 @@
 package com.careindia.lifeskills.views.improfile
 
-import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.careindia.lifeskills.R
+import com.careindia.lifeskills.databinding.RowInvprofileItemBinding
+import com.careindia.lifeskills.entity.IndividualProfileEntity
 
 
-class IMProfileAdapter (var context: Context) :
+class IMProfileAdapter(
+    private val imProfileList: List<IndividualProfileEntity>,
+    private val clickListener: (IndividualProfileEntity) -> Unit
+) :
     RecyclerView.Adapter<IMProfileAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        var view =
-            LayoutInflater.from(context).inflate(R.layout.primary_data_item_row, parent, false)
-        return ViewHolder(view)
 
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding: RowInvprofileItemBinding =
+            DataBindingUtil.inflate(layoutInflater, R.layout.row_invprofile_item, parent, false)
+
+
+        return ViewHolder(binding)
     }
 
     override fun getItemCount(): Int {
-        return 6
+        return imProfileList.size
     }
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
+        holder.bind(imProfileList[position], clickListener)
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class ViewHolder(val binding: RowInvprofileItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(
+            imProfileList: IndividualProfileEntity,
+            clickListener: (IndividualProfileEntity) -> Unit
+        ) {
+            binding.tvCrpName.text = imProfileList.Name
+            binding.tvFfDate.text = imProfileList.DateForm
+            binding.cardView.setOnClickListener {
+                clickListener(imProfileList)
+            }
+        }
     }
 }

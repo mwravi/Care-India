@@ -1,6 +1,7 @@
 package com.careindia.lifeskills.repository
 
 import android.app.Application
+import androidx.lifecycle.LiveData
 import com.careindia.lifeskills.application.CareIndiaApplication
 import com.careindia.lifeskills.dao.MstCommonDao
 import com.careindia.lifeskills.entity.MstCommonEntity
@@ -19,7 +20,9 @@ class MstCommonRepository {
         return mstCommonDao!!.getCount()
     }
 
-
+    fun getMstCommondata(flag: Int): LiveData<List<MstCommonEntity>> {
+        return mstCommonDao!!.getMstCommondata(flag)
+    }
 
 
 

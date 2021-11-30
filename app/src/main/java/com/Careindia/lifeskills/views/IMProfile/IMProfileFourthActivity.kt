@@ -3,32 +3,55 @@ package com.careindia.lifeskills.views.improfile
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
+import com.careindia.lifeskills.application.CareIndiaApplication
+import com.careindia.lifeskills.databinding.ActivityImprofileFourthBinding
+import com.careindia.lifeskills.repository.IndividualProfileRepository
 import com.careindia.lifeskills.utils.Validate
+import com.careindia.lifeskills.viewmodel.IndividualProfileViewModel
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
+import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_improfile_fourth.*
-import kotlinx.android.synthetic.main.activity_improfile_third.*
-import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityImprofileFourthBinding
     var validate: Validate? = null
     lateinit var mstCommonViewModel: MstCommonViewModel
+    lateinit var imProfileViewModel: IndividualProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_improfile_fourth)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_improfile_fourth)
         validate = Validate(this)
         tv_title.text = "IM Profile"
-        initializeController()
 
-    }
-    override fun initializeController() {
         mstCommonViewModel =
             ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
 
+        val improfiledao = CareIndiaApplication.database?.imProfileDao()
+        val commondao = CareIndiaApplication.database?.mstCommonDao()
+        val improfileRepository = IndividualProfileRepository(improfiledao!!, commondao!!)
+
+        imProfileViewModel = ViewModelProvider(
+            this,
+            IndividualViewModelFactory(improfileRepository)
+        )[IndividualProfileViewModel::class.java]
+        binding.individualProfileViewModel = imProfileViewModel
+        binding.lifecycleOwner = this
+
+
+        initializeController()
+
+    }
+
+    override fun initializeController() {
+        mstCommonViewModel =
+            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
 
 
         //apply click on view
@@ -56,15 +79,15 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
             64,
             this
         )
-       validate!!.fillradio(
+        validate!!.fillradio(
             rg_have_income,
             -1,
             mstCommonViewModel,
             65,
             this
         )
-         validate!!.fillradio(
-             rg_have_caste,
+        validate!!.fillradio(
+            rg_have_caste,
             -1,
             mstCommonViewModel,
             66,
@@ -87,6 +110,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
 
 
     }
+
     /**
      * Click on view
      */
@@ -95,10 +119,13 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
         btn_save.setOnClickListener(this)
 
     }
+
     override fun onClick(view: View?) {
-        when(view?.id){
+        when (view?.id) {
             R.id.btn_save -> {
                 if (checkValidation() == 1) {
+                    sendData()
+                    imProfileViewModel.updateForthProfileData()
                     val intent = Intent(this, IMProfileFifthActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -106,7 +133,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
             }
             R.id.btn_prev -> {
                 if (checkValidation() == 1) {
-                    var intent = Intent(this, IMProfileListActivity::class.java)
+                    var intent = Intent(this, IMProfileThirdActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
@@ -116,17 +143,32 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
 
     }
 
+    fun sendData() {
+        imProfileViewModel.collectiveProfileForthData(
+            validate!!.GetAnswerTypeRadioButtonID(rg_have_adhar),
+            validate!!.GetAnswerTypeRadioButtonID(rg_have_voter),
+            validate!!.GetAnswerTypeRadioButtonID(rg_have_pan),
+            validate!!.GetAnswerTypeRadioButtonID(rg_have_income),
+            validate!!.GetAnswerTypeRadioButtonID(rg_have_caste),
+            validate!!.GetAnswerTypeRadioButtonID(rg_svg_bank_act),
+            validate!!.GetAnswerTypeRadioButtonID(rg_availed_services_past)
+        )
+    }
+
     private fun checkValidation(): Int {
         var value = 1
 
-         if (et_days_secondary_job.text.toString().isEmpty()) {
+        if (et_days_secondary_job.text.toString().isEmpty()) {
             validate!!.CustomAlertEdit(
                 this,
                 et_days_secondary_job,
                 resources.getString(R.string.plz_select_wrking_days_months)
             )
             value = 0
-        } else if (Integer.parseInt(et_days_secondary_job.text.toString()) < 1 || Integer.parseInt(et_days_secondary_job.text.toString()) > 29) {
+        } else if (Integer.parseInt(et_days_secondary_job.text.toString()) < 1 || Integer.parseInt(
+                et_days_secondary_job.text.toString()
+            ) > 29
+        ) {
             validate!!.CustomAlertEdit(
                 this,
                 et_days_secondary_job,
@@ -140,7 +182,10 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.plz_select_avg_daily_socndry_incm)
             )
             value = 0
-        } else if (Integer.parseInt(et_avg_daily_secondry_income.text.toString()) < 50 || Integer.parseInt(et_avg_daily_secondry_income.text.toString()) > 9999) {
+        } else if (Integer.parseInt(et_avg_daily_secondry_income.text.toString()) < 50 || Integer.parseInt(
+                et_avg_daily_secondry_income.text.toString()
+            ) > 9999
+        ) {
             validate!!.CustomAlertEdit(
                 this,
                 et_avg_daily_secondry_income,
@@ -160,31 +205,31 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-         } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_pan) == 0) {
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_pan) == 0) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.plz_ans_pan)
             )
             value = 0
-              } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_income) == 0) {
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_income) == 0) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.plz_ans_incm_certict)
             )
             value = 0
-              } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_caste) == 0) {
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_caste) == 0) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.plz_ans_caste_certict)
             )
             value = 0
-              } else if (validate!!.GetAnswerTypeRadioButtonID(rg_svg_bank_act) == 0) {
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_svg_bank_act) == 0) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.plz_ans_bank_acct)
             )
             value = 0
-              } else if (validate!!.GetAnswerTypeRadioButtonID(rg_availed_services_past) == 0) {
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_availed_services_past) == 0) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.plz_services_past_month)
