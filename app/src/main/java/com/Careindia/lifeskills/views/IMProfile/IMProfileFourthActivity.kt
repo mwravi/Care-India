@@ -4,12 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.application.CareIndiaApplication
 import com.careindia.lifeskills.databinding.ActivityImprofileFourthBinding
 import com.careindia.lifeskills.repository.IndividualProfileRepository
+import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.IndividualProfileViewModel
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
@@ -28,7 +30,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_improfile_fourth)
         validate = Validate(this)
-        tv_title.text = "IM Profile"
+        tv_title.text = resources.getString(R.string.im_profile)
 
         mstCommonViewModel =
             ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
@@ -49,13 +51,49 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
 
     }
 
-    override fun initializeController() {
-        mstCommonViewModel =
-            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
+    /**
+     * Click on view
+     */
+    private fun applyClickOnView() {
+        btn_prev.setOnClickListener(this)
+        btn_save.setOnClickListener(this)
 
+    }
+
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.btn_save -> {
+                if (checkValidation() == 1) {
+                    sendData()
+                    imProfileViewModel.updateForthProfileData()
+                    val intent = Intent(this, IMProfileFifthActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+            R.id.btn_prev -> {
+                if (checkValidation() == 1) {
+                    var intent = Intent(this, IMProfileThirdActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }
+
+        }
+
+    }
+
+    override fun initializeController() {
 
         //apply click on view
         applyClickOnView()
+
+        if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) != null && validate!!.RetriveSharepreferenceString(
+                AppSP.IndividualProfileGUID
+            )!!.trim().length > 0
+        ) {
+            showLiveData()
+        }
 
 
         validate!!.fillradio(
@@ -111,37 +149,63 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
 
     }
 
-    /**
-     * Click on view
-     */
-    private fun applyClickOnView() {
-        btn_prev.setOnClickListener(this)
-        btn_save.setOnClickListener(this)
+    fun showLiveData() {
+        val idvProfileGuid = validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)
+        imProfileViewModel.getIdvProfiledatabyGuid(validate!!.returnStringValue(idvProfileGuid))
+            .observe(this, Observer {
+                if (it != null && it.size > 0) {
+                    et_days_secondary_job.setText(validate!!.returnStringValue(it.get(0).Secondary_WD.toString()))
+                    et_avg_daily_secondry_income.setText(validate!!.returnStringValue(it.get(0).Secondary_Inc.toString()))
+                    et_service_provider_department.setText(validate!!.returnStringValue(it.get(0).SchemeDetails))
+
+                    (it.get(0).Aadhaar?.let { it1 ->
+                        validate!!.SetAnswerTypeRadioButton(
+                            rg_have_adhar,
+                            it1
+                        )
+                    })
+                    (it.get(0).Voter?.let { it1 ->
+                        validate!!.SetAnswerTypeRadioButton(
+                            rg_have_voter,
+                            it1
+                        )
+                    })
+                    (it.get(0).PAN?.let { it1 ->
+                        validate!!.SetAnswerTypeRadioButton(
+                            rg_have_pan,
+                            it1
+                        )
+                    })
+                    (it.get(0).IncomeCertificate?.let { it1 ->
+                        validate!!.SetAnswerTypeRadioButton(
+                            rg_have_income,
+                            it1
+                        )
+                    })
+                    (it.get(0).CasteCertificate?.let { it1 ->
+                        validate!!.SetAnswerTypeRadioButton(
+                            rg_have_caste,
+                            it1
+                        )
+                    })
+                    (it.get(0).BankAccount?.let { it1 ->
+                        validate!!.SetAnswerTypeRadioButton(
+                            rg_svg_bank_act,
+                            it1
+                        )
+                    })
+                    (it.get(0).SchemesAvailed?.let { it1 ->
+                        validate!!.SetAnswerTypeRadioButton(
+                            rg_availed_services_past,
+                            it1
+                        )
+                    })
+
+                }
+            })
 
     }
 
-    override fun onClick(view: View?) {
-        when (view?.id) {
-            R.id.btn_save -> {
-                if (checkValidation() == 1) {
-                    sendData()
-                    imProfileViewModel.updateForthProfileData()
-                    val intent = Intent(this, IMProfileFifthActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-            }
-            R.id.btn_prev -> {
-                if (checkValidation() == 1) {
-                    var intent = Intent(this, IMProfileThirdActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
-            }
-
-        }
-
-    }
 
     fun sendData() {
         imProfileViewModel.collectiveProfileForthData(
@@ -247,4 +311,6 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
         }
         return value
     }
+
+
 }

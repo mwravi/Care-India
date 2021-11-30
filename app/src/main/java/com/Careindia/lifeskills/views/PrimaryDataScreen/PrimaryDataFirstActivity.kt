@@ -3,25 +3,33 @@ package com.careindia.lifeskills.views.primarydatascreen
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
+import com.careindia.lifeskills.databinding.ActivityPrimaryDataFirstBinding
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
+import com.careindia.lifeskills.viewmodel.PrimaryDataViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_primary_data_first.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityPrimaryDataFirstBinding
     var validate: Validate? = null
     lateinit var mstCommonViewModel: MstCommonViewModel
+    lateinit var primaryDataViewModel: PrimaryDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_primary_data_first)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_primary_data_first)
         validate = Validate(this)
+
         mstCommonViewModel =
             ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
+
+
 
         tv_title.text = resources.getString(R.string.primary_data)
 
@@ -108,6 +116,7 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
             this
         )
     }
+
 
     private fun checkValidation(): Int {
         var value = 1
@@ -221,6 +230,13 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
             value = 0
         }
         return value
+    }
+
+    fun sendData() {
+        primaryDataViewModel.collectDataPrimaryFirst(
+            validate!!.GetAnswerTypeRadioButtonID(rg_aadhar_card),
+            validate!!.GetAnswerTypeRadioButtonID(rg_pan_card)
+        )
     }
 
     override fun onBackPressed() {

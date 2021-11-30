@@ -37,7 +37,7 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this,R.layout.activity_improfile_third)
         validate = Validate(this)
-        tv_title.text = "IM Profile"
+        tv_title.text = resources.getString(R.string.im_profile)
 
         mstCommonViewModel =
             ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
@@ -55,48 +55,6 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
 
         initializeController()
     }
-
-    override fun initializeController() {
-        //apply click on view
-        applyClickOnView()
-
-        // fill spinner view
-        fillSpinner()
-        if(validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) !=null && validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.trim().length>0) {
-            showLiveData()
-        }
-
-
-        validate!!.dynamicMultiCheck(this, lang_prefer_mobile_use, mstCommonViewModel,55)
-
-
-
-        validate!!.fillradio(
-            rg_type_emp,
-            -1,
-            mstCommonViewModel,
-            57,
-            this
-        )
-        validate!!.fillradio(
-            rg_secondary_income,
-            -1,
-            mstCommonViewModel,
-            60,
-            this
-        )
-
-    }
-
-    fun fillSpinner(){
-        bindCommonTable("Select",spin_cate_picker_belong,56)
-        bindCommonTable("Select",spin_source_income,59)
-        bindCommonTable("Select",spin_sell_waste_collect,58)
-        bindCommonTable("Select",spin_what_secondary_income,61)
-    }
-
-
-
 
 
     /**
@@ -131,19 +89,77 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
 
     }
 
+    override fun initializeController() {
+        //apply click on view
+        applyClickOnView()
+
+        // fill spinner view
+        fillSpinner()
+        if(validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) !=null && validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.trim().length>0) {
+            showLiveData()
+        }
+
+
+        validate!!.dynamicMultiCheck(this, lang_prefer_mobile_use, mstCommonViewModel,55)
+
+
+
+        validate!!.fillradio(
+            rg_type_emp,
+            -1,
+            mstCommonViewModel,
+            57,
+            this
+        )
+        validate!!.fillradio(
+            rg_secondary_income,
+            -1,
+            mstCommonViewModel,
+            60,
+            this
+        )
+
+    }
 
     fun showLiveData() {
         val idvProfileGuid = validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)
         imProfileViewModel.getIdvProfiledatabyGuid(validate!!.returnStringValue(idvProfileGuid)).observe(this, Observer {
             if (it != null && it.size>0) {
-//                et_long_stay.setText(validate!!.returnStringValue(it.get(0).ResidingSince.toString()))
-//                spin_state.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).StateID.toString()),46))
-//                spin_education.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).Education.toString()),48))
 
+                et_waste_pick.setText(validate!!.returnStringValue(it.get(0).Waste_Type))
+                et_avg_daily_income.setText(validate!!.returnStringValue(it.get(0).Primary_Inc.toString()))
+                et_no_days_job.setText(validate!!.returnStringValue(it.get(0).Primary_WD.toString()))
+                spin_cate_picker_belong.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).WP_category.toString()),56))
+                spin_sell_waste_collect.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).Waste_Disposal.toString()),58))
+                spin_source_income.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).Primary_Occupation.toString()),58))
+                spin_what_secondary_income.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).Secondary_Occupation.toString()),61))
+
+
+                (it.get(0).Employment_Type?.let { it1 ->
+                    validate!!.SetAnswerTypeRadioButton(
+                        rg_type_emp,
+                        it1
+                    )
+                })
+                (it.get(0).IsSecondary_Occupation?.let { it1 ->
+                    validate!!.SetAnswerTypeRadioButton(
+                        rg_secondary_income,
+                        it1
+                    )
+                })
+
+                (validate!!.SetAnswerTypeCheckBoxButton(lang_prefer_mobile_use, it.get(0).PreferredLanguage_Mobile))
             }
         })
 
     }
+    fun fillSpinner(){
+        bindCommonTable("Select",spin_cate_picker_belong,56)
+        bindCommonTable("Select",spin_source_income,59)
+        bindCommonTable("Select",spin_sell_waste_collect,58)
+        bindCommonTable("Select",spin_what_secondary_income,61)
+    }
+
 
 
     fun sendData(){
@@ -273,10 +289,6 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
         }
         return value
     }
-
-
-
-
 
 
     fun bindCommonTable(strValue: String, spin: Spinner, flag: Int) {

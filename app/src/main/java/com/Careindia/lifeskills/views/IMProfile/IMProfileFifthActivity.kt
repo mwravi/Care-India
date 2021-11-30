@@ -3,19 +3,28 @@ package com.careindia.lifeskills.views.improfile
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.application.CareIndiaApplication
 import com.careindia.lifeskills.databinding.ActivityImprofileFifthBinding
 import com.careindia.lifeskills.repository.IndividualProfileRepository
+import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.IndividualProfileViewModel
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_improfile_fifth.*
+import kotlinx.android.synthetic.main.activity_improfile_fifth.btn_prev
+import kotlinx.android.synthetic.main.activity_improfile_fifth.btn_save
+import kotlinx.android.synthetic.main.activity_improfile_fourth.*
+import kotlinx.android.synthetic.main.activity_improfile_one.*
+import kotlinx.android.synthetic.main.activity_improfile_third.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
@@ -28,7 +37,7 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_improfile_fifth)
         validate = Validate(this)
-        tv_title.text = "IM Profile"
+        tv_title.text = resources.getString(R.string.im_profile)
 
         mstCommonViewModel =
             ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
@@ -48,7 +57,6 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
         initializeController()
 
     }
-
 
 
     /**
@@ -87,6 +95,11 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
         //apply click on view
         applyClickOnView()
 
+        // fill spinner view
+        fillSpinner()
+        if(validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) !=null && validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.trim().length>0) {
+            showLiveData()
+        }
         validate!!.fillradio(
             rg_avail_any_scheme,
             -1,
@@ -118,7 +131,6 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
             this
         )
 
-
 //        validate!!.dynamicRadio(this, checkRadio, resources.getStringArray(R.array.yes_no))
 
         validate!!.dynamicMultiCheck(this, skills_jobs_picking, mstCommonViewModel, 70)
@@ -126,6 +138,48 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
     }
 
 
+    fun showLiveData() {
+        val idvProfileGuid = validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)
+        imProfileViewModel.getIdvProfiledatabyGuid(validate!!.returnStringValue(idvProfileGuid)).observe(this, Observer {
+            if (it != null && it.size>0) {
+                et_details_service_avail.setText(validate!!.returnStringValue(it.get(0).SchemeDetails_Cur.toString()))
+                et_skills_jobs_picking.setText(validate!!.returnStringValue(it.get(0).Jobs))
+                et_name_collective_part.setText(validate!!.returnStringValue(it.get(0).Collective_name))
+
+                spin_alternative_get_opportunity.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).Interested_JobDetail.toString()),72))
+
+                (it.get(0).SchemesAvailed_Cur?.let { it1 ->
+                    validate!!.SetAnswerTypeRadioButton(
+                        rg_avail_any_scheme,
+                        it1
+                    )
+                })
+                (it.get(0).Interested_Job?.let { it1 ->
+                    validate!!.SetAnswerTypeRadioButton(
+                        rg_new_jobs_business,
+                        it1
+                    )
+                })
+                (it.get(0).Member_Collective?.let { it1 ->
+                    validate!!.SetAnswerTypeRadioButton(
+                        rg_member_cig_shg,
+                        it1
+                    )
+                })
+
+                (validate!!.SetAnswerTypeCheckBoxButton(
+                    skills_jobs_picking,
+                    it.get(0).SchemeSP_Cur
+                ))
+
+            }
+        })
+
+    }
+
+    fun fillSpinner(){
+        bindCommonTable("Select",spin_alternative_get_opportunity,72)
+    }
 
     fun sendData() {
         imProfileViewModel.collectiveProfileFifthData(
@@ -197,5 +251,41 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
             value = 0
         }
         return value
+    }
+
+
+    fun bindCommonTable(strValue: String, spin: Spinner, flag: Int) {
+        mstCommonViewModel.getMstCommondata(flag).observe(this, androidx.lifecycle.Observer {
+            if (it != null) {
+                val iGen = it.size
+                val name = arrayOfNulls<String>(iGen + 1)
+                name[0] = strValue
+
+                for (i in 0 until it.size) {
+                    name[i + 1] = it.get(i).value
+                }
+                val adapter_category = ArrayAdapter<String>(
+                    this,
+                    R.layout.my_spinner_space_dashboard, name
+                )
+                adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
+                spin.adapter = adapter_category
+            }
+        })
+        /*if (distric>0) {
+            spin_district_name.setSelection(returnpos(distric, 3))
+        }*/
+    }
+
+
+    fun returnpos(id: Int,flag: Int): Int {
+        val combobox = mstCommonViewModel.getMstCommon(flag)
+        var posi = 0
+        for (i in 0 until combobox.size) {
+            if (id == combobox[i].id) {
+                posi = i + 1
+            }
+        }
+        return posi
     }
 }

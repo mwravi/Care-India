@@ -55,7 +55,7 @@ interface IndividualProfileDao {
     )
 
 
-    @Query("update tblProfileIndividual set Secondary_Occupation=:secondary_occupation,IsSecondary_Occupation=:issecdry_Occuptn, Primary_Occupation=:primary_Occuptn, Waste_Disposal=:waste_disposal,Employment_Type=:emp_type,Waste_Type=:waste_type,PreferredLanguage_Mobile =:preferredLanguage_mobile,WP_category=:wp_category,UpdatedOn=:updated_on where IndGUID=:IndGUID")
+    @Query("update tblProfileIndividual set Primary_WD=:primary_wd, Primary_Inc =:primary_inc,Secondary_Occupation=:secondary_occupation,IsSecondary_Occupation=:issecdry_Occuptn, Primary_Occupation=:primary_Occuptn, Waste_Disposal=:waste_disposal,Employment_Type=:emp_type,Waste_Type=:waste_type,PreferredLanguage_Mobile =:preferredLanguage_mobile,WP_category=:wp_category,UpdatedOn=:updated_on where IndGUID=:IndGUID")
     fun updateIMProfileThirdData(
         IndGUID: String,
         preferredLanguage_mobile: String?,
@@ -64,12 +64,14 @@ interface IndividualProfileDao {
         waste_type: String?,
         waste_disposal: Int?,
         primary_Occuptn: Int?,
+        primary_inc:Int?,
+        primary_wd:Int?,
         issecdry_Occuptn: Int?,
         secondary_occupation: Int?,
         updated_on: String?
     )
 
-    @Query("update tblProfileIndividual set SchemeDetails=:scheme_details,SchemesAvailed=:schemes_availed, Aadhaar=:aadhaar, Voter=:voter,PAN=:pan,IncomeCertificate=:income_certificate,CasteCertificate =:caste_certificate,BankAccount=:bank_account,UpdatedOn=:updated_on where IndGUID=:IndGUID")
+    @Query("update tblProfileIndividual set Secondary_Inc=:secondary_inc, Secondary_WD=:secondary_wd,SchemeDetails=:scheme_details,SchemesAvailed=:schemes_availed, Aadhaar=:aadhaar, Voter=:voter,PAN=:pan,IncomeCertificate=:income_certificate,CasteCertificate =:caste_certificate,BankAccount=:bank_account,UpdatedOn=:updated_on where IndGUID=:IndGUID")
     fun updateIMProfileForthData(
         IndGUID: String,
         aadhaar: Int?,
@@ -80,6 +82,8 @@ interface IndividualProfileDao {
         bank_account: Int?,
         schemes_availed: Int?,
         scheme_details: String?,
+        secondary_wd: Int?,
+        secondary_inc: Int?,
         updated_on: String?
     )
 

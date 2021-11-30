@@ -3,22 +3,27 @@ package com.careindia.lifeskills.views.primarydatascreen
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
+import com.careindia.lifeskills.databinding.ActivityPrimaryDataSecondBinding
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
+import com.careindia.lifeskills.viewmodel.PrimaryDataViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_primary_data_second.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class PrimaryDataSecondActivity : BaseActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityPrimaryDataSecondBinding
     var validate: Validate? = null
     lateinit var mstCommonViewModel: MstCommonViewModel
+    lateinit var primaryDataViewModel: PrimaryDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_primary_data_second)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_primary_data_second)
         validate = Validate(this)
         mstCommonViewModel =
             ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
@@ -200,6 +205,16 @@ class PrimaryDataSecondActivity : BaseActivity(), View.OnClickListener {
             value = 0
         }
         return value
+    }
+
+    fun sendData() {
+        primaryDataViewModel.collectDataPrimarySecond(
+            validate!!.GetAnswerTypeRadioButtonID(rg_bank_account),
+            validate!!.GetAnswerTypeRadioButtonID(rg_new_business),
+            validate!!.GetAnswerTypeRadioButtonID(rg_business_plan),
+            validate!!.GetAnswerTypeRadioButtonID(rg_ready_to_invest),
+            validate!!.GetAnswerTypeRadioButtonID(rg_availing_loan_subsidies)
+        )
     }
 
     override fun onBackPressed() {

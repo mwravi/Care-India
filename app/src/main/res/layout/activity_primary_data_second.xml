@@ -1,219 +1,237 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <include layout="@layout/toolbar_layout" />
+    <data>
+        <variable
+            name="primaryDataViewModel"
+            type="com.careindia.lifeskills.viewmodel.PrimaryDataViewModel" />
+    </data>
 
-    <ScrollView
-        style="@style/ScrolllViewStyle"
-        android:layout_margin="@dimen/_10sdp"
-        android:layout_weight="1"
-        android:scrollbars="none">
 
-        <LinearLayout
-            style="@style/LinearLayoutStyle"
-            android:background="@drawable/box_background"
-            android:padding="@dimen/_10sdp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar_layout" />
+
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:scrollbars="none">
 
             <LinearLayout
-                android:id="@+id/lay_bank_account"
-                style="@style/LinearLayoutStyle">
+                style="@style/LinearLayoutStyle"
+                android:background="@drawable/box_background"
+                android:padding="@dimen/_10sdp">
 
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/do_you_have_bank_account" />
+                <LinearLayout
+                    android:id="@+id/lay_bank_account"
+                    style="@style/LinearLayoutStyle">
 
-                <RadioGroup
-                    android:id="@+id/rg_bank_account"
-                    style="@style/radioGroupStyle" />
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/do_you_have_bank_account" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_bank_account"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_new_business"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/are_you_interested_in_starting_new_business" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_new_business"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_kind_of_business"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/what_kind_of_business_related_skill_training_needed" />
+
+                    <EditText
+                        android:id="@+id/et_kind_of_business"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:text="@={primaryDataViewModel.TypeBussi}"
+                        android:maxLength="50" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_business_plan"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/do_they_have_their_business_plan" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_business_plan"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_investment_range"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/what_is_the_range_of_investment_it_require" />
+
+                    <EditText
+                        android:id="@+id/et_investment_range"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:text="@={primaryDataViewModel.RangeInvesment}"
+                        android:maxLength="5" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_ready_to_invest"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/are_they_ready_to_invest" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_ready_to_invest"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_how_much_you_invest"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/how_much_you_will_invest" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_how_much_you_invest"
+                        android:selectedItemPosition="@={primaryDataViewModel.muchInvest}"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_how_they_planning_investment"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/how_are_they_planning_their_investment" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_how_they_planning_investment"
+                        android:selectedItemPosition="@={primaryDataViewModel.PlanningInvest}"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_financial_assistance"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/how_much_financial_assistance_is_required" />
+
+                    <EditText
+                        android:id="@+id/et_financial_assistance"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:text="@={primaryDataViewModel.FinancialREQ}"
+                        android:maxLength="5" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_expected_support"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/any_expected_support" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_expected_support"
+                        android:selectedItemPosition="@={primaryDataViewModel.ExpectSupport}"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_availing_loan_subsidies"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/are_you_interested_in_availing_loans_or_subsidies" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_availing_loan_subsidies"
+                        style="@style/radioGroupStyle">
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_how_much_they_invested"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/how_much_they_have_invested" />
+
+                    <EditText
+                        android:id="@+id/et_how_much_they_invested"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:text="@={primaryDataViewModel.haveInvested}"
+                        android:maxLength="50" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/lay_new_business"
-                style="@style/LinearLayoutStyle">
+        </ScrollView>
 
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/are_you_interested_in_starting_new_business" />
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
 
-                <RadioGroup
-                    android:id="@+id/rg_new_business"
-                    style="@style/radioGroupStyle" />
+            <include layout="@layout/buttons_save_cancel" />
 
-            </LinearLayout>
+        </TableRow>
 
-            <LinearLayout
-                android:id="@+id/lay_kind_of_business"
-                style="@style/LinearLayoutStyle">
+    </LinearLayout>
 
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/what_kind_of_business_related_skill_training_needed" />
-
-                <EditText
-                    android:id="@+id/et_kind_of_business"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_business_plan"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/do_they_have_their_business_plan" />
-
-                <RadioGroup
-                    android:id="@+id/rg_business_plan"
-                    style="@style/radioGroupStyle" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_investment_range"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/what_is_the_range_of_investment_it_require" />
-
-                <EditText
-                    android:id="@+id/et_investment_range"
-                    style="@style/EditTextStyleNew"
-                    android:hint="@string/type_here"
-                    android:inputType="number"
-                    android:maxLength="5" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_ready_to_invest"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/are_they_ready_to_invest" />
-
-                <RadioGroup
-                    android:id="@+id/rg_ready_to_invest"
-                    style="@style/radioGroupStyle" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_how_much_you_invest"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/how_much_you_will_invest" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_how_much_you_invest"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_how_they_planning_investment"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/how_are_they_planning_their_investment" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_how_they_planning_investment"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_financial_assistance"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/how_much_financial_assistance_is_required" />
-
-                <EditText
-                    android:id="@+id/et_financial_assistance"
-                    style="@style/EditTextStyleNew"
-                    android:hint="@string/type_here"
-                    android:inputType="number"
-                    android:maxLength="5" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_expected_support"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/any_expected_support" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_expected_support"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_availing_loan_subsidies"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/are_you_interested_in_availing_loans_or_subsidies" />
-
-                <RadioGroup
-                    android:id="@+id/rg_availing_loan_subsidies"
-                    style="@style/radioGroupStyle">
-
-                </RadioGroup>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_how_much_they_invested"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/how_much_they_have_invested" />
-
-                <EditText
-                    android:id="@+id/et_how_much_they_invested"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
-
-    <TableRow
-        style="@style/TableRowStyle"
-        android:layout_margin="@dimen/_10sdp">
-
-        <include layout="@layout/buttons_save_cancel" />
-
-    </TableRow>
-
-</LinearLayout>
+</layout>

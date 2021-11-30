@@ -100,6 +100,8 @@ class IndividualProfileRepository(
         waste_type: String?,
         waste_disposal: Int?,
         primary_Occuptn: Int?,
+        primary_inc:Int?,
+        primary_wd:Int?,
         issecdry_Occuptn: Int?,
         secondary_occupation: Int?,
         updated_on: String?
@@ -112,6 +114,8 @@ class IndividualProfileRepository(
             waste_type,
             waste_disposal,
             primary_Occuptn,
+            primary_inc,
+            primary_wd,
             issecdry_Occuptn,
             secondary_occupation,
             updated_on
@@ -129,6 +133,8 @@ class IndividualProfileRepository(
         bank_account: Int?,
         schemes_availed: Int?,
         scheme_details: String?,
+        secondary_wd: Int?,
+        secondary_inc: Int?,
         updated_on: String?
     ) {
         imProfileDao.updateIMProfileForthData(
@@ -141,6 +147,8 @@ class IndividualProfileRepository(
             bank_account,
             schemes_availed,
             scheme_details,
+            secondary_wd,
+        secondary_inc,
             updated_on
         )
     }

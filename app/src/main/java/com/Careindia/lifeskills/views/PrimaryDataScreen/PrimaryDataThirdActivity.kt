@@ -3,22 +3,27 @@ package com.careindia.lifeskills.views.primarydatascreen
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
+import com.careindia.lifeskills.databinding.ActivityPrimaryDataThirdBinding
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
+import com.careindia.lifeskills.viewmodel.PrimaryDataViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_primary_data_third.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
+    private lateinit var binding: ActivityPrimaryDataThirdBinding
     var validate: Validate? = null
     lateinit var mstCommonViewModel: MstCommonViewModel
+    lateinit var primaryDataViewModel: PrimaryDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_primary_data_third)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_primary_data_third)
         validate = Validate(this)
 
         mstCommonViewModel =
@@ -56,6 +61,8 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
             }
         }
     }
+
+
 
     fun fillSpinner() {
         validate!!.fillSpinner(
@@ -157,6 +164,15 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
         }
         return value
     }
+
+    fun sendData() {
+        primaryDataViewModel.collectDataPrimaryThird(
+            validate!!.GetAnswerTypeRadioButtonID(rg_business_registered),
+            validate!!.GetAnswerTypeRadioButtonID(rg_loans_availed_already),
+            validate!!.GetAnswerTypeRadioButtonID(rg_expecting_financial_assistance)
+        )
+    }
+
 
     override fun onBackPressed() {
         val intent = Intent(this, PrimaryDataSecondActivity::class.java)

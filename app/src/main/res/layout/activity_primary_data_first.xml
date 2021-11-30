@@ -1,226 +1,248 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical"
-   >
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <include layout="@layout/toolbar_layout" />
+    <data>
+        <variable
+            name="primaryDataViewModel"
+            type="com.careindia.lifeskills.viewmodel.PrimaryDataViewModel" />
+    </data>
 
-    <ScrollView
-        style="@style/ScrolllViewStyle"
-        android:layout_margin="@dimen/_10sdp"
-        android:layout_weight="1"
-        android:scrollbars="none">
 
-        <LinearLayout
-            style="@style/LinearLayoutStyle"
-            android:background="@drawable/box_background"
-            android:padding="@dimen/_10sdp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
+
+        <include layout="@layout/toolbar_layout" />
+
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:scrollbars="none">
 
             <LinearLayout
-                android:id="@+id/lay_hh_id"
-                style="@style/LinearLayoutStyle">
+                style="@style/LinearLayoutStyle"
+                android:background="@drawable/box_background"
+                android:padding="@dimen/_10sdp">
 
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/hh_id" />
+                <LinearLayout
+                    android:id="@+id/lay_hh_id"
+                    style="@style/LinearLayoutStyle">
 
-                <EditText
-                    android:id="@+id/et_hh_id"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                    android:hint="@string/type_here"
-                    android:inputType="text"
-                    android:maxLength="14" />
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/hh_id" />
+
+                    <EditText
+                        android:id="@+id/et_hh_id"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:text="@={primaryDataViewModel.HHID}"
+                        android:maxLength="14" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_im_id"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/im_id" />
+
+                    <EditText
+                        android:id="@+id/et_im_id"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:text="@={primaryDataViewModel.IMID}"
+                        android:maxLength="14" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_community_name"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/community_name" />
+
+                    <EditText
+                        android:id="@+id/et_community_name"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:text="@={primaryDataViewModel.CommutyNameBlock}"
+                        android:maxLength="50" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_beneficiary_name"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/name_of_beneficiary" />
+
+                    <EditText
+                        android:id="@+id/et_beneficiary_name"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="textPersonName"
+                        android:text="@={primaryDataViewModel.NameCandidate}"
+                        android:maxLength="50" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_age"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/age" />
+
+                    <EditText
+                        android:id="@+id/et_age"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:text="@={primaryDataViewModel.Age}"
+                        android:maxLength="2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_gender"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/gender" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_gender"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={primaryDataViewModel.Gender}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_contact_no"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/contact_no" />
+
+                    <EditText
+                        android:id="@+id/et_contact_no"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:text="@={primaryDataViewModel.ContactNo}"
+                        android:maxLength="10" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_shg_jlg_cig"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/member_of_any_shg_jlg_cig" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_shg_jlg_cig"
+                        android:selectedItemPosition="@={primaryDataViewModel.MemberSHG}"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_social_category"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/social_category" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_social_category"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={primaryDataViewModel.SocialCate}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_caste_income_certificate"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/caste_and_income_certificate" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_caste_income_certificate"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={primaryDataViewModel.IncomeCerti}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_aadhar_card"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/do_you_have_valid_aadhar_card" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_aadhar_card"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_pan_card"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/do_you_have_valid_pan_card" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_pan_card"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/lay_im_id"
-                style="@style/LinearLayoutStyle">
+        </ScrollView>
 
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/im_id" />
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
 
-                <EditText
-                    android:id="@+id/et_im_id"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                    android:hint="@string/type_here"
-                    android:inputType="text"
-                    android:maxLength="14" />
+            <include layout="@layout/buttons_save_cancel" />
 
-            </LinearLayout>
+        </TableRow>
 
-            <LinearLayout
-                android:id="@+id/lay_community_name"
-                style="@style/LinearLayoutStyle">
+    </LinearLayout>
 
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/community_name" />
-
-                <EditText
-                    android:id="@+id/et_community_name"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_beneficiary_name"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/name_of_beneficiary" />
-
-                <EditText
-                    android:id="@+id/et_beneficiary_name"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="textPersonName"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_age"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/age" />
-
-                <EditText
-                    android:id="@+id/et_age"
-                    style="@style/EditTextStyleNew"
-                    android:hint="@string/type_here"
-                    android:inputType="number"
-                    android:maxLength="2" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_gender"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/gender" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_gender"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_contact_no"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/contact_no" />
-
-                <EditText
-                    android:id="@+id/et_contact_no"
-                    style="@style/EditTextStyleNew"
-                    android:hint="@string/type_here"
-                    android:inputType="number"
-                    android:maxLength="10" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_shg_jlg_cig"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/member_of_any_shg_jlg_cig" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_shg_jlg_cig"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_social_category"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/social_category" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_social_category"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_caste_income_certificate"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/caste_and_income_certificate" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_caste_income_certificate"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_aadhar_card"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/do_you_have_valid_aadhar_card" />
-
-                <RadioGroup
-                    android:id="@+id/rg_aadhar_card"
-                    style="@style/radioGroupStyle" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_pan_card"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/do_you_have_valid_pan_card" />
-
-                <RadioGroup
-                    android:id="@+id/rg_pan_card"
-                    style="@style/radioGroupStyle" />
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
-
-    <TableRow
-        style="@style/TableRowStyle"
-        android:layout_margin="@dimen/_10sdp">
-
-        <include layout="@layout/buttons_save_cancel" />
-
-    </TableRow>
-
-</LinearLayout>
+</layout>

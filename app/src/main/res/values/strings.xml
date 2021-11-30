@@ -333,6 +333,7 @@
     <string name="please_entr_input_daily">Please enter the Input value between 50–9999</string>
 
     <string name="please_prvd_service_detail">Please provide details of the service/scheme that you are availing.</string>
+    <string name="im_profile">IM Profile</string>
 
 
 </resources>

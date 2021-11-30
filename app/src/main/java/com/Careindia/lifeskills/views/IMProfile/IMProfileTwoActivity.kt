@@ -39,7 +39,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_improfile_two)
         validate = Validate(this)
-        tv_title.text = "IM Profile"
+        tv_title.text = resources.getString(R.string.im_profile)
 
         mstCommonViewModel =
             ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
@@ -65,7 +65,10 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         applyClickOnView()
         // fill spinner view
         fillSpinner()
-        if(validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) !=null && validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.trim().length>0) {
+        if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) != null && validate!!.RetriveSharepreferenceString(
+                AppSP.IndividualProfileGUID
+            )!!.trim().length > 0
+        ) {
             showLiveData()
         }
 
@@ -99,11 +102,10 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
 
     }
 
-    fun fillSpinner(){
-        bindCommonTable("Select",spin_state,46)
-        bindCommonTable("Select",spin_education,48)
+    fun fillSpinner() {
+        bindCommonTable("Select", spin_state, 46)
+        bindCommonTable("Select", spin_education, 48)
     }
-
 
 
     /**
@@ -136,18 +138,52 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
     }
 
 
-
-
     fun showLiveData() {
         val idvProfileGuid = validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)
-        imProfileViewModel.getIdvProfiledatabyGuid(validate!!.returnStringValue(idvProfileGuid)).observe(this, Observer {
-            if (it != null && it.size>0) {
-                et_long_stay.setText(validate!!.returnStringValue(it.get(0).ResidingSince.toString()))
-                spin_state.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).StateID.toString()),46))
-                spin_education.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).Education.toString()),48))
+        imProfileViewModel.getIdvProfiledatabyGuid(validate!!.returnStringValue(idvProfileGuid))
+            .observe(this, Observer {
+                if (it != null && it.size > 0) {
+                    et_long_stay.setText(validate!!.returnStringValue(it.get(0).ResidingSince.toString()))
+                    spin_state.setSelection(
+                        returnpos(
+                            validate!!.returnIntegerValue(it.get(0).StateID.toString()),
+                            46
+                        )
+                    )
+                    spin_education.setSelection(
+                        returnpos(
+                            validate!!.returnIntegerValue(it.get(0).Education.toString()),
+                            48
+                        )
+                    )
 
-            }
-        })
+                    (it.get(0).Read_Write?.let { it1 ->
+                        validate!!.SetAnswerTypeRadioButton(
+                            rg_can_read,
+                            it1
+                        )
+                    })
+                    (it.get(0).Smartphone?.let { it1 ->
+                        validate!!.SetAnswerTypeRadioButton(
+                            rg_access_sphone,
+                            it1
+                        )
+                    })
+                    (it.get(0).MobileData?.let { it1 ->
+                        validate!!.SetAnswerTypeRadioButton(
+                            rg_acess_mob_data,
+                            it1
+                        )
+                    })
+
+                    (validate!!.SetAnswerTypeCheckBoxButton(multiCheck, it.get(0).Languages_Speak))
+                    (validate!!.SetAnswerTypeCheckBoxButton(multiCheck_lang_read, it.get(0).Languages_Read))
+                    (validate!!.SetAnswerTypeCheckBoxButton(lang_write, it.get(0).Languages_Write))
+                    (validate!!.SetAnswerTypeCheckBoxButton(prefer_comni_speaking, it.get(0).PreferredLanguage_Communication))
+
+
+                }
+            })
 
     }
 
@@ -291,13 +327,6 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
     }
 
 
-
-
-
-
-
-
-
     fun bindCommonTable(strValue: String, spin: Spinner, flag: Int) {
         mstCommonViewModel.getMstCommondata(flag).observe(this, androidx.lifecycle.Observer {
             if (it != null) {
@@ -322,7 +351,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
     }
 
 
-    fun returnpos(id: Int,flag: Int): Int {
+    fun returnpos(id: Int, flag: Int): Int {
         val combobox = mstCommonViewModel.getMstCommon(flag)
         var posi = 0
         for (i in 0 until combobox.size) {
@@ -332,7 +361,6 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         }
         return posi
     }
-
 
 
     private fun saveData() {

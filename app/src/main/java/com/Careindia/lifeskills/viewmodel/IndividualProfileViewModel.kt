@@ -167,13 +167,9 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         val specify_mobilelaung: String? = SpecifyMobileLaung.value
         val specify_sellwaste: String? = SpecifySellWaste.value
         val specify_primaryoccup: String? = SpecifyPrimaryOccup.value
-        val days_primaryjob: String? = DayPrimaryJob.value
+
         val specify_sec_income: String? = specifySecondaryIncome.value
 
-        val dailyinicome: String? = DailyIncome.value
-
-        val workDays_SecJob: String? = WorkingDaysSecondaryJob.value
-        val avgDaily_secIncome: String? = AvgDailySecIncome.value
 
 
         if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) == "") {
@@ -273,6 +269,9 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
 
     fun updateForthProfileData() {
         val detailscheme_providerDep: String? = DetailServiceProviderDep.value
+        val workDays_SecJob: String? = WorkingDaysSecondaryJob.value
+        val avgDaily_secIncome: String? = AvgDailySecIncome.value
+
         updateIMProfileForthData(
             validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!,
             haveAdhar,
@@ -283,6 +282,8 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
             svgBankAct,
             availedServicesPast,
             detailscheme_providerDep,
+            Integer.parseInt(workDays_SecJob),
+            Integer.parseInt(avgDaily_secIncome),
             validate!!.currentdatetime
         )
 
@@ -316,6 +317,8 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         val waste_disposal: Int? = returnID(WASTEDISPOSAL.value, 58)
         val primary_occup: Int? = returnID(PrimaryOccup.value, 59)
         val sec_Sourceincome: Int? = returnID(SecSourceIncom.value, 61)
+        val dailyinicome: String? = DailyIncome.value
+        val days_primaryjob: String? = DayPrimaryJob.value
 
         updateIMProfileThirdData(
             validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!,
@@ -325,6 +328,8 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
             kind_waste,
             waste_disposal,
             primary_occup,
+            Integer.parseInt(dailyinicome),
+            Integer.parseInt(days_primaryjob),
             isSecondrySource,
             sec_Sourceincome,
             validate!!.currentdatetime
@@ -409,6 +414,8 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         waste_type: String?,
         waste_disposal: Int?,
         primary_Occuptn: Int?,
+        primary_inc: Int?,
+        primary_wd:Int?,
         issecdry_Occuptn: Int?,
         secondary_occupation: Int?,
         updated_on: String?
@@ -422,13 +429,14 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
                 waste_type,
                 waste_disposal,
                 primary_Occuptn,
+                primary_inc,
+                primary_wd,
                 issecdry_Occuptn,
                 secondary_occupation,
                 updated_on
             )
         }
     }
-
 
 
     fun updateIMProfileFifthData(
@@ -469,6 +477,8 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         bank_account: Int?,
         schemes_availed: Int?,
         scheme_details: String?,
+        secondary_wd: Int?,
+        secondary_inc: Int?,
         updated_on: String?
     ) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -482,6 +492,8 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
                 bank_account,
                 schemes_availed,
                 scheme_details,
+                secondary_wd,
+                secondary_inc,
                 updated_on
             )
         }
