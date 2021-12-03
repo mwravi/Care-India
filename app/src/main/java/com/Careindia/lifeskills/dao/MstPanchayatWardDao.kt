@@ -14,6 +14,7 @@ interface MstPanchayatWardDao {
     @Query("select * from mst_4panchayat_ward where StateCode=:StateCode and DistrictCode=:DistrictCode and ZoneCode=:ZoneCode")
     fun getMstPanchayat_Ward(StateCode: Int,DistrictCode:Int,ZoneCode:Int): List<MstPanchayat_WardEntity>
 
-
+    @Query("DELETE FROM mst_4panchayat_ward")
+    fun deleteAll()
 
 }

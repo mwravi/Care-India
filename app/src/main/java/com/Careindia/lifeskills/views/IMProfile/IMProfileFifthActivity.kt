@@ -65,7 +65,6 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
     private fun applyClickOnView() {
         btn_prev.setOnClickListener(this)
         btn_save.setOnClickListener(this)
-
     }
 
     override fun onClick(view: View?) {
@@ -86,6 +85,7 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
                     finish()
                 }
             }
+
         }
 
     }

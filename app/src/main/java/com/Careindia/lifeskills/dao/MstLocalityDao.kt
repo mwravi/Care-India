@@ -14,7 +14,8 @@ interface MstLocalityDao {
     @Query("select * from mst_5Locality where StateCode=:StateCode and DistrictCode=:DistrictCode and ZoneCode=:ZoneCode and PWCode=:PWCode")
     fun getMstLocality(StateCode: Int,DistrictCode:Int,ZoneCode:Int,PWCode:Int): List<MstLocalityEntity>
 
-
+    @Query("DELETE FROM mst_5Locality")
+    fun deleteAll()
 
 
 

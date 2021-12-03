@@ -8,11 +8,11 @@
 
 
     <ImageView
-        android:id="@+id/img_menu"
+        android:id="@+id/img_back"
         android:layout_width="@dimen/_20sdp"
         android:layout_height="@dimen/_20sdp"
         android:layout_marginStart="@dimen/_10sdp"
-        android:src="@drawable/ic_menu_icon" />
+        android:src="@drawable/ic_back" />
 
 
     <TextView
@@ -29,6 +29,7 @@
         android:id="@+id/img_setting"
         android:layout_width="@dimen/_25sdp"
         android:layout_height="@dimen/_25sdp"
+        android:visibility="gone"
         android:layout_marginEnd="@dimen/_10sdp"
         android:src="@drawable/ic_setting" />
 

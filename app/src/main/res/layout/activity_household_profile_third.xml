@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="householdProfileViewModel"
+            type="com.careindia.lifeskills.viewmodel.HouseholdProfileViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar_layout" />
+
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:background="@drawable/box_background"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/lay_inner_details"
+                style="@style/LinearLayoutStyle"
+                android:padding="@dimen/_5sdp">
+
+
+                <LinearLayout
+                    android:id="@+id/lay_totalearningMember"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        android:id="@+id/tv_totalearningMember"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/total_earning_member" />
+
+                    <EditText
+                        android:id="@+id/et_totalEarningMember"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@={householdProfileViewModel.total_earning_members}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_maleearningMember"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        android:id="@+id/tv_maleearningMember"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/male_earning_member" />
+
+                    <EditText
+                        android:id="@+id/et_maleearningmember"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@={householdProfileViewModel.earning_male}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_femaleearningMember"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        android:id="@+id/tv_femaleearningMember"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/female_earning_member" />
+
+                    <EditText
+                        android:id="@+id/et_femaleearningmember"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@={householdProfileViewModel.earning_female}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_dwelling"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        android:id="@+id/tv_dwelling"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/type_of_dwelling" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_dwelling"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={householdProfileViewModel.dwelling}"
+
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_othertypeofdwelling"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        android:id="@+id/tv_othertypeofdwelling"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/if_other_type_of_dwelling" />
+
+                    <EditText
+                        android:id="@+id/et_othertypeofdwelling"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={householdProfileViewModel.other_dwelling}"
+
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_dwellingplaceRegistered"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        android:id="@+id/tv_dwelling_place_registered"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/is_your_dwelling_place_registered" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_dwelling_place_registered"
+                        style="@style/radioGroupStyle"
+                        android:checkedButton="@={householdProfileViewModel.dwelling_place_registered}"
+                        >
+
+                    </RadioGroup>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_hh_ration_card"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        android:id="@+id/tv_hh_ration_card"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/hh_ration_card" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_hh_ration_card"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={householdProfileViewModel.ration_card}"
+                        />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
+
+            <include layout="@layout/buttons_save_cancel" />
+
+        </TableRow>
+    </LinearLayout>
+</layout>

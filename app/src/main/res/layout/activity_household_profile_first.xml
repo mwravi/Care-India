@@ -47,7 +47,7 @@
                         android:focusable="false"
                         android:hint="@string/enter_date"
                         android:inputType="date"
-                        android:text="@={householdProfileViewModel.date}" />
+                        android:text="@={householdProfileViewModel.Date}" />
 
                 </LinearLayout>
 
@@ -64,11 +64,10 @@
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_crpfillingform"
                         style="@style/SpinnerViewNew"
-                        bind:selectedUser="@={householdProfileViewModel.entry.value}"
-                        bind:users="@{householdProfileViewModel.users}" />
+                        android:selectedItemPosition="@={householdProfileViewModel.CrpName}"
+                   />
 
                 </LinearLayout>
-
 
 
                 <LinearLayout
@@ -82,7 +81,9 @@
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_SupervisingFC"
-                        style="@style/SpinnerViewNew" />
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={householdProfileViewModel.superverCor}"
+                        />
 
                 </LinearLayout>
 
@@ -98,7 +99,28 @@
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_districtname"
-                        style="@style/SpinnerViewNew" />
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={householdProfileViewModel.district}"
+
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_ward_panchayat"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        android:id="@+id/tv_ward_panchayat"
+                        style="@style/TextViewStyleNew"
+                        android:text="Q. Ward/panchayat" />
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_ward_panchayat"
+                        style="@style/SpinnerViewNew"
+
+
+                        />
 
                 </LinearLayout>
 
@@ -114,7 +136,9 @@
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_zone"
-                        style="@style/SpinnerViewNew" />
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={householdProfileViewModel.zone}"
+                        />
 
                 </LinearLayout>
 
@@ -129,7 +153,9 @@
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_bbmp"
-                        style="@style/SpinnerViewNew" />
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={householdProfileViewModel.ward}"
+                        />
 
                 </LinearLayout>
 
@@ -145,7 +171,9 @@
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_panchayatname"
-                        style="@style/SpinnerViewNew" />
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={householdProfileViewModel.panchayat}"
+                        />
 
                 </LinearLayout>
 
@@ -164,7 +192,9 @@
                         style="@style/EditTextStyleNew"
                         android:hint="@string/type_here"
                         android:inputType="text"
-                        android:maxLength="50" />
+                        android:maxLength="50"
+                        android:text="@={householdProfileViewModel.Locality}"
+                        />
 
                 </LinearLayout>
 
@@ -183,7 +213,10 @@
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
                         android:hint="@string/type_here"
                         android:inputType="text"
-                        android:maxLength="14" />
+                        android:maxLength="20"
+                        android:text="@={householdProfileViewModel.UniqueID}"
+
+                        />
 
                 </LinearLayout>
 
@@ -202,9 +235,33 @@
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:hint="@string/type_here"
                         android:inputType="textPersonName"
-                        android:maxLength="20" />
+                        android:maxLength="20"
+                        android:text="@={householdProfileViewModel.hh_name}"
+                        />
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_hh_sex"
+                    style="@style/LinearLayoutStyle">
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/hh_sex" />
+
+                    <RadioGroup
+                        android:id="@+id/rg_hh_sex"
+                        style="@style/radioGroupStyle"
+                        android:checkedButton="@={householdProfileViewModel.hh_sex}"
+                        />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="#D8D6D6" />
 
             </LinearLayout>
 
@@ -236,7 +293,6 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_weight="1"
-                android:onClick="@{()->householdProfileViewModel.saveandUpdateHHProfile()}"
                 android:text="@={householdProfileViewModel.saveandnextText}" />
 
             <TextView

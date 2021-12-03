@@ -11,7 +11,8 @@ import com.careindia.lifeskills.entity.IndividualProfileEntity
 
 class IMProfileAdapter(
     private val imProfileList: List<IndividualProfileEntity>,
-    private val clickListener: (IndividualProfileEntity) -> Unit
+    private val clickListener: (IndividualProfileEntity) -> Unit,
+    private val ItemDeleted:(IndividualProfileEntity)->Unit
 ) :
     RecyclerView.Adapter<IMProfileAdapter.ViewHolder>() {
 
@@ -31,19 +32,25 @@ class IMProfileAdapter(
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(imProfileList[position], clickListener)
+        holder.bind(imProfileList[position], clickListener,ItemDeleted)
     }
 
     class ViewHolder(val binding: RowInvprofileItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(
             imProfileList: IndividualProfileEntity,
-            clickListener: (IndividualProfileEntity) -> Unit
+            clickListener: (IndividualProfileEntity) -> Unit,
+            ItemDeleted: (IndividualProfileEntity) -> Unit
+
         ) {
-            binding.tvCrpName.text = imProfileList.Name
-            binding.tvFfDate.text = imProfileList.DateForm
+            binding.tvName.text = imProfileList.Name
+            binding.tvHhid.text = imProfileList.HHCode
+            binding.tvDate.text = imProfileList.DateForm
             binding.cardView.setOnClickListener {
                 clickListener(imProfileList)
+            }
+            binding.ivDelete.setOnClickListener {
+                ItemDeleted(imProfileList)
             }
         }
     }

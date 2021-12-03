@@ -3,6 +3,9 @@ package com.careindia.lifeskills.views.collectiveProfile
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -25,12 +28,14 @@ class CollectiveProfileActivity : BaseActivity(), View.OnClickListener {
     var validate: Validate? = null
     lateinit var mstCommonViewModel: MstCommonViewModel
     lateinit var collectiveViewModel: CollectiveViewModel
+     var distric  = 0;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_collective_profile_first)
         validate = Validate(this)
         mstCommonViewModel = ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
+
 
         val collectivedao = CareIndiaApplication.database?.collectiveDao()
         val commondao = CareIndiaApplication.database?.mstCommonDao()
@@ -41,42 +46,41 @@ class CollectiveProfileActivity : BaseActivity(), View.OnClickListener {
 
         binding.collectiveViewModel = collectiveViewModel
         binding.lifecycleOwner = this
-//        showLiveData()
-
 
         tv_title.text = "Collective Profile"
 
+        if(validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID) !=null && validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.trim().length>0) {
+            showLiveData()
+        }
 
         initializeController()
+    }
 
+    override fun initializeController() {
         et_date_of_filling.setOnClickListener {
             validate!!.datePickerwithmindate(
                 validate!!.Daybetweentime("01-01-1990"),
                 et_date_of_filling
             )
         }
-    }
 
-
-    fun showLiveData() {
-        if(validate!!.returnStringValue(AppSP.CollectiveGUID).trim().length>0) {
-            collectiveViewModel.collectiveData.observe(this, Observer {
-                if (it != null) {
-                    et_date_of_filling.setText(validate!!.returnStringValue(it.get(0).DateForm))
-                }
-            })
-        }
-    }
-
-    override fun initializeController() {
-       applyClickOnView()
         fillSpinner()
-        /*fillRadio()*/
+        applyClickOnView()
     }
 
     private fun applyClickOnView() {
         btn_save.setOnClickListener(this)
         btn_prev.setOnClickListener(this)
+        spin_name_of_crp.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(adapterView: AdapterView<*>, view: View, i: Int, l: Long) {
+                var abc = spin_name_of_crp.selectedItemPosition
+                if (abc == 2) {
+                    lay_sfcName.visibility = View.VISIBLE
+                }
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+        }
     }
 
     override fun onClick(view: View?) {
@@ -96,6 +100,38 @@ class CollectiveProfileActivity : BaseActivity(), View.OnClickListener {
             }
         }
     }
+
+    fun showLiveData() {
+            val collectiveGuid = validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)
+            collectiveViewModel.getCollectivedatabyGuid(validate!!.returnStringValue(collectiveGuid)).observe(this, Observer {
+                if (it != null && it.size>0) {
+                    et_date_of_filling.setText(validate!!.returnStringValue(it.get(0).DateForm))
+
+                   // distric=validate!!.returnIntegerValue(it.get(0).DistrictCode)
+
+                    spin_district_name.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).DistrictCode),3))
+
+                    spin_zone_name.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).ZoneCode),4))
+
+                    spin_ward_name.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).Panchayat_Ward.toString()),5))
+
+                    spin_panchayat_name.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).PWCode),6))
+
+                    et_locality_name.setText(validate!!.returnStringValue(it.get(0).Localitycode))
+                    et_collective_id.setText(validate!!.returnStringValue(it.get(0).CollectiveID))
+                    et_group_collective_name.setText(validate!!.returnStringValue(it.get(0).CollectiveName))
+                }
+            })
+    }
+
+    fun hide(){
+        var abc = spin_name_of_crp.selectedItemPosition
+        if (abc == 2) {
+            lay_sfcName.visibility = View.VISIBLE
+        }
+    }
+
+
 
     fun CheckValidation():Int {
         var iValue = 0;
@@ -175,79 +211,48 @@ class CollectiveProfileActivity : BaseActivity(), View.OnClickListener {
 
 
     fun fillSpinner(){
-        validate!!.fillSpinner(
-            this,
-            spin_name_of_crp,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            1
-        )
-
-        validate!!.fillSpinner(
-            this,
-            spin_name_of_supervising,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            2
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_district_name,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            3
-        )
-
-        validate!!.fillSpinner(
-            this,
-            spin_zone_name,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            4
-        )
-
-        validate!!.fillSpinner(
-            this,
-            spin_ward_name,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            5
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_panchayat_name,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            6
-        )
+        bindCommonTable("Select",spin_name_of_crp,1)
+        bindCommonTable("Select",spin_name_of_supervising,2)
+        bindCommonTable("Select",spin_district_name,3)
+        bindCommonTable("Select",spin_zone_name,4)
+        bindCommonTable("Select",spin_ward_name,5)
+        bindCommonTable("Select",spin_panchayat_name,6)
     }
 
-    /* fun save(){
-         if(AppSP.HHGUID=="") {
-             val hhguid = validate!!.random()
-             validate!!.SaveSharepreferenceString(AppSP.HHGUID,hhguid)
-             householdProfileEntity = HouseholdProfileEntity(
-                 0,
-                 validate!!.RetriveSharepreferenceString(AppSP.HHGUID),
-                 "",
-                 validate!!.returnID(spin_districtname, mstCommonViewModel, 3).toString(),
-                 validate!!.returnID(spin_zone, mstCommonViewModel, 4).toString(),
-                 validate!!.returnID(spin_panchayatname, mstCommonViewModel, 6),
-                 "",
-                 0,
-                 validate!!.returnStringValue(et_formfillingDate.text.toString()),
-                 validate!!.returnStringValue(et_hh_unique_id.text.toString()),
-                 validate!!.returnStringValue(et_hhName.text.toString()),
-                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0,
-                 validate!!.RetriveSharepreferenceInt(AppSP.userId),
-                 validate!!.returnStringValue(validate!!.currentdatetime),
-                 0, "",
-                 0, 0
-             )
-             householdProfileViewModel.insertHouseholdProfile(householdProfileEntity)
-         }
+    fun bindCommonTable(strValue: String, spin: Spinner, flag: Int) {
+        mstCommonViewModel.getMstCommondata(flag).observe(this, androidx.lifecycle.Observer {
+                if (it != null) {
+                    val iGen = it.size
+                    val name = arrayOfNulls<String>(iGen + 1)
+                    name[0] = strValue
 
-     }*/
+                    for (i in 0 until it.size) {
+                        name[i + 1] = it.get(i).value
+                    }
+                    val adapter_category = ArrayAdapter<String>(
+                        this,
+                        R.layout.my_spinner_space_dashboard, name
+                    )
+                    adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
+                    spin.adapter = adapter_category
+                }
+            })
+        /*if (distric>0) {
+            spin_district_name.setSelection(returnpos(distric, 3))
+        }*/
+    }
+
+    fun returnpos(id: Int,flag: Int): Int {
+        val combobox = mstCommonViewModel.getMstCommon(flag)
+        var posi = 0
+        for (i in 0 until combobox.size) {
+            if (id == combobox[i].id) {
+                posi = i + 1
+            }
+        }
+        return posi
+    }
+
 
     override fun onBackPressed() {
         //super.onBackPressed()

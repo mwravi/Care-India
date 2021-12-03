@@ -1,5 +1,6 @@
 package com.careindia.lifeskills.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
@@ -12,9 +13,13 @@ interface MstDistrictDao {
     fun insertWithCondition(entity: List<MstDistrictEntity>?)
 
     @Query("select * from mst_2District where StateCode=:StateCode")
-    fun getMstDistrict(StateCode: Int): List<MstDistrictEntity>
+    fun getMstDistrict(StateCode: Int): LiveData<List<MstDistrictEntity>>
 
+    @Query("select * from mst_2District where StateCode=:StateCode")
+    fun getMstDist(StateCode: Int): List<MstDistrictEntity>
 
+    @Query("DELETE FROM mst_2District")
+    fun deleteAll()
 
 
 }

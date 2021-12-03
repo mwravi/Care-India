@@ -1,9 +1,14 @@
 package com.careindia.lifeskills.viewmodel
 
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import android.content.Context
+import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import androidx.databinding.Bindable
+import androidx.databinding.Observable
+import androidx.databinding.PropertyChangeRegistry
+import androidx.lifecycle.*
 import com.careindia.lifeskills.entity.IndividualProfileEntity
 import com.careindia.lifeskills.entity.MstCommonEntity
 import com.careindia.lifeskills.repository.IndividualProfileRepository
@@ -11,10 +16,16 @@ import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.views.base.BaseViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class IndividualProfileViewModel(private val imProfileRepository: IndividualProfileRepository) :
-    BaseViewModel() {
+    BaseViewModel(), Observable {
+    private val callbacks: PropertyChangeRegistry = PropertyChangeRegistry()
+
+    val State = MutableLiveData<Int>()
+    val ReadChecked = MutableLiveData<Int>()
+    val IsSecondry = MutableLiveData<Int>()
 
     var validate: Validate? = null
     val imProfileData = imProfileRepository.getallProfiledata()
@@ -35,7 +46,7 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
     val SpecifyWrite = MutableLiveData<String>()
     val SpecifyCommuni = MutableLiveData<String>()
     val SpecifyMobileLaung = MutableLiveData<String>()
-    val State = MutableLiveData<Int>()
+
     val WastePick = MutableLiveData<Int>()
     val BLONGSTAY = MutableLiveData<String>()
     val EDUCATION = MutableLiveData<Int>()
@@ -57,12 +68,23 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
     val CollectiveMember = MutableLiveData<String>()
 
 
+
     val saveandnextText = MutableLiveData<String>()
 
 
     init {
         validate = Validate(mContext)
         saveandnextText.value = "Save & Next"
+
+
+        viewModelScope.launch {
+            var statePos = State.value
+
+        }
+    }
+
+    fun getSaleVisibility(): Int {
+        return if (9 == 10) VISIBLE else GONE
     }
 
     var canRead = 0
@@ -344,6 +366,13 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
             imProfileRepository.insert(imProfileEntity)
         }
     }
+    fun deleteImProfile(imProfileEntity: IndividualProfileEntity) {
+        viewModelScope.launch {
+            imProfileRepository.delete(imProfileEntity)
+        }
+    }
+
+
 
     fun update(
         IndGUID: String,
@@ -518,4 +547,14 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
     fun getIdvProfiledatabyGuid(guid: String): LiveData<List<IndividualProfileEntity>> {
         return imProfileRepository.getIdvProfiledatabyGuid(guid)
     }
+
+    override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
+            callbacks.add(callback)
+
+    }
+
+    override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
+        callbacks.remove(callback)
+    }
 }
+

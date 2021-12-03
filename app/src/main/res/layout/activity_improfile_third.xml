@@ -242,6 +242,7 @@
                         android:text="@string/secondary_income" />
 
                     <RadioGroup
+                        android:checkedButton="@={individualProfileViewModel.IsSecondry}"
                         android:id="@+id/rg_secondary_income"
                         style="@style/radioGroupStyle" />
 

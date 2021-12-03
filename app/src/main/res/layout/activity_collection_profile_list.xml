@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -9,10 +11,19 @@
         layout="@layout/toolbar_layout" />
 
     <LinearLayout
+        android:layout_marginTop="@dimen/_10sdp"
         style="@style/LinearLayoutStyle"
         android:layout_height="0dp"
         android:layout_weight="1">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvList"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+
+        </androidx.recyclerview.widget.RecyclerView>
 
         <TableRow style="@style/TableRowStyle"
             android:gravity="end"
@@ -27,16 +38,7 @@
                 android:background="@drawable/ic_add_circle"/>
         </TableRow>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvList"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
-
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-
     </LinearLayout>
 
 </LinearLayout>
+</layout>

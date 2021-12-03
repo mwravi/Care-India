@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="@dimen/_40sdp"
+        android:layout_margin="@dimen/_5sdp">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="@dimen/_3sdp"
+            android:gravity="center">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="@dimen/_5sdp">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:text="Name"
+                android:layout_weight=".3"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:text=":"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                />
+
+            <TextView
+                android:id="@+id/tvCrpName"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1.3"
+                android:text=""
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/black"
+                />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:padding="@dimen/_5sdp">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:text="CRP ID"
+                android:layout_weight=".3"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:text=":"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                />
+
+            <TextView
+                android:id="@+id/tvcrpid"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:text=""
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/black"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:text="Date"
+                android:layout_weight=".2"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".1"
+                android:text=":"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10ssp"
+                />
+
+            <TextView
+                android:id="@+id/tvFfDate"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight=".5"
+                android:text=""
+                android:textSize="@dimen/_10ssp"
+                android:textColor="@color/black"
+                />
+        </TableRow>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <ImageView
+            android:id="@+id/imgDlt"
+            android:src="@drawable/ic_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        </TableRow>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
+</layout>

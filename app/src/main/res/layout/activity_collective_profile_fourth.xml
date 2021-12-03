@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="collectiveViewModel"
+            type="com.careindia.lifeskills.viewmodel.CollectiveViewModel" />
+    </data>
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -19,6 +27,79 @@
             android:padding="@dimen/_10sdp">
 
             <LinearLayout
+                android:id="@+id/lay_head_group_name"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_head_group_name"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q301_what_is_the_tenure_of_the_president_office_bearer_in_complete_years" />
+
+                <EditText
+                    android:id="@+id/et_tenure"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.Tenure}"
+                    android:inputType="number"
+                    android:maxLength="1" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_rotation_of_roles"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_rotation_of_roles"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q302_has_there_been_any_rotation_of_the_roles_of_the_member_in_last_one_year" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_rotation_of_roles"
+                    android:selectedItemPosition="@={collectiveViewModel.Rolerotation}"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_office_bearer"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_office_bearer"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q303_has_there_been_any_election_for_the_office_bearer" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_office_bearer"
+                    android:selectedItemPosition="@={collectiveViewModel.Electionob}"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_bearer_happens"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_bearer_happens"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q304_in_what_frequency_the_election_for_office_bearer_happens_in_complete_years" />
+
+                <EditText
+                    android:id="@+id/et_bearer_happens"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.Electionfrequency}"
+                    android:inputType="number"
+                    android:maxLength="2" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/lay_bank_account"
                 style="@style/LinearLayoutStyle">
 
@@ -29,6 +110,7 @@
 
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_bank_account"
+                    android:selectedItemPosition="@={collectiveViewModel.Bankac}"
                     style="@style/SpinnerViewNew" />
 
             </LinearLayout>
@@ -48,6 +130,7 @@
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.cBank}"
                     android:inputType="text"
                     android:maxLength="50" />
 
@@ -65,6 +148,7 @@
 
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_group_savings"
+                    android:selectedItemPosition="@={collectiveViewModel.Groupsaving}"
                     style="@style/SpinnerViewNew" />
 
             </LinearLayout>
@@ -84,6 +168,7 @@
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.Otherinr}"
                     android:inputType="text"
                     android:maxLength="50" />
 
@@ -101,6 +186,7 @@
 
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_frequency_group_savings"
+                    android:selectedItemPosition="@={collectiveViewModel.Frequencygroupsaving}"
                     style="@style/SpinnerViewNew" />
 
             </LinearLayout>
@@ -120,99 +206,11 @@
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.Otherfreq}"
                     android:inputType="text"
                     android:maxLength="50" />
 
             </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_regular_savings"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_regular_savings"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q308_are_the_members_regularly_saving_as_per_the_group_decision" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_regular_savings"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_other_frequency1"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_other_frequency1"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q308a_please_specify_others" />
-
-                <EditText
-                    android:id="@+id/et_other_frequency1"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_easily_avial_loan"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_easily_avial_loan"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q309_are_members_avail_the_loan" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_easily_avial_loan"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_avial_loan"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_avial_loan"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q309a_from_where_the_members_avail_the_loan" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_avial_loan"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_other_specify_q309b"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_other_specify_q309b"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q309b_please_specify_others" />
-
-                <EditText
-                    android:id="@+id/et_other_specify_q309b"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-
-
 
 
         </LinearLayout>
@@ -229,3 +227,4 @@
     </TableRow>
 
 </LinearLayout>
+</layout>

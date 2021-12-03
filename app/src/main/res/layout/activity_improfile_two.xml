@@ -48,6 +48,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_specify_state"
                     style="@style/LinearLayoutStyle">
 
@@ -93,6 +94,7 @@
                         android:text="@string/read_write" />
 
                     <RadioGroup
+                        android:checkedButton="@={individualProfileViewModel.ReadChecked}"
                         android:id="@+id/rg_can_read"
                         style="@style/radioGroupStyle" />
 
@@ -158,16 +160,15 @@
                     android:background="#D8D6D6"/>
 
                 <LinearLayout
-                    style="@style/CheckBox"
-                    android:background="@drawable/box_background"
+                    style="@style/TablerowNew"
                     android:orientation="vertical">
 
                     <TextView
-                        style="@style/TextViewStyle"
+                        style="@style/TextViewStyleNew"
                         android:text="@string/language_speak" />
 
                     <LinearLayout
-                        android:id="@+id/multiCheck"
+                        android:id="@+id/spaekCheck"
                         style="@style/CheckBox"
                         android:orientation="vertical" />
 
@@ -200,12 +201,11 @@
 
 
                 <LinearLayout
-                    style="@style/CheckBox"
-                    android:background="@drawable/box_background"
+                    style="@style/TablerowNew"
                     android:orientation="vertical">
 
                     <TextView
-                        style="@style/TextViewStyle"
+                        style="@style/TextViewStyleNew"
                         android:text="@string/language_read" />
 
                     <LinearLayout
@@ -242,12 +242,11 @@
 
 
                 <LinearLayout
-                    style="@style/CheckBox"
-                    android:background="@drawable/box_background"
+                    style="@style/TablerowNew"
                     android:orientation="vertical">
 
                     <TextView
-                        style="@style/TextViewStyle"
+                        style="@style/TextViewStyleNew"
                         android:text="@string/language_write" />
 
                     <LinearLayout
@@ -284,12 +283,11 @@
 
 
                 <LinearLayout
-                    style="@style/CheckBox"
-                    android:background="@drawable/box_background"
+                    style="@style/TablerowNew"
                     android:orientation="vertical">
 
                     <TextView
-                        style="@style/TextViewStyle"
+                        style="@style/TextViewStyleNew"
                         android:text="@string/lang_prefer_comni_speaking" />
 
                     <LinearLayout

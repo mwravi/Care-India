@@ -15,7 +15,9 @@ class MstUserRepository {
         return mstUserDao!!.getMstUser()
     }
 
-
+    fun getusersCount(): Int {
+        return mstUserDao!!.getusersCount()
+    }
 
 
 

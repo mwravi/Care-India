@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="collectiveViewModel"
+            type="com.careindia.lifeskills.viewmodel.CollectiveViewModel" />
+    </data>
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -19,7 +28,52 @@
             android:padding="@dimen/_10sdp">
 
 
+            <LinearLayout
+                android:id="@+id/lay_meeting_schedule"
+                style="@style/LinearLayoutStyle">
 
+                <TextView
+                    android:id="@+id/tv_meeting_schedule"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q404_does_the_meetings_happen_as_per_the_schedule_check_meeting_register" />
+
+                <RadioGroup
+                    android:id="@+id/rg_meeting_schedule"
+                    style="@style/radioGroupStyle" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_record_book"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_record_book"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q405_does_your_sangha_group_collective_have_a_record_book_check_for_the_record_book" />
+
+                <RadioGroup
+                    android:id="@+id/rg_record_book"
+                    style="@style/radioGroupStyle" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_record_book_update"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_record_book_update"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q406_is_the_record_book_register_updated_in_every_meeting" />
+
+                <RadioGroup
+                    android:id="@+id/rg_record_book_update"
+                    style="@style/radioGroupStyle" />
+
+            </LinearLayout>
 
 
             <LinearLayout
@@ -54,6 +108,7 @@
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.Other1}"
                     android:inputType="text"
                     android:maxLength="50" />
 
@@ -75,6 +130,7 @@
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
                     android:inputType="text"
+                    android:text="@={collectiveViewModel.Service}"
                     android:maxLength="50" />
 
             </LinearLayout>
@@ -89,9 +145,9 @@
                     style="@style/TextViewStyleNew"
                     android:text="@string/q502_is_your_sangha_collective_currently_availing_any_services_schemes" />
 
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_services_schemes"
-                    style="@style/SpinnerViewNew" />
+                <RadioGroup
+                    android:id="@+id/rg_services_schemes"
+                    style="@style/radioGroupStyle" />
 
             </LinearLayout>
 
@@ -110,6 +166,7 @@
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.ServiceAvailing}"
                     android:inputType="text"
                     android:maxLength="50" />
 
@@ -130,6 +187,7 @@
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.ServiceProvider}"
                     android:inputType="text"
                     android:maxLength="50" />
 
@@ -145,9 +203,10 @@
                     style="@style/TextViewStyleNew"
                     android:text="@string/q601_is_your_sangha_collective_members_interested_in_taking_up_any_collective_enterprise_business" />
 
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_enterprise_business"
-                    style="@style/SpinnerViewNew" />
+                <RadioGroup
+                    android:id="@+id/rg_enterprise_business"
+                    style="@style/radioGroupStyle" />
+
 
             </LinearLayout>
 
@@ -182,6 +241,7 @@
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.Other2}"
                     android:inputType="text"
                     android:maxLength="50" />
 
@@ -202,3 +262,4 @@
     </TableRow>
 
 </LinearLayout>
+</layout>

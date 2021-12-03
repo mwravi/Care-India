@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="collectiveViewModel"
+            type="com.careindia.lifeskills.viewmodel.CollectiveViewModel" />
+    </data>
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -19,7 +29,95 @@
             android:padding="@dimen/_10sdp">
 
 
+            <LinearLayout
+                android:id="@+id/lay_regular_savings"
+                style="@style/LinearLayoutStyle">
 
+                <TextView
+                    android:id="@+id/tv_regular_savings"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q308_are_the_members_regularly_saving_as_per_the_group_decision" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_regular_savings"
+                    android:selectedItemPosition="@={collectiveViewModel.MemberSaving}"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_other_frequency1"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_other_frequency1"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q308a_please_specify_others" />
+
+                <EditText
+                    android:id="@+id/et_other_frequency1"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.Otherfrequency1}"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_easily_avial_loan"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_easily_avial_loan"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q309_are_members_avail_the_loan" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_easily_avial_loan"
+                    android:selectedItemPosition="@={collectiveViewModel.Availloan}"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_avial_loan"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_avial_loan"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q309a_from_where_the_members_avail_the_loan" />
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_avial_loan"
+                    android:selectedItemPosition="@={collectiveViewModel.Fromwhereloan}"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_other_specify_q309b"
+                style="@style/LinearLayoutStyle">
+
+                <TextView
+                    android:id="@+id/tv_other_specify_q309b"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/q309b_please_specify_others" />
+
+                <EditText
+                    android:id="@+id/et_other_specify_q309b"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.OtherSpecify}"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/lay_challenges"
@@ -35,6 +133,7 @@
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.LoanChallange}"
                     android:inputType="text"
                     android:maxLength="50" />
 
@@ -51,6 +150,7 @@
 
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_meeting_conducted"
+                    android:selectedItemPosition="@={collectiveViewModel.Meetingconducted}"
                     style="@style/SpinnerViewNew" />
 
             </LinearLayout>
@@ -66,6 +166,7 @@
 
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_frequency_of_meetings"
+                    android:selectedItemPosition="@={collectiveViewModel.FrequencyMeeting}"
                     style="@style/SpinnerViewNew" />
 
             </LinearLayout>
@@ -84,6 +185,7 @@
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.Specifyoth}"
                     android:inputType="text"
                     android:maxLength="50" />
 
@@ -101,53 +203,7 @@
 
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_attending_meeting"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_meeting_schedule"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_meeting_schedule"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q404_does_the_meetings_happen_as_per_the_schedule_check_meeting_register" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_meeting_schedule"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_record_book"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_record_book"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q405_does_your_sangha_group_collective_have_a_record_book_check_for_the_record_book" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_record_book"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_record_book_update"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_record_book_update"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q406_is_the_record_book_register_updated_in_every_meeting" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_record_book_update"
+                    android:selectedItemPosition="@={collectiveViewModel.RegularityMeeting}"
                     style="@style/SpinnerViewNew" />
 
             </LinearLayout>
@@ -169,3 +225,5 @@
     </TableRow>
 
 </LinearLayout>
+
+</layout>

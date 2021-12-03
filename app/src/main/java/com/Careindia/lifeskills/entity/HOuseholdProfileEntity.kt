@@ -6,14 +6,15 @@ import androidx.room.PrimaryKey
 
 
 @Entity(tableName = "tblProfileHH")
-data class HouseholdProfileEntity(@PrimaryKey @ColumnInfo(name = "uid") val uid: Int,
-                                  @ColumnInfo(name = "HHGUID") val HHGUID: String?="",
+data class HouseholdProfileEntity(@PrimaryKey @ColumnInfo(name = "HHGUID") val HHGUID: String,
+                                  @ColumnInfo(name = "CRP_Code") val CRP_Code: Int?=0,
+                                  @ColumnInfo(name = "FieldCoordinator") val FieldCoordinator: Int?=0,
                                   @ColumnInfo(name = "StateCode") val StateCode: String?="",
                                   @ColumnInfo(name = "DistrictCode") val DistrictCode: String?="",
                                   @ColumnInfo(name = "ZoneCode") val ZoneCode: String?="",
                                   @ColumnInfo(name = "Panchayat_Ward") val Panchayat_Ward: Int?=0,
                                   @ColumnInfo(name = "PWCode") val PWCode: String?="",
-                                  @ColumnInfo(name = "Localitycode") val Localitycode: Int?=0,
+                                  @ColumnInfo(name = "Localitycode") val Localitycode: String?="",
                                   @ColumnInfo(name = "Dateform") val Dateform: String?="",
                                   @ColumnInfo(name = "HHCode") val HHCode: String?="",
                                   @ColumnInfo(name = "Name") val Name: String?="",
@@ -28,7 +29,8 @@ data class HouseholdProfileEntity(@PrimaryKey @ColumnInfo(name = "uid") val uid:
                                   @ColumnInfo(name = "No_Children_M") val No_Children_M: Int?=0,
                                   @ColumnInfo(name = "No_Children_F") val No_Children_F: Int?=0,
                                   @ColumnInfo(name = "No_Earningmembers") val No_Earningmembers: Int?=0,
-                                  @ColumnInfo(name = "No_Earningmembers18_59") val No_Earningmembers18_59: Int?=0,
+                                  @ColumnInfo(name = "No_Earningmembers_M") val No_Earningmembers_M: Int?=0,
+                                  @ColumnInfo(name = "No_Earningmembers_F") val No_Earningmembers_F: Int?=0,
                                   @ColumnInfo(name = "Dwelling_type") val Dwelling_type: Int?=0,
                                   @ColumnInfo(name = "Dwelling_Oth") val Dwelling_Oth: String?="",
                                   @ColumnInfo(name = "Dwelling_Registered") val Dwelling_Registered: Int?=0,

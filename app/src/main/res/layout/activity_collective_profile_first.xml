@@ -58,14 +58,16 @@
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_name_of_crp"
                     style="@style/SpinnerViewNew"
-                    android:selectedItemPosition="@={collectiveViewModel.CrpName}"
-                     />
+/>
+                <!-- android:selectedItemPosition="@={collectiveViewModel.CrpName}"-->
+
 
 
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/lay_sfcName"
+                android:visibility="gone"
                 style="@style/LinearLayoutStyle">
 
                 <TextView

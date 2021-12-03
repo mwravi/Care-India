@@ -16,6 +16,10 @@ class MstUserViewModel : AndroidViewModel {
         return mstUserRepository!!.getMstUser()
     }
 
+    fun getusersCount():Int{
+        return mstUserRepository!!.getusersCount()
+    }
+
 
 
 }

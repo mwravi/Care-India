@@ -14,7 +14,11 @@ interface MstUserDao {
     @Query("select * from mstUser")
     fun getMstUser(): List<MstUserEntity>
 
+    @Query("select Count(*) from mstUser")
+    fun getusersCount():Int
 
+    @Query("DELETE FROM mstUser")
+    fun deleteAllUsers()
 
 
 }

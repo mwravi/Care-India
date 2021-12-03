@@ -136,8 +136,8 @@
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_gender"
                         style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={primaryDataViewModel.Gender}"/>
-
+                        />
+<!--                    android:selectedItemPosition="@={primaryDataViewModel.Gender}"-->
                 </LinearLayout>
 
                 <LinearLayout

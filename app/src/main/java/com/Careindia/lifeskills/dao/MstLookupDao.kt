@@ -15,6 +15,7 @@ interface MstLookupDao {
     fun getMstLookup(LookupFlag: Int,Language:Int): List<MstLookupEntity>
 
 
-
+    @Query("DELETE FROM mst_9Lookup")
+    fun deleteAll()
 
 }

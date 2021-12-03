@@ -1,6 +1,7 @@
 package com.careindia.lifeskills.repository
 
 import android.app.Application
+import androidx.lifecycle.LiveData
 import com.careindia.lifeskills.application.CareIndiaApplication
 import com.careindia.lifeskills.dao.MstDistrictDao
 import com.careindia.lifeskills.dao.MstZoneDao
@@ -13,8 +14,8 @@ class MstZoneRepository {
         mstZoneDao = CareIndiaApplication.database?.mstZoneDao()
     }
 
-   fun getMstZone(StateCode:Int,DistrictCode:Int): List<MstZoneEntity> {
-        return mstZoneDao!!.getMstZone(StateCode,DistrictCode)
+   fun getMstZone(DistrictCode:Int): LiveData<List<MstZoneEntity>> {
+        return mstZoneDao!!.getMstZone(DistrictCode)
     }
 
 

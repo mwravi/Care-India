@@ -210,7 +210,7 @@
     <string name="sign_in">Sign in</string>
     <string name="welcome_back">Welcome Back</string>
     <string name="forgetpassword"><u>Forgot Password?</u></string>
-    <string name="email_address">Email address</string>
+    <string name="email_address">User Name</string>
     <string name="enter_date">Select Date</string>
     <string name="previous">Previous</string>
     <string name="q112_what_type_of_collective_group_it_is">Q112. What type of collective/group it is?</string>
@@ -335,5 +335,12 @@
     <string name="please_prvd_service_detail">Please provide details of the service/scheme that you are availing.</string>
     <string name="im_profile">IM Profile</string>
 
+    <string name="Usernameblank">User Name cannot be left blank.</string>
+    <string name="Passwordblank">Password cannot be left blank.</string>
+    <string name="no_internet_connection">No Internet Connection!!</string>
+    <string name="user_name_not_exist">UserName does not exist</string>
+    <string name="user_name_incorrect">UserName or Password was incorrect</string>
+    <string name="authenticating">Authenticating User</string>
+    <string name="wrongusernamepwd">UserName or Password is Incorrect</string>
 
 </resources>

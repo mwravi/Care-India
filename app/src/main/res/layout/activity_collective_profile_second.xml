@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="collectiveViewModel"
+            type="com.careindia.lifeskills.viewmodel.CollectiveViewModel" />
+    </data>
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-   >
+    android:orientation="vertical">
 
     <include layout="@layout/toolbar_layout" />
 
@@ -25,6 +32,7 @@
                 <TextView
                     android:id="@+id/tv_date_of_group_formation"
                     style="@style/TextViewStyleNew"
+                    android:layout_height="wrap_content"
                     android:text="@string/date_of_formation_of_group" />
 
                 <EditText
@@ -32,6 +40,7 @@
                     style="@style/EditTextStyleNew"
                     android:clickable="false"
                     android:drawableEnd="@drawable/ic_calender"
+                    android:text="@={collectiveViewModel.Formationdate}"
                     android:focusable="false"
                     android:hint="@string/enter_date" />
 
@@ -49,6 +58,7 @@
 
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_collective_group"
+                    android:selectedItemPosition="@={collectiveViewModel.Grouptype}"
                     style="@style/SpinnerViewNew" />
 
             </LinearLayout>
@@ -67,6 +77,7 @@
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/enter_date"
+                    android:text="@={collectiveViewModel.Specifyothergroup}"
                     android:inputType="text"
                     android:maxLength="20" />
 
@@ -83,6 +94,7 @@
 
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_group_registered"
+                    android:selectedItemPosition="@={collectiveViewModel.Groupregistered}"
                     style="@style/SpinnerViewNew" />
 
             </LinearLayout>
@@ -102,6 +114,7 @@
                     style="@style/EditTextStyleNew"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/enter_date"
+                    android:text="@={collectiveViewModel.Specifygroupregistered}"
                     android:inputType="text"
                     android:maxLength="20" />
 
@@ -121,6 +134,7 @@
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
                     android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:text="@={collectiveViewModel.Headgroupname}"
                     android:inputType="text"
                     android:maxLength="20" />
 
@@ -136,6 +150,7 @@
 
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_head_group_sex"
+                    android:selectedItemPosition="@={collectiveViewModel.Headsex}"
                     style="@style/SpinnerViewNew" />
 
             </LinearLayout>
@@ -153,6 +168,7 @@
                     android:id="@+id/et_total_no_of_members"
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.Totalmember}"
                     android:inputType="number"
                     android:maxLength="2" />
 
@@ -172,6 +188,7 @@
                     android:id="@+id/et_male_members"
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.Totalmale}"
                     android:inputType="number"
                     android:maxLength="2" />
 
@@ -190,6 +207,7 @@
                     android:id="@+id/et_female_members"
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.Totalfemale}"
                     android:inputType="number"
                     android:maxLength="2" />
 
@@ -208,6 +226,7 @@
                     android:id="@+id/et_transgender_members"
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
+                    android:text="@={collectiveViewModel.Totaltransgender}"
                     android:inputType="number"
                     android:maxLength="2" />
 
@@ -223,8 +242,34 @@
         style="@style/TableRowStyle"
         android:layout_margin="@dimen/_10sdp">
 
-        <include layout="@layout/buttons_save_cancel" />
+        <TextView style="@style/NewSimpleTextMargin"
+            android:layout_weight=".1"
+            />
+
+        <Button
+            android:id="@+id/btn_prev"
+            style="@style/ButtonTextStyle"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@string/previous" />
+
+        <TextView style="@style/NewSimpleTextMargin"
+            android:layout_weight=".1"
+            />
+        <Button
+            android:id="@+id/btn_save"
+            style="@style/ButtonTextStyle"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="@={collectiveViewModel.saveandnextText}" />
+
+        <TextView style="@style/NewSimpleTextMargin"
+            android:layout_weight=".1"
+            />
 
     </TableRow>
 
 </LinearLayout>
+</layout>

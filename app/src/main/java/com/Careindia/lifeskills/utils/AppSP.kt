@@ -1,6 +1,5 @@
 package com.careindia.lifeskills.utils
 
-import com.careindia.lifeskills.entity.IndividualProfileEntity
 
 object AppSP {
 
@@ -8,4 +7,8 @@ object AppSP {
     val userId = "userId"
     val CollectiveGUID = "CollectiveGUID"
     val IndividualProfileGUID = "IndividualProfileGUID"
+    val CollectiveMemberGUID = "CollectiveMemberGUID"
+    val sUserName = "sUserName"
+    val sPassword = "sPassword"
+    val HHCODE = "HHCODE"
 }

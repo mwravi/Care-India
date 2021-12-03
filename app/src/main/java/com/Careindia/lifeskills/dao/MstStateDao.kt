@@ -14,6 +14,7 @@ interface MstStateDao {
     @Query("select * from mst_1State")
     fun getMstState(): List<MstStateEntity>
 
-
+    @Query("DELETE FROM mst_1State")
+    fun deleteAll()
 
 }

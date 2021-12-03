@@ -9,6 +9,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
+import android.net.ConnectivityManager
 import android.util.Patterns
 import android.util.TypedValue
 import android.view.LayoutInflater
@@ -331,15 +332,16 @@ class Validate(context: Context) {
         for (i in 0 until linear.childCount) {
 
             val checkbox = linear.getChildAt(i) as CheckBox
-            if (checkbox.isChecked) {
-                if (QusAns.length == 0) {
-                    QusAns = checkbox.id.toString()
-                } else {
-                    QusAns = (QusAns
-                            + ","
-                            + checkbox.id.toString())
+                if (checkbox.isChecked) {
+                    if (QusAns.length == 0) {
+                        QusAns = checkbox.id.toString()
+                    } else {
+                        QusAns = (QusAns
+                                + ","
+                                + checkbox.id.toString())
+                    }
                 }
-            }
+
         }
         return QusAns
     }
@@ -635,5 +637,17 @@ fun dynamicMultiCheckChange(context: Context, liear: CheckBox,    mstCommonViewM
         val date = Date()
         val SDateString = dateFormat.format(date)
         return sb.toString() + SDateString
+    }
+
+    fun isNetworkConnected(): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager //1
+        val networkInfo = connectivityManager.activeNetworkInfo //2
+        return networkInfo != null && networkInfo.isConnected //3
+    }
+
+
+    fun CustomToast(activity: Activity?, sMsg: String?) {
+        Toast.makeText(activity, sMsg, Toast.LENGTH_LONG).show()
     }
 }

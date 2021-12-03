@@ -3,6 +3,8 @@ package com.careindia.lifeskills.views.improfile
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import androidx.appcompat.app.AlertDialog
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.Observer
@@ -21,6 +23,7 @@ import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_collection_profile_list.*
 import kotlinx.android.synthetic.main.activity_primary_data_list.*
+import kotlinx.android.synthetic.main.delete_dialog_layout.view.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class IMProfileListActivity : AppCompatActivity() {
@@ -64,7 +67,7 @@ class IMProfileListActivity : AppCompatActivity() {
     private fun fillRecyclerView() {
         listbinding.rvList.layoutManager = LinearLayoutManager(this)
         imProfileViewModel.imProfileData.observe(this, Observer {
-            listbinding.rvList.adapter = IMProfileAdapter(it,{ selectedItem:IndividualProfileEntity->onItemClicked(selectedItem)})
+            listbinding.rvList.adapter = IMProfileAdapter(it,{ selectedItem:IndividualProfileEntity->onItemClicked(selectedItem)},{deletedItem:IndividualProfileEntity->onItemDeleted(deletedItem)})
         })
     }
     private fun onItemClicked(imProfilelist: IndividualProfileEntity){
@@ -75,6 +78,36 @@ class IMProfileListActivity : AppCompatActivity() {
 
 
     }
+
+    private fun onItemDeleted(imProfileList: IndividualProfileEntity){
+
+        CustomAlert_Delete(imProfileList)
+
+    }
+
+    fun CustomAlert_Delete(imProfileList:IndividualProfileEntity) {
+        val mDialogView = LayoutInflater.from(this).inflate(R.layout.delete_dialog_layout, null,false)
+        val mBuilder = AlertDialog.Builder(this)
+            .setView(mDialogView)
+        val mAlertDialog = mBuilder.show()
+        mAlertDialog.setCanceledOnTouchOutside(false)
+
+        mDialogView.btn_yes.setOnClickListener {
+            imProfileViewModel.deleteImProfile(imProfileList)
+            mAlertDialog.dismiss()
+
+            val intent = Intent(this, IMProfileListActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+            this.startActivity(intent)
+        }
+        mDialogView.btn_no.setOnClickListener {
+
+            mAlertDialog.dismiss()
+        }
+    }
+
+
+
     override fun onBackPressed() {
         val intent = Intent(this, HomeDashboardActivity::class.java)
         startActivity(intent)

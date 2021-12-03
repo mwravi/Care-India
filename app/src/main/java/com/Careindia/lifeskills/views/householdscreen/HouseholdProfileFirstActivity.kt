@@ -1,10 +1,13 @@
-package com.careindia.lifeskills.views.activities
+package com.careindia.lifeskills.views.householdscreen
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
@@ -13,17 +16,22 @@ import com.careindia.lifeskills.application.CareIndiaApplication
 import com.careindia.lifeskills.database.AppDataBase
 import com.careindia.lifeskills.databinding.ActivityHouseholdProfileFirstBinding
 import com.careindia.lifeskills.entity.HouseholdProfileEntity
+import com.careindia.lifeskills.entity.MstDistrictEntity
+import com.careindia.lifeskills.entity.MstZoneEntity
 import com.careindia.lifeskills.repository.HouseholdProfileRepository
+import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.HouseholdProfileViewModel
 import com.careindia.lifeskills.viewmodelfactory.HouseholdProfileViewModelFactory
 import com.careindia.lifeskills.viewmodel.MstCommonViewModel
+import com.careindia.lifeskills.viewmodel.MstDistrictViewModel
+import com.careindia.lifeskills.viewmodel.MstZoneViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_household_profile_first.*
+import kotlinx.android.synthetic.main.activity_household_profile_first.btn_prev
+import kotlinx.android.synthetic.main.activity_household_profile_first.btn_save
 
 import kotlinx.android.synthetic.main.toolbar_layout.*
-
-
 
 
 class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
@@ -31,41 +39,56 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
     public var instance: AppDataBase? = null
     var validate: Validate? = null
     lateinit var mstCommonViewModel: MstCommonViewModel
+    lateinit var mstDistrictViewModel: MstDistrictViewModel
+    lateinit var mstZoneViewModel: MstZoneViewModel
     lateinit var householdProfileEntity: HouseholdProfileEntity
     lateinit var householdProfileViewModel: HouseholdProfileViewModel
+    val CrpName = MutableLiveData<Int>()
+    val SuperverCor = MutableLiveData<Int>()
+    val UniqueID = MutableLiveData<String>()
+    val district = MutableLiveData<Int>()
+   // 1) "CIN" for CARE India
+  //  2) Letter locality identifier- "W" for ward and "P" for panchayat.
+   // 3) Character number for Ward or Panchayat code.
+   // 4) Letter community identifier- "HH" for HouseHold.
+  //  5) Character number for household code.
+    //CINW001HH00001
+    //CINP001HH00003
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /*setContentView(R.layout.activity_household_profile_first)
-        validate = Validate(this)
-
-        householdProfileViewModel = ViewModelProviders.of(this).get(HouseholdProfileViewModel::class.java)*/
-
-
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_household_profile_first)
         instance = AppDataBase.getDatabase(this)
-//        val hhdao = instance!!.hhProfileDao()
-//        val mstcmnDoa = instance!!.mstCommonDao()
+        validate= Validate(this)
+
 
        val hhdao = CareIndiaApplication.database?.hhProfileDao()!!
        val mstcmnDoa = CareIndiaApplication.database?.mstCommonDao()!!
+       val mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()!!
 
-        val hhRepository = HouseholdProfileRepository(hhdao,mstcmnDoa)
+        val hhRepository = HouseholdProfileRepository(hhdao,mstcmnDoa,mstDistrictDao)
         householdProfileViewModel =
             ViewModelProvider(this,
                 HouseholdProfileViewModelFactory(hhRepository))[HouseholdProfileViewModel::class.java]
         binding.householdProfileViewModel = householdProfileViewModel
         binding.lifecycleOwner = this
-        showLiveData()
-
-
         tv_title.text = "Household Profile"
-        validate = Validate(this)
+
         mstCommonViewModel =
             ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
 
+        mstDistrictViewModel =
+            ViewModelProviders.of(this).get(MstDistrictViewModel::class.java)
+        mstZoneViewModel =
+            ViewModelProviders.of(this).get(MstZoneViewModel::class.java)
+
         initializeController()
+        fillSpinner()
+        setHHCode()
+        hideview()
+        if(validate!!.RetriveSharepreferenceString(AppSP.HHGUID) !=null && validate!!.RetriveSharepreferenceString(AppSP.HHGUID)!!.trim().length>0) {
+            showLiveData()
+        }
 
         et_formfillingDate.setOnClickListener {
             validate!!.datePickerwithmindate(
@@ -77,15 +100,33 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
 
 
     fun showLiveData() {
-        householdProfileViewModel.hhProfileData.observe(this, Observer {
-            Log.i("MYTAG", it.toString())
-        })
+        val idvProfileGuid = validate!!.RetriveSharepreferenceString(AppSP.HHGUID)
+        if (idvProfileGuid != null) {
+            householdProfileViewModel.gethhdatabyGuid(idvProfileGuid).observe(this, Observer {
+                if (it != null && it.size>0) {
+                    et_formfillingDate.setText(validate!!.returnStringValue(it.get(0).Dateform))
+                    et_hhName.setText(validate!!.returnStringValue(it.get(0).Name))
+
+                    //spin_name_crp.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).DistrictCode),41))
+                    //spin_SupervisingFC.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).DistrictCode),42))
+                    spin_crpfillingform.setSelection(validate!!.returnpos(it.get(0).CRP_Code,mstCommonViewModel,1))
+                    spin_SupervisingFC.setSelection(validate!!.returnpos(it.get(0).FieldCoordinator,mstCommonViewModel,2))
+                    spin_districtname.setSelection(validate!!.returnpos(validate!!.returnIntegerValue(it.get(0).DistrictCode),mstCommonViewModel,3))
+                    spin_zone.setSelection(validate!!.returnpos(validate!!.returnIntegerValue(it.get(0).ZoneCode),mstCommonViewModel,4))
+                    spin_bbmp.setSelection(validate!!.returnpos(it.get(0).Panchayat_Ward,mstCommonViewModel,5))
+                    spin_panchayatname.setSelection(validate!!.returnpos(validate!!.returnIntegerValue(it.get(0).PWCode),mstCommonViewModel,6))
+
+
+                }
+            })
+        }
 
     }
 
     override fun initializeController() {
         applyClickOnView()
-        fillSpinner()
+
+
     }
 
     private fun applyClickOnView() {
@@ -97,6 +138,7 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
         when (view?.id) {
             R.id.btn_save -> {
                 if (CheckValidation() == 0) {
+                    householdProfileViewModel.saveandUpdateHHProfile()
                     val intent = Intent(this, HouseholdProfileSecondActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -115,50 +157,33 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
 
     fun fillSpinner() {
 
-//        validate!!.fillSpinner(
-//            this,
-//            spin_crpfillingform,
-//            resources.getString(R.string.select),
-//            mstCommonViewModel,
-//            1
-//        )
 
-        validate!!.fillSpinner(
-            this,
-            spin_SupervisingFC,
-            resources.getString(R.string.select),
+
+        bindCommonTable(resources.getString(R.string.select),spin_crpfillingform,1)
+
+        validate!!.fillradio(
+            rg_hh_sex,
+            -1,
             mstCommonViewModel,
-            2
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_districtname,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            3
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_zone,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            4
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_bbmp,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            5
-        )
-        validate!!.fillSpinner(
-            this,
-            spin_panchayatname,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            6
+            10,
+            this
         )
 
+        bindCommonTable(resources.getString(R.string.select),spin_SupervisingFC,2)
+        bindCommonTable(resources.getString(R.string.select),spin_districtname,3)
+        bindDistrict(resources.getString(R.string.select),spin_districtname)
+        bindCommonTable(resources.getString(R.string.select),spin_bbmp,5)
+        bindCommonTable(resources.getString(R.string.select),spin_panchayatname,6)
+
+
+
+
+    }
+
+    fun setHHCode()
+    {
+        UniqueID.value=getHHCode()
+        et_hh_unique_id.setText(getHHCode())
     }
 
 
@@ -227,14 +252,14 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
                 et_hh_unique_id,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.hhh_unique_id),
             )
-        } else if (et_hh_unique_id.text.toString().length != 14) {
+        } /*else if (et_hh_unique_id.text.toString().length != 14) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
                 et_hh_unique_id,
                 resources.getString(R.string.hh_name),
             )
-        } else if (et_hhName.text.toString().length == 0) {
+        }*/ else if (et_hhName.text.toString().length == 0) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
@@ -245,37 +270,146 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
         return iValue
     }
 
-    /* fun save(){
-         if(AppSP.HHGUID=="") {
-             val hhguid = validate!!.random()
-             validate!!.SaveSharepreferenceString(AppSP.HHGUID,hhguid)
-             householdProfileEntity = HouseholdProfileEntity(
-                 0,
-                 validate!!.RetriveSharepreferenceString(AppSP.HHGUID),
-                 "",
-                 validate!!.returnID(spin_districtname, mstCommonViewModel, 3).toString(),
-                 validate!!.returnID(spin_zone, mstCommonViewModel, 4).toString(),
-                 validate!!.returnID(spin_panchayatname, mstCommonViewModel, 6),
-                 "",
-                 0,
-                 validate!!.returnStringValue(et_formfillingDate.text.toString()),
-                 validate!!.returnStringValue(et_hh_unique_id.text.toString()),
-                 validate!!.returnStringValue(et_hhName.text.toString()),
-                 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "", 0, 0,
-                 validate!!.RetriveSharepreferenceInt(AppSP.userId),
-                 validate!!.returnStringValue(validate!!.currentdatetime),
-                 0, "",
-                 0, 0
-             )
-             householdProfileViewModel.insertHouseholdProfile(householdProfileEntity)
-         }
 
-     }*/
 
     override fun onBackPressed() {
         val intent = Intent(this, HouseholdProfileListActivity::class.java)
         startActivity(intent)
         finish()
     }
+
+
+
+    fun hideview()
+    {
+        householdProfileViewModel.district.observe(this, Observer {
+            Log.i("MYTAGTWO", it.toString())
+            var districtCode = it
+            if (districtCode>0)
+            {
+                bindMstZone(resources.getString(R.string.select),spin_zone,districtCode)
+            }
+
+
+        })
+    }
+
+
+    fun getHHCode(): String
+    {
+        var hh_code=""
+        var cin="CIN"
+        var locality="W"
+        var ward_or_panchayat_code="001"
+        var household="HH"
+        var character_number="00001"
+
+        hh_code=cin+locality+ward_or_panchayat_code+household+getCharacterNumber(character_number)
+
+        return hh_code
+    }
+
+    fun getCharacterNumber(character_number:String):String
+    {
+        var number=""
+        if (character_number.length==1)
+        {
+            number="0000"+character_number
+        } else if (character_number.length==2)
+        {
+            number="000"+character_number
+
+        } else if (character_number.length==3)
+        {
+            number="00"+character_number
+
+        } else if (character_number.length==4)
+        {
+            number="0"+character_number
+
+        } else
+        {
+            number=character_number
+
+        }
+
+        return number
+
+    }
+
+
+    fun bindCommonTable(strValue: String, spin: Spinner, flag: Int) {
+        mstCommonViewModel.getMstCommondata(flag).observe(this, androidx.lifecycle.Observer {
+            if (it != null) {
+                val iGen = it.size
+                val name = arrayOfNulls<String>(iGen + 1)
+                name[0] = strValue
+
+                for (i in 0 until it.size) {
+                    name[i + 1] = it.get(i).value
+                }
+                val adapter_category = ArrayAdapter<String>(
+                    this,
+                    R.layout.my_spinner_space_dashboard, name
+                )
+                adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
+                spin.adapter = adapter_category
+            }
+        })
+        /*if (distric>0) {
+            spin_district_name.setSelection(returnpos(distric, 3))
+        }*/
+    }
+
+
+    fun bindDistrict(strValue: String, spin: Spinner) {
+        mstDistrictViewModel.getMstDistrict(10).observe(this, androidx.lifecycle.Observer {
+            if (it != null) {
+                val iGen = it.size
+                val name = arrayOfNulls<String>(iGen + 1)
+                name[0] = strValue
+
+                for (i in 0 until it.size) {
+                    name[i + 1] = it.get(i).DistrictName
+                }
+                val adapter_category = ArrayAdapter<String>(
+                    this,
+                    R.layout.my_spinner_space_dashboard, name
+                )
+                adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
+                spin.adapter = adapter_category
+            }
+        })
+        /*if (distric>0) {
+            spin_district_name.setSelection(returnpos(distric, 3))
+        }*/
+    }
+
+    fun bindMstZone(strValue: String, spin: Spinner,districtCode:Int) {
+        mstZoneViewModel.getMstZone(districtCode).observe(this, androidx.lifecycle.Observer {
+            if (it != null) {
+                val iGen = it.size
+                val name = arrayOfNulls<String>(iGen + 1)
+                name[0] = strValue
+
+                for (i in 0 until it.size) {
+                    name[i + 1] = it.get(i).ZoneName
+                }
+                val adapter_category = ArrayAdapter<String>(
+                    this,
+                    R.layout.my_spinner_space_dashboard, name
+                )
+                adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
+                spin.adapter = adapter_category
+            }
+        })
+        /*if (distric>0) {
+            spin_district_name.setSelection(returnpos(distric, 3))
+        }*/
+    }
+
+
+
+
 
 }

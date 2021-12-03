@@ -1,10 +1,7 @@
 package com.careindia.lifeskills.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.careindia.lifeskills.entity.IndividualProfileEntity
 
 
@@ -14,8 +11,6 @@ interface IndividualProfileDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertIMProfileData(imProfileEntity: IndividualProfileEntity)
 
-    @Query("DELETE from tblProfileIndividual")
-    fun deleteAllData()
 
     @Query("update tblProfileIndividual set Contact =:contact,MaritalStatus =:marital_status,Caste=:caste, Age=:age, Gender=:gender, Name=:name, HHCode=:hhuid,DateForm =:dateform,UpdatedOn=:updated_on where IndGUID=:IndGUID")
     fun updateIMProfileData(
@@ -37,6 +32,10 @@ interface IndividualProfileDao {
 
     @Query("Select * from tblProfileIndividual where IndGUID=:Guid")
     fun getIdvProfiledatabyGuid(Guid: String): LiveData<List<IndividualProfileEntity>>
+
+    @Query("DELETE from tblProfileIndividual where IndGUID=:Guid")
+    fun deleteAllData(Guid: String)
+
 
     @Query("update tblProfileIndividual set Smartphone =:smartphone,MobileData=:mobileData,PreferredLanguage_Communication=:preferredLanguage_communication,Languages_Speak=:languages_speak,Languages_Write =:languages_write,Languages_Read=:languages_read,StateID=:stateid,ResidingSince =:residing_since,Read_Write =:read_write,Education =:education,UpdatedOn=:updated_on where IndGUID=:IndGUID")
     fun updateIMProfileSecondData(
@@ -100,5 +99,9 @@ interface IndividualProfileDao {
         collective_name: String?,
         updated_on: String?
     )
+
+
+    @Delete
+    fun deleteindividualProfiledata(individualProfileEntity: IndividualProfileEntity)
 
 }

@@ -2,9 +2,13 @@ package com.careindia.lifeskills.views.improfile
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.CheckBox
+import android.widget.LinearLayout
 import android.widget.Spinner
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -26,6 +30,7 @@ import kotlinx.android.synthetic.main.activity_improfile_two.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.btn_prev
 import kotlinx.android.synthetic.main.buttons_save_cancel.btn_save
 import kotlinx.android.synthetic.main.toolbar_layout.*
+import okhttp3.internal.notify
 
 class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
     private lateinit var binding: ActivityImprofileTwoBinding
@@ -56,11 +61,17 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         binding.lifecycleOwner = this
 
 
+
+
+
         initializeController()
+        hideShowView()
+
+
 
     }
 
-    override fun initializeController() {
+   override fun initializeController() {
         //apply click on view
         applyClickOnView()
         // fill spinner view
@@ -98,13 +109,16 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         validate!!.dynamicMultiCheck(this, multiCheck_lang_read, mstCommonViewModel, 51)
         validate!!.dynamicMultiCheck(this, lang_write, mstCommonViewModel, 52)
         validate!!.dynamicMultiCheck(this, prefer_comni_speaking, mstCommonViewModel, 53)
-        validate!!.dynamicMultiCheck(this, multiCheck, mstCommonViewModel, 54)
+        validate!!.dynamicMultiCheck(this, spaekCheck, mstCommonViewModel, 54)
+
 
     }
 
     fun fillSpinner() {
         bindCommonTable("Select", spin_state, 46)
         bindCommonTable("Select", spin_education, 48)
+
+        //var spinitem = spin_state.selectedItemPosition
     }
 
 
@@ -133,6 +147,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
                 startActivity(intent)
                 finish()
             }
+
         }
 
     }
@@ -176,10 +191,16 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
                         )
                     })
 
-                    (validate!!.SetAnswerTypeCheckBoxButton(multiCheck, it.get(0).Languages_Speak))
-                    (validate!!.SetAnswerTypeCheckBoxButton(multiCheck_lang_read, it.get(0).Languages_Read))
+                    (validate!!.SetAnswerTypeCheckBoxButton(spaekCheck, it.get(0).Languages_Speak))
+                    (validate!!.SetAnswerTypeCheckBoxButton(
+                        multiCheck_lang_read,
+                        it.get(0).Languages_Read
+                    ))
                     (validate!!.SetAnswerTypeCheckBoxButton(lang_write, it.get(0).Languages_Write))
-                    (validate!!.SetAnswerTypeCheckBoxButton(prefer_comni_speaking, it.get(0).PreferredLanguage_Communication))
+                    (validate!!.SetAnswerTypeCheckBoxButton(
+                        prefer_comni_speaking,
+                        it.get(0).PreferredLanguage_Communication
+                    ))
 
 
                 }
@@ -192,11 +213,34 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             validate!!.GetAnswerTypeRadioButtonID(rg_can_read),
             validate!!.GetAnswerTypeRadioButtonID(rg_access_sphone),
             validate!!.GetAnswerTypeRadioButtonID(rg_acess_mob_data),
-            validate!!.GetAnswerTypeCheckBoxButtonID(multiCheck),
+            validate!!.GetAnswerTypeCheckBoxButtonID(spaekCheck),
             validate!!.GetAnswerTypeCheckBoxButtonID(multiCheck_lang_read),
             validate!!.GetAnswerTypeCheckBoxButtonID(lang_write),
             validate!!.GetAnswerTypeCheckBoxButtonID(prefer_comni_speaking),
         )
+    }
+
+
+    fun  hideShowView() {
+
+        imProfileViewModel.State.observe(this, Observer {
+            Log.i("MYTAGTWO", it.toString())
+            var stateid = it
+            if(stateid==10){
+                lay_et_specify_state.visibility = View.VISIBLE
+            }else{
+                lay_et_specify_state.visibility = View.GONE
+            }
+
+        })
+
+//         imProfileViewModel.ReadChecked.observe(this, Observer {
+//            Log.i("MYTAGTWOffffff", it.toString())
+//
+//
+//        })
+
+
     }
 
     private fun checkValidation(): Int {
@@ -210,13 +254,13 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-        } else if (et_specify_state.text.toString().isEmpty()) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_specify_state,
-                resources.getString(R.string.plz_specify_othr)
-            )
-            value = 0
+//        } else if (et_specify_state.text.toString().isEmpty()) {
+//            validate!!.CustomAlertEdit(
+//                this,
+//                et_specify_state,
+//                resources.getString(R.string.plz_specify_othr)
+//            )
+//            value = 0
         } else if (et_long_stay.text.toString().isEmpty()) {
             validate!!.CustomAlertEdit(
                 this,
@@ -265,19 +309,19 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(multiCheck).isEmpty()) {
+        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(spaekCheck).isEmpty()) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.plz_select_speack_lang)
             )
             value = 0
-        } else if (et_specify.text.toString().isEmpty()) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_specify,
-                resources.getString(R.string.plz_specify_othr)
-            )
-            value = 0
+//        } else if (et_specify.text.toString().isEmpty()) {
+//            validate!!.CustomAlertEdit(
+//                this,
+//                et_specify,
+//                resources.getString(R.string.plz_specify_othr)
+//            )
+//            value = 0
         } else if (validate!!.GetAnswerTypeCheckBoxButtonID(multiCheck_lang_read).isEmpty()) {
             validate!!.CustomAlert(
                 this,
@@ -285,13 +329,13 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-        } else if (et_specifyread.text.toString().isEmpty()) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_specifyread,
-                resources.getString(R.string.plz_specify_othr)
-            )
-            value = 0
+//        } else if (et_specifyread.text.toString().isEmpty()) {
+//            validate!!.CustomAlertEdit(
+//                this,
+//                et_specifyread,
+//                resources.getString(R.string.plz_specify_othr)
+//            )
+//            value = 0
         } else if (validate!!.GetAnswerTypeCheckBoxButtonID(lang_write).isEmpty()) {
             validate!!.CustomAlert(
                 this,
@@ -300,13 +344,13 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             value = 0
 
 
-        } else if (et_specifywrite.text.toString().isEmpty()) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_specifywrite,
-                resources.getString(R.string.plz_specify_othr)
-            )
-            value = 0
+//        } else if (et_specifywrite.text.toString().isEmpty()) {
+//            validate!!.CustomAlertEdit(
+//                this,
+//                et_specifywrite,
+//                resources.getString(R.string.plz_specify_othr)
+//            )
+//            value = 0
         } else if (validate!!.GetAnswerTypeCheckBoxButtonID(prefer_comni_speaking).isEmpty()) {
             validate!!.CustomAlert(
                 this,
@@ -314,13 +358,13 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-        } else if (et_specifyprefer.text.toString().isEmpty()) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_specifyprefer,
-                resources.getString(R.string.plz_specify_othr)
-            )
-            value = 0
+//        } else if (et_specifyprefer.text.toString().isEmpty()) {
+//            validate!!.CustomAlertEdit(
+//                this,
+//                et_specifyprefer,
+//                resources.getString(R.string.plz_specify_othr)
+//            )
+//            value = 0
 
         }
         return value
@@ -360,6 +404,34 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             }
         }
         return posi
+    }
+
+
+
+
+
+
+    fun GetAnswerTypeCheckBoxButtonIDChange(linear: LinearLayout): String {
+        var QusAns = ""
+        for (i in 0 until linear.childCount) {
+
+            val checkbox = linear.getChildAt(i) as CheckBox
+            checkbox.setOnClickListener {
+                if (checkbox.isChecked) {
+                    if (QusAns.length == 0) {
+                        QusAns = checkbox.id.toString()
+                    } else {
+                        QusAns = (QusAns
+                                + ","
+                                + checkbox.id.toString())
+                        Log.i("MYTAGTWO____-----++", checkbox.id.toString())
+
+                    }
+                }
+            }
+
+        }
+        return QusAns
     }
 
 

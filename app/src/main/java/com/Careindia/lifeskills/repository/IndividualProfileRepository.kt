@@ -27,8 +27,8 @@ class IndividualProfileRepository(
         return imProfileDao.getallIMProfiledata()
     }
 
-    fun delete() {
-        imProfileDao.deleteAllData()
+    fun delete(Guid: String) {
+        imProfileDao.deleteAllData(Guid)
     }
 
     internal fun updateIMProfileData(
@@ -177,6 +177,11 @@ class IndividualProfileRepository(
             collective_name,
             updated_on
         )
+    }
+
+
+    fun delete(individualProfileEntity: IndividualProfileEntity) {
+        return imProfileDao.deleteindividualProfiledata(individualProfileEntity)
     }
 
 }
