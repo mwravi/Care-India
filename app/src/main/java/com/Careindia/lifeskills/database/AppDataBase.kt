@@ -8,13 +8,12 @@ import com.careindia.lifeskills.dao.*
 import com.careindia.lifeskills.entity.*
 
 @Database(
-    entities = [MstCommonEntity::class, HouseholdProfileEntity::class, IndividualProfileEntity::class, CollectiveEntity::class, CollectiveMemberEntity::class
+    entities = [HouseholdProfileEntity::class, IndividualProfileEntity::class, CollectiveEntity::class, CollectiveMemberEntity::class
         ,MstStateEntity::class,MstDistrictEntity::class,MstZoneEntity::class,MstPanchayat_WardEntity::class,MstLocalityEntity::class,MstLookupEntity::class,MstUserEntity::class],
     version = 1
 )
 
 abstract class AppDataBase : RoomDatabase() {
-    abstract fun mstCommonDao(): MstCommonDao
     abstract fun hhProfileDao(): HouseholdProfileDao
     abstract fun imProfileDao(): IndividualProfileDao
     abstract fun collectiveDao(): CollectiveDao

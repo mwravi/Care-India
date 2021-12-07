@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="individualProfileViewModel"
             type="com.careindia.lifeskills.viewmodel.IndividualProfileViewModel" />
@@ -19,6 +19,10 @@
         <include
             android:id="@+id/include"
             layout="@layout/toolbar_layout" />
+
+        <include
+            android:id="@+id/includetop"
+            layout="@layout/bottomnavigationtab" />
 
 
         <ScrollView
@@ -36,33 +40,51 @@
                     android:id="@+id/lay_spin_state"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/state_belong" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/state_belong" />
+
+                    </TableRow>
+
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_state"
-                        android:selectedItemPosition="@={individualProfileViewModel.State}"
-                        style="@style/SpinnerViewNew" />
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={individualProfileViewModel.State}" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:visibility="gone"
                     android:id="@+id/lay_et_specify_state"
-                    style="@style/LinearLayoutStyle">
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/please_specify_statte" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_states" />
+
+
+                    </TableRow>
+
 
                     <EditText
                         android:id="@+id/et_specify_state"
                         style="@style/EditTextStyleNew"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
-                        android:text="@={individualProfileViewModel.SpecifyState}"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:text="@={individualProfileViewModel.SpecifyState}" />
 
                 </LinearLayout>
 
@@ -70,17 +92,26 @@
                     android:id="@+id/lay_et_long_stay"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/long_stay" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/long_stay" />
+
+
+
+                    </TableRow>
+
 
                     <EditText
                         android:id="@+id/et_long_stay"
                         style="@style/EditTextStyleNew"
                         android:digits="1234567890"
                         android:inputType="number"
-                        android:text="@={individualProfileViewModel.BLONGSTAY}"
-                        android:maxLength="2" />
+                        android:maxLength="2"
+                        android:text="@={individualProfileViewModel.BLONGSTAY}" />
 
                 </LinearLayout>
 
@@ -89,35 +120,51 @@
                     android:id="@+id/lay_can_read"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/read_write" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/read_write" />
+
+
+
+                    </TableRow>
 
                     <RadioGroup
-                        android:checkedButton="@={individualProfileViewModel.ReadChecked}"
                         android:id="@+id/rg_can_read"
-                        style="@style/radioGroupStyle" />
+                        style="@style/radioGroupStyle"
+                        android:checkedButton="@={individualProfileViewModel.ReadChecked}" />
 
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#D8D6D6"/>
+                    android:background="#D8D6D6" />
 
                 <LinearLayout
                     android:id="@+id/lay_spin_education"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/highest_education" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/highest_education" />
+
+
+
+                    </TableRow>
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_education"
                         style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={individualProfileViewModel.EDUCATION}"
-                        />
+                        android:selectedItemPosition="@={individualProfileViewModel.EDUCATION}" />
 
                 </LinearLayout>
 
@@ -125,47 +172,72 @@
                     android:id="@+id/lay_access_sphone"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/acess_smart_phone" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/acess_smart_phone" />
 
+
+
+                    </TableRow>
 
                     <RadioGroup
                         android:id="@+id/rg_access_sphone"
                         style="@style/radioGroupStyle" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#D8D6D6"/>
+                    android:background="#D8D6D6" />
 
                 <LinearLayout
                     android:id="@+id/lay_acess_mob_data"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/acess_mobile_data" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/acess_mobile_data" />
 
+
+
+                    </TableRow>
 
                     <RadioGroup
                         android:id="@+id/rg_acess_mob_data"
                         style="@style/radioGroupStyle" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#D8D6D6"/>
+                    android:background="#D8D6D6" />
 
                 <LinearLayout
                     style="@style/TablerowNew"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/language_speak" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/language_speak" />
+
+
+
+                    </TableRow>
+
 
                     <LinearLayout
                         android:id="@+id/spaekCheck"
@@ -182,20 +254,29 @@
                     android:background="#CDCBCB" />
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_specify"
                     style="@style/LinearLayoutStyle">
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_speak_lag" />
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/please_specify_speak" />
+
+
+                    </TableRow>
+
 
                     <EditText
                         android:id="@+id/et_specify"
                         style="@style/EditTextStyleNew"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
-                        android:text="@={individualProfileViewModel.SpecifySpeack}"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:text="@={individualProfileViewModel.SpecifySpeack}" />
 
                 </LinearLayout>
 
@@ -204,9 +285,18 @@
                     style="@style/TablerowNew"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/language_read" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/language_read" />
+
+
+
+                    </TableRow>
+
 
                     <LinearLayout
                         android:id="@+id/multiCheck_lang_read"
@@ -223,20 +313,29 @@
                     android:background="#CDCBCB" />
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_specifyread"
                     style="@style/LinearLayoutStyle">
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_read_lag" />
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/please_specify_read" />
+
+
+                    </TableRow>
+
 
                     <EditText
                         android:id="@+id/et_specifyread"
                         style="@style/EditTextStyleNew"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
-                        android:text="@={individualProfileViewModel.SpecifyRead}"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:text="@={individualProfileViewModel.SpecifyRead}" />
 
                 </LinearLayout>
 
@@ -245,9 +344,18 @@
                     style="@style/TablerowNew"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/language_write" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/language_write" />
+
+
+
+                    </TableRow>
+
 
                     <LinearLayout
                         android:id="@+id/lang_write"
@@ -264,20 +372,29 @@
                     android:background="#CDCBCB" />
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_specifywrite"
                     style="@style/LinearLayoutStyle">
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_write_lag" />
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/please_specify_write" />
+
+
+                    </TableRow>
+
 
                     <EditText
                         android:id="@+id/et_specifywrite"
                         style="@style/EditTextStyleNew"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
-                        android:text="@={individualProfileViewModel.SpecifyWrite}"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:text="@={individualProfileViewModel.SpecifyWrite}" />
 
                 </LinearLayout>
 
@@ -286,9 +403,18 @@
                     style="@style/TablerowNew"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/lang_prefer_comni_speaking" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/lang_prefer_comni_speaking" />
+
+
+
+                    </TableRow>
+
 
                     <LinearLayout
                         android:id="@+id/prefer_comni_speaking"
@@ -305,23 +431,30 @@
                     android:background="#CDCBCB" />
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_specifyprefer"
                     style="@style/LinearLayoutStyle">
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_communi_lag" />
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/please_specify_communi" />
+
+
+                    </TableRow>
 
                     <EditText
                         android:id="@+id/et_specifyprefer"
                         style="@style/EditTextStyleNew"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
-                        android:text="@={individualProfileViewModel.SpecifyCommuni}"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:text="@={individualProfileViewModel.SpecifyCommuni}" />
 
                 </LinearLayout>
-
 
 
             </LinearLayout>
@@ -332,32 +465,33 @@
             style="@style/TableRowStyle"
             android:layout_margin="@dimen/_10sdp">
 
-            <TextView style="@style/NewSimpleTextMargin"
-                android:layout_weight=".1"
-                />
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
 
             <Button
                 android:id="@+id/btn_prev"
                 style="@style/ButtonTextStyle"
-                android:layout_height="@dimen/_30sdp"
                 android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_weight="1"
                 android:text="@string/previous" />
 
-            <TextView style="@style/NewSimpleTextMargin"
-                android:layout_weight=".1"
-                />
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
+
             <Button
                 android:id="@+id/btn_save"
                 style="@style/ButtonTextStyle"
-                android:layout_height="@dimen/_30sdp"
                 android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_weight="1"
                 android:text="@={individualProfileViewModel.saveandnextText}" />
 
-            <TextView style="@style/NewSimpleTextMargin"
-                android:layout_weight=".1"
-                />
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
 
         </TableRow>
     </LinearLayout>

@@ -2,6 +2,7 @@ package com.careindia.lifeskills.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import com.careindia.lifeskills.entity.HouseholdProfileEntity
 import com.careindia.lifeskills.entity.IndividualProfileEntity
 
 
@@ -33,9 +34,13 @@ interface IndividualProfileDao {
     @Query("Select * from tblProfileIndividual where IndGUID=:Guid")
     fun getIdvProfiledatabyGuid(Guid: String): LiveData<List<IndividualProfileEntity>>
 
+    @Query("Select * from tblProfileHH")
+    fun gethhProfileData(): LiveData<List<HouseholdProfileEntity>>
+
     @Query("DELETE from tblProfileIndividual where IndGUID=:Guid")
     fun deleteAllData(Guid: String)
-
+    @Query("Select * from tblProfileHH")
+    fun gethhProfileDataNew(): List<HouseholdProfileEntity>
 
     @Query("update tblProfileIndividual set Smartphone =:smartphone,MobileData=:mobileData,PreferredLanguage_Communication=:preferredLanguage_communication,Languages_Speak=:languages_speak,Languages_Write =:languages_write,Languages_Read=:languages_read,StateID=:stateid,ResidingSince =:residing_since,Read_Write =:read_write,Education =:education,UpdatedOn=:updated_on where IndGUID=:IndGUID")
     fun updateIMProfileSecondData(
@@ -43,7 +48,7 @@ interface IndividualProfileDao {
         stateid: Int?,
         residing_since: Int?,
         read_write: Int?,
-        education: Int??,
+        education: Int?,
         smartphone: Int?,
         mobileData: Int?,
         languages_read: String?,
@@ -100,6 +105,8 @@ interface IndividualProfileDao {
         updated_on: String?
     )
 
+    @Query("select Count(HHCode) from tblProfileIndividual")
+    fun getHHCount(): Int
 
     @Delete
     fun deleteindividualProfiledata(individualProfileEntity: IndividualProfileEntity)

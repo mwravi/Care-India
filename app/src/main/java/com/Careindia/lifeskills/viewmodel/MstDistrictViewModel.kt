@@ -13,11 +13,13 @@ class MstDistrictViewModel : AndroidViewModel {
         mstDistrictRepository = MstDistrictRepository(application)
     }
 
-    fun getMstDistrict(StateCode:Int): LiveData<List<MstDistrictEntity>> {
+    fun getMstDistrict(StateCode:Int): List<MstDistrictEntity> {
         return mstDistrictRepository!!.getMstDistrict(StateCode)
     }
 
-
+    fun getMstDistrictLive(StateCode:Int): LiveData<List<MstDistrictEntity>> {
+        return mstDistrictRepository!!.getMstDistrictLive(StateCode)
+    }
 
 
 }

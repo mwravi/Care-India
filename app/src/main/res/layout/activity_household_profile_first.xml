@@ -17,6 +17,7 @@
         tools:viewBindingIgnore="true">
 
         <include layout="@layout/toolbar_layout" />
+        <include layout="@layout/hhnavigationtab" />
 
         <ScrollView
             style="@style/ScrolllViewStyle"
@@ -34,10 +35,22 @@
                     android:id="@+id/lay_formfillingdate"
                     style="@style/LinearLayoutStyle">
 
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik"
+                            android:text="*"
+                            />
+
                     <TextView
                         android:id="@+id/tv_formfillingdate"
                         style="@style/TextViewStyleNew"
                         android:text="@string/q101_date_of_filling_the_form" />
+                    </TableRow>
+
+
 
                     <EditText
                         android:id="@+id/et_formfillingDate"
@@ -55,17 +68,32 @@
                 <LinearLayout
                     android:id="@+id/lay_crpName"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_crpName"
                         style="@style/TextViewStyleNew"
                         android:text="@string/Name_of_CRP_filling_the_form" />
+                    </TableRow>
 
-                    <fr.ganfra.materialspinner.MaterialSpinner
-                        android:id="@+id/spin_crpfillingform"
-                        style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={householdProfileViewModel.CrpName}"
-                   />
+
+                    <EditText
+                        android:id="@+id/et_crp_name"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={householdProfileViewModel.CrpName}"
+                        android:enabled="false"
+                        android:editable="false"
+                        />
+
 
                 </LinearLayout>
 
@@ -73,16 +101,31 @@
                 <LinearLayout
                     android:id="@+id/lay_sfcName"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_sfcName"
                         style="@style/TextViewStyleNew"
                         android:text="@string/Name_of_supervising_field_cordinator" />
+                    </TableRow>
 
-                    <fr.ganfra.materialspinner.MaterialSpinner
-                        android:id="@+id/spin_SupervisingFC"
-                        style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={householdProfileViewModel.superverCor}"
+
+
+                    <EditText
+                        android:id="@+id/et_sfc_name"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={householdProfileViewModel.superverCor}"
+                        android:enabled="false"
+                        android:editable="false"
                         />
 
                 </LinearLayout>
@@ -91,11 +134,19 @@
                 <LinearLayout
                     android:id="@+id/lay_DistricName"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_DistricName"
                         style="@style/TextViewStyleNew"
                         android:text="@string/Name_of_distric" />
+                    </TableRow>
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_districtname"
@@ -106,34 +157,25 @@
 
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/lay_ward_panchayat"
-                    style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        android:id="@+id/tv_ward_panchayat"
-                        style="@style/TextViewStyleNew"
-                        android:text="Q. Ward/panchayat" />
-
-                    <fr.ganfra.materialspinner.MaterialSpinner
-                        android:id="@+id/spin_ward_panchayat"
-                        style="@style/SpinnerViewNew"
-
-
-                        />
-
-                </LinearLayout>
 
 
                 <LinearLayout
                     android:id="@+id/lay_NameofZone"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_NameofZone"
                         style="@style/TextViewStyleNew"
                         android:text="@string/Name_of_zone" />
-
+                    </TableRow>
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_zone"
                         style="@style/SpinnerViewNew"
@@ -145,11 +187,19 @@
                 <LinearLayout
                     android:id="@+id/lay_bbmpName"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_bbmpName"
                         style="@style/TextViewStyleNew"
                         android:text="@string/Name_of_bbmp_ward" />
+                    </TableRow>
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_bbmp"
@@ -163,12 +213,19 @@
                 <LinearLayout
                     android:id="@+id/lay_panchayatName"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_panchayatName"
                         style="@style/TextViewStyleNew"
                         android:text="@string/Name_of_panchayat" />
-
+                    </TableRow>
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_panchayatname"
                         style="@style/SpinnerViewNew"
@@ -181,12 +238,19 @@
                 <LinearLayout
                     android:id="@+id/lay_localityname"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_localityname"
                         style="@style/TextViewStyleNew"
                         android:text="@string/q108_name_of_locality" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_localityname"
                         style="@style/EditTextStyleNew"
@@ -201,20 +265,27 @@
                 <LinearLayout
                     android:id="@+id/lay_hh_id"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_hh_id"
                         style="@style/TextViewStyleNew"
                         android:text="@string/hhh_unique_id" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_hh_unique_id"
                         style="@style/EditTextStyleNew"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                        android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="20"
-                        android:text="@={householdProfileViewModel.UniqueID}"
+                        android:enabled="false"
+                        android:editable="false"
 
                         />
 
@@ -223,16 +294,23 @@
                 <LinearLayout
                     android:id="@+id/lay_hhName"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_hhName"
                         style="@style/TextViewStyleNew"
                         android:text="@string/hh_name" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_hhName"
                         style="@style/EditTextStyleNew"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
                         android:inputType="textPersonName"
                         android:maxLength="20"
@@ -244,11 +322,18 @@
                 <LinearLayout
                     android:id="@+id/lay_hh_sex"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         style="@style/TextViewStyleNew"
                         android:text="@string/hh_sex" />
-
+                    </TableRow>
                     <RadioGroup
                         android:id="@+id/rg_hh_sex"
                         style="@style/radioGroupStyle"
@@ -257,11 +342,7 @@
 
                 </LinearLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="@dimen/_5sdp"
-                    android:background="#D8D6D6" />
+
 
             </LinearLayout>
 

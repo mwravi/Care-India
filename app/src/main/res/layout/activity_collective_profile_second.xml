@@ -1,275 +1,365 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="collectiveViewModel"
             type="com.careindia.lifeskills.viewmodel.CollectiveViewModel" />
     </data>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
 
-    <include layout="@layout/toolbar_layout" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ScrollView
-        style="@style/ScrolllViewStyle"
-        android:background="@drawable/box_background"
-        android:layout_margin="@dimen/_5sdp"
-        android:layout_weight="1"
-        android:scrollbars="none">
+        <include layout="@layout/toolbar_layout" />
+        <include layout="@layout/collectivetab" />
 
-        <LinearLayout
-            style="@style/LinearLayoutStyle"
-            android:padding="@dimen/_10sdp">
-
-            <LinearLayout
-                android:id="@+id/lay_date_of_group_formation"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_date_of_group_formation"
-                    style="@style/TextViewStyleNew"
-                    android:layout_height="wrap_content"
-                    android:text="@string/date_of_formation_of_group" />
-
-                <EditText
-                    android:id="@+id/et_date_of_group_formation"
-                    style="@style/EditTextStyleNew"
-                    android:clickable="false"
-                    android:drawableEnd="@drawable/ic_calender"
-                    android:text="@={collectiveViewModel.Formationdate}"
-                    android:focusable="false"
-                    android:hint="@string/enter_date" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_collective_group"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_collective_group"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q112_what_type_of_collective_group_it_is" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_collective_group"
-                    android:selectedItemPosition="@={collectiveViewModel.Grouptype}"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_specify_others_group"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_specify_others_group"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/please_specify_others" />
-
-                <EditText
-                    android:id="@+id/et_specify_others_group"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/enter_date"
-                    android:text="@={collectiveViewModel.Specifyothergroup}"
-                    android:inputType="text"
-                    android:maxLength="20" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_group_registered"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_group_registered"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/is_your_griup_registered" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_group_registered"
-                    android:selectedItemPosition="@={collectiveViewModel.Groupregistered}"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_specify_others_group_registered"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_specify_others_group_registered"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/please_specify_others_registered" />
-
-                <EditText
-                    android:id="@+id/et_specify_others_group_registered"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/enter_date"
-                    android:text="@={collectiveViewModel.Specifygroupregistered}"
-                    android:inputType="text"
-                    android:maxLength="20" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_head_group_name"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_head_group_name"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/name_of_head_group" />
-
-                <EditText
-                    android:id="@+id/et_head_group_name"
-                    style="@style/EditTextStyleNew"
-                    android:hint="@string/type_here"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:text="@={collectiveViewModel.Headgroupname}"
-                    android:inputType="text"
-                    android:maxLength="20" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_head_group_sex"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/sex_of_head_of_group" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_head_group_sex"
-                    android:selectedItemPosition="@={collectiveViewModel.Headsex}"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_total_no_of_members"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_total_no_of_members"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/total_no_of_members_in_group" />
-
-                <EditText
-                    android:id="@+id/et_total_no_of_members"
-                    style="@style/EditTextStyleNew"
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.Totalmember}"
-                    android:inputType="number"
-                    android:maxLength="2" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_male_members"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_male_members"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/total_no_of_male_members_in_group" />
-
-                <EditText
-                    android:id="@+id/et_male_members"
-                    style="@style/EditTextStyleNew"
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.Totalmale}"
-                    android:inputType="number"
-                    android:maxLength="2" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_female_members"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_female_members"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/total_no_of_female_members_in_group" />
-
-                <EditText
-                    android:id="@+id/et_female_members"
-                    style="@style/EditTextStyleNew"
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.Totalfemale}"
-                    android:inputType="number"
-                    android:maxLength="2" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_transgender_members"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_transgender_members"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/total_no_of_transgender_members_in_group" />
-
-                <EditText
-                    android:id="@+id/et_transgender_members"
-                    style="@style/EditTextStyleNew"
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.Totaltransgender}"
-                    android:inputType="number"
-                    android:maxLength="2" />
-
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-
-    </ScrollView>
-
-    <TableRow
-        style="@style/TableRowStyle"
-        android:layout_margin="@dimen/_10sdp">
-
-        <TextView style="@style/NewSimpleTextMargin"
-            android:layout_weight=".1"
-            />
-
-        <Button
-            android:id="@+id/btn_prev"
-            style="@style/ButtonTextStyle"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_width="0dp"
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_5sdp"
             android:layout_weight="1"
-            android:text="@string/previous" />
+            android:background="@drawable/box_background"
+            android:scrollbars="none">
 
-        <TextView style="@style/NewSimpleTextMargin"
-            android:layout_weight=".1"
-            />
-        <Button
-            android:id="@+id/btn_save"
-            style="@style/ButtonTextStyle"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@={collectiveViewModel.saveandnextText}" />
+            <LinearLayout
+                style="@style/LinearLayoutStyle"
+                android:padding="@dimen/_10sdp">
 
-        <TextView style="@style/NewSimpleTextMargin"
-            android:layout_weight=".1"
-            />
+                <LinearLayout
+                    android:id="@+id/lay_date_of_group_formation"
+                    style="@style/LinearLayoutStyle">
 
-    </TableRow>
+                    <TableRow style="@style/TableRowStyle">
 
-</LinearLayout>
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_date_of_group_formation"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/date_of_formation_of_group" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_date_of_group_formation"
+                        style="@style/EditTextStyleNew"
+                        android:clickable="false"
+                        android:drawableEnd="@drawable/ic_calender"
+                        android:focusable="false"
+                        android:hint="@string/enter_date"
+                        android:text="@={collectiveViewModel.Formationdate}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_collective_group"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_collective_group"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q112_what_type_of_collective_group_it_is" />
+
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_collective_group"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={collectiveViewModel.Grouptype}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_specify_others_group"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                            />
+                        <TextView
+                            android:id="@+id/tv_specify_others_group"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_others" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_specify_others_group"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="20"
+                        android:text="@={collectiveViewModel.Specifyothergroup}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_group_registered"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_group_registered"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/is_your_griup_registered" />
+
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_group_registered"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={collectiveViewModel.Groupregistered}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_specify_others_group_registered"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_specify_others_group_registered"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_others_registered" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_specify_others_group_registered"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="20"
+                        android:text="@={collectiveViewModel.Specifygroupregistered}" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                            />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/what_is_the_objective_of_group" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_objective"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={collectiveViewModel.objective}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_head_group_name"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_head_group_name"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_of_head_group" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_head_group_name"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="20"
+                        android:text="@={collectiveViewModel.Headgroupname}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_head_group_sex"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                            />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/sex_of_head_of_group" />
+
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_head_group_sex"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={collectiveViewModel.Headsex}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_total_no_of_members"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_total_no_of_members"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/total_no_of_members_in_group" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_total_no_of_members"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@={collectiveViewModel.Totalmember}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_male_members"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                            />
+                        <TextView
+                            android:id="@+id/tv_male_members"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/total_no_of_male_members_in_group" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_male_members"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@={collectiveViewModel.Totalmale}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_female_members"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_female_members"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/total_no_of_female_members_in_group" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_female_members"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@={collectiveViewModel.Totalfemale}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_transgender_members"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_transgender_members"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/total_no_of_transgender_members_in_group" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_transgender_members"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@={collectiveViewModel.Totaltransgender}" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
+
+            <include layout="@layout/buttons_save_cancel" />
+
+        </TableRow>
+
+    </LinearLayout>
 </layout>

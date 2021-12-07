@@ -3,48 +3,55 @@ package com.careindia.lifeskills.repository
 
 import androidx.lifecycle.LiveData
 import com.careindia.lifeskills.dao.CollectiveDao
-import com.careindia.lifeskills.dao.MstCommonDao
+import com.careindia.lifeskills.dao.MstDistrictDao
 import com.careindia.lifeskills.entity.CollectiveEntity
-import com.careindia.lifeskills.entity.MstCommonEntity
+import com.careindia.lifeskills.entity.MstDistrictEntity
 
 
-class CollectiveRepository(private val collectiveDao: CollectiveDao,private val mstCommonDao: MstCommonDao) {
+class CollectiveRepository(
+    private val collectiveDao: CollectiveDao,
+    private val mstDistrictDao: MstDistrictDao
+) {
 
-    fun insert(collectiveEntity: CollectiveEntity){
+    fun insert(collectiveEntity: CollectiveEntity) {
         collectiveDao.insertCollectiveData(collectiveEntity)
     }
 
-     fun update(guid:String,date:String,
-                groupName:String,
-                wardname:Int,
-                localityname:String,
-                collectiveid:String,
-                zonename:String,
-                districcode:String,
-                panchayatcode:String){
-        collectiveDao.updateCollectiveData(guid,date,groupName,wardname,localityname,
-            collectiveid,zonename,districcode,panchayatcode)
+    fun update(
+        guid: String, date: String,
+        groupName: String,
+        wardname: Int,
+        localityname: String,
+        collectiveid: String,
+        zonename: String,
+        districcode: String,
+        panchayatcode: String
+    ) {
+        collectiveDao.updateCollectiveData(
+            guid, date, groupName, wardname, localityname,
+            collectiveid, zonename, districcode, panchayatcode
+        )
     }
 
-    fun getmstCommonData(flag:Int):List<MstCommonEntity> {
-        return mstCommonDao.getMstCommon(flag)
-    }
 
-    fun getallCollectivedata():LiveData<List<CollectiveEntity>>{
+    fun getallCollectivedata(): LiveData<List<CollectiveEntity>> {
         return collectiveDao.getallCollectivedata()
     }
 
-    fun getCollectivedatabyGuid(guid:String):LiveData<List<CollectiveEntity>>{
+    fun getCollectivedatabyGuid(guid: String): LiveData<List<CollectiveEntity>> {
         return collectiveDao.getCollectivedatabyGuid(guid)
     }
 
-     fun delete(collectiveEntity: CollectiveEntity) {
+    fun delete(collectiveEntity: CollectiveEntity) {
         return collectiveDao.deleteCollectivedata(collectiveEntity)
     }
 
     fun updatecollectivesecond(
         guid: String,
-        formationdate: String,
+        formationdate: String, Type: Int,
+        TypeOther: String,
+        Registration: Int,
+        RegistrationOther: String, Objective: String,
         headgroupname: String,
         headsex: Int,
         totalmember: Int,
@@ -52,13 +59,18 @@ class CollectiveRepository(private val collectiveDao: CollectiveDao,private val 
         totalfemale: Int,
         totaltrangender: Int
     ) {
-        collectiveDao.updatecollectivesecond(guid,formationdate,headgroupname,headsex,totalmember,
-            totalmale,totalfemale,totaltrangender)
+        collectiveDao.updatecollectivesecond(
+            guid, formationdate, Type,
+            TypeOther,
+            Registration,
+            RegistrationOther, Objective, headgroupname, headsex, totalmember,
+            totalmale, totalfemale, totaltrangender
+        )
     }
 
     fun updatecollectivefourth(
         guid: String,
-        tenure: String,
+        tenure: String,Rolerotation:Int,
         electionob: Int,
         electionfreq: String,
         bankac: Int,
@@ -68,38 +80,38 @@ class CollectiveRepository(private val collectiveDao: CollectiveDao,private val 
         othersaving: String,
         cbank: String,
     ) {
-      collectiveDao.updateCollectivefour(
-          guid,
-          tenure,
-          electionob,
-          electionfreq,
-          bankac,
-          groupsaving,
-          otherinr,
-          freqsaving,
-          othersaving,
-          cbank
-      )
+        collectiveDao.updateCollectivefour(
+            guid,
+            tenure,Rolerotation,
+            electionob,
+            electionfreq,
+            bankac,
+            groupsaving,
+            otherinr,
+            freqsaving,
+            othersaving,
+            cbank
+        )
     }
 
     fun updatecollectivefive(
         guid: String,
-        memberSaving: Int,
-        availloan: Int,
+        memberSaving: Int,MemberSavingOther:String,
+        availloan: Int,AvailloanWhere:Int,AvailloanOther:String,
         loanChallange: String,
         meetingconducted: Int,
-        frequencyMeeting: Int,
-        regularityMeeting: Int
+        frequencyMeeting: Int,FrequencyMeetingOther:String,
+        regularityMeeting: Int,meetingschedule:Int
     ) {
-    collectiveDao.updateCollectivefive(
+        collectiveDao.updateCollectivefive(
             guid,
-        memberSaving,
-        availloan,
-        loanChallange,
-        meetingconducted,
-        frequencyMeeting,
-        regularityMeeting
-            )
+            memberSaving,MemberSavingOther,
+            availloan,AvailloanWhere,AvailloanOther,
+            loanChallange,
+            meetingconducted,
+            frequencyMeeting,FrequencyMeetingOther,
+            regularityMeeting,meetingschedule
+        )
     }
 
     fun updatecollectivesix(
@@ -107,27 +119,32 @@ class CollectiveRepository(private val collectiveDao: CollectiveDao,private val 
         service: String?,
         serviceAvailing: String?,
         serviceProvider: String?,
-        meetingschedule: Int,
         recordbook: Int,
         recordbookupdate: Int,
         serviceschemes: Int,
         enterprisebuisness: Int,
         collectivelinkage: String,
-        collectiveplanbuisness: String
+        collectiveplanbuisness: String,Linkages_oth:String,Collective_opp_Other:String
     ) {
-collectiveDao.updateCollectiveSix(
-    guid,
-    service,
-    serviceAvailing,
-    serviceProvider,
-    meetingschedule,
-    recordbook,
-    recordbookupdate,
-    serviceschemes,
-    enterprisebuisness,
-    collectivelinkage,
-    collectiveplanbuisness
-)
+        collectiveDao.updateCollectiveSix(
+            guid,
+            service,
+            serviceAvailing,
+            serviceProvider,
+            recordbook,
+            recordbookupdate,
+            serviceschemes,
+            enterprisebuisness,
+            collectivelinkage,
+            collectiveplanbuisness,Linkages_oth,Collective_opp_Other
+        )
     }
 
+    fun getMstDist(StateCode: Int): List<MstDistrictEntity> {
+        return mstDistrictDao!!.getMstDist(StateCode)
+    }
+
+    fun getCommunityCount():Int{
+        return collectiveDao!!.getCommunityCount()
+    }
 }

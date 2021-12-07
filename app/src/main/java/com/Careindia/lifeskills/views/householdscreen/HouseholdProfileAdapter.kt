@@ -1,4 +1,4 @@
-package com.careindia.lifeskills.views.improfile
+package com.careindia.lifeskills.views.householdscreen
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -43,6 +43,7 @@ class HouseholdProfileAdapter(
         ) {
             binding.tvName.text = imProfileList.Name
             binding.tvHhid.text = imProfileList.HHCode
+            binding.tvDate.text = imProfileList.Dateform
             binding.cardView.setOnClickListener {
                 clickListener(imProfileList)
             }

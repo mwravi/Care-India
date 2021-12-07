@@ -1,22 +1,22 @@
 package com.careindia.lifeskills.viewmodel
 
 
-import android.content.Context
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.careindia.lifeskills.entity.HouseholdProfileEntity
 import com.careindia.lifeskills.entity.IndividualProfileEntity
-import com.careindia.lifeskills.entity.MstCommonEntity
+import com.careindia.lifeskills.entity.MstDistrictEntity
 import com.careindia.lifeskills.repository.IndividualProfileRepository
 import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.views.base.BaseViewModel
+import com.careindia.lifeskills.views.improfile.IMProfileOneActivity
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
 class IndividualProfileViewModel(private val imProfileRepository: IndividualProfileRepository) :
@@ -26,13 +26,21 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
     val State = MutableLiveData<Int>()
     val ReadChecked = MutableLiveData<Int>()
     val IsSecondry = MutableLiveData<Int>()
+    val IsCIGMember = MutableLiveData<Int>()
 
     var validate: Validate? = null
     val imProfileData = imProfileRepository.getallProfiledata()
 
     val Date = MutableLiveData<String>()
-    val CrpName = MutableLiveData<Int>()
-    val SuperverCor = MutableLiveData<Int>()
+
+    //    val HHId = MutableLiveData<Int>()
+    val IMPRFUniqueID = MutableLiveData<String>()
+    val CrpName = MutableLiveData<String>()
+    val SuperverCor = MutableLiveData<String>()
+    val district = MutableLiveData<Int>()
+    val zone = MutableLiveData<Int>()
+    val ward = MutableLiveData<Int>()
+    val panchayat = MutableLiveData<Int>()
     val HHUID = MutableLiveData<String>()
     val NameRespo = MutableLiveData<String>()
     val Gender = MutableLiveData<Int>()
@@ -68,19 +76,19 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
     val CollectiveMember = MutableLiveData<String>()
 
 
-
     val saveandnextText = MutableLiveData<String>()
 
 
     init {
         validate = Validate(mContext)
         saveandnextText.value = "Save & Next"
+        CrpName.value = "Ankita"
+        SuperverCor.value = "Divya"
 
-
-        viewModelScope.launch {
-            var statePos = State.value
-
-        }
+//        viewModelScope.launch {
+//            var statePos = State.value
+//
+//        }
     }
 
     fun getSaleVisibility(): Int {
@@ -111,6 +119,17 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         langWriteCheck = lang_writeCheck
         langReadCheck = lang_readCheck
         preferComniSpeak = prefer_comni_speaking
+    }
+
+    var hhUid = ""
+    var IndvCode = ""
+
+    fun collectiveProfileOneData(
+        hhid: String,
+        indvcode: String
+    ) {
+        hhUid = hhid
+        IndvCode = indvcode
     }
 
     var langPreferMobile = ""
@@ -168,19 +187,32 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         memberCigShg = rg_member_cig_shg
     }
 
-    fun saveandUpdateCollectiveProfile() {
+    fun saveandUpdateCollectiveProfile(individualProfileFirstActivity: IMProfileOneActivity) {
         val date: String? = Date.value
-        val crpname: String? = returnID(CrpName.value, 41).toString()
-        val superverCor: String? = returnID(SuperverCor.value, 42).toString()
+        val crpname: String? = CrpName.value.toString()
+        val superverCor: String? = SuperverCor.value.toString()
 
-        val sex: Int? = returnID(Gender.value, 43)
-        val caste: Int? = returnID(CASTE.value, 44)
-        val merital_s: Int? = returnID(MARITAL.value, 45)
+        val sex: Int? = Gender.value
+        val caste: Int? = CASTE.value
+        val merital_s: Int? = MARITAL.value
         val age: String? = AGE.value
-        //val age: Int? = Integer.parseInt(AGE.value)
         val contact_no: String? = CONTACT.value
-        val hhuid: String? = HHUID.value
         val namerespo: String? = NameRespo.value
+        validate!!.SaveSharepreferenceInt(AppSP.IdvAge, Integer.parseInt(AGE.value))
+        val District1: String? = returnDistrictID(district.value, 10).toString()
+        val Zone1: String? = individualProfileFirstActivity.returnZoneID(
+            zone.value,
+            validate!!.returnIntegerValue(District1)
+        ).toString()
+        val Ward1: Int? = individualProfileFirstActivity.returnWardID(
+            ward.value,
+            validate!!.returnIntegerValue(Zone1)
+        )
+        val Panchayat1: String = individualProfileFirstActivity.returnPanchayatID(
+            panchayat.value,
+            validate!!.returnIntegerValue(District1)
+        ).toString()
+
         val specify_state: String? = SpecifyState.value
         val specify_speack: String? = SpecifySpeack.value
         val specify_read: String? = SpecifyRead.value
@@ -204,14 +236,14 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
                     imProfileGuid,
                     "",
                     "",
-                    "",
-                    "",
-                    0,
-                    "",
+                    District1,
+                    Zone1,
+                    Ward1,
+                    Panchayat1,
                     0,
                     date,
-                    hhuid,
-                    "",
+                    hhUid,
+                    IndvCode,
                     namerespo,
                     sex,
                     Integer.parseInt(age),
@@ -256,7 +288,7 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
             update(
                 validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!,
                 date,
-                hhuid,
+                hhUid,
                 namerespo,
                 sex,
                 Integer.parseInt(age),
@@ -272,7 +304,7 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
     fun updateProfileFifthData() {
         val availscheme_detail: String? = AvailSchemeDetail.value
         val specify_skillJob: String? = SpecifySkillJob.value
-        val alterget_opport: String? = returnID(AlterGetOpport.value, 72).toString()
+        val alterget_opport: String? = AlterGetOpport.value.toString()
         val colective_member: String? = CollectiveMember.value
 
         updateIMProfileFifthData(
@@ -312,9 +344,9 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
     }
 
     fun updateProfileSecondData() {
-        val stateid: Int? = returnID(State.value, 46)
+        val stateid: Int? = State.value
         val b_staylong: String? = BLONGSTAY.value
-        val education: Int? = returnID(EDUCATION.value, 48)
+        val education: Int? = EDUCATION.value
 
 
         updateIMProfileSecondData(
@@ -335,10 +367,10 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
 
     fun updateThirdData() {
         val kind_waste: String? = KindWaste.value
-        val waste_pick: Int? = returnID(WastePick.value, 56)
-        val waste_disposal: Int? = returnID(WASTEDISPOSAL.value, 58)
-        val primary_occup: Int? = returnID(PrimaryOccup.value, 59)
-        val sec_Sourceincome: Int? = returnID(SecSourceIncom.value, 61)
+        val waste_pick: Int? = WastePick.value
+        val waste_disposal: Int? = WASTEDISPOSAL.value
+        val primary_occup: Int? = PrimaryOccup.value
+        val sec_Sourceincome: Int? = SecSourceIncom.value
         val dailyinicome: String? = DailyIncome.value
         val days_primaryjob: String? = DayPrimaryJob.value
 
@@ -366,12 +398,12 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
             imProfileRepository.insert(imProfileEntity)
         }
     }
+
     fun deleteImProfile(imProfileEntity: IndividualProfileEntity) {
         viewModelScope.launch {
             imProfileRepository.delete(imProfileEntity)
         }
     }
-
 
 
     fun update(
@@ -444,7 +476,7 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         waste_disposal: Int?,
         primary_Occuptn: Int?,
         primary_inc: Int?,
-        primary_wd:Int?,
+        primary_wd: Int?,
         issecdry_Occuptn: Int?,
         secondary_occupation: Int?,
         updated_on: String?
@@ -528,33 +560,53 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         }
     }
 
-    fun returnID(pos: Int?, flag: Int): Int {
-        var data: List<MstCommonEntity>? = null
+
+    fun returnDistrictID(pos: Int?, StateCode: Int): Int {
+        var data: List<MstDistrictEntity>? = null
         data =
-            imProfileRepository.getmstCommonData(flag)
+            imProfileRepository.getMstDist(StateCode)
 
         var id = 0
 
         if (!data.isNullOrEmpty()) {
             if (pos != null) {
                 if (pos > 0)
-                    id = data.get(pos - 1).id!!
+                    id = data.get(pos - 1).DistrictCode
+
             }
         }
         return id
     }
 
+
     fun getIdvProfiledatabyGuid(guid: String): LiveData<List<IndividualProfileEntity>> {
         return imProfileRepository.getIdvProfiledatabyGuid(guid)
     }
 
+    fun gethhProfileData(): LiveData<List<HouseholdProfileEntity>> {
+        return imProfileRepository.gethhProfileData()
+    }
+
+    fun gethhProfileDataNew(): List<HouseholdProfileEntity> {
+        return imProfileRepository.gethhProfileDataNew()
+    }
+
+
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
-            callbacks.add(callback)
+        callbacks.add(callback)
 
     }
 
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
         callbacks.remove(callback)
+    }
+
+    fun getHHCount(): Int {
+        return imProfileRepository.getHHCount()
+    }
+
+    fun getMstDist(StateCode: Int): List<MstDistrictEntity> {
+        return imProfileRepository.getMstDist(StateCode)
     }
 }
 

@@ -14,17 +14,20 @@ import com.careindia.lifeskills.repository.IndividualProfileRepository
 import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.IndividualProfileViewModel
-import com.careindia.lifeskills.viewmodel.MstCommonViewModel
+import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_improfile_fourth.*
+import kotlinx.android.synthetic.main.bottomnavigationtab.*
+
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
     private lateinit var binding: ActivityImprofileFourthBinding
     var validate: Validate? = null
-    lateinit var mstCommonViewModel: MstCommonViewModel
+    var iLanguageID: Int = 0
     lateinit var imProfileViewModel: IndividualProfileViewModel
+    lateinit var mstLookupViewModel: MstLookupViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,12 +35,14 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
         validate = Validate(this)
         tv_title.text = resources.getString(R.string.im_profile)
 
-        mstCommonViewModel =
-            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
+
+        mstLookupViewModel =
+            ViewModelProviders.of(this).get(MstLookupViewModel::class.java)
+
 
         val improfiledao = CareIndiaApplication.database?.imProfileDao()
-        val commondao = CareIndiaApplication.database?.mstCommonDao()
-        val improfileRepository = IndividualProfileRepository(improfiledao!!, commondao!!)
+        val mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()!!
+        val improfileRepository = IndividualProfileRepository(improfiledao!!,mstDistrictDao)
 
         imProfileViewModel = ViewModelProvider(
             this,
@@ -46,7 +51,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
         binding.individualProfileViewModel = imProfileViewModel
         binding.lifecycleOwner = this
 
-
+        iLanguageID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
         initializeController()
 
     }
@@ -88,7 +93,8 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
 
         //apply click on view
         applyClickOnView()
-
+        topLayClick()
+        fillRadio()
         if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) != null && validate!!.RetriveSharepreferenceString(
                 AppSP.IndividualProfileGUID
             )!!.trim().length > 0
@@ -97,56 +103,65 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
         }
 
 
-        validate!!.fillradio(
+    }
+
+    fun fillRadio() {
+
+        validate!!.fillradioNew(
+            this,
             rg_have_adhar,
             -1,
-            mstCommonViewModel,
-            62,
-            this
+            mstLookupViewModel,
+            3,
+            iLanguageID
         )
-        validate!!.fillradio(
+        validate!!.fillradioNew(
+            this,
             rg_have_voter,
             -1,
-            mstCommonViewModel,
-            63,
-            this
+            mstLookupViewModel,
+            3, iLanguageID
         )
-        validate!!.fillradio(
+        validate!!.fillradioNew(
+            this,
             rg_have_pan,
             -1,
-            mstCommonViewModel,
-            64,
-            this
+            mstLookupViewModel,
+            3,
+            iLanguageID
         )
-        validate!!.fillradio(
+        validate!!.fillradioNew(
+            this,
             rg_have_income,
             -1,
-            mstCommonViewModel,
-            65,
-            this
+            mstLookupViewModel,
+            3,
+            iLanguageID
         )
-        validate!!.fillradio(
+        validate!!.fillradioNew(
+            this,
             rg_have_caste,
             -1,
-            mstCommonViewModel,
-            66,
-            this
+            mstLookupViewModel,
+            3,
+            iLanguageID
         )
-        validate!!.fillradio(
+        validate!!.fillradioNew(
+            this,
             rg_svg_bank_act,
             -1,
-            mstCommonViewModel,
-            67,
-            this
+            mstLookupViewModel,
+            3,
+            iLanguageID
         )
-        validate!!.fillradio(
+        validate!!.fillradioNew(
+            this,
             rg_availed_services_past,
             -1,
-            mstCommonViewModel,
-            68,
-            this
+            mstLookupViewModel,
+            3,
+            iLanguageID
         )
-
 
     }
 
@@ -257,50 +272,6 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.please_entr_input_daily)
             )
             value = 0
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_adhar) == 0) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.plz_ans_adhar)
-            )
-            value = 0
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_voter) == 0) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.plz_ans_icard)
-            )
-            value = 0
-
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_pan) == 0) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.plz_ans_pan)
-            )
-            value = 0
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_income) == 0) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.plz_ans_incm_certict)
-            )
-            value = 0
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_caste) == 0) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.plz_ans_caste_certict)
-            )
-            value = 0
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_svg_bank_act) == 0) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.plz_ans_bank_acct)
-            )
-            value = 0
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_availed_services_past) == 0) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.plz_services_past_month)
-            )
-            value = 0
-
         } else if (et_service_provider_department.text.toString().isEmpty()) {
             validate!!.CustomAlertEdit(
                 this,
@@ -313,5 +284,96 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
         return value
     }
 
+
+    fun topLayClick() {
+        lay_first.setBackgroundColor(resources.getColor(R.color.back))
+        lay_secnd.setBackgroundColor(resources.getColor(R.color.back))
+        ll_third.setBackgroundColor(resources.getColor(R.color.back))
+        ll_forth.setBackgroundColor(resources.getColor(R.color.color_darkgrey))
+        ll_fifth.setBackgroundColor(resources.getColor(R.color.back))
+
+        lay_first.setOnClickListener {
+
+            val intent = Intent(this, IMProfileOneActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        lay_secnd.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileTwoActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        ll_third.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileThirdActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        ll_forth.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileFourthActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        ll_fifth.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileFifthActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+    }
+
+//    fun testUse{
+//    } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_adhar) == 0) {
+//        validate!!.CustomAlert(
+//            this,
+//            resources.getString(R.string.plz_ans_adhar)
+//        )
+//        value = 0
+//    } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_voter) == 0) {
+//        validate!!.CustomAlert(
+//            this,
+//            resources.getString(R.string.plz_ans_icard)
+//        )
+//        value = 0
+//
+//    } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_pan) == 0) {
+//        validate!!.CustomAlert(
+//            this,
+//            resources.getString(R.string.plz_ans_pan)
+//        )
+//        value = 0
+//    } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_income) == 0) {
+//        validate!!.CustomAlert(
+//            this,
+//            resources.getString(R.string.plz_ans_incm_certict)
+//        )
+//        value = 0
+//    } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_caste) == 0) {
+//        validate!!.CustomAlert(
+//            this,
+//            resources.getString(R.string.plz_ans_caste_certict)
+//        )
+//        value = 0
+//    } else if (validate!!.GetAnswerTypeRadioButtonID(rg_svg_bank_act) == 0) {
+//        validate!!.CustomAlert(
+//            this,
+//            resources.getString(R.string.plz_ans_bank_acct)
+//        )
+//        value = 0
+//    } else if (validate!!.GetAnswerTypeRadioButtonID(rg_availed_services_past) == 0) {
+//        validate!!.CustomAlert(
+//            this,
+//            resources.getString(R.string.plz_services_past_month)
+//        )
+//        value = 0
+//
+//    }
 
 }

@@ -1,12 +1,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <!-- layout title -->
     <LinearLayout
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
@@ -55,7 +55,7 @@
                         style="@style/NewSimpleText"
                         android:gravity="center"
                         android:padding="@dimen/_10sdp"
-                        android:textSize="@dimen/_14ssp"
+                        android:textSize="@dimen/_11ssp"
                         android:textStyle="bold" />
 
                 </TableRow>

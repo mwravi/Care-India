@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.databinding.ActivityPrimaryDataThirdBinding
 import com.careindia.lifeskills.utils.Validate
-import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.viewmodel.PrimaryDataViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_primary_data_third.*
@@ -18,7 +17,7 @@ import kotlinx.android.synthetic.main.toolbar_layout.*
 class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
     private lateinit var binding: ActivityPrimaryDataThirdBinding
     var validate: Validate? = null
-    lateinit var mstCommonViewModel: MstCommonViewModel
+
     lateinit var primaryDataViewModel: PrimaryDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,8 +25,6 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_primary_data_third)
         validate = Validate(this)
 
-        mstCommonViewModel =
-            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
 
         tv_title.text = resources.getString(R.string.primary_data)
 
@@ -37,7 +34,6 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
     override fun initializeController() {
         applyClickOnView()
         fillSpinner()
-        fillRadio()
     }
 
     private fun applyClickOnView() {
@@ -65,7 +61,7 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
 
 
     fun fillSpinner() {
-        validate!!.fillSpinner(
+/*        validate!!.fillSpinner(
             this,
             spin_stage_of_self_employment,
             resources.getString(R.string.select),
@@ -78,33 +74,9 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
             resources.getString(R.string.select),
             mstCommonViewModel,
             94
-        )
+        )*/
     }
 
-    fun fillRadio() {
-        validate!!.fillradio(
-            rg_business_registered,
-            -1,
-            mstCommonViewModel,
-            90,
-            this
-        )
-        validate!!.fillradio(
-            rg_loans_availed_already,
-            -1,
-            mstCommonViewModel,
-            92,
-            this
-        )
-        validate!!.fillradio(
-            rg_expecting_financial_assistance,
-            -1,
-            mstCommonViewModel,
-            93,
-            this
-        )
-
-    }
 
     private fun checkValidation(): Int {
         var value = 1

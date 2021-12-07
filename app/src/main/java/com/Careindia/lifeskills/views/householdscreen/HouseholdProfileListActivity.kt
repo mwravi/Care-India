@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.application.CareIndiaApplication
@@ -18,17 +17,15 @@ import com.careindia.lifeskills.repository.HouseholdProfileRepository
 import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.HouseholdProfileViewModel
-import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.viewmodelfactory.HouseholdProfileViewModelFactory
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
-import com.careindia.lifeskills.views.improfile.HouseholdProfileAdapter
 import kotlinx.android.synthetic.main.activity_household_profile_list.*
 import kotlinx.android.synthetic.main.delete_dialog_layout.view.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class HouseholdProfileListActivity : AppCompatActivity() {
     private lateinit var hhbinding: ActivityHouseholdProfileListBinding
     var validate: Validate? = null
-    lateinit var mstCommonViewModel: MstCommonViewModel
     lateinit var householdProfileViewModel: HouseholdProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,14 +34,10 @@ class HouseholdProfileListActivity : AppCompatActivity() {
         validate = Validate(this)
 
 
-        mstCommonViewModel =
-            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
-
         val hhProfileDao = CareIndiaApplication.database?.hhProfileDao()
-        val commondao = CareIndiaApplication.database?.mstCommonDao()
         val mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()!!
         val householdProfileRepository =
-            HouseholdProfileRepository(hhProfileDao!!, commondao!!, mstDistrictDao)
+            HouseholdProfileRepository(hhProfileDao!!, mstDistrictDao)
 
         householdProfileViewModel = ViewModelProvider(
             this,
@@ -60,7 +53,7 @@ class HouseholdProfileListActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }
-
+        tv_title.setText(resources.getString(R.string.household_profile))
         fillRecyclerView()
     }
 

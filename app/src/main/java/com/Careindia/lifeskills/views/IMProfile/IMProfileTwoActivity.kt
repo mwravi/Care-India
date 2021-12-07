@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.CheckBox
-import android.widget.LinearLayout
 import android.widget.Spinner
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,27 +13,28 @@ import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.application.CareIndiaApplication
 import com.careindia.lifeskills.databinding.ActivityImprofileTwoBinding
-import com.careindia.lifeskills.entity.IndividualProfileEntity
 import com.careindia.lifeskills.repository.IndividualProfileRepository
 import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.IndividualProfileViewModel
-import com.careindia.lifeskills.viewmodel.MstCommonViewModel
+import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
-import kotlinx.android.synthetic.main.activity_improfile_one.*
+import kotlinx.android.synthetic.main.activity_household_profile_third.*
 import kotlinx.android.synthetic.main.activity_improfile_two.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.btn_prev
 import kotlinx.android.synthetic.main.buttons_save_cancel.btn_save
+import kotlinx.android.synthetic.main.bottomnavigationtab.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
-import okhttp3.internal.notify
 
 class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
     private lateinit var binding: ActivityImprofileTwoBinding
     var validate: Validate? = null
-    lateinit var mstCommonViewModel: MstCommonViewModel
+    var iLanguageID: Int = 0
+    var IdvAge: Int = 0
     lateinit var imProfileViewModel: IndividualProfileViewModel
+    lateinit var mstLookupViewModel: MstLookupViewModel
 
     var imProfileGUID = ""
 
@@ -46,12 +44,15 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         validate = Validate(this)
         tv_title.text = resources.getString(R.string.im_profile)
 
-        mstCommonViewModel =
-            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
+
+        mstLookupViewModel =
+            ViewModelProviders.of(this).get(MstLookupViewModel::class.java)
+
+
 
         val improfiledao = CareIndiaApplication.database?.imProfileDao()
-        val commondao = CareIndiaApplication.database?.mstCommonDao()
-        val improfileRepository = IndividualProfileRepository(improfiledao!!, commondao!!)
+        val mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()!!
+        val improfileRepository = IndividualProfileRepository(improfiledao!!,mstDistrictDao)
 
         imProfileViewModel = ViewModelProvider(
             this,
@@ -60,22 +61,26 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         binding.individualProfileViewModel = imProfileViewModel
         binding.lifecycleOwner = this
 
-
-
-
+        iLanguageID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
+        IdvAge = validate!!.RetriveSharepreferenceInt(AppSP.IdvAge)
 
         initializeController()
         hideShowView()
 
 
-
     }
 
-   override fun initializeController() {
+    override fun initializeController() {
         //apply click on view
         applyClickOnView()
-        // fill spinner view
+        topLayClick()
+        // fill spinner/radio/multicheck view
         fillSpinner()
+        fillRadio()
+        fillMultiCheck()
+
+
+
         if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) != null && validate!!.RetriveSharepreferenceString(
                 AppSP.IndividualProfileGUID
             )!!.trim().length > 0
@@ -83,42 +88,83 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             showLiveData()
         }
 
-        validate!!.fillradio(
+
+    }
+
+    fun fillMultiCheck() {
+        validate!!.dynamicMultiCheckChange(
+            this,
+            multiCheck_lang_read,
+            mstLookupViewModel,
+            9,
+            1,
+            et_specifyread,
+            lay_et_specifyread
+        )
+        validate!!.dynamicMultiCheckChange(
+            this,
+            lang_write,
+            mstLookupViewModel,
+            9,
+            1,
+            et_specifywrite,
+            lay_et_specifywrite
+        )
+        validate!!.dynamicMultiCheckChange(
+            this,
+            prefer_comni_speaking,
+            mstLookupViewModel,
+            9,
+            1,
+            et_specifyprefer,
+            lay_et_specifyprefer
+        )
+        validate!!.dynamicMultiCheckChange(
+            this,
+            spaekCheck,
+            mstLookupViewModel,
+            9,
+            1,
+            et_specify,
+            lay_et_specify
+        )
+//        validate!!.dynamicMultiCheckNew(this, spaekCheck, mstLookupViewModel, 9, 1)
+
+    }
+
+    fun fillRadio() {
+
+        validate!!.fillradioNew(
+            this,
             rg_can_read,
             -1,
-            mstCommonViewModel,
-            49,
-            this
+            mstLookupViewModel,
+            3,
+            iLanguageID
         )
 
-        validate!!.fillradio(
+        validate!!.fillradioNew(
+            this,
             rg_access_sphone,
             -1,
-            mstCommonViewModel,
-            47,
-            this
+            mstLookupViewModel,
+            3,
+            iLanguageID
         )
-        validate!!.fillradio(
+        validate!!.fillradioNew(
+            this,
             rg_acess_mob_data,
             -1,
-            mstCommonViewModel,
-            60,
-            this
+            mstLookupViewModel,
+            3,
+            iLanguageID
         )
-
-        validate!!.dynamicMultiCheck(this, multiCheck_lang_read, mstCommonViewModel, 51)
-        validate!!.dynamicMultiCheck(this, lang_write, mstCommonViewModel, 52)
-        validate!!.dynamicMultiCheck(this, prefer_comni_speaking, mstCommonViewModel, 53)
-        validate!!.dynamicMultiCheck(this, spaekCheck, mstCommonViewModel, 54)
-
 
     }
 
     fun fillSpinner() {
-        bindCommonTable("Select", spin_state, 46)
-        bindCommonTable("Select", spin_education, 48)
-
-        //var spinitem = spin_state.selectedItemPosition
+        bindCommonTable("Select", spin_state, 7,iLanguageID)
+        bindCommonTable("Select", spin_education, 8,iLanguageID)
     }
 
 
@@ -162,13 +208,13 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
                     spin_state.setSelection(
                         returnpos(
                             validate!!.returnIntegerValue(it.get(0).StateID.toString()),
-                            46
+                            7
                         )
                     )
                     spin_education.setSelection(
                         returnpos(
                             validate!!.returnIntegerValue(it.get(0).Education.toString()),
-                            48
+                            8
                         )
                     )
 
@@ -221,14 +267,14 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
     }
 
 
-    fun  hideShowView() {
+    fun hideShowView() {
 
         imProfileViewModel.State.observe(this, Observer {
             Log.i("MYTAGTWO", it.toString())
             var stateid = it
-            if(stateid==10){
+            if (stateid == 10) {
                 lay_et_specify_state.visibility = View.VISIBLE
-            }else{
+            } else {
                 lay_et_specify_state.visibility = View.GONE
             }
 
@@ -254,13 +300,13 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-//        } else if (et_specify_state.text.toString().isEmpty()) {
-//            validate!!.CustomAlertEdit(
-//                this,
-//                et_specify_state,
-//                resources.getString(R.string.plz_specify_othr)
-//            )
-//            value = 0
+        } else if (et_specify_state.text.toString().length ==0 && lay_et_specify_state.visibility==View.VISIBLE) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_specify_state,
+                resources.getString(R.string.plz_enter_state)
+            )
+            value = 0
         } else if (et_long_stay.text.toString().isEmpty()) {
             validate!!.CustomAlertEdit(
                 this,
@@ -269,10 +315,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-        } else if (Integer.parseInt(et_long_stay.text.toString()) <= 0 || Integer.parseInt(
-                et_long_stay.text.toString()
-            ) >= 99
-        ) {
+        } else if (Integer.parseInt(et_long_stay.text.toString()) <= 0 || Integer.parseInt(et_long_stay.text.toString()) >= 99 || Integer.parseInt(et_long_stay.text.toString()) >= IdvAge) {
             validate!!.CustomAlertEdit(
                 this,
                 et_long_stay,
@@ -281,7 +324,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             value = 0
 
 
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_can_read) == 0) {
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_can_read) == 3) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.plz_read_write)
@@ -294,7 +337,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.plz_select_education)
             )
             value = 0
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_access_sphone) == 0) {
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_access_sphone) == 3) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.plz_select_smartphone)
@@ -302,7 +345,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
 
             value = 0
 
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_acess_mob_data) == 0) {
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_acess_mob_data) == 3) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.plz_select_mobiledata)
@@ -315,13 +358,13 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.plz_select_speack_lang)
             )
             value = 0
-//        } else if (et_specify.text.toString().isEmpty()) {
-//            validate!!.CustomAlertEdit(
-//                this,
-//                et_specify,
-//                resources.getString(R.string.plz_specify_othr)
-//            )
-//            value = 0
+        } else if (et_specify.text.toString().length ==0 && lay_et_specify.visibility==View.VISIBLE) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_specify,
+                resources.getString(R.string.plz_enter_speak)
+            )
+            value = 0
         } else if (validate!!.GetAnswerTypeCheckBoxButtonID(multiCheck_lang_read).isEmpty()) {
             validate!!.CustomAlert(
                 this,
@@ -329,13 +372,13 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-//        } else if (et_specifyread.text.toString().isEmpty()) {
-//            validate!!.CustomAlertEdit(
-//                this,
-//                et_specifyread,
-//                resources.getString(R.string.plz_specify_othr)
-//            )
-//            value = 0
+        } else if (et_specifyread.text.toString().length==0 && lay_et_specifyread.visibility==View.VISIBLE) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_specifyread,
+                resources.getString(R.string.plz_enter_read)
+            )
+            value = 0
         } else if (validate!!.GetAnswerTypeCheckBoxButtonID(lang_write).isEmpty()) {
             validate!!.CustomAlert(
                 this,
@@ -344,13 +387,13 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             value = 0
 
 
-//        } else if (et_specifywrite.text.toString().isEmpty()) {
-//            validate!!.CustomAlertEdit(
-//                this,
-//                et_specifywrite,
-//                resources.getString(R.string.plz_specify_othr)
-//            )
-//            value = 0
+        } else if (et_specifywrite.text.toString().length==0 && lay_et_specifywrite.visibility==View.VISIBLE) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_specifywrite,
+                resources.getString(R.string.plz_enter_write)
+            )
+            value = 0
         } else if (validate!!.GetAnswerTypeCheckBoxButtonID(prefer_comni_speaking).isEmpty()) {
             validate!!.CustomAlert(
                 this,
@@ -358,28 +401,28 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-//        } else if (et_specifyprefer.text.toString().isEmpty()) {
-//            validate!!.CustomAlertEdit(
-//                this,
-//                et_specifyprefer,
-//                resources.getString(R.string.plz_specify_othr)
-//            )
-//            value = 0
+        } else if (et_specifyprefer.text.toString().length==0 && lay_et_specifyprefer.visibility==View.VISIBLE) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_specifyprefer,
+                resources.getString(R.string.plz_enter_specifyprefer)
+            )
+            value = 0
 
         }
         return value
     }
 
 
-    fun bindCommonTable(strValue: String, spin: Spinner, flag: Int) {
-        mstCommonViewModel.getMstCommondata(flag).observe(this, androidx.lifecycle.Observer {
+    fun bindCommonTable(strValue: String, spin: Spinner, flag: Int,iLanguageID:Int) {
+        mstLookupViewModel.getMstUser(flag,iLanguageID).observe(this, androidx.lifecycle.Observer {
             if (it != null) {
                 val iGen = it.size
                 val name = arrayOfNulls<String>(iGen + 1)
                 name[0] = strValue
 
                 for (i in 0 until it.size) {
-                    name[i + 1] = it.get(i).value
+                    name[i + 1] = it.get(i).Description
                 }
                 val adapter_category = ArrayAdapter<String>(
                     this,
@@ -389,77 +432,66 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
                 spin.adapter = adapter_category
             }
         })
-        /*if (distric>0) {
-            spin_district_name.setSelection(returnpos(distric, 3))
-        }*/
+
+    }
+
+
+    fun topLayClick() {
+        lay_first.setBackgroundColor(resources.getColor(R.color.back))
+        lay_secnd.setBackgroundColor(resources.getColor(R.color.color_darkgrey))
+        ll_third.setBackgroundColor(resources.getColor(R.color.back))
+        ll_forth.setBackgroundColor(resources.getColor(R.color.back))
+        ll_fifth.setBackgroundColor(resources.getColor(R.color.back))
+
+        lay_first.setOnClickListener {
+
+            val intent = Intent(this, IMProfileOneActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        lay_secnd.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileTwoActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        ll_third.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileThirdActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        ll_forth.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileFourthActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        ll_fifth.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileFifthActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
     }
 
 
     fun returnpos(id: Int, flag: Int): Int {
-        val combobox = mstCommonViewModel.getMstCommon(flag)
+        val combobox = mstLookupViewModel.getMstLookupFlag(flag)
         var posi = 0
         for (i in 0 until combobox.size) {
-            if (id == combobox[i].id) {
+            if (id == combobox[i].LookupCode) {
                 posi = i + 1
             }
         }
         return posi
     }
 
-
-
-
-
-
-    fun GetAnswerTypeCheckBoxButtonIDChange(linear: LinearLayout): String {
-        var QusAns = ""
-        for (i in 0 until linear.childCount) {
-
-            val checkbox = linear.getChildAt(i) as CheckBox
-            checkbox.setOnClickListener {
-                if (checkbox.isChecked) {
-                    if (QusAns.length == 0) {
-                        QusAns = checkbox.id.toString()
-                    } else {
-                        QusAns = (QusAns
-                                + ","
-                                + checkbox.id.toString())
-                        Log.i("MYTAGTWO____-----++", checkbox.id.toString())
-
-                    }
-                }
-            }
-
-        }
-        return QusAns
-    }
-
-
-    private fun saveData() {
-        var save = 0
-        imProfileGUID = validate!!.random()
-
-        var imProfileEntity = IndividualProfileEntity(
-            0,
-            imProfileGUID,
-            "", "", "", "", 0, "", 0,
-            validate!!.returnStringValue(et_formfilngjgDate.text.toString()),
-            validate!!.returnStringValue(ethouseid.text.toString()),
-            "",
-            validate!!.returnID(spin_name_crp, mstCommonViewModel, 41).toString(),
-            validate!!.returnID(spin_sexrepo, mstCommonViewModel, 43),
-            Integer.parseInt(et_agerespo.text.toString()),
-            validate!!.returnID(spin_casterespo, mstCommonViewModel, 44),
-            validate!!.returnID(spin_marital, mstCommonViewModel, 45),
-            validate!!.returnStringValue(et_contactnorespo.text.toString()), "", 0, 0, 0, 0,
-            0, 0, "", "", "", "",
-            "", 0, 0, "", 0, 0, 0, 0,
-            0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, "", "", 0, "", "",
-            "", 0, "", 0, "", "", 0, "",
-            0, 0
-        )
-    }
 
     override fun onBackPressed() {
         val intent = Intent(this, HomeDashboardActivity::class.java)

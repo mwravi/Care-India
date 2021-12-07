@@ -44,7 +44,7 @@ class IMProfileAdapter(
 
         ) {
             binding.tvName.text = imProfileList.Name
-            binding.tvHhid.text = imProfileList.HHCode
+            binding.tvHhid.text = imProfileList.IndvCode
             binding.tvDate.text = imProfileList.DateForm
             binding.cardView.setOnClickListener {
                 clickListener(imProfileList)

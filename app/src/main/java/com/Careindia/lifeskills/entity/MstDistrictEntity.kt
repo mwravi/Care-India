@@ -6,14 +6,15 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "mst_2District")
 data class MstDistrictEntity(
-    @PrimaryKey@ColumnInfo(name = "DistrictCode") val DistrictCode: Int,
-    @ColumnInfo(name = "StateCode") val StateCode: Int?=0,
-    @ColumnInfo(name = "DistrictName") val DistrictName: String?="",
-    @ColumnInfo(name = "DistrictShort") val DistrictShort: String?="",
-    @ColumnInfo(name = "DistrictNameUN") val DistrictNameUN: String?="",
-    @ColumnInfo(name = "InterventionStart") val InterventionStart: String?="",
-    @ColumnInfo(name = "IsActive") val IsActive: Int?=0
-
+    @PrimaryKey @ColumnInfo(name = "DistrictCode") val DistrictCode: Int,
+    @ColumnInfo(name = "StateCode") val StateCode: Int? = 0,
+    @ColumnInfo(name = "DistrictName") val DistrictName: String? = "",
+    @ColumnInfo(name = "DistrictShort") val DistrictShort: String? = "",
+    @ColumnInfo(name = "DistrictNameUN") val DistrictNameUN: String? = "",
+    @ColumnInfo(name = "InterventionStart") val InterventionStart: String? = "",
+    @ColumnInfo(name = "Urban_rural") val Urban_rural: Int? = 0,
+    @ColumnInfo(name = "language_id") val language_id: Int? = 0,
+    @ColumnInfo(name = "IsActive") val IsActive: Int? = 0
 )
 
 

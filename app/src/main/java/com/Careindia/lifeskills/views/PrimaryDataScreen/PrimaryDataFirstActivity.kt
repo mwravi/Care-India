@@ -3,12 +3,15 @@ package com.careindia.lifeskills.views.primarydatascreen
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.databinding.ActivityPrimaryDataFirstBinding
+import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
-import com.careindia.lifeskills.viewmodel.MstCommonViewModel
+import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodel.PrimaryDataViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_primary_data_first.*
@@ -18,17 +21,17 @@ import kotlinx.android.synthetic.main.toolbar_layout.*
 class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
     private lateinit var binding: ActivityPrimaryDataFirstBinding
     var validate: Validate? = null
-    lateinit var mstCommonViewModel: MstCommonViewModel
-    lateinit var primaryDataViewModel: PrimaryDataViewModel
 
+    lateinit var primaryDataViewModel: PrimaryDataViewModel
+    lateinit var mstLookupViewModel: MstLookupViewModel
+    var iLanguageID = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_primary_data_first)
         validate = Validate(this)
-
-        mstCommonViewModel =
-            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
-
+        iLanguageID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
+        mstLookupViewModel =
+            ViewModelProviders.of(this).get(MstLookupViewModel::class.java)
 
 
         tv_title.text = resources.getString(R.string.primary_data)
@@ -39,8 +42,7 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
 
     override fun initializeController() {
         applyClickOnView()
-        fillSpinner()
-        fillRadio()
+        bindData()
     }
 
     private fun applyClickOnView() {
@@ -66,54 +68,34 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-    fun fillSpinner() {
-        validate!!.fillSpinner(
-            this,
+    fun bindData() {
+
+        fillSpinner(
+            resources.getString(R.string.select),
             spin_gender,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            75
+            5,
+            iLanguageID
         )
 
-        validate!!.fillSpinner(
-            this,
+        fillSpinner(
+            resources.getString(R.string.select),
             spin_shg_jlg_cig,
-            resources.getString(R.string.select),
-            mstCommonViewModel,
-            76
+            5,
+            iLanguageID
         )
 
-        validate!!.fillSpinner(
-            this,
-            spin_social_category,
+        fillSpinner(
             resources.getString(R.string.select),
-            mstCommonViewModel,
+            spin_social_category,
+            5,
             77
         )
 
-        validate!!.fillSpinner(
-            this,
-            spin_caste_income_certificate,
+        fillSpinner(
             resources.getString(R.string.select),
-            mstCommonViewModel,
-            78
-        )
-    }
-
-    fun fillRadio() {
-        validate!!.fillradio(
-            rg_aadhar_card,
-            -1,
-            mstCommonViewModel,
-            79,
-            this
-        )
-        validate!!.fillradio(
-            rg_pan_card,
-            -1,
-            mstCommonViewModel,
-            80,
-            this
+            spin_caste_income_certificate,
+            5,
+            iLanguageID
         )
     }
 
@@ -240,11 +222,36 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
     }
 
 
-
     override fun onBackPressed() {
         val intent = Intent(this, PrimaryDataListActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+    fun fillSpinner(
+        strValue: String, spin: Spinner,
+        flag: Int,
+        iLanguageID: Int
+    ) {
+        mstLookupViewModel!!.getMstLookup(flag, iLanguageID)
+            .observe(this, androidx.lifecycle.Observer {
+                if (it != null) {
+                    val iGen = it.size
+                    val name = arrayOfNulls<String>(iGen + 1)
+                    name[0] = strValue
+
+                    for (i in 0 until it.size) {
+                        name[i + 1] = it.get(i).Description
+                    }
+                    val adapter_category = ArrayAdapter<String>(
+                        this,
+                        R.layout.my_spinner_space_dashboard, name
+                    )
+                    adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
+                    spin.adapter = adapter_category
+                }
+            })
+
     }
 
 }

@@ -1,230 +1,297 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="collectiveViewModel"
             type="com.careindia.lifeskills.viewmodel.CollectiveViewModel" />
     </data>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
 
-    <include layout="@layout/toolbar_layout" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <include layout="@layout/toolbar_layout" />
 
-    <ScrollView
-        style="@style/ScrolllViewStyle"
-        android:background="@drawable/box_background"
-        android:layout_margin="@dimen/_5sdp"
-        android:layout_weight="1"
-        android:scrollbars="none">
+        <include layout="@layout/collectivetab" />
 
-        <LinearLayout
-            style="@style/LinearLayoutStyle"
-            android:padding="@dimen/_10sdp">
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:background="@drawable/box_background"
+            android:scrollbars="none">
 
             <LinearLayout
-                android:id="@+id/lay_head_group_name"
-                style="@style/LinearLayoutStyle">
+                style="@style/LinearLayoutStyle"
+                android:padding="@dimen/_10sdp">
 
-                <TextView
-                    android:id="@+id/tv_head_group_name"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q301_what_is_the_tenure_of_the_president_office_bearer_in_complete_years" />
+                <LinearLayout
+                    android:id="@+id/lay_head_group_name"
+                    style="@style/LinearLayoutStyle">
 
-                <EditText
-                    android:id="@+id/et_tenure"
-                    style="@style/EditTextStyleNew"
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.Tenure}"
-                    android:inputType="number"
-                    android:maxLength="1" />
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_head_group_name"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q301_what_is_the_tenure_of_the_president_office_bearer_in_complete_years" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_tenure"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="1"
+                        android:text="@={collectiveViewModel.Tenure}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_rotation_of_roles"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_rotation_of_roles"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q302_has_there_been_any_rotation_of_the_roles_of_the_member_in_last_one_year" />
+
+                    </TableRow>
+
+                    <RadioGroup
+                        android:id="@+id/rg_rotation_of_roles"
+                        style="@style/radioGroupStyle"
+                        android:checkedButton="@={collectiveViewModel.Rolerotation}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_office_bearer"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_office_bearer"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q303_has_there_been_any_election_for_the_office_bearer" />
+
+                    </TableRow>
+
+                    <RadioGroup
+                        android:id="@+id/rg_office_bearer"
+                        style="@style/radioGroupStyle"
+                        android:checkedButton="@={collectiveViewModel.Electionob}" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_bearer_happens"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_bearer_happens"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q304_in_what_frequency_the_election_for_office_bearer_happens_in_complete_years" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_bearer_happens"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@={collectiveViewModel.Electionfrequency}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_bank_account"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_bank_account"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q305_does_your_sangha_have_a_common_group_bank_account" />
+
+                    </TableRow>
+
+                    <RadioGroup
+                        android:id="@+id/rg_bank_account"
+                        style="@style/radioGroupStyle"
+                        android:checkedButton="@={collectiveViewModel.Bankac}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_cbank_account"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_cbank_account"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q305a_what_are_the_challenges_in_opening_bank_account" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_cbank_account"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={collectiveViewModel.cBank}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_group_savings"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_group_savings"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q306_how_much_does_each_member_contribute_to_group_savings" />
+
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_group_savings"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={collectiveViewModel.Groupsaving}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_other_inr"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_other_inr"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q306a_please_specify_the_others_in_inr" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_other_inr"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:text="@={collectiveViewModel.Otherinr}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_frequency_group_savings"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_frequency_group_savings"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q307_in_what_frequency_the_members_contribute_to_the_group_savings" />
+
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_frequency_group_savings"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={collectiveViewModel.Frequencygroupsaving}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_other_frequency"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_other_frequency"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q307a_please_specify_others" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_other_frequency"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={collectiveViewModel.Otherfreq}" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
-
-            <LinearLayout
-                android:id="@+id/lay_rotation_of_roles"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_rotation_of_roles"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q302_has_there_been_any_rotation_of_the_roles_of_the_member_in_last_one_year" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_rotation_of_roles"
-                    android:selectedItemPosition="@={collectiveViewModel.Rolerotation}"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
+        </ScrollView>
 
 
-            <LinearLayout
-                android:id="@+id/lay_office_bearer"
-                style="@style/LinearLayoutStyle">
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
 
-                <TextView
-                    android:id="@+id/tv_office_bearer"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q303_has_there_been_any_election_for_the_office_bearer" />
+            <include layout="@layout/buttons_save_cancel" />
 
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_office_bearer"
-                    android:selectedItemPosition="@={collectiveViewModel.Electionob}"
-                    style="@style/SpinnerViewNew" />
+        </TableRow>
 
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_bearer_happens"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_bearer_happens"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q304_in_what_frequency_the_election_for_office_bearer_happens_in_complete_years" />
-
-                <EditText
-                    android:id="@+id/et_bearer_happens"
-                    style="@style/EditTextStyleNew"
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.Electionfrequency}"
-                    android:inputType="number"
-                    android:maxLength="2" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_bank_account"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_bank_account"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q305_does_your_sangha_have_a_common_group_bank_account" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_bank_account"
-                    android:selectedItemPosition="@={collectiveViewModel.Bankac}"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_cbank_account"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_cbank_account"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q305a_what_are_the_challenges_in_opening_bank_account" />
-
-                <EditText
-                    android:id="@+id/et_cbank_account"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.cBank}"
-                    android:inputType="text"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_group_savings"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_group_savings"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q306_how_much_does_each_member_contribute_to_group_savings" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_group_savings"
-                    android:selectedItemPosition="@={collectiveViewModel.Groupsaving}"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_other_inr"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_other_inr"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q306a_please_specify_the_others_in_inr" />
-
-                <EditText
-                    android:id="@+id/et_other_inr"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.Otherinr}"
-                    android:inputType="text"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_frequency_group_savings"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_frequency_group_savings"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q307_in_what_frequency_the_members_contribute_to_the_group_savings" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_frequency_group_savings"
-                    android:selectedItemPosition="@={collectiveViewModel.Frequencygroupsaving}"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_other_frequency"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_other_frequency"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q307a_please_specify_others" />
-
-                <EditText
-                    android:id="@+id/et_other_frequency"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.Otherfreq}"
-                    android:inputType="text"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-
-        </LinearLayout>
-
-    </ScrollView>
-
-
-    <TableRow
-        style="@style/TableRowStyle"
-        android:layout_margin="@dimen/_10sdp">
-
-        <include layout="@layout/buttons_save_cancel" />
-
-    </TableRow>
-
-</LinearLayout>
+    </LinearLayout>
 </layout>

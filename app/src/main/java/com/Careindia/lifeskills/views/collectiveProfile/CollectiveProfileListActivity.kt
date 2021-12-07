@@ -32,12 +32,13 @@ class CollectiveProfileListActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        listbinding= DataBindingUtil.setContentView(this,R.layout.activity_collection_profile_list)
+        listbinding =
+            DataBindingUtil.setContentView(this, R.layout.activity_collection_profile_list)
         tv_title.setText(resources.getString(R.string.colective_profile))
         validate = Validate(this)
         val collectivedao = CareIndiaApplication.database?.collectiveDao()
-        val commondao = CareIndiaApplication.database?.mstCommonDao()
-        val collectiveRepository = CollectiveRepository(collectivedao!!,commondao!!)
+        val mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()!!
+        val collectiveRepository = CollectiveRepository(collectivedao!!, mstDistrictDao)
         collectiveViewModel =
             ViewModelProvider(this, CollectiveViewModelFactory(collectiveRepository))[
                     CollectiveViewModel::class.java]
@@ -45,8 +46,8 @@ class CollectiveProfileListActivity : AppCompatActivity() {
         listbinding.lifecycleOwner = this
 
         img_add.setOnClickListener {
-            validate!!.SaveSharepreferenceString(AppSP.CollectiveGUID,"")
-            validate!!.SaveSharepreferenceString(AppSP.CollectiveMemberGUID,"")
+            validate!!.SaveSharepreferenceString(AppSP.CollectiveGUID, "")
+            validate!!.SaveSharepreferenceString(AppSP.CollectiveMemberGUID, "")
             val intent = Intent(this, CollectiveProfileActivity::class.java)
             startActivity(intent)
             finish()
@@ -55,29 +56,32 @@ class CollectiveProfileListActivity : AppCompatActivity() {
     }
 
     private fun fillRecyclerView() {
-    listbinding.rvList.layoutManager = LinearLayoutManager(this)
+        listbinding.rvList.layoutManager = LinearLayoutManager(this)
         collectiveViewModel.collectiveData.observe(this, Observer {
 
-            listbinding.rvList.adapter = CollectiveProfileAdapter(it,{selectedItem:CollectiveEntity->onItemClicked(selectedItem)},{deletedItem:CollectiveEntity->onItemDeleted(deletedItem)})
+            listbinding.rvList.adapter = CollectiveProfileAdapter(it,
+                { selectedItem: CollectiveEntity -> onItemClicked(selectedItem) },
+                { deletedItem: CollectiveEntity -> onItemDeleted(deletedItem) })
         })
     }
 
-    private fun onItemClicked(collectivelist: CollectiveEntity){
+    private fun onItemClicked(collectivelist: CollectiveEntity) {
 
-        validate!!.SaveSharepreferenceString(AppSP.CollectiveGUID,collectivelist.Col_GUID!!)
+        validate!!.SaveSharepreferenceString(AppSP.CollectiveGUID, collectivelist.Col_GUID!!)
         val intent = Intent(this, CollectiveProfileActivity::class.java)
         startActivity(intent)
 
     }
 
-    private fun onItemDeleted(collectivelist: CollectiveEntity){
+    private fun onItemDeleted(collectivelist: CollectiveEntity) {
 
         CustomAlert_Delete(collectivelist)
 
     }
 
-    fun CustomAlert_Delete(collectivelist:CollectiveEntity) {
-        val mDialogView = LayoutInflater.from(this).inflate(R.layout.delete_dialog_layout, null,false)
+    fun CustomAlert_Delete(collectivelist: CollectiveEntity) {
+        val mDialogView =
+            LayoutInflater.from(this).inflate(R.layout.delete_dialog_layout, null, false)
         val mBuilder = AlertDialog.Builder(this)
             .setView(mDialogView)
         val mAlertDialog = mBuilder.show()

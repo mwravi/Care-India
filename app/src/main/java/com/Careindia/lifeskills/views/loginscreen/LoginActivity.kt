@@ -2,7 +2,11 @@ package com.careindia.lifeskills.views.loginscreen
 
 import android.app.ProgressDialog
 import android.content.Intent
+import android.content.pm.PackageInfo
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Base64
+import android.util.Log
 import android.view.View
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
@@ -10,7 +14,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.application.CareIndiaApplication
-import com.careindia.lifeskills.entity.MstCommonEntity
 import com.careindia.lifeskills.enums.Status
 import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
@@ -30,6 +33,8 @@ import retrofit2.Response
 import showShortToast
 import java.io.IOException
 import java.io.InputStream
+import java.security.MessageDigest
+import java.security.NoSuchAlgorithmException
 
 class LoginActivity : BaseActivity(), View.OnClickListener {
     private val loginViewModel by viewModel<LoginViewModel>()
@@ -48,13 +53,13 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         validate = Validate(this)
         initializeController()
 
-
+//        keyhash()
     }
 
 
     override fun initializeController() {
         applyClickOnView()
-        readJson()
+        //readJson()
 
     }
 
@@ -116,7 +121,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         })
     }
 
-    fun readJson() {
+/*    fun readJson() {
         var json: String? = null
         try {
             val inputStream: InputStream = resources.assets.open("common.json")
@@ -131,7 +136,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         } catch (e: IOException) {
             e.printStackTrace()
         }
-    }
+    }*/
 
     override fun onBackPressed() {
         // super.onBackPressed()
@@ -273,6 +278,28 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
             val i = Intent(this, HomeDashboardActivity::class.java)
             startActivity(i)
             finish()
+        }
+    }
+
+
+    fun keyhash(){
+        try {
+            val info = packageManager.getPackageInfo(
+                "com.careindia.lifeskills",
+                PackageManager.GET_SIGNATURES
+            )
+            for (signature in info.signatures) {
+                val md = MessageDigest.getInstance("SHA")
+                md.update(signature.toByteArray())
+                Log.d(
+                    "KeyHash", "KeyHash:" + Base64.encodeToString(
+                        md.digest(),
+                        Base64.DEFAULT
+                    )
+                )
+            }
+        } catch (e: PackageManager.NameNotFoundException) {
+        } catch (e: NoSuchAlgorithmException) {
         }
     }
 }

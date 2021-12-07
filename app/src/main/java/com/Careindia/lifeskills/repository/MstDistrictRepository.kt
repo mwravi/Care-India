@@ -7,19 +7,18 @@ import com.careindia.lifeskills.dao.MstDistrictDao
 import com.careindia.lifeskills.entity.MstDistrictEntity
 
 class MstDistrictRepository {
-    var mstDistrictDao: MstDistrictDao?=null
+    var mstDistrictDao: MstDistrictDao? = null
+
     constructor(application: Application) {
         mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()
     }
 
-   fun getMstDistrict(StateCode:Int): LiveData<List<MstDistrictEntity>> {
+    fun getMstDistrictLive(StateCode:Int): LiveData<List<MstDistrictEntity>> {
         return mstDistrictDao!!.getMstDistrict(StateCode)
     }
 
-
-
-
-
-
+    fun getMstDistrict(StateCode:Int): List<MstDistrictEntity> {
+        return mstDistrictDao!!.getMstDist(StateCode)
+    }
 
 }

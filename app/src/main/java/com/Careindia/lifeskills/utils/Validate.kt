@@ -18,11 +18,13 @@ import android.view.ViewGroup
 import android.view.Window
 import android.widget.*
 import com.careindia.lifeskills.R
-import com.careindia.lifeskills.entity.MstCommonEntity
-import com.careindia.lifeskills.viewmodel.MstCommonViewModel
+import com.careindia.lifeskills.entity.MstLookupEntity
+import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
+import android.view.WindowManager
+
 
 class Validate(context: Context) {
     val MyPREFERENCES = "CARESP"
@@ -73,7 +75,7 @@ class Validate(context: Context) {
                 date1.setText(sdf.format(myCalendar.time))
             }
 
-        if(date1.text.toString().length==0){
+        if (date1.text.toString().length == 0) {
             val dpDialog = DatePickerDialog(
                 context,
                 date,
@@ -84,7 +86,7 @@ class Validate(context: Context) {
             dpDialog.show()
             dpDialog.datePicker.minDate = sec * 1000
             dpDialog.datePicker.maxDate = myCalendar.timeInMillis
-        }else {
+        } else {
             var datelist = date1.text.toString().split("-")
             if (datelist.size == 3) {
                 val dpDialog = DatePickerDialog(
@@ -114,14 +116,13 @@ class Validate(context: Context) {
     }
 
 
-
     fun Daybetweentime(date2: String?): Long {
         var Value: String? = ""
         if (date2 != null && !date2.equals("null", ignoreCase = true) && date2.length > 0) {
 
-            if(date2.length<16){
-                Value = date2+" 00:00:00"
-            }else{
+            if (date2.length < 16) {
+                Value = date2 + " 00:00:00"
+            } else {
                 Value = date2
             }
         }
@@ -196,7 +197,6 @@ class Validate(context: Context) {
     }
 
 
-
     fun check(ID: Int, Value: String?): Boolean {
         var iValue = false
         if (Value != null && !Value.equals("null", ignoreCase = true) && Value.length > 0) {
@@ -213,7 +213,12 @@ class Validate(context: Context) {
         return iValue
     }
 
-    fun fillSpinnerLanguage(activity: Activity, spin: Spinner, Header: String?, Data: Array<String?>) {
+    fun fillSpinnerLanguage(
+        activity: Activity,
+        spin: Spinner,
+        Header: String?,
+        Data: Array<String?>
+    ) {
 
         val adapter: ArrayAdapter<String?>
         val sValue = arrayOfNulls<String>(Data!!.size + 1)
@@ -236,95 +241,21 @@ class Validate(context: Context) {
     }
 
 
-
-
-    fun fillSpinner(
-        activity: Activity,
-        spin: Spinner,
-        Header: String?,
-        data: List<MstCommonEntity>?
-    ) {
-
-        val adapter: ArrayAdapter<String?>
-        val sValue = arrayOfNulls<String>(data!!.size + 1)
-        if (Header != null && Header.length > 0) {
-            sValue[0] = Header
-        } else {
-            sValue[0] = activity.resources.getString(R.string.select)
-        }
-        for (i in data.indices) {
-            sValue[i + 1] = data[i].value!!.trim()
-        }
-        adapter = ArrayAdapter(
-            activity,
-            R.layout.my_spinner_space_dashboard, sValue
-        )
-        adapter.setDropDownViewResource(R.layout.my_spinner_dashboard)
-        spin.setAdapter(adapter)
-//        spin.adapter = adapter
-    }
-
-    fun fillSpinner(
-        activity: Activity,
-        spin: Spinner,
-        Header: String?,
-        mstCommonViewModel: MstCommonViewModel?,
-        flag:Int
-    ) {
-        var data: List<MstCommonEntity>? = null
+    fun returnLookupCode(
+        spin: Spinner, mstLookupViewModel: MstLookupViewModel?,
+        flag: Int, languageID: Int
+    ): Int {
+        var data: List<MstLookupEntity>? = null
         data =
-            mstCommonViewModel!!.getMstCommon(flag)
-        val adapter: ArrayAdapter<String?>
-        val sValue = arrayOfNulls<String>(data.size + 1)
-        if (Header != null && Header.length > 0) {
-            sValue[0] = Header
-        } else {
-            sValue[0] = activity.resources.getString(R.string.select)
-        }
-        for (i in data.indices) {
-            sValue[i + 1] = data[i].value!!.trim()
-        }
-        adapter = ArrayAdapter(
-            activity,
-            R.layout.my_spinner_space_dashboard, sValue
-        )
-        adapter.setDropDownViewResource(R.layout.my_spinner_dashboard)
-        spin.setAdapter(adapter)
-//        spin.adapter = adapter
-    }
-
-    fun returnID(spin: Spinner, mstCommonViewModel: MstCommonViewModel?,
-                 flag:Int): Int {
-        var data: List<MstCommonEntity>? = null
-        data =
-            mstCommonViewModel!!.getMstCommon(flag)
+            mstLookupViewModel!!.getLookup(flag, languageID)
         var pos = spin.getSelectedItemPosition()
         var id = 0
 
         if (!data.isNullOrEmpty()) {
-            if (pos > 0) id = data.get(pos - 1).id!!
+            if (pos > 0) id = data.get(pos - 1).LookupCode!!
         }
         return id
     }
-
-
-    fun returnpos(id: Int? , mstCommonViewModel: MstCommonViewModel?,
-                  flag:Int): Int {
-        var data: List<MstCommonEntity>? = null
-        data =
-            mstCommonViewModel!!.getMstCommon(flag)
-        var pos = 0
-        if (!data.isNullOrEmpty()) {
-            if (id!! > 0) {
-                for (i in data.indices) {
-                    if (id == data.get(i).id)
-                        pos = i + 1
-                }
-            }
-        }
-        return pos
-    }
-
 
 
     fun GetAnswerTypeCheckBoxButtonID(linear: LinearLayout): String {
@@ -332,15 +263,15 @@ class Validate(context: Context) {
         for (i in 0 until linear.childCount) {
 
             val checkbox = linear.getChildAt(i) as CheckBox
-                if (checkbox.isChecked) {
-                    if (QusAns.length == 0) {
-                        QusAns = checkbox.id.toString()
-                    } else {
-                        QusAns = (QusAns
-                                + ","
-                                + checkbox.id.toString())
-                    }
+            if (checkbox.isChecked) {
+                if (QusAns.length == 0) {
+                    QusAns = checkbox.id.toString()
+                } else {
+                    QusAns = (QusAns
+                            + ","
+                            + checkbox.id.toString())
                 }
+            }
 
         }
         return QusAns
@@ -356,15 +287,16 @@ class Validate(context: Context) {
     }
 
     fun fillradio(
+        activity: Activity,
         Radio: RadioGroup,
         value: Int,
-        mstCommonViewModel: MstCommonViewModel?,
-        flag:Int,
-        activity: Activity
+        mstLookupViewModel: MstLookupViewModel?,
+        flag: Int,
+        iLanguageID: Int
     ) {
-        var data: List<MstCommonEntity>? = null
+        var data: List<MstLookupEntity>? = null
         data =
-            mstCommonViewModel!!.getMstCommon(flag)
+            mstLookupViewModel!!.getLookup(flag, iLanguageID)
         Radio.removeAllViews()
         Radio.clearCheck()
         if (!data.isNullOrEmpty()) {
@@ -379,8 +311,8 @@ class Validate(context: Context) {
                 rb[i]!!.setLayoutParams(params)
                 Radio.addView(rb[i])
                 //                rb[i].setButtonDrawable(R.drawable.radio_check);
-                rb[i]!!.setText(data.get(i).value)
-                rb[i]!!.setId(data.get(i).id!!.toInt())
+                rb[i]!!.setText(data.get(i).Description)
+                rb[i]!!.setId(data.get(i).LookupCode.toInt())
                 rb[i]!!.setTextColor(activity.resources.getColor(R.color.black))
                 rb[i]!!.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL)
                 rb[i]!!.setTextSize(
@@ -389,14 +321,125 @@ class Validate(context: Context) {
                 )
                 Radio.setPadding(20, 5, 20, 5)
                 //                }
-                if (value == data.get(i).id) {
+                if (value == data.get(i).LookupCode) {
                     rb[i]!!.setChecked(true)
                 }
             }
         }
     }
 
-    fun SetAnswerTypeRadioButton(radioGroup: RadioGroup, data: Int) {
+    fun returnID(
+        spin: Spinner, mstLookupViewModel: MstLookupViewModel?,
+        flag: Int, iLanguage: Int
+    ): Int {
+        var data: List<MstLookupEntity>? = null
+        data =
+            mstLookupViewModel!!.getLookup(flag, iLanguage)
+        var pos = spin.getSelectedItemPosition()
+        var id = 0
+
+        if (!data.isNullOrEmpty()) {
+            if (pos > 0) id = data.get(pos - 1).LookupCode!!
+        }
+        return id
+    }
+
+
+    fun returnpos(
+        id: Int?, mstLookupViewModel: MstLookupViewModel,
+        flag: Int, iLanguage: Int
+    ): Int {
+        var data: List<MstLookupEntity>? = null
+        data =
+            mstLookupViewModel.getLookup(flag, iLanguage)
+        var pos = 0
+        if (!data.isNullOrEmpty()) {
+            if (id!! > 0) {
+                for (i in data.indices) {
+                    if (id == data.get(i).LookupCode)
+                        pos = i + 1
+                }
+            }
+        }
+        return pos
+    }
+
+    fun DaybetweentimeBefore(date2: String?): Long {
+        var Value: String? = ""
+        if (date2 != null && !date2.equals("null", ignoreCase = true) && date2.length > 0) {
+
+            if (date2.length < 16) {
+                Value = date2 + " 00:00:00"
+            } else {
+                Value = date2
+            }
+        }
+        val date = Value
+        val olddate = "1970-01-01 00:00:00"
+        var Seconds: Long = 0
+
+        return if (olddate != null && olddate.length > 0 && date != null && date.length > 0) {
+            val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US)
+            var Date1: Date? = null
+            var Date2: Date? = null
+            try {
+                Date1 = sdf.parse(olddate)
+                Date2 = sdf.parse(date)
+                Seconds = (Date2.getTime() - Date1.getTime()) / 1000
+                // Seconds = (int) Math. round (value);
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            Seconds
+        } else {
+            Seconds
+        }
+    }
+
+
+    fun fillradioNew(
+        activity: Activity,
+        Radio: RadioGroup,
+        value: Int,
+        mstLookupViewModel: MstLookupViewModel?,
+        flag: Int,
+        iLanguageID: Int
+    ) {
+        var data: List<MstLookupEntity>? = null
+        data =
+            mstLookupViewModel!!.getMstAllData(flag, iLanguageID)
+        Radio.removeAllViews()
+        Radio.clearCheck()
+        if (!data.isNullOrEmpty()) {
+            val rb = arrayOfNulls<RadioButton>(data.size)
+            for (i in data.indices) {
+                rb[i] = RadioButton(activity)
+                val params = LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    1f
+                )
+                rb[i]!!.setLayoutParams(params)
+                Radio.addView(rb[i])
+                //                rb[i].setButtonDrawable(R.drawable.radio_check);
+                rb[i]!!.setText(data.get(i).Description)
+                rb[i]!!.setId(data.get(i).LookupCode!!.toInt())
+                rb[i]!!.setTextColor(activity.resources.getColor(R.color.black))
+                rb[i]!!.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL)
+                rb[i]!!.setTextSize(
+                    TypedValue.COMPLEX_UNIT_PX,
+                    activity.resources.getDimension(R.dimen.radio)
+                )
+                Radio.setPadding(20, 5, 20, 5)
+                //                }
+                if (value == data.get(i).LookupCode) {
+                    rb[i]!!.setChecked(true)
+                }
+            }
+        }
+    }
+
+    fun SetAnswerTypeRadioButton(radioGroup: RadioGroup, data: Int?) {
 
         for (i in 0 until radioGroup.childCount) {
 
@@ -406,7 +449,6 @@ class Validate(context: Context) {
             }
         }
     }
-
 
 
     fun GetAnswerTypeRadioButtonID(radioGroup: RadioGroup): Int {
@@ -438,6 +480,11 @@ class Validate(context: Context) {
         dialog.setCanceledOnTouchOutside(false)
         dialog.setContentView(view)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(0))
+        val layoutParams = WindowManager.LayoutParams()
+        layoutParams.copyFrom(dialog.getWindow()?.getAttributes())
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog.getWindow()?.setAttributes(layoutParams)
         val txtTitle = dialog
             .findViewById<View>(R.id.txt_alert_message) as TextView
         txtTitle.text = msg
@@ -470,6 +517,11 @@ class Validate(context: Context) {
         dialog.setCanceledOnTouchOutside(false)
         dialog.setContentView(view)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(0))
+        val layoutParams = WindowManager.LayoutParams()
+        layoutParams.copyFrom(dialog.getWindow()?.getAttributes())
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog.getWindow()?.setAttributes(layoutParams)
         val txtTitle = dialog
             .findViewById<View>(R.id.txt_alert_message) as TextView
         txtTitle.text = msg
@@ -500,6 +552,11 @@ class Validate(context: Context) {
         dialog.setCanceledOnTouchOutside(false)
         dialog.setContentView(view)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(0))
+        val layoutParams = WindowManager.LayoutParams()
+        layoutParams.copyFrom(dialog.getWindow()?.getAttributes())
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog.getWindow()?.setAttributes(layoutParams)
         val txtTitle = dialog
             .findViewById<View>(R.id.txt_alert_message) as TextView
         txtTitle.text = msg
@@ -536,11 +593,15 @@ class Validate(context: Context) {
         }
     }
 
-    fun dynamicMultiCheck(context: Context, liear: LinearLayout,    mstCommonViewModel: MstCommonViewModel?,
-                          flag:Int) {
-        var data: List<MstCommonEntity>? = null
+
+    fun dynamicMultiCheckChange(
+        context: Context, liear: LinearLayout, mstCommonViewModel: MstLookupViewModel?,
+        flag: Int, iLanguageID: Int, edt: EditText, tbl: LinearLayout
+    ) {
+        liear as LinearLayout
+        var data: List<MstLookupEntity>? = null
         data =
-            mstCommonViewModel!!.getMstCommon(flag)
+            mstCommonViewModel!!.getMstAllData(flag, iLanguageID)
         if (data != null) {
             val iGen = data.size
             val value = arrayOfNulls<String>(iGen + 1)
@@ -552,11 +613,25 @@ class Validate(context: Context) {
                         ViewGroup.LayoutParams.WRAP_CONTENT
                     )
 
-                multicheck1.setText(data.get(i).value?.trim())
-                multicheck1.id = data.get(i).id!!
+                multicheck1.setText(data.get(i).Description?.trim())
+                multicheck1.id = data.get(i).LookupCode!!
 
                 if (liear != null) {
+
                     liear.addView(multicheck1)
+                }
+
+                multicheck1.setOnCheckedChangeListener { compoundButton, b ->
+                    if (multicheck1.isChecked) {
+                        if (multicheck1.id == 99) {
+                            tbl.visibility = View.VISIBLE
+                        }
+                    } else {
+                        if (multicheck1.id == 99) {
+                            tbl.visibility = View.GONE
+                            edt.setText("")
+                        }
+                    }
                 }
 
             }
@@ -565,12 +640,21 @@ class Validate(context: Context) {
 
     }
 
-fun dynamicMultiCheckChange(context: Context, liear: CheckBox,    mstCommonViewModel: MstCommonViewModel?,
-                          flag:Int) {
-    liear as LinearLayout
-        var data: List<MstCommonEntity>? = null
+    fun dynamicMultiCheckChange501(
+        context: Context,
+        liear: LinearLayout,
+        mstCommonViewModel: MstLookupViewModel?,
+        flag: Int,
+        iLanguageID: Int,
+        edt: EditText,
+        tbl: LinearLayout,
+        et_other_q501b: EditText,
+        lay_other_q501b: LinearLayout
+    ) {
+        liear as LinearLayout
+        var data: List<MstLookupEntity>? = null
         data =
-            mstCommonViewModel!!.getMstCommon(flag)
+            mstCommonViewModel!!.getMstAllData(flag, iLanguageID)
         if (data != null) {
             val iGen = data.size
             val value = arrayOfNulls<String>(iGen + 1)
@@ -582,12 +666,26 @@ fun dynamicMultiCheckChange(context: Context, liear: CheckBox,    mstCommonViewM
                         ViewGroup.LayoutParams.WRAP_CONTENT
                     )
 
-                multicheck1.setText(data.get(i).value?.trim())
-                multicheck1.id = data.get(i).id!!
+                multicheck1.setText(data.get(i).Description?.trim())
+                multicheck1.id = data.get(i).LookupCode!!
 
                 if (liear != null) {
 
                     liear.addView(multicheck1)
+                }
+
+                multicheck1.setOnCheckedChangeListener { compoundButton, b ->
+                    if (multicheck1.isChecked) {
+                        if (multicheck1.id == 99) {
+                            tbl.visibility = View.VISIBLE
+                        }
+                        lay_other_q501b.visibility = View.VISIBLE
+                    } else {
+                        if (multicheck1.id == 99) {
+                            tbl.visibility = View.GONE
+                            edt.setText("")
+                        }
+                    }
                 }
 
             }
@@ -598,7 +696,11 @@ fun dynamicMultiCheckChange(context: Context, liear: CheckBox,    mstCommonViewM
 
     fun returnIntegerValue(myString: String?): Int {
         var iValue = 0
-        if (myString != null && !myString.equals("null", ignoreCase = true) && myString.length > 0) {
+        if (myString != null && !myString.equals(
+                "null",
+                ignoreCase = true
+            ) && myString.length > 0
+        ) {
             //   if (CheckNumbers(myString)==true) {
             iValue = Integer.valueOf(myString)
 
@@ -609,7 +711,11 @@ fun dynamicMultiCheckChange(context: Context, liear: CheckBox,    mstCommonViewM
 
     fun returnStringValue(myString: String?): String {
         var iValue = ""
-        if (myString != null && !myString.equals("null", ignoreCase = true) && myString.length > 0) {
+        if (myString != null && !myString.equals(
+                "null",
+                ignoreCase = true
+            ) && myString.length > 0
+        ) {
             iValue = myString
         }
         return iValue

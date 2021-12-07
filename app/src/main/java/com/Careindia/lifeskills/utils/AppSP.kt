@@ -11,4 +11,6 @@ object AppSP {
     val sUserName = "sUserName"
     val sPassword = "sPassword"
     val HHCODE = "HHCODE"
+    val iLanguageID = "iLanguageID"
+    val IdvAge = "IdvAge"
 }

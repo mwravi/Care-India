@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.databinding.ActivityPrimaryDataSecondBinding
 import com.careindia.lifeskills.utils.Validate
-import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.viewmodel.PrimaryDataViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_primary_data_second.*
@@ -18,15 +17,13 @@ import kotlinx.android.synthetic.main.toolbar_layout.*
 class PrimaryDataSecondActivity : BaseActivity(), View.OnClickListener {
     private lateinit var binding: ActivityPrimaryDataSecondBinding
     var validate: Validate? = null
-    lateinit var mstCommonViewModel: MstCommonViewModel
+
     lateinit var primaryDataViewModel: PrimaryDataViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_primary_data_second)
         validate = Validate(this)
-        mstCommonViewModel =
-            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
 
         tv_title.text = resources.getString(R.string.primary_data)
 
@@ -37,7 +34,6 @@ class PrimaryDataSecondActivity : BaseActivity(), View.OnClickListener {
     override fun initializeController() {
         applyClickOnView()
         fillSpinner()
-        fillRadio()
     }
 
     private fun applyClickOnView() {
@@ -64,7 +60,7 @@ class PrimaryDataSecondActivity : BaseActivity(), View.OnClickListener {
     }
 
     fun fillSpinner() {
-        validate!!.fillSpinner(
+     /*   validate!!.fillSpinner(
             this,
             spin_how_much_you_invest,
             resources.getString(R.string.select),
@@ -84,46 +80,9 @@ class PrimaryDataSecondActivity : BaseActivity(), View.OnClickListener {
             resources.getString(R.string.select),
             mstCommonViewModel,
             88
-        )
+        )*/
     }
 
-    fun fillRadio() {
-        validate!!.fillradio(
-            rg_bank_account,
-            -1,
-            mstCommonViewModel,
-            82,
-            this
-        )
-        validate!!.fillradio(
-            rg_new_business,
-            -1,
-            mstCommonViewModel,
-            83,
-            this
-        )
-        validate!!.fillradio(
-            rg_business_plan,
-            -1,
-            mstCommonViewModel,
-            84,
-            this
-        )
-        validate!!.fillradio(
-            rg_ready_to_invest,
-            -1,
-            mstCommonViewModel,
-            85,
-            this
-        )
-        validate!!.fillradio(
-            rg_availing_loan_subsidies,
-            -1,
-            mstCommonViewModel,
-            89,
-            this
-        )
-    }
 
     private fun checkValidation(): Int {
         var value = 1

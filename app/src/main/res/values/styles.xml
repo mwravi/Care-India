@@ -119,20 +119,8 @@
     </style>
 
 
-    <style name="TextViewStylestrik">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:textStyle">normal</item>
-    </style>
-    <style name="AsterikStyle">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:text">*</item>
-        <item name="android:textColor">@color/red</item>
-        <item name="android:paddingRight">2dp</item>
-        <item name="android:gravity">center_vertical</item>
-    </style>
+
+
 
 
 
@@ -229,7 +217,17 @@
         <item name="android:minHeight">@dimen/_20sdp</item>
         <item name="android:padding">@dimen/_2sdp</item>
     </style>
-
+    <style name="TextViewStylestrik">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textColor">@color/red_color</item>
+        <item name="android:text">*</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:fontFamily">@font/firasans_regular</item>
+        <item name="android:minHeight">@dimen/_20sdp</item>
+        <item name="android:padding">@dimen/_2sdp</item>
+    </style>
     <style name="TextViewTitleStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -326,6 +324,25 @@
         <item name="android:backgroundTint">@color/border_grey</item>
         <item name="android:paddingLeft">@dimen/_5sdp</item>
     </style>
+
+    <style name="AsterikStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:text">*</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:paddingRight">2dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+
+    <style name="TablerowChange">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">@dimen/_30ssp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:layout_marginTop">8dp</item>
+    </style>
+
 
 
 </resources>

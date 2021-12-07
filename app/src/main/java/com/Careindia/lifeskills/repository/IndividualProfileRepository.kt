@@ -2,13 +2,14 @@ package com.careindia.lifeskills.repository
 
 import androidx.lifecycle.LiveData
 import com.careindia.lifeskills.dao.IndividualProfileDao
-import com.careindia.lifeskills.dao.MstCommonDao
+import com.careindia.lifeskills.dao.MstDistrictDao
+import com.careindia.lifeskills.entity.HouseholdProfileEntity
 import com.careindia.lifeskills.entity.IndividualProfileEntity
-import com.careindia.lifeskills.entity.MstCommonEntity
+import com.careindia.lifeskills.entity.MstDistrictEntity
 
 class IndividualProfileRepository(
     private val imProfileDao: IndividualProfileDao,
-    private val mstCommonDao: MstCommonDao
+    private val mstDistrictDao: MstDistrictDao
 ) {
 
     fun insert(individualProfileEntity: IndividualProfileEntity) {
@@ -19,9 +20,7 @@ class IndividualProfileRepository(
 //        imProfileDao.updateIMProfileData(individualProfileEntity)
 //    }
 
-    fun getmstCommonData(flag: Int): List<MstCommonEntity> {
-        return mstCommonDao.getMstCommon(flag)
-    }
+
 
     fun getallProfiledata(): LiveData<List<IndividualProfileEntity>> {
         return imProfileDao.getallIMProfiledata()
@@ -91,7 +90,13 @@ class IndividualProfileRepository(
         return imProfileDao.getIdvProfiledatabyGuid(guid)
     }
 
+ fun gethhProfileData(): LiveData<List<HouseholdProfileEntity>> {
+        return imProfileDao.gethhProfileData()
+    }
 
+    fun gethhProfileDataNew(): List<HouseholdProfileEntity> {
+        return imProfileDao.gethhProfileDataNew()
+    }
     internal fun updateIMProfileThirdData(
         IndGUID: String,
         preferredLanguage_mobile: String?,
@@ -178,7 +183,13 @@ class IndividualProfileRepository(
             updated_on
         )
     }
+    fun getHHCount(): Int {
+        return imProfileDao.getHHCount()
+    }
 
+    fun getMstDist(StateCode:Int): List<MstDistrictEntity> {
+        return mstDistrictDao!!.getMstDist(StateCode)
+    }
 
     fun delete(individualProfileEntity: IndividualProfileEntity) {
         return imProfileDao.deleteindividualProfiledata(individualProfileEntity)

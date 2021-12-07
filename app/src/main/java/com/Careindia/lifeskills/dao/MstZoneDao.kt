@@ -12,11 +12,11 @@ interface MstZoneDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertWithCondition(entity: List<MstZoneEntity>?)
 
-    @Query("select * from mst_3zone where DistrictCode=:DistrictCode")
-    fun getMstZone(DistrictCode:Int): LiveData<List<MstZoneEntity>>
-
-
     @Query("DELETE FROM mst_3zone")
     fun deleteAll()
+    @Query("select * from mst_3zone where DistrictCode=:DistrictCode")
+    fun getMstZoneLive(DistrictCode:Int): LiveData<List<MstZoneEntity>>
 
+    @Query("select * from mst_3zone where DistrictCode=:DistrictCode")
+    fun getMstZone(DistrictCode:Int): List<MstZoneEntity>
 }

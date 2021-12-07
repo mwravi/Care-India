@@ -1,213 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-    <data>
-        <variable
-            name="collectiveMemberViewModel"
-            type="com.careindia.lifeskills.viewmodel.CollectiveMemberViewModel" />
-    </data>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <include layout="@layout/toolbar_layout" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ScrollView
-        style="@style/ScrolllViewStyle"
-        android:background="@drawable/box_background"
-        android:layout_margin="@dimen/_5sdp"
-        android:layout_weight="1"
-        android:scrollbars="none">
+
+        <include layout="@layout/toolbar_layout" />
+
+        <include layout="@layout/collectivetab" />
 
         <LinearLayout
             style="@style/LinearLayoutStyle"
-            android:padding="@dimen/_10sdp">
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_weight="1">
 
-            <LinearLayout
-                android:id="@+id/lay_member_name"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_member_name"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/name_of_the_member" />
-
-                <EditText
-                    android:id="@+id/et_member_name"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:text="@={collectiveMemberViewModel.Membername}"
-                    android:inputType="text"
-                    android:maxLength="50"  />
-
-            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvList"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
 
-            <LinearLayout
-                android:id="@+id/lay_member_id"
-                style="@style/LinearLayoutStyle">
+            </androidx.recyclerview.widget.RecyclerView>
 
-                <TextView
-                    android:id="@+id/tv_member_id"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/individual_member_id" />
+            <TableRow
+                style="@style/TableRowStyle"
+                android:gravity="end">
 
-                <EditText
-                    android:id="@+id/et_member_id"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                    android:text="@={collectiveMemberViewModel.Memberid}"
-                    android:inputType="text"
-                    android:maxLength="14"   />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_member_sex"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_member_sex"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/sex_of_the_member" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_member_sex"
-                    android:selectedItemPosition="@={collectiveMemberViewModel.Membersex}"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_member_age"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_member_age"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/age_of_the_member" />
-
-                <EditText
-                    android:id="@+id/et_member_age"
-                    style="@style/EditTextStyleNew"
-                    android:inputType="number"
-                    android:text="@={collectiveMemberViewModel.Memberage}"
-                    android:maxLength="2"   />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_contact_number"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_contact_number"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/contact_number" />
-
-                <EditText
-                    android:id="@+id/et_contact_number"
-                    style="@style/EditTextStyleNew"
-                    android:inputType="number"
-                    android:text="@={collectiveMemberViewModel.Contactno}"
-                    android:maxLength="10"   />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_role_of_member"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_role_of_member"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/role_of_member_in_group" />
-
-                <EditText
-                    android:id="@+id/et_role_of_member"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:inputType="text"
-                    android:text="@={collectiveMemberViewModel.Memberposition}"
-                    android:maxLength="20"  />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_savings_account"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_savings_account"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/do_you_have_savings_bank_account" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_savings_account"
-                    android:selectedItemPosition="@={collectiveMemberViewModel.Savingacc}"
-                    style="@style/SpinnerViewNew" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_aadhar_card"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_aadhar_card"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/aadhar_no" />
-
-                <EditText
-                    android:id="@+id/et_aadhar_card"
-                    style="@style/EditTextStyleNew"
-                    android:inputType="number"
-                    android:text="@={collectiveMemberViewModel.Aadhar}"
-                    android:maxLength="12"  />
-
-            </LinearLayout>
+                <ImageView
+                    android:id="@+id/img_add"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="@drawable/ic_add_circle" />
+            </TableRow>
 
         </LinearLayout>
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
 
-    </ScrollView>
+            <include layout="@layout/buttons_save_cancel" />
 
-    <TableRow
-        style="@style/TableRowStyle"
-        android:layout_margin="@dimen/_10sdp">
-
-        <TextView style="@style/NewSimpleTextMargin"
-            android:layout_weight=".1"
-            />
-
-        <Button
-            android:id="@+id/btn_prev"
-            style="@style/ButtonTextStyle"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@string/previous" />
-
-        <TextView style="@style/NewSimpleTextMargin"
-            android:layout_weight=".1"
-            />
-        <Button
-            android:id="@+id/btn_save"
-            style="@style/ButtonTextStyle"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@={collectiveMemberViewModel.saveandnextText}" />
-
-        <TextView style="@style/NewSimpleTextMargin"
-            android:layout_weight=".1"
-            />
-
-    </TableRow>
-
-</LinearLayout>
-
+        </TableRow>
+    </LinearLayout>
 </layout>

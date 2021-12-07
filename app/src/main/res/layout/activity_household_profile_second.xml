@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
 >
     <data>
 
@@ -16,6 +17,7 @@
 
 
         <include layout="@layout/toolbar_layout" />
+        <include layout="@layout/hhnavigationtab" />
 
         <ScrollView
             style="@style/ScrolllViewStyle"
@@ -32,12 +34,19 @@
                 <LinearLayout
                     android:id="@+id/lay_totalAdult"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_totalAdult"
                         style="@style/TextViewStyleNew"
                         android:text="@string/total_adult" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_total_adult"
                         style="@style/EditTextStyleNew"
@@ -53,12 +62,19 @@
                 <LinearLayout
                     android:id="@+id/lay_adult_male"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_adult_male"
                         style="@style/TextViewStyleNew"
                         android:text="@string/adult_male" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_adult_male"
                         style="@style/EditTextStyleNew"
@@ -74,12 +90,19 @@
                 <LinearLayout
                     android:id="@+id/lay_adult_female"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_adult_female"
                         style="@style/TextViewStyleNew"
                         android:text="@string/adult_female" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_adult_female"
                         style="@style/EditTextStyleNew"
@@ -95,12 +118,19 @@
                 <LinearLayout
                     android:id="@+id/lay_adolescent"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_adolescent"
                         style="@style/TextViewStyleNew"
                         android:text="@string/adolescent_boys_girls" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_adolescent"
                         style="@style/EditTextStyleNew"
@@ -116,12 +146,19 @@
                 <LinearLayout
                     android:id="@+id/lay_adolescentboys"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_adolescentboys"
                         style="@style/TextViewStyleNew"
                         android:text="@string/adolescent_boys" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_adolescentboys"
                         style="@style/EditTextStyleNew"
@@ -137,12 +174,19 @@
                 <LinearLayout
                     android:id="@+id/lay_adolescentgirls"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_adolescentgirls"
                         style="@style/TextViewStyleNew"
                         android:text="@string/adolescent_girls" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_adolescentgirls"
                         style="@style/EditTextStyleNew"
@@ -158,12 +202,19 @@
                 <LinearLayout
                     android:id="@+id/lay_totalChildren"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_totalChildren"
                         style="@style/TextViewStyleNew"
                         android:text="@string/total_children" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_totalChildren"
                         style="@style/EditTextStyleNew"
@@ -179,12 +230,19 @@
                 <LinearLayout
                     android:id="@+id/lay_totalmaleChildren"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_totalmaleChildren"
                         style="@style/TextViewStyleNew"
                         android:text="@string/male_children" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_maleChildren"
                         style="@style/EditTextStyleNew"
@@ -199,13 +257,21 @@
 
                 <LinearLayout
                     android:id="@+id/lay_totalfemaleChildren"
-                    style="@style/LinearLayoutStyle">
+                    style="@style/LinearLayoutStyle"
+                    tools:ignore="ExtraText">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_totalfemaleChildren"
                         style="@style/TextViewStyleNew"
                         android:text="@string/female_children" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_femalechildren"
                         style="@style/EditTextStyleNew"
@@ -213,6 +279,7 @@
                         android:inputType="number"
                         android:maxLength="2"
                         android:text="@={householdProfileViewModel.female_children}"
+
                         />
 
                 </LinearLayout>

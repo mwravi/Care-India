@@ -2,7 +2,6 @@ package com.careindia.lifeskills.views.improfile
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.Spinner
@@ -17,22 +16,22 @@ import com.careindia.lifeskills.repository.IndividualProfileRepository
 import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.IndividualProfileViewModel
-import com.careindia.lifeskills.viewmodel.MstCommonViewModel
+import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_improfile_one.*
 import kotlinx.android.synthetic.main.activity_improfile_third.*
 import kotlinx.android.synthetic.main.activity_improfile_third.btn_prev
 import kotlinx.android.synthetic.main.activity_improfile_third.btn_save
 import kotlinx.android.synthetic.main.activity_improfile_two.*
+import kotlinx.android.synthetic.main.bottomnavigationtab.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
     private lateinit var binding: ActivityImprofileThirdBinding
     var validate: Validate? = null
-    lateinit var mstCommonViewModel: MstCommonViewModel
+    var iLanguageID: Int = 0
     lateinit var imProfileViewModel: IndividualProfileViewModel
-
+    lateinit var mstLookupViewModel: MstLookupViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,12 +39,12 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
         validate = Validate(this)
         tv_title.text = resources.getString(R.string.im_profile)
 
-        mstCommonViewModel =
-            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
+        mstLookupViewModel =
+            ViewModelProviders.of(this).get(MstLookupViewModel::class.java)
 
         val improfiledao = CareIndiaApplication.database?.imProfileDao()
-        val commondao = CareIndiaApplication.database?.mstCommonDao()
-        val improfileRepository = IndividualProfileRepository(improfiledao!!, commondao!!)
+        val mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()!!
+        val improfileRepository = IndividualProfileRepository(improfiledao!!,mstDistrictDao)
 
         imProfileViewModel = ViewModelProvider(
             this,
@@ -53,6 +52,8 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
         )[IndividualProfileViewModel::class.java]
         binding.individualProfileViewModel = imProfileViewModel
         binding.lifecycleOwner = this
+
+        iLanguageID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
 
         initializeController()
     }
@@ -95,7 +96,7 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
         hideShowView()
         //apply click on view
         applyClickOnView()
-
+        topLayClick()
         // fill spinner view
         fillSpinner()
         if(validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) !=null && validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.trim().length>0) {
@@ -103,23 +104,23 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
         }
 
 
-        validate!!.dynamicMultiCheck(this, lang_prefer_mobile_use, mstCommonViewModel,55)
+        validate!!.dynamicMultiCheckChange(this, lang_prefer_mobile_use, mstLookupViewModel,9,1,et_specify_perfer_mob,lay_et_specify_perfer_mob)
 
 
 
-        validate!!.fillradio(
+        validate!!.fillradioNew(this,
             rg_type_emp,
             -1,
-            mstCommonViewModel,
-            57,
-            this
+            mstLookupViewModel,
+            11,
+            1
         )
-        validate!!.fillradio(
+        validate!!.fillradioNew(this,
             rg_secondary_income,
             -1,
-            mstCommonViewModel,
-            60,
-            this
+            mstLookupViewModel,
+            3,
+            1
         )
 
     }
@@ -132,10 +133,10 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
                 et_waste_pick.setText(validate!!.returnStringValue(it.get(0).Waste_Type))
                 et_avg_daily_income.setText(validate!!.returnStringValue(it.get(0).Primary_Inc.toString()))
                 et_no_days_job.setText(validate!!.returnStringValue(it.get(0).Primary_WD.toString()))
-                spin_cate_picker_belong.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).WP_category.toString()),56))
-                spin_sell_waste_collect.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).Waste_Disposal.toString()),58))
-                spin_source_income.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).Primary_Occupation.toString()),58))
-                spin_what_secondary_income.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).Secondary_Occupation.toString()),61))
+                spin_cate_picker_belong.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).WP_category.toString()),10))
+                spin_sell_waste_collect.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).Waste_Disposal.toString()),12))
+                spin_source_income.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).Primary_Occupation.toString()),13))
+                spin_what_secondary_income.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).Secondary_Occupation.toString()),14))
 
 
                 (it.get(0).Employment_Type?.let { it1 ->
@@ -157,10 +158,10 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
 
     }
     fun fillSpinner(){
-        bindCommonTable("Select",spin_cate_picker_belong,56)
-        bindCommonTable("Select",spin_source_income,59)
-        bindCommonTable("Select",spin_sell_waste_collect,58)
-        bindCommonTable("Select",spin_what_secondary_income,61)
+        bindCommonTable("Select",spin_cate_picker_belong,10,iLanguageID)
+        bindCommonTable("Select",spin_source_income,13,iLanguageID)
+        bindCommonTable("Select",spin_sell_waste_collect,12,iLanguageID)
+        bindCommonTable("Select",spin_what_secondary_income,14,iLanguageID)
     }
 
 
@@ -201,8 +202,6 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
 
 
         imProfileViewModel.IsSecondry.observe(this, Observer {
-//            Log.i("MYTAGTWOffffff", it.toString())
-
             if(it ==1){
                 lay_spin_what_secondary_income.visibility = View.VISIBLE
             }else{
@@ -236,13 +235,13 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.plz_select_mobiledata_lang)
             )
             value = 0
-//        } else if (et_specify_perfer_mob.text.toString().isEmpty()) {
-//            validate!!.CustomAlertEdit(
-//                this,
-//                et_specify_perfer_mob,
-//                resources.getString(R.string.plz_specify_othr)
-//            )
-//            value = 0
+        } else if (et_specify_perfer_mob.text.toString().length==0 && lay_et_specify_perfer_mob.visibility==View.VISIBLE) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_specify_perfer_mob,
+                resources.getString(R.string.plz_enter_perfer_mob)
+            )
+            value = 0
         } else if (spin_cate_picker_belong.selectedItemPosition == 0) {
             validate!!.CustomAlertSpinner(
                 this,
@@ -273,13 +272,13 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
             value = 0
 
 
-//        } else if (et_specify_sell_waste_collect.text.toString().isEmpty()) {
-//            validate!!.CustomAlertEdit(
-//                this,
-//                et_specify_sell_waste_collect,
-//                resources.getString(R.string.plz_specify_othr)
-//            )
-//            value = 0
+        } else if (et_specify_sell_waste_collect.text.toString().isEmpty() && lay_et_specify_sell_waste_collect.visibility==View.VISIBLE) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_specify_sell_waste_collect,
+                resources.getString(R.string.plz_enter_sell_waste_collect)
+            )
+            value = 0
 
         } else if (spin_source_income.selectedItemPosition == 0) {
             validate!!.CustomAlertSpinner(
@@ -288,13 +287,13 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.plz_select_source_income)
             )
             value = 0
-//        } else if (et_specif_source_income.text.toString().isEmpty()) {
-//            validate!!.CustomAlertEdit(
-//                this,
-//                et_specif_source_income,
-//                resources.getString(R.string.plz_specify_othr)
-//            )
-//            value = 0
+        } else if (et_specif_source_income.text.toString().length ==0 && lay_et_specif_source_income.visibility==View.VISIBLE) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_specif_source_income,
+                resources.getString(R.string.plz_enter_source_income)
+            )
+            value = 0
         } else if (et_no_days_job.text.toString().isEmpty()) {
             validate!!.CustomAlertEdit(
                 this,
@@ -320,13 +319,7 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_secondary_income) == 0) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.plz_select_mobiledata)
-            )
-            value = 0
-        } else if (spin_what_secondary_income.selectedItemPosition == 0) {
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_secondary_income) == 1 && spin_what_secondary_income.selectedItemPosition == 0) {
             validate!!.CustomAlertSpinner(
                 this,
                 spin_what_secondary_income,
@@ -334,28 +327,28 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-//        } else if (et_specify_source_secondary_income.text.toString().isEmpty()) {
-//            validate!!.CustomAlertEdit(
-//                this,
-//                et_specify_source_secondary_income,
-//                resources.getString(R.string.plz_specify_othr)
-//            )
-//            value = 0
+        } else if (et_specify_source_secondary_income.text.toString().length==0 && lay_et_specify_source_secondary_income.visibility==View.VISIBLE) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_specify_source_secondary_income,
+                resources.getString(R.string.plz_enter_secondary_income)
+            )
+            value = 0
 
         }
         return value
     }
 
 
-    fun bindCommonTable(strValue: String, spin: Spinner, flag: Int) {
-        mstCommonViewModel.getMstCommondata(flag).observe(this, androidx.lifecycle.Observer {
+    fun bindCommonTable(strValue: String, spin: Spinner, flag: Int,iLanguageID:Int) {
+        mstLookupViewModel.getMstUser(flag,iLanguageID).observe(this, androidx.lifecycle.Observer {
             if (it != null) {
                 val iGen = it.size
                 val name = arrayOfNulls<String>(iGen + 1)
                 name[0] = strValue
 
                 for (i in 0 until it.size) {
-                    name[i + 1] = it.get(i).value
+                    name[i + 1] = it.get(i).Description
                 }
                 val adapter_category = ArrayAdapter<String>(
                     this,
@@ -365,22 +358,65 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
                 spin.adapter = adapter_category
             }
         })
-        /*if (distric>0) {
-            spin_district_name.setSelection(returnpos(distric, 3))
-        }*/
+
+    }
+
+    fun topLayClick() {
+        lay_first.setBackgroundColor(resources.getColor(R.color.back))
+        lay_secnd.setBackgroundColor(resources.getColor(R.color.back))
+        ll_third.setBackgroundColor(resources.getColor(R.color.color_darkgrey))
+        ll_forth.setBackgroundColor(resources.getColor(R.color.back))
+        ll_fifth.setBackgroundColor(resources.getColor(R.color.back))
+
+        lay_first.setOnClickListener {
+
+            val intent = Intent(this, IMProfileOneActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        lay_secnd.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileTwoActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        ll_third.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileThirdActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        ll_forth.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileFourthActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        ll_fifth.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileFifthActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
     }
 
 
-    fun returnpos(id: Int,flag: Int): Int {
-        val combobox = mstCommonViewModel.getMstCommon(flag)
+    fun returnpos(id: Int, flag: Int): Int {
+        val combobox = mstLookupViewModel.getMstLookupFlag(flag)
         var posi = 0
         for (i in 0 until combobox.size) {
-            if (id == combobox[i].id) {
+            if (id == combobox[i].LookupCode) {
                 posi = i + 1
             }
         }
         return posi
     }
+
 
 
     override fun onBackPressed() {

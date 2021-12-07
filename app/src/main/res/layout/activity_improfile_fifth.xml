@@ -21,6 +21,10 @@
             android:id="@+id/include"
             layout="@layout/toolbar_layout" />
 
+        <include
+            android:id="@+id/includetop"
+            layout="@layout/bottomnavigationtab" />
+
 
         <ScrollView
             style="@style/ScrolllViewStyle"
@@ -37,9 +41,18 @@
                     android:id="@+id/lay_spin_avail_any_scheme"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/avail_any_scheme" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/avail_any_scheme" />
+
+
+
+                    </TableRow>
+
                     <RadioGroup
                         android:id="@+id/rg_avail_any_scheme"
                         style="@style/radioGroupStyle" />
@@ -54,9 +67,17 @@
                     android:id="@+id/lay_et_details_service_avail"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/details_service_avail" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/details_service_avail" />
+
+
+
+                    </TableRow>
 
                     <EditText
                         android:id="@+id/et_details_service_avail"
@@ -74,9 +95,18 @@
                     android:background="@drawable/box_background"
                     android:orientation="vertical">
 
-                    <TextView
-                        style="@style/TextViewStyle"
-                        android:text="@string/skills_jobs_picking" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/skills_jobs_picking" />
+
+
+
+                    </TableRow>
 
                     <LinearLayout
                         android:id="@+id/skills_jobs_picking"
@@ -91,12 +121,20 @@
                     android:background="#CDCBCB" />
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_specify"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/please_specify_skill_job" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_skill_job" />
+
+
+                    </TableRow>
 
                     <EditText
                         android:id="@+id/et_skills_jobs_picking"
@@ -112,9 +150,17 @@
                     android:id="@+id/lay_spin_new_jobs_business"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/new_jobs_business" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/new_jobs_business" />
+
+
+
+                    </TableRow>
 
 
                     <RadioGroup
@@ -131,9 +177,19 @@
                     android:id="@+id/lay_spin_alternative_get_opportunity"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/alternative_get_opportunity" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/alternative_get_opportunity" />
+
+
+
+                    </TableRow>
+
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_alternative_get_opportunity"
@@ -146,11 +202,20 @@
                     android:id="@+id/lay_spin_member_cig_shg"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/member_CIG_SHG" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/member_CIG_SHG" />
+
+
+
+                    </TableRow>
 
                     <RadioGroup
+                        android:checkedButton="@={individualProfileViewModel.IsCIGMember}"
                         android:id="@+id/rg_member_cig_shg"
                         style="@style/radioGroupStyle" />
 
@@ -162,12 +227,22 @@
 
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_name_collective_part"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/name_collective_part" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_collective_part" />
+
+
+
+                    </TableRow>
+
 
                     <EditText
                         android:id="@+id/et_name_collective_part"
@@ -209,7 +284,7 @@
                 android:layout_height="@dimen/_30sdp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:text="@={individualProfileViewModel.saveandnextText}" />
+                android:text="@string/save_close" />
 
             <TextView style="@style/NewSimpleTextMargin"
                 android:layout_weight=".1"

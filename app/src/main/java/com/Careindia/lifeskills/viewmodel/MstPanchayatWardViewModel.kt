@@ -12,10 +12,20 @@ class MstPanchayatWardViewModel : AndroidViewModel {
         mstPanchayatWardRepository = MstPanchayatWardRepository(application)
     }
 
-    fun getMstUser(StateCode:Int,DistrictCode:Int,ZoneCode:Int): List<MstPanchayat_WardEntity> {
-        return mstPanchayatWardRepository!!.getMstPanchayat_Ward(StateCode,DistrictCode,ZoneCode)
+    fun getMstUser(
+        StateCode: Int,
+        DistrictCode: Int,
+        ZoneCode: Int
+    ): List<MstPanchayat_WardEntity> {
+        return mstPanchayatWardRepository!!.getMstPanchayat_Ward(StateCode, DistrictCode, ZoneCode)
     }
 
+    fun getMstWard(ZoneCode: Int): List<MstPanchayat_WardEntity> {
+        return mstPanchayatWardRepository!!.getMstWard(ZoneCode)
+    }
 
+    fun getMstPanchayat(disCode: Int): List<MstPanchayat_WardEntity> {
+        return mstPanchayatWardRepository!!.getMstPanchayat(disCode)
+    }
 
 }

@@ -14,6 +14,7 @@
         android:orientation="vertical">
 
         <include layout="@layout/toolbar_layout" />
+        <include layout="@layout/hhnavigationtab" />
 
         <ScrollView
             style="@style/ScrolllViewStyle"
@@ -31,12 +32,19 @@
                 <LinearLayout
                     android:id="@+id/lay_totalearningMember"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_totalearningMember"
                         style="@style/TextViewStyleNew"
                         android:text="@string/total_earning_member" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_totalEarningMember"
                         style="@style/EditTextStyleNew"
@@ -50,12 +58,19 @@
                 <LinearLayout
                     android:id="@+id/lay_maleearningMember"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_maleearningMember"
                         style="@style/TextViewStyleNew"
                         android:text="@string/male_earning_member" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_maleearningmember"
                         style="@style/EditTextStyleNew"
@@ -69,12 +84,19 @@
                 <LinearLayout
                     android:id="@+id/lay_femaleearningMember"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_femaleearningMember"
                         style="@style/TextViewStyleNew"
                         android:text="@string/female_earning_member" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_femaleearningmember"
                         style="@style/EditTextStyleNew"
@@ -89,12 +111,19 @@
                 <LinearLayout
                     android:id="@+id/lay_dwelling"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_dwelling"
                         style="@style/TextViewStyleNew"
                         android:text="@string/type_of_dwelling" />
-
+                    </TableRow>
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_dwelling"
                         style="@style/SpinnerViewNew"
@@ -106,13 +135,22 @@
 
                 <LinearLayout
                     android:id="@+id/lay_othertypeofdwelling"
-                    style="@style/LinearLayoutStyle">
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone"
+                    >
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_othertypeofdwelling"
                         style="@style/TextViewStyleNew"
                         android:text="@string/if_other_type_of_dwelling" />
-
+                    </TableRow>
                     <EditText
                         android:id="@+id/et_othertypeofdwelling"
                         style="@style/EditTextStyleNew"
@@ -128,12 +166,19 @@
                 <LinearLayout
                     android:id="@+id/lay_dwellingplaceRegistered"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_dwelling_place_registered"
                         style="@style/TextViewStyleNew"
                         android:text="@string/is_your_dwelling_place_registered" />
-
+                    </TableRow>
                     <RadioGroup
                         android:id="@+id/rg_dwelling_place_registered"
                         style="@style/radioGroupStyle"
@@ -148,16 +193,53 @@
                 <LinearLayout
                     android:id="@+id/lay_hh_ration_card"
                     style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
 
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*"
+                        />
                     <TextView
                         android:id="@+id/tv_hh_ration_card"
                         style="@style/TextViewStyleNew"
                         android:text="@string/hh_ration_card" />
-
+                    </TableRow>
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_hh_ration_card"
                         style="@style/SpinnerViewNew"
                         android:selectedItemPosition="@={householdProfileViewModel.ration_card}"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_other_ration"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone"
+                    >
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik"
+
+                            />
+                        <TextView
+                            android:id="@+id/tv_other_ration"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/if_other_ration" />
+                    </TableRow>
+                    <EditText
+                        android:id="@+id/et_other_ration"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={householdProfileViewModel.other_ration}"
+
                         />
 
                 </LinearLayout>

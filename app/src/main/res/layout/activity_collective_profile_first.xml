@@ -1,253 +1,330 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="collectiveViewModel"
             type="com.careindia.lifeskills.viewmodel.CollectiveViewModel" />
     </data>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
 
-    <include layout="@layout/toolbar_layout" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ScrollView
-        style="@style/ScrolllViewStyle"
-        android:background="@drawable/box_background"
-        android:layout_margin="@dimen/_5sdp"
-        android:layout_weight="1"
-        android:scrollbars="none">
+        <include layout="@layout/toolbar_layout" />
+        <include layout="@layout/collectivetab" />
 
-        <LinearLayout
-            style="@style/LinearLayoutStyle"
-            android:padding="@dimen/_10sdp">
-
-            <LinearLayout
-                android:id="@+id/lay_formfillingdate"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_formfillingdate"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/date_of_filling_the_form_profile" />
-
-                <EditText
-                    android:id="@+id/et_date_of_filling"
-                    style="@style/EditTextStyleNew"
-                    android:clickable="false"
-                    android:drawableEnd="@drawable/ic_calender"
-                    android:text="@={collectiveViewModel.Date}"
-                    android:focusable="false"
-                    android:hint="@string/enter_date"
-                    android:inputType="date" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_crpName"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_crpName"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/name_of_crp_filling" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_name_of_crp"
-                    style="@style/SpinnerViewNew"
-/>
-                <!-- android:selectedItemPosition="@={collectiveViewModel.CrpName}"-->
-
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_sfcName"
-                android:visibility="gone"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_sfcName"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/name_of_supervising_care_india" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_name_of_supervising"
-                    style="@style/SpinnerViewNew"
-                    android:selectedItemPosition="@={collectiveViewModel.SfcName}"/>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_DistricName"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_DistricName"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/name_of_district" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_district_name"
-                    style="@style/SpinnerViewNew"
-                    android:selectedItemPosition="@={collectiveViewModel.District}"
-                    />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_NameofZone"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_NameofZone"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/name_of_zone" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_zone_name"
-                    style="@style/SpinnerViewNew"
-                    android:selectedItemPosition="@={collectiveViewModel.ZoneName}"/>
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_bbmpWard"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_bbmpWard"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/name_of_bbmp_ward" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_ward_name"
-                    style="@style/SpinnerViewNew"
-                    android:selectedItemPosition="@={collectiveViewModel.WardName}"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_panchayatName"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_panchayatName"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/name_of_panchayat" />
-
-                <fr.ganfra.materialspinner.MaterialSpinner
-                    android:id="@+id/spin_panchayat_name"
-                    style="@style/SpinnerViewNew"
-                    android:selectedItemPosition="@={collectiveViewModel.PanchayatName}"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_localityname"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_localityname"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/name_of_locality" />
-
-                <EditText
-                    android:id="@+id/et_locality_name"
-                    style="@style/EditTextStyleNew"
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.localityName}"
-                    android:inputType="text"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_collective_id"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_collective_id"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/collective_unique_id" />
-
-                <EditText
-                    android:id="@+id/et_collective_id"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.collectiveId}"
-                    android:inputType="text"
-                    android:maxLength="11" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_group_collective_name"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_group_collective_name"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/name_of_group_collective_sangha" />
-
-                <EditText
-                    android:id="@+id/et_group_collective_name"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.groupName}"
-                    android:inputType="text"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-
-
-        </LinearLayout>
-
-    </ScrollView>
-
-    <TableRow
-        style="@style/TableRowStyle"
-        android:layout_margin="@dimen/_10sdp">
-
-        <TextView style="@style/NewSimpleTextMargin"
-            android:layout_weight=".1"
-            />
-
-        <Button
-            android:id="@+id/btn_prev"
-            style="@style/ButtonTextStyle"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_width="0dp"
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_5sdp"
             android:layout_weight="1"
-            android:text="@string/previous" />
+            android:background="@drawable/box_background"
+            android:scrollbars="none">
 
-        <TextView style="@style/NewSimpleTextMargin"
-            android:layout_weight=".1"
-            />
-        <Button
-            android:id="@+id/btn_save"
-            style="@style/ButtonTextStyle"
-            android:layout_height="@dimen/_30sdp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:text="@={collectiveViewModel.saveandnextText}" />
+            <LinearLayout
+                style="@style/LinearLayoutStyle"
+                android:padding="@dimen/_10sdp">
 
-        <TextView style="@style/NewSimpleTextMargin"
-            android:layout_weight=".1"
-            />
+                <LinearLayout
+                    android:id="@+id/lay_formfillingdate"
+                    style="@style/LinearLayoutStyle">
 
-    </TableRow>
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_formfillingdate"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/date_of_filling_the_form_profile" />
 
 
-</LinearLayout>
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_date_of_filling"
+                        style="@style/EditTextStyleNew"
+                        android:clickable="false"
+                        android:drawableEnd="@drawable/ic_calender"
+                        android:focusable="false"
+                        android:hint="@string/enter_date"
+                        android:inputType="date"
+                        android:text="@={collectiveViewModel.Date}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_crpName"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_crpName"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_of_crp_filling" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_crp_name"
+                        style="@style/EditTextStyleNew"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={collectiveViewModel.CrpName}" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_sfcName"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_sfcName"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_of_supervising_care_india" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_sfc_name"
+                        style="@style/EditTextStyleNew"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={collectiveViewModel.sfcName}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_DistricName"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_DistricName"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_of_district" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_district_name"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={collectiveViewModel.District}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_NameofZone"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                          />
+
+                        <TextView
+                            android:id="@+id/tv_NameofZone"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_of_zone" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_zone_name"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={collectiveViewModel.ZoneName}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_bbmpWard"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                             />
+
+                        <TextView
+                            android:id="@+id/tv_bbmpWard"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_of_bbmp_ward" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_ward_name"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={collectiveViewModel.WardName}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_panchayatName"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                          />
+
+                        <TextView
+                            android:id="@+id/tv_panchayatName"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_of_panchayat" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_panchayat_name"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={collectiveViewModel.PanchayatName}" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_localityname"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_localityname"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_of_locality" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_locality_name"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={collectiveViewModel.localityName}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_collective_id"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_collective_id"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/collective_unique_id" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_collective_id"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="11"
+                        android:enabled="false"
+                        android:text="@={collectiveViewModel.collectiveId}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_group_collective_name"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_group_collective_name"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_of_group_collective_sangha" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_group_collective_name"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={collectiveViewModel.groupName}" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
+
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
+
+            <Button
+                android:id="@+id/btn_prev"
+                style="@style/ButtonTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:text="@string/previous" />
+
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
+
+            <Button
+                android:id="@+id/btn_save"
+                style="@style/ButtonTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:text="@={collectiveViewModel.saveandnextText}" />
+
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
+
+        </TableRow>
+
+
+    </LinearLayout>
 </layout>

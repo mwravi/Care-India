@@ -14,14 +14,13 @@ class MstZoneRepository {
         mstZoneDao = CareIndiaApplication.database?.mstZoneDao()
     }
 
-   fun getMstZone(DistrictCode:Int): LiveData<List<MstZoneEntity>> {
-        return mstZoneDao!!.getMstZone(DistrictCode)
+
+    fun getMstZoneLive(DistrictCode:Int): LiveData<List<MstZoneEntity>> {
+        return mstZoneDao!!.getMstZoneLive(DistrictCode)
     }
 
-
-
-
-
-
+    fun getMstZone(DistrictCode:Int): List<MstZoneEntity> {
+        return mstZoneDao!!.getMstZone(DistrictCode)
+    }
 
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="individualProfileViewModel"
             type="com.careindia.lifeskills.viewmodel.IndividualProfileViewModel" />
@@ -19,6 +19,10 @@
         <include
             android:id="@+id/include"
             layout="@layout/toolbar_layout" />
+
+        <include
+            android:id="@+id/includetop"
+            layout="@layout/bottomnavigationtab" />
 
 
         <ScrollView
@@ -37,9 +41,19 @@
                     android:id="@+id/lay_et_days_secondary_job"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/no_days_secondary_job" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/no_days_secondary_job" />
+
+
+                    </TableRow>
+
 
                     <EditText
                         android:id="@+id/et_days_secondary_job"
@@ -48,8 +62,8 @@
                         android:hint="@string/type_here"
                         android:inputType="number"
                         android:maxLines="1"
-                        android:text="@={individualProfileViewModel.WorkingDaysSecondaryJob}"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:text="@={individualProfileViewModel.WorkingDaysSecondaryJob}" />
 
                 </LinearLayout>
 
@@ -57,9 +71,18 @@
                     android:id="@+id/lay_et_avg_daily_secondry_income"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/avg_daily_secondry_income" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/avg_daily_secondry_income" />
+
+
+                    </TableRow>
 
                     <EditText
                         android:id="@+id/et_avg_daily_secondry_income"
@@ -68,8 +91,8 @@
                         android:hint="@string/type_here"
                         android:inputType="number"
                         android:maxLines="1"
-                        android:text="@={individualProfileViewModel.AvgDailySecIncome}"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:text="@={individualProfileViewModel.AvgDailySecIncome}" />
 
                 </LinearLayout>
 
@@ -78,64 +101,105 @@
                     android:id="@+id/lay_have_adhar"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/have_adhar_card" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/have_adhar_card" />
+
+
+                    </TableRow>
 
                     <RadioGroup
                         android:id="@+id/rg_have_adhar"
                         style="@style/radioGroupStyle" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:background="#D8D6D6"/>
+                    android:background="#D8D6D6" />
+
                 <LinearLayout
                     android:id="@+id/lay_have_voter"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/have_voter_card" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/have_voter_card" />
+
+
+                    </TableRow>
 
                     <RadioGroup
                         android:id="@+id/rg_have_voter"
                         style="@style/radioGroupStyle" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:background="#D8D6D6"/>
+                    android:background="#D8D6D6" />
+
                 <LinearLayout
                     android:id="@+id/lay_have_pan"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/have_pan_card" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
 
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/have_pan_card" />
+
+
+                    </TableRow>
 
                     <RadioGroup
                         android:id="@+id/rg_have_pan"
                         style="@style/radioGroupStyle" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:background="#D8D6D6"/>
+                    android:background="#D8D6D6" />
+
                 <LinearLayout
                     android:id="@+id/lay_have_income"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/income_certi" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/income_certi" />
+
+
+                    </TableRow>
 
                     <RadioGroup
                         android:id="@+id/rg_have_income"
@@ -143,37 +207,59 @@
 
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:background="#D8D6D6"/>
+                    android:background="#D8D6D6" />
+
                 <LinearLayout
                     android:id="@+id/lay_have_caste"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/caste_certi" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/caste_certi" />
+
+
+                    </TableRow>
+
 
                     <RadioGroup
                         android:id="@+id/rg_have_caste"
                         style="@style/radioGroupStyle" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:background="#D8D6D6"/>
+                    android:background="#D8D6D6" />
 
                 <LinearLayout
                     android:id="@+id/lay_svg_bank_act"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/svg_bank_act" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/svg_bank_act" />
+
+
+                    </TableRow>
 
 
                     <RadioGroup
@@ -181,19 +267,29 @@
                         style="@style/radioGroupStyle" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:background="#D8D6D6"/>
+                    android:background="#D8D6D6" />
 
                 <LinearLayout
                     android:id="@+id/lay_availed_services_past"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/availed_services_past" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/availed_services_past" />
+
+
+                    </TableRow>
 
 
                     <RadioGroup
@@ -206,22 +302,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginBottom="@dimen/_5sdp"
-                    android:background="#D8D6D6"/>
+                    android:background="#D8D6D6" />
+
                 <LinearLayout
                     android:id="@+id/lay_et_service_provider_department"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/service_provider_department" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/service_provider_department" />
+
+
+                    </TableRow>
 
                     <EditText
                         android:id="@+id/et_service_provider_department"
                         style="@style/EditTextStyleNew"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
-                        android:text="@={individualProfileViewModel.DetailServiceProviderDep}"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:text="@={individualProfileViewModel.DetailServiceProviderDep}" />
 
                 </LinearLayout>
 
@@ -234,32 +340,33 @@
             style="@style/TableRowStyle"
             android:layout_margin="@dimen/_10sdp">
 
-            <TextView style="@style/NewSimpleTextMargin"
-                android:layout_weight=".1"
-                />
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
 
             <Button
                 android:id="@+id/btn_prev"
                 style="@style/ButtonTextStyle"
-                android:layout_height="@dimen/_30sdp"
                 android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_weight="1"
                 android:text="@string/previous" />
 
-            <TextView style="@style/NewSimpleTextMargin"
-                android:layout_weight=".1"
-                />
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
+
             <Button
                 android:id="@+id/btn_save"
                 style="@style/ButtonTextStyle"
-                android:layout_height="@dimen/_30sdp"
                 android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_weight="1"
                 android:text="@={individualProfileViewModel.saveandnextText}" />
 
-            <TextView style="@style/NewSimpleTextMargin"
-                android:layout_weight=".1"
-                />
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
 
         </TableRow>
     </LinearLayout>

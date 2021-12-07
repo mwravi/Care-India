@@ -1,11 +1,14 @@
 package com.careindia.lifeskills.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import com.careindia.lifeskills.repository.PrimaryDataRepository
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.views.base.BaseViewModel
+import kotlinx.coroutines.launch
 
 
-class PrimaryDataViewModel : BaseViewModel() {
+class PrimaryDataViewModel(private val primaryDataRepository: PrimaryDataRepository) : BaseViewModel() {
     var validate: Validate? = null
 
 
@@ -31,7 +34,7 @@ class PrimaryDataViewModel : BaseViewModel() {
     val AvailedLoans = MutableLiveData<String>()
     val FinancialAssistance = MutableLiveData<String>()
     val selfEmpReqSupport = MutableLiveData<Int>()
-
+    val primaryData = primaryDataRepository.getallPrimarydata()
 
     var adhar = 0
     var pan = 0
@@ -76,6 +79,13 @@ class PrimaryDataViewModel : BaseViewModel() {
         expectingFinancialAssistance = rg_expecting_financial_assistance
 
     }
+
+    fun delete_record(HHGUID: String) {
+        viewModelScope.launch {
+            primaryDataRepository.delete_record(HHGUID)
+        }
+    }
+
 
 
 }

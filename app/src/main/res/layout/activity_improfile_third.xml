@@ -19,6 +19,10 @@
             android:id="@+id/include"
             layout="@layout/toolbar_layout" />
 
+        <include
+            android:id="@+id/includetop"
+            layout="@layout/bottomnavigationtab" />
+
 
         <ScrollView
             style="@style/ScrolllViewStyle"
@@ -36,10 +40,17 @@
                     style="@style/CheckBox"
                     android:background="@drawable/box_background"
                     android:orientation="vertical">
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/language_prefer_mobile_use" />
 
-                    <TextView
-                        style="@style/TextViewStyle"
-                        android:text="@string/language_prefer_mobile_use" />
+
+                    </TableRow>
+
 
                     <LinearLayout
                         android:id="@+id/lang_prefer_mobile_use"
@@ -56,12 +67,20 @@
                     android:background="#CDCBCB" />
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_specify_perfer_mob"
                     style="@style/LinearLayoutStyle">
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_mobile_lag" />
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/please_specify_mobile" />
+
+
+                    </TableRow>
 
                     <EditText
                         android:id="@+id/et_specify_perfer_mob"
@@ -77,9 +96,17 @@
                     android:id="@+id/lay_spin_cate_picker_belong"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/category_waste_picker_belong" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/category_waste_picker_belong" />
+
+
+
+                    </TableRow>
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_cate_picker_belong"
@@ -94,29 +121,42 @@
                     android:id="@+id/lay_type_emp"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/type_emp" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/type_emp" />
 
+
+
+                    </TableRow>
 
                     <RadioGroup
                         android:id="@+id/rg_type_emp"
                         style="@style/radioGroupStyle" />
 
                 </LinearLayout>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#D8D6D6"/>
+
 
 
                 <LinearLayout
                     android:id="@+id/lay_et_waste_pick"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/wastes_pick_sort" />
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/wastes_pick_sort" />
+
+
+
+                    </TableRow>
 
                     <EditText
                         android:id="@+id/et_waste_pick"
@@ -132,9 +172,17 @@
                     android:id="@+id/lay_spin_sell_waste_collect"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/sell_waste_collect" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/sell_waste_collect" />
+
+
+
+                    </TableRow>
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_sell_waste_collect"
@@ -144,12 +192,20 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_specify_sell_waste_collect"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/please_specify_waste" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_dispose_lag" />
+
+
+                    </TableRow>
 
                     <EditText
                         android:id="@+id/et_specify_sell_waste_collect"
@@ -165,9 +221,18 @@
                     android:id="@+id/lay_spin_source_income"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/source_income" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/source_income" />
+
+
+
+                    </TableRow>
+
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_source_income"
@@ -177,12 +242,20 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_specif_source_income"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/please_specify_source_income" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_source_income" />
+
+
+                    </TableRow>
 
                     <EditText
                         android:id="@+id/et_specif_source_income"
@@ -197,10 +270,18 @@
                 <LinearLayout
                     android:id="@+id/lay_et_no_days_job"
                     style="@style/LinearLayoutStyle">
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/no_days_month_primary_job" />
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/no_days_month_primary_job" />
+
+
+
+                    </TableRow>
 
                     <EditText
                         android:id="@+id/et_no_days_job"
@@ -217,9 +298,18 @@
                     android:id="@+id/lay_et_avg_daily_income"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/avg_daily_income_primary_job" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/avg_daily_income_primary_job" />
+
+
+
+                    </TableRow>
+
 
                     <EditText
                         android:id="@+id/et_avg_daily_income"
@@ -237,9 +327,19 @@
                     android:id="@+id/lay_secondary_income"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/secondary_income" />
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/secondary_income" />
+
+
+
+                    </TableRow>
+
 
                     <RadioGroup
                         android:checkedButton="@={individualProfileViewModel.IsSecondry}"
@@ -256,9 +356,17 @@
                     android:id="@+id/lay_spin_what_secondary_income"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/what_secondry_income" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/what_secondry_income" />
+
+
+
+                    </TableRow>
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_what_secondary_income"
@@ -268,12 +376,20 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_specify_source_secondary_income"
                     style="@style/LinearLayoutStyle">
 
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/please_specify_secondry_income" />
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_secondry_income" />
+
+
+                    </TableRow>
 
                     <EditText
                         android:id="@+id/et_specify_source_secondary_income"

@@ -1,265 +1,316 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <variable
             name="collectiveViewModel"
             type="com.careindia.lifeskills.viewmodel.CollectiveViewModel" />
     </data>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
 
-    <include layout="@layout/toolbar_layout" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <include layout="@layout/toolbar_layout" />
+        <include layout="@layout/collectivetab" />
 
-    <ScrollView
-        style="@style/ScrolllViewStyle"
-        android:background="@drawable/box_background"
-        android:layout_margin="@dimen/_5sdp"
-        android:layout_weight="1"
-        android:scrollbars="none">
-
-        <LinearLayout
-            style="@style/LinearLayoutStyle"
-            android:padding="@dimen/_10sdp">
-
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:background="@drawable/box_background"
+            android:scrollbars="none">
 
             <LinearLayout
-                android:id="@+id/lay_meeting_schedule"
-                style="@style/LinearLayoutStyle">
+                style="@style/LinearLayoutStyle"
+                android:padding="@dimen/_10sdp">
 
-                <TextView
-                    android:id="@+id/tv_meeting_schedule"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q404_does_the_meetings_happen_as_per_the_schedule_check_meeting_register" />
-
-                <RadioGroup
-                    android:id="@+id/rg_meeting_schedule"
-                    style="@style/radioGroupStyle" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_record_book"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_record_book"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q405_does_your_sangha_group_collective_have_a_record_book_check_for_the_record_book" />
-
-                <RadioGroup
-                    android:id="@+id/rg_record_book"
-                    style="@style/radioGroupStyle" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_record_book_update"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_record_book_update"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q406_is_the_record_book_register_updated_in_every_meeting" />
-
-                <RadioGroup
-                    android:id="@+id/rg_record_book_update"
-                    style="@style/radioGroupStyle" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_other_q501"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_options_below"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q501_has_the_sangha_group_collective_established_any_linkage_with_options_below" />
 
 
                 <LinearLayout
-                    android:id="@+id/chk_options_below"
-                    style="@style/CheckBox"
-                    android:background="@drawable/box_background"
-                    android:orientation="vertical" />
+                    android:id="@+id/lay_record_book"
+                    style="@style/LinearLayoutStyle">
 
-            </LinearLayout>
+                    <TableRow style="@style/TableRowStyle">
 
-            <LinearLayout
-                android:id="@+id/lay_other_q501a"
-                style="@style/LinearLayoutStyle">
+                        <TextView style="@style/TextViewStylestrik" />
 
-                <TextView
-                    android:id="@+id/tv_other_q501a"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q501a_please_specify_the_others" />
+                        <TextView
+                            android:id="@+id/tv_record_book"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q405_does_your_sangha_group_collective_have_a_record_book_check_for_the_record_book" />
+                    </TableRow>
 
-                <EditText
-                    android:id="@+id/et_other_q501a"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.Other1}"
-                    android:inputType="text"
-                    android:maxLength="50" />
+                    <RadioGroup
+                        android:id="@+id/rg_record_book"
+                        style="@style/radioGroupStyle"
+                        android:checkedButton="@={collectiveViewModel.RecordBook}"
+                        />
 
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_other_q501b"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_other_q501b"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q501b_what_service_services_you_are_getting_through_this_linkage_more_than_one_response_upto_three_is_possible" />
-
-                <EditText
-                    android:id="@+id/et_other_q501b"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:inputType="text"
-                    android:text="@={collectiveViewModel.Service}"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_services_schemes"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_services_schemes"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q502_is_your_sangha_collective_currently_availing_any_services_schemes" />
-
-                <RadioGroup
-                    android:id="@+id/rg_services_schemes"
-                    style="@style/radioGroupStyle" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_details_service"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_details_service"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q502a_please_provide_details_of_the_service_scheme_that_you_are_availing_more_than_one_response_upto_three_is_possible" />
-
-                <EditText
-                    android:id="@+id/et_details_service"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.ServiceAvailing}"
-                    android:inputType="text"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_service_provider"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_service_provider"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q502b_from_which_department_service_provider_you_are_availing_this_scheme_service" />
-
-                <EditText
-                    android:id="@+id/et_service_provider"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.ServiceProvider}"
-                    android:inputType="text"
-                    android:maxLength="50" />
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/lay_enterprise_business"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_enterprise_business"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q601_is_your_sangha_collective_members_interested_in_taking_up_any_collective_enterprise_business" />
-
-                <RadioGroup
-                    android:id="@+id/rg_enterprise_business"
-                    style="@style/radioGroupStyle" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/lay_others_q602"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_collective_plan"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q602_what_business_would_the_collective_plan_to_do_if_given_an_opportunity" />
+                </LinearLayout>
 
 
                 <LinearLayout
-                    android:id="@+id/chk_collective_plan"
-                    style="@style/CheckBox"
-                    android:background="@drawable/box_background"
-                    android:orientation="vertical" />
+                    android:id="@+id/lay_record_book_update"
+                    android:visibility="gone"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_record_book_update"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q406_is_the_record_book_register_updated_in_every_meeting" />
+                    </TableRow>
+
+                    <RadioGroup
+                        android:id="@+id/rg_record_book_update"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_other_q501"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_options_below"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q501_has_the_sangha_group_collective_established_any_linkage_with_options_below" />
+                    </TableRow>
+
+                    <LinearLayout
+                        android:id="@+id/chk_options_below"
+                        style="@style/CheckBox"
+                        android:background="@drawable/box_background"
+                        android:orientation="vertical" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_other_q501a"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_other_q501a"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q501a_please_specify_the_others" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_other_q501a"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={collectiveViewModel.Other1}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_other_q501b"
+                    android:visibility="gone"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_other_q501b"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q501b_what_service_services_you_are_getting_through_this_linkage_more_than_one_response_upto_three_is_possible" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_other_q501b"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={collectiveViewModel.Service}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_services_schemes"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_services_schemes"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q502_is_your_sangha_collective_currently_availing_any_services_schemes" />
+                    </TableRow>
+
+                    <RadioGroup
+                        android:id="@+id/rg_services_schemes"
+                        style="@style/radioGroupStyle"
+                        android:checkedButton="@={collectiveViewModel.ServiceScheme}"/>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_details_service"
+                    android:visibility="gone"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_details_service"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q502a_please_provide_details_of_the_service_scheme_that_you_are_availing_more_than_one_response_upto_three_is_possible" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_details_service"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={collectiveViewModel.ServiceAvailing}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_service_provider"
+                    android:visibility="gone"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_service_provider"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q502b_from_which_department_service_provider_you_are_availing_this_scheme_service" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_service_provider"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={collectiveViewModel.ServiceProvider}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_enterprise_business"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_enterprise_business"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q601_is_your_sangha_collective_members_interested_in_taking_up_any_collective_enterprise_business" />
+                    </TableRow>
+
+                    <RadioGroup
+                        android:id="@+id/rg_enterprise_business"
+                        style="@style/radioGroupStyle"
+                        android:checkedButton="@={collectiveViewModel.Enterprise}"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_others_q602"
+                    android:visibility="gone"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_collective_plan"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q602_what_business_would_the_collective_plan_to_do_if_given_an_opportunity" />
+                    </TableRow>
+
+                    <LinearLayout
+                        android:id="@+id/chk_collective_plan"
+                        style="@style/CheckBox"
+                        android:background="@drawable/box_background"
+                        android:orientation="vertical" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_others_q602a"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_others_q602a"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q602a_please_specify_others" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_others_q602a"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:text="@={collectiveViewModel.Other2}" />
+
+                </LinearLayout>
+
+
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/lay_others_q602a"
-                style="@style/LinearLayoutStyle">
-
-                <TextView
-                    android:id="@+id/tv_others_q602a"
-                    style="@style/TextViewStyleNew"
-                    android:text="@string/q602a_please_specify_others" />
-
-                <EditText
-                    android:id="@+id/et_others_q602a"
-                    style="@style/EditTextStyleNew"
-                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                    android:hint="@string/type_here"
-                    android:text="@={collectiveViewModel.Other2}"
-                    android:inputType="text"
-                    android:maxLength="50" />
-
-            </LinearLayout>
+        </ScrollView>
 
 
-        </LinearLayout>
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
 
-    </ScrollView>
+            <include layout="@layout/buttons_save_cancel" />
 
+        </TableRow>
 
-    <TableRow
-        style="@style/TableRowStyle"
-        android:layout_margin="@dimen/_10sdp">
-
-        <include layout="@layout/buttons_save_cancel" />
-
-    </TableRow>
-
-</LinearLayout>
+    </LinearLayout>
 </layout>

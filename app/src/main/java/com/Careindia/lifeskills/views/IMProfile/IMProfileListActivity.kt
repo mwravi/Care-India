@@ -18,7 +18,6 @@ import com.careindia.lifeskills.repository.IndividualProfileRepository
 import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.IndividualProfileViewModel
-import com.careindia.lifeskills.viewmodel.MstCommonViewModel
 import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_collection_profile_list.*
@@ -29,7 +28,7 @@ import kotlinx.android.synthetic.main.toolbar_layout.*
 class IMProfileListActivity : AppCompatActivity() {
     private lateinit var listbinding:ActivityImprofileListBinding
     var validate: Validate? = null
-    lateinit var mstCommonViewModel: MstCommonViewModel
+
     lateinit var imProfileViewModel: IndividualProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,12 +37,10 @@ class IMProfileListActivity : AppCompatActivity() {
         validate = Validate(this)
         tv_title.text = "IM Profile List"
 
-        mstCommonViewModel =
-            ViewModelProviders.of(this).get(MstCommonViewModel::class.java)
 
         val improfiledao = CareIndiaApplication.database?.imProfileDao()
-        val commondao = CareIndiaApplication.database?.mstCommonDao()
-        val improfileRepository = IndividualProfileRepository(improfiledao!!, commondao!!)
+        val mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()!!
+        val improfileRepository = IndividualProfileRepository(improfiledao!!,mstDistrictDao)
 
         imProfileViewModel = ViewModelProvider(
             this,
