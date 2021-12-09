@@ -9,6 +9,7 @@ import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.views.base.BaseViewModel
 import com.careindia.lifeskills.views.collectiveProfile.CollectiveProfileMemberActivity
+import kotlinx.android.synthetic.main.activity_collection_member.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -18,7 +19,6 @@ class CollectiveMemberViewModel(private val collectiveMemberRepository: Collecti
 
 
     val Membername = MutableLiveData<String?>()
-    val Memberid = MutableLiveData<String?>()
     val Membersex = MutableLiveData<Int?>()
     val Memberage = MutableLiveData<String?>()
     val Contactno = MutableLiveData<String?>()
@@ -45,7 +45,7 @@ class CollectiveMemberViewModel(private val collectiveMemberRepository: Collecti
                 CollectiveMemberEntity(
                     validate!!.RetriveSharepreferenceString(AppSP.CollectiveMemberGUID)!!,
                     validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID),
-                    Memberid.value,
+                    collectiveProfileMemberActivity.et_member_id.text.toString(),
                     Membername.value,
                     collectiveProfileMemberActivity.returnID(
                         Membersex.value!!,
@@ -68,7 +68,7 @@ class CollectiveMemberViewModel(private val collectiveMemberRepository: Collecti
             update(
                 validate!!.RetriveSharepreferenceString(AppSP.CollectiveMemberGUID)!!,
                 validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!,
-                Memberid.value!!,
+                collectiveProfileMemberActivity.et_member_id.text.toString(),
                 Membername.value!!,
                 collectiveProfileMemberActivity.returnID(
                     Membersex.value!!,

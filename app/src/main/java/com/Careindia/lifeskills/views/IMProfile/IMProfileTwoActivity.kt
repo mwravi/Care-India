@@ -315,7 +315,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-        } else if (Integer.parseInt(et_long_stay.text.toString()) <= 0 || Integer.parseInt(et_long_stay.text.toString()) >= 99 || Integer.parseInt(et_long_stay.text.toString()) >= IdvAge) {
+        } else if (Integer.parseInt(et_long_stay.text.toString()) >= IdvAge) {
             validate!!.CustomAlertEdit(
                 this,
                 et_long_stay,
@@ -498,4 +498,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         startActivity(intent)
         finish()
     }
+
+
+//    Integer.parseInt(et_long_stay.text.toString()) <= 0 || Integer.parseInt(et_long_stay.text.toString()) >= 99 ||
 }

@@ -13,6 +13,8 @@ import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
+import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
+import kotlinx.android.synthetic.main.activity_improfile_one.*
 import kotlinx.android.synthetic.main.activity_psychometric_second.*
 import kotlinx.android.synthetic.main.activity_psychometric_second.btn_prev
 import kotlinx.android.synthetic.main.activity_psychometric_second.btn_save
@@ -59,10 +61,11 @@ class PsychometricSecondActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.btn_save -> {
-
-                var intent = Intent(this, PsychometricThirdActivity::class.java)
-                startActivity(intent)
-                finish()
+//                if (checkValidation() == 1) {
+                    var intent = Intent(this, PsychometricThirdActivity::class.java)
+                    startActivity(intent)
+                    finish()
+//                }
             }
 
             R.id.btn_prev -> {
@@ -76,20 +79,98 @@ class PsychometricSecondActivity : BaseActivity(), View.OnClickListener {
     }
 
     fun fillSpinner(){
-        bindCommonTable("Select", spin_min_age_limit, 7,iLanguageID)
-        bindCommonTable("Select", spin_educ_applicant, 8,iLanguageID)
-        bindCommonTable("Select", spin_socially_category, 7,iLanguageID)
-        bindCommonTable("Select", spin_economic_category, 7,iLanguageID)
-        bindCommonTable("Select", spin_emp_category, 7,iLanguageID)
-        bindCommonTable("Select", spin_year_exp, 7,iLanguageID)
-        bindCommonTable("Select", spin_stage_emp, 7,iLanguageID)
-        bindCommonTable("Select", spin_size_investment, 7,iLanguageID)
-        bindCommonTable("Select", spin_invest_money, 7,iLanguageID)
-        bindCommonTable("Select", spin_awareness_market, 7,iLanguageID)
+        bindCommonTable("Select", spin_min_age_limit, 35,iLanguageID)
+        bindCommonTable("Select", spin_educ_applicant, 36,iLanguageID)
+        bindCommonTable("Select", spin_socially_category, 37,iLanguageID)
+        bindCommonTable("Select", spin_economic_category, 38,iLanguageID)
+        bindCommonTable("Select", spin_emp_category, 39,iLanguageID)
+        bindCommonTable("Select", spin_year_exp, 40,iLanguageID)
+        bindCommonTable("Select", spin_stage_emp, 41,iLanguageID)
+        bindCommonTable("Select", spin_size_investment, 42,iLanguageID)
+        bindCommonTable("Select", spin_invest_money, 43,iLanguageID)
+        bindCommonTable("Select", spin_awareness_market, 44,iLanguageID)
 
 
     }
 
+
+    private fun checkValidation():Int{
+        var value = 1
+     if (spin_min_age_limit.selectedItemPosition == 0) {
+        validate!!.CustomAlertSpinner(
+            this,
+            spin_min_age_limit,
+            resources.getString(R.string.psy_plz_ans_min_age)
+        )
+        value = 0
+
+    } else if (spin_educ_applicant.selectedItemPosition == 0) {
+         validate!!.CustomAlertSpinner(
+             this,
+             spin_educ_applicant,
+             resources.getString(R.string.psy_plz_ans_applicat_edu)
+         )
+         value = 0
+     }  else if (spin_socially_category.selectedItemPosition == 0) {
+         validate!!.CustomAlertSpinner(
+             this,
+             spin_socially_category,
+             resources.getString(R.string.psy_plz_ans_socily_cate)
+         )
+         value = 0
+     }  else if (spin_economic_category.selectedItemPosition == 0) {
+         validate!!.CustomAlertSpinner(
+             this,
+             spin_economic_category,
+             resources.getString(R.string.psy_plz_ans_econmic_cate)
+         )
+         value = 0
+     }else if (spin_emp_category.selectedItemPosition == 0) {
+         validate!!.CustomAlertSpinner(
+             this,
+             spin_emp_category,
+             resources.getString(R.string.psy_plz_ans_epm_cate)
+         )
+         value = 0
+     }else if (spin_year_exp.selectedItemPosition == 0) {
+         validate!!.CustomAlertSpinner(
+             this,
+             spin_year_exp,
+             resources.getString(R.string.psy_plz_ans_yrs_exp)
+         )
+         value = 0
+     }
+     else if (spin_stage_emp.selectedItemPosition == 0) {
+         validate!!.CustomAlertSpinner(
+             this,
+             spin_stage_emp,
+             resources.getString(R.string.psy_plz_ans_stage_epm)
+         )
+         value = 0
+     }else if (spin_size_investment.selectedItemPosition == 0) {
+         validate!!.CustomAlertSpinner(
+             this,
+             spin_size_investment,
+             resources.getString(R.string.psy_plz_ans_size_invest)
+         )
+         value = 0
+     }else if (spin_invest_money.selectedItemPosition == 0) {
+         validate!!.CustomAlertSpinner(
+             this,
+             spin_invest_money,
+             resources.getString(R.string.psy_plz_ans_willgns_invest)
+         )
+         value = 0
+     }else if (spin_awareness_market.selectedItemPosition == 0) {
+         validate!!.CustomAlertSpinner(
+             this,
+             spin_awareness_market,
+             resources.getString(R.string.psy_plz_ans_awrness_emp)
+         )
+         value = 0
+     }
+        return value
+    }
 
 
 
@@ -115,4 +196,10 @@ class PsychometricSecondActivity : BaseActivity(), View.OnClickListener {
 
     }
 
+
+    override fun onBackPressed() {
+        val intent = Intent(this, PsychometricFirstActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }

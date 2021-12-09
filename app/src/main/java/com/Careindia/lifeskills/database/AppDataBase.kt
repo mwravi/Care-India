@@ -9,8 +9,8 @@ import com.careindia.lifeskills.entity.*
 
 @Database(
     entities = [HouseholdProfileEntity::class, IndividualProfileEntity::class, CollectiveEntity::class, CollectiveMemberEntity::class
-        ,MstStateEntity::class,MstDistrictEntity::class,MstZoneEntity::class,MstPanchayat_WardEntity::class,MstLocalityEntity::class,MstLookupEntity::class,MstUserEntity::class],
-    version = 1
+        ,MstStateEntity::class,MstDistrictEntity::class,MstZoneEntity::class,MstPanchayat_WardEntity::class,MstLocalityEntity::class,MstLookupEntity::class,MstUserEntity::class,PrimaryDataEntity::class],
+    version = 2
 )
 
 abstract class AppDataBase : RoomDatabase() {
@@ -25,6 +25,7 @@ abstract class AppDataBase : RoomDatabase() {
     abstract fun mstLocalityDao(): MstLocalityDao
     abstract fun mstLookupDao(): MstLookupDao
     abstract fun mstUserDao(): MstUserDao
+    abstract fun primaryDataDao(): PrimaryDataDao
 
 
     companion object {

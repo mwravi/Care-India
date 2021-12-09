@@ -37,6 +37,12 @@ interface IndividualProfileDao {
     @Query("Select * from tblProfileHH")
     fun gethhProfileData(): LiveData<List<HouseholdProfileEntity>>
 
+    @Query("Select * from tblProfileIndividual where HHCode=:hhcode")
+    fun getallhhProfiledata(hhcode: String):  LiveData<List<IndividualProfileEntity>>
+
+    @Query("Select * from tblProfileIndividual where IndvCode=:indvcode")
+    fun getallIdvdata(indvcode: String):  LiveData<List<IndividualProfileEntity>>
+
     @Query("DELETE from tblProfileIndividual where IndGUID=:Guid")
     fun deleteAllData(Guid: String)
     @Query("Select * from tblProfileHH")
@@ -110,5 +116,8 @@ interface IndividualProfileDao {
 
     @Delete
     fun deleteindividualProfiledata(individualProfileEntity: IndividualProfileEntity)
+
+    @Query("Select * from tblProfileIndividual where HHGUID=:hhguid")
+    fun getallIMProfileBYHHGUIDdata(hhguid: String): List<IndividualProfileEntity>
 
 }

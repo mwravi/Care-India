@@ -14,6 +14,8 @@ import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
+import kotlinx.android.synthetic.main.activity_improfile_two.*
+import kotlinx.android.synthetic.main.activity_psychometric_second.*
 import kotlinx.android.synthetic.main.activity_psychometric_third.*
 import kotlinx.android.synthetic.main.activity_psychometric_third.btn_prev
 import kotlinx.android.synthetic.main.activity_psychometric_third.btn_save
@@ -65,9 +67,11 @@ class PsychometricThirdActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.btn_save -> {
-                var intent = Intent(this, HomeDashboardActivity::class.java)
-                startActivity(intent)
-                finish()
+                if (checkValidation() == 1) {
+                    var intent = Intent(this, HomeDashboardActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
             }
 
             R.id.btn_prev -> {
@@ -82,12 +86,12 @@ class PsychometricThirdActivity : BaseActivity(), View.OnClickListener {
 
 
     fun fillSpinner(){
-        bindCommonTable("Select", spin_evaluate_risk, 7,iLanguageID)
-        bindCommonTable("Select", spin_income_gen_prefer, 7,iLanguageID)
-        bindCommonTable("Select", spin_staff_required_prefer, 7,iLanguageID)
-        bindCommonTable("Select", spin_women_entrepreneurs, 7,iLanguageID)
-        bindCommonTable("Select", spin_requires_financial, 7,iLanguageID)
-        bindCommonTable("Select", spin_willingness_invest, 7,iLanguageID)
+        bindCommonTable("Select", spin_evaluate_risk, 45,iLanguageID)
+        bindCommonTable("Select", spin_income_gen_prefer, 46,iLanguageID)
+        bindCommonTable("Select", spin_staff_required_prefer, 47,iLanguageID)
+        bindCommonTable("Select", spin_women_entrepreneurs, 48,iLanguageID)
+        bindCommonTable("Select", spin_requires_financial, 49,iLanguageID)
+        bindCommonTable("Select", spin_willingness_invest, 50,iLanguageID)
 
 
     }
@@ -97,17 +101,79 @@ class PsychometricThirdActivity : BaseActivity(), View.OnClickListener {
             this,
             multiCheck_areas_succes_entrep,
             mstLookupViewModel,
-            9,
+            51,
             1,
             et_specifyareas_succes_entrep,
             lay_specify_areas_succes_entrep
         )
     }
 
+    private fun checkValidation():Int{
+        var value = 1
+
+        if (spin_evaluate_risk.selectedItemPosition == 0) {
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_evaluate_risk,
+                resources.getString(R.string.psy_plz_ans_idea_buss)
+            )
+            value = 0
+
+        } else if (spin_income_gen_prefer.selectedItemPosition == 0) {
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_income_gen_prefer,
+                resources.getString(R.string.psy_plz_ans_income_day)
+            )
+            value = 0
+        }else if (spin_staff_required_prefer.selectedItemPosition == 0) {
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_staff_required_prefer,
+                resources.getString(R.string.psy_plz_ans_income_gen)
+            )
+            value = 0
+        }else if (spin_women_entrepreneurs.selectedItemPosition == 0) {
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_women_entrepreneurs,
+                resources.getString(R.string.psy_plz_ans_women_entrprenur)
+            )
+            value = 0
+        }else if (spin_requires_financial.selectedItemPosition == 0) {
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_requires_financial,
+                resources.getString(R.string.psy_plz_ans_financial_entrprenur)
+            )
+            value = 0
+        }else if (spin_willingness_invest.selectedItemPosition == 0) {
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_willingness_invest,
+                resources.getString(R.string.psy_plz_ans_willngness_potential)
+            )
+            value = 0
+        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(multiCheck_areas_succes_entrep).isEmpty()) {
+        validate!!.CustomAlert(
+            this,
+            resources.getString(R.string.psy_plz_ans_area_capacity)
+        )
+        value = 0
+
+    } else if (et_specifyareas_succes_entrep.text.toString().length==0 && et_specifyareas_succes_entrep.visibility==View.VISIBLE) {
+        validate!!.CustomAlertEdit(
+            this,
+            et_specifyareas_succes_entrep,
+            resources.getString(R.string.psy_plz_ans_area_specify)
+        )
+        value = 0
+
+    }
 
 
-
-
+        return value
+    }
 
     fun bindCommonTable(strValue: String, spin: Spinner, flag: Int, iLanguageID:Int) {
         mstLookupViewModel.getMstUser(flag,iLanguageID).observe(this, androidx.lifecycle.Observer {
@@ -129,6 +195,10 @@ class PsychometricThirdActivity : BaseActivity(), View.OnClickListener {
         })
 
     }
-
+    override fun onBackPressed() {
+        val intent = Intent(this, PsychometricSecondActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 
 }

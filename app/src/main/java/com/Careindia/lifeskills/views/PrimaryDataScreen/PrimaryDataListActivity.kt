@@ -8,13 +8,17 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.careindia.lifeskills.R
+import com.careindia.lifeskills.application.CareIndiaApplication
 import com.careindia.lifeskills.databinding.ActivityPrimaryDataListBinding
 import com.careindia.lifeskills.entity.PrimaryDataEntity
+import com.careindia.lifeskills.repository.PrimaryDataRepository
 import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.PrimaryDataViewModel
+import com.careindia.lifeskills.viewmodelfactory.PrimaryDataViewModelFactory
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.delete_dialog_layout.view.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
@@ -28,7 +32,20 @@ class PrimaryDataListActivity : AppCompatActivity() {
         listBinding = DataBindingUtil.setContentView(this, R.layout.activity_primary_data_list)
         validate= Validate(this)
         tv_title.text = resources.getString(R.string.primary_data_list)
+        val primaryDataDao = CareIndiaApplication.database?.primaryDataDao()!!
+        val primaryDataRepository =
+            PrimaryDataRepository(primaryDataDao)
+        primaryDataViewModel = ViewModelProvider(
+            this,
+            PrimaryDataViewModelFactory(primaryDataRepository)
+        )[PrimaryDataViewModel::class.java]
 
+        listBinding.imgAddList.setOnClickListener {
+            validate!!.SaveSharepreferenceString(AppSP.PDCGUID, "")
+            val intent = Intent(this, PrimaryDataFirstActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
 
         fillRecyclerView()
 
@@ -55,7 +72,7 @@ class PrimaryDataListActivity : AppCompatActivity() {
 
     private fun onItemClicked(primaryDataEntity: PrimaryDataEntity) {
 
-        validate!!.SaveSharepreferenceString(AppSP.HHGUID, primaryDataEntity.PDCGUID!!)
+        validate!!.SaveSharepreferenceString(AppSP.PDCGUID, primaryDataEntity.PDCGUID)
         val intent = Intent(this, PrimaryDataFirstActivity::class.java)
         startActivity(intent)
         finish()

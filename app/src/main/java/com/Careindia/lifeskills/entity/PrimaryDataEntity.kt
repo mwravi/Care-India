@@ -5,8 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-@Entity(tableName = "tblPrimaryData")
-
+@Entity(tableName = "tblPDC")
 data class PrimaryDataEntity(
     @PrimaryKey @ColumnInfo(name = "PDCGUID") val PDCGUID: String,
     @ColumnInfo(name = "IMGUID") val IMGUID: String?="",
@@ -31,7 +30,7 @@ data class PrimaryDataEntity(
     @ColumnInfo(name = "Invest_finance") val Invest_finance: Int?,
     @ColumnInfo(name = "Invest_support") val Invest_support: String,
     @ColumnInfo(name = "Loan_interested") val Loan_interested: Int,
-    @ColumnInfo(name = "Loan_amount") val Loan_iLoan_amountnterested: Int,
+    @ColumnInfo(name = "Loan_amount") val Loan_amount: Int,
     @ColumnInfo(name = "Business_type") val Business_type: String,
     @ColumnInfo(name = "Business_registered") val Business_registered: Int,
     @ColumnInfo(name = "State_selfemp") val State_selfemp: String,

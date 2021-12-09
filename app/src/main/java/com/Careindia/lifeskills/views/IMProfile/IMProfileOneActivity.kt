@@ -171,7 +171,7 @@ class IMProfileOneActivity : BaseActivity(), View.OnClickListener {
 //                    var hhCode =it.get(0).HHCode!!
 
 
-                    //returnposHHcode(hhCode)
+
                     spin_hhid.setSelection(
                         returnposHHcode(
                             validate!!.returnStringValue(it.get(0).HHCode)

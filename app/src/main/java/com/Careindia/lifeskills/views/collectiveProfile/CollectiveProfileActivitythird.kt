@@ -20,10 +20,12 @@ import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.CollectiveMemberViewModel
 import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodelfactory.CollectiveMemberViewModelFactory
+import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_collective_profile_third.img_add
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.collectivetab.*
 import kotlinx.android.synthetic.main.delete_dialog_layout.view.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class CollectiveProfileActivityThird : AppCompatActivity() {
     private lateinit var listbinding: ActivityCollectiveProfileThirdBinding
@@ -49,9 +51,20 @@ class CollectiveProfileActivityThird : AppCompatActivity() {
                     CollectiveMemberViewModel::class.java]
 
         listbinding.lifecycleOwner = this
+        tv_title.text = getString(R.string.collmember)
+        img_setting.setOnClickListener {
+            val intent = Intent(this, HomeDashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         img_add.setOnClickListener {
             validate!!.SaveSharepreferenceString(AppSP.CollectiveMemberGUID, "")
             val intent = Intent(this, CollectiveProfileMemberActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        img_back.setOnClickListener {
+            val intent = Intent(this, CollectiveProfileListActivity::class.java)
             startActivity(intent)
             finish()
         }

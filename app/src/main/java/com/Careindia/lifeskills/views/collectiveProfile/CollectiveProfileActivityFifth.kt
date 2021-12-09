@@ -23,6 +23,7 @@ import com.careindia.lifeskills.viewmodel.CollectiveViewModel
 import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodelfactory.CollectiveViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
+import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_collective_profile_fifth.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.btn_prev
 import kotlinx.android.synthetic.main.buttons_save_cancel.btn_save
@@ -52,8 +53,17 @@ class CollectiveProfileActivityFifth : BaseActivity(), View.OnClickListener {
 
         binding.collectiveViewModel = collectiveViewModel
         binding.lifecycleOwner = this
-        tv_title.text = "Collective Profile"
-
+        tv_title.text = getString(R.string.collprofile)
+        img_setting.setOnClickListener {
+            val intent = Intent(this, HomeDashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        img_back.setOnClickListener {
+            val intent = Intent(this, CollectiveProfileListActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID) != null && validate!!.RetriveSharepreferenceString(
                 AppSP.CollectiveGUID
             )!!.trim().isNotEmpty()

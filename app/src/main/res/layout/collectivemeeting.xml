@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <ScrollView
+        style="@style/ScrolllViewStyle"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_weight="1"
+        android:background="@drawable/box_background"
+        android:scrollbars="none">
+
+        <LinearLayout
+            style="@style/LinearLayoutStyle"
+            android:padding="@dimen/_10sdp">
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_formfillingdate"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/date_of_filling_the_form_profile" />
+
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_date_of_filling"
+                    style="@style/EditTextStyleNew"
+                    android:clickable="false"
+                    android:drawableEnd="@drawable/ic_calender"
+                    android:focusable="false"
+                    android:hint="@string/enter_date"
+                    android:inputType="date" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_crpName"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_crpName"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/name_of_crp_filling" />
+
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_crp_name"
+                    style="@style/EditTextStyleNew"
+                    android:editable="false"
+                    android:enabled="false"
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_sfcName"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/name_of_supervising_care_india" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_sfc_name"
+                    style="@style/EditTextStyleNew"
+                    android:editable="false"
+                    android:enabled="false"
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_group_collective_name"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/meetinggroup" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_group_collective_name"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_unique_id"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/unique_id" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_unique_id"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                    android:enabled="false"
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="11" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_meetingdate"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/dateofmeeting" />
+
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_date_of_meeting"
+                    style="@style/EditTextStyleNew"
+                    android:clickable="false"
+                    android:drawableEnd="@drawable/ic_calender"
+                    android:focusable="false"
+                    android:hint="@string/enter_date"
+                    android:inputType="date" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_place"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/placeofmeeting" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_place"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+            </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                   >
+
+                    <TableRow style="@style/TableRowStyle"
+                        >
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_starttime"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/meetingstarttime" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_starttime"
+                        style="@style/EditTextStyleNew"
+                        android:clickable="false"
+                        android:drawableEnd="@drawable/ic_time"
+                        android:focusable="false"
+                        android:hint="@string/enter_time"
+                        android:inputType="date" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                   >
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_endtime"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/meetingendtime" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_endtime"
+                        style="@style/EditTextStyleNew"
+                        android:clickable="false"
+                        android:drawableEnd="@drawable/ic_time"
+                        android:focusable="false"
+                        android:hint="@string/enter_time"
+                        android:inputType="date" />
+
+                </LinearLayout>
+
+            <LinearLayout
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_purpose"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/purposeofmeeting" />
+                </TableRow>
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_purpose"
+                    style="@style/SpinnerViewNew"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_otherspurpose"
+                style="@style/LinearLayoutStyle"
+                android:visibility="gone">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_others_purpose"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/please_specify_otherspurpose" />
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_others_purpose"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TableRow
+        style="@style/TableRowStyle"
+        android:layout_margin="@dimen/_10sdp">
+
+        <include layout="@layout/buttons_save_cancel" />
+
+    </TableRow>
+
+</LinearLayout>

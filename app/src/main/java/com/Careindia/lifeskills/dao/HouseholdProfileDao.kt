@@ -77,4 +77,7 @@ interface HouseholdProfileDao {
 
     @Query("select Count(HHCode) from tblProfileHH")
     fun getHHCount(): Int
+
+    @Query("select * from tblProfileHH")
+    fun getHHdata(): List<HouseholdProfileEntity>
 }

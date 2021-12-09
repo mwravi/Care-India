@@ -8,6 +8,7 @@ import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.collectiveProfile.CollectiveProfileListActivity
+import com.careindia.lifeskills.views.collectivemeeting.CollectiveMeetingListActivity
 import com.careindia.lifeskills.views.householdscreen.HouseholdProfileListActivity
 import com.careindia.lifeskills.views.improfile.IMProfileListActivity
 import com.careindia.lifeskills.views.primarydatascreen.PrimaryDataListActivity
@@ -34,7 +35,6 @@ class HomeDashboardActivity : BaseActivity(), View.OnClickListener {
         linear_individual.setOnClickListener(this)
         ll_progress.setOnClickListener(this)
         ll_collective.setOnClickListener(this)
-        ll_report.setOnClickListener(this)
 
     }
 
@@ -65,7 +65,7 @@ class HomeDashboardActivity : BaseActivity(), View.OnClickListener {
             }
 
             R.id.ll_collective_meeting -> {
-                val intent = Intent(this, HomeDashboardActivity::class.java)
+                val intent = Intent(this, CollectiveMeetingListActivity::class.java)
                 startActivity(intent)
                 finish()
             }

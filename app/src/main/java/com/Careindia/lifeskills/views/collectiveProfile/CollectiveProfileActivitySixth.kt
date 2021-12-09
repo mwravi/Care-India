@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 import androidx.databinding.BindingAdapter
 import com.careindia.lifeskills.viewmodel.MstLookupViewModel
+import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.collectivetab.*
 
 
@@ -51,8 +52,17 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
 
         binding.collectiveViewModel = collectiveViewModel
         binding.lifecycleOwner = this
-        tv_title.text = "Collective Profile"
-
+        tv_title.text = getString(R.string.collprofile)
+        img_setting.setOnClickListener {
+            val intent = Intent(this, HomeDashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        img_back.setOnClickListener {
+            val intent = Intent(this, CollectiveProfileListActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID) != null && validate!!.RetriveSharepreferenceString(
                 AppSP.CollectiveGUID
             )!!.trim().isNotEmpty()
@@ -110,7 +120,7 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
                 if (checkValidation() == 0) {
                     senddata()
                     collectiveViewModel.updatecollectiveprofileSix()
-                    val intent = Intent(this, CollectiveProfileActivity::class.java)
+                    val intent = Intent(this, CollectiveProfileListActivity::class.java)
                     startActivity(intent)
                     finish()
                 }

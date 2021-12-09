@@ -22,7 +22,6 @@ import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_improfile_third.*
 import kotlinx.android.synthetic.main.activity_improfile_third.btn_prev
 import kotlinx.android.synthetic.main.activity_improfile_third.btn_save
-import kotlinx.android.synthetic.main.activity_improfile_two.*
 import kotlinx.android.synthetic.main.bottomnavigationtab.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
@@ -202,6 +201,8 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
 
 
         imProfileViewModel.IsSecondry.observe(this, Observer {
+
+            validate!!.SaveSharepreferenceInt(AppSP.IsSecondry,it)
             if(it ==1){
                 lay_spin_what_secondary_income.visibility = View.VISIBLE
             }else{

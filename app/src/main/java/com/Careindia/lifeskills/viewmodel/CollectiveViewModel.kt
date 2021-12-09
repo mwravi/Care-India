@@ -137,8 +137,8 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
                     0,
                     0,
                     0,
-                    0, 0,0, 0, 0, 0, "", 0, 0, 0, "", 0,"", 0,0,"", "", 0, 0, "",
-                    0, 0, 0, 0, "", "", "", 0, "", "", 0, "","", "", 0, "", 0, 0
+                    0, 0,-1, -1, 0, -1, "", 0, 0, 0, "", 0,"", -1,0,"", "", -1, 0, "",
+                    0, -1, -1, -1, "", "", "", -1, "", "", -1, "","", "", 0, "", 0, 0
                 )
             )
         } else if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length > 0) {

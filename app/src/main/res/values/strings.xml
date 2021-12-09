@@ -167,6 +167,7 @@
     <string name="forgetpassword"><u>Forgot Password?</u></string>
     <string name="email_address">User Name</string>
     <string name="enter_date">Select Date</string>
+    <string name="enter_time">Select Time</string>
     <string name="previous">Previous</string>
     <string name="q112_what_type_of_collective_group_it_is">Q112. What type of collective/group it is?</string>
 
@@ -429,4 +430,62 @@
     <string name="willingness_invest"><b>3.6. </b>Willingness to invest time for capacity building trainings to be organized by CARE India for potential entrepreneurs?</string>
     <string name="areas_succes_entrep"><b>3.6. </b>Which are the areas where you feel you need capacity building support to become a successful entrepreneur?</string>
     <string name="specify_areas_succes_entrep"><b>3.6a. </b>Please specify others</string>
+    <string name="collmeetinglist">Collective Meeting List</string>
+    <string name="collmeeting">Collective Meeting</string>
+    <string name="collprofile">Collective Profile</string>
+    <string name="collmember">Collective Profile Member</string>
+    <string name="meetinggroup"><b>Q104.</b> Name of your Collective/Sangha/Group</string>
+    <string name="unique_id"><b>Q105.</b> Unique Collective ID</string>
+    <string name="dateofmeeting"><b>Q106.</b> Date of meeting</string>
+    <string name="placeofmeeting"><b>Q107.</b> Place of meeting</string>
+    <string name="meetingstarttime"><b>Q108.</b> Meeting start time </string>
+    <string name="meetingendtime"><b>Q108a.</b> Meeting end time</string>
+    <string name="purposeofmeeting"><b>Q109.</b> Purpose/Objective of the meeting</string>
+    <string name="please_specify_otherspurpose"><b>Q110.</b> Please specify others</string>
+    <string name="totlamembersmeeting"><b>Q111.</b> Total number of members in the group (WP=Waste picker ; NWP=Non-Waste picker)</string>
+    <string name="totlamembersattended"><b>Q112.</b> Total number of members attended the meeting in the group</string>
+    <string name="malewp">Male WP</string>
+    <string name="femalewp">Female WP</string>
+    <string name="transwp">Transgender WP</string>
+    <string name="malenwp">Male NWP</string>
+    <string name="femalenwp">Female NWP</string>
+    <string name="transnwp">Transgender NWP</string>
+
+    <string name="do_you_have_caste_and_income_certificate">Do you have caste and income certificate?</string>
+    <string name="do_you_have_you_business_plan">Do you have you business plan ?</string>
+    <string name="what_is_the_amount_iin_thousands_of_investment_it_requires_in_rs">What is the amount (Iin thousands) of investment it requires (in Rs) ?</string>
+    <string name="are_you_ready_to_invest">Are you ready to invest ?</string>
+    <string name="how_much_you_they_will_invest_more_than">How much you/they will invest ? More than</string>
+    <string name="how_are_you_planning_your_investment">How are you planning your investment ?</string>
+    <string name="any_support_required_in_form_of">Any support required in form of</string>
+    <string name="if_yes_through_which_source">If Yes, through which source</string>
+    <string name="how_much_amount_you_have_invested">How much amount you have invested ?</string>
+    <string name="how_did_you_source_their_investment">How did you source their investment ?</string>
+    <string name="have_you_registered_your_business">Have you registered your business ?</string>
+    <string name="are_you_expecting_any_support">Are you expecting any support</string>
+    <string name="date_of_data_collection">Date of data collection</string>
+    <string name="name_of_the_crp_collecting_the_data">Name of the CRP collecting the data</string>
+    <string name="name_of_the_supervising_officer">Name of the Supervising officer</string>
+
+    <string name="psy_plz_ans_min_age"><b>1.1. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_applicat_edu"><b>1.2. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_socily_cate"><b>1.3. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_econmic_cate"><b>1.4. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_epm_cate"><b>2.1. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_yrs_exp"><b>2.2. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_stage_epm"><b>2.3. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_size_invest"><b>2.4. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_willgns_invest"><b>2.5. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_awrness_emp"><b>2.6. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_idea_buss"><b>3.1. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_income_day"><b>3.2. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_income_gen"><b>3.3. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_women_entrprenur"><b>3.4. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_financial_entrprenur"><b>3.5. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_willngness_potential"><b>3.6. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_area_capacity"><b>3.6. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_area_specify"><b>3.6a. </b>Please answer this question.</string>
+    <string name="psy_plz_select_hhid">Please select the HHID.</string>
+    <string name="psy_plz_select_imid">Please select the IMID.</string>
+
 </resources>

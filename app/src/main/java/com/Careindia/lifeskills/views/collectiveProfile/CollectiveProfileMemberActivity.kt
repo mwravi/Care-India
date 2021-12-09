@@ -21,6 +21,7 @@ import com.careindia.lifeskills.viewmodel.CollectiveMemberViewModel
 import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodelfactory.CollectiveMemberViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
+import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_collection_member.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.btn_prev
 import kotlinx.android.synthetic.main.buttons_save_cancel.btn_save
@@ -51,8 +52,17 @@ class CollectiveProfileMemberActivity : BaseActivity(), View.OnClickListener {
 
         binding.collectiveMemberViewModel = collectiveMemberViewModel
         binding.lifecycleOwner = this
-        tv_title.text = "Collective Profile"
-
+        tv_title.text = getString(R.string.collmember)
+        img_setting.setOnClickListener {
+            val intent = Intent(this, HomeDashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        img_back.setOnClickListener {
+            val intent = Intent(this, CollectiveProfileActivityThird::class.java)
+            startActivity(intent)
+            finish()
+        }
         if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveMemberGUID) != null && validate!!.RetriveSharepreferenceString(
                 AppSP.CollectiveMemberGUID
             )!!.trim().isNotEmpty()
@@ -269,8 +279,10 @@ class CollectiveProfileMemberActivity : BaseActivity(), View.OnClickListener {
         var character_number = collectiveMemberViewModel.getCommunityCount() + 1
 
 
-        var sWardPanchayat = CareIndiaApplication.database?.collectiveDao()?.getPWCode(validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!)
-        var ward_or_panchayat_code = CareIndiaApplication.database?.collectiveDao()?.getPanchayat_Ward(validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!)
+        var sWardPanchayat = CareIndiaApplication.database?.collectiveDao()
+            ?.getPWCode(validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!)
+        var ward_or_panchayat_code = CareIndiaApplication.database?.collectiveDao()
+            ?.getPanchayat_Ward(validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!)
 
         hh_code = cin + sWardPanchayat + getCharacterNumber(
             ward_or_panchayat_code!!,

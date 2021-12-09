@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="individualProfileViewModel"
+            type="com.careindia.lifeskills.viewmodel.IndividualProfileViewModel" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,7 +52,8 @@
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_hhid"
-                        style="@style/SpinnerViewNew" />
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={individualProfileViewModel.PsyHHID}"/>
 
                 </LinearLayout>
 
@@ -70,7 +77,8 @@
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_imid"
-                        style="@style/SpinnerViewNew" />
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={individualProfileViewModel.PsyIMID}"/>
 
                 </LinearLayout>
 
@@ -151,6 +159,13 @@
 
                     </TableRow>
 
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_primary"
+                        style="@style/SpinnerViewNew"
+                        android:visibility="gone"
+                        android:clickable="false"/>
+
+
                     <EditText
                         android:id="@+id/et_primary_occup"
                         style="@style/EditTextStyleNew"
@@ -180,6 +195,13 @@
 
 
                     </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_secondry"
+                        style="@style/SpinnerViewNew"
+                        android:visibility="gone"
+                        android:clickable="false"/>
+
 
                     <EditText
                         android:id="@+id/et_secondry_occup"
@@ -211,6 +233,13 @@
 
                     </TableRow>
 
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_cammunity"
+                        style="@style/SpinnerViewNew"
+                        android:visibility="gone"
+                        android:clickable="false"/>
+
+
                     <EditText
                         android:id="@+id/et_name_community"
                         style="@style/EditTextStyleNew"
@@ -218,6 +247,7 @@
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
                         android:editable="false"
                         android:enabled="false"
+                        android:visibility="visible"
                         android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="20" />

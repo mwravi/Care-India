@@ -18,6 +18,9 @@ import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_improfile_fourth.*
+import kotlinx.android.synthetic.main.activity_improfile_fourth.btn_prev
+import kotlinx.android.synthetic.main.activity_improfile_fourth.btn_save
+import kotlinx.android.synthetic.main.activity_improfile_third.*
 import kotlinx.android.synthetic.main.bottomnavigationtab.*
 
 import kotlinx.android.synthetic.main.toolbar_layout.*
@@ -95,6 +98,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
         applyClickOnView()
         topLayClick()
         fillRadio()
+        hideShowView()
         if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) != null && validate!!.RetriveSharepreferenceString(
                 AppSP.IndividualProfileGUID
             )!!.trim().length > 0
@@ -103,6 +107,18 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
         }
 
 
+    }
+
+    fun hideShowView(){
+       var  it = validate!!.RetriveSharepreferenceInt(AppSP.IsSecondry)
+        if(it ==1){
+            lay_et_days_secondary_job.visibility = View.VISIBLE
+            lay_et_avg_daily_secondry_income.visibility = View.VISIBLE
+
+        }else{
+            lay_et_days_secondary_job.visibility = View.GONE
+            lay_et_avg_daily_secondry_income.visibility = View.GONE
+        }
     }
 
     fun fillRadio() {
@@ -238,34 +254,32 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
     private fun checkValidation(): Int {
         var value = 1
 
-        if (et_days_secondary_job.text.toString().isEmpty()) {
+        if (et_days_secondary_job.text.toString().isEmpty() && lay_et_days_secondary_job.visibility == View.VISIBLE) {
             validate!!.CustomAlertEdit(
                 this,
                 et_days_secondary_job,
                 resources.getString(R.string.plz_select_wrking_days_months)
             )
             value = 0
-        } else if (Integer.parseInt(et_days_secondary_job.text.toString()) < 1 || Integer.parseInt(
+        } else if (lay_et_days_secondary_job.visibility == View.VISIBLE && Integer.parseInt(et_days_secondary_job.text.toString()) < 1 || Integer.parseInt(
                 et_days_secondary_job.text.toString()
-            ) > 29
-        ) {
+            ) > 29) {
             validate!!.CustomAlertEdit(
                 this,
                 et_days_secondary_job,
                 resources.getString(R.string.please_entr_input_months)
             )
             value = 0
-        } else if (et_avg_daily_secondry_income.text.toString().isEmpty()) {
+        } else if (et_avg_daily_secondry_income.text.toString().isEmpty() && lay_et_avg_daily_secondry_income.visibility == View.VISIBLE) {
             validate!!.CustomAlertEdit(
                 this,
                 et_avg_daily_secondry_income,
                 resources.getString(R.string.plz_select_avg_daily_socndry_incm)
             )
             value = 0
-        } else if (Integer.parseInt(et_avg_daily_secondry_income.text.toString()) < 50 || Integer.parseInt(
+        } else if (lay_et_avg_daily_secondry_income.visibility == View.VISIBLE && Integer.parseInt(et_avg_daily_secondry_income.text.toString()) < 50 || Integer.parseInt(
                 et_avg_daily_secondry_income.text.toString()
-            ) > 9999
-        ) {
+            ) > 9999) {
             validate!!.CustomAlertEdit(
                 this,
                 et_avg_daily_secondry_income,

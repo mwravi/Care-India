@@ -44,7 +44,16 @@ class CollectiveProfileListActivity : AppCompatActivity() {
                     CollectiveViewModel::class.java]
 
         listbinding.lifecycleOwner = this
-
+        img_setting.setOnClickListener {
+            val intent = Intent(this, HomeDashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        img_back.setOnClickListener {
+            val intent = Intent(this, HomeDashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         img_add.setOnClickListener {
             validate!!.SaveSharepreferenceString(AppSP.CollectiveGUID, "")
             validate!!.SaveSharepreferenceString(AppSP.CollectiveMemberGUID, "")

@@ -38,6 +38,8 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
     val CrpName = MutableLiveData<String>()
     val SuperverCor = MutableLiveData<String>()
     val district = MutableLiveData<Int>()
+    val PsyHHID = MutableLiveData<Int>()
+    val PsyIMID = MutableLiveData<Int>()
     val zone = MutableLiveData<Int>()
     val ward = MutableLiveData<Int>()
     val panchayat = MutableLiveData<Int>()
@@ -89,10 +91,6 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
 //            var statePos = State.value
 //
 //        }
-    }
-
-    fun getSaleVisibility(): Int {
-        return if (9 == 10) VISIBLE else GONE
     }
 
     var canRead = 0
@@ -232,7 +230,6 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
             //save to appsp
             insert(
                 IndividualProfileEntity(
-                    0,
                     imProfileGuid,
                     "",
                     "",
@@ -608,5 +605,14 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
     fun getMstDist(StateCode: Int): List<MstDistrictEntity> {
         return imProfileRepository.getMstDist(StateCode)
     }
+
+    fun getallhhProfiledata(hhcode: String): LiveData<List<IndividualProfileEntity>> {
+        return imProfileRepository.getallhhProfiledata(hhcode)
+    }
+    fun getallIdvdata(idvcode: String): LiveData<List<IndividualProfileEntity>> {
+        return imProfileRepository.getallIdvdata(idvcode)
+    }
+
+
 }
 

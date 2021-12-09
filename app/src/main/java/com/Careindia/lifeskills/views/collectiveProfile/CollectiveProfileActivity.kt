@@ -26,6 +26,7 @@ import com.careindia.lifeskills.viewmodel.MstDistrictViewModel
 import com.careindia.lifeskills.viewmodel.MstPanchayatWardViewModel
 import com.careindia.lifeskills.viewmodel.MstZoneViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
+import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_collective_profile_first.*
 import kotlinx.android.synthetic.main.activity_collective_profile_first.btn_prev
 import kotlinx.android.synthetic.main.activity_collective_profile_first.btn_save
@@ -71,8 +72,17 @@ class CollectiveProfileActivity : BaseActivity(), View.OnClickListener {
         binding.collectiveViewModel = collectiveViewModel
         binding.lifecycleOwner = this
 
-        tv_title.text = "Collective Profile"
-
+        tv_title.text = getString(R.string.collprofile)
+        img_setting.setOnClickListener {
+            val intent = Intent(this, HomeDashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+        img_back.setOnClickListener {
+            val intent = Intent(this, CollectiveProfileListActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
         if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID) != null && validate!!.RetriveSharepreferenceString(
                 AppSP.CollectiveGUID
             )!!.trim().isNotEmpty()

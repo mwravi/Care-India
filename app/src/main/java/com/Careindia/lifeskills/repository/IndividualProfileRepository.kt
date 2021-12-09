@@ -21,6 +21,12 @@ class IndividualProfileRepository(
 //    }
 
 
+    fun getallhhProfiledata(hhcode: String):  LiveData<List<IndividualProfileEntity>> {
+        return imProfileDao.getallhhProfiledata(hhcode)
+    }
+ fun getallIdvdata(idvcode: String):  LiveData<List<IndividualProfileEntity>> {
+        return imProfileDao.getallIdvdata(idvcode)
+    }
 
     fun getallProfiledata(): LiveData<List<IndividualProfileEntity>> {
         return imProfileDao.getallIMProfiledata()
