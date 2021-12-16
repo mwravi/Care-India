@@ -2,8 +2,12 @@ package com.careindia.lifeskills.views.householdscreen
 
 import  android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.view.View.VISIBLE
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
@@ -22,6 +26,7 @@ import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.*
 import com.careindia.lifeskills.viewmodelfactory.HouseholdProfileViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
+import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_household_profile_first.*
 import kotlinx.android.synthetic.main.activity_household_profile_first.btn_prev
 import kotlinx.android.synthetic.main.activity_household_profile_first.btn_save
@@ -46,37 +51,49 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
     val UniqueID = MutableLiveData<String>()
     val district = MutableLiveData<Int>()
     val zone = MutableLiveData<Int>()
-    var disCode=0
-    var zonCode=0
-   // 1) "CIN" for CARE India
-  //  2) Letter locality identifier- "W" for ward and "P" for panchayat.
-   // 3) Character number for Ward or Panchayat code.
-   // 4) Letter community identifier- "HH" for HouseHold.
-  //  5) Character number for household code.
+    var disCode = 0
+    var zonCode = 0
+
+    // 1) "CIN" for CARE India
+    //  2) Letter locality identifier- "W" for ward and "P" for panchayat.
+    // 3) Character number for Ward or Panchayat code.
+    // 4) Letter community identifier- "HH" for HouseHold.
+    //  5) Character number for household code.
     //CINW001HH00001
     //CINP001HH00003
-    var iLangiageID=0
-    var ZoneCode=0
-    var DistCode=0
-    var WardCode=0
-    var PanchayatCode=0
-    var sWardPanchayat=""
-    var ScreenCheck=-1
+    var iLangiageID = 0
+    var ZoneCode = 0
+    var DistCode = 0
+    var WardCode = 0
+    var PanchayatCode = 0
+    var sWardPanchayat = ""
+    var ScreenCheck = -1
+    var hh_code_starting = ""
+    var iShow=0
+
+    var initials = ""
+    var CommInitials = ""
+    var isUrban = 0
+    var Ward1 = 0
+    var Panchayat1 = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_household_profile_first)
         instance = AppDataBase.getDatabase(this)
-        validate= Validate(this)
-        iLangiageID=validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
+        validate = Validate(this)
+        iLangiageID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
 
-       val hhdao = CareIndiaApplication.database?.hhProfileDao()!!
+        val hhdao = CareIndiaApplication.database?.hhProfileDao()!!
 
-       val mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()!!
+        val mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()!!
 
-        val hhRepository = HouseholdProfileRepository(hhdao,mstDistrictDao)
+        val hhRepository = HouseholdProfileRepository(hhdao, mstDistrictDao)
         householdProfileViewModel =
-            ViewModelProvider(this,
-                HouseholdProfileViewModelFactory(hhRepository))[HouseholdProfileViewModel::class.java]
+            ViewModelProvider(
+                this,
+                HouseholdProfileViewModelFactory(hhRepository)
+            )[HouseholdProfileViewModel::class.java]
         binding.householdProfileViewModel = householdProfileViewModel
         binding.lifecycleOwner = this
         tv_title.text = "Household Profile"
@@ -92,12 +109,22 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
             ViewModelProviders.of(this).get(MstLookupViewModel::class.java)
         mstPanchayatWardViewModel =
             ViewModelProviders.of(this).get(MstPanchayatWardViewModel::class.java)
+        var hhmax = householdProfileViewModel.getHHCount() + 1
+        et_last_code.setHint(
+            resources.getString(R.string.type_here) + getCharacterNumber(
+                hhmax,
+                "00000"
+            )
+        )
 
         initializeController()
         bottomclick()
         fillSpinner()
         hideview()
-        if(validate!!.RetriveSharepreferenceString(AppSP.HHGUID) !=null && validate!!.RetriveSharepreferenceString(AppSP.HHGUID)!!.trim().length>0) {
+        if (validate!!.RetriveSharepreferenceString(AppSP.HHGUID) != null && validate!!.RetriveSharepreferenceString(
+                AppSP.HHGUID
+            )!!.trim().length > 0
+        ) {
             showLiveData()
         }
 
@@ -107,10 +134,29 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
                 et_formfillingDate
             )
         }
+        et_last_code.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length != 0) et_hh_unique_id.setText(
+                    hh_code_starting + getCharacterNumber(
+                        validate!!.returnIntegerValue(et_last_code.text.toString()),
+                        "00000"
+                    )
+                )
+            }
+        })
     }
 
-    fun bottomclick()
-    {
+    fun bottomclick() {
         lay_first.setBackgroundColor(resources.getColor(R.color.color_darkgrey))
         lay_secnd.setBackgroundColor(resources.getColor(R.color.back))
         ll_third.setBackgroundColor(resources.getColor(R.color.back))
@@ -121,19 +167,31 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
             finish()
         }
         lay_secnd.setOnClickListener {
-           if (validate!!.RetriveSharepreferenceString(AppSP.HHGUID)!!.length>0) {
-               val intent = Intent(this, HouseholdProfileSecondActivity::class.java)
-               startActivity(intent)
-               finish()
-           }
+            if (validate!!.RetriveSharepreferenceString(AppSP.HHGUID)!!.length > 0) {
+                val intent = Intent(this, HouseholdProfileSecondActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
 
         ll_third.setOnClickListener {
-            if (validate!!.RetriveSharepreferenceString(AppSP.HHGUID)!!.length>0  && ScreenCheck>=0) {
+            if (validate!!.RetriveSharepreferenceString(AppSP.HHGUID)!!.length > 0 && ScreenCheck >= 0) {
                 val intent = Intent(this, HouseholdProfileThirdActivity::class.java)
                 startActivity(intent)
                 finish()
             }
+        }
+
+        img_back.setOnClickListener {
+            val intent = Intent(this, HouseholdProfileListActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        img_setting.setOnClickListener {
+            val intent = Intent(this, HomeDashboardActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 
@@ -142,24 +200,32 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
         val idvProfileGuid = validate!!.RetriveSharepreferenceString(AppSP.HHGUID)
         if (idvProfileGuid != null) {
             householdProfileViewModel.gethhdatabyGuid(idvProfileGuid).observe(this, Observer {
-                if (it != null && it.size>0) {
+                if (it != null && it.size > 0) {
                     et_formfillingDate.setText(validate!!.returnStringValue(it.get(0).Dateform))
                     et_hhName.setText(validate!!.returnStringValue(it.get(0).Name))
-                    et_localityname.setText(validate!!.returnStringValue(it.get(0).Localitycode))
+                    et_localityname.setText(validate!!.returnStringValue(it.get(0).Locality))
                     et_hh_unique_id.setText(validate!!.returnStringValue(it.get(0).HHCode))
 
                     //spin_name_crp.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).DistrictCode),41))
                     //spin_SupervisingFC.setSelection(returnpos(validate!!.returnIntegerValue(it.get(0).DistrictCode),42))
-                    et_crp_name.setText(it.get(0).Crpid)
-                    et_sfc_name.setText(it.get(0).fcid)
-                    spin_districtname.setSelection(returnposDistrict(validate!!.returnIntegerValue(it.get(0).DistrictCode)))
-                    DistCode=validate!!.returnIntegerValue(it.get(0).DistrictCode)
-                    ZoneCode=validate!!.returnIntegerValue(it.get(0).ZoneCode)
-                    WardCode=it.get(0).Panchayat_Ward!!
-                    PanchayatCode=validate!!.returnIntegerValue(it.get(0).PWCode)
+                    et_crp_name.setText(validate!!.RetriveSharepreferenceString(AppSP.CRPID_Name))
+                    et_sfc_name.setText(validate!!.RetriveSharepreferenceString(AppSP.CRPID_Name))
+                    spin_districtname.setSelection(returnposDistrict(it.get(0).DistrictCode))
+                    DistCode = it.get(0).DistrictCode!!
+                    ZoneCode = it.get(0).ZoneCode!!
                     //spin_panchayatname.setSelection(validate!!.returnpos(validate!!.returnIntegerValue(it.get(0).PWCode),mstCommonViewModel,6))
-                    validate!!.SetAnswerTypeRadioButton(rg_hh_sex,it.get(0).Gender)
-                    ScreenCheck=it.get(0).No_adults!!
+                    validate!!.SetAnswerTypeRadioButton(rg_hh_sex, it.get(0).Gender)
+                    ScreenCheck = it.get(0).No_adults!!
+                    et_last_code.visibility = View.GONE
+                    WardCode=it.get(0).Panchayat_Ward!!
+                    PanchayatCode=it.get(0).Panchayat_Ward!!
+                    CommInitials = it.get(0).Initials
+                    if (CommInitials.equals("C")) {
+                        spin_community_hh.setSelection(1)
+                    } else if(CommInitials.equals("D")){
+                        spin_community_hh.setSelection(2)
+                    }
+                    iShow=1
 
 
                 }
@@ -183,7 +249,7 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
         when (view?.id) {
             R.id.btn_save -> {
                 if (CheckValidation() == 0) {
-                    householdProfileViewModel.saveandUpdateHHProfile(this)
+                    householdProfileViewModel.saveandUpdateHHProfile(this,initials)
                     val intent = Intent(this, HouseholdProfileSecondActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -199,9 +265,7 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
     }
 
 
-
     fun fillSpinner() {
-
 
 
         validate!!.fillradio(
@@ -210,45 +274,49 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
             -1,
             mstLookupViewModel,
             1,
-            iLangiageID)
+            iLangiageID
+        )
 
 
 
-        bindDistrict(resources.getString(R.string.select),spin_districtname)
-
-
-
+        bindDistrict(resources.getString(R.string.select), spin_districtname)
+        bindCommunity(resources.getString(R.string.select), spin_community_hh)
 
 
     }
 
-    fun hideview()
-    {
+    fun hideview() {
         householdProfileViewModel.district.observe(this, Observer {
             Log.i("MYTAGTWO", it.toString())
-            var districtCode = it
-            if (districtCode>0)
-            {
-                var isUrban=returnUrban_rural(districtCode,10)
-                 disCode=returnDistrictID(districtCode,10)
-                if (isUrban==1)
-                {
-                    lay_NameofZone.visibility=View.VISIBLE
-                    lay_bbmpName.visibility=View.VISIBLE
-                    sWardPanchayat="W"
-                    lay_panchayatName.visibility=View.GONE
+            val districtCode = it
+            if (districtCode > 0) {
+                val isUrban = returnUrban_rural(districtCode, 10)
+                disCode = returnDistrictID(districtCode, 10)
+                if (isUrban == 1) {
+                    lay_NameofZone.visibility = View.VISIBLE
+                    lay_bbmpName.visibility = View.VISIBLE
+                    sWardPanchayat = "W"
+                    lay_panchayatName.visibility = View.GONE
                     spin_panchayatname.setSelection(0)
-                    bindMstZone(resources.getString(R.string.select),spin_zone,disCode)
-                    spin_zone.setSelection(returnposZone(ZoneCode,DistCode))
-                } else
-                {
-                    lay_NameofZone.visibility=View.GONE
+                    bindMstZone(resources.getString(R.string.select), spin_zone, disCode)
+                    spin_zone.setSelection(returnposZone(ZoneCode, DistCode))
+                } else if (isUrban == 2) {
+                    lay_NameofZone.visibility = View.GONE
                     spin_zone.setSelection(0)
-                    spin_zone.visibility=View.GONE
+                    spin_zone.visibility = View.GONE
                     spin_bbmp.setSelection(0)
-                    lay_panchayatName.visibility=View.VISIBLE
-                    sWardPanchayat="P"
-                    bindPanchayat(resources.getString(R.string.select),spin_panchayatname,disCode)
+                    lay_panchayatName.visibility = View.VISIBLE
+                    sWardPanchayat = "P"
+                    bindPanchayat(resources.getString(R.string.select), spin_panchayatname, disCode)
+                    spin_panchayatname.setSelection(returnposPanchayat(WardCode,disCode))
+                } else {
+                    lay_NameofZone.visibility = View.GONE
+                    lay_bbmpName.visibility = View.GONE
+                    lay_panchayatName.visibility = View.GONE
+                    spin_bbmp.setSelection(0)
+                    spin_zone.setSelection(0)
+                    spin_panchayatname.setSelection(0)
+
                 }
 
             }
@@ -257,45 +325,44 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
         })
 
 
+        /*  spin_districtname.setOnItemSelectedListener(object :
+              AdapterView.OnItemSelectedListener {
 
-      /*  spin_districtname.setOnItemSelectedListener(object :
-            AdapterView.OnItemSelectedListener {
+              override fun onItemSelected(
+                  parent: AdapterView<*>, view: View?,
+                  position: Int, id: Long
+              ) {
+                  if (position>0)
+                  {
+                      var isUrban=returnUrban_rural(position,10)
+                      disCode=returnDistrictID(position,10)
+                      if (isUrban==1)
+                      {
+                          lay_NameofZone.visibility=View.VISIBLE
+                          lay_bbmpName.visibility=View.VISIBLE
+                          lay_panchayatName.visibility=View.GONE
+                          spin_panchayatname.setSelection(0)
+                          bindMstZone(resources.getString(R.string.select),spin_zone,disCode)
+                      } else
+                      {
+                          lay_NameofZone.visibility=View.GONE
+                          spin_districtname.setSelection(0)
+                          lay_bbmpName.visibility=View.GONE
+                          spin_zone.setSelection(0)
+                          lay_panchayatName.visibility=View.VISIBLE
+                          bindPanchayat(resources.getString(R.string.select),spin_zone,disCode)
+                      }
 
-            override fun onItemSelected(
-                parent: AdapterView<*>, view: View?,
-                position: Int, id: Long
-            ) {
-                if (position>0)
-                {
-                    var isUrban=returnUrban_rural(position,10)
-                    disCode=returnDistrictID(position,10)
-                    if (isUrban==1)
-                    {
-                        lay_NameofZone.visibility=View.VISIBLE
-                        lay_bbmpName.visibility=View.VISIBLE
-                        lay_panchayatName.visibility=View.GONE
-                        spin_panchayatname.setSelection(0)
-                        bindMstZone(resources.getString(R.string.select),spin_zone,disCode)
-                    } else
-                    {
-                        lay_NameofZone.visibility=View.GONE
-                        spin_districtname.setSelection(0)
-                        lay_bbmpName.visibility=View.GONE
-                        spin_zone.setSelection(0)
-                        lay_panchayatName.visibility=View.VISIBLE
-                        bindPanchayat(resources.getString(R.string.select),spin_zone,disCode)
-                    }
-
-                }
+                  }
 
 
-            }
+              }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // TODO Auto-generated method stub
+              override fun onNothingSelected(parent: AdapterView<*>) {
+                  // TODO Auto-generated method stub
 
-            }
-        })*/
+              }
+          })*/
 
 
 
@@ -303,11 +370,10 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
         householdProfileViewModel.zone.observe(this, Observer {
             Log.i("MYTAGTWO", it.toString())
             val zonePos = it
-            if (zonePos>0)
-            {
-                zonCode=returnZoneID(zonePos,disCode)
-                bindMstWard(resources.getString(R.string.select),spin_bbmp,zonCode)
-                spin_bbmp.setSelection(returnposWard(WardCode,ZoneCode))
+            if (zonePos > 0) {
+                zonCode = returnZoneID(zonePos, disCode)
+                bindMstWard(resources.getString(R.string.select), spin_bbmp, zonCode)
+                spin_bbmp.setSelection(returnposWard(WardCode, ZoneCode))
 
 
             }
@@ -318,17 +384,15 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
         householdProfileViewModel.ward.observe(this, Observer {
             Log.i("MYTAGTWO", it.toString())
             val wardPos = it
-            if (wardPos>0)
-            {
+            if (wardPos > 0) {
                 val Ward1: Int = returnWardID(
                     wardPos,
                     zonCode
                 )
-                if (WardCode==0)
-                {
+                if (WardCode == 0) {
                     et_hh_unique_id.setText(getHHCode(Ward1))
+                    et_last_code.isEnabled=true
                 }
-
 
             }
 
@@ -338,23 +402,48 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
         householdProfileViewModel.panchayat.observe(this, Observer {
             Log.i("MYTAGTWO", it.toString())
             val panchayatPos = it
-            if (panchayatPos>0)
-            {
+            if (panchayatPos > 0) {
                 val Panchayat1: Int = returnPanchayatID(
                     panchayatPos,
                     disCode
                 )
-                if (PanchayatCode==0)
-                {
+                if (PanchayatCode == 0) {
                     et_hh_unique_id.setText(getHHCode(Panchayat1))
+                    et_last_code.isEnabled=true
                 }
-
 
 
             }
 
 
         })
+
+        spin_community_hh.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long
+            ) {
+                if (position == 1) {
+                    initials = "C"
+                } else if (position == 2) {
+                    initials = "D"
+                }
+                if (CommInitials.equals("")) {
+                    if (isUrban == 1) {
+                        et_hh_unique_id.setText(getHHCode(Ward1))
+                    } else {
+                        et_hh_unique_id.setText(getHHCode(Panchayat1))
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // another interface callback
+            }
+        }
+
     }
 
     fun returnUrban_rural(pos: Int?, StateCode: Int): Int {
@@ -443,10 +532,11 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
     }
 
 
-
-
     fun CheckValidation(): Int {
         var iValue = 0
+
+        val iCount=householdProfileViewModel.getIndividualID(et_hh_unique_id.text.toString())
+
         if (et_formfillingDate.text.toString().length == 0) {
             iValue = 1
             validate!!.CustomAlertEdit(
@@ -475,21 +565,21 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
                 spin_districtname,
                 resources.getString(R.string.please_select) + " " + resources.getString(R.string.Name_of_distric),
             )
-        } else if (spin_zone.selectedItemPosition == 0 && lay_NameofZone.visibility==View.VISIBLE) {
+        } else if (spin_zone.selectedItemPosition == 0 && lay_NameofZone.visibility == View.VISIBLE) {
             iValue = 1
             validate!!.CustomAlertSpinner(
                 this,
                 spin_zone,
                 resources.getString(R.string.please_select) + " " + resources.getString(R.string.Name_of_zone),
             )
-        } else if (spin_bbmp.selectedItemPosition == 0 && lay_bbmpName.visibility==View.VISIBLE) {
+        } else if (spin_bbmp.selectedItemPosition == 0 && lay_bbmpName.visibility == View.VISIBLE) {
             iValue = 1
             validate!!.CustomAlertSpinner(
                 this,
                 spin_bbmp,
                 resources.getString(R.string.please_select) + " " + resources.getString(R.string.Name_of_bbmp_ward),
             )
-        } else if (spin_panchayatname.selectedItemPosition == 0 && lay_panchayatName.visibility==View.VISIBLE) {
+        } else if (spin_panchayatname.selectedItemPosition == 0 && lay_panchayatName.visibility == View.VISIBLE) {
             iValue = 1
             validate!!.CustomAlertSpinner(
                 this,
@@ -503,31 +593,34 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
                 et_localityname,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q108_name_of_locality),
             )
-        } else if (et_hh_unique_id.text.toString().length == 0) {
+        } else if (et_last_code.text.toString().length == 0 && et_last_code.visibility==VISIBLE) {
             iValue = 1
-            validate!!.CustomAlertEdit(
+            validate!!.CustomAlert(
                 this,
-                et_hh_unique_id,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.hhh_unique_id),
             )
-        } /*else if (et_hh_unique_id.text.toString().length != 14) {
+        } else if (iCount>0 && iShow==0) {
             iValue = 1
-            validate!!.CustomAlertEdit(
+            validate!!.CustomAlert(
                 this,
-                et_hh_unique_id,
-                resources.getString(R.string.hh_name),
+                getString(R.string.hhidexists),
             )
-        }*/ else if (et_hhName.text.toString().length == 0) {
+        } else if (et_hhName.text.toString().length == 0) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
                 et_hhName,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.hh_name),
             )
+        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_hh_sex) == 0) {
+            iValue = 1
+            validate!!.CustomAlert(
+                this,
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.hh_sex),
+            )
         }
         return iValue
     }
-
 
 
     override fun onBackPressed() {
@@ -535,11 +628,6 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
         startActivity(intent)
         finish()
     }
-
-
-
-
-
 
 
     fun bindDistrict(strValue: String, spin: Spinner) {
@@ -563,98 +651,101 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
 
     }
 
-    fun bindMstZone(strValue: String, spin: Spinner,districtCode:Int) {
-       var zonedata= mstZoneViewModel.getMstZone(districtCode)
-            if (zonedata != null) {
-                val iGen = zonedata.size
-                val name = arrayOfNulls<String>(iGen + 1)
-                name[0] = strValue
+    fun bindMstZone(strValue: String, spin: Spinner, districtCode: Int) {
+        var zonedata = mstZoneViewModel.getMstZone(districtCode)
+        if (zonedata != null) {
+            val iGen = zonedata.size
+            val name = arrayOfNulls<String>(iGen + 1)
+            name[0] = strValue
 
-                for (i in 0 until zonedata.size) {
-                    name[i + 1] = zonedata.get(i).ZoneName
-                }
-                val adapter_category = ArrayAdapter<String>(
-                    this,
-                    R.layout.my_spinner_space_dashboard, name
-                )
-                adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
-                spin.adapter = adapter_category
+            for (i in 0 until zonedata.size) {
+                name[i + 1] = zonedata.get(i).ZoneName
             }
+            val adapter_category = ArrayAdapter<String>(
+                this,
+                R.layout.my_spinner_space_dashboard, name
+            )
+            adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
+            spin.adapter = adapter_category
+        }
 
 
     }
 
 
-    fun bindPanchayat(strValue: String, spin: Spinner,districtCode:Int) {
-       var mstPanchayat = mstPanchayatWardViewModel.getMstPanchayat(districtCode)
-            if (mstPanchayat != null) {
-                val iGen = mstPanchayat.size
-                val name = arrayOfNulls<String>(iGen + 1)
-                name[0] = strValue
+    fun bindPanchayat(strValue: String, spin: Spinner, districtCode: Int) {
+        var mstPanchayat = mstPanchayatWardViewModel.getMstPanchayat(districtCode)
+        if (mstPanchayat != null) {
+            val iGen = mstPanchayat.size
+            val name = arrayOfNulls<String>(iGen + 1)
+            name[0] = strValue
 
-                for (i in 0 until mstPanchayat.size) {
-                    name[i + 1] = mstPanchayat.get(i).PWName
-                }
-                val adapter_category = ArrayAdapter<String>(
-                    this,
-                    R.layout.my_spinner_space_dashboard, name
-                )
-                adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
-                spin.adapter = adapter_category
+            for (i in 0 until mstPanchayat.size) {
+                name[i + 1] = mstPanchayat.get(i).PWName
             }
+            val adapter_category = ArrayAdapter<String>(
+                this,
+                R.layout.my_spinner_space_dashboard, name
+            )
+            adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
+            spin.adapter = adapter_category
+        }
 
 
     }
 
-    fun bindMstWard(strValue: String, spin: Spinner,zoneCode:Int) {
+    fun bindMstWard(strValue: String, spin: Spinner, zoneCode: Int) {
 
-        var mstWard=mstPanchayatWardViewModel.getMstWard(zoneCode)
-            if (mstWard != null) {
-                val iGen = mstWard.size
-                val name = arrayOfNulls<String>(iGen + 1)
-                name[0] = strValue
+        var mstWard = mstPanchayatWardViewModel.getMstWard(zoneCode)
+        if (mstWard != null) {
+            val iGen = mstWard.size
+            val name = arrayOfNulls<String>(iGen + 1)
+            name[0] = strValue
 
-                for (i in 0 until mstWard.size) {
-                    name[i + 1] = mstWard.get(i).PWName
-                }
-                val adapter_category = ArrayAdapter<String>(
-                    this,
-                    R.layout.my_spinner_space_dashboard, name
-                )
-                adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
-                spin.adapter = adapter_category
+            for (i in 0 until mstWard.size) {
+                name[i + 1] = mstWard.get(i).PWName
             }
+            val adapter_category = ArrayAdapter<String>(
+                this,
+                R.layout.my_spinner_space_dashboard, name
+            )
+            adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
+            spin.adapter = adapter_category
+        }
 
 
     }
 
 
+    fun fillSpinner(
+        strValue: String, spin: Spinner,
+        flag: Int,
+        iLanguageID: Int
+    ) {
+        mstLookupViewModel!!.getMstLookup(flag, iLanguageID)
+            .observe(this, androidx.lifecycle.Observer {
+                if (it != null) {
+                    val iGen = it.size
+                    val name = arrayOfNulls<String>(iGen + 1)
+                    name[0] = strValue
 
-    fun fillSpinner(strValue: String, spin: Spinner,
-                    flag:Int,
-                    iLanguageID:Int) {
-        mstLookupViewModel!!.getMstLookup(flag,iLanguageID).observe(this, androidx.lifecycle.Observer {
-            if (it != null) {
-                val iGen = it.size
-                val name = arrayOfNulls<String>(iGen + 1)
-                name[0] = strValue
-
-                for (i in 0 until it.size) {
-                    name[i + 1] = it.get(i).Description
+                    for (i in 0 until it.size) {
+                        name[i + 1] = it.get(i).Description
+                    }
+                    val adapter_category = ArrayAdapter<String>(
+                        this,
+                        R.layout.my_spinner_space_dashboard, name
+                    )
+                    adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
+                    spin.adapter = adapter_category
                 }
-                val adapter_category = ArrayAdapter<String>(
-                    this,
-                    R.layout.my_spinner_space_dashboard, name
-                )
-                adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
-                spin.adapter = adapter_category
-            }
-        })
+            })
 
     }
 
     fun returnposDistrict(
-        id: Int?): Int {
+        id: Int?
+    ): Int {
         var data: List<MstDistrictEntity>? = null
         data =
             mstDistrictViewModel.getMstDistrict(10)
@@ -671,7 +762,8 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
     }
 
     fun returnposZone(
-        id: Int?,distCode: Int): Int {
+        id: Int?, distCode: Int
+    ): Int {
         var data: List<MstZoneEntity>? = null
         data =
             mstZoneViewModel.getMstZone(distCode)
@@ -687,7 +779,7 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
         return pos
     }
 
-    fun returnposWard(id: Int?,zoneCode: Int): Int {
+    fun returnposWard(id: Int?, zoneCode: Int): Int {
         var data: List<MstPanchayat_WardEntity>? = null
         data =
             mstPanchayatWardViewModel.getMstWard(zoneCode)
@@ -704,37 +796,69 @@ class HouseholdProfileFirstActivity : BaseActivity(), View.OnClickListener {
     }
 
 
-   /* fun sendData() {
-        householdProfileViewModel.hhfirstData(
-            returnDistrictID(spin_districtname.selectedItemPosition,10),
-            returnZoneID(spin_zone.selectedItemPosition,disCode),
-            return(spin_zone.selectedItemPosition,disCode),
-            validate!!.GetAnswerTypeRadioButtonID(rg_member_cig_shg)
-        )
-    }*/
+    /* fun sendData() {
+         householdProfileViewModel.hhfirstData(
+             returnDistrictID(spin_districtname.selectedItemPosition,10),
+             returnZoneID(spin_zone.selectedItemPosition,disCode),
+             return(spin_zone.selectedItemPosition,disCode),
+             validate!!.GetAnswerTypeRadioButtonID(rg_member_cig_shg)
+         )
+     }*/
 
 
-    fun getHHCode(ward_or_panchayat_code:Int): String {
+    fun getHHCode(ward_or_panchayat_code: Int): String {
         var hh_code = ""
         val cin = "CIN"
         val household = "HH"
-        var character_number = householdProfileViewModel.getHHCount()+1
+        var character_number = householdProfileViewModel.getHHCount() + 1
 
-        hh_code = cin + sWardPanchayat + getCharacterNumber(ward_or_panchayat_code,"000" )+ household + getCharacterNumber(
-            character_number,"00000"
-        )
-
+        hh_code =
+            cin + sWardPanchayat + getCharacterNumber(ward_or_panchayat_code, "000") + household+initials
+        hh_code_starting = hh_code
         return hh_code
     }
 
-    fun getCharacterNumber(character_number: Int,pattern:String): String {
+    fun getCharacterNumber(character_number: Int, pattern: String): String {
         val df = DecimalFormat(pattern)
         return df.format(character_number)
 
     }
 
+    fun returnposPanchayat(id: Int?,distCode: Int): Int {
+        var data: List<MstPanchayat_WardEntity>? = null
+        data =
+            mstPanchayatWardViewModel.getMstPanchayat(distCode)
+        var pos = 0
+        if (!data.isNullOrEmpty()) {
+            if (id!! > 0) {
+                for (i in data.indices) {
+                    if (id == data.get(i).pwcode)
+                        pos = i + 1
+                }
+            }
+        }
+        return pos
+    }
 
+    fun bindCommunity(strValue: String, spin: Spinner) {
+        var it = ArrayList<String>()
+        it.add("Community")
+        it.add("DWCC")
+        if (it != null) {
+            val iGen = it.size
+            val name = arrayOfNulls<String>(iGen + 1)
+            name[0] = strValue
 
+            for (i in 0 until it.size) {
+                name[i + 1] = it.get(i)
+            }
+            val adapter_category = ArrayAdapter<String>(
+                this,
+                R.layout.my_spinner_space_dashboard, name
+            )
+            adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
+            spin.adapter = adapter_category
+        }
 
-
+    }
 }

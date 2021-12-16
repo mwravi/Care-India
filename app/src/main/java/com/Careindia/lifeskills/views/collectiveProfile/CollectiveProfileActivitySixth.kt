@@ -1,12 +1,20 @@
 package com.careindia.lifeskills.views.collectiveProfile
 
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.Window
+import android.view.WindowManager
+import android.widget.Button
 import android.widget.CheckBox
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -23,7 +31,6 @@ import com.careindia.lifeskills.views.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_collective_profile_sixth.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
-import androidx.databinding.BindingAdapter
 import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.collectivetab.*
@@ -69,6 +76,7 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
         ) {
             showLiveData()
         }
+        btn_save.text = resources.getString(R.string.save_close)
         initializeController()
         bottomCLick()
 
@@ -83,35 +91,40 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
     private fun applyClickOnView() {
         btn_save.setOnClickListener(this)
         btn_prev.setOnClickListener(this)
-        collectiveViewModel.RecordBook.observe(this, Observer {
-            val lookupCode = validate!!.GetAnswerTypeRadioButtonID(rg_record_book)
-            if(lookupCode==1){
-                lay_record_book_update.visibility= VISIBLE
-            }else{
-                lay_record_book_update.visibility= GONE
+
+        rg_record_book.setOnCheckedChangeListener { radioGroup, i ->
+
+            val lookupCode = validate!!.GetAnswerTypeRadioButtonIDNew(rg_record_book)
+            if (lookupCode == 1) {
+                lay_record_book_update.visibility = VISIBLE
+            } else {
+                lay_record_book_update.visibility = GONE
                 rg_record_book_update.clearCheck()
             }
-        })
-        collectiveViewModel.ServiceScheme.observe(this, Observer {
-            val lookupCode = validate!!.GetAnswerTypeRadioButtonID(rg_services_schemes)
-            if(lookupCode==1){
-                lay_details_service.visibility= VISIBLE
-                lay_service_provider.visibility= VISIBLE
-            }else{
-                lay_details_service.visibility= GONE
-                lay_service_provider.visibility= GONE
+        }
+
+        rg_services_schemes.setOnCheckedChangeListener { radioGroup, i ->
+            val lookupCode = validate!!.GetAnswerTypeRadioButtonIDNew(rg_services_schemes)
+            if (lookupCode == 1) {
+                lay_details_service.visibility = VISIBLE
+                lay_service_provider.visibility = VISIBLE
+            } else {
+                lay_details_service.visibility = GONE
+                lay_service_provider.visibility = GONE
                 et_details_service.setText("")
                 et_service_provider.setText("")
             }
-        })
-        collectiveViewModel.Enterprise.observe(this, Observer {
-            val lookupCode = validate!!.GetAnswerTypeRadioButtonID(rg_enterprise_business)
-            if(lookupCode==1){
-                lay_others_q602.visibility= VISIBLE
-            }else{
-                lay_others_q602.visibility= GONE
+        }
+
+        rg_enterprise_business.setOnCheckedChangeListener { radioGroup, i ->
+            val lookupCode = validate!!.GetAnswerTypeRadioButtonIDNew(rg_enterprise_business)
+            if (lookupCode == 1) {
+                lay_others_q602.visibility = VISIBLE
+            } else {
+                lay_others_q602.visibility = GONE
             }
-        })
+        }
+
     }
 
     override fun onClick(view: View?) {
@@ -119,10 +132,10 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
             R.id.btn_save -> {
                 if (checkValidation() == 0) {
                     senddata()
-                    collectiveViewModel.updatecollectiveprofileSix()
-                    val intent = Intent(this, CollectiveProfileListActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                    collectiveViewModel.updatecollectiveprofileSix(this)
+
+
+                    CustomAlert(this, resources.getString(R.string.data_saved_successfully))
                 }
             }
 
@@ -137,7 +150,7 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
     fun fillspinner() {
 
 
-        validate!!.fillradioNew(
+        validate!!.fillradio(
             this,
             rg_record_book,
             -1,
@@ -180,7 +193,7 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
             26,
             iLanguageID,
             et_other_q501a,
-            lay_other_q501a,et_other_q501b,lay_other_q501b
+            lay_other_q501a, et_other_q501b, lay_other_q501b
         )
 
         validate!!.dynamicMultiCheckChange(
@@ -275,13 +288,13 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
     fun checkValidation(): Int {
 
         var iValue = 0;
-        if (validate!!.GetAnswerTypeRadioButtonID(rg_record_book) == -1) {
+        if (rg_record_book.checkedRadioButtonId == -1) {
             iValue = 1
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.please_select) + " " + resources.getString(R.string.q405_does_your_sangha_group_collective_have_a_record_book_check_for_the_record_book),
             )
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_record_book_update) == -1 && lay_record_book_update.visibility== VISIBLE) {
+        } else if (rg_record_book_update.checkedRadioButtonId == -1 && lay_record_book_update.visibility == VISIBLE) {
             iValue = 1
             validate!!.CustomAlert(
                 this,
@@ -307,33 +320,35 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
                 et_other_q501b,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q501b_what_service_services_you_are_getting_through_this_linkage_more_than_one_response_upto_three_is_possible),
             )
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_services_schemes) == -1) {
+        } else if (rg_services_schemes.checkedRadioButtonId == -1) {
             iValue = 1
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q502_is_your_sangha_collective_currently_availing_any_services_schemes),
             )
-        } else if (et_details_service.text.toString().length == 0 && lay_details_service.visibility== VISIBLE) {
+        } else if (et_details_service.text.toString().length == 0 && lay_details_service.visibility == VISIBLE) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
                 et_details_service,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q502a_please_provide_details_of_the_service_scheme_that_you_are_availing_more_than_one_response_upto_three_is_possible),
             )
-        } else if (et_service_provider.text.toString().length == 0 && lay_service_provider.visibility== VISIBLE) {
+        } else if (et_service_provider.text.toString().length == 0 && lay_service_provider.visibility == VISIBLE) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
                 et_service_provider,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q502b_from_which_department_service_provider_you_are_availing_this_scheme_service),
             )
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_enterprise_business) == -1) {
+        } else if (rg_enterprise_business.checkedRadioButtonId == -1) {
             iValue = 1
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q601_is_your_sangha_collective_members_interested_in_taking_up_any_collective_enterprise_business),
             )
-        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(chk_collective_plan).equals("") && lay_others_q602.visibility== VISIBLE) {
+        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(chk_collective_plan)
+                .equals("") && lay_others_q602.visibility == VISIBLE
+        ) {
             iValue = 1
             validate!!.CustomAlert(
                 this,
@@ -395,5 +410,42 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
         val intent = Intent(this, CollectiveProfileListActivity::class.java)
         startActivity(intent)
         finish()
+    }
+
+
+    fun CustomAlert(
+        collectiveProfileMemberActivity: CollectiveProfileActivitySixth,
+        msg: String?
+    ) { // Create custom dialog object
+        val dialog = Dialog(this)
+        // hide to default title for Dialog
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        // inflate the layout dialog_layout.xml and set it as contentView
+        val inflater =
+            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view: View = inflater.inflate(R.layout.dialog_layout, null, false)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.setContentView(view)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(0))
+        val layoutParams = WindowManager.LayoutParams()
+        layoutParams.copyFrom(dialog.getWindow()?.getAttributes())
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog.getWindow()?.setAttributes(layoutParams)
+        val txtTitle = dialog
+            .findViewById<View>(R.id.txt_alert_message) as TextView
+        txtTitle.text = msg
+        val btnok =
+            dialog.findViewById<View>(R.id.btn_ok) as Button
+        btnok.setOnClickListener {
+            val intent =
+                Intent(collectiveProfileMemberActivity, CollectiveProfileListActivity::class.java)
+            startActivity(intent)
+            finish()
+            btnok.setTextColor(resources.getColor(R.color.white))
+            dialog.dismiss()
+        }
+        // Display the dialog
+        dialog.show()
     }
 }

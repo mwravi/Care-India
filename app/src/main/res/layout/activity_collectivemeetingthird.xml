@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="CollectiveMeetingViewModel"
+            type="com.careindia.lifeskills.viewmodel.CollectiveMeetingViewModel" />
+    </data>
+
+<LinearLayout
+    android:id="@+id/ll_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <include layout="@layout/meetingtab" />
+
+    <ScrollView
+        style="@style/ScrolllViewStyle"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_weight="1"
+        android:background="@drawable/box_background"
+        android:scrollbars="none">
+
+        <LinearLayout
+            style="@style/LinearLayoutStyle"
+            android:padding="@dimen/_10sdp">
+
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/meetdiscussion" />
+
+                </TableRow>
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_Savings"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/savings" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_Savings"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_internal_lending"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/internal_lending" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_internal_lending"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_bank_loans"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/bank_loans" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_bank_loans"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_schemes_and_services"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/schemes_and_services" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_schemes_and_services"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_entrepreneurial_activities"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/entrepreneurial_activities" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_entrepreneurial_activities"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_training_activities"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/training_activities" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_training_activities"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_leadership"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/change_in_leadership_member_position" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_leadership"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_change"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/change_in_group_members" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_change"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        android:id="@+id/tv_others"
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/others_if_any" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_others"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/total_savings_for_the_month_in_inr" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_savings"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="number"
+                    android:maxLength="8" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/total_loan_availed_through_internal_lending_within_the_group_for_the_month_in_inr" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_loanlending"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="number"
+                    android:maxLength="8" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/total_loan_availed_through_schemes_services_financial_institutions_within_the_group_for_the_month_in_inr" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_loanschemes"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="number"
+                    android:maxLength="8" />
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/total_amount_accrued_from_interest_in_a_month_in_inr" />
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_amount"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="number"
+                    android:maxLength="8" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TableRow
+        style="@style/TableRowStyle"
+        android:layout_margin="@dimen/_10sdp">
+
+        <include layout="@layout/buttons_save_cancel" />
+
+    </TableRow>
+
+</LinearLayout>
+</layout>

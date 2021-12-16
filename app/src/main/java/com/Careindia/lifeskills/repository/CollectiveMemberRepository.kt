@@ -28,7 +28,8 @@ class CollectiveMemberRepository(private val collectiveMemberDao: CollectiveMemb
         contactNo: String,
         aadharNo: String,
         updatedBy: Int,
-        updatedOn: String
+        updatedOn: String,
+        IsEdited:Int
     ) {
         collectiveMemberDao.updatecollectiveMember(
             guid,
@@ -42,7 +43,8 @@ class CollectiveMemberRepository(private val collectiveMemberDao: CollectiveMemb
             contactNo,
             aadharNo,
             updatedBy,
-            updatedOn
+            updatedOn,
+            IsEdited
         )
     }
 
@@ -55,5 +57,8 @@ class CollectiveMemberRepository(private val collectiveMemberDao: CollectiveMemb
     }
     fun getCommunityCount():Int{
         return collectiveMemberDao!!.getCommunityCount()
+    }
+    fun getMemberID(MemberID:String):Int{
+        return collectiveMemberDao!!.getMemberID(MemberID)
     }
 }

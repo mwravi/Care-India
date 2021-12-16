@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="psychometricViewModel"
+            type="com.careindia.lifeskills.viewmodel.PsychometricViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".views.psychometricscreen.PsychometricForthActivity">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar_layout" />
+
+        <include
+            android:id="@+id/includetop"
+            layout="@layout/bottom_nav_psycho_layout" />
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:scrollbars="none">
+
+            <LinearLayout
+                style="@style/LinearLayoutStyle"
+                android:background="@drawable/box_background"
+                android:padding="@dimen/_10sdp">
+
+
+                <LinearLayout
+                    android:id="@+id/lay_evaluate_risk_change"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/evaluate_risk" />
+
+
+                    </TableRow>
+
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_evaluate_risk"
+                        android:selectedItemPosition="@={psychometricViewModel.EvaluateRisk}"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_income_gen_prefer"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/income_gen_prefer" />
+
+
+                    </TableRow>
+
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_income_gen_prefer"
+                        android:selectedItemPosition="@={psychometricViewModel.IncomeGenPrefer}"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_staff_required_prefer"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/staff_required_prefer" />
+
+
+                    </TableRow>
+
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_staff_required_prefer"
+                        android:selectedItemPosition="@={psychometricViewModel.StaffRequiredPre}"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_women_entrepreneurs"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/women_entrepreneurs" />
+
+
+                    </TableRow>
+
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:selectedItemPosition="@={psychometricViewModel.WomenEnterpreneurs}"
+                        android:id="@+id/spin_women_entrepreneurs"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_requires_financial"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/requires_financial" />
+
+
+                    </TableRow>
+
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_requires_financial"
+                        android:selectedItemPosition="@={psychometricViewModel.RequireFinancial}"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/lay_willingness_invest"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/willingness_invest" />
+
+
+                    </TableRow>
+
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_willingness_invest"
+                        android:selectedItemPosition="@={psychometricViewModel.WillgnessInvest}"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/TablerowNew"
+                    android:orientation="vertical">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/areas_succes_entrep" />
+
+
+
+                    </TableRow>
+
+
+                    <LinearLayout
+                        android:id="@+id/multiCheck_areas_succes_entrep"
+                        style="@style/CheckBox"
+                        android:orientation="vertical" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:background="#CDCBCB" />
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/lay_specify_areas_succes_entrep"
+                    style="@style/LinearLayoutStyle">
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/specify_areas_succes_entrep" />
+
+
+
+                    </TableRow>
+
+
+                    <EditText
+                        android:id="@+id/et_specifyareas_succes_entrep"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:text="@={psychometricViewModel.SuccesOther}"
+                        android:inputType="text"
+                        />
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
+
+            <TextView style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1"
+                />
+
+            <Button
+                android:id="@+id/btn_prev"
+                style="@style/ButtonTextStyle"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/previous" />
+
+            <TextView style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1"
+                />
+            <Button
+                android:id="@+id/btn_save"
+                style="@style/ButtonTextStyle"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/save_close" />
+
+            <TextView style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1"
+                />
+
+        </TableRow>
+
+
+    </LinearLayout>
+</layout>

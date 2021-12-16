@@ -16,17 +16,18 @@
         android:orientation="vertical">
 
         <include layout="@layout/toolbar_layout" />
+        <include layout="@layout/primary_data_tab" />
 
         <ScrollView
             style="@style/ScrolllViewStyle"
-            android:layout_margin="@dimen/_10sdp"
+            android:layout_margin="@dimen/_5sdp"
             android:layout_weight="1"
             android:scrollbars="none">
 
             <LinearLayout
                 style="@style/LinearLayoutStyle"
                 android:background="@drawable/box_background"
-                android:padding="@dimen/_10sdp">
+                android:padding="@dimen/_5sdp">
 
                 <LinearLayout
                     android:id="@+id/lay_collection_date"

@@ -12,58 +12,54 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".1" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/care" />
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:gravity="center">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".1" />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/care" />
+        </TableRow>
+
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="300dp"
             android:layout_gravity="center"
-            android:layout_weight="0.5"
+            android:layout_marginTop="@dimen/_40sdp"
             android:background="@drawable/splash" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".05" />
 
-        <TableRow style="@style/TableRowStyle">
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_marginTop="@dimen/_40sdp">
 
             <TextView style="@style/NewSimpleTextMargin" />
 
             <TextView
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/firasans_regular"
                 android:text="@string/change_lives_save_lives"
                 android:textAlignment="center"
                 android:textColor="@color/splashText"
                 android:textSize="36sp"
-                android:fontFamily="@font/firasans_regular"/>
+                android:textStyle="bold" />
 
             <TextView style="@style/NewSimpleTextMargin" />
 
         </TableRow>
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight=".1" />
 
-       <include
-           layout="@layout/buttons_next"/>
+        <include
+            android:visibility="gone"
+            layout="@layout/buttons_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_40sdp" />
 
     </LinearLayout>
 

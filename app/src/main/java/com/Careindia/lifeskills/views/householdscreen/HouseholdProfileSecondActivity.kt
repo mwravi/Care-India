@@ -16,6 +16,7 @@ import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.HouseholdProfileViewModel
 import com.careindia.lifeskills.viewmodelfactory.HouseholdProfileViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
+import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_household_profile_second.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.hhnavigationtab.*
@@ -81,6 +82,18 @@ class HouseholdProfileSecondActivity : BaseActivity(), View.OnClickListener {
             startActivity(intent)
             finish()
         }
+
+        img_back.setOnClickListener {
+            val intent = Intent(this, HouseholdProfileListActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
+        img_setting.setOnClickListener {
+            val intent = Intent(this, HomeDashboardActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     override fun initializeController() {
@@ -122,6 +135,13 @@ class HouseholdProfileSecondActivity : BaseActivity(), View.OnClickListener {
                 et_total_adult,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.total_adult),
             )
+        } else if (validate!!.returnIntegerValue(et_total_adult.text.toString())>25) {
+            iValue = 1
+            validate!!.CustomAlertEdit(
+                this,
+                et_total_adult,
+                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.less_than_equals),
+            )
         } else if (et_adult_male.text.toString().length == 0) {
             iValue = 1
             validate!!.CustomAlertEdit(
@@ -136,7 +156,7 @@ class HouseholdProfileSecondActivity : BaseActivity(), View.OnClickListener {
             validate!!.CustomAlertEdit(
                 this,
                 et_adult_male,
-                resources.getString(R.string.adult_males_must_be_equal_to_or_less_than_the_total_adult_members)
+                resources.getString(R.string.q201a_input_value_between_0_q201)
             )
         } else if (et_adult_female.text.toString().length == 0) {
             iValue = 1
@@ -153,7 +173,7 @@ class HouseholdProfileSecondActivity : BaseActivity(), View.OnClickListener {
             validate!!.CustomAlertEdit(
                 this,
                 et_adult_female,
-                resources.getString(R.string.adult_females_must_be_equal_to_or_less_than_the_total_adult_members)
+                resources.getString(R.string.q201b_input_value_between_0_q201)
             )
         }
         else if (validate!!.returnIntegerValue(et_adult_male.text.toString()) +
@@ -191,7 +211,7 @@ class HouseholdProfileSecondActivity : BaseActivity(), View.OnClickListener {
             validate!!.CustomAlertEdit(
                 this,
                 et_adolescentboys,
-                resources.getString(R.string.adolescent_boys_must_be_equal_to_or_less_than_the_total_adult_members)
+                resources.getString(R.string.q202a_input_value_between_0_q202)
             )
         }
 
@@ -209,7 +229,7 @@ class HouseholdProfileSecondActivity : BaseActivity(), View.OnClickListener {
             validate!!.CustomAlertEdit(
                 this,
                 et_adolescentgirls,
-                resources.getString(R.string.adolescent_girls_females_must_be_equal_to_or_less_than_the_total_adult_members)
+                resources.getString(R.string.q202ab_input_value_between_0_q202)
             )
         }   else if (validate!!.returnIntegerValue(et_adolescentboys.text.toString()) +
             validate!!.returnIntegerValue(et_adolescentgirls.text.toString()) > validate!!.returnIntegerValue(
@@ -246,7 +266,7 @@ class HouseholdProfileSecondActivity : BaseActivity(), View.OnClickListener {
             validate!!.CustomAlertEdit(
                 this,
                 et_maleChildren,
-                resources.getString(R.string.male_children_must_be_equal_to_or_less_than_the_total_children_members)
+                resources.getString(R.string.q203a_input_value_between_0_q203)
             )
         }  else if (et_femalechildren.text.toString().length == 0) {
             iValue = 1
@@ -262,7 +282,7 @@ class HouseholdProfileSecondActivity : BaseActivity(), View.OnClickListener {
             validate!!.CustomAlertEdit(
                 this,
                 et_femalechildren,
-                resources.getString(R.string.female_children_females_must_be_equal_to_or_less_than_the_total_number_of_children_members)
+                resources.getString(R.string.q203b_input_value_between_0_q203)
             )
         } else if (validate!!.returnIntegerValue(et_maleChildren.text.toString()) +
             validate!!.returnIntegerValue(et_femalechildren.text.toString()) > validate!!.returnIntegerValue(
@@ -306,14 +326,18 @@ class HouseholdProfileSecondActivity : BaseActivity(), View.OnClickListener {
 
     }
 
-    override fun onBackPressed() {
-        //super.onBackPressed()
-    }
+
 
     fun setDefBlank(edi: EditText, data: Int) {
         if (data < 0) edi.setText("")
        else edi.setText(data.toString())
 
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this, HouseholdProfileListActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
 

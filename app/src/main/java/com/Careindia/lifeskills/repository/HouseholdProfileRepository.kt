@@ -2,6 +2,7 @@ package com.careindia.lifeskills.repository
 
 
 import androidx.lifecycle.LiveData
+import androidx.room.Query
 import com.careindia.lifeskills.dao.HouseholdProfileDao
 import com.careindia.lifeskills.dao.MstDistrictDao
 import com.careindia.lifeskills.entity.HouseholdProfileEntity
@@ -21,17 +22,20 @@ class HouseholdProfileRepository(
 
     internal fun update_hh_first_data(
         HHGUID: String,
-        CRP_Code:String,
-        FieldCoordinator:String,
-        StateCode: String?,
-        DistrictCode: String?,
-        ZoneCode: String?,
+        CRP_Code: Int,
+        FieldCoordinator: Int,
+        StateCode: Int?,
+        DistrictCode: Int?,
+        ZoneCode: Int?,
         Panchayat_Ward: Int?,
         PWCode: String?,
         Localitycode: String?,
         Dateform: String?,
         Name: String?,
         Gender: Int?,
+        iUserID:Int,
+        IsEdited:Int,
+        initials:String?
     ) {
         hhdao.update_hh_first_data(
             HHGUID,
@@ -45,7 +49,11 @@ class HouseholdProfileRepository(
             Localitycode,
             Dateform,
             Name,
-            Gender
+            Gender,
+            iUserID,
+            IsEdited,
+            initials
+
         )
     }
 
@@ -60,7 +68,9 @@ class HouseholdProfileRepository(
         No_adolescent_F: Int?,
         No_Children: Int?,
         No_Children_M: Int?,
-        No_Children_F: Int?
+        No_Children_F: Int?,
+        iUserID:Int,
+        IsEdited:Int
     ) {
         hhdao.update_hh_second_data(
             HHGUID,
@@ -72,7 +82,9 @@ class HouseholdProfileRepository(
             No_adolescent_F,
             No_Children,
             No_Children_M,
-            No_Children_F
+            No_Children_F,
+            iUserID,
+            IsEdited
         )
     }
 
@@ -86,7 +98,9 @@ class HouseholdProfileRepository(
         Dwelling_Oth: String?,
         Dwelling_Registered: Int?,
         Type_Ration: Int?,
-        other_ration:String
+        other_ration:String,
+        iUserID:Int,
+        IsEdited:Int
     ) {
         hhdao.updatehh_third(
             HHGUID,
@@ -97,7 +111,9 @@ class HouseholdProfileRepository(
             Dwelling_Oth,
             Dwelling_Registered,
             Type_Ration,
-            other_ration
+            other_ration,
+            iUserID,
+            IsEdited
         )
     }
 
@@ -132,4 +148,20 @@ class HouseholdProfileRepository(
     fun getHHCount(): Int {
         return hhdao.getHHCount()
     }
+    fun getIndividualID(HHCode:String): Int {
+        return hhdao.getIndividualID(HHCode)
+    }
+
+    fun getHHZData(izone:Int): LiveData<List<HouseholdProfileEntity>> {
+        return hhdao.getHHZData(izone)
+    }
+    fun getHHWData(izone:Int,iward:Int): LiveData<List<HouseholdProfileEntity>> {
+        return hhdao.getHHWData(izone,iward)
+    }
+
+    fun getHHPData(iPanchayat:Int): LiveData<List<HouseholdProfileEntity>> {
+        return hhdao.getHHPData(iPanchayat)
+    }
+
+
 }

@@ -7,6 +7,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -164,14 +165,18 @@ class CollectiveProfileActivitySec : BaseActivity(), View.OnClickListener {
                     et_specify_others_group_registered.setText(it[0].RegistrationOther)
                     et_objective.setText(it.get(0).Objective)
                     et_head_group_name.setText(validate!!.returnStringValue(it.get(0).Head_name))
-                    et_total_no_of_members.setText(validate!!.returnStringValue(it.get(0).NoMembers.toString()))
-                    et_male_members.setText(validate!!.returnStringValue(it.get(0).NoMembers_M.toString()))
-                    et_female_members.setText(validate!!.returnStringValue(it.get(0).NoMembers_F.toString()))
-                    et_transgender_members.setText(validate!!.returnStringValue(it.get(0).NoMembers_T.toString()))
+                    setDefBlank(et_total_no_of_members,it.get(0).NoMembers!!)
+                    setDefBlank(et_male_members,it.get(0).NoMembers_M!!)
+                    setDefBlank(et_female_members,it.get(0).NoMembers_F!!)
+                    setDefBlank(et_transgender_members,it.get(0).NoMembers_T!!)
                 }
             })
     }
+    fun setDefBlank(edi: EditText, data: Int) {
+        if (data < 0) edi.setText("")
+        else edi.setText(data.toString())
 
+    }
     fun fillSpinner() {
         fillSpinner(
             resources.getString(R.string.select),
@@ -334,12 +339,11 @@ class CollectiveProfileActivitySec : BaseActivity(), View.OnClickListener {
         ll_six.setBackgroundColor(resources.getColor(R.color.back))
 
         lay_first.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilesecond(this)
+
                 val intent = Intent(this, CollectiveProfileActivity::class.java)
                 startActivity(intent)
                 finish()
-            }
+
         }
         /* lay_secnd.setOnClickListener {
              val intent = Intent(this, CollectiveProfileActivitySec::class.java)
@@ -347,32 +351,28 @@ class CollectiveProfileActivitySec : BaseActivity(), View.OnClickListener {
              finish()
          }*/
         ll_third.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilesecond(this)
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length>0) {
                 val intent = Intent(this, CollectiveProfileActivityThird::class.java)
                 startActivity(intent)
                 finish()
             }
         }
         ll_fourth.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilesecond(this)
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length>0) {
                 val intent = Intent(this, CollectiveProfileActivityFourth::class.java)
                 startActivity(intent)
                 finish()
             }
         }
         ll_fifth.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilesecond(this)
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length>0) {
                 val intent = Intent(this, CollectiveProfileActivityFifth::class.java)
                 startActivity(intent)
                 finish()
             }
         }
         ll_six.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilesecond(this)
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length>0) {
                 val intent = Intent(this, CollectiveProfileActivitySixth::class.java)
                 startActivity(intent)
                 finish()

@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <include layout="@layout/toolbar_layout" />
+
         <include layout="@layout/collectivetab" />
 
         <ScrollView
@@ -108,7 +109,7 @@
                         android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="50"
-                        android:text="@={collectiveViewModel.sfcName}" />
+                        android:text="@={collectiveViewModel.SfcName}" />
 
                 </LinearLayout>
 
@@ -142,9 +143,7 @@
 
                     <TableRow style="@style/TableRowStyle">
 
-                        <TextView
-                            style="@style/TextViewStylestrik"
-                          />
+                        <TextView style="@style/TextViewStylestrik" />
 
                         <TextView
                             android:id="@+id/tv_NameofZone"
@@ -167,9 +166,7 @@
 
                     <TableRow style="@style/TableRowStyle">
 
-                        <TextView
-                            style="@style/TextViewStylestrik"
-                             />
+                        <TextView style="@style/TextViewStylestrik" />
 
                         <TextView
                             android:id="@+id/tv_bbmpWard"
@@ -191,9 +188,7 @@
 
                     <TableRow style="@style/TableRowStyle">
 
-                        <TextView
-                            style="@style/TextViewStylestrik"
-                          />
+                        <TextView style="@style/TextViewStylestrik" />
 
                         <TextView
                             android:id="@+id/tv_panchayatName"
@@ -231,6 +226,24 @@
                         android:text="@={collectiveViewModel.localityName}" />
 
                 </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/community_dwcc_initials" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_community"
+                        style="@style/SpinnerViewNew"
+                        />
+
+                </LinearLayout>
 
 
                 <LinearLayout
@@ -248,16 +261,31 @@
 
                     </TableRow>
 
-                    <EditText
-                        android:id="@+id/et_collective_id"
-                        style="@style/EditTextStyleNew"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                        android:hint="@string/type_here"
-                        android:inputType="text"
-                        android:maxLength="11"
-                        android:enabled="false"
-                        android:text="@={collectiveViewModel.collectiveId}" />
+                    <TableRow style="@style/TableRowStyle">
 
+                        <EditText
+                            android:id="@+id/et_collective_id"
+                            style="@style/EditTextStyleNew"
+                            android:layout_width="0dp"
+                            android:layout_weight="1.5"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                            android:enabled="false"
+                            android:inputType="text"
+                            android:maxLength="11"
+                            android:text="@={collectiveViewModel.collectiveId}" />
+
+
+                        <EditText
+                            android:id="@+id/et_last_code"
+                            style="@style/EditTextStyleNew"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:enabled="false"
+                            android:inputType="number"
+                            android:maxLength="3"
+
+                            />
+                    </TableRow>
                 </LinearLayout>
 
                 <LinearLayout

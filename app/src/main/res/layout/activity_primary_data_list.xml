@@ -35,11 +35,13 @@
 
             <ImageView
                 android:id="@+id/img_Add_list"
-                android:layout_width="@dimen/_25sdp"
-                android:layout_height="@dimen/_25sdp"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
                 android:src="@drawable/ic_add_circle" />
 
         </TableRow>
+
+        <include layout="@layout/legend_view" />
 
     </LinearLayout>
 </layout>

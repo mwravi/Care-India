@@ -16,49 +16,61 @@ interface PrimaryDataDao {
     @Query("Select * from tblPDC")
     fun getallPrimarydata(): LiveData<List<PrimaryDataEntity>>
 
-    @Query("update tblPDC set Locality =:Locality,Age=:Age, Name=:Name, Gender=:Gender, Contact=:Contact, Group_Link=:Group_Link,SocialCategory =:SocialCategory,IncomeCertificate=:IncomeCertificate,ValidAadhaar=:ValidAadhaar,ValidPAN=:ValidPAN where PDCGUID=:PDCGUID")
+    @Query("update tblPDC set Locality =:Locality,CollectionDate=:CollectionDate,CommunityName=:CommunityName,Name=:Name,Age=:Age, Gender=:Gender, Contact=:Contact, Group_Link=:Group_Link,SocialCategory =:SocialCategory,CastIncomeCertificate=:CastIncomeCertificate,ValidAadhaar=:ValidAadhaar,ValidPAN=:ValidPAN,IsEdited=:IsEdited where PDCGUID=:PDCGUID")
     fun update_Primary_first_data(
         PDCGUID: String?,
         Locality: String?,
-        Age: Int?,
+        CollectionDate:String,
+        CommunityName:String,
         Name: String?,
+        Age: Int?,
         Gender: Int?,
         Contact: String?,
         Group_Link: Int?,
         SocialCategory: Int?,
-        IncomeCertificate: Int?,
+        CastIncomeCertificate: Int?,
         ValidAadhaar: Int?,
-        ValidPAN: Int?
+        ValidPAN: Int?,
+        IsEdited:Int
     )
 
 
-    @Query("update tblPDC set ValidBank =:ValidBank,Business_Interested =:Business_Interested,Business_details=:Business_details, Business_Plan=:Business_Plan, Business_investment=:Business_investment, Invest_readiness=:Invest_readiness,Invest_source=:Invest_source,Invest_finance=:Invest_finance,Invest_support=:Invest_support,Loan_interested=:Loan_interested,Loan_amount=:Loan_amount where PDCGUID=:PDCGUID")
+    @Query("update tblPDC set ValidBank =:ValidBank,Business_Interested =:Business_Interested,Business_Training=:Business_Training, Business_Plan=:Business_Plan, Business_Investment_Amt=:Business_Investment_Amt, Invest_readiness=:Invest_readiness,Invest_HowMuch=:Invest_HowMuch,Invest_Plan=:Invest_Plan,Invest_Plan_Oth=:Invest_Plan_Oth,Financial_Assistance=:Financial_Assistance,Invest_support=:Invest_support,Invest_support_Oth=:Invest_support_Oth,Loan_interested=:Loan_interested,Loan_Source=:Loan_Source,Loan_Source_Oth=:Loan_Source_Oth,Loan_amount=:Loan_amount,IsEdited=:IsEdited where PDCGUID=:PDCGUID")
     fun update_primary_second_data(
-        PDCGUID: String?,
-        ValidBank: Int?,
-        Business_Interested: Int?,
-        Business_details: String?,
-        Business_Plan: Int?,
-        Business_investment: String?,
-        Invest_readiness: Int?,
-        Invest_source: Int?,
-        Invest_finance: Int,
-        Invest_support: String,
+        PDCGUID: String,
+        ValidBank: Int,
+        Business_Interested: Int,
+        Business_Training: String,
+        Business_Plan: Int,
+        Business_Investment_Amt: String,
+        Invest_readiness: Int,
+        Invest_HowMuch: Int,
+        Invest_Plan: Int,
+        Invest_Plan_Oth: String,
+        Financial_Assistance: String,
+        Invest_support: Int,
+        Invest_support_Oth:String,
         Loan_interested: Int,
-        Loan_amount: Int
+        Loan_Source: Int,
+        Loan_Source_Oth: String,
+        Loan_amount: String,
+        IsEdited:Int
     )
 
-    @Query("update tblPDC set Business_type =:Business_type,Business_registered =:Business_registered,State_selfemp=:State_selfemp, Loan_availed=:Loan_availed, Loan_source=:Loan_source, Financial_assist=:Financial_assist, Financial_assist_amt=:Financial_assist_amt ,Support_selfemp=:Support_selfemp where PDCGUID=:PDCGUID")
+    @Query("update tblPDC set Business_type =:Business_type,Business_Invest_Source=:Business_Invest_Source,Business_registered =:Business_registered,Stage_Self_Emp=:Stage_selfemp, Loan_availed=:Loan_availed, Loan_availed_from=:Loan_availed_from, Financial_assist=:Financial_assist, Financial_assist_amt=:Financial_assist_amt,Support_Expecting=:Support_Expecting,Support_Expecting_Oth=:Support_Expecting_Oth,IsEdited=:IsEdited  where PDCGUID=:PDCGUID")
     fun update_primary_third(
         PDCGUID: String,
         Business_type: String,
+        Business_Invest_Source: Int,
         Business_registered: Int,
-        State_selfemp: String?,
-        Loan_availed: Int?,
-        Loan_source: String?,
-        Financial_assist: Int?,
-        Financial_assist_amt: Int?,
-        Support_selfemp: String?
+        Stage_selfemp: Int,
+        Loan_availed: Int,
+        Loan_availed_from: Int,
+        Financial_assist: Int,
+        Financial_assist_amt: String,
+        Support_Expecting: Int,
+        Support_Expecting_Oth:String,
+        IsEdited:Int
 
     )
 
@@ -78,4 +90,7 @@ interface PrimaryDataDao {
 
     @Query("select Count(HHGUID) from tblPDC")
     fun getHHCount(): Int
+
+    @Query("Select * from tblPDC")
+    fun getPrimaryAlldata(): List<PrimaryDataEntity>
 }

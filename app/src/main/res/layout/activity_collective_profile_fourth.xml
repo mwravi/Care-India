@@ -73,7 +73,7 @@
                     <RadioGroup
                         android:id="@+id/rg_rotation_of_roles"
                         style="@style/radioGroupStyle"
-                        android:checkedButton="@={collectiveViewModel.Rolerotation}" />
+                       />
 
                 </LinearLayout>
 
@@ -96,7 +96,7 @@
                     <RadioGroup
                         android:id="@+id/rg_office_bearer"
                         style="@style/radioGroupStyle"
-                        android:checkedButton="@={collectiveViewModel.Electionob}" />
+                         />
                 </LinearLayout>
 
 
@@ -144,7 +144,7 @@
                     <RadioGroup
                         android:id="@+id/rg_bank_account"
                         style="@style/radioGroupStyle"
-                        android:checkedButton="@={collectiveViewModel.Bankac}" />
+                       />
 
                 </LinearLayout>
 

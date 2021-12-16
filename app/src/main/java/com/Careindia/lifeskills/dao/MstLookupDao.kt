@@ -20,9 +20,10 @@ interface MstLookupDao {
 
     @Query("DELETE FROM mst_9Lookup")
     fun deleteAll()
-    @Query("select * from mst_9Lookup where LookupFlag=:LookupFlag and LanguageID=:LanguageID")
+
+    @Query("select * from mst_9Lookup where LookupFlag=:LookupFlag and LanguageID=:LanguageID  order by SeqNo")
     fun getMstDataLookup(LookupFlag: Int,LanguageID:Int): List<MstLookupEntity>
 
-    @Query("select * from mst_9Lookup where LookupFlag=:flag")
+    @Query("select * from mst_9Lookup where LookupFlag=:flag  order by SeqNo")
     fun getMstCommondata(flag: Int): List<MstLookupEntity>
 }

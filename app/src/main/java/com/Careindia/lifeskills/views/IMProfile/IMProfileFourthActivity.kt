@@ -3,6 +3,7 @@ package com.careindia.lifeskills.views.improfile
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.EditText
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -17,12 +18,9 @@ import com.careindia.lifeskills.viewmodel.IndividualProfileViewModel
 import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
+import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_improfile_fourth.*
-import kotlinx.android.synthetic.main.activity_improfile_fourth.btn_prev
-import kotlinx.android.synthetic.main.activity_improfile_fourth.btn_save
-import kotlinx.android.synthetic.main.activity_improfile_third.*
 import kotlinx.android.synthetic.main.bottomnavigationtab.*
-
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
@@ -45,7 +43,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
 
         val improfiledao = CareIndiaApplication.database?.imProfileDao()
         val mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()!!
-        val improfileRepository = IndividualProfileRepository(improfiledao!!,mstDistrictDao)
+        val improfileRepository = IndividualProfileRepository(improfiledao!!, mstDistrictDao)
 
         imProfileViewModel = ViewModelProvider(
             this,
@@ -65,7 +63,8 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
     private fun applyClickOnView() {
         btn_prev.setOnClickListener(this)
         btn_save.setOnClickListener(this)
-
+        img_back.setOnClickListener(this)
+        img_setting.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
@@ -73,18 +72,26 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
             R.id.btn_save -> {
                 if (checkValidation() == 1) {
                     sendData()
-                    imProfileViewModel.updateForthProfileData()
+                    imProfileViewModel.updateForthProfileData(this)
                     val intent = Intent(this, IMProfileFifthActivity::class.java)
                     startActivity(intent)
                     finish()
                 }
             }
             R.id.btn_prev -> {
-                if (checkValidation() == 1) {
-                    var intent = Intent(this, IMProfileThirdActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                }
+                var intent = Intent(this, IMProfileThirdActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.img_back -> {
+                val intent = Intent(this, IMProfileThirdActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.img_setting -> {
+                val intent = Intent(this, HomeDashboardActivity::class.java)
+                startActivity(intent)
+                finish()
             }
 
 
@@ -93,12 +100,10 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun initializeController() {
-
         //apply click on view
         applyClickOnView()
         topLayClick()
         fillRadio()
-        hideShowView()
         if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) != null && validate!!.RetriveSharepreferenceString(
                 AppSP.IndividualProfileGUID
             )!!.trim().length > 0
@@ -109,21 +114,9 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
 
     }
 
-    fun hideShowView(){
-       var  it = validate!!.RetriveSharepreferenceInt(AppSP.IsSecondry)
-        if(it ==1){
-            lay_et_days_secondary_job.visibility = View.VISIBLE
-            lay_et_avg_daily_secondry_income.visibility = View.VISIBLE
-
-        }else{
-            lay_et_days_secondary_job.visibility = View.GONE
-            lay_et_avg_daily_secondry_income.visibility = View.GONE
-        }
-    }
-
     fun fillRadio() {
 
-        validate!!.fillradioNew(
+        validate!!.fillradio(
             this,
             rg_have_adhar,
             -1,
@@ -131,14 +124,14 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
             3,
             iLanguageID
         )
-        validate!!.fillradioNew(
+        validate!!.fillradio(
             this,
             rg_have_voter,
             -1,
             mstLookupViewModel,
             3, iLanguageID
         )
-        validate!!.fillradioNew(
+        validate!!.fillradio(
             this,
             rg_have_pan,
             -1,
@@ -146,7 +139,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
             3,
             iLanguageID
         )
-        validate!!.fillradioNew(
+        validate!!.fillradio(
             this,
             rg_have_income,
             -1,
@@ -154,7 +147,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
             3,
             iLanguageID
         )
-        validate!!.fillradioNew(
+        validate!!.fillradio(
             this,
             rg_have_caste,
             -1,
@@ -162,7 +155,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
             3,
             iLanguageID
         )
-        validate!!.fillradioNew(
+        validate!!.fillradio(
             this,
             rg_svg_bank_act,
             -1,
@@ -170,7 +163,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
             3,
             iLanguageID
         )
-        validate!!.fillradioNew(
+        validate!!.fillradio(
             this,
             rg_availed_services_past,
             -1,
@@ -186,8 +179,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
         imProfileViewModel.getIdvProfiledatabyGuid(validate!!.returnStringValue(idvProfileGuid))
             .observe(this, Observer {
                 if (it != null && it.size > 0) {
-                    et_days_secondary_job.setText(validate!!.returnStringValue(it.get(0).Secondary_WD.toString()))
-                    et_avg_daily_secondry_income.setText(validate!!.returnStringValue(it.get(0).Secondary_Inc.toString()))
+
                     et_service_provider_department.setText(validate!!.returnStringValue(it.get(0).SchemeDetails))
 
                     (it.get(0).Aadhaar?.let { it1 ->
@@ -238,6 +230,11 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
 
     }
 
+    fun setDefBlank(edi: EditText, data: Int) {
+        if (data < 0) edi.setText("")
+        else edi.setText(data.toString())
+
+    }
 
     fun sendData() {
         imProfileViewModel.collectiveProfileForthData(
@@ -253,39 +250,50 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
 
     private fun checkValidation(): Int {
         var value = 1
+        if (rg_have_adhar.checkedRadioButtonId == -1) {
+            validate!!.CustomAlert(
+                this,
+                resources.getString(R.string.plz_ans_adhar)
+            )
+            value = 0
+        } else if (rg_have_voter.checkedRadioButtonId == -1) {
+            validate!!.CustomAlert(
+                this,
+                resources.getString(R.string.plz_ans_icard)
+            )
+            value = 0
 
-        if (et_days_secondary_job.text.toString().isEmpty() && lay_et_days_secondary_job.visibility == View.VISIBLE) {
-            validate!!.CustomAlertEdit(
+        } else if (rg_have_pan.checkedRadioButtonId == -1) {
+            validate!!.CustomAlert(
                 this,
-                et_days_secondary_job,
-                resources.getString(R.string.plz_select_wrking_days_months)
+                resources.getString(R.string.plz_ans_pan)
             )
             value = 0
-        } else if (lay_et_days_secondary_job.visibility == View.VISIBLE && Integer.parseInt(et_days_secondary_job.text.toString()) < 1 || Integer.parseInt(
-                et_days_secondary_job.text.toString()
-            ) > 29) {
-            validate!!.CustomAlertEdit(
+        } else if (rg_have_income.checkedRadioButtonId == -1) {
+            validate!!.CustomAlert(
                 this,
-                et_days_secondary_job,
-                resources.getString(R.string.please_entr_input_months)
+                resources.getString(R.string.plz_ans_incm_certict)
             )
             value = 0
-        } else if (et_avg_daily_secondry_income.text.toString().isEmpty() && lay_et_avg_daily_secondry_income.visibility == View.VISIBLE) {
-            validate!!.CustomAlertEdit(
+        } else if (rg_have_caste.checkedRadioButtonId == -1) {
+            validate!!.CustomAlert(
                 this,
-                et_avg_daily_secondry_income,
-                resources.getString(R.string.plz_select_avg_daily_socndry_incm)
+                resources.getString(R.string.plz_ans_caste_certict)
             )
             value = 0
-        } else if (lay_et_avg_daily_secondry_income.visibility == View.VISIBLE && Integer.parseInt(et_avg_daily_secondry_income.text.toString()) < 50 || Integer.parseInt(
-                et_avg_daily_secondry_income.text.toString()
-            ) > 9999) {
-            validate!!.CustomAlertEdit(
+        } else if (rg_svg_bank_act.checkedRadioButtonId == -1) {
+            validate!!.CustomAlert(
                 this,
-                et_avg_daily_secondry_income,
-                resources.getString(R.string.please_entr_input_daily)
+                resources.getString(R.string.plz_ans_bank_acct)
             )
             value = 0
+        } else if (rg_availed_services_past.checkedRadioButtonId == -1) {
+            validate!!.CustomAlert(
+                this,
+                resources.getString(R.string.plz_services_past_month)
+            )
+            value = 0
+
         } else if (et_service_provider_department.text.toString().isEmpty()) {
             validate!!.CustomAlertEdit(
                 this,
@@ -300,6 +308,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
 
 
     fun topLayClick() {
+        autoSmoothScroll()
         lay_first.setBackgroundColor(resources.getColor(R.color.back))
         lay_secnd.setBackgroundColor(resources.getColor(R.color.back))
         ll_third.setBackgroundColor(resources.getColor(R.color.back))
@@ -343,51 +352,10 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
-//    fun testUse{
-//    } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_adhar) == 0) {
-//        validate!!.CustomAlert(
-//            this,
-//            resources.getString(R.string.plz_ans_adhar)
-//        )
-//        value = 0
-//    } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_voter) == 0) {
-//        validate!!.CustomAlert(
-//            this,
-//            resources.getString(R.string.plz_ans_icard)
-//        )
-//        value = 0
-//
-//    } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_pan) == 0) {
-//        validate!!.CustomAlert(
-//            this,
-//            resources.getString(R.string.plz_ans_pan)
-//        )
-//        value = 0
-//    } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_income) == 0) {
-//        validate!!.CustomAlert(
-//            this,
-//            resources.getString(R.string.plz_ans_incm_certict)
-//        )
-//        value = 0
-//    } else if (validate!!.GetAnswerTypeRadioButtonID(rg_have_caste) == 0) {
-//        validate!!.CustomAlert(
-//            this,
-//            resources.getString(R.string.plz_ans_caste_certict)
-//        )
-//        value = 0
-//    } else if (validate!!.GetAnswerTypeRadioButtonID(rg_svg_bank_act) == 0) {
-//        validate!!.CustomAlert(
-//            this,
-//            resources.getString(R.string.plz_ans_bank_acct)
-//        )
-//        value = 0
-//    } else if (validate!!.GetAnswerTypeRadioButtonID(rg_availed_services_past) == 0) {
-//        validate!!.CustomAlert(
-//            this,
-//            resources.getString(R.string.plz_services_past_month)
-//        )
-//        value = 0
-//
-//    }
-
+    fun autoSmoothScroll() {
+//        val hsv = view.findViewById(R.id.horizontalScroll) as HorizontalScrollView
+        horizontalScroll.postDelayed({ //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+            horizontalScroll.smoothScrollBy(700, 0)
+        }, 100)
+    }
 }

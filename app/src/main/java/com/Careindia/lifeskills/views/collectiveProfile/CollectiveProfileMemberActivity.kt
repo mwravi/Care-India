@@ -1,10 +1,18 @@
 package com.careindia.lifeskills.views.collectiveProfile
 
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.view.View.VISIBLE
+import android.view.Window
+import android.view.WindowManager
+import android.widget.*
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -23,6 +31,7 @@ import com.careindia.lifeskills.viewmodelfactory.CollectiveMemberViewModelFactor
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_collection_member.*
+import kotlinx.android.synthetic.main.activity_collection_member.et_last_code
 import kotlinx.android.synthetic.main.buttons_save_cancel.btn_prev
 import kotlinx.android.synthetic.main.buttons_save_cancel.btn_save
 import kotlinx.android.synthetic.main.toolbar_layout.*
@@ -34,6 +43,8 @@ class CollectiveProfileMemberActivity : BaseActivity(), View.OnClickListener {
     lateinit var mstLookupViewModel: MstLookupViewModel
     lateinit var collectiveMemberViewModel: CollectiveMemberViewModel
     var iLanguageID = 0
+    var coll_code_starting = ""
+    var iShow=0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +64,13 @@ class CollectiveProfileMemberActivity : BaseActivity(), View.OnClickListener {
         binding.collectiveMemberViewModel = collectiveMemberViewModel
         binding.lifecycleOwner = this
         tv_title.text = getString(R.string.collmember)
+        var collectivemax = collectiveMemberViewModel.getCommunityCount() + 1
+        et_last_code.setHint(
+            resources.getString(R.string.type_here) + getCharacterNumber(
+                collectivemax,
+                "00000"
+            )
+        )
         img_setting.setOnClickListener {
             val intent = Intent(this, HomeDashboardActivity::class.java)
             startActivity(intent)
@@ -63,6 +81,27 @@ class CollectiveProfileMemberActivity : BaseActivity(), View.OnClickListener {
             startActivity(intent)
             finish()
         }
+        et_last_code.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length != 0) et_member_id.setText(
+                    coll_code_starting + getCharacterNumber(
+                        validate!!.returnIntegerValue(et_last_code.text.toString()),
+                        "00000"
+                    )
+                )
+
+            }
+        })
         if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveMemberGUID) != null && validate!!.RetriveSharepreferenceString(
                 AppSP.CollectiveMemberGUID
             )!!.trim().isNotEmpty()
@@ -90,9 +129,8 @@ class CollectiveProfileMemberActivity : BaseActivity(), View.OnClickListener {
             R.id.btn_save -> {
                 if (checkValidation() == 0) {
                     collectiveMemberViewModel.savecollectivemember(this)
-                    val intent = Intent(this, CollectiveProfileActivityThird::class.java)
-                    startActivity(intent)
-                    finish()
+                    CustomAlert(this, resources.getString(R.string.data_saved_successfully))
+
                 }
             }
 
@@ -121,14 +159,21 @@ class CollectiveProfileMemberActivity : BaseActivity(), View.OnClickListener {
                         1, iLanguageID
                     )
                 )
-                et_member_age.setText(validate!!.returnStringValue(it.get(0).Age.toString()))
+                setDefBlank(et_member_age, it.get(0).Age!!)
                 et_contact_number.setText(validate!!.returnStringValue(it.get(0).Contact))
                 et_role_of_member.setText(validate!!.returnStringValue(it.get(0).Position))
                 validate!!.SetAnswerTypeRadioButton(rg_savings_account, it.get(0).Isbank)
                 et_aadhar_card.setText(validate!!.returnStringValue(it.get(0).Aadhaar))
-
+                et_last_code.visibility = View.GONE
+                iShow=1
             }
         })
+    }
+
+    fun setDefBlank(edi: EditText, data: Int) {
+        if (data < 0) edi.setText("")
+        else edi.setText(data.toString())
+
     }
 
     fun fillSpinner() {
@@ -175,8 +220,8 @@ class CollectiveProfileMemberActivity : BaseActivity(), View.OnClickListener {
 
     fun checkValidation(): Int {
 
-        var iValue = 0;
-
+        var iValue = 0
+        var iCount = collectiveMemberViewModel.getMemberID(et_member_id.text.toString())
         if (et_member_name.text.toString().length == 0) {
             iValue = 1
             validate!!.CustomAlertEdit(
@@ -184,14 +229,21 @@ class CollectiveProfileMemberActivity : BaseActivity(), View.OnClickListener {
                 et_member_name,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.name_of_the_member),
             )
-        } else if (et_member_id.text.toString().length == 0) {
+        } else if (et_last_code.text.toString().length == 0 && et_last_code.visibility==VISIBLE) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
                 et_member_id,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.individual_member_id),
             )
-        } else if (spin_member_sex.selectedItemPosition == 0) {
+        }else if (iCount>0 && iShow==0){
+             iValue = 1
+            validate!!.CustomAlert(
+                this,
+                getString(R.string.indiexits),
+            )
+        }
+        else if (spin_member_sex.selectedItemPosition == 0) {
             iValue = 1
             validate!!.CustomAlertSpinner(
                 this,
@@ -236,11 +288,19 @@ class CollectiveProfileMemberActivity : BaseActivity(), View.OnClickListener {
                 et_role_of_member,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.role_of_member_in_group),
             )
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_savings_account) == -1) {
+        } else if (rg_savings_account.checkedRadioButtonId == -1) {
             iValue = 1
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.please_select) + " " + resources.getString(R.string.do_you_have_savings_bank_account),
+            )
+        } else if (et_aadhar_card.text.toString()
+                .isNotEmpty() && et_aadhar_card.text.toString().length != 12
+        ) {
+            iValue = 1
+            validate!!.CustomAlert(
+                this,
+                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.validaadhar_no),
             )
         }
         return iValue;
@@ -276,7 +336,6 @@ class CollectiveProfileMemberActivity : BaseActivity(), View.OnClickListener {
         var hh_code = ""
         val cin = "CIN"
         val initials = "IM"
-        var character_number = collectiveMemberViewModel.getCommunityCount() + 1
 
 
         var sWardPanchayat = CareIndiaApplication.database?.collectiveDao()
@@ -287,9 +346,8 @@ class CollectiveProfileMemberActivity : BaseActivity(), View.OnClickListener {
         hh_code = cin + sWardPanchayat + getCharacterNumber(
             ward_or_panchayat_code!!,
             "000"
-        ) + initials + getCharacterNumber(
-            character_number, "00000"
-        )
+        ) + initials
+        coll_code_starting = hh_code
 
         return hh_code
     }
@@ -340,4 +398,41 @@ class CollectiveProfileMemberActivity : BaseActivity(), View.OnClickListener {
         startActivity(intent)
         finish()
     }
+
+    fun CustomAlert(
+        collectiveProfileMemberActivity: CollectiveProfileMemberActivity,
+        msg: String?
+    ) { // Create custom dialog object
+        val dialog = Dialog(this)
+        // hide to default title for Dialog
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        // inflate the layout dialog_layout.xml and set it as contentView
+        val inflater =
+            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view: View = inflater.inflate(R.layout.dialog_layout, null, false)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.setContentView(view)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(0))
+        val layoutParams = WindowManager.LayoutParams()
+        layoutParams.copyFrom(dialog.getWindow()?.getAttributes())
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog.getWindow()?.setAttributes(layoutParams)
+        val txtTitle = dialog
+            .findViewById<View>(R.id.txt_alert_message) as TextView
+        txtTitle.text = msg
+        val btnok =
+            dialog.findViewById<View>(R.id.btn_ok) as Button
+        btnok.setOnClickListener {
+            val intent =
+                Intent(collectiveProfileMemberActivity, CollectiveProfileActivityThird::class.java)
+            startActivity(intent)
+            finish()
+            btnok.setTextColor(resources.getColor(R.color.white))
+            dialog.dismiss()
+        }
+        // Display the dialog
+        dialog.show()
+    }
+
 }

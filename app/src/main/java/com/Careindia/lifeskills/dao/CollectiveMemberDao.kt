@@ -16,7 +16,7 @@ interface CollectiveMemberDao {
     @Query("Select * from tblCollectiveMember where Col_GUID=:Col_GUID")
     fun getAllMemberData(Col_GUID:String): LiveData<List<CollectiveMemberEntity>>
 
-    @Query("update tblCollectiveMember set Col_GUID=:collGuid, MemberID=:memberId, Name=:memberName, Gender=:membersex, Age=:memberage, Position=:memberpos, Isbank=:memberacc, Contact=:contactNo, Aadhaar=:aadharNo, UpdatedBy=:updatedBy, UpdatedOn=:updatedOn where GUID=:guid")
+    @Query("update tblCollectiveMember set Col_GUID=:collGuid, MemberID=:memberId, Name=:memberName, Gender=:membersex, Age=:memberage, Position=:memberpos, Isbank=:memberacc, Contact=:contactNo, Aadhaar=:aadharNo, UpdatedBy=:updatedBy, UpdatedOn=:updatedOn,IsEdited=:IsEdited where GUID=:guid")
     fun updatecollectiveMember(
         guid: String,
         collGuid: String,
@@ -29,7 +29,8 @@ interface CollectiveMemberDao {
         contactNo: String,
         aadharNo: String,
         updatedBy: Int,
-        updatedOn: String
+        updatedOn: String,
+        IsEdited:Int
     )
 
     @Query("select * from tblCollectiveMember where GUID=:guid")
@@ -38,6 +39,12 @@ interface CollectiveMemberDao {
     @Delete
     fun deletemember(collectiveMemberEntity: CollectiveMemberEntity)
 
-    @Query("Select count(MemberID) from tblCollectiveMember")
+    @Query("select MAX(substr(MemberID,10 , 14)) from tblCollectiveMember")
     fun getCommunityCount():Int
+
+    @Query("select count(*) from tblCollectiveMember where MemberID=:MemberID")
+    fun getMemberID(MemberID:String):Int
+
+    @Query("Select * from tblCollectiveMember")
+    fun getAllMemberDataNew(): List<CollectiveMemberEntity>
 }

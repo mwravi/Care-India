@@ -67,15 +67,28 @@
 
                     </TableRow>
 
-                    <EditText
-                        android:id="@+id/et_member_id"
-                        style="@style/EditTextStyleNew"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                        android:inputType="text"
-                        android:maxLength="14"
-                        android:enabled="false"
-                        />
+                    <TableRow style="@style/TableRowStyle">
+                        <EditText
+                            android:id="@+id/et_member_id"
+                            style="@style/EditTextStyleNew"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                            android:inputType="text"
+                            android:maxLength="14"
+                            android:enabled="false"
+                            android:layout_width="0dp"
+                            android:layout_weight="1.5"
+                            />
 
+                        <EditText
+                            android:id="@+id/et_last_code"
+                            style="@style/EditTextStyleNew"
+                            android:inputType="number"
+                            android:maxLength="5"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+
+                            />
+                    </TableRow>
                 </LinearLayout>
 
                 <LinearLayout
@@ -193,7 +206,7 @@
                     <RadioGroup
                         android:id="@+id/rg_savings_account"
                         style="@style/radioGroupStyle"
-                        android:checkedButton="@={collectiveMemberViewModel.Savingacc}"
+
                         />
 
                 </LinearLayout>

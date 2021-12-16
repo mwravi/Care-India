@@ -11,10 +11,14 @@ data class MstUserEntity(
     @ColumnInfo(name = "Password") val Password: String?="",
     @ColumnInfo(name = "UserLevel") val UserLevel: Int?=0,
     @ColumnInfo(name = "Role") val Role: String?="",
-    @ColumnInfo(name = "Statecode") val Statecode: String?="",
-    @ColumnInfo(name = "DistrictCode") val DistrictCode: String?="",
-    @ColumnInfo(name = "ZoneCode") val ZoneCode: String?="",
-    @ColumnInfo(name = "PWCode") val PWCode: String?=""
+    @ColumnInfo(name = "Statecode") val Statecode: Int?=0,
+    @ColumnInfo(name = "DistrictCode") val DistrictCode: Int?=0,
+    @ColumnInfo(name = "ZoneCode") val ZoneCode: Int?=0,
+    @ColumnInfo(name = "PWCode") val PWCode: String?="",
+    @ColumnInfo(name = "CRPID") val CRPID: Int=0,
+    @ColumnInfo(name = "CRPID_Name") val CRPID_Name: String="",
+    @ColumnInfo(name = "FCID") val FCID: Int=0,
+    @ColumnInfo(name = "FCID_Name") val FCID_Name: String="",
 )
 
 

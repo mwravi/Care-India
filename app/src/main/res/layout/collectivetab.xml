@@ -11,7 +11,7 @@
         android:id="@+id/horizontalScroll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none">
+      >
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -29,14 +29,14 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle" />
+                    android:src="@drawable/ic_collective_prf_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:fontFamily="@font/firasans_regular"
-                    android:text="First"
+                    android:text="@string/location"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
 
@@ -54,14 +54,14 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle" />
+                    android:src="@drawable/ic_collective_prf_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:fontFamily="@font/firasans_regular"
-                    android:text="Second"
+                    android:text="@string/group_details"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
 
@@ -78,14 +78,14 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle" />
+                    android:src="@drawable/ic_collective_prf_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:fontFamily="@font/firasans_regular"
-                    android:text="Third"
+                    android:text="@string/member_details"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
 
@@ -103,7 +103,7 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle" />
+                    android:src="@drawable/ic_collective_prf_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -128,7 +128,7 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle" />
+                    android:src="@drawable/ic_collective_prf_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -153,7 +153,7 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle" />
+                    android:src="@drawable/ic_collective_prf_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"

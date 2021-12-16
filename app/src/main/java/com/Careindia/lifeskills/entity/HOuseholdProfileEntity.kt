@@ -9,14 +9,14 @@ import androidx.room.PrimaryKey
 
 data class HouseholdProfileEntity(
     @PrimaryKey @ColumnInfo(name = "HHGUID") val HHGUID: String,
-    @ColumnInfo(name = "Crpid") val Crpid: String? = "",
-    @ColumnInfo(name = "fcid") val fcid: String?,
-    @ColumnInfo(name = "StateCode") val StateCode: String? = "",
-    @ColumnInfo(name = "DistrictCode") val DistrictCode: String? = "",
-    @ColumnInfo(name = "ZoneCode") val ZoneCode: String? = "",
+    @ColumnInfo(name = "CRPID") val CRPID: Int=0,
+    @ColumnInfo(name = "FCID") val FCID: Int=0,
+    @ColumnInfo(name = "StateCode") val StateCode: Int? =0,
+    @ColumnInfo(name = "DistrictCode") val DistrictCode: Int? =0,
+    @ColumnInfo(name = "ZoneCode") val ZoneCode: Int? =0,
     @ColumnInfo(name = "Panchayat_Ward") val Panchayat_Ward: Int?,
     @ColumnInfo(name = "PWCode") val PWCode: String? = "",
-    @ColumnInfo(name = "Localitycode") val Localitycode: String? = "",
+    @ColumnInfo(name = "Locality") val Locality: String? = "",
     @ColumnInfo(name = "Dateform") val Dateform: String? = "",
     @ColumnInfo(name = "HHCode") val HHCode: String? = "",
     @ColumnInfo(name = "Name") val Name: String? = "",
@@ -43,6 +43,8 @@ data class HouseholdProfileEntity(
     @ColumnInfo(name = "UpdatedBy") val UpdatedBy: Int?,
     @ColumnInfo(name = "UpdatedOn") val UpdatedOn:String?="",
     @ColumnInfo(name = "Status") val Status: Int?,
-    @ColumnInfo(name = "Actionby") val Actionby: Int?
+    @ColumnInfo(name = "Actionby") val Actionby: Int?,
+    @ColumnInfo(name = "IsEdited") val IsEdited: Int?,
+    @ColumnInfo(name = "Initials") val Initials: String = ""
 )
 

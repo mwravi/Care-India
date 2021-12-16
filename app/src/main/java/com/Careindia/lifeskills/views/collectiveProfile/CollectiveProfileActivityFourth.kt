@@ -6,8 +6,8 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Spinner
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -107,17 +107,20 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
             }
         })
 
-        collectiveViewModel.Electionob.observe(this, Observer {
-            val lookupcode = validate!!.GetAnswerTypeRadioButtonID(rg_office_bearer)
+
+        rg_office_bearer.setOnCheckedChangeListener { radioGroup, i ->
+
+            val lookupcode = validate!!.GetAnswerTypeRadioButtonIDNew(rg_office_bearer)
             if (lookupcode == 1) {
                 lay_bearer_happens.visibility = VISIBLE
             } else {
                 lay_bearer_happens.visibility = GONE
                 et_bearer_happens.setText("")
             }
-        })
-        collectiveViewModel.Bankac.observe(this, Observer {
-            val lookupcode = validate!!.GetAnswerTypeRadioButtonID(rg_bank_account)
+        }
+
+        rg_bank_account.setOnCheckedChangeListener { radioGroup, i ->
+            val lookupcode = validate!!.GetAnswerTypeRadioButtonIDNew(rg_bank_account)
             if (lookupcode == 0) {
                 lay_cbank_account.visibility = VISIBLE
                 lay_group_savings.visibility = GONE
@@ -145,7 +148,8 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
                 spin_group_savings.setSelection(0)
                 spin_frequency_group_savings.setSelection(0)
             }
-        })
+        }
+
     }
 
     override fun onClick(view: View?) {
@@ -173,11 +177,11 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
         collectiveViewModel.getCollectivedatabyGuid(validate!!.returnStringValue(collectiveGuid))
             .observe(this, Observer {
                 if (it != null && it.size > 0) {
-
-                    et_tenure.setText(validate!!.returnStringValue(it.get(0).Tenure_President.toString()))
+                    setDefBlank(et_tenure, it.get(0).Tenure_President!!)
+                    setDefBlank(et_bearer_happens, it.get(0).Election_Freq!!)
+                    setDefBlank(et_other_inr, it.get(0).Savings_Oth!!)
                     validate!!.SetAnswerTypeRadioButton(rg_rotation_of_roles, it[0].Rolerotation)
                     validate!!.SetAnswerTypeRadioButton(rg_office_bearer, it[0].Elections)
-                    et_bearer_happens.setText(validate!!.returnStringValue(it.get(0).Election_Freq.toString()))
                     validate!!.SetAnswerTypeRadioButton(rg_bank_account, it[0].IsBank)
                     et_cbank_account.setText(validate!!.returnStringValue(it.get(0).Bank_Challenges.toString()))
                     spin_group_savings.setSelection(
@@ -186,7 +190,6 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
                             20, iLanguageID
                         )
                     )
-                    et_other_inr.setText(validate!!.returnStringValue(it.get(0).Savings_Oth.toString()))
                     spin_frequency_group_savings.setSelection(
                         returnpos(
                             validate!!.returnIntegerValue(
@@ -270,13 +273,14 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
                 et_tenure,
                 resources.getString(R.string.valid_tenure_of_the_president_office_bearer_in_complete_years),
             )
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_rotation_of_roles) == -1) {
+        } else if (rg_rotation_of_roles.checkedRadioButtonId == -1) {
             iValue = 1
             validate!!.CustomAlert(
                 this,
+
                 resources.getString(R.string.please_select) + " " + resources.getString(R.string.q302_has_there_been_any_rotation_of_the_roles_of_the_member_in_last_one_year),
             )
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_office_bearer) == -1) {
+        } else if (rg_office_bearer.checkedRadioButtonId == -1) {
             iValue = 1
             validate!!.CustomAlert(
                 this,
@@ -299,7 +303,7 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
                 et_bearer_happens,
                 resources.getString(R.string.valid_frequency_the_election_for_office_bearer_happens_in_complete_years),
             )
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_bank_account) == -1) {
+        } else if (rg_bank_account.checkedRadioButtonId == -1) {
             iValue = 1
             validate!!.CustomAlert(
                 this,
@@ -379,24 +383,23 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
         ll_six.setBackgroundColor(resources.getColor(R.color.back))
 
         lay_first.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilefour(this)
-                val intent = Intent(this, CollectiveProfileActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
+
+
+            val intent = Intent(this, CollectiveProfileActivity::class.java)
+            startActivity(intent)
+            finish()
+
         }
         lay_secnd.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilefour(this)
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length > 0) {
+
                 val intent = Intent(this, CollectiveProfileActivitySec::class.java)
                 startActivity(intent)
                 finish()
             }
         }
         ll_third.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilefour(this)
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length > 0) {
                 val intent = Intent(this, CollectiveProfileActivityThird::class.java)
                 startActivity(intent)
                 finish()
@@ -408,16 +411,14 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
              finish()
          }*/
         ll_fifth.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilefour(this)
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length > 0) {
                 val intent = Intent(this, CollectiveProfileActivityFifth::class.java)
                 startActivity(intent)
                 finish()
             }
         }
         ll_six.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilefour(this)
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length > 0) {
                 val intent = Intent(this, CollectiveProfileActivitySixth::class.java)
                 startActivity(intent)
                 finish()
@@ -425,6 +426,11 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
         }
     }
 
+    fun setDefBlank(edi: EditText, data: Int) {
+        if (data < 0) edi.setText("")
+        else edi.setText(data.toString())
+
+    }
 
     override fun onBackPressed() {
         //super.onBackPressed()

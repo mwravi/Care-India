@@ -94,7 +94,7 @@
                     <RadioGroup
                         android:id="@+id/rg_easily_avial_loan"
                         style="@style/radioGroupStyle"
-                        android:checkedButton="@={collectiveViewModel.Availloan}"
+
                         />
 
                 </LinearLayout>
@@ -191,7 +191,7 @@
                     <RadioGroup
                         android:id="@+id/rg_meeting_conducted"
                         style="@style/radioGroupStyle"
-                        android:checkedButton="@={collectiveViewModel.Meetingconducted}"
+
                         />
 
                 </LinearLayout>
@@ -282,7 +282,7 @@
                     <RadioGroup
                         android:id="@+id/rg_meeting_schedule"
                         style="@style/radioGroupStyle"
-                        android:checkedButton="@={collectiveViewModel.meetingschedule}"/>
+                        />
 
                 </LinearLayout>
 

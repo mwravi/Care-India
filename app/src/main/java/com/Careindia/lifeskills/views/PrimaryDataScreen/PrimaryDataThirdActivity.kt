@@ -1,10 +1,15 @@
 package com.careindia.lifeskills.views.primarydatascreen
 
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.ArrayAdapter
-import android.widget.Spinner
+import android.view.Window
+import android.view.WindowManager
+import android.widget.*
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -19,8 +24,10 @@ import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodel.PrimaryDataViewModel
 import com.careindia.lifeskills.viewmodelfactory.PrimaryDataViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
+import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_primary_data_third.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
+import kotlinx.android.synthetic.main.primary_data_tab.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
@@ -29,7 +36,7 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
 
     lateinit var primaryDataViewModel: PrimaryDataViewModel
     lateinit var mstLookupViewModel: MstLookupViewModel
-    var iLanguageID=0
+    var iLanguageID = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_primary_data_third)
@@ -49,8 +56,13 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
 
         initializeController()
         fillSpinner()
+        hideview()
+        bottomclick()
 
-        if(validate!!.RetriveSharepreferenceString(AppSP.PDCGUID) !=null && validate!!.RetriveSharepreferenceString(AppSP.PDCGUID)!!.trim().length>0) {
+        if (validate!!.RetriveSharepreferenceString(AppSP.PDCGUID) != null && validate!!.RetriveSharepreferenceString(
+                AppSP.PDCGUID
+            )!!.trim().length > 0
+        ) {
             showLiveData()
         }
 
@@ -64,13 +76,16 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
     private fun applyClickOnView() {
         btn_save.setOnClickListener(this)
         btn_prev.setOnClickListener(this)
+        img_back.setOnClickListener(this)
+        img_setting.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.btn_save -> {
-                if (checkValidation() == 0) {
-              primaryDataViewModel.update_third_data(this,mstLookupViewModel,iLanguageID)
+                if (checkValidation() == 1) {
+                    primaryDataViewModel.update_third_data(this, mstLookupViewModel, iLanguageID)
+                    CustomAlert(this, resources.getString(R.string.data_saved_successfully))
                 }
 
             }
@@ -80,7 +95,45 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
                 startActivity(intent)
                 finish()
             }
+            R.id.img_back -> {
+                val intent = Intent(this, PrimaryDataListActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.img_setting -> {
+                val intent = Intent(this, HomeDashboardActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
+    }
+
+    fun bottomclick() {
+        lay_first.setBackgroundColor(resources.getColor(R.color.back))
+        lay_secnd.setBackgroundColor(resources.getColor(R.color.back))
+        ll_third.setBackgroundColor(resources.getColor(R.color.color_darkgrey))
+        lay_first.setOnClickListener {
+
+            val intent = Intent(this, PrimaryDataFirstActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+              lay_secnd.setOnClickListener {
+                  if (validate!!.RetriveSharepreferenceString(AppSP.PDCGUID)!!.length > 0) {
+                      val intent = Intent(this, PrimaryDataSecondActivity::class.java)
+                      startActivity(intent)
+                      finish()
+                  }
+              }
+
+  /*      ll_third.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.PDCGUID)!!.length > 0) {
+                val intent = Intent(this, PrimaryDataThirdActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }*/
+
     }
 
 
@@ -90,28 +143,28 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
         fill_Spinner(
             resources.getString(R.string.select),
             spin_source_income,
-            30,
+            54,
             iLanguageID
         )
 
         fill_Spinner(
             resources.getString(R.string.select),
             spin_stage_of_self_employment,
-            33,
+            41,
             iLanguageID
         )
 
         fill_Spinner(
             resources.getString(R.string.select),
             spin_availed_loan,
-            33,
+            55,
             iLanguageID
         )
 
         fill_Spinner(
             resources.getString(R.string.select),
             spin_expecting_support,
-            34,
+            52,
             iLanguageID
         )
 
@@ -121,7 +174,8 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
             -1,
             mstLookupViewModel,
             3,
-            iLanguageID)
+            iLanguageID
+        )
 
         validate!!.fillradio(
             this,
@@ -129,7 +183,8 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
             -1,
             mstLookupViewModel,
             3,
-            iLanguageID)
+            iLanguageID
+        )
 
         validate!!.fillradio(
             this,
@@ -137,7 +192,8 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
             -1,
             mstLookupViewModel,
             3,
-            iLanguageID)
+            iLanguageID
+        )
 
         validate!!.fillradio(
             this,
@@ -145,7 +201,75 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
             -1,
             mstLookupViewModel,
             3,
-            iLanguageID)
+            iLanguageID
+        )
+    }
+
+
+    fun hideview() {
+        spin_stage_of_self_employment.setOnItemSelectedListener(object :
+            AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parentView: AdapterView<*>?,
+                selectedItemView: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (position > 0) {
+                    val ID = validate!!.returnID(
+                        spin_stage_of_self_employment,
+                        mstLookupViewModel,
+                        41,
+                        iLanguageID
+                    )
+                    if (ID == 99) {
+                        lay_stage_other.visibility = View.VISIBLE
+                    } else {
+                        lay_stage_other.visibility = View.GONE
+                        et_stage_other.setText("")
+                    }
+
+                }
+
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>?) {
+                // your code here
+            }
+        })
+
+        spin_expecting_support.setOnItemSelectedListener(object :
+            AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parentView: AdapterView<*>?,
+                selectedItemView: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (position > 0) {
+                    val ID = validate!!.returnID(
+                        spin_expecting_support,
+                        mstLookupViewModel,
+                        52,
+                        iLanguageID
+                    )
+                    if (ID == 99) {
+                        lay_support_other.visibility = View.VISIBLE
+                    } else {
+                        lay_support_other.visibility = View.GONE
+                        et_support_other.setText("")
+                    }
+
+                }
+
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>?) {
+                // your code here
+            }
+        })
+
+
     }
 
 
@@ -155,63 +279,88 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
             validate!!.CustomAlertEdit(
                 this,
                 et_what_kind_of_business,
-                resources.getString(R.string.please_enter_what_kind_of_business_it_is)
+                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.in_what_kind_of_bussiness_you_have_invested)
             )
             value = 0
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_business_registered) == 0) {
+        } else if (spin_source_income.selectedItemPosition == 0) {
             validate!!.CustomAlert(
                 this,
-                resources.getString(R.string.please_select_is_the_business_registered)
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.how_did_you_source_their_investment)
+            )
+            value = 0
+        } else if (rg_business_registered.checkedRadioButtonId == -1) {
+            validate!!.CustomAlert(
+                this,
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.have_you_registered_your_business)
             )
             value = 0
         } else if (spin_stage_of_self_employment.selectedItemPosition == 0) {
             validate!!.CustomAlertSpinner(
                 this,
                 spin_stage_of_self_employment,
-                resources.getString(R.string.please_select_stage_of_self_employment_enterprise_idea)
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.stage_of_self_employment_enterprise_idea)
+
             )
             value = 0
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_loans_availed_already) == 0) {
+        } else if (lay_stage_other.visibility == View.VISIBLE && et_stage_other.text.toString()
+                .isEmpty()
+        ) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_stage_other,
+                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.others_specify)
+            )
+            value = 0
+        } else if (rg_loans_availed_already.checkedRadioButtonId == -1) {
             validate!!.CustomAlert(
                 this,
-                resources.getString(R.string.please_select_are_they_availing_loans_already)
+
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.are_they_availing_loans_already)
+
             )
             value = 0
-        } else if (spin_availed_loan.selectedItemPosition==0) {
+        } else if (spin_availed_loan.selectedItemPosition == 0) {
             validate!!.CustomAlertSpinner(
                 this,
                 spin_availed_loan,
-                resources.getString(R.string.please_enter_from_where_have_availed_loans)
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.from_where_have_availed_loans)
             )
             value = 0
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_expecting_financial_assistance) == 0) {
+        } else if (rg_expecting_financial_assistance.checkedRadioButtonId == -1) {
             validate!!.CustomAlert(
                 this,
-                resources.getString(R.string.please_select_are_they_expecting_any_financial_assistance)
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.are_they_expecting_any_financial_assistance)
             )
             value = 0
-        }  else if (spin_expecting_support.selectedItemPosition == 0) {
+        } else if (et_amt_financial_assistance.text.toString().isEmpty()) {
+            validate!!.CustomAlert(
+                this,
+                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.amount_of_financial_assistance_required_in_rs)
+            )
+            value = 0
+        } else if (spin_expecting_support.selectedItemPosition == 0) {
             validate!!.CustomAlertSpinner(
                 this,
                 spin_expecting_support,
-                resources.getString(R.string.please_select) + resources.getString(R.string.are_you_expecting_any_support)
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.are_you_expecting_any_support)
+            )
+            value = 0
+        } else if (lay_support_other.visibility == View.VISIBLE && et_support_other.text.toString()
+                .isEmpty()
+        ) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_support_other,
+                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.others_specify)
             )
             value = 0
         }
         return value
     }
 
-    fun sendData() {
-        primaryDataViewModel.collectDataPrimaryThird(
-            validate!!.GetAnswerTypeRadioButtonID(rg_business_registered),
-            validate!!.GetAnswerTypeRadioButtonID(rg_loans_availed_already),
-            validate!!.GetAnswerTypeRadioButtonID(rg_expecting_financial_assistance)
-        )
-    }
-
 
     override fun onBackPressed() {
-        val intent = Intent(this, PrimaryDataSecondActivity::class.java)
+        val intent = Intent(this, PrimaryDataListActivity::class.java)
         startActivity(intent)
         finish()
     }
@@ -247,25 +396,96 @@ class PrimaryDataThirdActivity : BaseActivity(), View.OnClickListener {
         val primaryGuid = validate!!.RetriveSharepreferenceString(AppSP.PDCGUID)
         if (primaryGuid != null) {
             primaryDataViewModel.getdatabyPDCGuid(primaryGuid).observe(this, Observer {
-                if (it != null && it.size>0) {
+                if (it != null && it.size > 0) {
 
                     et_what_kind_of_business.setText(it.get(0).Business_type)
-                   // spin_source_income.setSelection(validate!!.returnpos(it.get(0).Loan_interested,mstLookupViewModel,30,iLanguageID))
-                    validate!!.SetAnswerTypeRadioButton(rg_business_registered,it.get(0).Business_registered)
-                    validate!!.SetAnswerTypeRadioButton(rg_loans_availed_already,it.get(0).Loan_availed)
-
-
-                    spin_stage_of_self_employment.setSelection(validate!!.returnpos(validate!!.returnIntegerValue(it.get(0).State_selfemp),mstLookupViewModel,33,iLanguageID))
-                    spin_availed_loan.setSelection(validate!!.returnpos(validate!!.returnIntegerValue(it.get(0).Loan_source),mstLookupViewModel,33,iLanguageID))
-                    validate!!.SetAnswerTypeRadioButton(rg_expecting_financial_assistance,it.get(0).Financial_assist)
-                    spin_expecting_support.setSelection(validate!!.returnpos(it.get(0).Financial_assist_amt,mstLookupViewModel,34,iLanguageID))
-
-
+                    spin_source_income.setSelection(
+                        validate!!.returnpos(
+                            it.get(0).Business_Invest_Source,
+                            mstLookupViewModel,
+                            54,
+                            iLanguageID
+                        )
+                    )
+                    validate!!.SetAnswerTypeRadioButton(
+                        rg_business_registered,
+                        it.get(0).Business_registered
+                    )
+                    spin_stage_of_self_employment.setSelection(
+                        validate!!.returnpos(
+                            it.get(0).Stage_Self_Emp,
+                            mstLookupViewModel,
+                            41,
+                            iLanguageID
+                        )
+                    )
+                    et_stage_other.setText(it.get(0).Stage_Self_Emp_Oth)
+                    validate!!.SetAnswerTypeRadioButton(
+                        rg_loans_availed_already,
+                        it.get(0).Loan_availed
+                    )
+                    spin_availed_loan.setSelection(
+                        validate!!.returnpos(
+                            it.get(0).Loan_availed_from,
+                            mstLookupViewModel,
+                            55,
+                            iLanguageID
+                        )
+                    )
+                    validate!!.SetAnswerTypeRadioButton(
+                        rg_expecting_financial_assistance,
+                        it.get(0).Financial_assist
+                    )
+                    et_amt_financial_assistance.setText(it.get(0).Financial_assist_amt)
+                    spin_expecting_support.setSelection(
+                        validate!!.returnpos(
+                            it.get(0).Support_Expecting,
+                            mstLookupViewModel,
+                            52,
+                            iLanguageID
+                        )
+                    )
+                    et_support_other.setText(it.get(0).Support_Expecting_Oth)
 
 
                 }
             })
         }
 
+    }
+
+    fun CustomAlert(
+        primaryDataThirdActivity: PrimaryDataThirdActivity,
+        msg: String?
+    ) { // Create custom dialog object
+        val dialog = Dialog(this)
+        // hide to default title for Dialog
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        // inflate the layout dialog_layout.xml and set it as contentView
+        val inflater =
+            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val view: View = inflater.inflate(R.layout.dialog_layout, null, false)
+        dialog.setCanceledOnTouchOutside(false)
+        dialog.setContentView(view)
+        dialog.window!!.setBackgroundDrawable(ColorDrawable(0))
+        val layoutParams = WindowManager.LayoutParams()
+        layoutParams.copyFrom(dialog.getWindow()?.getAttributes())
+        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
+        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
+        dialog.getWindow()?.setAttributes(layoutParams)
+        val txtTitle = dialog
+            .findViewById<View>(R.id.txt_alert_message) as TextView
+        txtTitle.text = msg
+        val btnok =
+            dialog.findViewById<View>(R.id.btn_ok) as Button
+        btnok.setOnClickListener {
+            val intent = Intent(primaryDataThirdActivity, PrimaryDataListActivity::class.java)
+            startActivity(intent)
+            finish()
+            btnok.setTextColor(resources.getColor(R.color.white))
+            dialog.dismiss()
+        }
+        // Display the dialog
+        dialog.show()
     }
 }

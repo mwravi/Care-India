@@ -215,7 +215,6 @@
                     </TableRow>
 
                     <RadioGroup
-                        android:checkedButton="@={individualProfileViewModel.IsCIGMember}"
                         android:id="@+id/rg_member_cig_shg"
                         style="@style/radioGroupStyle" />
 

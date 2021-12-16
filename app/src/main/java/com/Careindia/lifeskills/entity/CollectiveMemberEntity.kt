@@ -21,5 +21,6 @@ data class CollectiveMemberEntity(
     @ColumnInfo(name = "UpdatedBy") val UpdatedBy: Int? = 0,
     @ColumnInfo(name = "UpdatedOn") val UpdatedOn: String? = "",
     @ColumnInfo(name = "Status") val Status: Int? = 0,
-    @ColumnInfo(name = "Actionby") val Actionby: Int? = 0
+    @ColumnInfo(name = "Actionby") val Actionby: Int? = 0,
+    @ColumnInfo(name = "IsEdited") val IsEdited: Int?
 )

@@ -36,67 +36,6 @@
                 android:background="@drawable/box_background"
                 android:padding="@dimen/_10sdp">
 
-
-                <LinearLayout
-                    android:id="@+id/lay_et_days_secondary_job"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/no_days_secondary_job" />
-
-
-                    </TableRow>
-
-
-                    <EditText
-                        android:id="@+id/et_days_secondary_job"
-                        style="@style/EditTextStyleNew"
-                        android:digits="0123456789"
-                        android:hint="@string/type_here"
-                        android:inputType="number"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:text="@={individualProfileViewModel.WorkingDaysSecondaryJob}" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lay_et_avg_daily_secondry_income"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/avg_daily_secondry_income" />
-
-
-                    </TableRow>
-
-                    <EditText
-                        android:id="@+id/et_avg_daily_secondry_income"
-                        style="@style/EditTextStyleNew"
-                        android:digits="0123456789"
-                        android:hint="@string/type_here"
-                        android:inputType="number"
-                        android:maxLines="1"
-                        android:singleLine="true"
-                        android:text="@={individualProfileViewModel.AvgDailySecIncome}" />
-
-                </LinearLayout>
-
-
                 <LinearLayout
                     android:id="@+id/lay_have_adhar"
                     style="@style/LinearLayoutStyle">

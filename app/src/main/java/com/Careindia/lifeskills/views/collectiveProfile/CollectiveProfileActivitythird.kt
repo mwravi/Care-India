@@ -96,9 +96,11 @@ class CollectiveProfileActivityThird : AppCompatActivity() {
             finish()
         }
         lay_secnd.setOnClickListener {
-            val intent = Intent(this, CollectiveProfileActivitySec::class.java)
-            startActivity(intent)
-            finish()
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length>0) {
+                val intent = Intent(this, CollectiveProfileActivitySec::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
         /* ll_third.setOnClickListener {
              val intent = Intent(this, CollectiveProfileActivityThird::class.java)
@@ -106,19 +108,26 @@ class CollectiveProfileActivityThird : AppCompatActivity() {
              finish()
          }*/
         ll_fourth.setOnClickListener {
-            val intent = Intent(this, CollectiveProfileActivityFourth::class.java)
-            startActivity(intent)
-            finish()
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length>0) {
+                val intent = Intent(this, CollectiveProfileActivityFourth::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
         ll_fifth.setOnClickListener {
-            val intent = Intent(this, CollectiveProfileActivityFifth::class.java)
-            startActivity(intent)
-            finish()
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length>0) {
+                val intent = Intent(this, CollectiveProfileActivityFifth::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
         ll_six.setOnClickListener {
-            val intent = Intent(this, CollectiveProfileActivitySixth::class.java)
-            startActivity(intent)
-            finish()
+
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length>0) {
+                val intent = Intent(this, CollectiveProfileActivitySixth::class.java)
+                startActivity(intent)
+                finish()
+            }
         }
     }
 

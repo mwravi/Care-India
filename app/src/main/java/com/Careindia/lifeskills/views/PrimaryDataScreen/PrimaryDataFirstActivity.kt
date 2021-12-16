@@ -27,9 +27,10 @@ import kotlinx.android.synthetic.main.buttons_save_cancel.btn_prev
 import kotlinx.android.synthetic.main.buttons_save_cancel.btn_save
 import kotlinx.android.synthetic.main.toolbar_layout.*
 import android.widget.AdapterView
-import com.careindia.lifeskills.entity.MstDistrictEntity
-import com.careindia.lifeskills.entity.PrimaryDataEntity
-import kotlinx.android.synthetic.main.activity_primary_data_first.et_crp_name
+import com.careindia.lifeskills.views.collectivemeeting.CollectiveMeetingSecActivity
+import com.careindia.lifeskills.views.collectivemeeting.CollectiveMeetingThirdActivity
+import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
+import kotlinx.android.synthetic.main.primary_data_tab.*
 
 
 class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
@@ -60,6 +61,8 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
 
 
         tv_title.text = resources.getString(R.string.primary_data)
+        et_crp_name.setText(validate!!.RetriveSharepreferenceString(AppSP.CRPID_Name))
+        et_supervisor.setText(validate!!.RetriveSharepreferenceString(AppSP.FCID_Name))
 
         et_collection_date.setOnClickListener {
             validate!!.datePickerwithmindate(
@@ -70,6 +73,7 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
         initializeController()
         filldata()
         hideview()
+        bottomclick()
 
         if(validate!!.RetriveSharepreferenceString(AppSP.PDCGUID) !=null && validate!!.RetriveSharepreferenceString(AppSP.PDCGUID)!!.trim().length>0) {
             showLiveData()
@@ -82,6 +86,34 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
         bindHHIDTable(resources.getString(R.string.select),spin_hh_id)
 
 
+
+    }
+
+    fun bottomclick() {
+        lay_first.setBackgroundColor(resources.getColor(R.color.color_darkgrey))
+        lay_secnd.setBackgroundColor(resources.getColor(R.color.back))
+        ll_third.setBackgroundColor(resources.getColor(R.color.back))
+        /*  lay_first.setOnClickListener {
+
+              val intent = Intent(this, CollectiveMeetingActivity::class.java)
+              startActivity(intent)
+              finish()
+          }*/
+        lay_secnd.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.PDCGUID)!!.length > 0) {
+                val intent = Intent(this, PrimaryDataSecondActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        ll_third.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.PDCGUID)!!.length > 0) {
+                val intent = Intent(this, PrimaryDataThirdActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
 
     }
 
@@ -143,12 +175,14 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
     private fun applyClickOnView() {
         btn_save.setOnClickListener(this)
         btn_prev.setOnClickListener(this)
+        img_back.setOnClickListener(this)
+        img_setting.setOnClickListener(this)
     }
 
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.btn_save -> {
-                if (checkValidation() == 0) {
+                if (checkValidation() == 1) {
                     primaryDataViewModel.saveAndUpdate(this,mstLookupViewModel,iLanguageID)
                     val intent = Intent(this, PrimaryDataSecondActivity::class.java)
                     startActivity(intent)
@@ -158,6 +192,14 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
 
             R.id.btn_prev -> {
                 val intent = Intent(this, PrimaryDataListActivity::class.java)
+                startActivity(intent)
+                finish()
+            } R.id.img_back -> {
+                val intent = Intent(this, PrimaryDataListActivity::class.java)
+                startActivity(intent)
+                finish()
+             }R.id.img_setting -> {
+                val intent = Intent(this, HomeDashboardActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -217,7 +259,14 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
 
     private fun checkValidation(): Int {
         var value = 1
-        if (spin_hh_id.selectedItemPosition == 0) {
+        if (et_collection_date.text.toString().isEmpty()) {
+            validate!!.CustomAlertSpinner(
+                this,
+                spin_hh_id,
+                resources.getString(R.string.please_select) + " " + resources.getString(R.string.hh_id)
+            )
+            value = 0
+        } else if (spin_hh_id.selectedItemPosition == 0) {
             validate!!.CustomAlertSpinner(
                 this,
                 spin_hh_id,
@@ -252,7 +301,7 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.age)
             )
             value = 0
-        } else if (et_age.text.toString().length < 18 && et_age.text.toString().length > 65) {
+        } else if (validate!!.returnIntegerValue(et_age.text.toString()) < 18 && validate!!.returnIntegerValue(et_age.text.toString()) > 65) {
             validate!!.CustomAlertEdit(
                 this,
                 et_age,
@@ -288,38 +337,26 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.please_select_member_shg_jlg_clg)
             )
             value = 0
-        } /*else if (spin_social_category.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_social_category,
-                resources.getString(R.string.please_select_social_category)
-            )
-            value = 0
-        }*/ else if (validate!!.GetAnswerTypeRadioButtonID(rg_cast_income) == 0) {
+        }  else if (rg_cast_income.checkedRadioButtonId == -1) {
             validate!!.CustomAlert(
                 this,
+
                 resources.getString(R.string.please_select_caste_and_income_certificate)
             )
             value = 0
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_aadhar_card) == 0) {
+        } else if (rg_aadhar_card.checkedRadioButtonId == -1) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.please_select_aadhar_card)
             )
             value = 0
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_pan_card) == 0) {
+        } else if (rg_pan_card.checkedRadioButtonId == -1) {
             validate!!.CustomAlert(this, resources.getString(R.string.please_select_pan_card))
             value = 0
         }
         return value
     }
 
-    fun sendData() {
-        primaryDataViewModel.collectDataPrimaryFirst(
-            validate!!.GetAnswerTypeRadioButtonID(rg_aadhar_card),
-            validate!!.GetAnswerTypeRadioButtonID(rg_pan_card)
-        )
-    }
 
 
     override fun onBackPressed() {
@@ -402,7 +439,13 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
 
         CareIndiaApplication.database!!.imProfileDao().getIdvProfiledatabyGuid(IndGUID).observe(this, Observer {
             if (it != null && it.size>0) {
-                it.get(0).IndGUID
+                et_beneficiary_name.setText(it.get(0).Name)
+                et_age.setText(it.get(0).Age.toString())
+                spin_gender.setSelection(validate!!.returnpos(it.get(0).Gender,mstLookupViewModel,1,iLanguageID))
+                et_contact_no.setText(it.get(0).Contact)
+                validate!!.SetAnswerTypeRadioButton(rg_cast_income,it.get(0).CasteCertificate)
+                validate!!.SetAnswerTypeRadioButton(rg_aadhar_card,it.get(0).Aadhaar)
+                validate!!.SetAnswerTypeRadioButton(rg_pan_card,it.get(0).PAN)
 
 
 
@@ -484,19 +527,17 @@ class PrimaryDataFirstActivity : BaseActivity(), View.OnClickListener {
         if (primaryGuid != null) {
             primaryDataViewModel.getdatabyPDCGuid(primaryGuid).observe(this, Observer {
                 if (it != null && it.size>0) {
-                    //et_collection_date.setText(validate!!.returnStringValue(it.get(0).Dateform))
-                   // et_crp_name.setText(validate!!.returnStringValue(it.get(0).Dateform))
-                    //et_supervisor.setText(validate!!.returnStringValue(it.get(0).Dateform))
+                    et_collection_date.setText(validate!!.returnStringValue(it.get(0).CollectionDate))
+                    et_community_name.setText(validate!!.returnStringValue(it.get(0).CommunityName))
                     spin_hh_id.setSelection(returnposHH_GUID(it.get(0).HHGUID))
                     hhGUIDShow=it.get(0).HHGUID!!
                     imGUIDShow=it.get(0).HHGUID!!
-                  //  et_community_name.setText(validate!!.returnStringValue(it.get(0).Name))
                     et_beneficiary_name.setText(validate!!.returnStringValue(it.get(0).Name))
                     et_age.setText(validate!!.returnStringValue(it.get(0).Age.toString()))
                     et_contact_no.setText(validate!!.returnStringValue(it.get(0).Contact))
                     spin_gender.setSelection(validate!!.returnpos(it.get(0).Gender,mstLookupViewModel,1,iLanguageID))
                     spin_shg_jlg_cig.setSelection(validate!!.returnpos(it.get(0).Group_Link,mstLookupViewModel,28,iLanguageID))
-                    validate!!.SetAnswerTypeRadioButton(rg_cast_income,it.get(0).IncomeCertificate)
+                    validate!!.SetAnswerTypeRadioButton(rg_cast_income,it.get(0).CastIncomeCertificate)
                     validate!!.SetAnswerTypeRadioButton(rg_aadhar_card,it.get(0).ValidAadhaar)
                     validate!!.SetAnswerTypeRadioButton(rg_pan_card,it.get(0).ValidPAN)
 

@@ -6,6 +6,7 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
@@ -24,6 +25,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
 import android.view.WindowManager
+import com.careindia.lifeskills.views.collectiveProfile.CollectiveProfileMemberActivity
 
 
 class Validate(context: Context) {
@@ -464,6 +466,19 @@ class Validate(context: Context) {
         }
         return ID
     }
+    fun GetAnswerTypeRadioButtonIDNew(radioGroup: RadioGroup): Int {
+        var ID = -1
+
+        for (i in 0 until radioGroup.childCount) {
+
+            val radioButton1 = radioGroup.getChildAt(i) as RadioButton
+            if (radioButton1.isChecked) {
+                ID = radioButton1.id
+
+            }
+        }
+        return ID
+    }
 
     fun CustomAlertEdit(
         activity: Activity,
@@ -495,7 +510,7 @@ class Validate(context: Context) {
             dialog.dismiss()
             et.performClick()
             et.requestFocus()
-            et.setText("")
+//            et.setText("")
         }
         // Display the dialog
         dialog.show()
@@ -563,12 +578,14 @@ class Validate(context: Context) {
         val btnok =
             dialog.findViewById<View>(R.id.btn_ok) as Button
         btnok.setOnClickListener {
+
             btnok.setTextColor(context.resources.getColor(R.color.white))
             dialog.dismiss()
         }
         // Display the dialog
         dialog.show()
     }
+
 
     fun checkmobileno(mobileno: String): Int {
 
@@ -724,7 +741,7 @@ class Validate(context: Context) {
 
     val currentdatetime: String
         get() {
-            val sdf = SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.US)
+            val sdf = SimpleDateFormat("dd-MM-yyyy", Locale.US)
 
             return sdf.format(Date())
         }

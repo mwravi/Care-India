@@ -12,6 +12,7 @@
 
 
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/linear_synjhjcd"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -58,12 +59,13 @@
 
     </LinearLayout>
 
-
+    <include
+        android:id="@+id/include"
+        layout="@layout/homescreen" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="@dimen/_5sdp"
         android:background="@drawable/dashborad_dark_bg"
         android:orientation="vertical">
 
@@ -71,6 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_20sdp"
+            android:visibility="gone"
             android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="@font/firasans_regular"
             android:text="Select your focus area"
@@ -189,7 +192,7 @@
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/firasans_regular"
                             android:gravity="center"
-                            android:text="Progress Trcaker"
+                            android:text="Primary Data Collection"
                             android:textColor="@color/text_clr"
                             android:textSize="@dimen/_12sdp" />
 
@@ -264,9 +267,8 @@
 
                     </LinearLayout>
 
-
                     <LinearLayout
-                        android:id="@+id/ll_attendence"
+                        android:id="@+id/ll_psychometric"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/_10sdp"
@@ -277,10 +279,10 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="wrap_content"
+                            android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_gravity="center"
-                            android:src="@drawable/atten_session_trckr" />
+                            android:src="@drawable/ic_collective_meeting_icon" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -288,11 +290,12 @@
                             android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/firasans_regular"
                             android:gravity="center"
-                            android:text="@string/attendce_sestion_trckr"
+                            android:text="Psychometric assessment"
                             android:textColor="@color/text_clr"
                             android:textSize="@dimen/_12sdp" />
 
                     </LinearLayout>
+
 
 
                 </LinearLayout>
@@ -327,7 +330,7 @@
                             android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/firasans_regular"
                             android:gravity="center"
-                            android:text="Report"
+                            android:text="Reports"
                             android:textColor="@color/text_clr"
                             android:textSize="@dimen/_12sdp" />
 

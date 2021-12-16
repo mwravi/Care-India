@@ -14,9 +14,9 @@ interface MstZoneDao {
 
     @Query("DELETE FROM mst_3zone")
     fun deleteAll()
-    @Query("select * from mst_3zone where DistrictCode=:DistrictCode")
+    @Query("select * from mst_3zone where DistrictCode=:DistrictCode order by ZoneName")
     fun getMstZoneLive(DistrictCode:Int): LiveData<List<MstZoneEntity>>
 
-    @Query("select * from mst_3zone where DistrictCode=:DistrictCode")
+    @Query("select * from mst_3zone where DistrictCode=:DistrictCode order by ZoneName")
     fun getMstZone(DistrictCode:Int): List<MstZoneEntity>
 }

@@ -16,7 +16,8 @@ import kotlinx.coroutines.launch
 class CollectiveMemberViewModel(private val collectiveMemberRepository: CollectiveMemberRepository) :
     BaseViewModel() {
     var validate: Validate? = null
-
+    val CrpName = MutableLiveData<String>()
+    val SuperverCor = MutableLiveData<String>()
 
     val Membername = MutableLiveData<String?>()
     val Membersex = MutableLiveData<Int?>()
@@ -30,7 +31,9 @@ class CollectiveMemberViewModel(private val collectiveMemberRepository: Collecti
 
     init {
         validate = Validate(mContext)
-        saveandnextText.value = "Save & Next"
+        saveandnextText.value = "Save & Close"
+        CrpName.value = validate!!.RetriveSharepreferenceString(AppSP.CRPID_Name)
+        SuperverCor.value = validate!!.RetriveSharepreferenceString(AppSP.FCID_Name)
     }
 
     var memcollectiveData =
@@ -54,14 +57,14 @@ class CollectiveMemberViewModel(private val collectiveMemberRepository: Collecti
                     ),
                     validate!!.returnIntegerValue(Memberage.value),
                     Memberposition.value,
-                    Savingacc.value,
+                    validate!!.GetAnswerTypeRadioButtonID(collectiveProfileMemberActivity.rg_savings_account),
                     Contactno.value,
                     Aadhar.value,
                     validate!!.returnStringValue(validate!!.currentdatetime),
                     0,
                     "",
                     0,
-                    0
+                    0,1
                 )
             )
         } else {
@@ -77,11 +80,11 @@ class CollectiveMemberViewModel(private val collectiveMemberRepository: Collecti
                 ),
                 validate!!.returnIntegerValue(Memberage.value),
                 Memberposition.value!!,
-                Savingacc.value!!,
+                validate!!.GetAnswerTypeRadioButtonID(collectiveProfileMemberActivity.rg_savings_account),
                 Contactno.value!!,
                 Aadhar.value!!,
                 validate!!.RetriveSharepreferenceInt(AppSP.userId),
-                validate!!.returnStringValue(validate!!.currentdatetime)
+                validate!!.returnStringValue(validate!!.currentdatetime),1
             )
         }
     }
@@ -104,7 +107,8 @@ class CollectiveMemberViewModel(private val collectiveMemberRepository: Collecti
         contactNo: String,
         aadharNo: String,
         updatedBy: Int,
-        updatedOn: String
+        updatedOn: String,
+        IsEdited:Int
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             collectiveMemberRepository.update(
@@ -119,7 +123,8 @@ class CollectiveMemberViewModel(private val collectiveMemberRepository: Collecti
                 contactNo,
                 aadharNo,
                 updatedBy,
-                updatedOn
+                updatedOn,
+                IsEdited
             )
         }
     }
@@ -136,5 +141,9 @@ class CollectiveMemberViewModel(private val collectiveMemberRepository: Collecti
     }
     fun getCommunityCount():Int{
         return collectiveMemberRepository!!.getCommunityCount()
+    }
+
+    fun getMemberID(MemberID:String):Int{
+        return collectiveMemberRepository!!.getMemberID(MemberID)
     }
 }

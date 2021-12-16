@@ -35,7 +35,7 @@
                         <TextView
                             android:layout_height="wrap_content"
                             android:layout_width="0dp"
-                            android:text="Name"
+                            android:text="Unique ID"
                             android:layout_weight=".3"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10ssp"
@@ -52,7 +52,7 @@
                             />
 
                         <TextView
-                            android:id="@+id/tvCrpName"
+                            android:id="@+id/tvuniqueid"
                             android:layout_height="wrap_content"
                             android:layout_width="0dp"
                             android:layout_weight="1.3"
@@ -71,7 +71,7 @@
                         <TextView
                             android:layout_height="wrap_content"
                             android:layout_width="0dp"
-                            android:text="Gender"
+                            android:text="Name"
                             android:layout_weight=".3"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10ssp"
@@ -88,7 +88,7 @@
                             />
 
                         <TextView
-                            android:id="@+id/tvGender"
+                            android:id="@+id/tvCrpName"
                             android:layout_height="wrap_content"
                             android:layout_width="0dp"
                             android:layout_weight=".5"

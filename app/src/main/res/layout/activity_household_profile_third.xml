@@ -182,7 +182,7 @@
                     <RadioGroup
                         android:id="@+id/rg_dwelling_place_registered"
                         style="@style/radioGroupStyle"
-                        android:checkedButton="@={householdProfileViewModel.dwelling_place_registered}"
+
                         >
 
                     </RadioGroup>

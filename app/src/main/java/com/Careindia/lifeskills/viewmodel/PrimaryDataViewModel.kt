@@ -127,8 +127,12 @@ class PrimaryDataViewModel(private val primaryDataRepository: PrimaryDataReposit
                     ),
                     hhguid,
                     "",
-                    validate!!.returnIntegerValue(primaryDataFirstActivity.et_age.text.toString()),
+                    primaryDataFirstActivity.et_collection_date.text.toString(),
+                    validate!!.RetriveSharepreferenceInt(AppSP.CRPID),
+                    validate!!.RetriveSharepreferenceInt(AppSP.FCID),
+                    primaryDataFirstActivity.et_community_name.text.toString(),
                     primaryDataFirstActivity.et_beneficiary_name.text.toString(),
+                    validate!!.returnIntegerValue(primaryDataFirstActivity.et_age.text.toString()),
                     validate!!.returnID(
                         primaryDataFirstActivity.spin_gender,
                         mstLookupViewModel,
@@ -146,32 +150,42 @@ class PrimaryDataViewModel(private val primaryDataRepository: PrimaryDataReposit
                     validate!!.GetAnswerTypeRadioButtonID(primaryDataFirstActivity.rg_cast_income),
                     validate!!.GetAnswerTypeRadioButtonID(primaryDataFirstActivity.rg_aadhar_card),
                     validate!!.GetAnswerTypeRadioButtonID(primaryDataFirstActivity.rg_pan_card),
-                    0,
-                    0,
+                    -1,
+                    -1,
                     "",
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
+                    -1,
                     "",
+                    -1,
                     0,
-                    0,
-                    "",
-                    0,
-                    "",
-                    0,
-                    "",
-                    0,
-                    0,
-                    "",
-                    0,
-                    "",
                     0,
                     "",
                     "",
                     0,
-                    0
+                    "",
+                    -1,
+                    0,
+                    "",
+                    "",
+                    "",
+                    "",
+                    0,
+                    -1,
+                    0,
+                    "",
+                    -1,
+                    0,
+                    -1,
+                    "",
+                    0,
+                    "",
+                    validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+                    "",
+                    0,
+                    validate!!.currentdatetime,
+                    "",
+                    0,
+                    0,
+                    1
 
 
                 )
@@ -180,8 +194,10 @@ class PrimaryDataViewModel(private val primaryDataRepository: PrimaryDataReposit
             primaryDataRepository.update_primary_first_data(
                 validate!!.RetriveSharepreferenceString(AppSP.PDCGUID),
                 "",
-                validate!!.returnIntegerValue(primaryDataFirstActivity.et_age.text.toString()),
+                primaryDataFirstActivity.et_collection_date.text.toString(),
+                primaryDataFirstActivity.et_community_name.text.toString(),
                 primaryDataFirstActivity.et_beneficiary_name.text.toString(),
+                validate!!.returnIntegerValue(primaryDataFirstActivity.et_age.text.toString()),
                 validate!!.returnID(
                     primaryDataFirstActivity.spin_gender,
                     mstLookupViewModel,
@@ -198,7 +214,8 @@ class PrimaryDataViewModel(private val primaryDataRepository: PrimaryDataReposit
                 0,
                 validate!!.GetAnswerTypeRadioButtonID(primaryDataFirstActivity.rg_cast_income),
                 validate!!.GetAnswerTypeRadioButtonID(primaryDataFirstActivity.rg_aadhar_card),
-                validate!!.GetAnswerTypeRadioButtonID(primaryDataFirstActivity.rg_pan_card)
+                validate!!.GetAnswerTypeRadioButtonID(primaryDataFirstActivity.rg_pan_card),
+                1
             )
         }
     }
@@ -219,52 +236,88 @@ class PrimaryDataViewModel(private val primaryDataRepository: PrimaryDataReposit
             validate!!.GetAnswerTypeRadioButtonID(primaryDataSecondActivity.rg_business_plan),
             primaryDataSecondActivity.et_investment_range.text.toString(),
             validate!!.GetAnswerTypeRadioButtonID(primaryDataSecondActivity.rg_ready_to_invest),
-            validate!!.returnID(primaryDataSecondActivity.spin_how_much_invest,mstLookupViewModel,30,iLanguageID),
-            validate!!.returnID(primaryDataSecondActivity.spin_planning_investment,mstLookupViewModel,31,iLanguageID),
+            validate!!.returnID(
+                primaryDataSecondActivity.spin_how_much_invest,
+                mstLookupViewModel,
+                30,
+                iLanguageID
+            ),
+            validate!!.returnID(
+                primaryDataSecondActivity.spin_planning_investment,
+                mstLookupViewModel,
+                31,
+                iLanguageID
+            ),
+            primaryDataSecondActivity.et_panning_other.text.toString(),
             primaryDataSecondActivity.et_financial_assistance.text.toString(),
-            validate!!.returnID(primaryDataSecondActivity.spin_expected_support,mstLookupViewModel,32,iLanguageID),
-            validate!!.GetAnswerTypeRadioButtonID(primaryDataSecondActivity.rg_availing_loan_subsidies)
-                  /*  validate!!.returnID(primaryDataSecondActivity.spin_which_source,mstLookupViewModel,32,iLanguageID),
-            primaryDataSecondActivity.et_how_much_they_invested.text.toString()*/
+            validate!!.returnID(
+                primaryDataSecondActivity.spin_expected_support,
+                mstLookupViewModel,
+                52,
+                iLanguageID
+            ),
+            primaryDataSecondActivity.et_any_support_other.text.toString(),
+            validate!!.GetAnswerTypeRadioButtonID(primaryDataSecondActivity.rg_availing_loan_subsidies),
+            validate!!.returnID(
+                primaryDataSecondActivity.spin_which_source,
+                mstLookupViewModel,
+                53,
+                iLanguageID
+            ),
+            primaryDataSecondActivity.et_source_other.text.toString(),
+            primaryDataSecondActivity.et_how_much_they_invested.text.toString(),
+            1
 
 
-            )
+        )
 
 
     }
 
     fun update_primary_second_data(
-        PDCGUID: String?,
-        ValidBank: Int?,
-        Business_Interested: Int?,
-        Business_details: String?,
-        Business_Plan: Int?,
-        Business_investment: String?,
-        Invest_readiness: Int?,
-        Invest_source: Int?,
-        Invest_finance: Int,
-        Invest_support: String,
+        PDCGUID: String,
+        ValidBank: Int,
+        Business_Interested: Int,
+        Business_Training: String,
+        Business_Plan: Int,
+        Business_Investment_Amt: String,
+        Invest_readiness: Int,
+        Invest_HowMuch: Int,
+        Invest_Plan: Int,
+        Invest_Plan_Oth: String,
+        Financial_Assistance: String,
+        Invest_support: Int,
+        Invest_support_Oth:String,
         Loan_interested: Int,
-        Loan_amount: Int
+        Loan_Source: Int,
+        Loan_Source_Oth: String,
+        Loan_amount: String,
+        IsEdited:Int
 
 
-    ) {
+        ) {
         viewModelScope.launch(Dispatchers.IO) {
             primaryDataRepository.update_primary_second_data(
                 PDCGUID,
                 ValidBank,
                 Business_Interested,
-                Business_details,
+                Business_Training,
                 Business_Plan,
-                Business_investment,
+                Business_Investment_Amt,
                 Invest_readiness,
-                Invest_source,
-                Invest_finance,
+                Invest_HowMuch,
+                Invest_Plan,
+                Invest_Plan_Oth,
+                Financial_Assistance,
                 Invest_support,
+                Invest_support_Oth,
                 Loan_interested,
-                Loan_amount
+                Loan_Source,
+                Loan_Source_Oth,
+                Loan_amount,
+                IsEdited
 
-            )
+                )
         }
 
     }
@@ -280,15 +333,27 @@ class PrimaryDataViewModel(private val primaryDataRepository: PrimaryDataReposit
         update_primary_third(
             validate!!.RetriveSharepreferenceString(AppSP.PDCGUID)!!,
             primaryDataThirdActivity.et_what_kind_of_business.text.toString(),
-        /*    validate!!.returnID(primaryDataThirdActivity.spin_source_income,mstLookupViewModel,30,iLanguageID),*/
+            validate!!.returnID(primaryDataThirdActivity.spin_source_income,mstLookupViewModel,54,iLanguageID),
             validate!!.GetAnswerTypeRadioButtonID(primaryDataThirdActivity.rg_business_registered),
-            validate!!.returnID(primaryDataThirdActivity.spin_stage_of_self_employment,mstLookupViewModel,33,iLanguageID).toString(),
+            validate!!.returnID(
+                primaryDataThirdActivity.spin_stage_of_self_employment,
+                mstLookupViewModel,
+                41,
+                iLanguageID
+            ),
             validate!!.GetAnswerTypeRadioButtonID(primaryDataThirdActivity.rg_loans_availed_already),
-            validate!!.returnID(primaryDataThirdActivity.spin_availed_loan,mstLookupViewModel,33,iLanguageID).toString(),
+            validate!!.returnID(
+                primaryDataThirdActivity.spin_availed_loan,
+                mstLookupViewModel,
+                55,
+                iLanguageID
+            ),
             validate!!.GetAnswerTypeRadioButtonID(primaryDataThirdActivity.rg_expecting_financial_assistance),
-              validate!!.returnID(primaryDataThirdActivity.spin_expecting_support,mstLookupViewModel,32,iLanguageID),
-            ""
-     /* primaryDataSecondActivity.et_how_much_they_invested.text.toString()*/
+            primaryDataThirdActivity.et_amt_financial_assistance.text.toString(),
+            validate!!.returnID(primaryDataThirdActivity.spin_expecting_support,mstLookupViewModel,52,iLanguageID),
+            primaryDataThirdActivity.et_support_other.text.toString(),
+            1
+
 
 
         )
@@ -300,27 +365,33 @@ class PrimaryDataViewModel(private val primaryDataRepository: PrimaryDataReposit
     fun update_primary_third(
         PDCGUID: String,
         Business_type: String,
+        Business_Invest_Source: Int,
         Business_registered: Int,
-        State_selfemp: String?,
-        Loan_availed: Int?,
-        Loan_source: String?,
-        Financial_assist: Int?,
-        Financial_assist_amt: Int?,
-        Support_selfemp: String?
+        Stage_selfemp: Int,
+        Loan_availed: Int,
+        Loan_availed_from: Int,
+        Financial_assist: Int,
+        Financial_assist_amt: String,
+        Support_Expecting: Int,
+        Support_Expecting_Oth:String,
+        IsEdited:Int
 
 
-    ) {
+        ) {
         viewModelScope.launch(Dispatchers.IO) {
             primaryDataRepository.update_primary_third(
                 PDCGUID,
                 Business_type,
+                Business_Invest_Source,
                 Business_registered,
-                State_selfemp,
+                Stage_selfemp,
                 Loan_availed,
-                Loan_source,
+                Loan_availed_from,
                 Financial_assist,
                 Financial_assist_amt,
-                Support_selfemp
+                Support_Expecting,
+                Support_Expecting_Oth,
+                IsEdited
 
             )
         }
@@ -330,6 +401,7 @@ class PrimaryDataViewModel(private val primaryDataRepository: PrimaryDataReposit
     fun getdatabyGuid(guid: String): LiveData<List<PrimaryDataEntity>> {
         return primaryDataRepository.getdatabyGuid(guid)
     }
+
     fun getdatabyPDCGuid(guid: String): LiveData<List<PrimaryDataEntity>> {
         return primaryDataRepository.getdatabyPDCGuid(guid)
     }

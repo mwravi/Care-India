@@ -1,8 +1,6 @@
 package com.careindia.lifeskills.viewmodel
 
 
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
 import androidx.lifecycle.LiveData
@@ -15,7 +13,10 @@ import com.careindia.lifeskills.repository.IndividualProfileRepository
 import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.views.base.BaseViewModel
-import com.careindia.lifeskills.views.improfile.IMProfileOneActivity
+import com.careindia.lifeskills.views.improfile.*
+import kotlinx.android.synthetic.main.activity_improfile_fourth.*
+import kotlinx.android.synthetic.main.activity_improfile_one.*
+import kotlinx.android.synthetic.main.activity_improfile_two.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -24,14 +25,12 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
     private val callbacks: PropertyChangeRegistry = PropertyChangeRegistry()
 
     val State = MutableLiveData<Int>()
-    val ReadChecked = MutableLiveData<Int>()
-    val IsSecondry = MutableLiveData<Int>()
-    val IsCIGMember = MutableLiveData<Int>()
 
     var validate: Validate? = null
     val imProfileData = imProfileRepository.getallProfiledata()
 
     val Date = MutableLiveData<String>()
+
 
     //    val HHId = MutableLiveData<Int>()
     val IMPRFUniqueID = MutableLiveData<String>()
@@ -84,8 +83,8 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
     init {
         validate = Validate(mContext)
         saveandnextText.value = "Save & Next"
-        CrpName.value = "Ankita"
-        SuperverCor.value = "Divya"
+        CrpName.value = validate!!.RetriveSharepreferenceString(AppSP.CRPID_Name)
+        SuperverCor.value = validate!!.RetriveSharepreferenceString(AppSP.FCID_Name)
 
 //        viewModelScope.launch {
 //            var statePos = State.value
@@ -93,30 +92,23 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
 //        }
     }
 
-    var canRead = 0
-    var accessSphone = 0
-    var acessMobdata = 0
     var speakmultiCheck = ""
     var langWriteCheck = ""
     var langReadCheck = ""
     var preferComniSpeak = ""
-
+    var langPreferMobile = ""
     fun collectiveData(
-        can_read: Int,
-        access_sphone: Int,
-        acess_mob_data: Int,
         speackCheck: String,
-        lang_writeCheck: String,
         lang_readCheck: String,
-        prefer_comni_speaking: String
+        lang_writeCheck: String,
+        prefer_comni_speaking: String,
+        lang_prefer_mobile_use: String
     ) {
-        canRead = can_read
-        accessSphone = access_sphone
-        acessMobdata = acess_mob_data
         speakmultiCheck = speackCheck
         langWriteCheck = lang_writeCheck
         langReadCheck = lang_readCheck
         preferComniSpeak = prefer_comni_speaking
+        langPreferMobile = lang_prefer_mobile_use
     }
 
     var hhUid = ""
@@ -130,15 +122,13 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         IndvCode = indvcode
     }
 
-    var langPreferMobile = ""
+
     var typeEmp = 0
     var isSecondrySource = 0
     fun collectiveProfileThirdData(
-        lang_prefer_mobile_use: String,
         rg_type_emp: Int,
         rg_secondary_income: Int
     ) {
-        langPreferMobile = lang_prefer_mobile_use
         typeEmp = rg_type_emp
         isSecondrySource = rg_secondary_income
     }
@@ -185,45 +175,40 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         memberCigShg = rg_member_cig_shg
     }
 
-    fun saveandUpdateCollectiveProfile(individualProfileFirstActivity: IMProfileOneActivity) {
+    fun saveandUpdateCollectiveProfile(
+        individualProfileFirstActivity: IMProfileOneActivity,
+        initials: String
+    ) {
         val date: String? = Date.value
-        val crpname: String? = CrpName.value.toString()
-        val superverCor: String? = SuperverCor.value.toString()
-
-        val sex: Int? = Gender.value
-        val caste: Int? = CASTE.value
-        val merital_s: Int? = MARITAL.value
+        val crpname: String? = CrpName.value
+        val superverCor: String? = SuperverCor.value
+        val b_staylong: String? = BLONGSTAY.value
         val age: String? = AGE.value
         val contact_no: String? = CONTACT.value
         val namerespo: String? = NameRespo.value
-        validate!!.SaveSharepreferenceInt(AppSP.IdvAge, Integer.parseInt(AGE.value))
-        val District1: String? = returnDistrictID(district.value, 10).toString()
-        val Zone1: String? = individualProfileFirstActivity.returnZoneID(
+        var Ward1 = 0
+        var PWCode = ""
+
+        val District1 = returnDistrictID(district.value, 10)
+        val Zone1 = individualProfileFirstActivity.returnZoneID(
             zone.value,
-            validate!!.returnIntegerValue(District1)
-        ).toString()
-        val Ward1: Int? = individualProfileFirstActivity.returnWardID(
-            ward.value,
-            validate!!.returnIntegerValue(Zone1)
+            District1
         )
-        val Panchayat1: String = individualProfileFirstActivity.returnPanchayatID(
-            panchayat.value,
-            validate!!.returnIntegerValue(District1)
-        ).toString()
+        if (Zone1 > 0) {
+            Ward1 = individualProfileFirstActivity.returnWardID(
+                ward.value,
+                Zone1
+            )
+            PWCode = "W"
+        } else {
+            Ward1 = individualProfileFirstActivity.returnPanchayatID(
+                panchayat.value,
+                District1
+            )
+            PWCode = "P"
+        }
 
-        val specify_state: String? = SpecifyState.value
-        val specify_speack: String? = SpecifySpeack.value
-        val specify_read: String? = SpecifyRead.value
-        val specify_write: String? = SpecifyWrite.value
-        val specify_communi: String? = SpecifyCommuni.value
-        val specify_mobilelaung: String? = SpecifyMobileLaung.value
-        val specify_sellwaste: String? = SpecifySellWaste.value
-        val specify_primaryoccup: String? = SpecifyPrimaryOccup.value
-
-        val specify_sec_income: String? = specifySecondaryIncome.value
-
-
-
+        val langID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
         if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) == "") {
             var imProfileGuid = validate!!.random()
             validate!!.SaveSharepreferenceString(AppSP.IndividualProfileGUID, imProfileGuid)
@@ -231,74 +216,96 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
             insert(
                 IndividualProfileEntity(
                     imProfileGuid,
-                    "",
-                    "",
+                    individualProfileFirstActivity.returnHH_GUID(individualProfileFirstActivity.spin_hhid.selectedItemPosition),
+                    crpname,
+                    superverCor,
+                    validate!!.RetriveSharepreferenceInt(AppSP.StateCode),
                     District1,
                     Zone1,
                     Ward1,
-                    Panchayat1,
+                    PWCode,
                     0,
                     date,
                     hhUid,
                     IndvCode,
                     namerespo,
-                    sex,
+                    individualProfileFirstActivity.returnID(Gender.value!!, 1, langID),
                     Integer.parseInt(age),
-                    caste,
-                    merital_s,
+                    individualProfileFirstActivity.returnID(CASTE.value!!, 5, langID),
+                    individualProfileFirstActivity.returnID(MARITAL.value!!, 6, langID),
                     contact_no,
                     "",
-                    0,
-                    0,
-                    0, 0, 0, 0, "", "", "",
-                    "", "",
-                    0, 0,
+                    individualProfileFirstActivity.returnID(State.value!!, 7, langID),
+                    SpecifyState.value.toString(),
+                    validate!!.returnIntegerValue(b_staylong),
+                    -1, 0, -1, -1, "", "", "",
+                    "", "", "", "", "", "",
                     "",
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    0, 0, 0, 0, 0, 0, 0,
-                    "",
-                    "",
-                    0,
-                    "",
-                    "",
+                    0, -1,
                     "",
                     0,
                     "",
                     0,
+                    "",
+                    -1,
+                    -1,
+                    -1,
+                    0,
+                    "",
+                    -1,
+                    -1,
+                    -1, -1, -1, -1, -1, -1, -1,
+                    "",
+                    "",
+                    -1,
+                    "",
+                    "",
+                    "",
+                    "",
+                    -1,
+                    "",
+                    -1,
                     "",
                     validate!!.currentdatetime,
                     0,
                     "",
                     0,
-                    0
+                    0,
+                    validate!!.RetriveSharepreferenceInt(AppSP.CRPID),
+                    validate!!.RetriveSharepreferenceInt(AppSP.FCID),initials,"","",
+                    1
                 )
             )
         } else if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
 
             update(
                 validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!,
+                crpname,
+                superverCor,
+                District1,
+                Zone1,
+                Ward1,
+                PWCode,
                 date,
                 hhUid,
                 namerespo,
-                sex,
+                individualProfileFirstActivity.returnID(Gender.value!!, 1, langID),
                 Integer.parseInt(age),
-                caste,
-                merital_s,
+                individualProfileFirstActivity.returnID(CASTE.value!!, 5, langID),
+                individualProfileFirstActivity.returnID(MARITAL.value!!, 6, langID),
                 contact_no,
-                validate!!.currentdatetime
+                individualProfileFirstActivity.returnID(State.value!!, 7, langID),
+                SpecifyState.value.toString(),
+                validate!!.returnIntegerValue(b_staylong),initials,
+                validate!!.currentdatetime,
+                1
             )
         }
 
     }
 
-    fun updateProfileFifthData() {
+    fun updateProfileFifthData(imProfileFifthActivity: IMProfileFifthActivity) {
+        val langID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
         val availscheme_detail: String? = AvailSchemeDetail.value
         val specify_skillJob: String? = SpecifySkillJob.value
         val alterget_opport: String? = AlterGetOpport.value.toString()
@@ -311,21 +318,21 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
             skillsJobsPicking,
             specify_skillJob,
             newJobsBusiness,
-            alterget_opport,
+            imProfileFifthActivity.returnID(AlterGetOpport.value!!, 16, langID).toString(),
             memberCigShg,
             colective_member,
             validate!!.currentdatetime,
+            1
         )
     }
 
-    fun updateForthProfileData() {
+    fun updateForthProfileData(imProfileFourthActivity: IMProfileFourthActivity) {
         val detailscheme_providerDep: String? = DetailServiceProviderDep.value
-        val workDays_SecJob: String? = WorkingDaysSecondaryJob.value
-        val avgDaily_secIncome: String? = AvgDailySecIncome.value
+
 
         updateIMProfileForthData(
             validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!,
-            haveAdhar,
+            validate!!.GetAnswerTypeRadioButtonID(imProfileFourthActivity.rg_have_adhar),
             haveVoter,
             havePan,
             haveIncome,
@@ -333,62 +340,85 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
             svgBankAct,
             availedServicesPast,
             detailscheme_providerDep,
-            Integer.parseInt(workDays_SecJob),
-            Integer.parseInt(avgDaily_secIncome),
-            validate!!.currentdatetime
+            validate!!.currentdatetime,
+            1
         )
 
     }
 
-    fun updateProfileSecondData() {
+    fun updateProfileSecondData(imProfileTwoActivity: IMProfileTwoActivity) {
+        val langID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
         val stateid: Int? = State.value
-        val b_staylong: String? = BLONGSTAY.value
+        val specify_mobilelaung: String? = SpecifyMobileLaung.value
         val education: Int? = EDUCATION.value
-
+        val specify_state: String? = SpecifyState.value.toString()
+        val specify_speack: String? = SpecifySpeack.value
+        val specify_read: String? = SpecifyRead.value
+        val specify_write: String? = SpecifyWrite.value
+        val specify_communi: String? = SpecifyCommuni.value
 
         updateIMProfileSecondData(
             validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!,
-            stateid!!,
-            Integer.parseInt(b_staylong),
-            canRead,
-            education!!,
-            accessSphone,
-            acessMobdata,
+            validate!!.GetAnswerTypeRadioButtonID(imProfileTwoActivity.rg_can_read),
+            imProfileTwoActivity.returnID(EDUCATION.value!!, 8, langID),
+            validate!!.GetAnswerTypeRadioButtonID(imProfileTwoActivity.rg_access_sphone),
+            validate!!.GetAnswerTypeRadioButtonID(imProfileTwoActivity.rg_acess_mob_data),
             langReadCheck,
             langWriteCheck,
             speakmultiCheck,
+            specify_speack,
+            specify_read,
+            specify_write,
+            specify_communi,
             preferComniSpeak,
-            validate!!.currentdatetime
+            langPreferMobile,
+            specify_mobilelaung,
+            validate!!.currentdatetime,
+            1
         )
     }
 
-    fun updateThirdData() {
+    fun updateThirdData(imProfileThirdActivity: IMProfileThirdActivity) {
+        val langID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
         val kind_waste: String? = KindWaste.value
-        val waste_pick: Int? = WastePick.value
-        val waste_disposal: Int? = WASTEDISPOSAL.value
-        val primary_occup: Int? = PrimaryOccup.value
-        val sec_Sourceincome: Int? = SecSourceIncom.value
         val dailyinicome: String? = DailyIncome.value
         val days_primaryjob: String? = DayPrimaryJob.value
 
+        val specify_sellwaste: String? = SpecifySellWaste.value
+        val specify_primaryoccup: String? = SpecifyPrimaryOccup.value
+        val specify_sec_income: String? = specifySecondaryIncome.value
+        val workDays_SecJob: String? = WorkingDaysSecondaryJob.value
+        val avgDaily_secIncome: String? = AvgDailySecIncome.value
+
+        var secSource = 0
+        if (isSecondrySource == 0) {
+            secSource = 0
+        } else {
+            secSource = imProfileThirdActivity.returnID(SecSourceIncom.value!!, 14, langID)
+        }
+
         updateIMProfileThirdData(
             validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!,
-            langPreferMobile,
-            waste_pick,
+            imProfileThirdActivity.returnID(WastePick.value!!, 10, langID),
             typeEmp,
             kind_waste,
-            waste_disposal,
-            primary_occup,
+            imProfileThirdActivity.returnID(WASTEDISPOSAL.value!!, 12, langID),
+            specify_sellwaste,
+            imProfileThirdActivity.returnID(PrimaryOccup.value!!, 13, langID),
+            specify_primaryoccup,
             Integer.parseInt(dailyinicome),
             Integer.parseInt(days_primaryjob),
             isSecondrySource,
-            sec_Sourceincome,
-            validate!!.currentdatetime
+            secSource,
+            specify_sec_income,
+            validate!!.returnIntegerValue(workDays_SecJob),
+            validate!!.returnIntegerValue(avgDaily_secIncome),
+            validate!!.currentdatetime,
+            1
         )
 
 
     }
-
 
     fun insert(imProfileEntity: IndividualProfileEntity) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -405,6 +435,12 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
 
     fun update(
         IndGUID: String,
+        crpname: String?,
+        superverCor: String?,
+        District1: Int?,
+        Zone1: Int?,
+        Ward1: Int?,
+        Panchayat1: String?,
         dateform: String?,
         hhuid: String?,
         name: String?,
@@ -413,11 +449,22 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         caste: Int?,
         marital_status: Int?,
         contact: String?,
-        UpdatedOn: String?
+        StateID: Int?,
+        StateOther: String,
+        ResidingSince: Int?,
+        initials:String,
+        UpdatedOn: String?,
+        IsEdited:Int
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             imProfileRepository.updateIMProfileData(
                 IndGUID,
+                crpname,
+                superverCor,
+                District1,
+                Zone1,
+                Ward1,
+                Panchayat1,
                 dateform,
                 hhuid,
                 name,
@@ -426,15 +473,18 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
                 caste,
                 marital_status,
                 contact,
-                UpdatedOn
+                StateID,
+                StateOther,
+                ResidingSince,
+                initials,
+                UpdatedOn,
+                IsEdited
             )
         }
     }
 
     fun updateIMProfileSecondData(
         IndGUID: String,
-        StateID: Int?,
-        ResidingSince: Int?,
         Read_Write: Int?,
         Education: Int??,
         Smartphone: Int?,
@@ -442,14 +492,19 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         Languages_Read: String?,
         Languages_Write: String?,
         Languages_Speak: String?,
+        speak_other: String?,
+        read_other: String?,
+        write_other: String?,
+        communi_other: String?,
         PreferredLanguage_Communication: String?,
-        UpdatedOn: String?
+        preferredLanguage_mobile: String?,
+        preferMobile_other: String?,
+        UpdatedOn: String?,
+        IsEdited:Int
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             imProfileRepository.updateIMProfileSecondData(
                 IndGUID,
-                StateID,
-                ResidingSince,
                 Read_Write,
                 Education,
                 Smartphone,
@@ -457,8 +512,15 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
                 Languages_Read,
                 Languages_Write,
                 Languages_Speak,
+                speak_other,
+                read_other,
+                write_other,
+                communi_other,
                 PreferredLanguage_Communication,
-                UpdatedOn
+                preferredLanguage_mobile,
+                preferMobile_other,
+                UpdatedOn,
+                IsEdited
             )
         }
     }
@@ -466,32 +528,42 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
 
     fun updateIMProfileThirdData(
         IndGUID: String,
-        preferredLanguage_mobile: String?,
         wp_category: Int?,
         emp_type: Int?,
         waste_type: String?,
         waste_disposal: Int?,
+        dispose_other: String?,
         primary_Occuptn: Int?,
+        Primary_occu_other: String?,
         primary_inc: Int?,
         primary_wd: Int?,
         issecdry_Occuptn: Int?,
         secondary_occupation: Int?,
-        updated_on: String?
+        secondry_occu_other: String?,
+        secondary_wd: Int?,
+        secondary_inc: Int?,
+        updated_on: String?,
+        IsEdited:Int
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             imProfileRepository.updateIMProfileThirdData(
                 IndGUID,
-                preferredLanguage_mobile,
                 wp_category,
                 emp_type,
                 waste_type,
                 waste_disposal,
+                dispose_other,
                 primary_Occuptn,
+                Primary_occu_other,
                 primary_inc,
                 primary_wd,
                 issecdry_Occuptn,
                 secondary_occupation,
-                updated_on
+                secondry_occu_other,
+                secondary_wd,
+                secondary_inc,
+                updated_on,
+                IsEdited
             )
         }
     }
@@ -507,7 +579,8 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         interested_jobDetail: String?,
         member_collective: Int?,
         collective_name: String?,
-        updated_on: String?
+        updated_on: String?,
+        IsEdited:Int
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             imProfileRepository.updateIMProfileFifthData(
@@ -520,7 +593,8 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
                 interested_jobDetail,
                 member_collective,
                 collective_name,
-                updated_on
+                updated_on,
+                IsEdited
             )
         }
     }
@@ -535,9 +609,8 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         bank_account: Int?,
         schemes_availed: Int?,
         scheme_details: String?,
-        secondary_wd: Int?,
-        secondary_inc: Int?,
-        updated_on: String?
+        updated_on: String?,
+        IsEdited:Int
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             imProfileRepository.updateIMProfileForthData(
@@ -550,9 +623,8 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
                 bank_account,
                 schemes_availed,
                 scheme_details,
-                secondary_wd,
-                secondary_inc,
-                updated_on
+                updated_on,
+                IsEdited
             )
         }
     }
@@ -580,12 +652,20 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         return imProfileRepository.getIdvProfiledatabyGuid(guid)
     }
 
+    fun getIdvProfiledatabyGuidNew(guid: String): List<IndividualProfileEntity> {
+        return imProfileRepository.getIdvProfiledatabyGuidNew(guid)
+    }
+
     fun gethhProfileData(): LiveData<List<HouseholdProfileEntity>> {
         return imProfileRepository.gethhProfileData()
     }
 
-    fun gethhProfileDataNew(): List<HouseholdProfileEntity> {
-        return imProfileRepository.gethhProfileDataNew()
+    fun gethhProfileDataWard(ZoneCode: Int, WardCode: Int): List<HouseholdProfileEntity> {
+        return imProfileRepository.gethhProfileDataWard(ZoneCode, WardCode)
+    }
+
+    fun gethhProfileDataPanchayat(PanchayatCode: Int): List<HouseholdProfileEntity> {
+        return imProfileRepository.gethhProfileDataPanchayat(PanchayatCode)
     }
 
 
@@ -602,6 +682,10 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
         return imProfileRepository.getHHCount()
     }
 
+    fun getIndividualID(IndvCode: String): Int {
+        return imProfileRepository.getIndividualID(IndvCode)
+    }
+
     fun getMstDist(StateCode: Int): List<MstDistrictEntity> {
         return imProfileRepository.getMstDist(StateCode)
     }
@@ -609,10 +693,29 @@ class IndividualProfileViewModel(private val imProfileRepository: IndividualProf
     fun getallhhProfiledata(hhcode: String): LiveData<List<IndividualProfileEntity>> {
         return imProfileRepository.getallhhProfiledata(hhcode)
     }
+
     fun getallIdvdata(idvcode: String): LiveData<List<IndividualProfileEntity>> {
         return imProfileRepository.getallIdvdata(idvcode)
     }
 
+    fun getIDWData(izone: Int, iward: Int): LiveData<List<IndividualProfileEntity>> {
+        return imProfileRepository.getIDWData(izone, iward)
+    }
 
+    fun getIDZData(izone: Int): LiveData<List<IndividualProfileEntity>> {
+        return imProfileRepository.getIDZData(izone)
+    }
+
+    fun getIDPData(iPanchayat: Int): LiveData<List<IndividualProfileEntity>> {
+        return imProfileRepository.getIDPData(iPanchayat)
+    }
+
+    fun gethhDataZone(zoneCode: Int, ward: Int): List<HouseholdProfileEntity> {
+        return imProfileRepository.gethhDataZone(zoneCode, ward)
+    }
+
+    fun gethhDataPanchayat(panchayat: Int): List<HouseholdProfileEntity> {
+        return imProfileRepository.gethhDataPanchayat(panchayat)
+    }
 }
 

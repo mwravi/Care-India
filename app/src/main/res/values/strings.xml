@@ -62,6 +62,7 @@
     <string name="Name_of_bbmp_ward"><b>Q106.</b> Name of BBMP Ward</string>
     <string name="Name_of_panchayat"><b>Q107.</b> Name of Panchayat</string>
     <string name="q108_name_of_locality"><b>Q108.</b> Name of Locality</string>
+    <string name="community_dwcc"><b>Q109.</b> Community/DWCC</string>
     <string name="hh_name"><b>Q110.</b> Name of Head of the Household</string>
     <string name="hh_sex"><b>Q111.</b> Sex of the Head of the Household</string>
     <string name="total_adult"><b>Q201.</b> Total number of adult members in family (18 years and above)</string>
@@ -80,7 +81,7 @@
     <string name="if_other_type_of_dwelling"><b>Q301a.</b> Please specify if other type of dwelling</string>
     <string name="is_your_dwelling_place_registered"><b>Q302.</b> Is your dwelling place registered?</string>
     <string name="hh_ration_card"><b>Q401.</b> Do your household have a Ration card?</string>
-    <string name="if_other_ration"><b>Q301a.</b> Please specify if other ration card</string>
+    <string name="if_other_ration"><b>Q401a.</b> Please specify if other ration card</string>
     <string name="cancel">Cancel</string>
 
     <string name="change_lives_save_lives">Change Lives Save lives</string>
@@ -107,13 +108,14 @@
     <string name="name_of_bbmp_ward"><b>Q106.</b> Name of BBMP Ward</string>
     <string name="name_of_panchayat"><b>Q107.</b> Name of Panchayat</string>
     <string name="name_of_locality"><b>Q108.</b> Name of Locality</string>
-    <string name="collective_unique_id"><b>Q109.</b> Collective Unique ID</string>
-    <string name="name_of_group_collective_sangha"><b>Q110.</b> Name of your Group/Collective/Sangha</string>
-    <string name="date_of_formation_of_group"><b>Q111.</b> Date of formation of the group/collective</string>
-    <string name="please_specify_others"><b>Q112a.</b> Please specify others</string>
-    <string name="is_your_griup_registered"><b>Q113.</b> Is your group/collective registered?</string>
-    <string name="please_specify_others_registered"><b>Q113a.</b> Please specify others</string>
-    <string name="what_is_the_objective_of_group"><b>Q114.</b> What is the objective/purpose of the group</string>
+    <string name="community_dwcc_initials"><b>Q109.</b> Community/DWCC Initials</string>
+    <string name="collective_unique_id"><b>Q110.</b> Collective Unique ID</string>
+    <string name="name_of_group_collective_sangha"><b>Q111.</b> Name of your Group/Collective/Sangha</string>
+    <string name="date_of_formation_of_group"><b>Q112.</b> Date of formation of the group/collective</string>
+    <string name="please_specify_others"><b>Q113a.</b> Please specify others</string>
+    <string name="is_your_griup_registered"><b>Q114.</b> Is your group/collective registered?</string>
+    <string name="please_specify_others_registered"><b>Q114a.</b> Please specify others</string>
+    <string name="what_is_the_objective_of_group"><b>Q115.</b> What is the objective/purpose of the group</string>
     <string name="name_of_head_group"><b>Q201.</b> Name of the Head of the group/collective</string>
     <string name="sex_of_head_of_group"><b>Q202.</b> Sex of the Head of the group/collective</string>
     <string name="total_no_of_members_in_group"><b>Q203.</b> Total number of members in the group/collective</string>
@@ -127,7 +129,8 @@
     <string name="contact_number"><b>Q204d.</b> Contact number/Alternate contact number</string>
     <string name="role_of_member_in_group"><b>Q204e.</b> Role/position of the member in the group</string>
     <string name="do_you_have_savings_bank_account"><b>Q204f.</b> Do you have savings bank account?</string>
-    <string name="aadhar_no"><b>Q204g.</b> What is your Adhar card no.?</string>
+    <string name="aadhar_no"><b>Q204g.</b> What is your Aadhar card no.?</string>
+    <string name="validaadhar_no">valid Aadhar card no.</string>
 
     <string name="q301_what_is_the_tenure_of_the_president_office_bearer_in_complete_years"><b>Q301.</b> What is the tenure of the President/Office bearer (in complete years)</string>
     <string name="q302_has_there_been_any_rotation_of_the_roles_of_the_member_in_last_one_year"><b>Q302.</b> Has there been any rotation of the roles of the member (in last one year)</string>
@@ -169,7 +172,7 @@
     <string name="enter_date">Select Date</string>
     <string name="enter_time">Select Time</string>
     <string name="previous">Previous</string>
-    <string name="q112_what_type_of_collective_group_it_is">Q112. What type of collective/group it is?</string>
+    <string name="q112_what_type_of_collective_group_it_is">Q113. What type of collective/group it is?</string>
 
     <string name="please_enter">Please Enter</string>
     <string name="please_select">Please Select</string>
@@ -241,7 +244,7 @@
     <string name="plz_specify_othr">Please specify others</string>
     <string name="plz_select_state">Please select the State</string>
     <string name="plz_entr_sty_long">Please enter that How long have you been staying in Bangalore (in years)</string>
-    <string name="plz_entr_less_input">Please enter the Input value between 0–99 and that should be less</string>
+    <string name="plz_entr_less_input">Please enter value less then</string>
     <string name="plz_read_write">Please select that Can you read and write</string>
     <string name="plz_select_education">Please select that What is your highest level of education</string>
     <string name="plz_select_smartphone">Please select that Do you have acess to smart phone</string>
@@ -296,7 +299,7 @@
     <string name="authenticating">Authenticating User</string>
     <string name="wrongusernamepwd">UserName or Password is Incorrect</string>
     <string name="save_close"><![CDATA[Save & Close]]></string>
-    <string name="save_cancel"><![CDATA[Save & Cancel]]></string>
+    <string name="save_cancel"><![CDATA[Save]]></string>
     <string-array name="item">
         <item>item 1</item>
         <item>item 2</item>
@@ -444,6 +447,7 @@
     <string name="please_specify_otherspurpose"><b>Q110.</b> Please specify others</string>
     <string name="totlamembersmeeting"><b>Q111.</b> Total number of members in the group (WP=Waste picker ; NWP=Non-Waste picker)</string>
     <string name="totlamembersattended"><b>Q112.</b> Total number of members attended the meeting in the group</string>
+    <string name="meetdiscussion"><b>Q113.</b> Meeting Discussion points</string>
     <string name="malewp">Male WP</string>
     <string name="femalewp">Female WP</string>
     <string name="transwp">Transgender WP</string>
@@ -487,5 +491,75 @@
     <string name="psy_plz_ans_area_specify"><b>3.6a. </b>Please answer this question.</string>
     <string name="psy_plz_select_hhid">Please select the HHID.</string>
     <string name="psy_plz_select_imid">Please select the IMID.</string>
+    <string name="data_uploading">Data Uploading.....</string>
+    <string name="data_saved_successfully">Data saved successfully</string>
+    <string name="Name_of_distric_psy"><b>QND.</b> Name of District</string>
+    <string name="Name_of_zone_psy"><b>QNZ.</b> Name of Zone</string>
+    <string name="Name_of_bbmp_ward_psy"><b>QNW.</b> Name of BBMP Ward</string>
+    <string name="Name_of_panchayat_psy"><b>QNP.</b> Name of Panchayat</string>
+    <string name="hhlist">Household Profile List</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="q204_input_value_cannot_be_more_than_value_in_q201">(Q204) Input value cannot be more than value in Q201</string>
+    <string name="q204a_input_value_cannot_be_more_than_value_in_q201a">(Q204a) Input value cannot be more than value in Q201a</string>
+    <string name="q204b_input_value_cannot_be_more_than_value_in_q201b">(Q204b) Input value cannot be more than value in Q201b</string>
+    <string name="q201a_input_value_between_0_q201"><![CDATA[(Q201a) Input value between 0-<=Q201]]></string>
+    <string name="q201b_input_value_between_0_q201"><![CDATA[(Q201b) Input value between 0-<=Q201]]></string>
+    <string name="q202a_input_value_between_0_q202"><![CDATA[(Q202a) Input value between 0-<=Q202]]></string>
+    <string name="q202ab_input_value_between_0_q202"><![CDATA[(Q202ab) Input value between 0-<=Q202]]></string>
+    <string name="q203a_input_value_between_0_q203"><![CDATA[(Q203a) Input value between 0-<=Q203]]></string>
+    <string name="q203b_input_value_between_0_q203"><![CDATA[(Q203b) Input value between 0-<=Q203]]></string>
+    <string name="q204a_input_value_between_0_q204"><![CDATA[(Q204a) Input value between 0-<=Q204]]></string>
+    <string name="q204b_input_value_between_0_q204"><![CDATA[(Q204b) Input value between 0-<=Q204]]></string>
+    <string name="less_than_equals">a value less than equal to twenty-five</string>
+    <string name="savings">Savings</string>
+    <string name="internal_lending">Internal Lending</string>
+    <string name="bank_loans">Bank Loans</string>
+    <string name="schemes_and_services">Schemes and services</string>
+    <string name="entrepreneurial_activities">Entrepreneurial Activities</string>
+    <string name="training_activities">Training Activities</string>
+    <string name="change_in_leadership_member_position">Change in leadership/member position</string>
+    <string name="change_in_group_members">Change in group members</string>
+    <string name="others_if_any">Others (if any)</string>
+    <string name="total_savings_for_the_month_in_inr">Total savings for the month (in INR)</string>
+    <string name="total_loan_availed_through_internal_lending_within_the_group_for_the_month_in_inr">Total loan availed through internal lending within the group for the month (in INR)</string>
+    <string name="total_loan_availed_through_schemes_services_financial_institutions_within_the_group_for_the_month_in_inr">Total loan availed through schemes/services/financial institutions within the group for the month (in INR)</string>
+    <string name="total_amount_accrued_from_interest_in_a_month_in_inr">Total amount accrued from interest in a month (in INR)</string>
+    <string name="select_zone">Select Zone</string>
+    <string name="select_bbmp_ward">Select BBMP Ward</string>
+    <string name="select_panchayat">Select Panchayat</string>
+    <string name="location">Location</string>
+    <string name="family">Family</string>
+    <string name="other_details">Other Details</string>
+    <string name="language">Language</string>
+    <string name="occupation">Occupation</string>
+    <string name="group_details">Group Details</string>
+    <string name="member_details">Member Details</string>
+    <string name="hhidexists">Household Unique ID already exists</string>
+    <string name="indiexists">Individual Member ID already exists</string>
+    <string name="collexists">Collective Unique ID already exists</string>
+    <string name="indiexits">Individual Member ID already exists</string>
+    <string name="others_specify">Others (specify)</string>
+    <string name="in_what_kind_of_bussiness_you_have_invested">In what kind of business you have invested?</string>
+    <string name="amount_of_financial_assistance_required_in_rs">Amount of financial assistance required? (in Rs)</string>
+    <string name="plz_enter_date_psy">Please enter date</string>
+    <string name="plz_enter_name_participant_psy">Please enter name of participant</string>
+    <string name="plz_enter_age_participant_psy">Please enter age of participant</string>
+    <string name="plz_enter_primary_occu_psy">Please select primary occupation</string>
+    <string name="plz_enter_secondry_occu_psy">Please select secondary occupation</string>
+    <string name="plz_enter_name_community_psy">Please select name of community</string>
+    <string name="plz_enter_nature_enterprise_psy">Please enter the nature of enterprise</string>
+    <string name="plz_enter_contact_no_psy">Please enter contact number</string>
+    <string name="plz_enter_name_crp_psy">Please enter the name of CRP</string>
 
+    <string name="basic_info">Basic Information</string>
+    <string name="demographic_criteria">Demographic Criteria</string>
+    <string name="entrepreneurial_capability">Entrepreneurial Capability</string>
+    <string name="entrepreneurial_aptitude">Entrepreneurial Aptitude</string>
+
+    <string name="schemes">Schemes-1</string>
+    <string name="schemes_sec">Schemes-2</string>
+    <string name="upload_succes">Data upload succesfully</string>
+    <string name="upload_failed">Data upload failed</string>
+    <string name="shg_name_appli">SHG Name(if applicable)</string>
 </resources>

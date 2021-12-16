@@ -70,6 +70,7 @@
                             android:gravity="center"
                             android:text="Upload Household Profile"
                             android:textColor="@color/text_clr"
+                            android:textStyle="bold"
                             android:textSize="@dimen/_12sdp" />
 
                     </LinearLayout>
@@ -100,6 +101,7 @@
                             android:gravity="center"
                             android:text="Upload Individual Profile"
                             android:textColor="@color/text_clr"
+                            android:textStyle="bold"
                             android:textSize="@dimen/_12sdp" />
 
                     </LinearLayout>
@@ -108,7 +110,7 @@
                 </LinearLayout>
 
 
-              <!--  <LinearLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -117,7 +119,7 @@
 
 
                     <LinearLayout
-                        android:id="@+id/ll_progress"
+                        android:id="@+id/ll_primary_data"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/_10sdp"
@@ -139,7 +141,7 @@
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/firasans_regular"
                             android:gravity="center"
-                            android:text="Progress Trcaker"
+                            android:text="Upload Primary Data Collection"
                             android:textColor="@color/text_clr"
                             android:textSize="@dimen/_12sdp" />
 
@@ -169,16 +171,16 @@
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/firasans_regular"
                             android:gravity="center"
-                            android:text="Collective Profile"
+                            android:text="Upload Collective Profile"
                             android:textColor="@color/text_clr"
                             android:textSize="@dimen/_12sdp" />
 
                     </LinearLayout>
 
 
-                </LinearLayout>-->
+                </LinearLayout>
 
-               <!-- <LinearLayout
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
@@ -208,7 +210,7 @@
                             android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/firasans_regular"
                             android:gravity="center"
-                            android:text="Collective Meeting"
+                            android:text="Upload Collective Meeting"
                             android:textColor="@color/text_clr"
                             android:textSize="@dimen/_12sdp" />
 
@@ -216,7 +218,7 @@
 
 
                     <LinearLayout
-                        android:id="@+id/ll_attendence"
+                        android:id="@+id/ll_upload_psychometric"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/_10sdp"
@@ -230,7 +232,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_gravity="center"
-                            android:src="@drawable/atten_session_trckr" />
+                            android:src="@drawable/ic_collective_meeting_icon" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -238,14 +240,14 @@
                             android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/firasans_regular"
                             android:gravity="center"
-                            android:text="@string/attendce_sestion_trckr"
+                            android:text="Upload Psychometric assessment"
                             android:textColor="@color/text_clr"
                             android:textSize="@dimen/_12sdp" />
 
                     </LinearLayout>
 
 
-                </LinearLayout>-->
+                </LinearLayout>
 
                 <!--<LinearLayout
                     android:layout_width="match_parent"

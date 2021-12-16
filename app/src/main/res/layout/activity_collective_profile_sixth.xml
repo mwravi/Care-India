@@ -48,7 +48,7 @@
                     <RadioGroup
                         android:id="@+id/rg_record_book"
                         style="@style/radioGroupStyle"
-                        android:checkedButton="@={collectiveViewModel.RecordBook}"
+
                         />
 
                 </LinearLayout>
@@ -169,7 +169,7 @@
                     <RadioGroup
                         android:id="@+id/rg_services_schemes"
                         style="@style/radioGroupStyle"
-                        android:checkedButton="@={collectiveViewModel.ServiceScheme}"/>
+                        />
 
                 </LinearLayout>
 
@@ -245,7 +245,7 @@
                     <RadioGroup
                         android:id="@+id/rg_enterprise_business"
                         style="@style/radioGroupStyle"
-                        android:checkedButton="@={collectiveViewModel.Enterprise}"/>
+                        />
 
 
                 </LinearLayout>

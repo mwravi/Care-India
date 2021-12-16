@@ -5,8 +5,8 @@
     <data>
 
         <variable
-            name="individualProfileViewModel"
-            type="com.careindia.lifeskills.viewmodel.IndividualProfileViewModel" />
+            name="psychometricViewModel"
+            type="com.careindia.lifeskills.viewmodel.PsychometricViewModel" />
     </data>
 
     <LinearLayout
@@ -19,6 +19,9 @@
             android:id="@+id/include"
             layout="@layout/toolbar_layout" />
 
+        <include
+            android:id="@+id/includetop"
+            layout="@layout/bottom_nav_psycho_layout" />
 
         <ScrollView
             style="@style/ScrolllViewStyle"
@@ -53,7 +56,7 @@
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_hhid"
                         style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={individualProfileViewModel.PsyHHID}"/>
+                        android:selectedItemPosition="@={psychometricViewModel.PsyHHID}"/>
 
                 </LinearLayout>
 
@@ -78,7 +81,7 @@
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_imid"
                         style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={individualProfileViewModel.PsyIMID}"/>
+                        android:selectedItemPosition="@={psychometricViewModel.PsyIMID}"/>
 
                 </LinearLayout>
 
@@ -107,6 +110,7 @@
                         android:editable="false"
                         android:enabled="false"
                         android:hint="@string/type_here"
+                        android:text="@={psychometricViewModel.NameParticipant}"
                         android:inputType="text"
                         android:maxLength="20" />
 
@@ -138,6 +142,7 @@
                         android:enabled="false"
                         android:hint="@string/type_here"
                         android:inputType="text"
+                        android:text="@={psychometricViewModel.AgeParticipant}"
                         android:maxLength="20" />
 
                 </LinearLayout>
@@ -159,12 +164,6 @@
 
                     </TableRow>
 
-                    <fr.ganfra.materialspinner.MaterialSpinner
-                        android:id="@+id/spin_primary"
-                        style="@style/SpinnerViewNew"
-                        android:visibility="gone"
-                        android:clickable="false"/>
-
 
                     <EditText
                         android:id="@+id/et_primary_occup"
@@ -173,6 +172,7 @@
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
                         android:editable="false"
                         android:enabled="false"
+                        android:text="@={psychometricViewModel.PrimaryOccu}"
                         android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="20" />
@@ -196,11 +196,6 @@
 
                     </TableRow>
 
-                    <fr.ganfra.materialspinner.MaterialSpinner
-                        android:id="@+id/spin_secondry"
-                        style="@style/SpinnerViewNew"
-                        android:visibility="gone"
-                        android:clickable="false"/>
 
 
                     <EditText
@@ -210,6 +205,7 @@
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
                         android:editable="false"
                         android:enabled="false"
+                        android:text="@={psychometricViewModel.SecondaryOccu}"
                         android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="20" />
@@ -233,12 +229,6 @@
 
                     </TableRow>
 
-                    <fr.ganfra.materialspinner.MaterialSpinner
-                        android:id="@+id/spin_cammunity"
-                        style="@style/SpinnerViewNew"
-                        android:visibility="gone"
-                        android:clickable="false"/>
-
 
                     <EditText
                         android:id="@+id/et_name_community"
@@ -247,6 +237,37 @@
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
                         android:editable="false"
                         android:enabled="false"
+                        android:text="@={psychometricViewModel.CommunityName}"
+                        android:visibility="visible"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="20" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/lay_name_shg"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/shg_name_appli" />
+
+
+                    </TableRow>
+
+
+                    <EditText
+                        android:id="@+id/et_name_shg"
+                        style="@style/EditTextStyleNew"
+                        android:clickable="false"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                        android:text="@={psychometricViewModel.SHGName}"
                         android:visibility="visible"
                         android:hint="@string/type_here"
                         android:inputType="text"
@@ -276,8 +297,7 @@
                         style="@style/EditTextStyleNew"
                         android:clickable="false"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                        android:editable="false"
-                        android:enabled="false"
+                        android:text="@={psychometricViewModel.EnterPrise}"
                         android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="20" />
@@ -308,6 +328,7 @@
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
                         android:editable="false"
                         android:enabled="false"
+                        android:text="@={psychometricViewModel.ContactNo}"
                         android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="20" />
@@ -338,6 +359,7 @@
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
                         android:editable="false"
                         android:enabled="false"
+                        android:text="@={psychometricViewModel.NameCrp}"
                         android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="20" />
@@ -368,6 +390,7 @@
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
                         android:editable="false"
                         android:enabled="false"
+                        android:text="@={psychometricViewModel.Date}"
                         android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="20" />

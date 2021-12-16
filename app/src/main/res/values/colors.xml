@@ -43,5 +43,7 @@
     <color name="red_color">#ff0000</color>
 
     <color name="back">#FAFAFA</color>
+    <color name="blue_light">#4699DA</color>
+    <color name="green">#0A5507</color>
 
 </resources>

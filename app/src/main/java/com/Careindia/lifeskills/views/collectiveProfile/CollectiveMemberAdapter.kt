@@ -45,7 +45,15 @@ class CollectiveMemberAdapter(
             ItemDeleted: (CollectiveMemberEntity) -> Unit
         ) {
             binding.tvCrpName.text = collectiveList.Name
-            binding.tvGender.text = collectiveList.Gender.toString()
+            binding.tvuniqueid.text=collectiveList.MemberID
+            /*if (collectiveList.Gender == 1) {
+                binding.tvGender.text = "Male"
+            } else if (collectiveList.Gender == 2) {
+                binding.tvGender.text = "Female"
+            } else {
+                binding.tvGender.text = "Transgender"
+            }*/
+
             binding.tvAge.text = collectiveList.Age.toString()
             binding.cardView.setOnClickListener {
                 clickListener(collectiveList)

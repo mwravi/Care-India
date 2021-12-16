@@ -1,46 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/toolbar_layout" />
 
     <LinearLayout
-        android:id="@+id/ll_main"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_margin="@dimen/_5sdp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvList"
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar_layout" />
+
+        <TableRow style="@style/TableRowStyle"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp">
+
+
+            <TextView
+                android:id="@+id/tv_NameofZone"
+                style="@style/TextViewStyleNew"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:text="@string/select_zone"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_bbmpName"
+                style="@style/TextViewStyleNew"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:text="@string/select_bbmp_ward"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_panchayatName"
+                style="@style/TextViewStyleNew"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:text="@string/select_panchayat"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <TableRow style="@style/TableRowStyle"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginTop="0dp">
+
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_zone"
+                style="@style/SpinnerViewNew"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+
+                />
+
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_bbmp"
+                style="@style/SpinnerViewNew"
+                android:layout_width="0dp"
+                android:layout_weight="1" />
+
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_panchayatname"
+                style="@style/SpinnerViewNew"
+                android:layout_width="0dp"
+                android:layout_weight="1" />
+        </TableRow>
+
+
+        <LinearLayout
+            android:id="@+id/ll_main"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/_5sdp" />
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp" />
+
+        </LinearLayout>
+
+
+        <TableRow
+            style="@style/TableRowStyle"
+            android:gravity="end">
+
+            <ImageView
+                android:id="@+id/img_Add"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="end"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background="@drawable/ic_add_circle" />
+        </TableRow>
+
+        <include layout="@layout/legend_view" />
+
 
     </LinearLayout>
-
-    <TableRow
-        style="@style/TableRowStyle"
-        android:layout_margin="@dimen/_10sdp">
-
-        <TextView
-            style="@style/NewSimpleTextMargin"
-            android:layout_weight="2" />
-
-        <ImageView
-            android:id="@+id/img_Add"
-            android:layout_width="@dimen/_25sdp"
-            android:layout_height="@dimen/_25sdp"
-            android:src="@drawable/ic_add_circle" />
-
-    </TableRow>
-
-</LinearLayout>
 
 </layout>

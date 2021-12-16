@@ -7,7 +7,6 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ArrayAdapter
 import android.widget.Spinner
-import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -122,8 +121,9 @@ class CollectiveProfileActivityFifth : BaseActivity(), View.OnClickListener {
                 et_other_q402a.setText("")
             }
         })
-        collectiveViewModel.Availloan.observe(this, Observer {
-            val lookupCode = validate!!.GetAnswerTypeRadioButtonID(rg_easily_avial_loan)
+
+        rg_easily_avial_loan.setOnCheckedChangeListener { radioGroup, i ->
+            val lookupCode = validate!!.GetAnswerTypeRadioButtonIDNew(rg_easily_avial_loan)
             if (lookupCode == 1) {
                 lay_avial_loan.visibility = VISIBLE
                 lay_challenges.visibility = GONE
@@ -142,10 +142,11 @@ class CollectiveProfileActivityFifth : BaseActivity(), View.OnClickListener {
                 et_challenges.setText("")
                 et_other_specify_q309b.setText("")
             }
-        })
 
-        collectiveViewModel.Meetingconducted.observe(this, Observer {
-            val lookupCode = validate!!.GetAnswerTypeRadioButtonID(rg_meeting_conducted)
+        }
+
+        rg_meeting_conducted.setOnCheckedChangeListener { radioGroup, i ->
+            val lookupCode = validate!!.GetAnswerTypeRadioButtonIDNew(rg_meeting_conducted)
             if (lookupCode == 1) {
                 lay_frequency_of_meetings.visibility = VISIBLE
                 lay_attending_meeting.visibility = VISIBLE
@@ -169,7 +170,8 @@ class CollectiveProfileActivityFifth : BaseActivity(), View.OnClickListener {
                 rg_meeting_schedule.clearCheck()
                 et_other_q402a.setText("")
             }
-        })
+        }
+
     }
 
     override fun onClick(view: View?) {
@@ -240,7 +242,7 @@ class CollectiveProfileActivityFifth : BaseActivity(), View.OnClickListener {
             iLanguageID
         )
         fillSpinner(resources.getString(R.string.select), spin_attending_meeting, 11, iLanguageID)
-        validate!!.fillradioNew(
+        validate!!.fillradio(
             this,
             rg_meeting_schedule,
             -1,
@@ -338,7 +340,7 @@ class CollectiveProfileActivityFifth : BaseActivity(), View.OnClickListener {
                 et_other_frequency1,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q308a_please_specify_others),
             )
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_easily_avial_loan) == -1) {
+        } else if (rg_easily_avial_loan.checkedRadioButtonId == -1) {
             iValue = 1
             validate!!.CustomAlert(
                 this,
@@ -365,7 +367,7 @@ class CollectiveProfileActivityFifth : BaseActivity(), View.OnClickListener {
                 et_challenges,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q310_what_are_the_challenges_in_availing_loan_minimum_1_and_maximum_upto_3_responses_possible),
             )
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_meeting_conducted) == -1) {
+        } else if (rg_meeting_conducted.checkedRadioButtonId == -1) {
             iValue = 1
             validate!!.CustomAlert(
                 this,
@@ -392,7 +394,7 @@ class CollectiveProfileActivityFifth : BaseActivity(), View.OnClickListener {
                 spin_attending_meeting,
                 resources.getString(R.string.please_select) + " " + resources.getString(R.string.q403_regularity_of_members_attending_meeting),
             )
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_meeting_schedule) == -1) {
+        } else if (rg_meeting_schedule.checkedRadioButtonId == -1 && lay_meeting_schedule.visibility== VISIBLE) {
             iValue = 1
             validate!!.CustomAlert(
                 this,
@@ -411,32 +413,32 @@ class CollectiveProfileActivityFifth : BaseActivity(), View.OnClickListener {
         ll_six.setBackgroundColor(resources.getColor(R.color.back))
 
         lay_first.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilefive(this)
-                val intent = Intent(this, CollectiveProfileActivity::class.java)
-                startActivity(intent)
-                finish()
-            }
+
+
+            val intent = Intent(this, CollectiveProfileActivity::class.java)
+            startActivity(intent)
+            finish()
+
         }
         lay_secnd.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilefive(this)
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length > 0) {
+
                 val intent = Intent(this, CollectiveProfileActivitySec::class.java)
                 startActivity(intent)
                 finish()
             }
         }
         ll_third.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilefive(this)
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length > 0) {
+
                 val intent = Intent(this, CollectiveProfileActivityThird::class.java)
                 startActivity(intent)
                 finish()
             }
         }
         ll_fourth.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilefive(this)
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length > 0) {
+
                 val intent = Intent(this, CollectiveProfileActivityFourth::class.java)
                 startActivity(intent)
                 finish()
@@ -448,8 +450,8 @@ class CollectiveProfileActivityFifth : BaseActivity(), View.OnClickListener {
               finish()
           }*/
         ll_six.setOnClickListener {
-            if (checkValidation() == 0) {
-                collectiveViewModel.updatecollectiveprofilefive(this)
+            if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length > 0) {
+
                 val intent = Intent(this, CollectiveProfileActivitySixth::class.java)
                 startActivity(intent)
                 finish()

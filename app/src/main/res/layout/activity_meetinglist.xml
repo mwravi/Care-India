@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+
+        <variable
+            name="CollectiveMeetingViewModel"
+            type="com.careindia.lifeskills.viewmodel.CollectiveMeetingViewModel" />
+    </data>
+    <LinearLayout
+        android:id="@+id/llmain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <include layout="@layout/toolbar_layout" />
+
+        <LinearLayout
+            style="@style/LinearLayoutStyle"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_List"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TableRow
+                style="@style/TableRowStyle"
+                android:gravity="end">
+
+                <ImageView
+                    android:id="@+id/img_add"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_gravity="end"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:background="@drawable/ic_add_circle" />
+            </TableRow>
+
+            <include layout="@layout/legend_view" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

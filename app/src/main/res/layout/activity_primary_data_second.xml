@@ -16,17 +16,17 @@
         android:orientation="vertical">
 
         <include layout="@layout/toolbar_layout" />
-
+        <include layout="@layout/primary_data_tab" />
         <ScrollView
             style="@style/ScrolllViewStyle"
-            android:layout_margin="@dimen/_10sdp"
+            android:layout_margin="@dimen/_5sdp"
             android:layout_weight="1"
             android:scrollbars="none">
 
             <LinearLayout
                 style="@style/LinearLayoutStyle"
                 android:background="@drawable/box_background"
-                android:padding="@dimen/_10sdp">
+                android:padding="@dimen/_5sdp">
 
                 <LinearLayout
                     android:id="@+id/lay_bank_account"
@@ -216,6 +216,33 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/lay_panning_other"
+                    android:visibility="gone"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/others_specify" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_panning_other"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/lay_financial_assistance"
                     style="@style/LinearLayoutStyle">
 
@@ -265,6 +292,33 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/lay_any_support_other"
+                    android:visibility="gone"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/others_specify" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_any_support_other"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/lay_availing_loan_subsidies"
                     style="@style/LinearLayoutStyle">
 
@@ -289,6 +343,7 @@
                 </LinearLayout>
                 <LinearLayout
                     android:id="@+id/lay_which_source"
+                    android:visibility="gone"
                     style="@style/LinearLayoutStyle">
 
                     <TableRow style="@style/TableRowStyle">
@@ -307,6 +362,33 @@
                         android:id="@+id/spin_which_source"
                         style="@style/SpinnerViewNew"
                    />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_source_other"
+                    android:visibility="gone"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/others_specify" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_source_other"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        />
 
                 </LinearLayout>
                 <LinearLayout
@@ -328,7 +410,6 @@
                     <EditText
                         android:id="@+id/et_how_much_they_invested"
                         style="@style/EditTextStyleNew"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
                         android:inputType="number"
                         android:maxLength="15"

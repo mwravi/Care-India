@@ -29,12 +29,12 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle"/>
+                    android:src="@drawable/ic_individual_prf"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="First"
+                    android:text="@string/location"
                     android:textSize="@dimen/_12ssp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/firasans_regular"
@@ -55,12 +55,12 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle"/>
+                    android:src="@drawable/ic_individual_prf"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Second"
+                    android:text="@string/language"
                     android:textSize="@dimen/_12ssp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/firasans_regular"
@@ -79,12 +79,12 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle"/>
+                    android:src="@drawable/ic_individual_prf"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Third"
+                    android:text="@string/occupation"
                     android:textSize="@dimen/_12ssp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/firasans_regular"
@@ -105,12 +105,12 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle"/>
+                    android:src="@drawable/ic_individual_prf"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Forth"
+                    android:text="@string/schemes"
                     android:textSize="@dimen/_12ssp"
                     android:textColor="@color/black"
                     android:fontFamily="@font/firasans_regular"
@@ -130,7 +130,7 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle"/>
+                    android:src="@drawable/ic_individual_prf"/>
 
                 <TextView
                     android:layout_width="wrap_content"

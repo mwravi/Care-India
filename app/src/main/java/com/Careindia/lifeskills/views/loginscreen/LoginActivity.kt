@@ -2,7 +2,6 @@ package com.careindia.lifeskills.views.loginscreen
 
 import android.app.ProgressDialog
 import android.content.Intent
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Base64
@@ -20,7 +19,6 @@ import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstUserViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
-import com.google.gson.Gson
 import com.mamta.sabal.callback.ApiCallback
 import com.mamta.sabal.service.ApiClientConnection
 import com.mamta.sabal.service.response.LoginResponse
@@ -31,8 +29,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import showShortToast
-import java.io.IOException
-import java.io.InputStream
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
@@ -204,6 +200,36 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                                 CareIndiaApplication.database?.mstUserDao()
                                     ?.insertWithCondition(response.body()!!.users)
 
+
+                                validate!!.SaveSharepreferenceInt(
+                                    AppSP.iUserID,
+                                    response.body()!!.users!!.get(0).UserID
+                                )
+
+                                validate!!.SaveSharepreferenceInt(
+                                    AppSP.CRPID,
+                                    response.body()!!.users!!.get(0).CRPID
+                                )
+
+                                validate!!.SaveSharepreferenceString(
+                                    AppSP.CRPID_Name,
+                                    response.body()!!.users!!.get(0).CRPID_Name
+                                )
+
+                                validate!!.SaveSharepreferenceInt(
+                                    AppSP.FCID,
+                                    response.body()!!.users!!.get(0).FCID
+                                )
+
+                                validate!!.SaveSharepreferenceString(
+                                    AppSP.FCID_Name,
+                                    response.body()!!.users!!.get(0).FCID_Name
+                                )
+                                validate!!.SaveSharepreferenceInt(
+                                    AppSP.StateCode,
+                                    response.body()!!.users!!.get(0).Statecode!!
+                                )
+
                             }
                             if (!response.body()!!.mst_1State.isNullOrEmpty()) {
                                 CareIndiaApplication.database?.mstStateDao()
@@ -282,7 +308,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     }
 
 
-    fun keyhash(){
+    fun keyhash() {
         try {
             val info = packageManager.getPackageInfo(
                 "com.careindia.lifeskills",
@@ -302,5 +328,6 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         } catch (e: NoSuchAlgorithmException) {
         }
     }
+
 }
 

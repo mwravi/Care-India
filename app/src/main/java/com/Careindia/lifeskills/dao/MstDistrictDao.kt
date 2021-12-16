@@ -21,5 +21,9 @@ interface MstDistrictDao {
     @Query("DELETE FROM mst_2District")
     fun deleteAll()
 
+    @Query("select Urban_rural from mst_2District limit 1")
+    fun getUrban_rural(): Int
 
+    @Query("select DistrictCode from mst_2District limit 1")
+    fun getDisCode(): Int
 }

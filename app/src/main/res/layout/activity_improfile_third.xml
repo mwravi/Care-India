@@ -37,62 +37,6 @@
 
 
                 <LinearLayout
-                    style="@style/CheckBox"
-                    android:background="@drawable/box_background"
-                    android:orientation="vertical">
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-                        <TextView style="@style/AsterikStyle" />
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/language_prefer_mobile_use" />
-
-
-                    </TableRow>
-
-
-                    <LinearLayout
-                        android:id="@+id/lang_prefer_mobile_use"
-                        style="@style/CheckBox"
-                        android:orientation="vertical" />
-
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:background="#CDCBCB" />
-
-                <LinearLayout
-                    android:visibility="gone"
-                    android:id="@+id/lay_et_specify_perfer_mob"
-                    style="@style/LinearLayoutStyle">
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-                        <TextView style="@style/AsterikStyle" />
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/please_specify_mobile_lag" />
-
-
-
-                    </TableRow>
-
-                    <EditText
-                        android:id="@+id/et_specify_perfer_mob"
-                        style="@style/EditTextStyleNew"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                        android:hint="@string/type_here"
-                        android:text="@={individualProfileViewModel.SpecifyMobileLaung}"
-                        android:inputType="text" />
-
-                </LinearLayout>
-
-                <LinearLayout
                     android:id="@+id/lay_spin_cate_picker_belong"
                     style="@style/LinearLayoutStyle">
 
@@ -342,7 +286,6 @@
 
 
                     <RadioGroup
-                        android:checkedButton="@={individualProfileViewModel.IsSecondry}"
                         android:id="@+id/rg_secondary_income"
                         style="@style/radioGroupStyle" />
 
@@ -401,6 +344,66 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/lay_et_days_secondary_job"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/no_days_secondary_job" />
+
+
+                    </TableRow>
+
+
+                    <EditText
+                        android:id="@+id/et_days_secondary_job"
+                        style="@style/EditTextStyleNew"
+                        android:digits="0123456789"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@={individualProfileViewModel.WorkingDaysSecondaryJob}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/lay_et_avg_daily_secondry_income"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/avg_daily_secondry_income" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_avg_daily_secondry_income"
+                        style="@style/EditTextStyleNew"
+                        android:digits="0123456789"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLines="1"
+                        android:singleLine="true"
+                        android:text="@={individualProfileViewModel.AvgDailySecIncome}" />
+
+                </LinearLayout>
 
 
 
