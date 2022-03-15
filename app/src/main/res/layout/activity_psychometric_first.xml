@@ -27,7 +27,9 @@
             style="@style/ScrolllViewStyle"
             android:layout_margin="@dimen/_10sdp"
             android:layout_weight="1"
-            android:scrollbars="none">
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical"
+            >
 
             <LinearLayout
                 style="@style/LinearLayoutStyle"
@@ -36,7 +38,7 @@
 
 
                 <LinearLayout
-                    android:id="@+id/lay_spin_hhid"
+                    android:id="@+id/lay_date"
                     style="@style/LinearLayoutStyle">
 
                     <TableRow
@@ -47,289 +49,17 @@
 
                         <TextView
                             style="@style/TextViewStyleNew"
-                            android:text="@string/hhid" />
-
-
-                    </TableRow>
-
-
-                    <fr.ganfra.materialspinner.MaterialSpinner
-                        android:id="@+id/spin_hhid"
-                        style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={psychometricViewModel.PsyHHID}"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lay_spin_imid"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/imid" />
-
-
-                    </TableRow>
-
-
-                    <fr.ganfra.materialspinner.MaterialSpinner
-                        android:id="@+id/spin_imid"
-                        style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={psychometricViewModel.PsyIMID}"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lay_name_parti"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/name_participant" />
+                            android:text="@string/date" />
 
 
                     </TableRow>
 
                     <EditText
-                        android:id="@+id/et_name_participant"
+                        android:id="@+id/et_date"
                         style="@style/EditTextStyleNew"
-                        android:clickable="false"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                        android:editable="false"
-                        android:enabled="false"
-                        android:hint="@string/type_here"
-                        android:text="@={psychometricViewModel.NameParticipant}"
-                        android:inputType="text"
-                        android:maxLength="20" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lay_age_parti"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/age_participant" />
-
-
-                    </TableRow>
-
-                    <EditText
-                        android:id="@+id/et_age_participant"
-                        style="@style/EditTextStyleNew"
-                        android:clickable="false"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                        android:editable="false"
-                        android:enabled="false"
-                        android:hint="@string/type_here"
-                        android:inputType="text"
-                        android:text="@={psychometricViewModel.AgeParticipant}"
-                        android:maxLength="20" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lay_primary_occup"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/primary_occup" />
-
-
-                    </TableRow>
-
-
-                    <EditText
-                        android:id="@+id/et_primary_occup"
-                        style="@style/EditTextStyleNew"
-                        android:clickable="false"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                        android:editable="false"
-                        android:enabled="false"
-                        android:text="@={psychometricViewModel.PrimaryOccu}"
-                        android:hint="@string/type_here"
-                        android:inputType="text"
-                        android:maxLength="20" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lay_secondry_occup"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/secondry_occup" />
-
-
-                    </TableRow>
-
-
-
-                    <EditText
-                        android:id="@+id/et_secondry_occup"
-                        style="@style/EditTextStyleNew"
-                        android:clickable="false"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                        android:editable="false"
-                        android:enabled="false"
-                        android:text="@={psychometricViewModel.SecondaryOccu}"
-                        android:hint="@string/type_here"
-                        android:inputType="text"
-                        android:maxLength="20" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lay_name_community"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/name_community" />
-
-
-                    </TableRow>
-
-
-                    <EditText
-                        android:id="@+id/et_name_community"
-                        style="@style/EditTextStyleNew"
-                        android:clickable="false"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                        android:editable="false"
-                        android:enabled="false"
-                        android:text="@={psychometricViewModel.CommunityName}"
-                        android:visibility="visible"
-                        android:hint="@string/type_here"
-                        android:inputType="text"
-                        android:maxLength="20" />
-
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/lay_name_shg"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/shg_name_appli" />
-
-
-                    </TableRow>
-
-
-                    <EditText
-                        android:id="@+id/et_name_shg"
-                        style="@style/EditTextStyleNew"
-                        android:clickable="false"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                        android:text="@={psychometricViewModel.SHGName}"
-                        android:visibility="visible"
-                        android:hint="@string/type_here"
-                        android:inputType="text"
-                        android:maxLength="20" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lay_sname_entrprise"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/name_entrprise" />
-
-
-                    </TableRow>
-
-                    <EditText
-                        android:id="@+id/et_name_entrprise"
-                        style="@style/EditTextStyleNew"
-                        android:clickable="false"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                        android:text="@={psychometricViewModel.EnterPrise}"
-                        android:hint="@string/type_here"
-                        android:inputType="text"
-                        android:maxLength="20" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lay_contactnumber"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/contactnumber" />
-
-
-                    </TableRow>
-
-                    <EditText
-                        android:id="@+id/et_contactnumber"
-                        style="@style/EditTextStyleNew"
-                        android:clickable="false"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                        android:editable="false"
-                        android:enabled="false"
-                        android:text="@={psychometricViewModel.ContactNo}"
-                        android:hint="@string/type_here"
+                        android:drawableRight="@drawable/ic_calender"
+                        android:focusable="false"
+                        android:hint="@string/enter_date"
                         android:inputType="text"
                         android:maxLength="20" />
 
@@ -356,7 +86,7 @@
                         android:id="@+id/et_namecrp"
                         style="@style/EditTextStyleNew"
                         android:clickable="false"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:editable="false"
                         android:enabled="false"
                         android:text="@={psychometricViewModel.NameCrp}"
@@ -367,7 +97,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/lay_date"
+                    android:id="@+id/lay_name_scfield"
                     style="@style/LinearLayoutStyle">
 
                     <TableRow
@@ -378,19 +108,19 @@
 
                         <TextView
                             style="@style/TextViewStyleNew"
-                            android:text="@string/date" />
+                            android:text="@string/name_suprvisng_fcorfntr" />
 
 
                     </TableRow>
 
                     <EditText
-                        android:id="@+id/et_date"
+                        android:id="@+id/et_name_scfield"
                         style="@style/EditTextStyleNew"
                         android:clickable="false"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
                         android:editable="false"
                         android:enabled="false"
-                        android:text="@={psychometricViewModel.Date}"
+                        android:text="@={psychometricViewModel.NameFcid}"
                         android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="20" />
@@ -398,11 +128,461 @@
                 </LinearLayout>
 
 
+
+
+                <LinearLayout
+                    android:id="@+id/lay_DistricName"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_DistricName"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/Name_of_distric_im" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_districtname_psy"
+                        style="@style/SpinnerViewNew"
+
+
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_NameofZone"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_NameofZone"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/Name_of_zone_im" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_zone"
+                        style="@style/SpinnerViewNew"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_bbmpName"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_bbmpName"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/Name_of_bbmp_ward_im" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_bbmp"
+                        style="@style/SpinnerViewNew"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_panchayatName"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_panchayatName"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/Name_of_panchayat_im" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_panchayatname"
+                        style="@style/SpinnerViewNew"
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_spin_hhid"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/hhid" />
+
+
+                    </TableRow>
+
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_hhid"
+                        style="@style/SpinnerViewNew"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_spin_imid"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/imid" />
+
+
+                    </TableRow>
+
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_imid"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_name_parti"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_participant" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_name_participant"
+                        style="@style/EditTextStyleNew"
+                        android:clickable="false"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:editable="false"
+                        android:enabled="false"
+                        android:hint="@string/type_here"
+                        android:text="@={psychometricViewModel.NameParticipant}"
+                        android:inputType="text"
+                        android:maxLength="50" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_age_parti"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/age_participant" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_age_participant"
+                        style="@style/EditTextStyleNew"
+                        android:clickable="false"
+                        android:digits="0123456789"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:text="@={psychometricViewModel.AgeParticipant}"
+                        android:maxLength="20" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_contactnumber"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/contactnumber" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_contactnumber"
+                        style="@style/EditTextStyleNew"
+                        android:clickable="false"
+                        android:digits="1234567890"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="10"
+                        android:text="@={psychometricViewModel.ContactNo}"
+                        />
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:id="@+id/lay_primary_occup"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/primary_occup" />
+
+
+                    </TableRow>
+
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_primary_income"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={psychometricViewModel.PrimaryOccup}"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/lay_et_specif_source_income"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_business_pdc" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_specif_primary_occu"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_secondry_occup"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/secondry_occup" />
+
+
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_secondry_income"
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={psychometricViewModel.SecSourceIncom}"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/lay_et_specify_source_secondary_income"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+                        <TextView style="@style/AsterikStyle" />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_business_pdc" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_specify_source_secondary_income"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_name_community"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_community" />
+
+
+                    </TableRow>
+
+
+                    <EditText
+                        android:id="@+id/et_name_community"
+                        style="@style/EditTextStyleNew"
+                        android:clickable="false"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:text="@={psychometricViewModel.CommunityName}"
+                        android:visibility="visible"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                       />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/lay_name_shg"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/shg_name_appli" />
+
+
+                    </TableRow>
+
+
+                    <EditText
+                        android:id="@+id/et_name_shg"
+                        style="@style/EditTextStyleNew"
+                        android:clickable="false"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:text="@={psychometricViewModel.SHGName}"
+                        android:visibility="visible"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="20" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_sname_entrprise"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView
+                            android:visibility="invisible"
+                            style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_entrprise" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_name_entrprise"
+                        style="@style/EditTextStyleNew"
+                        android:clickable="false"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:text="@={psychometricViewModel.EnterPrise}"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="20" />
+
+                </LinearLayout>
+
+
+
+
+
             </LinearLayout>
         </ScrollView>
 
 
         <TableRow
+            android:id="@+id/btn_bottom"
             style="@style/TableRowStyle"
             android:layout_margin="@dimen/_10sdp">
 
@@ -428,7 +608,7 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_weight="1"
-                android:text="@string/next" />
+                android:text="@string/save_and_next" />
 
             <TextView
                 style="@style/NewSimpleTextMargin"

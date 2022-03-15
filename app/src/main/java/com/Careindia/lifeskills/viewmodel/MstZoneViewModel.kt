@@ -18,9 +18,16 @@ class MstZoneViewModel : AndroidViewModel {
         return mstZoneRepository!!.getMstZoneLive(DistrictCode)
     }
 
+    fun getMstZone(DistrictCode:Int,ZoneIn: List<String>): List<MstZoneEntity> {
+        return mstZoneRepository!!.getMstZone(DistrictCode,ZoneIn)
+    }
+
+
     fun getMstZone(DistrictCode:Int): List<MstZoneEntity> {
         return mstZoneRepository!!.getMstZone(DistrictCode)
     }
 
-
+    fun getMstZone(DistrictCode: Int, ZoneCode: Int): String {
+        return mstZoneRepository!!.getMstZone(DistrictCode, ZoneCode)
+    }
 }

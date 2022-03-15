@@ -1,0 +1,481 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!-- layout title -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_40sdp"
+            android:background="@color/colorPrimaryDark">
+
+            <TextView style="@style/NewSimpleTextMargin" />
+
+            <TextView
+                style="@style/NewSimpleTextNew"
+                android:gravity="center"
+                android:text="@string/unsynchronized_data"
+                android:textAppearance="?android:attr/textAppearance"
+                android:textColor="@color/colorPrimary" />
+
+            <TextView style="@style/NewSimpleTextMargin" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            >
+
+            <TextView
+                android:id="@+id/tvCheckrecords"
+                style="@style/NewSimpleTextNew"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/sheet1"
+                android:gravity="center_vertical" />
+
+            <TextView
+                style="@style/NewSimpleTextNew"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/sheet1"
+                android:gravity="center"
+                android:text="@string/unsynchronized"
+                android:textColor="@color/white" />
+
+            <TextView
+                style="@style/NewSimpleTextNew"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/sheet1"
+                android:gravity="center"
+                android:text="@string/total"
+                android:textColor="@color/white" />
+        </TableRow>
+
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_weight="1"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="70dp">
+
+                    <TextView
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:text="@string/household_profile"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvhh"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tvhhtotal"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="70dp">
+
+                    <TextView
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:text="@string/individual_profile"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvind"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tvindtotal"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="70dp">
+
+                    <TextView
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:text="@string/edp"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvedp"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tvedptotal"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="70dp">
+
+                    <TextView
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:text="@string/psychometric_assessment"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvpsycho"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tvpsychototal"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="70dp">
+
+                    <TextView
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:text="@string/collective_profile"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvcp"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tvcptotal"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="70dp">
+
+                    <TextView
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:text="@string/collmember"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvcpm"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tvcpmtotal"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="70dp">
+
+                    <TextView
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:text="@string/collective_meeting"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvcm"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tvcmtotal"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="70dp">
+
+                    <TextView
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:text="@string/collective_progress_tracker"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvcpt"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tvcpttotal"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="70dp">
+
+                    <TextView
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:text="@string/beneficiary_progress_tracker"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvbpt"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tvbpttotal"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:minHeight="70dp">
+
+                    <TextView
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:text="@string/pre_post_assessment"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/tvppa"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+
+                    <TextView
+                        android:id="@+id/tvppatotal"
+                        style="@style/NewSimpleTextNew"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/sheet2"
+                        android:gravity="center"
+                        android:textColor="@color/black" />
+
+                </TableRow>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
+
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btn_ok"
+                style="@style/ButtonTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:text="@string/close" />
+
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight="1" />
+
+
+        </TableRow>
+    </LinearLayout>
+</LinearLayout>

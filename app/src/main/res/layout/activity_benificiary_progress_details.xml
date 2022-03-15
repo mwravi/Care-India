@@ -1,0 +1,418 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:viewBindingIgnore="true">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar_layout" />
+
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                style="@style/LinearLayoutStyle"
+                android:background="@drawable/box_background"
+                android:padding="@dimen/_10sdp">
+
+                <LinearLayout
+                    android:id="@+id/lay_filngjgDate"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/date_filling_the_form" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_formfilngjgDate"
+                        style="@style/EditTextStyleNew"
+                        android:drawableRight="@drawable/ic_calender"
+                        android:focusable="false"
+                        android:hint="@string/enter_date"
+                        android:inputType="text"
+                        android:maxLength="10" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_spin_name_crp"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_crp_bene" />
+
+
+                    </TableRow>
+
+
+                    <EditText
+                        android:id="@+id/et_crp_name"
+                        style="@style/EditTextStyleNew"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_spin_SupervisingFC"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/Supervising_fc_bene" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_sfc_name"
+                        style="@style/EditTextStyleNew"
+                        android:editable="false"
+                        android:enabled="false"
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_DistricName"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik"
+                            android:text="*" />
+
+                        <TextView
+                            android:id="@+id/tv_DistricName"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_district" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_districtname"
+                        style="@style/SpinnerViewNew"
+
+                        />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_NameofZone"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik"
+                            android:text="*" />
+
+                        <TextView
+                            android:id="@+id/tv_NameofZone"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_zone" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_zone"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_bbmpName"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik"
+                            android:text="*" />
+
+                        <TextView
+                            android:id="@+id/tv_bbmpName"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_ward" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_bbmp"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_panchayatName"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik"
+                            android:text="*" />
+
+                        <TextView
+                            android:id="@+id/tv_panchayatName"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_panchayat" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_panchayatname"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_localityname"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_localityname"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_thelocality" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_localityname"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:hint="@string/type_here"
+                        android:inputType="textVisiblePassword"
+                        android:maxLength="50" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_indvmember_id_groupcollective"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/indv_member_id_groupcollective" />
+
+
+                    </TableRow>
+
+                   <!-- <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_indv_member"
+                        style="@style/SpinnerViewNew"
+
+                        />-->
+
+                    <EditText
+                        android:id="@+id/et_indv_mem"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                        android:hint="@string/type_here"
+                        android:inputType="textVisiblePassword"
+                        android:maxLength="50" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_sangha_collective"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_sangha_collective"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_the_sangha_collective" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_sangha_collective"
+                        style="@style/SpinnerViewNew"
+
+                        />
+
+
+<!--                    <EditText-->
+<!--                        android:id="@+id/et_sangha_collective"-->
+<!--                        style="@style/EditTextStyleNew"-->
+<!--                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
+<!--                        android:hint="@string/type_here"-->
+<!--                        android:inputType="textVisiblePassword"-->
+<!--                        android:maxLength="50" />-->
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_collective_memberid"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_collective_memberid"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/collective_memberid" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_collective_memberId"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/role_collective_sangha" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_collective_sangha"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_collective_sangha"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specifyothers" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_specify_collective_sangha"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
+
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
+
+            <Button
+                android:id="@+id/btn_prev"
+                style="@style/ButtonTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:text="@string/previous" />
+
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
+
+            <Button
+                android:id="@+id/btn_save"
+                style="@style/ButtonTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:text="@string/save_and_next" />
+
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
+
+        </TableRow>
+
+
+    </LinearLayout>
+

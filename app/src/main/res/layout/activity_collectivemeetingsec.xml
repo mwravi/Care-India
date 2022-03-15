@@ -7,390 +7,781 @@
             name="CollectiveMeetingViewModel"
             type="com.careindia.lifeskills.viewmodel.CollectiveMeetingViewModel" />
     </data>
-<LinearLayout
-    android:id="@+id/ll_main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
 
-    <include layout="@layout/toolbar_layout" />
-    <include layout="@layout/meetingtab" />
+    <LinearLayout
+        android:id="@+id/ll_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ScrollView
-        style="@style/ScrolllViewStyle"
-        android:layout_margin="@dimen/_5sdp"
-        android:layout_weight="1"
-        android:background="@drawable/box_background"
-        android:scrollbars="none">
+        <include layout="@layout/toolbar_layout" />
 
-        <LinearLayout
-            style="@style/LinearLayoutStyle"
-            android:padding="@dimen/_10sdp">
+        <include layout="@layout/meetingtab" />
 
-
-            <LinearLayout style="@style/LinearLayoutStyle">
-
-                <TableRow style="@style/TableRowStyle">
-
-                    <TextView style="@style/TextViewStylestrik" />
-
-                    <TextView
-                        android:id="@+id/tv_total_no_of_members"
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/totlamembersmeeting" />
-
-                </TableRow>
-
-            </LinearLayout>
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:background="@drawable/box_background"
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical">
 
             <LinearLayout
                 style="@style/LinearLayoutStyle"
-                android:orientation="horizontal">
+                android:padding="@dimen/_10sdp">
 
-                <LinearLayout
-                    style="@style/LinearLayoutStyle"
-                    android:layout_width="0dp"
-                    android:layout_weight="1">
+
+                <LinearLayout style="@style/LinearLayoutStyle">
 
                     <TableRow style="@style/TableRowStyle">
 
                         <TextView style="@style/TextViewStylestrik" />
 
                         <TextView
-                            android:id="@+id/tv_male_wp"
+                            android:id="@+id/tv_total_no_of_members"
                             style="@style/TextViewStyleNew"
-                            android:text="@string/malewp" />
+                            android:text="@string/totlamembersmeeting" />
 
                     </TableRow>
 
-                    <EditText
-                        android:id="@+id/et_male_wp"
-                        style="@style/EditTextStyleNew"
-                        android:hint="@string/type_here"
-                        android:inputType="number"
-                        android:maxLength="2" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wp"
+                    android:fontFamily="@font/firasans_semibold"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    android:gravity="center"/>
+
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_male_wp"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/malewp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_male_wp"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_female_wp"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/femalewp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_female_wp"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_trans_wp"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/transwp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_trans_wp"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:visibility="invisible">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_female_nwpdd"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/femalenwp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_female_nwpdd"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/nwp"
+                    android:fontFamily="@font/firasans_semibold"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    android:gravity="center"/>
+
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_male_nwp"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/malenwp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_male_nwp"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_female_nwp"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/femalenwp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_female_nwp"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
                 </LinearLayout>
 
                 <LinearLayout
                     style="@style/LinearLayoutStyle"
-                    android:layout_width="0dp"
-                    android:layout_weight="1">
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_trans_nwp"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/transnwp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_trans_nwp"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:visibility="invisible">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_female_nwpse"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/femalenwp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_female_nwpse"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hhm"
+                    android:fontFamily="@font/firasans_semibold"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    android:gravity="center"/>
+
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_male_hhm"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/malehhm" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_male_hhm"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_female_hhm"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/femalehhm" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_female_hhm"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_trans_hhm"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/transhhm" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_trans_hhm"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:visibility="invisible">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_female_nwpsess"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/femalenwp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_female_nwpssse"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout style="@style/LinearLayoutStyle">
 
                     <TableRow style="@style/TableRowStyle">
 
                         <TextView style="@style/TextViewStylestrik" />
 
                         <TextView
-                            android:id="@+id/tv_male_nwp"
+                            android:id="@+id/tv_total_attended"
                             style="@style/TextViewStyleNew"
-                            android:text="@string/malenwp" />
+                            android:text="@string/totlamembersattended" />
 
                     </TableRow>
 
-                    <EditText
-                        android:id="@+id/et_male_nwp"
-                        style="@style/EditTextStyleNew"
-                        android:hint="@string/type_here"
-                        android:inputType="number"
-                        android:maxLength="2" />
                 </LinearLayout>
 
-            </LinearLayout>
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_male_wp_attended"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/malewp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_male_wp_attended"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_female_wp_attended"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/femalewp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_female_wp_attended"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_trans_wp_attended"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/transwp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_trans_wp_attended"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:visibility="invisible"
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_female_nwp_attendedaa"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/femalenwp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_female_nwp_attendedaa"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_male_nwp_attended"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/malenwp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_male_nwp_attended"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_female_nwp_attended"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/femalenwp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_female_nwp_attended"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_trans_nwp_attended"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/transnwp" />
+
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_trans_nwp_attended"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:visibility="invisible"
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_male_nwp_attendedaa"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/malenwp" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_male_nwp_attendedaa"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
 
             <LinearLayout
-                style="@style/LinearLayoutStyle"
-                android:orientation="horizontal">
-
-                <LinearLayout
                     style="@style/LinearLayoutStyle"
-                    android:layout_width="0dp"
-                    android:layout_weight="1">
+                    android:orientation="horizontal">
 
-                    <TableRow style="@style/TableRowStyle">
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
 
-                        <TextView style="@style/TextViewStylestrik" />
+                        <TableRow style="@style/TableRowStyle">
 
-                        <TextView
-                            android:id="@+id/tv_female_wp"
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/femalewp" />
+                            <TextView style="@style/TextViewStylestrik" />
 
-                    </TableRow>
+                            <TextView
+                                android:id="@+id/tv_male_hhm_attended"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/malehhm" />
 
-                    <EditText
-                        android:id="@+id/et_female_wp"
-                        style="@style/EditTextStyleNew"
-                        android:hint="@string/type_here"
-                        android:inputType="number"
-                        android:maxLength="2" />
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_male_hhm_attended"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                android:id="@+id/tv_female_hhm_attended"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/femalehhm" />
+
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_female_hhm_attended"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
-                <LinearLayout
-                    style="@style/LinearLayoutStyle"
-                    android:layout_width="0dp"
-                    android:layout_weight="1">
-
-                    <TableRow style="@style/TableRowStyle">
-
-                        <TextView style="@style/TextViewStylestrik" />
-
-                        <TextView
-                            android:id="@+id/tv_female_nwp"
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/femalenwp" />
-
-                    </TableRow>
-
-                    <EditText
-                        android:id="@+id/et_female_nwp"
-                        style="@style/EditTextStyleNew"
-                        android:hint="@string/type_here"
-                        android:inputType="number"
-                        android:maxLength="2" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/LinearLayoutStyle"
-                android:orientation="horizontal">
 
                 <LinearLayout
                     style="@style/LinearLayoutStyle"
-                    android:layout_width="0dp"
-                    android:layout_weight="1">
+                    android:orientation="horizontal">
 
-                    <TableRow style="@style/TableRowStyle">
 
-                        <TextView style="@style/TextViewStylestrik" />
+                    <LinearLayout
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
 
-                        <TextView
-                            android:id="@+id/tv_trans_wp"
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/transwp" />
+                        <TableRow style="@style/TableRowStyle">
 
-                    </TableRow>
+                            <TextView style="@style/TextViewStylestrik" />
 
-                    <EditText
-                        android:id="@+id/et_trans_wp"
-                        style="@style/EditTextStyleNew"
-                        android:hint="@string/type_here"
-                        android:inputType="number"
-                        android:maxLength="2" />
-                </LinearLayout>
+                            <TextView
+                                android:id="@+id/tv_trans_hhm_attended"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/transhhm" />
 
-                <LinearLayout
-                    style="@style/LinearLayoutStyle"
-                    android:layout_width="0dp"
-                    android:layout_weight="1">
 
-                    <TableRow style="@style/TableRowStyle">
+                        </TableRow>
 
-                        <TextView style="@style/TextViewStylestrik" />
+                        <EditText
+                            android:id="@+id/et_trans_hhm_attended"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/tv_trans_nwp"
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/transnwp" />
 
-                    </TableRow>
+                    <LinearLayout
+                        android:visibility="invisible"
+                        style="@style/LinearLayoutStyle"
+                        android:layout_width="0dp"
+                        android:layout_weight="1">
 
-                    <EditText
-                        android:id="@+id/et_trans_nwp"
-                        style="@style/EditTextStyleNew"
-                        android:hint="@string/type_here"
-                        android:inputType="number"
-                        android:maxLength="2" />
-                </LinearLayout>
+                        <TableRow style="@style/TableRowStyle">
 
-            </LinearLayout>
+                            <TextView style="@style/TextViewStylestrik" />
 
-            <LinearLayout style="@style/LinearLayoutStyle">
+                            <TextView
+                                android:id="@+id/tv_male_hhm_attendedaa"
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/malenwp" />
 
-                <TableRow style="@style/TableRowStyle">
+                        </TableRow>
 
-                    <TextView style="@style/TextViewStylestrik" />
+                        <EditText
+                            android:id="@+id/et_male_hhm_attendedaa"
+                            style="@style/EditTextStyleNew"
+                            android:hint="@string/type_here"
+                            android:inputType="number"
+                            android:maxLength="2" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/tv_total_attended"
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/totlamembersattended" />
-
-                </TableRow>
-
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/LinearLayoutStyle"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    style="@style/LinearLayoutStyle"
-                    android:layout_width="0dp"
-                    android:layout_weight="1">
-
-                    <TableRow style="@style/TableRowStyle">
-
-                        <TextView style="@style/TextViewStylestrik" />
-
-                        <TextView
-                            android:id="@+id/tv_male_wp_attended"
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/malewp" />
-
-                    </TableRow>
-
-                    <EditText
-                        android:id="@+id/et_male_wp_attended"
-                        style="@style/EditTextStyleNew"
-                        android:hint="@string/type_here"
-                        android:inputType="number"
-                        android:maxLength="2" />
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/LinearLayoutStyle"
-                    android:layout_width="0dp"
-                    android:layout_weight="1">
-
-                    <TableRow style="@style/TableRowStyle">
-
-                        <TextView style="@style/TextViewStylestrik" />
-
-                        <TextView
-                            android:id="@+id/tv_male_nwp_attended"
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/malenwp" />
-
-                    </TableRow>
-
-                    <EditText
-                        android:id="@+id/et_male_nwp_attended"
-                        style="@style/EditTextStyleNew"
-                        android:hint="@string/type_here"
-                        android:inputType="number"
-                        android:maxLength="2" />
                 </LinearLayout>
 
             </LinearLayout>
 
-            <LinearLayout
-                style="@style/LinearLayoutStyle"
-                android:orientation="horizontal">
+        </ScrollView>
 
-                <LinearLayout
-                    style="@style/LinearLayoutStyle"
-                    android:layout_width="0dp"
-                    android:layout_weight="1">
+        <TableRow
+            android:id="@+id/btn_bottom"
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
 
-                    <TableRow style="@style/TableRowStyle">
+            <include layout="@layout/buttons_save_cancel" />
 
-                        <TextView style="@style/TextViewStylestrik" />
+        </TableRow>
 
-                        <TextView
-                            android:id="@+id/tv_female_wp_attended"
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/femalewp" />
-
-                    </TableRow>
-
-                    <EditText
-                        android:id="@+id/et_female_wp_attended"
-                        style="@style/EditTextStyleNew"
-                        android:hint="@string/type_here"
-                        android:inputType="number"
-                        android:maxLength="2" />
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/LinearLayoutStyle"
-                    android:layout_width="0dp"
-                    android:layout_weight="1">
-
-                    <TableRow style="@style/TableRowStyle">
-
-                        <TextView style="@style/TextViewStylestrik" />
-
-                        <TextView
-                            android:id="@+id/tv_female_nwp_attended"
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/femalenwp" />
-
-                    </TableRow>
-
-                    <EditText
-                        android:id="@+id/et_female_nwp_attended"
-                        style="@style/EditTextStyleNew"
-                        android:hint="@string/type_here"
-                        android:inputType="number"
-                        android:maxLength="2" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                style="@style/LinearLayoutStyle"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    style="@style/LinearLayoutStyle"
-                    android:layout_width="0dp"
-                    android:layout_weight="1">
-
-                    <TableRow style="@style/TableRowStyle">
-
-                        <TextView style="@style/TextViewStylestrik" />
-
-                        <TextView
-                            android:id="@+id/tv_trans_wp_attended"
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/transwp" />
-
-                    </TableRow>
-
-                    <EditText
-                        android:id="@+id/et_trans_wp_attended"
-                        style="@style/EditTextStyleNew"
-                        android:hint="@string/type_here"
-                        android:inputType="number"
-                        android:maxLength="2" />
-                </LinearLayout>
-
-                <LinearLayout
-                    style="@style/LinearLayoutStyle"
-                    android:layout_width="0dp"
-                    android:layout_weight="1">
-
-                    <TableRow style="@style/TableRowStyle">
-
-                        <TextView style="@style/TextViewStylestrik" />
-
-                        <TextView
-                            android:id="@+id/tv_trans_nwp_attended"
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/transnwp" />
-
-                    </TableRow>
-
-                    <EditText
-                        android:id="@+id/et_trans_nwp_attended"
-                        style="@style/EditTextStyleNew"
-                        android:hint="@string/type_here"
-                        android:inputType="number"
-                        android:maxLength="2" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
-
-    <TableRow
-        style="@style/TableRowStyle"
-        android:layout_margin="@dimen/_10sdp">
-
-        <include layout="@layout/buttons_save_cancel" />
-
-    </TableRow>
-
-</LinearLayout>
+    </LinearLayout>
 </layout>

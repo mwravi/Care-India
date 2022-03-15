@@ -29,7 +29,7 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_individual_prf"/>
+                    android:src="@drawable/psychometric"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_individual_prf"/>
+                    android:src="@drawable/psychometric"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -79,7 +79,7 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_individual_prf"/>
+                    android:src="@drawable/psychometric"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -105,7 +105,7 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_individual_prf"/>
+                    android:src="@drawable/psychometric"/>
 
                 <TextView
                     android:layout_width="wrap_content"

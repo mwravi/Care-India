@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,39 +13,38 @@
 
 
     <LinearLayout
-        android:visibility="gone"
         android:id="@+id/linear_synjhjcd"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight=".1"
+        android:background="@drawable/dashboard_top_bg"
         android:orientation="horizontal"
-        android:background="@drawable/dashboard_top_bg">
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            >
-        <TextView
-            android:id="@+id/tv_wlcm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:text="Welcome!" />
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_wlcm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:text="@string/welcome" />
 
 
-
-        <TextView
-            android:id="@+id/tv_user_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:fontFamily="@font/firasans_bold"
-            android:text="Subham Sharma"
-            android:textColor="@color/text_clr"
-            android:textSize="@dimen/_16ssp" />
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:fontFamily="@font/firasans_bold"
+                android:text="Subham Sharma"
+                android:textColor="@color/text_clr"
+                android:textSize="@dimen/_16ssp" />
 
         </LinearLayout>
 
@@ -52,8 +52,8 @@
             android:id="@+id/iv_prf"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/_30sdp"
             android:layout_gravity="center"
+            android:layout_marginEnd="@dimen/_30sdp"
             android:src="@drawable/ic_profile" />
 
 
@@ -62,6 +62,7 @@
     <include
         android:id="@+id/include"
         layout="@layout/homescreen" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -73,11 +74,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_20sdp"
-            android:visibility="gone"
             android:layout_marginTop="@dimen/_10sdp"
             android:fontFamily="@font/firasans_regular"
-            android:text="Select your focus area"
-            android:textColor="@color/white" />
+            android:text="@string/focus_area_select"
+            android:textColor="@color/white"
+            android:visibility="gone" />
 
         <ScrollView
             style="@style/ScrolllViewStyle"
@@ -119,9 +120,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:fontFamily="@font/firasans_regular"
+                            android:fontFamily="@font/firasans_medium"
                             android:gravity="center"
-                            android:text="Household Profile"
+                            android:text="@string/household_profile"
                             android:textColor="@color/text_clr"
                             android:textSize="@dimen/_12sdp" />
 
@@ -149,9 +150,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:fontFamily="@font/firasans_regular"
+                            android:fontFamily="@font/firasans_medium"
                             android:gravity="center"
-                            android:text="Individual Profile"
+                            android:text="@string/individual_profile"
                             android:textColor="@color/text_clr"
                             android:textSize="@dimen/_12sdp" />
 
@@ -165,6 +166,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:visibility="gone"
                     android:orientation="horizontal"
                     android:weightSum="2">
 
@@ -182,7 +184,7 @@
 
                         <ImageView
                             android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
+                            android:layout_height="31dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_progress_tracker_icon" />
 
@@ -190,78 +192,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp"
-                            android:fontFamily="@font/firasans_regular"
+                            android:fontFamily="@font/firasans_medium"
                             android:gravity="center"
-                            android:text="Primary Data Collection"
-                            android:textColor="@color/text_clr"
-                            android:textSize="@dimen/_12sdp" />
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/ll_collective"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:layout_weight="1"
-                        android:background="@drawable/tile_bg"
-                        android:gravity="center"
-                        android:minHeight="@dimen/_150sdp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_collective_prf_icon" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            android:fontFamily="@font/firasans_regular"
-                            android:gravity="center"
-                            android:text="Collective Profile"
-                            android:textColor="@color/text_clr"
-                            android:textSize="@dimen/_12sdp" />
-
-                    </LinearLayout>
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-
-                    <LinearLayout
-                        android:id="@+id/ll_collective_meeting"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:layout_weight="1"
-                        android:background="@drawable/tile_bg"
-                        android:gravity="center"
-                        android:minHeight="@dimen/_150sdp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_collective_meeting_icon" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/firasans_regular"
-                            android:gravity="center"
-                            android:text="Collective Meeting"
+                            android:text="@string/edp"
                             android:textColor="@color/text_clr"
                             android:textSize="@dimen/_12sdp" />
 
@@ -288,9 +221,108 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/firasans_medium"
+                            android:gravity="center"
+                            android:text="@string/psychometric_assessment"
+                            android:textColor="@color/text_clr"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_collective_meeting"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/tile_bg"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_150sdp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_collective_meeting_icon" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
                             android:fontFamily="@font/firasans_regular"
                             android:gravity="center"
-                            android:text="Psychometric assessment"
+                            android:text="@string/collective_meeting"
+                            android:textColor="@color/text_clr"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_collective"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/tile_bg"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_150sdp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/collective_progress" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:fontFamily="@font/firasans_medium"
+                            android:gravity="center"
+                            android:text="@string/collective_profile"
+                            android:textColor="@color/text_clr"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_pre_post_assessment"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/tile_bg"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_150sdp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/assessment"
+                            app:tint="@color/colorPrimary" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:fontFamily="@font/firasans_medium"
+                            android:gravity="center"
+                            android:text="Pre-Post Assessment"
                             android:textColor="@color/text_clr"
                             android:textSize="@dimen/_12sdp" />
 
@@ -304,7 +336,79 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:visibility="visible"
                     android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/ll_sync"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:background="@drawable/tile_bg"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_150sdp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_sync_icon" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/firasans_medium"
+                            android:gravity="center"
+                            android:text="Sync"
+                            android:textColor="@color/text_clr"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </LinearLayout>
+
+
+
+                    <LinearLayout
+                        android:id="@+id/ll_collective_progress_tracker"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:visibility="invisible"
+                        android:background="@drawable/tile_bg"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_150sdp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_sync_icon" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:fontFamily="@font/firasans_medium"
+                            android:gravity="center"
+                            android:text="@string/collective_progress_tracker"
+                            android:textColor="@color/text_clr"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
 
                     <LinearLayout
@@ -328,9 +432,9 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/firasans_regular"
+                            android:fontFamily="@font/firasans_medium"
                             android:gravity="center"
-                            android:text="Reports"
+                            android:text="@string/reports"
                             android:textColor="@color/text_clr"
                             android:textSize="@dimen/_12sdp" />
 
@@ -338,7 +442,6 @@
 
 
                     <LinearLayout
-                        android:id="@+id/ll_sync"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/_10sdp"
@@ -346,7 +449,8 @@
                         android:background="@drawable/tile_bg"
                         android:gravity="center"
                         android:minHeight="@dimen/_150sdp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:visibility="invisible">
 
                         <ImageView
                             android:layout_width="@dimen/_40sdp"
@@ -378,7 +482,8 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_margin="@dimen/_8sdp"
-            android:background="@drawable/tile_bg">
+            android:background="@drawable/tile_bg"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/bjhbjh"

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:viewBindingIgnore="true">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <include layout="@layout/topnavigation_collective_tracker"/>
+
+
+    <ScrollView
+        style="@style/ScrolllViewStyle"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:overScrollMode="always"
+        android:scrollbarSize="@dimen/_10sdp"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            style="@style/LinearLayoutStyle"
+            android:background="@drawable/box_background"
+            android:padding="@dimen/_10sdp">
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/as_a_collective_any_schemes_were_mobilized" />
+                </TableRow>
+
+                <RadioGroup
+                    android:id="@+id/rg_mobilized"
+                    style="@style/radioGroupStyle"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LinearLayoutStyle">
+
+                <TableRow
+                    style="@style/TableRowStyle"
+                    android:minHeight="0dp">
+
+                    <TextView style="@style/AsterikStyle" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/no_of_schemes_mobilized" />
+
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_schemes_no"
+                    style="@style/EditTextStyleNew"
+                    android:maxLength="3"
+                    android:hint="@string/type_here"
+                    android:inputType="number" />
+
+
+            </LinearLayout>
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/any_bank_accounts_of_the_members_opened" />
+                </TableRow>
+
+                <RadioGroup
+                    android:id="@+id/rg_acc_opened"
+                    style="@style/radioGroupStyle"
+                    />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lay_no_of_banks"
+                style="@style/LinearLayoutStyle"
+                android:visibility="gone">
+
+                <TableRow
+                    style="@style/TableRowStyle"
+                    android:minHeight="0dp">
+
+                    <TextView style="@style/AsterikStyle" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/no_of_bank_accounts_opened" />
+
+
+                </TableRow>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/lay_accounts_opened"
+                style="@style/LinearLayoutStyle"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                    android:layout_width="0dp"
+                    android:layout_weight="1">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/male" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_male"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="2" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                    android:layout_width="0dp"
+                    android:layout_weight="1">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/female" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_female"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="2" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/are_the_members_especially_women_able_to_access_collective_financial_resources_post_opening_of_bank_account" />
+                </TableRow>
+
+                <RadioGroup
+                    android:id="@+id/rg_access"
+                    style="@style/radioGroupStyle"
+                    />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TableRow
+        android:id="@+id/btn_bottom"
+        style="@style/TableRowStyle"
+        android:layout_margin="@dimen/_10sdp">
+
+        <include layout="@layout/buttons_save_cancel" />
+
+    </TableRow>
+</LinearLayout>

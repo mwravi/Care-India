@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/et_ans"
+    style="@style/EditTextStyleNew"
+    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+    android:hint="@string/type_here"
+    android:inputType="textVisiblePassword"
+    android:maxLength="50">
+
+
+</EditText>

@@ -3,6 +3,7 @@ package com.careindia.lifeskills.repository
 
 import androidx.lifecycle.LiveData
 import com.careindia.lifeskills.dao.CollectiveMeetingDao
+import com.careindia.lifeskills.entity.CollectiveEntity
 import com.careindia.lifeskills.entity.CollectiveMeetingEntity
 
 
@@ -16,21 +17,23 @@ class CollectiveMeetingRepository(private val collectiveMeetingDao: CollectiveMe
         return collectiveMeetingDao.getAllMemberData()
     }
 
-    fun getAllMemberData(Col_GUID: String): LiveData<List<CollectiveMeetingEntity>> {
+    fun getAllMemberDataGuid(Col_GUID: String): LiveData<List<CollectiveMeetingEntity>> {
         return collectiveMeetingDao.getAllMemberData(Col_GUID)
     }
 
     fun update(
         CollMeetGUID: String,
-        Dateform: String,
+        Dateform: Long,
         Col_GUID: String,
-        Meeting_date: String,
+        Meeting_date: Long,
         Meeting_place: String,
         Meet_start_time: String,
         Meet_end_time: String,
         Meet_purpose: String,
         Meet_purpose_oth: String,
-        IsEdited:Int
+        updatedBy: Int?,
+        updatedOn: Long?,
+        IsEdited: Int
     ) {
         collectiveMeetingDao.updatecollectiveMember(
             CollMeetGUID,
@@ -42,6 +45,8 @@ class CollectiveMeetingRepository(private val collectiveMeetingDao: CollectiveMe
             Meet_end_time,
             Meet_purpose,
             Meet_purpose_oth,
+            updatedBy,
+            updatedOn,
             IsEdited
         )
     }
@@ -60,7 +65,15 @@ class CollectiveMeetingRepository(private val collectiveMeetingDao: CollectiveMe
         Attn_female_NWP: Int,
         Attn_Transgender_WP: Int,
         Attn_Transgender_NWP: Int,
-        IsEdited:Int
+        Member_male_HHM: Int,
+        Member_female_HHM: Int,
+        Member_Transgender_HHM: Int,
+        Attn_male_HHM: Int,
+        Attn_female_HHM: Int,
+        Attn_Transgender_HHM: Int,
+        updatedBy: Int?,
+        updatedOn: Long?,
+        IsEdited: Int
     ) {
         collectiveMeetingDao.updatecollectiveMeetSec(
             CollMeetGUID,
@@ -76,10 +89,17 @@ class CollectiveMeetingRepository(private val collectiveMeetingDao: CollectiveMe
             Attn_female_NWP,
             Attn_Transgender_WP,
             Attn_Transgender_NWP,
+            Member_male_HHM,
+            Member_female_HHM,
+            Member_Transgender_HHM,
+            Attn_male_HHM,
+            Attn_female_HHM,
+            Attn_Transgender_HHM,
+            updatedBy,
+            updatedOn,
             IsEdited
         )
     }
-
     fun updateThird(
         CollMeetGUID: String,
         Savings: String?,
@@ -91,11 +111,10 @@ class CollectiveMeetingRepository(private val collectiveMeetingDao: CollectiveMe
         Change_position: String?,
         ChangeGrpMember: String?,
         OtherPoint: String?,
-        TotalSavings: Int?,
-        LoanAvailed_int: Int?,
-        LoanAvailed_ext: Int?,
-        Interest_acc: Int?,
-        IsEdited:Int
+        meetingDiscussion_Points: String?,
+        updatedBy: Int?,
+        updatedOn: Long?,
+        IsEdited: Int
     ) {
         collectiveMeetingDao.updatecollectiveMeetThird(
             CollMeetGUID,
@@ -108,16 +127,53 @@ class CollectiveMeetingRepository(private val collectiveMeetingDao: CollectiveMe
             Change_position,
             ChangeGrpMember,
             OtherPoint,
+            meetingDiscussion_Points,
+            updatedBy,
+            updatedOn,
+            IsEdited
+        )
+    }
+
+    fun updateFourth(
+        CollMeetGUID: String,
+        TotalSavings: Int?,
+        LoanAvailed_int: Int?,
+        LoanAvailed_ext: Int?,
+        Interest_acc: Int?,
+        updatedBy: Int?,
+        updatedOn: Long?,
+        IsEdited: Int
+    ) {
+        collectiveMeetingDao.updatecollectiveMeetFourth(
+            CollMeetGUID,
             TotalSavings,
             LoanAvailed_int,
             LoanAvailed_ext,
             Interest_acc,
+            updatedBy,
+            updatedOn,
             IsEdited
         )
     }
 
     fun getCollectiveMemberdatabyGuid(guid: String): LiveData<List<CollectiveMeetingEntity>> {
         return collectiveMeetingDao.getCollectiveMemberdatabyGuid(guid)
+    }
+
+    fun getNW_NWP_data(guid: String): List<CollectiveEntity> {
+        return collectiveMeetingDao.getNW_NWP_data(guid)
+    }
+
+    fun getGroupName(guid: String): String {
+        return collectiveMeetingDao.getGroupName(guid)
+    }
+
+    fun getCollectiveID(guid: String): String {
+        return collectiveMeetingDao.getCollectiveID(guid)
+    }
+
+    fun getMaxmtg(guid: String): Int {
+        return collectiveMeetingDao.getMaxmtg(guid)
     }
 
     fun deletemember(collectiveMeetingEntity: CollectiveMeetingEntity) {

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:viewBindingIgnore="true">
+
+    <include layout="@layout/toolbar_layout" />
+
+
+    <ScrollView
+        style="@style/ScrolllViewStyle"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_weight="1"
+        android:background="@drawable/box_background"
+        android:scrollbarSize="@dimen/_10sdp"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            style="@style/LinearLayoutStyle"
+            android:padding="@dimen/_10sdp">
+
+            <LinearLayout
+                android:id="@+id/lay_pre_post"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/please_select_pre_test_post_test" />
+                </TableRow>
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_pre_post"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_group_batch_id"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/please_select_group_batch_id" />
+                </TableRow>
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_group_batch_id"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TableRow
+        android:id="@+id/btn_bottom"
+        style="@style/TableRowStyle"
+        android:layout_margin="@dimen/_10sdp">
+
+        <include layout="@layout/buttons_save_cancel" />
+
+    </TableRow>
+
+</LinearLayout>
+

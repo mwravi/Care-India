@@ -21,10 +21,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:fontFamily="@font/firasans_regular"
+        android:fontFamily="@font/firasans_semibold"
         android:gravity="center"
         android:textColor="@color/colorPrimary"
-        android:textSize="16sp" />
+        android:textSize="@dimen/_12sdp" />
 
     <ImageView
         android:id="@+id/img_logout"

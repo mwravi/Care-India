@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="individualProfileViewModel"
             type="com.careindia.lifeskills.viewmodel.IndividualProfileViewModel" />
@@ -30,12 +30,173 @@
             style="@style/ScrolllViewStyle"
             android:layout_margin="@dimen/_10sdp"
             android:layout_weight="1"
-            android:scrollbars="none">
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical"
+            >
 
             <LinearLayout
                 style="@style/LinearLayoutStyle"
                 android:background="@drawable/box_background"
                 android:padding="@dimen/_10sdp">
+
+
+                <LinearLayout
+                    android:id="@+id/lay_availed_services_past"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/availed_services_past" />
+
+
+                    </TableRow>
+
+
+                    <RadioGroup
+                        android:id="@+id/rg_availed_services_past"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="#D8D6D6" />
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/lay_et_service_detail_respodent"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/service_provider_detail_respodent" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_service_detail_respodent1"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                    <EditText
+                        android:id="@+id/et_service_detail_respodent2"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                    <EditText
+                        android:id="@+id/et_service_detail_respodent3"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                    <EditText
+                        android:id="@+id/et_service_detail_respodent4"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                    <EditText
+                        android:id="@+id/et_service_detail_respodent5"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/lay_et_service_provider_department"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/service_provider_department" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_service_provider_department1"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                    <EditText
+                        android:id="@+id/et_service_provider_department2"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                    <EditText
+                        android:id="@+id/et_service_provider_department3"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                    <EditText
+                        android:id="@+id/et_service_provider_department4"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                    <EditText
+                        android:id="@+id/et_service_provider_department5"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:id="@+id/lay_spin_avail_any_scheme"
@@ -44,11 +205,12 @@
                     <TableRow
                         style="@style/TableRowStyle"
                         android:minHeight="0dp">
+
                         <TextView style="@style/AsterikStyle" />
+
                         <TextView
                             style="@style/TextViewStyleNew"
                             android:text="@string/avail_any_scheme" />
-
 
 
                     </TableRow>
@@ -58,236 +220,177 @@
                         style="@style/radioGroupStyle" />
 
                 </LinearLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="#D8D6D6"/>
+                    android:background="#D8D6D6" />
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_details_service_avail"
                     style="@style/LinearLayoutStyle">
 
                     <TableRow
                         style="@style/TableRowStyle"
                         android:minHeight="0dp">
+
                         <TextView style="@style/AsterikStyle" />
+
                         <TextView
                             style="@style/TextViewStyleNew"
                             android:text="@string/details_service_avail" />
 
 
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_details_service_avail1"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="textVisiblePassword"
+                        />
+
+                    <EditText
+                        android:id="@+id/et_details_service_avail2"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                    <EditText
+                        android:id="@+id/et_details_service_avail3"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                    <EditText
+                        android:id="@+id/et_details_service_avail4"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                    <EditText
+                        android:id="@+id/et_details_service_avail5"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                </LinearLayout>
+
+               <LinearLayout
+                    android:id="@+id/lay_darpartment_service_provide"
+                   android:visibility="gone"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/darpartment_service_provide" />
+
 
                     </TableRow>
 
                     <EditText
-                        android:id="@+id/et_details_service_avail"
+                        android:id="@+id/et_darpartment_service_provide1"
                         style="@style/EditTextStyleNew"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
-                        android:text="@={individualProfileViewModel.AvailSchemeDetail}"
-                        android:inputType="text" />
+                        android:inputType="textVisiblePassword"
+                         />
 
-                </LinearLayout>
-
-
-                <LinearLayout
-                    style="@style/CheckBox"
-                    android:background="@drawable/box_background"
-                    android:orientation="vertical">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/skills_jobs_picking" />
-
-
-
-                    </TableRow>
-
-                    <LinearLayout
-                        android:id="@+id/skills_jobs_picking"
-                        style="@style/CheckBox"
-                        android:orientation="vertical" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="@dimen/_4sdp"
-                    android:background="#CDCBCB" />
-
-                <LinearLayout
-                    android:visibility="gone"
-                    android:id="@+id/lay_et_specify"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-                        <TextView style="@style/AsterikStyle" />
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/please_specify_skill_job" />
-
-
-                    </TableRow>
-
-                    <EditText
-                        android:id="@+id/et_skills_jobs_picking"
+                   <EditText
+                        android:id="@+id/et_darpartment_service_provide2"
                         style="@style/EditTextStyleNew"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
-                        android:text="@={individualProfileViewModel.SpecifySkillJob}"
-                        android:inputType="text" />
+                       android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lay_spin_new_jobs_business"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-                        <TextView style="@style/AsterikStyle" />
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/new_jobs_business" />
-
-
-
-                    </TableRow>
-
-
-                    <RadioGroup
-                        android:id="@+id/rg_new_jobs_business"
-                        style="@style/radioGroupStyle" />
-
-                </LinearLayout>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#D8D6D6"/>
-
-                <LinearLayout
-                    android:id="@+id/lay_spin_alternative_get_opportunity"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/alternative_get_opportunity" />
-
-
-
-                    </TableRow>
-
-
-                    <fr.ganfra.materialspinner.MaterialSpinner
-                        android:id="@+id/spin_alternative_get_opportunity"
-                        style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={individualProfileViewModel.AlterGetOpport}"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lay_spin_member_cig_shg"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-                        <TextView style="@style/AsterikStyle" />
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/member_CIG_SHG" />
-
-
-
-                    </TableRow>
-
-                    <RadioGroup
-                        android:id="@+id/rg_member_cig_shg"
-                        style="@style/radioGroupStyle" />
-
-                </LinearLayout>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#D8D6D6"/>
-
-
-                <LinearLayout
-                    android:visibility="gone"
-                    android:id="@+id/lay_et_name_collective_part"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-                        <TextView style="@style/AsterikStyle" />
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/name_collective_part" />
-
-
-
-                    </TableRow>
-
-
-                    <EditText
-                        android:id="@+id/et_name_collective_part"
+                   <EditText
+                        android:id="@+id/et_darpartment_service_provide3"
                         style="@style/EditTextStyleNew"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
-                        android:text="@={individualProfileViewModel.CollectiveMember}"
-                        android:inputType="text" />
+                       android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
 
+                   <EditText
+                        android:id="@+id/et_darpartment_service_provide4"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                       android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
+
+                   <EditText
+                        android:id="@+id/et_darpartment_service_provide5"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                       android:enabled="false"
+                        android:inputType="textVisiblePassword"
+                         />
 
                 </LinearLayout>
+
 
             </LinearLayout>
 
         </ScrollView>
 
         <TableRow
+            android:id="@+id/btn_bottom"
             style="@style/TableRowStyle"
             android:layout_margin="@dimen/_10sdp">
 
-            <TextView style="@style/NewSimpleTextMargin"
-                android:layout_weight=".1"
-                />
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
 
             <Button
                 android:id="@+id/btn_prev"
                 style="@style/ButtonTextStyle"
-                android:layout_height="@dimen/_30sdp"
                 android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_weight="1"
                 android:text="@string/previous" />
 
-            <TextView style="@style/NewSimpleTextMargin"
-                android:layout_weight=".1"
-                />
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
+
             <Button
                 android:id="@+id/btn_save"
                 style="@style/ButtonTextStyle"
-                android:layout_height="@dimen/_30sdp"
                 android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
                 android:layout_weight="1"
                 android:text="@string/save_close" />
 
-            <TextView style="@style/NewSimpleTextMargin"
-                android:layout_weight=".1"
-                />
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
 
         </TableRow>
 

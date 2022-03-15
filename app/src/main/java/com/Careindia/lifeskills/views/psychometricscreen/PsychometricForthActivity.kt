@@ -29,8 +29,12 @@ import com.careindia.lifeskills.viewmodel.PsychometricViewModel
 import com.careindia.lifeskills.viewmodelfactory.PsychometricViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
+import kotlinx.android.synthetic.main.activity_improfile_demographic.*
 import kotlinx.android.synthetic.main.activity_psychometric_forth.*
-import kotlinx.android.synthetic.main.bottomnavigationtab.*
+import kotlinx.android.synthetic.main.activity_psychometric_forth.btn_bottom
+import kotlinx.android.synthetic.main.activity_psychometric_forth.btn_prev
+import kotlinx.android.synthetic.main.activity_psychometric_forth.btn_save
+import kotlinx.android.synthetic.main.bottom_nav_psycho_layout.*
 
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
@@ -46,12 +50,13 @@ class PsychometricForthActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_psychometric_forth)
         validate = Validate(this)
-        tv_title.text = "Psychometric"
+        tv_title.text = resources.getString(R.string.psychometric)
 
         mstLookupViewModel =
             ViewModelProviders.of(this).get(MstLookupViewModel::class.java)
         val psychometricdao = CareIndiaApplication.database?.psychometricDao()
-        val improfileRepository = PsychometricRepository(psychometricdao!!)
+        val mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()!!
+        val improfileRepository = PsychometricRepository(psychometricdao!!,mstDistrictDao)
         psychometricViewModel = ViewModelProvider(
             this,
             PsychometricViewModelFactory(improfileRepository)
@@ -108,7 +113,7 @@ class PsychometricForthActivity : BaseActivity(), View.OnClickListener {
                 finish()
             }
             R.id.img_back -> {
-                val intent = Intent(this, PsychometricThirdActivity::class.java)
+                val intent = Intent(this, PsychometricListActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -141,6 +146,11 @@ class PsychometricForthActivity : BaseActivity(), View.OnClickListener {
         psychometricViewModel.getPsychometricbyGuid(validate!!.returnStringValue(patGuid))
             .observe(this, Observer {
                 if (it != null && it.size > 0) {
+                    if(it.get(0).IsEdited == 0 && it.get(0).Status == 0){
+                        btn_bottom.visibility = View.GONE
+                    }else{
+                        btn_bottom.visibility = View.VISIBLE
+                    }
                     spin_evaluate_risk.setSelection(
                         returnpos(
                             validate!!.returnIntegerValue(it.get(0).evaluate_risk.toString()),
@@ -447,5 +457,7 @@ class PsychometricForthActivity : BaseActivity(), View.OnClickListener {
             horizontalScroll.smoothScrollBy(1000, 0)
         }, 100)
     }
+    override fun onBackPressed() {
 
+    }
 }

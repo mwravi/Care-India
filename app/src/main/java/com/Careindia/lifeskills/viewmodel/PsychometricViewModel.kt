@@ -6,15 +6,19 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.careindia.lifeskills.entity.HouseholdProfileEntity
 import com.careindia.lifeskills.entity.IndividualProfileEntity
+import com.careindia.lifeskills.entity.MstDistrictEntity
 import com.careindia.lifeskills.entity.PsychometricEntity
 import com.careindia.lifeskills.repository.PsychometricRepository
 import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.views.base.BaseViewModel
 import com.careindia.lifeskills.views.psychometricscreen.PsychometricFirstActivity
-import com.careindia.lifeskills.views.psychometricscreen.PsychometricSecondActivity
 import com.careindia.lifeskills.views.psychometricscreen.PsychometricForthActivity
+import com.careindia.lifeskills.views.psychometricscreen.PsychometricSecondActivity
 import com.careindia.lifeskills.views.psychometricscreen.PsychometricThirdActivity
+import kotlinx.android.synthetic.main.activity_psychometric_first.*
+import kotlinx.android.synthetic.main.activity_psychometric_second.*
+import kotlinx.android.synthetic.main.activity_psychometric_third.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -26,8 +30,10 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
 
     val saveandnextText = MutableLiveData<String>()
 
-    val PsyHHID = MutableLiveData<Int>()
-    val PsyIMID = MutableLiveData<Int>()
+    val district = MutableLiveData<Int>()
+    val zone = MutableLiveData<Int>()
+    val ward = MutableLiveData<Int>()
+    val panchayat = MutableLiveData<Int>()
     val NameParticipant = MutableLiveData<String>()
     val AgeParticipant = MutableLiveData<String>()
     val PrimaryOccu = MutableLiveData<String>()
@@ -37,14 +43,17 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
     val EnterPrise = MutableLiveData<String>()
     val ContactNo = MutableLiveData<String>()
     val NameCrp = MutableLiveData<String>()
-    val Date = MutableLiveData<String>()
+    val NameFcid = MutableLiveData<String>()
+    val PrimaryOccup = MutableLiveData<Int>()
+    val SecSourceIncom = MutableLiveData<Int>()
 
     //TwoActivity
-    val MinAgeLimit = MutableLiveData<Int>()
     val EducationAppli = MutableLiveData<Int>()
     val WomenSCate = MutableLiveData<Int>()
+    val CastBelong = MutableLiveData<String>()
     val WomenEcoCate = MutableLiveData<Int>()
-    val EmpCategory = MutableLiveData<Int>()
+
+    //    val EmpCategory = MutableLiveData<Int>()
     val YearExp = MutableLiveData<Int>()
     val StageEmp = MutableLiveData<Int>()
     val SizeInvestment = MutableLiveData<Int>()
@@ -64,13 +73,24 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
     init {
         validate = Validate(mContext)
         saveandnextText.value = "Save & Next"
+        NameCrp.value = validate!!.RetriveSharepreferenceString(AppSP.CRPID_Name)
+        NameFcid.value = validate!!.RetriveSharepreferenceString(AppSP.FCID_Name)
     }
 
     var hhid: String = ""
     var imid: String = ""
-    fun collectivefirstData(hhCodess: Any, imCode: Any) {
+    var PrimaryOccuption: Int = 0
+    var SecondryOccuption: Int = 0
+    fun collectivefirstData(
+        hhCodess: Any,
+        imCode: Any,
+        primaryOccu: Int,
+        secondryOccu: Int,
+    ) {
         hhid = hhCodess.toString()
         imid = imCode.toString()
+        PrimaryOccuption = primaryOccu
+        SecondryOccuption = secondryOccu
     }
 
     fun saveandUpdatePsychometricData(psychometricFirstActivity: PsychometricFirstActivity) {
@@ -83,53 +103,126 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
         val namecommunity: String? = CommunityName.value
         val nameshg: String? = SHGName.value
         val contactNo: String? = ContactNo.value
-        val date: String? = Date.value
+//        val date: String? = Date.value
 
+        var PWCode = ""
+        var Ward1 = 0
+        var isUrban = 0
+        val District1 =
+            psychometricFirstActivity.returnDistrictID(
+                psychometricFirstActivity.spin_districtname_psy.selectedItemPosition,
+                validate!!.RetriveSharepreferenceInt(AppSP.StateCode)
+            )
+        val Zone1 = psychometricFirstActivity.returnZoneID(
+            psychometricFirstActivity.spin_zone.selectedItemPosition,
+            District1
+        )
+        if (Zone1 > 0) {
+            Ward1 = psychometricFirstActivity.returnWardID(
+                psychometricFirstActivity.spin_bbmp.selectedItemPosition,
+                Zone1
+            )
+            PWCode = "W"
+            isUrban = 1
+
+        } else {
+            Ward1 = psychometricFirstActivity.returnPanchayatID(
+                psychometricFirstActivity.spin_panchayatname.selectedItemPosition,
+                District1
+            )
+            PWCode = "P"
+            isUrban = 1
+        }
+        validate!!.SaveSharepreferenceInt(
+            AppSP.PSYAGE,
+            validate!!.returnIntegerValue(psychometricFirstActivity.et_age_participant.text.toString())
+        )
 
         val langID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
         if (validate!!.RetriveSharepreferenceString(AppSP.PATGUID) == "") {
             var patGuid = validate!!.random()
             validate!!.SaveSharepreferenceString(AppSP.PATGUID, patGuid)
 
+
+            val hhguid =
+                psychometricFirstActivity.returnHH_GUID(
+                    psychometricFirstActivity.spin_hhid.selectedItemPosition,
+                    isUrban,
+                    Zone1,
+                    Ward1
+                )
+
             insert(
                 PsychometricEntity(
                     validate!!.RetriveSharepreferenceString(AppSP.PATGUID)!!,
-                    hhid,
-                    imid,
+                    validate!!.RetriveSharepreferenceString(AppSP.HhProfileGUID)!!,
+                    validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!,
                     nameparticipant,
-                    ageparticipant,
-                    primaryOccu,
-                    secondryOccu,
+                    validate!!.returnIntegerValue(psychometricFirstActivity.et_age_participant.text.toString()),
+                    psychometricFirstActivity.returnID(
+                        psychometricFirstActivity.spin_primary_income.selectedItemPosition,
+                        13,
+                        langID
+                    ),
+                    psychometricFirstActivity.returnID(
+                        psychometricFirstActivity.spin_secondry_income.selectedItemPosition,
+                        14,
+                        langID
+                    ),
                     namecommunity,
                     nameshg,
                     enterprise,
                     contactNo,
-                    namecrp,
-                    date,
+                    validate!!.RetriveSharepreferenceInt(AppSP.CRPID),
+                    validate!!.getDaysfromdates(psychometricFirstActivity.et_date.text.toString(), 1),
                     0, 0, 0, 0, 0, 0, 0, 0,
                     0, 0, 0, 0, 0, 0, 0, 0,
-                    "", ",", 0,
-                    validate!!.currentdatetime,
-                    0, "", "", 0, 0,1
+                    "", "",
+                    validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+                    validate!!.getDaysfromdates(validate!!.currentdatetime, 2),
+                    0, 0, "", 0, 0, 1,
+                    validate!!.RetriveSharepreferenceInt(AppSP.StateCode),
+                    District1,
+                    Zone1,
+                    Ward1,
+                    PWCode, "", "", "", "",
+                    validate!!.RetriveSharepreferenceInt(AppSP.CRPID),
+                    validate!!.RetriveSharepreferenceInt(AppSP.FCID), 0,
+                    validate!!.RetriveSharepreferenceInt(AppSP.StateCode), 0
                 )
             )
 
         } else if (validate!!.RetriveSharepreferenceString(AppSP.PATGUID)!!.length > 0) {
             updatePsychometricFirstData(
                 validate!!.RetriveSharepreferenceString(AppSP.PATGUID)!!,
-                hhid,
-                imid,
+                validate!!.RetriveSharepreferenceString(AppSP.HhProfileGUID)!!,
+                validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!,
                 nameparticipant,
                 ageparticipant,
-                primaryOccu,
-                secondryOccu,
+                psychometricFirstActivity.returnID(
+                    psychometricFirstActivity.spin_primary_income.selectedItemPosition,
+                    13,
+                    langID
+                ),
+                psychometricFirstActivity.returnID(
+                    psychometricFirstActivity.spin_secondry_income.selectedItemPosition,
+                    14,
+                    langID
+                ),
                 namecommunity,
                 nameshg,
                 enterprise,
                 contactNo,
-                namecrp,
-                date,
-                validate!!.currentdatetime,
+                validate!!.RetriveSharepreferenceInt(AppSP.CRPID),
+                validate!!.getDaysfromdates(psychometricFirstActivity.et_date.text.toString(), 1),
+                District1,
+                Zone1,
+                Ward1,
+                PWCode,
+                psychometricFirstActivity.et_specif_primary_occu.text.toString(),
+                psychometricFirstActivity.et_specify_source_secondary_income.text.toString(),
+                validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+                validate!!.getDaysfromdates(validate!!.currentdatetime, 2),
                 1
             )
 
@@ -141,28 +234,43 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
         val langID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
         updatePsychometricSecData(
             validate!!.RetriveSharepreferenceString(AppSP.PATGUID)!!,
-            psychometricSecondActivity.returnID(MinAgeLimit.value!!, 35, langID),
+            psychometricSecondActivity.returnID(
+                psychometricSecondActivity.spin_min_age_limit.selectedItemPosition,
+                35,
+                langID
+            ),
             psychometricSecondActivity.returnID(EducationAppli.value!!, 36, langID),
             psychometricSecondActivity.returnID(WomenSCate.value!!, 37, langID),
             psychometricSecondActivity.returnID(WomenEcoCate.value!!, 38, langID),
-            validate!!.currentdatetime,
+            CastBelong.value!!,
+            validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+            validate!!.getDaysfromdates(validate!!.currentdatetime, 2),
             1
         )
 
     }
 
 
-    fun updateSaveThirdData(psychometricThirdActivity: PsychometricThirdActivity) {
+    fun updateSaveThirdData(
+        psychometricThirdActivity: PsychometricThirdActivity,
+        mstLookupViewModel: MstLookupViewModel
+    ) {
         val langID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
         updatePsychometricThirdData(
             validate!!.RetriveSharepreferenceString(AppSP.PATGUID)!!,
-            psychometricThirdActivity.returnID(EmpCategory.value!!, 39, langID),
+            psychometricThirdActivity.returnIDPsychoSpin(
+                psychometricThirdActivity.spin_emp_category,
+                mstLookupViewModel,
+                39,
+                langID
+            ),
             psychometricThirdActivity.returnID(YearExp.value!!, 40, langID),
             psychometricThirdActivity.returnID(StageEmp.value!!, 41, langID),
             psychometricThirdActivity.returnID(SizeInvestment.value!!, 42, langID),
             psychometricThirdActivity.returnID(InvestMoney.value!!, 43, langID),
             psychometricThirdActivity.returnID(AwrnessMarket.value!!, 44, langID),
-            validate!!.currentdatetime,
+            validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+            validate!!.getDaysfromdates(validate!!.currentdatetime, 2),
             1
 
         )
@@ -176,9 +284,10 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
         successfulEnterpreneurCheck = multiCheck_areas_succes_entrep
 
     }
- fun updateSaveForthData(psychometricForthActivity: PsychometricForthActivity) {
+
+    fun updateSaveForthData(psychometricForthActivity: PsychometricForthActivity) {
         val langID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
-     updatePsychometricForthData(
+        updatePsychometricForthData(
             validate!!.RetriveSharepreferenceString(AppSP.PATGUID)!!,
             psychometricForthActivity.returnID(EvaluateRisk.value!!, 45, langID),
             psychometricForthActivity.returnID(IncomeGenPrefer.value!!, 46, langID),
@@ -188,8 +297,9 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
             psychometricForthActivity.returnID(WillgnessInvest.value!!, 50, langID),
             successfulEnterpreneurCheck,
             SuccesOther.value,
-            validate!!.currentdatetime,
-         1
+            validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+            validate!!.getDaysfromdates(validate!!.currentdatetime, 2),
+            1
 
         )
 
@@ -202,16 +312,23 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
         imID: String?,
         name_participant: String?,
         age_partcipant: Int?,
-        primary_occ: String?,
-        secondary_occ: String?,
+        primary_occ: Int?,
+        secondary_occ: Int?,
         name_community: String?,
         name_shg: String?,
         nature_entrprise: String?,
         contact_no: String?,
-        name_crp: String?,
-        date: String?,
-        updated_on: String?,
-        IsEdited:Int
+        name_crp: Int?,
+        date: Long?,
+        District1: Int?,
+        Zone1: Int?,
+        Ward1: Int?,
+        Panchayat1: String?,
+        primery_other: String?,
+        secondry_other: String?,
+        updatedby: Int?,
+        updated_on: Long?,
+        IsEdited: Int
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             psychometricRepository.updatePsychometricFirstData(
@@ -228,6 +345,13 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
                 contact_no,
                 name_crp,
                 date,
+                District1,
+                Zone1,
+                Ward1,
+                Panchayat1,
+                primery_other,
+                secondry_other,
+                updatedby,
                 updated_on,
                 IsEdited
             )
@@ -241,8 +365,10 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
         applicantEdu: Int?,
         prefwoman_socialbw: Int?,
         prefwoman_ecobw: Int?,
-        updated_on: String?,
-        IsEdited:Int
+        cast_belong: String?,
+        updatedby: Int?,
+        updated_on: Long?,
+        IsEdited: Int
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             psychometricRepository.updatePsychometricSecData(
@@ -251,6 +377,8 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
                 applicantEdu,
                 prefwoman_socialbw,
                 prefwoman_ecobw,
+                cast_belong,
+                updatedby,
                 updated_on,
                 IsEdited
             )
@@ -265,8 +393,9 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
         sizeself_empplanned: Int?,
         wilinvst_margmny: Int?,
         awr_relmarket_selfemp: Int?,
-        updated_on: String?,
-        IsEdited:Int
+        updatedby: Int?,
+        updated_on: Long?,
+        IsEdited: Int
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             psychometricRepository.updatePsychometricThirdData(
@@ -277,13 +406,14 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
                 sizeself_empplanned,
                 wilinvst_margmny,
                 awr_relmarket_selfemp,
+                updatedby,
                 updated_on,
                 IsEdited
             )
         }
     }
 
-     fun updatePsychometricForthData(
+    fun updatePsychometricForthData(
         patGUID: String,
         evaluateRisk: Int?,
         incomegen_actinvst: Int?,
@@ -293,8 +423,9 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
         wilinvst_capbuilding: Int?,
         successfulEnt: String?,
         othersEnt: String?,
-        updated_on: String?,
-        IsEdited:Int
+        updatedby: Int?,
+        updated_on: Long?,
+        IsEdited: Int
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             psychometricRepository.updatePsychometricForthData(
@@ -307,6 +438,7 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
                 wilinvst_capbuilding,
                 successfulEnt,
                 othersEnt,
+                updatedby,
                 updated_on,
                 IsEdited
             )
@@ -314,12 +446,47 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
     }
 
 
-
-
     fun insert(psychometricEntity: PsychometricEntity) {
         viewModelScope.launch(Dispatchers.IO) {
             psychometricRepository.insert(psychometricEntity)
         }
+    }
+
+    fun returnDistrictID(pos: Int?, StateCode: Int): Int {
+        var data: List<MstDistrictEntity>? = null
+        var list: List<String>? = null
+        if (validate?.RetriveSharepreferenceString(AppSP.DistrictIn)!!.contains(",")) {
+            list = validate?.RetriveSharepreferenceString(AppSP.DistrictIn)
+                ?.split(",")?.let {
+                    listOf(
+                        *it
+                            .toTypedArray()
+                    )
+                }
+        } else {
+            list = null
+        }
+
+
+        if (!list.isNullOrEmpty()) {
+            data = list.let { psychometricRepository.getMstDist(StateCode, list) }
+        } else {
+
+
+            data = psychometricRepository.getMstDist(StateCode)
+
+        }
+
+        var id = 0
+
+        if (!data.isNullOrEmpty()) {
+            if (pos != null) {
+                if (pos > 0)
+                    id = data.get(pos - 1).DistrictCode
+
+            }
+        }
+        return id
     }
 
     fun getPsychometricbyGuid(guid: String): LiveData<List<PsychometricEntity>> {
@@ -336,8 +503,12 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
         return psychometricRepository.getallhhProfiledata(hhcode)
     }
 
-    fun getallIdvPrfdata(hhcode: String): List<IndividualProfileEntity> {
-        return psychometricRepository.getallIdvPrfdata(hhcode)
+    fun getallIdvPrfdata(hhGUID: String): List<IndividualProfileEntity> {
+        return psychometricRepository.getallIdvPrfdata(hhGUID)
+    }
+
+    fun getallIdvPrfdataUpdate(hhcode: String): List<IndividualProfileEntity> {
+        return psychometricRepository.getallIdvPrfdataUpdate(hhcode)
     }
 
     fun getallIdvdata(idvcode: String): LiveData<List<IndividualProfileEntity>> {
@@ -356,5 +527,60 @@ class PsychometricViewModel(private val psychometricRepository: PsychometricRepo
         return psychometricRepository.gethhProfileDataNew()
     }
 
+    fun getMstDist(StateCode: Int, DistrictIn: List<String>): List<MstDistrictEntity> {
+        return psychometricRepository.getMstDist(StateCode, DistrictIn)
+    }
+
+
+    fun gethhDataPanchayat(panchayat: Int): List<HouseholdProfileEntity> {
+        return psychometricRepository.gethhDataPanchayat(panchayat)
+    }
+
+    fun gethhDataZone(zoneCode: Int, ward: Int): List<HouseholdProfileEntity> {
+        return psychometricRepository.gethhDataZone(zoneCode, ward)
+    }
+
+    fun gethhProfileDataWard(ZoneCode: Int, WardCode: Int): List<HouseholdProfileEntity> {
+        return psychometricRepository.gethhProfileDataWard(ZoneCode, WardCode)
+    }
+
+    fun gethhProfileDataPanchayat(PanchayatCode: Int): List<HouseholdProfileEntity> {
+        return psychometricRepository.gethhProfileDataPanchayat(PanchayatCode)
+    }
+
+    fun getIDPDisData(iPanchayat: Int, idiscode: Int): LiveData<List<PsychometricEntity>> {
+        return psychometricRepository.getIDPDisData(iPanchayat, idiscode)
+    }
+    fun getPsychoList(imGuid: String): LiveData<List<PsychometricEntity>>{
+        return psychometricRepository.getPsychoList(imGuid)
+    }
+
+    fun getIDDisWData(idis: Int, izone: Int, iward: Int): LiveData<List<PsychometricEntity>> {
+        return psychometricRepository.getIDDisWData(idis, izone, iward)
+    }
+
+    fun getIDZData(idiscode: Int, izone: Int): LiveData<List<PsychometricEntity>> {
+        return psychometricRepository.getIDZData(idiscode, izone)
+    }
+
+    fun getIDDistrictData(idiscode: Int): LiveData<List<PsychometricEntity>> {
+        return psychometricRepository.getIDDistrictData(idiscode)
+    }
+
+    fun findIdvPrfdata(hhcode: String): List<IndividualProfileEntity> {
+        return psychometricRepository.findIdvPrfdata(hhcode)
+    }
+
+    fun getallDataPsychometricdata(hhGUID: String): List<IndividualProfileEntity> {
+        return psychometricRepository.getallDataPsychometricdata(hhGUID)
+    }
+
+    fun getINDIDdata(indGUID: String): List<IndividualProfileEntity> {
+        return psychometricRepository.getINDIDdata(indGUID)
+    }
+
+    fun getPsychodata(indvID: String): List<PsychometricEntity> {
+        return psychometricRepository.getPsychodata(indvID)
+    }
 
 }

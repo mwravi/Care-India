@@ -7,21 +7,13 @@
     android:orientation="vertical"
     tools:context=".views.homescreen.HomeDashboardActivity">
 
-    <!--    <include-->
-    <!--        android:id="@+id/include"-->
-    <!--        layout="@layout/toolbLar_layout" />-->
-
-
-    <include
-        layout="@layout/toolbar_layout" />
-
+    <include layout="@layout/toolbar_layout" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
         android:layout_marginTop="@dimen/_5sdp"
-
+        android:layout_weight="1"
         android:orientation="vertical">
 
 
@@ -37,16 +29,23 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".5"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:minHeight="@dimen/_150sdp"
+                        android:visibility="gone" />
 
                     <LinearLayout
-                        android:id="@+id/linear_household"
+                        android:id="@+id/unsyncdata"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/_10sdp"
@@ -60,7 +59,7 @@
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_gravity="center"
-                            android:src="@drawable/house_hold_prf" />
+                            android:src="@drawable/unsyncimg" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -68,16 +67,14 @@
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/firasans_regular"
                             android:gravity="center"
-                            android:text="Upload Household Profile"
+                            android:text="@string/unsynchronized_data"
                             android:textColor="@color/text_clr"
-                            android:textStyle="bold"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
-
-
                     <LinearLayout
-                        android:id="@+id/linear_individual"
+                        android:id="@+id/linear_upload"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/_10sdp"
@@ -91,7 +88,7 @@
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_individual_prf" />
+                            android:src="@drawable/uploadimg" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -99,12 +96,21 @@
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/firasans_regular"
                             android:gravity="center"
-                            android:text="Upload Individual Profile"
+                            android:text="@string/upload_data"
                             android:textColor="@color/text_clr"
-                            android:textStyle="bold"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:minHeight="@dimen/_150sdp"
+                        android:visibility="gone" />
 
 
                 </LinearLayout>
@@ -114,12 +120,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
+                    android:orientation="horizontal">
 
 
                     <LinearLayout
-                        android:id="@+id/ll_primary_data"
+                        android:id="@+id/linear_download"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/_10sdp"
@@ -133,7 +138,7 @@
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_progress_tracker_icon" />
+                            android:src="@drawable/downloadimg" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -141,15 +146,14 @@
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/firasans_regular"
                             android:gravity="center"
-                            android:text="Upload Primary Data Collection"
+                            android:text="@string/download_data"
                             android:textColor="@color/text_clr"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
-
-
                     <LinearLayout
-                        android:id="@+id/ll_collective"
+                        android:id="@+id/linear_downloadmaster"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/_10sdp"
@@ -163,7 +167,7 @@
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_collective_prf_icon" />
+                            android:src="@drawable/downloadimg" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -171,9 +175,10 @@
                             android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/firasans_regular"
                             android:gravity="center"
-                            android:text="Upload Collective Profile"
+                            android:text="@string/download_master"
                             android:textColor="@color/text_clr"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
@@ -188,7 +193,7 @@
 
 
                     <LinearLayout
-                        android:id="@+id/ll_collective_meeting"
+                        android:id="@+id/linear_download_status"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/_10sdp"
@@ -202,23 +207,24 @@
                             android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_collective_meeting_icon" />
+                            android:src="@drawable/downloadimg" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/firasans_regular"
                             android:gravity="center"
-                            android:text="Upload Collective Meeting"
+                            android:text="@string/download_status"
                             android:textColor="@color/text_clr"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
-
                     <LinearLayout
-                        android:id="@+id/ll_upload_psychometric"
+                        android:visibility="invisible"
+                        android:id="@+id/linear_downloadma"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/_10sdp"
@@ -229,95 +235,26 @@
                         android:orientation="vertical">
 
                         <ImageView
-                            android:layout_width="wrap_content"
+                            android:layout_width="@dimen/_40sdp"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_collective_meeting_icon" />
+                            android:src="@drawable/downloadimg" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
                             android:fontFamily="@font/firasans_regular"
                             android:gravity="center"
-                            android:text="Upload Psychometric assessment"
+                            android:text="@string/download_master"
                             android:textColor="@color/text_clr"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textSize="@dimen/_12sdp"
+                            android:textStyle="bold" />
 
                     </LinearLayout>
 
 
                 </LinearLayout>
-
-                <!--<LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-
-                    <LinearLayout
-                        android:id="@+id/ll_report"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:layout_weight="1"
-                        android:background="@drawable/tile_bg"
-                        android:gravity="center"
-                        android:minHeight="@dimen/_150sdp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_reports_icon" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/firasans_regular"
-                            android:gravity="center"
-                            android:text="Report"
-                            android:textColor="@color/text_clr"
-                            android:textSize="@dimen/_12sdp" />
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/ll_sync"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="@dimen/_10sdp"
-                        android:layout_weight="1"
-                        android:background="@drawable/tile_bg"
-                        android:gravity="center"
-                        android:minHeight="@dimen/_150sdp"
-                        android:orientation="vertical">
-
-                        <ImageView
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_40sdp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_sync_icon" />
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:fontFamily="@font/firasans_regular"
-                            android:gravity="center"
-                            android:text="Sync"
-                            android:textColor="@color/text_clr"
-                            android:textSize="@dimen/_12sdp" />
-
-                    </LinearLayout>
-
-
-                </LinearLayout>-->
-
 
             </LinearLayout>
         </ScrollView>

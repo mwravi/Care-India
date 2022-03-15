@@ -23,7 +23,8 @@
         android:layout_margin="@dimen/_5sdp"
         android:layout_weight="1"
         android:background="@drawable/box_background"
-        android:scrollbars="none">
+        android:scrollbarSize="@dimen/_10sdp"
+        android:scrollbars="vertical">
 
         <LinearLayout
             style="@style/LinearLayoutStyle"
@@ -42,14 +43,30 @@
 
                 </TableRow>
 
+                <LinearLayout
+                    android:id="@+id/check_meeting_points"
+                    style="@style/CheckBox"
+                    android:orientation="vertical" />
+
             </LinearLayout>
 
-            <LinearLayout style="@style/LinearLayoutStyle">
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="#CDCBCB" />
+
+            <LinearLayout
+                android:id="@+id/ll_Savings"
+                android:visibility="gone"
+                style="@style/LinearLayoutStyle">
 
 
                 <TableRow style="@style/TableRowStyle">
 
-                    <TextView style="@style/TextViewStylestrik" />
+                    <TextView
+                        style="@style/TextViewStylestrik"
+                        android:visibility="visible" />
 
                     <TextView
                         android:id="@+id/tv_Savings"
@@ -59,21 +76,44 @@
                 </TableRow>
 
                 <EditText
-                    android:id="@+id/et_Savings"
+                    android:id="@+id/et_Savings1"
                     style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:maxLength="50"
                     android:hint="@string/type_here"
                     android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/et_Savings2"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+                <EditText
+                    android:id="@+id/et_Savings3"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
 
 
             </LinearLayout>
 
 
-            <LinearLayout style="@style/LinearLayoutStyle">
+            <LinearLayout
+                android:id="@+id/ll_internal_lending"
+                android:visibility="gone"
+                style="@style/LinearLayoutStyle">
 
 
                 <TableRow style="@style/TableRowStyle">
 
-                    <TextView style="@style/TextViewStylestrik" />
+                    <TextView
+                        style="@style/TextViewStylestrik"
+                        android:visibility="visible" />
 
                     <TextView
                         android:id="@+id/tv_internal_lending"
@@ -83,20 +123,43 @@
                 </TableRow>
 
                 <EditText
-                    android:id="@+id/et_internal_lending"
+                    android:id="@+id/et_internal_lending1"
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:maxLength="50"
                     android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/et_internal_lending2"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+                <EditText
+                    android:id="@+id/et_internal_lending3"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
 
 
             </LinearLayout>
 
-            <LinearLayout style="@style/LinearLayoutStyle">
+            <LinearLayout
+                android:id="@+id/ll_bank_loans"
+                android:visibility="gone"
+                style="@style/LinearLayoutStyle">
 
 
                 <TableRow style="@style/TableRowStyle">
 
-                    <TextView style="@style/TextViewStylestrik" />
+                    <TextView
+                        style="@style/TextViewStylestrik"
+                        android:visibility="visible" />
 
                     <TextView
                         android:id="@+id/tv_bank_loans"
@@ -106,20 +169,43 @@
                 </TableRow>
 
                 <EditText
-                    android:id="@+id/et_bank_loans"
+                    android:id="@+id/et_bank_loans1"
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:maxLength="50"
                     android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/et_bank_loans2"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+                <EditText
+                    android:id="@+id/et_bank_loans3"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
 
 
             </LinearLayout>
 
-            <LinearLayout style="@style/LinearLayoutStyle">
+            <LinearLayout
+                android:id="@+id/ll_schemes_and_services"
+                android:visibility="gone"
+                style="@style/LinearLayoutStyle">
 
 
                 <TableRow style="@style/TableRowStyle">
 
-                    <TextView style="@style/TextViewStylestrik" />
+                    <TextView
+                        style="@style/TextViewStylestrik"
+                        android:visibility="visible" />
 
                     <TextView
                         android:id="@+id/tv_schemes_and_services"
@@ -129,20 +215,43 @@
                 </TableRow>
 
                 <EditText
-                    android:id="@+id/et_schemes_and_services"
+                    android:id="@+id/et_schemes_and_services1"
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:maxLength="50"
                     android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/et_schemes_and_services2"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+                <EditText
+                    android:id="@+id/et_schemes_and_services3"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
 
 
             </LinearLayout>
 
-            <LinearLayout style="@style/LinearLayoutStyle">
+            <LinearLayout
+                android:id="@+id/ll_entrepreneurial_activities"
+                android:visibility="gone"
+                style="@style/LinearLayoutStyle">
 
 
                 <TableRow style="@style/TableRowStyle">
 
-                    <TextView style="@style/TextViewStylestrik" />
+                    <TextView
+                        style="@style/TextViewStylestrik"
+                        android:visibility="visible" />
 
                     <TextView
                         android:id="@+id/tv_entrepreneurial_activities"
@@ -152,21 +261,44 @@
                 </TableRow>
 
                 <EditText
-                    android:id="@+id/et_entrepreneurial_activities"
+                    android:id="@+id/et_entrepreneurial_activities1"
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:maxLength="50"
                     android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/et_entrepreneurial_activities2"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+                <EditText
+                    android:id="@+id/et_entrepreneurial_activities3"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
 
 
             </LinearLayout>
 
 
-            <LinearLayout style="@style/LinearLayoutStyle">
+            <LinearLayout
+                android:id="@+id/ll_training_activities"
+                android:visibility="gone"
+                style="@style/LinearLayoutStyle">
 
 
                 <TableRow style="@style/TableRowStyle">
 
-                    <TextView style="@style/TextViewStylestrik" />
+                    <TextView
+                        style="@style/TextViewStylestrik"
+                        android:visibility="visible" />
 
                     <TextView
                         android:id="@+id/tv_training_activities"
@@ -176,20 +308,43 @@
                 </TableRow>
 
                 <EditText
-                    android:id="@+id/et_training_activities"
+                    android:id="@+id/et_training_activities1"
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:maxLength="50"
                     android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/et_training_activities2"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+                <EditText
+                    android:id="@+id/et_training_activities3"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
 
 
             </LinearLayout>
 
-            <LinearLayout style="@style/LinearLayoutStyle">
+            <LinearLayout
+                android:id="@+id/ll_leadership"
+                android:visibility="gone"
+                style="@style/LinearLayoutStyle">
 
 
                 <TableRow style="@style/TableRowStyle">
 
-                    <TextView style="@style/TextViewStylestrik" />
+                    <TextView
+                        style="@style/TextViewStylestrik"
+                        android:visibility="visible" />
 
                     <TextView
                         android:id="@+id/tv_leadership"
@@ -199,20 +354,43 @@
                 </TableRow>
 
                 <EditText
-                    android:id="@+id/et_leadership"
+                    android:id="@+id/et_leadership1"
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:maxLength="50"
                     android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/et_leadership2"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+                <EditText
+                    android:id="@+id/et_leadership3"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
 
 
             </LinearLayout>
 
-            <LinearLayout style="@style/LinearLayoutStyle">
+            <LinearLayout
+                android:id="@+id/ll_change"
+                android:visibility="gone"
+                style="@style/LinearLayoutStyle">
 
 
                 <TableRow style="@style/TableRowStyle">
 
-                    <TextView style="@style/TextViewStylestrik" />
+                    <TextView
+                        style="@style/TextViewStylestrik"
+                        android:visibility="visible" />
 
                     <TextView
                         android:id="@+id/tv_change"
@@ -222,20 +400,43 @@
                 </TableRow>
 
                 <EditText
-                    android:id="@+id/et_change"
+                    android:id="@+id/et_change1"
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
-                    android:inputType="text" />
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+                <EditText
+                    android:id="@+id/et_change2"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+                <EditText
+                    android:id="@+id/et_change3"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:maxLength="50" />
 
 
             </LinearLayout>
 
-            <LinearLayout style="@style/LinearLayoutStyle">
+            <LinearLayout
+                android:id="@+id/ll_others"
+                android:visibility="gone"
+                style="@style/LinearLayoutStyle">
 
 
                 <TableRow style="@style/TableRowStyle">
 
-                    <TextView style="@style/TextViewStylestrik" />
+                    <TextView
+                        style="@style/TextViewStylestrik"
+                        android:visibility="visible" />
 
                     <TextView
                         android:id="@+id/tv_others"
@@ -245,100 +446,39 @@
                 </TableRow>
 
                 <EditText
-                    android:id="@+id/et_others"
+                    android:id="@+id/et_others1"
                     style="@style/EditTextStyleNew"
                     android:hint="@string/type_here"
-                    android:inputType="text" />
-
-
-            </LinearLayout>
-
-            <LinearLayout style="@style/LinearLayoutStyle">
-
-                <TableRow style="@style/TableRowStyle">
-
-                    <TextView style="@style/TextViewStylestrik" />
-
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/total_savings_for_the_month_in_inr" />
-
-                </TableRow>
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:inputType="text"
+                    android:maxLength="50" />
 
                 <EditText
-                    android:id="@+id/et_savings"
+                    android:id="@+id/et_others2"
                     style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
-                    android:inputType="number"
-                    android:maxLength="8" />
-            </LinearLayout>
-
-            <LinearLayout style="@style/LinearLayoutStyle">
-
-                <TableRow style="@style/TableRowStyle">
-
-                    <TextView style="@style/TextViewStylestrik" />
-
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/total_loan_availed_through_internal_lending_within_the_group_for_the_month_in_inr" />
-
-                </TableRow>
+                    android:inputType="text"
+                    android:maxLength="50" />
 
                 <EditText
-                    android:id="@+id/et_loanlending"
+                    android:id="@+id/et_others3"
                     style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                     android:hint="@string/type_here"
-                    android:inputType="number"
-                    android:maxLength="8" />
+                    android:inputType="text"
+                    android:maxLength="50" />
+
+
             </LinearLayout>
 
-            <LinearLayout style="@style/LinearLayoutStyle">
-
-                <TableRow style="@style/TableRowStyle">
-
-                    <TextView style="@style/TextViewStylestrik" />
-
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/total_loan_availed_through_schemes_services_financial_institutions_within_the_group_for_the_month_in_inr" />
-
-                </TableRow>
-
-                <EditText
-                    android:id="@+id/et_loanschemes"
-                    style="@style/EditTextStyleNew"
-                    android:hint="@string/type_here"
-                    android:inputType="number"
-                    android:maxLength="8" />
-            </LinearLayout>
-
-
-            <LinearLayout style="@style/LinearLayoutStyle">
-
-                <TableRow style="@style/TableRowStyle">
-
-                    <TextView style="@style/TextViewStylestrik" />
-
-                    <TextView
-                        style="@style/TextViewStyleNew"
-                        android:text="@string/total_amount_accrued_from_interest_in_a_month_in_inr" />
-
-                </TableRow>
-
-                <EditText
-                    android:id="@+id/et_amount"
-                    style="@style/EditTextStyleNew"
-                    android:hint="@string/type_here"
-                    android:inputType="number"
-                    android:maxLength="8" />
-            </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
 
     <TableRow
+        android:id="@+id/btn_bottom"
         style="@style/TableRowStyle"
         android:layout_margin="@dimen/_10sdp">
 

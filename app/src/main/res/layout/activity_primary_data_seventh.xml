@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="primaryDataViewModel"
+            type="com.careindia.lifeskills.viewmodel.PrimaryDataViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar_layout" />
+
+        <include layout="@layout/primary_data_tab" />
+
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_5sdp"
+            android:layout_weight="1"
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                style="@style/LinearLayoutStyle"
+                android:background="@drawable/box_background"
+                android:padding="@dimen/_5sdp">
+
+                <LinearLayout
+                    android:id="@+id/lay_finance_support_source"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/source_of_finance_support_post" />
+                    </TableRow>
+
+                    <LinearLayout
+                        android:id="@+id/check_finance_support_source"
+                        style="@style/CheckBox"
+                        android:orientation="vertical" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:background="#CDCBCB" />
+
+                <LinearLayout
+                    android:id="@+id/lay_purpose_of_loan"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/purpose_of_taking_the_loan" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_purpose_of_loan1"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text" />
+
+                    <EditText
+                        android:id="@+id/et_purpose_of_loan2"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:enabled="false"
+                        android:hint="@string/type_here"
+                        android:inputType="text" />
+
+                    <EditText
+                        android:id="@+id/et_purpose_of_loan3"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:enabled="false"
+                        android:hint="@string/type_here"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_loan_amount_taken"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/amount_of_loan_taken" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_loan_amount_taken"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="9" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_loan_repayment_interest_rate"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/loan_repayment_at_what_rate_of_interest" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_loan_repayment_interest_rate"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="2" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_business_running_smoothly"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/is_your_business_running_smoothly" />
+                    </TableRow>
+
+                    <RadioGroup
+                        android:id="@+id/rg_business_running_smoothly"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:background="#CDCBCB" />
+
+                <LinearLayout
+                    android:id="@+id/lay_business_reasons"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/if_no_reasons" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_business_reasons"
+                        style="@style/SpinnerViewNew" />
+
+                    <LinearLayout
+                        android:id="@+id/lay_business_reasons_other"
+                        style="@style/LinearLayoutStyle"
+                        android:visibility="gone">
+
+                        <TableRow style="@style/TableRowStyle">
+
+                            <TextView style="@style/TextViewStylestrik" />
+
+                            <TextView
+                                style="@style/TextViewStyleNew"
+                                android:text="@string/please_specify_other_thirda" />
+                        </TableRow>
+
+                        <EditText
+                            android:id="@+id/et_business_reasons_other"
+                            style="@style/EditTextStyleNew"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                            android:hint="@string/type_here"
+                            android:inputType="text" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_business_attribute"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/what_three_things_would_you_attribute_to_successful_running_of_business" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_business_attribute1"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text" />
+
+                    <EditText
+                        android:id="@+id/et_business_attribute2"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:enabled="false"
+                        android:hint="@string/type_here"
+                        android:inputType="text" />
+
+                    <EditText
+                        android:id="@+id/et_business_attribute3"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:enabled="false"
+                        android:hint="@string/type_here"
+                        android:inputType="text" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <TableRow
+            android:id="@+id/btn_bottom"
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
+
+            <include layout="@layout/buttons_save_cancel" />
+
+        </TableRow>
+
+    </LinearLayout>
+</layout>

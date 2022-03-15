@@ -23,7 +23,9 @@
             android:layout_margin="@dimen/_5sdp"
             android:layout_weight="1"
             android:background="@drawable/box_background"
-            android:scrollbars="none">
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical"
+            >
 
             <LinearLayout
                 style="@style/LinearLayoutStyle"
@@ -31,49 +33,10 @@
 
 
 
-                <LinearLayout
-                    android:id="@+id/lay_record_book"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow style="@style/TableRowStyle">
-
-                        <TextView style="@style/TextViewStylestrik" />
-
-                        <TextView
-                            android:id="@+id/tv_record_book"
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/q405_does_your_sangha_group_collective_have_a_record_book_check_for_the_record_book" />
-                    </TableRow>
-
-                    <RadioGroup
-                        android:id="@+id/rg_record_book"
-                        style="@style/radioGroupStyle"
-
-                        />
-
-                </LinearLayout>
 
 
-                <LinearLayout
-                    android:id="@+id/lay_record_book_update"
-                    android:visibility="gone"
-                    style="@style/LinearLayoutStyle">
 
-                    <TableRow style="@style/TableRowStyle">
 
-                        <TextView style="@style/TextViewStylestrik" />
-
-                        <TextView
-                            android:id="@+id/tv_record_book_update"
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/q406_is_the_record_book_register_updated_in_every_meeting" />
-                    </TableRow>
-
-                    <RadioGroup
-                        android:id="@+id/rg_record_book_update"
-                        style="@style/radioGroupStyle" />
-
-                </LinearLayout>
 
 
                 <LinearLayout
@@ -141,13 +104,53 @@
                     </TableRow>
 
                     <EditText
-                        android:id="@+id/et_other_q501b"
+                        android:id="@+id/et_other_q501b1"
                         style="@style/EditTextStyleNew"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="50"
-                        android:text="@={collectiveViewModel.Service}" />
+                         />
+
+
+                    <EditText
+                        android:id="@+id/et_other_q501b2"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:maxLength="50"
+                         />
+
+                    <EditText
+                        android:id="@+id/et_other_q501b3"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:maxLength="50"
+                         />
+                    <EditText
+                        android:id="@+id/et_other_q501b4"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                    android:enabled="false"
+                        android:maxLength="50"
+                         />
+
+                    <EditText
+                        android:id="@+id/et_other_q501b5"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:maxLength="50"
+                         />
 
                 </LinearLayout>
 
@@ -190,13 +193,53 @@
                     </TableRow>
 
                     <EditText
-                        android:id="@+id/et_details_service"
+                        android:id="@+id/et_details_service1"
                         style="@style/EditTextStyleNew"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="50"
-                        android:text="@={collectiveViewModel.ServiceAvailing}" />
+                        />
+
+                    <EditText
+                        android:id="@+id/et_details_service2"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:maxLength="50"
+                        />
+
+                    <EditText
+                        android:id="@+id/et_details_service3"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:maxLength="50"
+                        />
+
+                    <EditText
+                        android:id="@+id/et_details_service4"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:maxLength="50"
+                        />
+
+                    <EditText
+                        android:id="@+id/et_details_service5"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:maxLength="50"
+                        />
 
                 </LinearLayout>
 
@@ -217,13 +260,51 @@
                     </TableRow>
 
                     <EditText
-                        android:id="@+id/et_service_provider"
+                        android:id="@+id/et_service_provider1"
                         style="@style/EditTextStyleNew"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="50"
-                        android:text="@={collectiveViewModel.ServiceProvider}" />
+                         />
+
+                    <EditText
+                        android:id="@+id/et_service_provider2"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:maxLength="50"
+                         />
+                    <EditText
+                        android:id="@+id/et_service_provider3"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:maxLength="50"
+                         />
+                    <EditText
+                        android:id="@+id/et_service_provider4"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:maxLength="50"
+                         />
+
+                    <EditText
+                        android:id="@+id/et_service_provider5"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:enabled="false"
+                        android:maxLength="50"
+                         />
 
                 </LinearLayout>
 
@@ -305,6 +386,7 @@
 
 
         <TableRow
+            android:id="@+id/btn_bottom"
             style="@style/TableRowStyle"
             android:layout_margin="@dimen/_10sdp">
 

@@ -24,7 +24,14 @@ class MstLookupRepository {
     fun getMstDataLookup(LookupFlag:Int,Language:Int): List<MstLookupEntity> {
         return mstLookupDao!!.getMstDataLookup(LookupFlag,Language)
     }
+    fun getMstAllDataNew(flag: Int, iLanguage: Int,id:Int): List<MstLookupEntity> {
+        return mstLookupDao!!.getMstAllDataNew(flag, iLanguage,id)
+    }
     fun getMstLookupdata(flag: Int): List<MstLookupEntity> {
         return mstLookupDao!!.getMstCommondata(flag)
     }
+    fun getDescription(LookupFlag: Int,LanguageID:Int,ID:Int): String {
+        return mstLookupDao!!.getDescription(LookupFlag, LanguageID,ID)
+    }
+
 }

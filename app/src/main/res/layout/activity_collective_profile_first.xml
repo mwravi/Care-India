@@ -23,7 +23,9 @@
             android:layout_margin="@dimen/_5sdp"
             android:layout_weight="1"
             android:background="@drawable/box_background"
-            android:scrollbars="none">
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical"
+            >
 
             <LinearLayout
                 style="@style/LinearLayoutStyle"
@@ -53,7 +55,7 @@
                         android:focusable="false"
                         android:hint="@string/enter_date"
                         android:inputType="date"
-                        android:text="@={collectiveViewModel.Date}" />
+                        />
 
                 </LinearLayout>
 
@@ -131,7 +133,7 @@
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_district_name"
                         style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={collectiveViewModel.District}" />
+                        />
 
                 </LinearLayout>
 
@@ -154,7 +156,7 @@
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_zone_name"
                         style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={collectiveViewModel.ZoneName}" />
+                         />
 
                 </LinearLayout>
 
@@ -177,7 +179,7 @@
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_ward_name"
                         style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={collectiveViewModel.WardName}" />
+                        />
 
                 </LinearLayout>
 
@@ -199,7 +201,7 @@
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_panchayat_name"
                         style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={collectiveViewModel.PanchayatName}" />
+                         />
                 </LinearLayout>
 
                 <LinearLayout
@@ -222,8 +224,64 @@
                         style="@style/EditTextStyleNew"
                         android:hint="@string/type_here"
                         android:inputType="text"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:maxLength="50"
                         android:text="@={collectiveViewModel.localityName}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_landmark"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_landmark"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q109_closest_landmark" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_landmark"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/lay_pincode"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            android:id="@+id/tv_pincode"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/q110_area_pincode" />
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_pincode"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:text="56"
+                        android:maxLength="6"
+                        />
 
                 </LinearLayout>
                 <LinearLayout
@@ -263,16 +321,28 @@
 
                     <TableRow style="@style/TableRowStyle">
 
+<!--                        <EditText-->
+<!--                            android:id="@+id/et_collective_id"-->
+<!--                            style="@style/EditTextStyleNew"-->
+<!--                            android:layout_width="0dp"-->
+<!--                            android:layout_weight="1.5"-->
+<!--                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "-->
+<!--                            android:enabled="false"-->
+<!--                            android:inputType="text"-->
+<!--                            android:maxLength="11"-->
+<!--                            android:text="@={collectiveViewModel.collectiveId}" />-->
+
                         <EditText
                             android:id="@+id/et_collective_id"
                             style="@style/EditTextStyleNew"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 "
+                            android:inputType="text"
+                            android:enabled="false"
                             android:layout_width="0dp"
                             android:layout_weight="1.5"
-                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
-                            android:enabled="false"
-                            android:inputType="text"
-                            android:maxLength="11"
-                            android:text="@={collectiveViewModel.collectiveId}" />
+                            />
+
+
 
 
                         <EditText
@@ -280,7 +350,6 @@
                             style="@style/EditTextStyleNew"
                             android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:enabled="false"
                             android:inputType="number"
                             android:maxLength="3"
 
@@ -306,7 +375,7 @@
                     <EditText
                         android:id="@+id/et_group_collective_name"
                         style="@style/EditTextStyleNew"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="50"
@@ -320,6 +389,7 @@
         </ScrollView>
 
         <TableRow
+            android:id="@+id/btn_bottom"
             style="@style/TableRowStyle"
             android:layout_margin="@dimen/_10sdp">
 

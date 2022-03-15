@@ -1,18 +1,10 @@
 package com.careindia.lifeskills.views.improfile
 
-import android.app.Dialog
-import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.LayoutInflater
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
-import android.view.Window
-import android.view.WindowManager
-import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Spinner
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -29,14 +21,18 @@ import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
+import kotlinx.android.synthetic.main.activity_household_profile_second.*
 import kotlinx.android.synthetic.main.activity_improfile_fifth.*
+import kotlinx.android.synthetic.main.activity_improfile_fifth.btn_bottom
+import kotlinx.android.synthetic.main.activity_improfile_fifth.btn_prev
+import kotlinx.android.synthetic.main.activity_improfile_fifth.btn_save
 import kotlinx.android.synthetic.main.bottomnavigationtab.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
     private lateinit var binding: ActivityImprofileFifthBinding
     var validate: Validate? = null
-    var iLanguageID: Int? = 0
+    var iLanguageID: Int = 0
     lateinit var imProfileViewModel: IndividualProfileViewModel
     lateinit var mstLookupViewModel: MstLookupViewModel
 
@@ -64,6 +60,407 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
         iLanguageID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
         initializeController()
 
+
+
+        et_service_detail_respodent1.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_service_detail_respodent2.isEnabled = true
+                }else{
+                    et_service_detail_respodent2.isEnabled = false
+                    et_service_detail_respodent2.setText("")
+                }
+            }
+        })
+
+        et_service_detail_respodent2.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_service_detail_respodent3.isEnabled = true
+                }else{
+                    et_service_detail_respodent3.isEnabled = false
+                    et_service_detail_respodent3.setText("")
+                }
+            }
+        })
+
+        et_service_detail_respodent3.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_service_detail_respodent4.isEnabled = true
+                }else{
+                    et_service_detail_respodent4.isEnabled = false
+                    et_service_detail_respodent4.setText("")
+                }
+
+            }
+        })
+
+
+        et_service_detail_respodent4.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_service_detail_respodent5.isEnabled = true
+                }else{
+                    et_service_detail_respodent5.isEnabled = false
+                    et_service_detail_respodent5.setText("")
+                }
+            }
+        })
+
+
+        //Q509...//
+
+        et_service_provider_department1.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_service_provider_department2.isEnabled = true
+                }else{
+                    et_service_provider_department2.isEnabled = false
+                    et_service_provider_department2.setText("")
+                }
+            }
+        })
+
+        et_service_provider_department2.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_service_provider_department3.isEnabled = true
+                }else{
+                    et_service_provider_department3.isEnabled = false
+                    et_service_provider_department3.setText("")
+                }
+            }
+        })
+
+        et_service_provider_department3.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_service_provider_department4.isEnabled = true
+                }else{
+                    et_service_provider_department4.isEnabled = false
+                    et_service_provider_department4.setText("")
+                }
+
+            }
+        })
+
+
+        et_service_provider_department4.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_service_provider_department5.isEnabled = true
+                }else{
+                    et_service_provider_department5.isEnabled = false
+                    et_service_provider_department5.setText("")
+                }
+            }
+        })
+
+        //Q511.//..
+        et_details_service_avail1.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_details_service_avail2.isEnabled = true
+                }else{
+                    et_details_service_avail2.isEnabled = false
+                    et_details_service_avail2.setText("")
+                }
+            }
+        })
+
+        et_details_service_avail2.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_details_service_avail3.isEnabled = true
+                }else{
+                    et_details_service_avail3.isEnabled = false
+                    et_details_service_avail3.setText("")
+                }
+            }
+        })
+
+        et_details_service_avail3.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_details_service_avail4.isEnabled = true
+                }else{
+                    et_details_service_avail4.isEnabled = false
+                    et_details_service_avail4.setText("")
+                }
+
+            }
+        })
+
+
+        et_details_service_avail4.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_details_service_avail5.isEnabled = true
+                }else{
+                    et_details_service_avail5.isEnabled = false
+                    et_details_service_avail5.setText("")
+                }
+            }
+        })
+
+        //..Q512..//
+
+        et_darpartment_service_provide1.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_darpartment_service_provide2.isEnabled = true
+                }else{
+                    et_darpartment_service_provide2.isEnabled = false
+                    et_darpartment_service_provide2.setText("")
+                }
+            }
+        })
+
+        et_darpartment_service_provide2.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_darpartment_service_provide3.isEnabled = true
+                }else{
+                    et_darpartment_service_provide3.isEnabled = false
+                    et_darpartment_service_provide3.setText("")
+                }
+            }
+        })
+
+        et_darpartment_service_provide3.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_darpartment_service_provide4.isEnabled = true
+                }else{
+                    et_darpartment_service_provide4.isEnabled = false
+                    et_darpartment_service_provide4.setText("")
+                }
+
+            }
+        })
+
+
+        et_darpartment_service_provide4.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_darpartment_service_provide5.isEnabled = true
+                }else{
+                    et_darpartment_service_provide5.isEnabled = false
+                    et_darpartment_service_provide5.setText("")
+                }
+            }
+        })
+
+
     }
 
 
@@ -83,7 +480,9 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
                 if (checkValidation() == 1) {
                     sendData()
                     imProfileViewModel.updateProfileFifthData(this)
-                    CustomAlert(resources.getString(R.string.data_saved_successfully))
+                    val intent = Intent(this, IMProfileSixActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 }
             }
             R.id.btn_prev -> {
@@ -93,7 +492,7 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
             }
 
             R.id.img_back -> {
-                val intent = Intent(this, IMProfileFourthActivity::class.java)
+                val intent = Intent(this, IMProfileListActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -116,6 +515,7 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
         fillSpinner()
         fillRadio()
         hideShowView()
+
         if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) != null && validate!!.RetriveSharepreferenceString(
                 AppSP.IndividualProfileGUID
             )!!.trim().length > 0
@@ -123,17 +523,6 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
             showLiveData()
         }
 
-//        validate!!.dynamicRadio(this, checkRadio, resources.getStringArray(R.array.yes_no))
-
-        validate!!.dynamicMultiCheckChange(
-            this,
-            skills_jobs_picking,
-            mstLookupViewModel,
-            15,
-            1,
-            et_skills_jobs_picking,
-            lay_et_specify
-        )
 
     }
 
@@ -143,17 +532,56 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
         imProfileViewModel.getIdvProfiledatabyGuid(validate!!.returnStringValue(idvProfileGuid))
             .observe(this, Observer {
                 if (it != null && it.size > 0) {
-                    et_details_service_avail.setText(validate!!.returnStringValue(it.get(0).SchemeDetails_Cur.toString()))
-                    et_skills_jobs_picking.setText(validate!!.returnStringValue(it.get(0).Skills_oth))
-                    et_name_collective_part.setText(validate!!.returnStringValue(it.get(0).Collective_name))
+                    if(it.get(0).IsEdited == 0 && it.get(0).Status == 0){
+                        btn_bottom.visibility = View.GONE
+                    }else{
+                        btn_bottom.visibility = View.VISIBLE
+                    }
 
-                    spin_alternative_get_opportunity.setSelection(
-                        returnpos(
-                            validate!!.returnIntegerValue(
-                                it.get(0).Interested_JobDetail.toString()
-                            ), 16
+                    it.get(0).SchemeDetails_Cur?.let { it1 ->
+                        validate!!.setSchemes(
+                            et_details_service_avail1,
+                            et_details_service_avail2,
+                            et_details_service_avail3,
+                            et_details_service_avail4,
+                            et_details_service_avail5,
+                            it1
                         )
-                    )
+                    }
+
+                    it.get(0).SchemeSP?.let { it1 ->
+                        validate!!.setSchemes(
+                            et_service_provider_department1,
+                            et_service_provider_department2,
+                            et_service_provider_department3,
+                            et_service_provider_department4,
+                            et_service_provider_department5,
+                            it1
+                        )
+                    }
+
+                    it.get(0).SchemeSP_Cur?.let { it1 ->
+                        validate!!.setSchemes(
+                            et_darpartment_service_provide1,
+                            et_darpartment_service_provide2,
+                            et_darpartment_service_provide3,
+                            et_darpartment_service_provide4,
+                            et_darpartment_service_provide5,
+                            it1
+                        )
+                    }
+
+                    it.get(0).SchemeDetails?.let { it1 ->
+                        validate!!.setSchemes(
+                            et_service_detail_respodent1,
+                            et_service_detail_respodent2,
+                            et_service_detail_respodent3,
+                            et_service_detail_respodent4,
+                            et_service_detail_respodent5,
+                            it1
+                        )
+                    }
+
 
                     (it.get(0).SchemesAvailed_Cur?.let { it1 ->
                         validate!!.SetAnswerTypeRadioButton(
@@ -161,62 +589,18 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
                             it1
                         )
                     })
-                    (it.get(0).Interested_Job?.let { it1 ->
+                    (it.get(0).SchemesAvailed?.let { it1 ->
                         validate!!.SetAnswerTypeRadioButton(
-                            rg_new_jobs_business,
+                            rg_availed_services_past,
                             it1
                         )
                     })
-                    (it.get(0).Member_Collective?.let { it1 ->
-                        validate!!.SetAnswerTypeRadioButton(
-                            rg_member_cig_shg,
-                            it1
-                        )
-                    })
-
-                    (validate!!.SetAnswerTypeCheckBoxButton(
-                        skills_jobs_picking,
-                        it.get(0).Skills
-                    ))
 
                 }
             })
 
     }
 
-    fun CustomAlert(
-        msg: String?
-    ) { // Create custom dialog object
-        val dialog = Dialog(this)
-        // hide to default title for Dialog
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        // inflate the layout dialog_layout.xml and set it as contentView
-        val inflater =
-            this.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val view: View = inflater.inflate(R.layout.dialog_layout, null, false)
-        dialog.setCanceledOnTouchOutside(false)
-        dialog.setContentView(view)
-        dialog.window!!.setBackgroundDrawable(ColorDrawable(0))
-        val layoutParams = WindowManager.LayoutParams()
-        layoutParams.copyFrom(dialog.window?.attributes)
-        layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
-        layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
-        dialog.window?.attributes = layoutParams
-        val txtTitle = dialog
-            .findViewById<View>(R.id.txt_alert_message) as TextView
-        txtTitle.text = msg
-        val btnok =
-            dialog.findViewById<View>(R.id.btn_ok) as Button
-        btnok.setOnClickListener {
-            val intent = Intent(this, IMProfileListActivity::class.java)
-            startActivity(intent)
-            finish()
-            btnok.setTextColor(resources.getColor(R.color.white))
-            dialog.dismiss()
-        }
-        // Display the dialog
-        dialog.show()
-    }
 
     fun fillRadio() {
         validate!!.fillradio(
@@ -225,139 +609,185 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
             -1,
             mstLookupViewModel,
             3,
-            1
+            iLanguageID
         )
-        validate!!.fillradio(
-            this,
-            rg_new_jobs_business,
-            -1,
-            mstLookupViewModel,
-            3,
-            1
-        )
-
-
 
         validate!!.fillradio(
             this,
-            rg_member_cig_shg,
+            rg_availed_services_past,
             -1,
             mstLookupViewModel,
             3,
-            1
+            iLanguageID
         )
 
     }
 
     fun fillSpinner() {
-        bindCommonTable("Select", spin_alternative_get_opportunity, 16, 1)
+
     }
 
     fun sendData() {
         imProfileViewModel.collectiveProfileFifthData(
             validate!!.GetAnswerTypeRadioButtonID(rg_avail_any_scheme),
-            validate!!.GetAnswerTypeCheckBoxButtonID(skills_jobs_picking),
-            validate!!.GetAnswerTypeRadioButtonID(rg_new_jobs_business),
-            validate!!.GetAnswerTypeRadioButtonID(rg_member_cig_shg)
+            validate!!.GetAnswerTypeRadioButtonID(rg_availed_services_past)
         )
     }
 
-    fun hideShowView() {
+    fun setEdidTextFill(){
 
-        rg_member_cig_shg.setOnCheckedChangeListener { radioGroup, i ->
-            if (i == 1) {
-                lay_et_name_collective_part.visibility = View.VISIBLE
-            } else {
-                lay_et_name_collective_part.visibility = View.GONE
+
+        et_service_detail_respodent1.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+                if (s.length != 0) {
+                    et_service_detail_respodent2.isEnabled = true
+                }else{
+                    et_service_detail_respodent2.isEnabled = false
+                    et_service_detail_respodent2.setText("")
+                }
+
             }
 
-        }
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+
+            }
+        })
+
+        et_service_detail_respodent2.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+                if (s.length != 0) {
+                    et_service_detail_respodent3.isEnabled = true
+                }else{
+                    et_service_detail_respodent3.isEnabled = false
+                    et_service_detail_respodent3.setText("")
+                }
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+
+            }
+        })
+
+        et_service_detail_respodent3.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+                if (s.length != 0) {
+                    et_service_detail_respodent4.isEnabled = true
+                }else{
+                    et_service_detail_respodent4.isEnabled = false
+                    et_service_detail_respodent4.setText("")
+                }
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+
+            }
+        })
+
+
+        et_service_detail_respodent4.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+                if (s.length != 0) {
+                    et_service_detail_respodent5.isEnabled = true
+                }else{
+                    et_service_detail_respodent5.isEnabled = false
+                    et_service_detail_respodent5.setText("")
+                }
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+
+            }
+        })
+
     }
+
 
     private fun checkValidation(): Int {
         var value = 1
+        if (rg_availed_services_past.checkedRadioButtonId == -1) {
+            validate!!.CustomAlert(
+                this,
+                resources.getString(R.string.plz_services_past_month)
+            )
+            value = 0
 
+        } else if (et_service_detail_respodent1.text.toString().isEmpty() && lay_et_service_detail_respodent.visibility == View.VISIBLE) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_service_detail_respodent1,
+                resources.getString(R.string.answer_this_quest)
+            )
+            value = 0
+        } else if (et_service_provider_department1.text.toString().isEmpty() && lay_et_service_provider_department.visibility == View.VISIBLE) {
+            validate!!.CustomAlertEdit(
+                this,
+                et_service_provider_department1,
+                resources.getString(R.string.plz_detail_srvic_provider)
+            )
+            value = 0
 
-        if (rg_avail_any_scheme.checkedRadioButtonId == -1) {
+        } else if (rg_avail_any_scheme.checkedRadioButtonId == -1) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.please_select) + " " + resources.getString(R.string.avail_any_scheme)
             )
             value = 0
-        } else if (et_details_service_avail.text.toString().isEmpty()) {
+        } else if (et_details_service_avail1.text.toString().isEmpty() && lay_et_details_service_avail.visibility == View.VISIBLE) {
             validate!!.CustomAlertEdit(
                 this,
-                et_details_service_avail,
+                et_details_service_avail1,
                 resources.getString(R.string.please_prvd_service_detail)
             )
             value = 0
 
-        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(skills_jobs_picking).isEmpty()) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.plz_select_mobiledata_lang)
-            )
-            value = 0
-        } else if (et_skills_jobs_picking.text.toString().length == 0 && lay_et_specify.visibility == View.VISIBLE) {
+        } else if (et_darpartment_service_provide1.text.toString().isEmpty() && lay_darpartment_service_provide.visibility == View.VISIBLE) {
             validate!!.CustomAlertEdit(
                 this,
-                et_skills_jobs_picking,
-                resources.getString(R.string.plz_skills_jobs_picking)
+                et_darpartment_service_provide1,
+                resources.getString(R.string.answer_this_questdd)
             )
             value = 0
 
-        } else if (rg_new_jobs_business.checkedRadioButtonId == -1) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.new_jobs_business)
-            )
-            value = 0
-        } else if (spin_alternative_get_opportunity.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_alternative_get_opportunity,
-                resources.getString(R.string.plz_select_alternative_jobbussi)
-            )
-            value = 0
-
-        } else if (rg_member_cig_shg.checkedRadioButtonId == -1) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.member_CIG_SHG)
-            )
-            value = 0
-        } else if (et_name_collective_part.text.toString().length == 0 && lay_et_name_collective_part.visibility == View.VISIBLE) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_name_collective_part,
-                resources.getString(R.string.plz_select_name_coltiv_part)
-            )
-            value = 0
         }
         return value
     }
 
-
-    fun bindCommonTable(strValue: String, spin: Spinner, flag: Int, iLanguageID: Int) {
-        mstLookupViewModel.getMstUser(flag, iLanguageID).observe(this, androidx.lifecycle.Observer {
-            if (it != null) {
-                val iGen = it.size
-                val name = arrayOfNulls<String>(iGen + 1)
-                name[0] = strValue
-
-                for (i in 0 until it.size) {
-                    name[i + 1] = it.get(i).Description
-                }
-                val adapter_category = ArrayAdapter<String>(
-                    this,
-                    R.layout.my_spinner_space_dashboard, name
-                )
-                adapter_category.setDropDownViewResource(R.layout.my_spinner_dashboard)
-                spin.adapter = adapter_category
-            }
-        })
-
-    }
 
     fun topLayClick() {
         autoSmoothScroll()
@@ -365,7 +795,9 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
         lay_secnd.setBackgroundColor(resources.getColor(R.color.back))
         ll_third.setBackgroundColor(resources.getColor(R.color.back))
         ll_forth.setBackgroundColor(resources.getColor(R.color.back))
-        ll_fifth.setBackgroundColor(resources.getColor(R.color.color_darkgrey))
+        ll_schemess.setBackgroundColor(resources.getColor(R.color.color_darkgrey))
+        lay_demographic.setBackgroundColor(resources.getColor(R.color.back))
+        ll_other_detailss.setBackgroundColor(resources.getColor(R.color.back))
 
         lay_first.setOnClickListener {
 
@@ -395,13 +827,31 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
                 finish()
             }
         }
-        ll_fifth.setOnClickListener {
+
+        lay_demographic.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileDemographicActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        ll_schemess.setOnClickListener {
             if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
                 val intent = Intent(this, IMProfileFifthActivity::class.java)
                 startActivity(intent)
                 finish()
             }
         }
+
+        ll_other_detailss.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileSixActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
     }
 
     fun returnpos(id: Int, flag: Int): Int {
@@ -434,7 +884,42 @@ class IMProfileFifthActivity : BaseActivity(), View.OnClickListener {
     fun autoSmoothScroll() {
 //        val hsv = view.findViewById(R.id.horizontalScroll) as HorizontalScrollView
         horizontalScroll.postDelayed({ //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
-            horizontalScroll.smoothScrollBy(1000, 0)
+            horizontalScroll.smoothScrollBy(1500, 0)
         }, 100)
+    }
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
+//        val intent = Intent(this, IMProfileListActivity::class.java)
+//        startActivity(intent)
+//        finish()
+    }
+
+
+    fun hideShowView() {
+
+        rg_availed_services_past.setOnCheckedChangeListener { radioGroup, i ->
+            if (i == 1) {
+                lay_et_service_detail_respodent.visibility = View.VISIBLE
+                lay_et_service_provider_department.visibility = View.VISIBLE
+            } else {
+                lay_et_service_detail_respodent.visibility = View.GONE
+                lay_et_service_provider_department.visibility = View.GONE
+            }
+            validate!!.hideSoftKeyboard(this, radioGroup)
+        }
+
+        rg_avail_any_scheme.setOnCheckedChangeListener { radioGroup, i ->
+            if (i == 1) {
+                lay_et_details_service_avail.visibility = View.VISIBLE
+                lay_darpartment_service_provide.visibility = View.VISIBLE
+            } else {
+                lay_et_details_service_avail.visibility = View.GONE
+                lay_darpartment_service_provide.visibility = View.GONE
+            }
+            validate!!.hideSoftKeyboard(this, radioGroup)
+        }
+
+
     }
 }

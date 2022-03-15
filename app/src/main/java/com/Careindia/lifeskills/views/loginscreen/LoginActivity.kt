@@ -14,14 +14,15 @@ import androidx.lifecycle.ViewModelProviders
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.application.CareIndiaApplication
 import com.careindia.lifeskills.enums.Status
+import com.careindia.lifeskills.services.ApiCallback
+import com.careindia.lifeskills.services.ApiClientConnection
+import com.careindia.lifeskills.services.response.LoginResponse
 import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.MstUserViewModel
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
-import com.mamta.sabal.callback.ApiCallback
-import com.mamta.sabal.service.ApiClientConnection
-import com.mamta.sabal.service.response.LoginResponse
+
 import kotlinx.android.synthetic.main.activity_home_dashboard.*
 import kotlinx.android.synthetic.main.activity_login.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -39,6 +40,8 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     var validate: Validate? = null
     lateinit var progressDialog: ProgressDialog
     var apiInterface: ApiCallback? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -46,9 +49,10 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         mstUserViewModel =
             ViewModelProviders.of(this).get(MstUserViewModel::class.java)
         apiInterface = ApiClientConnection.instance.createApiInterface()
+
         validate = Validate(this)
         initializeController()
-
+//        validate!!.addDays(44546)
 //        keyhash()
     }
 
@@ -74,16 +78,22 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 //                if (loginViewModel.isValid()) {
 //                }
 
+
                 if (checkValidation() == 1) {
-                    var iCount = mstUserViewModel!!.getusersCount()
-                    if (iCount == 0) {
-                        if (validate!!.isNetworkConnected()) {
+                    val user = mstUserViewModel!!.getMstUser()
+                    if (user.isEmpty()) {
+                        if (validate!!.isNetworkConnected(this)) {
                             importUserData()
+//                            importPrePostMasterData()
                         } else {
                             validate!!.CustomToast(this, getString(R.string.no_internet_connection))
                         }
-                    } else {
+                    } else if (user[0].UserID.toString().uppercase() == et_user_name.text.toString()
+                            .uppercase() && user[0].Password!! == et_password.text.toString()
+                    ) {
                         nextActivity(1)
+                    } else {
+                        validate!!.CustomToast(this, getString(R.string.wrongusernamepwd))
                     }
                 }
 
@@ -136,9 +146,9 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
     override fun onBackPressed() {
         // super.onBackPressed()
-        val intent = Intent(this, HomeDashboardActivity::class.java)
-        startActivity(intent)
-        finish()
+        /* val intent = Intent(this, HomeDashboardActivity::class.java)
+         startActivity(intent)
+         finish()*/
     }
 
     private fun checkValidation(): Int {
@@ -184,7 +194,6 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                 ) {
                     when (response.code()) {
                         200 -> {
-
                             validate!!.SaveSharepreferenceString(AppSP.sUserName, username)
                             validate!!.SaveSharepreferenceString(AppSP.sPassword, password)
 
@@ -203,7 +212,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
                                 validate!!.SaveSharepreferenceInt(
                                     AppSP.iUserID,
-                                    response.body()!!.users!!.get(0).UserID
+                                    response.body()!!.users!!.get(0).RID
                                 )
 
                                 validate!!.SaveSharepreferenceInt(
@@ -228,6 +237,21 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                                 validate!!.SaveSharepreferenceInt(
                                     AppSP.StateCode,
                                     response.body()!!.users!!.get(0).Statecode!!
+                                )
+
+                                validate!!.SaveSharepreferenceString(
+                                    AppSP.DistrictIn,
+                                    response.body()!!.users!!.get(0).DistrictCode!!
+                                )
+
+                                validate!!.SaveSharepreferenceString(
+                                    AppSP.ZoneIn,
+                                    response.body()!!.users!!.get(0).ZoneCode!!
+                                )
+
+                                validate!!.SaveSharepreferenceString(
+                                    AppSP.PWCodeIn,
+                                    response.body()!!.users!!.get(0).PWCode!!
                                 )
 
                             }
@@ -259,6 +283,11 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                             if (!response.body()!!.mst_9Lookup.isNullOrEmpty()) {
                                 CareIndiaApplication.database?.mstLookupDao()
                                     ?.insertWithCondition(response.body()!!.mst_9Lookup)
+                            }
+
+                            if (!response.body()!!.mstAssessment.isNullOrEmpty()) {
+                                CareIndiaApplication.database?.mstAssessmentDao()
+                                    ?.insertWithCondition(response.body()!!.mstAssessment)
                             }
 
                             nextActivity(1)
@@ -298,6 +327,66 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
     }
 
+
+    private fun importPrePostMasterData() {
+        try {
+            var username = et_user_name.text.toString()
+            var password = et_password.text.toString()
+            var call = apiInterface!!.prepostData(username, password)
+            call.enqueue(object : Callback<LoginResponse> {
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+
+//                    validate!!.CustomToast(this@SyncronizationActivity, t.message.toString())
+                }
+
+                override fun onResponse(
+                    call: Call<LoginResponse>,
+                    response: Response<LoginResponse>
+                ) {
+                    when (response.code()) {
+                        200 -> {
+                            CareIndiaApplication.database?.trainingDao()?.deleteTraining()
+
+                            if (!response.body()!!.tblTraining.isNullOrEmpty()) {
+                                CareIndiaApplication.database?.trainingDao()
+                                    ?.insertAllTrainingData(response.body()!!.tblTraining)
+                            }
+                            CareIndiaApplication.database?.participantAttendanceDetailDao()
+                                ?.deleteParticipantAttendance()
+                            if (!response.body()!!.tblParticipantAttendanceDetail.isNullOrEmpty()) {
+                                CareIndiaApplication.database?.participantAttendanceDetailDao()
+                                    ?.insertAllParticipantAttendanceData(response.body()!!.tblParticipantAttendanceDetail)
+                            }
+
+                            CareIndiaApplication.database?.mstTrainerDao()?.deleteTrainerData()
+                            if (!response.body()!!.mstTrainer.isNullOrEmpty()) {
+                                CareIndiaApplication.database?.mstTrainerDao()
+                                    ?.insertAllTrainerData(response.body()!!.mstTrainer)
+                            }
+
+                            CareIndiaApplication.database?.trainingParticipantDetailDao()
+                                ?.deleteTrainingParticipant()
+                            if (!response.body()!!.tblParticipantAttendanceDetail.isNullOrEmpty()) {
+                                CareIndiaApplication.database?.trainingParticipantDetailDao()
+                                    ?.insertAllTrainingParticipantData(response.body()!!.tblTrainingParticipantDetail)
+                            }
+
+
+                        }
+
+                        else -> {
+
+                        }
+                    }
+                }
+
+            })
+        } catch (ex: Exception) {
+            ex.printStackTrace()
+
+        }
+
+    }
 
     private fun nextActivity(flag: Int) {
         if (flag == 1) {

@@ -17,9 +17,9 @@
             android:layout_marginBottom="@dimen/_5sdp">
 
             <TableRow
+                android:id="@+id/psycho_main"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:padding="@dimen/_3sdp"
                 android:gravity="center">
 
@@ -47,7 +47,7 @@
                         <TextView
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            android:text="Unique ID "
+                            android:text="@string/uniqueid"
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10ssp"
@@ -84,7 +84,7 @@
 
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            android:text="Name"
+                            android:text="@string/name"
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10ssp"
@@ -113,7 +113,7 @@
                         <TextView
                             android:layout_height="wrap_content"
                             android:layout_width="wrap_content"
-                            android:text="Date"
+                            android:text="@string/date"
                             android:textStyle="bold"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_10ssp"
@@ -142,11 +142,26 @@
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".1"
+            android:orientation="vertical">
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/iv_info"
+                    android:src="@drawable/ic_info"
+                    android:layout_width="25dp"
+                    android:layout_height="30dp" />
+
                 <ImageView
                     android:id="@+id/iv_delete"
                     android:src="@drawable/ic_delete"
                     android:layout_width="25dp"
                     android:layout_height="30dp" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
             </TableRow>
 

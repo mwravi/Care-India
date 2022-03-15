@@ -17,6 +17,12 @@ interface MstZoneDao {
     @Query("select * from mst_3zone where DistrictCode=:DistrictCode order by ZoneName")
     fun getMstZoneLive(DistrictCode:Int): LiveData<List<MstZoneEntity>>
 
+    @Query("select * from mst_3zone where DistrictCode=:DistrictCode and ZoneCode in(:ZoneIn) order by ZoneName")
+    fun getMstZone(DistrictCode:Int,ZoneIn: List<String>): List<MstZoneEntity>
+
     @Query("select * from mst_3zone where DistrictCode=:DistrictCode order by ZoneName")
     fun getMstZone(DistrictCode:Int): List<MstZoneEntity>
+
+    @Query("select ZoneName from mst_3zone where DistrictCode=:DistrictCode and ZoneCode=:ZoneCode order by ZoneName")
+    fun getMstZone(DistrictCode:Int,ZoneCode:Int): String
 }

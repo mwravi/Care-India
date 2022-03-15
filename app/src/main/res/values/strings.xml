@@ -10,47 +10,30 @@
 
     <string name="date_format">dd-mm-yyyy</string>
     <string name="select">Select</string>
+    <string name="select_priority">Select Priority</string>
     <string name="save">Save</string>
     <string name="next">Next</string>
     <string name="please_specify">Please specify others</string>
 
 
-    <string name="hh_id">HH ID</string>
-    <string name="im_id">IM ID</string>
-    <string name="community_name">Community Name:Block</string>
-    <string name="name_of_beneficiary">Name of Candidate/Beneficiary</string>
-    <string name="age">Age</string>
-    <string name="gender">Gender</string>
-    <string name="contact_no">Contact_number</string>
-    <string name="member_of_any_shg_jlg_cig">Member of any SHG/JLG/CIG</string>
-    <string name="social_category">Social Category</string>
-    <string name="caste_and_income_certificate">Caste and Income certificate?</string>
-    <string name="do_you_have_valid_aadhar_card">Do you have valid Aadhar card?</string>
-    <string name="do_you_have_valid_pan_card">Do you have valid PAN card?</string>
-    <string name="do_you_have_bank_account">Do they have bank account?</string>
-    <string name="are_you_interested_in_starting_new_business">Are you interested in starting new business?</string>
-    <string name="what_kind_of_business_related_skill_training_needed">What kind of business/business related skill training needed?</string>
     <string name="do_they_have_their_business_plan">Do they have their business plan?</string>
     <string name="what_is_the_range_of_investment_it_require">What is the range of investment it require (in thousands)?</string>
     <string name="are_they_ready_to_invest">Are they ready to invest?</string>
     <string name="how_much_you_will_invest">How much you will invest?</string>
     <string name="how_are_they_planning_their_investment">How are they planning their investment?</string>
-    <string name="how_much_financial_assistance_is_required">How much financial assistance is required?</string>
     <string name="any_expected_support">Any expected support</string>
     <string name="are_you_interested_in_availing_loans_or_subsidies">Are you interested in availing loans or subsidies?</string>
     <string name="how_much_they_have_invested">How much they have invested?</string>
     <string name="what_kind_of_business_is_it">What kind of business is it?</string>
     <string name="is_the_business_registered">Is the business registered</string>
-    <string name="stage_of_self_employment_enterprise_idea">Stage of Self-employment / enterprise idea</string>
-    <string name="are_they_availing_loans_already">Are they availing loans already?</string>
-    <string name="from_where_have_availed_loans">From where have availed loans?</string>
-    <string name="are_they_expecting_any_financial_assistance">Are they expecting any financial assistance?</string>
+
+
     <string name="amount_of_financial_assistance_required">Amount of financial assistance required?</string>
     <string name="Those_self_employed_require_any_support">Those Self employed require any support?</string>
 
 
     <string name="empty_email">Please enter Email ID</string>
-    <string name="attendce_sestion_trckr"><![CDATA[Attendence & \nSesstion Tracker]]></string>
+    <string name="attendce_sestion_trckr"><![CDATA[Attendance & \nSesstion Tracker]]></string>
 
 
     <!--vimal-->
@@ -62,9 +45,9 @@
     <string name="Name_of_bbmp_ward"><b>Q106.</b> Name of BBMP Ward</string>
     <string name="Name_of_panchayat"><b>Q107.</b> Name of Panchayat</string>
     <string name="q108_name_of_locality"><b>Q108.</b> Name of Locality</string>
-    <string name="community_dwcc"><b>Q109.</b> Community/DWCC</string>
-    <string name="hh_name"><b>Q110.</b> Name of Head of the Household</string>
-    <string name="hh_sex"><b>Q111.</b> Sex of the Head of the Household</string>
+    <string name="community_dwcc"><b>Q111.</b> Community/DWCC</string>
+    <string name="hh_name"><b>Q112.</b> Name of Head of the Household</string>
+    <string name="hh_sex"><b>Q113.</b> Sex of the Head of the Household</string>
     <string name="total_adult"><b>Q201.</b> Total number of adult members in family (18 years and above)</string>
     <string name="adult_male"><b>Q201a.</b> Number of adult male members (18 years and above)</string>
     <string name="adult_female"><b>Q201b.</b> Number of adult female members (18 years and above)</string>
@@ -108,14 +91,14 @@
     <string name="name_of_bbmp_ward"><b>Q106.</b> Name of BBMP Ward</string>
     <string name="name_of_panchayat"><b>Q107.</b> Name of Panchayat</string>
     <string name="name_of_locality"><b>Q108.</b> Name of Locality</string>
-    <string name="community_dwcc_initials"><b>Q109.</b> Community/DWCC Initials</string>
-    <string name="collective_unique_id"><b>Q110.</b> Collective Unique ID</string>
-    <string name="name_of_group_collective_sangha"><b>Q111.</b> Name of your Group/Collective/Sangha</string>
-    <string name="date_of_formation_of_group"><b>Q112.</b> Date of formation of the group/collective</string>
-    <string name="please_specify_others"><b>Q113a.</b> Please specify others</string>
-    <string name="is_your_griup_registered"><b>Q114.</b> Is your group/collective registered?</string>
-    <string name="please_specify_others_registered"><b>Q114a.</b> Please specify others</string>
-    <string name="what_is_the_objective_of_group"><b>Q115.</b> What is the objective/purpose of the group</string>
+    <string name="community_dwcc_initials"><b>Q111.</b> Community/DWCC Initials</string>
+    <string name="collective_unique_id"><b>Q112.</b> Collective Unique ID</string>
+    <string name="name_of_group_collective_sangha"><b>Q113.</b> Name of your Group/Collective/Sangha</string>
+    <string name="date_of_formation_of_group"><b>Q114.</b> Date of formation of the group/collective</string>
+    <string name="please_specify_others"><b>Q115a.</b> Please specify others</string>
+    <string name="is_your_griup_registered"><b>Q116.</b> Is your group/collective registered?</string>
+    <string name="please_specify_others_registered"><b>Q116a.</b> Please specify others</string>
+    <string name="what_is_the_objective_of_group"><b>Q117.</b> What is the objective/purpose of the group</string>
     <string name="name_of_head_group"><b>Q201.</b> Name of the Head of the group/collective</string>
     <string name="sex_of_head_of_group"><b>Q202.</b> Sex of the Head of the group/collective</string>
     <string name="total_no_of_members_in_group"><b>Q203.</b> Total number of members in the group/collective</string>
@@ -153,7 +136,7 @@
     <string name="q404_does_the_meetings_happen_as_per_the_schedule_check_meeting_register"><b>Q404.</b> Does the meetings happen as per the schedule (check meeting register)</string>
     <string name="q405_does_your_sangha_group_collective_have_a_record_book_check_for_the_record_book"><b>Q405.</b> Does your Sangha/group/ collective have a record book? (check for the record book)</string>
     <string name="q406_is_the_record_book_register_updated_in_every_meeting"><b>Q406.</b> Is the record book /register updated in every meeting?</string>
-    <string name="q501_has_the_sangha_group_collective_established_any_linkage_with_options_below"><b>Q501.</b> Has the Sangha/group/collective established any linkage with (options below)</string>
+    <string name="q501_has_the_sangha_group_collective_established_any_linkage_with_options_below"><b>Q501.</b> Has the Sangha/group/collective established any linkage with (options below) (Multicheck)</string>
     <string name="q501a_please_specify_the_others"><b>Q501a.</b> Please specify the others</string>
     <string name="q501b_what_service_services_you_are_getting_through_this_linkage_more_than_one_response_upto_three_is_possible"><b>Q501b.</b> What service/services you are getting through this linkage(more than one response upto three is possible).</string>
     <string name="q502_is_your_sangha_collective_currently_availing_any_services_schemes"><b>Q502.</b> Is your sangha /collective currently availing any services/ schemes</string>
@@ -161,7 +144,7 @@
     <string name="q502b_from_which_department_service_provider_you_are_availing_this_scheme_service"><b>Q502b.</b> From which department/service provider you are availing this scheme/service?</string>
     <string name="q601_is_your_sangha_collective_members_interested_in_taking_up_any_collective_enterprise_business">Q601. Is your Sangha / collective members interested in taking up any collective enterprise/business</string>
     <string name="q602a_please_specify_others"><b>Q602a.</b> Please specify others</string>
-    <string name="q602_what_business_would_the_collective_plan_to_do_if_given_an_opportunity"><b>Q602.</b> What business would the collective plan to do (if given an opportunity)</string>
+    <string name="q602_what_business_would_the_collective_plan_to_do_if_given_an_opportunity"><b>Q602.</b> What business would the collective plan to do (if given an opportunity) (Multicheck)</string>
     <string name="colective_profile_list">Colective Profile List</string>
     <string name="colective_profile">Collective Profile</string>
 
@@ -172,24 +155,24 @@
     <string name="enter_date">Select Date</string>
     <string name="enter_time">Select Time</string>
     <string name="previous">Previous</string>
-    <string name="q112_what_type_of_collective_group_it_is">Q113. What type of collective/group it is?</string>
+    <string name="q112_what_type_of_collective_group_it_is"><b>Q115.</b> What type of collective/group it is?</string>
 
     <string name="please_enter">Please Enter</string>
     <string name="please_select">Please Select</string>
     <string name="sum_of_collective_member">Total number of members in the group/collective must be equal to sum of Total number of male members,female members and transgender members in the group/collective</string>
-    <string name="valid_age_of_the_member">Age of the member must be between 18-65 year</string>
+    <string name="valid_age_of_the_member">Age of the member must be between 18–65 year</string>
     <string name="valid_mobile_no">valid mobile number</string>
     <string name="adult_female_and_adult_male_total">Total number of adult members in family must be equal to the sum of number of adult male members and adult female members</string>
-    <string name="hhh_unique_id">Q109. Household Unique ID</string>
+    <string name="hhh_unique_id"><b>Q112.</b> Household Unique ID</string>
     <string name="valid_adolsent_boys_girls">Total number of adolescent boys and girls must be equal to sum of number of adolescent boys and adolescent girls</string>
     <string name="valid_total_children">Total number of children must be equal to sum of number of male children and female children</string>
     <string name="valid_earning_member">Total number of earning members must be equal to sum of number of male earning member and female earning member</string>
-    <string name="valid_tenure_of_the_president_office_bearer_in_complete_years">Tenure of the President/Office bearer must be between 1-5 year</string>
+    <string name="valid_tenure_of_the_president_office_bearer_in_complete_years">Tenure of the President/Office bearer must be between 1–5 year</string>
     <string name="q308a_please_specify_others">Q308a. Please specify others</string>
     <string name="q309_are_members_avail_the_loan">Q309. Are the members able to easily avail loan?</string>
-    <string name="valid_frequency_the_election_for_office_bearer_happens_in_complete_years">Frequency of the election for office bearer must be between 1-10 year</string>
-    <string name="primary_data_list">Primary Data List</string>
-    <string name="primary_data">Primary Data</string>
+    <string name="valid_frequency_the_election_for_office_bearer_happens_in_complete_years">Frequency of the election for office bearer must be between 1–10 year</string>
+    <string name="primary_data_list">EDP List</string>
+    <string name="primary_data">EDP</string>
     <string name="please_enter_hh_id">Please enter household unique id</string>
     <string name="please_enter_valid_hh_id">Please enter valid household unique id</string>
     <string name="ok">OK</string>
@@ -244,7 +227,7 @@
     <string name="plz_specify_othr">Please specify others</string>
     <string name="plz_select_state">Please select the State</string>
     <string name="plz_entr_sty_long">Please enter that How long have you been staying in Bangalore (in years)</string>
-    <string name="plz_entr_less_input">Please enter value less then</string>
+    <string name="plz_entr_less_input">Please enter value less then equals to </string>
     <string name="plz_read_write">Please select that Can you read and write</string>
     <string name="plz_select_education">Please select that What is your highest level of education</string>
     <string name="plz_select_smartphone">Please select that Do you have acess to smart phone</string>
@@ -311,18 +294,18 @@
 
     <string name="district">District</string>
     <string name="plz_select_hhid">Please Select Household Id</string>
-    <string name="the_sum_of_adult_males_and_females_must_be_equal_to_or_less_than_the_total_adult_members">The sum of adult male and female members must be equal to or less than the total adult members.</string>
-    <string name="adult_males_must_be_equal_to_or_less_than_the_total_adult_members">Adult male members must be equal to or less than the total adult members.</string>
-    <string name="adult_females_must_be_equal_to_or_less_than_the_total_adult_members">Adult female members must be equal to or less than the total adult members.</string>
-    <string name="the_sum_of_adolescent_boys_and_girls_must_be_equal_to_or_less_than_the_total_adolescent">The sum of adolescent boys and girls must be equal to or less than the total adolescents.</string>
-    <string name="adolescent_boys_must_be_equal_to_or_less_than_the_total_adult_members">Adolescent boys must be equal to or less than the total adolescents.</string>
-    <string name="adolescent_girls_females_must_be_equal_to_or_less_than_the_total_adult_members">Adolescent girls must be equal to or less than the total adolescents.</string>
-    <string name="the_sum_of_male_and_female_children_must_be_equal_to_or_less_than_the_total_number_of_children">The sum of male and female children must be equal to or less than the total number of children.</string>
-    <string name="male_children_must_be_equal_to_or_less_than_the_total_children_members">Male children must be equal to or less than the total number of children members.</string>
-    <string name="female_children_females_must_be_equal_to_or_less_than_the_total_number_of_children_members">Female children  must be equal to or less than the total number of children members.</string>
-    <string name="the_sum_of_male_and_female_earning_members_must_be_equal_to_or_less_than_the_total_number_of_earning_members">The sum of male and female earning members must be equal to or less than the total number of earning members.</string>
-    <string name="male_earning_members_must_be_equal_to_or_less_than_the_total_number_of_male_earning_members">Male earning members must be equal to or less than the total number of  earning members.</string>
-    <string name="female_earning_members_must_be_equal_to_or_less_than_the_total_number_of_earning_members">Female earning members must be equal to or less than the total number of earning members.</string>
+    <string name="the_sum_of_adult_males_and_females_must_be_equal_to_or_less_than_the_total_adult_members">The sum of adult male and female members must be equal to  the total adult members.</string>
+    <string name="adult_males_must_be_equal_to_or_less_than_the_total_adult_members">Adult male members must be equal to  the total adult members.</string>
+    <string name="adult_females_must_be_equal_to_or_less_than_the_total_adult_members">Adult female members must be equal to  the total adult members.</string>
+    <string name="the_sum_of_adolescent_boys_and_girls_must_be_equal_to_or_less_than_the_total_adolescent">The sum of adolescent boys and girls must be equal to the total adolescents.</string>
+    <string name="adolescent_boys_must_be_equal_to_or_less_than_the_total_adult_members">Adolescent boys must be equal to  the total adolescents.</string>
+    <string name="adolescent_girls_females_must_be_equal_to_or_less_than_the_total_adult_members">Adolescent girls must be equal to the total adolescents.</string>
+    <string name="the_sum_of_male_and_female_children_must_be_equal_to_or_less_than_the_total_number_of_children">The sum of male and female children must be equal to the total number of children.</string>
+    <string name="male_children_must_be_equal_to_or_less_than_the_total_children_members">Male children must be equal to  the total number of children members.</string>
+    <string name="female_children_females_must_be_equal_to_or_less_than_the_total_number_of_children_members">Female children  must be equal to  the total number of children members.</string>
+    <string name="the_sum_of_male_and_female_earning_members_must_be_equal_to_or_less_than_the_total_number_of_earning_members">The sum of male and female earning members must be equal to  the total number of earning members.</string>
+    <string name="male_earning_members_must_be_equal_to_or_less_than_the_total_number_of_male_earning_members">Male earning members must be equal to the total number of  earning members.</string>
+    <string name="female_earning_members_must_be_equal_to_or_less_than_the_total_number_of_earning_members">Female earning members must be equal to the total number of earning members.</string>
 
     <string name="plz_enter_idvid">Please enter the Individual Member ID</string>
     <string name="plz_enter_state">(Q209a) Please answer this question.</string>
@@ -342,7 +325,6 @@
     <string name="Supervising_FC"><b>Q103. </b>Name of Supervising Field Coordinator</string>
 
 
-    <string name="name_respondent"><b>Q201. </b>Name of the respondent</string>
     <string name="household_id"><b>Q104. </b>Household Unique ID</string>
     <string name="imprf_unique_id"><b>Q202.</b> Individual Member ID</string>
     <string name="sex_respo"><b>Q203. </b>Sex of the respondent</string>
@@ -357,20 +339,20 @@
     <string name="highest_education"><b>Q212. </b>What is your highest level of education?</string>
     <string name="acess_smart_phone"><b>Q213. </b>Do you have acess to smart phone?</string>
     <string name="acess_mobile_data"><b>Q214. </b>Do you have acess to mobile data?</string>
-    <string name="language_speak"><b>Q301. </b>Which language/s you can speak?</string>
+    <string name="language_speak"><b>Q301. </b>Which language/s you can speak? (Multicheck)</string>
     <string name="please_specify_speak_lag"><b>Q301a. </b>Please specify others</string>
-    <string name="language_read"><b>Q302. </b>Which language/s you can read?</string>
+    <string name="language_read"><b>Q302. </b>Which language/s you can read? (Multicheck)</string>
     <string name="please_specify_read_lag"><b>Q302a. </b>Please specify others</string>
-    <string name="language_write"><b>Q303. </b>Which language/s you can write?</string>
+    <string name="language_write"><b>Q303. </b>Which language/s you can write? (Multicheck)</string>
     <string name="please_specify_write_lag"><b>Q303a. </b>Please specify others</string>
-    <string name="lang_prefer_comni_speaking"><b>Q304. </b>Which language/s you prefer for communication, speaking with others?</string>
+    <string name="lang_prefer_comni_speaking"><b>Q304. </b>Which language/s you prefer for communication, speaking with others? (Multicheck)</string>
     <string name="please_specify_communi_lag"><b>Q304a. </b>Please specify others</string>
-    <string name="language_prefer_mobile_use"><b>Q305. </b>Which language/s you prefer for mobile use?</string>
+    <string name="language_prefer_mobile_use"><b>Q305. </b>Which language/s you prefer for mobile use? (Multicheck)</string>
     <string name="please_specify_mobile_lag"><b>Q305a. </b>Please specify others</string>
     <string name="category_waste_picker_belong"><b>Q401. </b>Which category of waste picker you belong to?</string>
     <string name="type_emp"><b>Q402. </b>Type of employment/engagement</string>
     <string name="wastes_pick_sort"><b>Q403. </b>What kind of wastes you pick/sort?</string>
-    <string name="sell_waste_collect"><b>Q404. </b>Where do you sell/dispose the wastes you collect?</string>
+    <string name="sell_waste_collect"><b>Q404. </b>Where do you sell/dispose the wastes you collect? (Multicheck)</string>
     <string name="please_specify_dispose_lag"><b>Q404a. </b>Please specify others</string>
     <string name="source_income"><b>Q405. </b>Primary source of income</string>
     <string name="please_specify_source_income"><b>Q405a. </b>Please specify others</string>
@@ -388,20 +370,18 @@
     <string name="caste_certi"><b>Q505. </b>Do you have Caste Certificate</string>
     <string name="svg_bank_act"><b>Q506. </b>Do you have Savings Bank Account</string>
     <string name="availed_services_past"><b>Q507. </b>Have you availed any services/schemes in the past 6 months? (For example, schemes and services related to women empowerment, MSME, subsidy connections, housing, toilet, child education etc.</string>
+    <string name="service_provider_detail_respodent"><b>Q508. </b>Please provide details of all service/scheme availed in last 6 months.
+(Instruction: Record details of maximum of three scheme/services availed by the respondent.)</string>
     <string name="service_provider_department"><b>Q509. </b>Please provide details of service provider/department from where you availed the scheme.</string>
     <string name="avail_any_scheme"><b>Q510. </b>Are you currently availing any scheme/service?</string>
     <string name="details_service_avail"><b>Q511. </b>Please provide details of the service/scheme that you are availing.</string>
-    <string name="skills_jobs_picking"><b>Q601. </b>Do you possess any skills for jobs other than waste picking?</string>
+    <string name="skills_jobs_picking"><b>Q601. </b>Do you possess any skills for jobs other than waste picking? (Multicheck)</string>
     <string name="please_specify_skill_job"><b>Q209a. </b>Please specify others</string>
     <string name="new_jobs_business"><b>Q602. </b>Are you interested in taking up new job/starting new business?</string>
     <string name="alternative_get_opportunity"><b>Q603. </b>If Yes, what alternative job/business would you like to do if you get an opportunity?</string>
     <string name="member_CIG_SHG"><b>Q701. </b>Are you a member of any collective such as CIG/SHG/JLG/DWCC?</string>
     <string name="name_collective_part"><b>Q702. </b>What is the name of the collective that you are part of?</string>
     <string name="household_profile">Household Profile</string>
-    <string name="Name_of_distric_im"><b>QND.</b> Name of District</string>
-    <string name="Name_of_zone_im"><b>QNZ.</b> Name of Zone</string>
-    <string name="Name_of_bbmp_ward_im"><b>QW.</b> Name of BBMP Ward</string>
-    <string name="Name_of_panchayat_im"><b>QNP.</b> Name of Panchayat</string>
 
     <string name="hhid">HHID</string>
     <string name="imid">IMID</string>
@@ -409,30 +389,25 @@
     <string name="age_participant">Age of the participant</string>
     <string name="primary_occup">Primary occupation if any</string>
     <string name="secondry_occup">Secondary occupation if any</string>
-    <string name="name_community">Name of the Community</string>
+    <string name="name_community">Name of the Community/Locality</string>
     <string name="shg_name">SHG Name(if applicable)</string>
-    <string name="name_entrprise">Nature of enterprise (Existing / Planned) if any</string>
     <string name="contactnumber">Contact Number</string>
     <string name="namecrp">Name of the CRP</string>
     <string name="date">Date</string>
     <string name="min_age_limit"><b>1.1. </b>The minimum age of the applicant must be 18 years and the maximum age limit is set to 45 years.</string>
     <string name="education_applicant"><b>1.2. </b>Applicant education</string>
-    <string name="socially_category"><b>1.3. </b>Preference to women from socially backward category (SC / ST / OBC)</string>
-    <string name="economic_category"><b>1.4. </b>Preference to women from economic backward category (APL / BPL / Antyodaya)</string>
     <string name="emp_category"><b>2.1. </b>Self-employment / business experience</string>
     <string name="year_exp"><b>2.2. </b>Years of experience in Self-employment / business</string>
     <string name="stage_emp"><b>2.3. </b>Stage of Self-employment / enterprise idea</string>
-    <string name="size_investment"><b>2.4. </b>Size / Investment of self-employment / business planned</string>
+    <string name="size_investment"><b>2.4. </b>Expected Size/Investment of self-employment / business planned/or yet to be planned</string>
     <string name="invest_money"><b>2.5. </b>Willingness to invest margin money in business</string>
     <string name="awareness_market"><b>2.6. </b>Awareness on relevant markets and supply chain actors for the proposed self-employment / business</string>
     <string name="evaluate_risk"><b>3.1. </b>If you are asked to invest INR 50,000 in a new business idea from your savings, how will you evaluate the risk?</string>
     <string name="income_gen_prefer"><b>3.2. </b>If you are given three options of Income Generation Activity depending upon time to be invested per day, which one will you prefer?</string>
-    <string name="staff_required_prefer"><b>3.3. </b>If you are given three options of Income Generation Activity depending upon staff required to be managed which one, will you prefer?</string>
-    <string name="women_entrepreneurs"><b>3.4. </b>Women cannot become good entrepreneurs as they are burdened with domestic work in their households” How much do you agree with this statement?</string>
+    <string name="staff_required_prefer"><b>3.3. </b>If you are given three options of Income Generation Activity depending upon staff required to be managed which one, will you prefer?,\nRun a business</string>
+    <string name="women_entrepreneurs"><b>3.4. </b>Women cannot become good entrepreneurs as they are burdened with domestic work in their households” How much do you agree with this statement?,\nRun a business</string>
     <string name="requires_financial"><b>3.5. </b>“An entrepreneur requires only financial resources to become an entrepreneur.” How much do you agree with this statement?</string>
     <string name="willingness_invest"><b>3.6. </b>Willingness to invest time for capacity building trainings to be organized by CARE India for potential entrepreneurs?</string>
-    <string name="areas_succes_entrep"><b>3.6. </b>Which are the areas where you feel you need capacity building support to become a successful entrepreneur?</string>
-    <string name="specify_areas_succes_entrep"><b>3.6a. </b>Please specify others</string>
     <string name="collmeetinglist">Collective Meeting List</string>
     <string name="collmeeting">Collective Meeting</string>
     <string name="collprofile">Collective Profile</string>
@@ -443,9 +418,8 @@
     <string name="placeofmeeting"><b>Q107.</b> Place of meeting</string>
     <string name="meetingstarttime"><b>Q108.</b> Meeting start time </string>
     <string name="meetingendtime"><b>Q108a.</b> Meeting end time</string>
-    <string name="purposeofmeeting"><b>Q109.</b> Purpose/Objective of the meeting</string>
+    <string name="purposeofmeeting"><b>Q109.</b> Purpose/Objective of the meeting (Multicheck)</string>
     <string name="please_specify_otherspurpose"><b>Q110.</b> Please specify others</string>
-    <string name="totlamembersmeeting"><b>Q111.</b> Total number of members in the group (WP=Waste picker ; NWP=Non-Waste picker)</string>
     <string name="totlamembersattended"><b>Q112.</b> Total number of members attended the meeting in the group</string>
     <string name="meetdiscussion"><b>Q113.</b> Meeting Discussion points</string>
     <string name="malewp">Male WP</string>
@@ -455,21 +429,6 @@
     <string name="femalenwp">Female NWP</string>
     <string name="transnwp">Transgender NWP</string>
 
-    <string name="do_you_have_caste_and_income_certificate">Do you have caste and income certificate?</string>
-    <string name="do_you_have_you_business_plan">Do you have you business plan ?</string>
-    <string name="what_is_the_amount_iin_thousands_of_investment_it_requires_in_rs">What is the amount (Iin thousands) of investment it requires (in Rs) ?</string>
-    <string name="are_you_ready_to_invest">Are you ready to invest ?</string>
-    <string name="how_much_you_they_will_invest_more_than">How much you/they will invest ? More than</string>
-    <string name="how_are_you_planning_your_investment">How are you planning your investment ?</string>
-    <string name="any_support_required_in_form_of">Any support required in form of</string>
-    <string name="if_yes_through_which_source">If Yes, through which source</string>
-    <string name="how_much_amount_you_have_invested">How much amount you have invested ?</string>
-    <string name="how_did_you_source_their_investment">How did you source their investment ?</string>
-    <string name="have_you_registered_your_business">Have you registered your business ?</string>
-    <string name="are_you_expecting_any_support">Are you expecting any support</string>
-    <string name="date_of_data_collection">Date of data collection</string>
-    <string name="name_of_the_crp_collecting_the_data">Name of the CRP collecting the data</string>
-    <string name="name_of_the_supervising_officer">Name of the Supervising officer</string>
 
     <string name="psy_plz_ans_min_age"><b>1.1. </b>Please answer this question.</string>
     <string name="psy_plz_ans_applicat_edu"><b>1.2. </b>Please answer this question.</string>
@@ -488,10 +447,12 @@
     <string name="psy_plz_ans_financial_entrprenur"><b>3.5. </b>Please answer this question.</string>
     <string name="psy_plz_ans_willngness_potential"><b>3.6. </b>Please answer this question.</string>
     <string name="psy_plz_ans_area_capacity"><b>3.6. </b>Please answer this question.</string>
-    <string name="psy_plz_ans_area_specify"><b>3.6a. </b>Please answer this question.</string>
+    <string name="psy_plz_ans_area_specify"><b>3.7a. </b>Please answer this question.</string>
     <string name="psy_plz_select_hhid">Please select the HHID.</string>
     <string name="psy_plz_select_imid">Please select the IMID.</string>
-    <string name="data_uploading">Data Uploading.....</string>
+    <string name="data_uploading">Uploading Data.....</string>
+    <string name="data_dwnloading">Downloading Data.....</string>
+    <string name="master_dwnloading">Downloading Masters.....</string>
     <string name="data_saved_successfully">Data saved successfully</string>
     <string name="Name_of_distric_psy"><b>QND.</b> Name of District</string>
     <string name="Name_of_zone_psy"><b>QNZ.</b> Name of Zone</string>
@@ -521,10 +482,10 @@
     <string name="change_in_leadership_member_position">Change in leadership/member position</string>
     <string name="change_in_group_members">Change in group members</string>
     <string name="others_if_any">Others (if any)</string>
-    <string name="total_savings_for_the_month_in_inr">Total savings for the month (in INR)</string>
-    <string name="total_loan_availed_through_internal_lending_within_the_group_for_the_month_in_inr">Total loan availed through internal lending within the group for the month (in INR)</string>
-    <string name="total_loan_availed_through_schemes_services_financial_institutions_within_the_group_for_the_month_in_inr">Total loan availed through schemes/services/financial institutions within the group for the month (in INR)</string>
-    <string name="total_amount_accrued_from_interest_in_a_month_in_inr">Total amount accrued from interest in a month (in INR)</string>
+    <string name="total_savings_for_the_month_in_inr"><b>Q114. </b>Total savings for the month (in INR)</string>
+    <string name="total_loan_availed_through_internal_lending_within_the_group_for_the_month_in_inr"><b>Q115. </b>Total loan availed through internal lending within the group for the month (in INR)</string>
+    <string name="total_loan_availed_through_schemes_services_financial_institutions_within_the_group_for_the_month_in_inr"><b>Q116. </b>Total loan availed through schemes/services/financial institutions within the group for the month (in INR)</string>
+    <string name="total_amount_accrued_from_interest_in_a_month_in_inr"><b>Q117. </b>Total amount accrued from interest in a month (in INR)</string>
     <string name="select_zone">Select Zone</string>
     <string name="select_bbmp_ward">Select BBMP Ward</string>
     <string name="select_panchayat">Select Panchayat</string>
@@ -540,9 +501,7 @@
     <string name="collexists">Collective Unique ID already exists</string>
     <string name="indiexits">Individual Member ID already exists</string>
     <string name="others_specify">Others (specify)</string>
-    <string name="in_what_kind_of_bussiness_you_have_invested">In what kind of business you have invested?</string>
-    <string name="amount_of_financial_assistance_required_in_rs">Amount of financial assistance required? (in Rs)</string>
-    <string name="plz_enter_date_psy">Please enter date</string>
+
     <string name="plz_enter_name_participant_psy">Please enter name of participant</string>
     <string name="plz_enter_age_participant_psy">Please enter age of participant</string>
     <string name="plz_enter_primary_occu_psy">Please select primary occupation</string>
@@ -559,7 +518,514 @@
 
     <string name="schemes">Schemes-1</string>
     <string name="schemes_sec">Schemes-2</string>
-    <string name="upload_succes">Data upload succesfully</string>
+    <string name="upload_succes">Data upload successfully</string>
     <string name="upload_failed">Data upload failed</string>
-    <string name="shg_name_appli">SHG Name(if applicable)</string>
+    <string name="shg_name_appli">Collective Name(if applicable)</string>
+    <string name="individual_profile">Individual Profile</string>
+    <string name="edp">EDP</string>
+    <string name="collective_profile">Collective Profile</string>
+    <string name="collective_meeting">Collective Meeting</string>
+    <string name="can_cel">CANCEL</string>
+    <string name="clear">CLEAR</string>
+    <string name="set">SET</string>
+    <string name="attendance">Attendance</string>
+    <string name="agenda">Agenda</string>
+    <string name="collections">Collections</string>
+    <string name="election_details">Election Details</string>
+    <string name="profile">Profile</string>
+    <string name="linkages_schemes"><![CDATA[Linkages & Schemes]]></string>
+    <string name="please_specify_skill_job_idv"><b>Q601a. </b>Please specify others</string>
+    <string name="demographics">Demographics</string>
+    <string name="identification">Identification</string>
+    <string name="schemess">Schemes</string>
+    <string name="other_detailss">Other Details</string>
+    <string name="nothing_for_upload">Nothing for upload data</string>
+    <string name="community_dwcc_init"><b>QCD.</b> Community/DWCC Initials</string>
+    <string name="q109_closest_landmark"><b>Q109.</b> Closest Landmark</string>
+    <string name="q110_area_pincode"><b>Q110.</b> Area Pincode</string>
+    <string name="bbmp_ward">BBMP Ward</string>
+    <string name="zone">Zone</string>
+    <string name="panchayat">Panchayat</string>
+    <string name="plz_collective_name">Please enter collective name</string>
+    <string name="unique">Unique ID : </string>
+    <string name="group_name">Group Name :</string>
+    <string name="meeting_date">Meeting Date</string>
+    <string name="last_meeting_date">Last Meeting Date : </string>
+    <string name="plz_enter_date_psy">Please select date</string>
+    <string name="uniqueid">Unique ID :</string>
+    <string name="answer_this_quest"><b>Q508. </b>Please answer this question.</string>
+    <string name="darpartment_service_provide"><b>Q512. </b>From which department/service provider you are availing this scheme/service?</string>
+
+    <string name="answer_this_questdd"><b>Q512. </b>Please answer this question.</string>
+
+    <string name="alter_contact_no_respondent"><b>Q208. </b>Alternate contact number of the respondent</string>
+    <string name="plz_enter_alter_contact_no"><b>Q208. </b>Input proper 10 digit mobile no.</string>
+    <string name="plz_select_community_dwcc">Please select Community/DWCC.</string>
+
+    <string name="psychometric_assessment">Psychometric Assessment</string>
+    <string name="name_respondent"><b>Q201. </b>Name of the respondent (WP/member of the household interested for training)</string>
+    <string name="Name_of_distric_im"><b>QD. </b>Name of District</string>
+    <string name="Name_of_zone_im"><b>QZ. </b>Name of Zone</string>
+    <string name="Name_of_bbmp_ward_im"><b>QW. </b>Name of BBMP Ward</string>
+    <string name="Name_of_panchayat_im"><b>QP. </b>Name of Panchayat</string>
+    <string name="hh_uid">HH UID</string>
+    <string name="im_uid">IM UID</string>
+    <string name="unique_ids">Unique ID</string>
+    <string name="collectv_prf_ids">CP UID</string>
+    <string name="collmm_prf_ids">CM UID</string>
+    <string name="add_household">Add Household</string>
+    <string name="add_meeting">Add Meeting</string>
+    <string name="add_profile">Add Profile</string>
+    <string name="add_member">Add Member</string>
+    <string name="add_individual">Add Individual</string>
+    <string name="add_edp">Add EDP</string>
+    <string name="add_assessment">Add Assessment</string>
+    <string name="valid_pin_code">valid Pincode</string>
+
+
+    <string name="please_input_daily_edp">Please enter the Input value between 100–9999</string>
+    <string name="please_trainig_days_edp">Please enter the Input value between 1–30</string>
+
+
+    <string name="in_what_kind_of_bussiness_you_have_invested">In what kind of business you have invested?</string>
+
+    <string name="category">Category</string>
+    <string name="malewp_or">Male WP or Male NWP</string>
+
+    <string name="femalewp_or">Female WP or Female NWP</string>
+    <string name="transwp_or">Transgender WP or Transgender NWP</string>
+    <string name="attended_male_wp_should_be_less_than_total_male_wp">Attended Male WP should be less than or equals to the total Male WP</string>
+    <string name="attended_female_wp_should_be_less_than_total_female_wp">Attended Female WP should be less than or equals to the total Female WP</string>
+    <string name="attended_transgender_wp_should_be_less_than_total_transgender_wp">Attended Transgender WP should be less than or equals to the total Transgender WP</string>
+    <string name="attended_transgender_nwp_should_be_less_than_total_transgender_nwp">Attended Transgender NWP should be less than or equals to the total Transgender NWP</string>
+    <string name="attended_female_nwp_should_be_less_than_total_female_nwp">Attended Female NWP should be less than or equals to the total Female NWP</string>
+    <string name="attended_male_nwp_should_be_less_than_total_male_nwp">Attended Male NWP should be less than or equals to the total Male NWP</string>
+
+
+    <string name="name_entrprise">Write the name of the enterprise (Existing / Planned) if any.</string>
+    <string name="name_suprvisng_fcorfntr">Name of the supervising field coordinator</string>
+    <string name="socially_category"><b>1.3. </b>Which category you belong to</string>
+    <string name="cast_belong"><b>1.4. </b>Which caste you belong to</string>
+    <string name="economic_category"><b>1.5. </b>Which ration card do you have?</string>
+    <string name="psy_plz_ans_castte"><b>1.5. </b>Please answer this question.</string>
+    <string name="areas_succes_entrep"><b>3.7. </b>Which are the areas where you feel you need capacity building support to become a successful entrepreneur? (Multicheck)</string>
+    <string name="specify_areas_succes_entrep"><b>3.7a. </b>Please specify others</string>
+    <string name="please_specify_psch_pdc">Please enter specify others</string>
+
+    <string name="name_locality"><b>QL.</b> Name of Locality</string>
+    <string name="plz_enter_localty">Please enter name of Locality</string>
+
+
+    <string name="totlamembersmeeting"><b>Q111.</b> Total number of members in the group (WP=Waste picker ; NWP=Non-Waste picker ; HHM= Household Member)</string>
+    <string name="malehhm">Male HHM</string>
+    <string name="femalehhm">Female HHM</string>
+    <string name="transhhm">Transgender HHM</string>
+    <string name="attended_male_hhm_should_be_less_than_total_male_hhm">Attended Male HHM should be less than or equals to the total Male HHM</string>
+    <string name="attended_female_hhm_should_be_less_than_total_female_hhm">Attended Female HHM should be less than or equals to the total Female HHM</string>
+    <string name="attended_transgender_hhm_should_be_less_than_total_transgender_hhm">Attended Transgender HHM should be less than or equals to the total Transgender HHM</string>
+
+    <string name="do_you_have_you_business_plan"><b>Q9. </b>Do you have you any business plan?</string>
+    <string name="are_you_ready_to_invest"><b>Q10. </b>Are you ready to invest ?</string>
+    <string name="how_much_you_they_will_invest_more_than"><b>Q13. </b>How much you are willing to invest through self?</string>
+    <string name="how_are_you_planning_your_investment"><b>Q11. </b>How are you planning your investment? (Multicheck)</string>
+    <string name="any_support_required_in_form_of"><b>Q17. </b>Do you require any support in form of </string>
+    <string name="how_much_financial_assistance_is_required"><b>Q14. </b>How much financial assistance/support you require for investment? (in Rs)</string>
+    <string name="if_yes_through_which_source"><b>Q15. </b>Investment through which source</string>
+
+    <string name="stage_of_self_employment_enterprise_idea"><b>Q1. </b>Stage of Self-employment / enterprise idea</string>
+    <string name="in_what_kind_of_bussiness_you_have_invested_edp"><b>Q3. </b>In what kind of business you have invested/or finalized to invest? (Multicheck)</string>
+    <string name="how_much_amount_you_have_invested"><b>Q5. </b>How much amount you have invested/finalized to invest in this business ? (in Rs)</string>
+    <string name="have_you_registered_your_business"><b>Q6. </b>Have you registered your business?</string>
+    <string name="how_did_you_source_their_investment"><b>Q7. </b>How did you source your investment?</string>
+    <string name="are_they_availing_loans_already"><b>Q8. </b>Are you availing loans already?</string>
+    <string name="from_where_have_availed_loans"><b>Q9. </b>From where you have availed loans?</string>
+    <string name="are_they_expecting_any_financial_assistance"><b>Q10. </b>Are you expecting any financial assistance?</string>
+    <string name="amount_of_financial_assistance_required_in_rs"><b>Q11. </b>Amount of financial assistance required? (in Rs)</string>
+    <string name="are_you_expecting_any_support"><b>Q12. </b>Are you expecting any support in form of</string>
+
+    <string name="are_you_interested_in_starting_new_business"><b>Q1. </b>Are you interested in starting new business?</string>
+    <string name="kind_business_start"><b>Q2. </b>If Yes, What kind of business you would like to start/set up (Multicheck)</string>
+    <string name="are_you_enroll_training_skill"><b>Q4. </b>Are you willing to enroll in business related skill training?</string>
+    <string name="what_kind_of_business_related_skill_training_needed"><b>Q5. </b>If Yes, what kind of business related skill training you want to be enrolled? (Multicheck)</string>
+    <string name="what_is_the_amount_iin_thousands_of_investment_it_requires_in_rs"><b>Q7. </b>What is the amount of investment it requires per day (in Rs)</string>
+    <string name="no_days_month_traing"><b>Q8. </b>Number days in a month dedicated for the training?</string>
+    <string name="please_specify_business_pdc">Please specify others</string>
+    <string name="please_specify_business_start"><b>Q3. </b>Please specify others</string>
+    <string name="please_specify_business_traning"><b>Q6. </b>Please specify others</string>
+    <string name="please_specify_planig_invest"><b>Q12. </b>Please specify others</string>
+    <string name="please_specify_source_invest"><b>Q16. </b>Please specify others</string>
+    <string name="please_specify_required_support"><b>Q18. </b>Please specify others</string>
+    <string name="please_specify_self_employment"><b>Q2. </b>Please specify others</string>
+    <string name="please_specify_business_invest"><b>Q4. </b>Please specify others</string>
+    <string name="please_specify_expecting_support"><b>Q13. </b>Please specify others</string>
+    <string name="please_specify_stage_emp"><b>Q2.3a. </b>Please specify others</string>
+
+    <string name="date_of_data_collection"><b>Q1. </b>Date of data collection</string>
+    <string name="name_of_the_crp_collecting_the_data"><b>Q2. </b>Name of the CRP collecting the data</string>
+    <string name="name_of_the_supervising_officer"><b>Q3. </b>Name of the Supervising officer</string>
+
+    <string name="hh_id"><b>Q4. </b>HH ID</string>
+    <string name="im_id"><b>Q5. </b>IM ID</string>
+    <string name="name_of_beneficiary"><b>Q7. </b>Name of Candidate/Beneficiary</string>
+    <string name="social_category">Social Category</string>
+    <string name="caste_and_income_certificate">Caste and Income certificate?</string>
+    <string name="do_you_have_valid_aadhar_card"><b>Q2. </b>Do you have valid Aadhar card?</string>
+    <string name="do_you_have_valid_pan_card"><b>Q3. </b>Do you have valid PAN card?</string>
+    <string name="do_you_have_bank_account"><b>Q4. </b>Do they have bank account?</string>
+
+
+    <string name="please_name_the_collective"><b>Q12. </b>If Yes, please enter name of the collective</string>
+    <string name="contact_no"><b>Q10. </b>Contact/Alternate conatct no</string>
+    <string name="community_name"><b>Q6. </b>Community/Locality Name</string>
+    <string name="age"><b>Q8. </b>Age (in complete years)</string>
+    <string name="gender"><b>Q9. </b>Sex</string>
+    <string name="member_of_any_shg_jlg_cig"><b>Q11. </b>Are you a member of any collective  1.SHG JLG/CIG</string>
+
+    <string name="do_you_have_caste_and_income_certificate"><b>Q1. </b>Do you have caste and income certificate?</string>
+    <string name="answer_this_questprovider"><b>Q509. </b>Please answer this question.</string>
+
+    <string name="specify_labour"><b>Q603a. </b>Specify the employment work you want to do</string>
+    <string name="specify_business"><b>Q603b. </b>Specify the business work you want to do</string>
+    <string name="specify_job"><b>Q603c. </b>Specify the job work you want to do</string>
+
+
+    <!--    <string name="specify_job"><b>Q603a. </b>Specify the job/business/labour work you want to do</string>-->
+    <string name="beneficiary_progress_tracker">Beneficiary Outcome Tracker</string>
+    <string name="collective_progress_tracker">Collective Outcome tracker</string>
+
+    <string name="date_filling_the_form"><b>101. </b>Date of filling the form</string>
+    <string name="name_crp_bene"><b>102. </b>Name of CRP filling the form</string>
+    <string name="Supervising_fc_bene"><b>103. </b>Name of Supervising Field Coordinator</string>
+    <string name="name_district"><b>104. </b>Name of the District</string>
+    <string name="name_zone"><b>105. </b>Zone</string>
+    <string name="name_ward"><b>106. </b>BBMP Ward</string>
+    <string name="name_panchayat"><b>107. </b>Panchayat</string>
+    <string name="name_thelocality"><b>108. </b>Name of the Locality</string>
+    <string name="indv_member_id_groupcollective"><b>109. </b>Individual Member ID of the group/collective</string>
+    <string name="name_the_sangha_collective"><b>110. </b>Name of the sangha/collective/group that you are part of</string>
+    <string name="collective_memberid"><b>111. </b>Collective Member ID of the group/collective</string>
+    <string name="role_collective_sangha"><b>112. </b>What is your role in the collective/sangha/group</string>
+    <string name="please_specifyothers"><b>112a. </b>Please specify others</string>
+
+    <string name="feel_anxiousless_confident"><b>201. </b>I feel anxious/less confident while taking a decision></string>
+    <string name="consult_takingde_cision"><b>202. </b>I consult others before taking a decision</string>
+    <string name="take_own_decision"><b>203. </b>I can take my own decision</string>
+    <string name="feel_hlepless_solve_problm"><b>204. </b>I often feel helpless and want someone else to solve my problems.</string>
+    <string name="run_away_problm_solutions"><b>205. </b>I don’t run away from problems, rather think of possible solutions to address it</string>
+    <string name="clam_stressful_deal_patienty"><b>206. </b>I can stay calm in stressful situation and deal with it patiently (eg. Loss of job, death of a dear one; loss of property and livelihood due to disaster etc.)</string>
+    <string name="emotional_things"><b>207. </b>I get emotional about things easily</string>
+    <string name="think_analyse_conclusion"><b>208. </b>I can think and analyse things before coming to a conclusion</string>
+    <string name="support_family_household"><b>209. </b>With the support of my family members/spouse I can manage time between my job and household chores</string>
+    <string name="daily_schedule_relaxation"><b>210. </b>I take out some time from my daily schedule for leisure/ relaxation/rejuvenation</string>
+    <string name="run_awy_place_conflict"><b>211. </b>I run away from places of conflicts (both at work and domestic space)</string>
+    <string name="req_conflict_amicably"><b>212. </b>Wherever required, I can resolve a conflict amicably</string>
+    <string name="new_ways_things"><b>213. </b>I can think/come up with new ways of doing things (at personal and professional level)</string>
+    <string name="discourage_giveup"><b>214. </b>When things go wrong, I get discouraged/upset and feel like giving up.</string>
+    <string name="circumtances_job"><b>215. </b>Whatever the circumstances may be, I always try to get the job done (complete the work).</string>
+    <string name="stand_situation_against"><b>216. </b>I can take a stand for myself in situations unfavourable/against me</string>
+    <string name="people_respond"><b>217. </b>I can make people listen/respond to me.</string>
+    <string name="proud_talents"><b>218. </b>I am proud of my talents/skills</string>
+    <string name="feel_sad_loss"><b>219. </b>I feel sad for others at their loss</string>
+    <string name="satisfied_training_receive"><b>220. </b>I am satisfied with the training I received on Life skill from CARE India</string>
+
+    <string name="organize_thoughts_speaking"><b>301. </b>I can organize my thoughts before speaking</string>
+    <string name="listen_other_opinion"><b>302. </b>I listen to others before giving my opinion</string>
+    <string name="eye_contact"><b>303. </b>I make an eye contact while speaking</string>
+    <string name="group_chance_speak"><b>304. </b>In a group conversation, I give others the chance to speak</string>
+    <string name="earning_expenses"><b>305. </b>I currently keep track of my earnings and/or expenses</string>
+    <string name="meet_family_years"><b>306. </b>I am prepared to meet my family’s expected future expenses in the next 2 years</string>
+    <string name="unexpected_cost_family_prblm"><b>307. </b>I am prepared to handle an unexpected cost, like an emergency or family problem in the next 2 years</string>
+    <string name="expense_last_months"><b>308. </b>What is your average expense in last three months? (in INR)</string>
+    <string name="atm_withdrawl"><b>309. </b>I am using ATM for withdrawal and deposit of money</string>
+    <string name="insurance"><b>310. </b>I have (possess) Insurance such as (Multicheck)</string>
+    <string name="please_specify_otherstena"><b>310a. </b>Please specify others</string>
+    <string name="applied_insurance"><b>311. </b>I have applied for Insurance such as (Multicheck)</string>
+    <string name="please_specify_elevena"><b>311a. </b>Please specify others</string>
+    <string name="posses_plan"><b>312. </b>I have (posses) Savings plan such as (Multicheck)</string>
+    <string name="please_specify_twelvea"><b>312a. </b>Please specify others</string>
+    <string name="posses_plan_thirteen"><b>313. </b>I have (posses) Savings plan such as (Multicheck)</string>
+    <string name="please_specify_thirteena"><b>313a. </b>Please specify others</string>
+    <string name="applied_loan"><b>314. </b>Have you taken/applied for any loan</string>
+    <string name="take_apply_loan"><b>315. </b>If yes, from where did you take/apply loan (Multicheck)</string>
+    <string name="please_specify_fifteena"><b>315a. </b>Please specify others</string>
+    <string name="reply_loan"><b>316. </b>Are you able to repay the loan on time</string>
+    <string name="interest_rate_loan"><b>316a. </b>At what rate of interest you repaid the loan?(in INR)</string>
+    <string name="phone_using"><b>317. </b>What kind of phone you are using?</string>
+    <string name="using_internet"><b>317a. </b>Are you using internet?</string>
+    <string name="using_socialmedia_apps"><b>318. </b>I am using social media apps like YouTube, WhatsApp, Facebook and TikTok and can access e-mails on my phone</string>
+    <string name="book_tickets"><b>319. </b>I can book online tickets on phone (bus/rail)</string>
+    <string name="pay_bills"><b>320. </b>I can pay electricity bill, water bills, PDS and re-charge my phone using apps like G-pay, Phone pe, Paytm and other UPI apps</string>
+    <string name="training_life_skills_plus"><b>321. </b>I am satisfied with the training on Life skill plus (advanced communication, financial and digital literacy) training</string>
+
+    <string name="ecnomic_noneconomic"><b>401. </b>Do you know the difference between economic and noneconomic activities?</string>
+    <string name="intrest_takingup"><b>402. </b>Are you interested in taking up any of these</string>
+    <string name="business_plan"><b>403. </b>Do you have a business plan?</string>
+    <string name="process_starting"><b>404. </b>Did you start /process of starting?</string>
+    <string name="business_start_kind"><b>405. </b>What kind of business you have started/process of starting? (Multicheck)</string>
+    <string name="please_specify_foursixa"><b>406. </b>Please specify others</string>
+    <string name="motivated_startbusi"><b>407. </b>What motivated you to start the business? (Multicheck)</string>
+    <string name="please_specify_foureeighta"><b>408. </b>Please specify others</string>
+    <string name="concept_business"><b>409. </b>Do you know about any of these concepts related to business? (Multicheck)</string>
+    <string name="calculation_req_business"><b>410. </b>Do you know these basic calculations required for running a business (Multicheck)</string>
+    <string name="invest_initial_business"><b>411. </b>Have you invested any initial capital in your business?</string>
+    <string name="kind_invest_intil_business"><b>412. </b>If yes, what is the initial capital you invested in your business? (in INR)</string>
+    <string name="contacted_ecosytem_investors"><b>413. </b>Did you get any support/ contacted any ecosystem actors/investors (employers, NGO, govt/private org) for investment support?</string>
+    <string name="support_investment_specify"><b>414. </b>Whom did you contact for support/ or from whom you got support for investment (please specify)?</string>
+    <string name="amount_investment"><b>415. </b>What amount you got as support for investment? (in INR)</string>
+    <string name="applied_gov_scheme"><b>416. </b>Have you applied/received any govt. scheme/services for setting up your business?</string>
+    <string name="name_scheme_source"><b>417. </b>If Yes, name the scheme/services and the source from where you received</string>
+    <string name="name_scheme_sourcea"><b>417a. </b>If Yes, name the scheme/services and the source from where you received</string>
+    <string name="business_registerd"><b>418. </b>Is your business registered?</string>
+    <string name="whom_registered"><b>419. </b>If yes, with whom you have registered</string>
+    <string name="please_specify_fourtwentya"><b>420. </b>Please specify others</string>
+    <string name="procure_materials"><b>421. </b>How do you/from where you procure raw materials? (Multicheck)</string>
+    <string name="specify_fourtwentytwoa"><b>422. </b>Please specify others</string>
+    <string name="market_products"><b>423. </b>How did you market your products/goods (Multicheck)</string>
+    <string name="specify_four_twentyfoura"><b>424. </b>Please specify others</string>
+    <string name="sell_products"><b>425. </b>How do you sell your products/goods? (Multicheck)</string>
+    <string name="specify_four_twentysixa"><b>426. </b>Please specify others</string>
+    <string name="competitiors"><b>427. </b>Who are your competitors? (Multicheck)</string>
+    <string name="specify_four_twentyeighta"><b>428. </b>Please specify others</string>
+    <string name="risk_business"><b>429. </b>Are you aware about the risks involved in entrepreneurship/business</string>
+    <string name="able_address_risks"><b>430. </b>If you have come across any risks, were you be able to address/overcome the risks involved</string>
+    <string name="altrnatve_job_status"><b>431. </b>Alternative job status: I have</string>
+    <string name="specify_fourthreeonea"><b>431a. </b>Please specify others</string>
+    <string name="alternative_job_joined"><b>432. </b>Where have you applied/ got an alternative job? (Please specify the name of organization/the job you joined)</string>
+    <string name="about_job"><b>432a. </b>From where you came to know about this job?</string>
+    <string name="specify_fourthreetwoa"><b>432b. </b>Please specify others</string>
+    <string name="satisfied_training"><b>433. </b>I am satisfied with the training on EDP</string>
+
+    <string name="using_scheme"><b>501. </b>Currently are you using any schemes/services</string>
+    <string name="department_using_scheme"><b>501a. </b>If yes, what schemes/services are you using and from which department/service provider</string>
+    <string name="department_using_schemeb"><b>501b. </b>If yes, what schemes/services are you using and from which department/service provider</string>
+    <string name="scheme_services"><b>502. </b>Schemes and Services(In last 3 months) (Multicheck)</string>
+    <string name="specify_fivetwoa"><b>502a. </b>Please specify others</string>
+    <string name="applied_scheme_services"><b>502b. </b>What schemes/services you have applied/availed and from which department and service provider</string>
+    <string name="id_documents"><b>503. </b>Are you currently using following ID related document/s? (Multicheck)</string>
+    <string name="applied_id_documents"><b>504. </b>Applied for any ID related document/s (Multicheck)</string>
+    <string name="not_receive_documents"><b>505. </b>Applied but have not received any ID related document/s (Multicheck)</string>
+    <string name="applied_followg_documents"><b>506. </b>Applied and have availed the following ID related document/s (Multicheck)</string>
+    <string name="promotional_skills"><b>507. </b>Govt promotional skills for entrepreneurship</string>
+    <string name="specify_fivesevena"><b>507a. </b>Please specify others</string>
+    <string name="bank_account"><b>508. </b>Do you have a bank account</string>
+    <string name="reason_bank"><b>508a. </b>What are the reasons of not having a bank account</string>
+    <string name="specify_fiveeighta"><b>508b. </b>Please specify others</string>
+    <string name="approach_bankacc"><b>509. </b>If yes, have you approached anyone for opening a bank account</string>
+    <string name="whom_approach"><b>509a. </b>If yes, to whom you have approached</string>
+    <string name="specify_fiveninea"><b>509b. </b>Please specify others</string>
+    <string name="applied_account"><b>510. </b>Have you applied for opening a bank account</string>
+    <string name="opened_account"><b>511. </b>Have you opened a bank account</string>
+    <string name="sangha_support"><b>601. </b>Did your Sangha/collective support in</string>
+    <string name="specify_sixonea"><b>601a. </b>Please specify others</string>
+    <string name="add_beneficiary">Add Beneficiary</string>
+    <string name="beneficiary_list">Beneficiary Progress List</string>
+    <string name="col_pro_name">CPT Name :</string>
+
+    <string name="collectivedetails">Collective Details</string>
+    <string name="life_skill_assessment">Life Skill Assessment</string>
+    <string name="life_skill_plus_assessment">Life Skill Plus Assessment</string>
+    <string name="edp_training_assessment">EDP Training Assessment</string>
+    <string name="collective">Collective</string>
+    <string name="Linkage_ecosystem_institutions">Linkage with ecosystem actors/schemes/services/financial institutions</string>
+
+
+    <string name="person_name">Person Name</string>
+    <string name="name_of_the_person_filling_the_form">Name of the person filling the form</string>
+    <string name="designation">Designation</string>
+    <string name="name_of_the_cig_shg_jlg">Name of the CIG/SHG/JLG</string>
+    <string name="collective_unique_code">Collective Unique Code</string>
+    <string name="is_the_collective_registered">Is the collective registered?</string>
+    <string name="date_of_registration">Date of registration</string>
+    <string name="with_which_organization_it_was_registered">With which organization it was registered</string>
+    <string name="name_of_the_cig_shg_jlg_chief">Name of the CIG/SHG/JLG Chief</string>
+    <string name="no_of_members_in_the_collective">No. of Members in the Collective</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="no_of_new_members_joined_the_group_if_any">No. of new members joined the group (if any)</string>
+    <string name="no_of_members_left_the_group_if_any">No. of members left the group (if any)</string>
+    <string name="no_of_meetings_held_as_per_scheduled">No.of meetings held (as per scheduled)</string>
+    <string name="no_of_members_participated_in_the_meeting_out_of_total">No. of members participated in the meeting out of total</string>
+    <string name="action_taken_as_decided_in_previous_meeting">Action taken as decided in previous meeting</string>
+    <string name="is_there_an_equal_representaion_of_men_and_women_in_the_elected_board_ask_if_applicable_to_the_collective">Is there an equal representation of men and women in the elected board (ask if applicable to the collective)</string>
+    <string name="what_percentage_of_members_able_to_voice_their_opinion_interests">What percentage of members able to voice their opinion/interests</string>
+    <string name="leaders_are_elected_through">Leaders are elected through</string>
+    <string name="roataion_of_leadership">Roataion of leadership</string>
+    <string name="active_participation_of_members_in_group_activities">Active participation of members in group activities</string>
+    <string name="book_keeping_record_maintenance_by_group_members">Book-Keeping/Record maintenance by group members</string>
+    <string name="financial_literacy">Financial literacy</string>
+    <string name="management_of_group_savings">Management of group savings</string>
+    <string name="does_internal_money_lending_happen_in_the_group">Does internal money lending happen in the group</string>
+    <string name="percentage_of_members_receiving_loans_for_income_generation_activitie">Percentage of members receiving loans for income generation activities</string>
+    <string name="fequency_of_repayment">Fequency of repayment</string>
+    <string name="does_the_group_attempt_to_address_the_issues_concerned_to_their_locality">Does the group attempt to address the issues concerned to their locality</string>
+    <string name="percentage_of_group_members_attending_training">Percentage of group members attending training</string>
+    <string name="life_skill">Life skill</string>
+    <string name="life_skill_plus">Life skill plus</string>
+    <string name="collectivization">Collectivization</string>
+    <string name="group_memebers_interested_in_starting_an_individual_collective_business">Group memebers interested in starting an individual/ collective business</string>
+    <string name="any_support_provided_or_initiative_taken_by_the_collective_for_its_members_to_start_the_collective_business">Any support provided or initiative taken by the collective for its members to start the collective business</string>
+    <string name="from_where_whom_the_support_was_received">From where/whom the support was received?</string>
+    <string name="please_specify_others_new">Please specify others</string>
+    <string name="what_kind_of_support_initiative_was_taken">What kind of support/initiative was taken</string>
+    <string name="no_of_federations_women_waste_picker_association_bodies_groups_entrepreneuers_formed_for_alternate_income_and_livelihoods">No. of federations/ women waste picker association/bodies/groups (entrepreneuers) formed for alternate income and livelihoods</string>
+    <string name="members_interested_in_doing_alternative_job_especially_women">Members interested in doing alternative job (especially women)</string>
+    <string name="any_support_provided_or_initiative_taken_by_collective_taken_for_its_members_to_enter_into_an_alternative_job">Any support provided or initiative taken by collective taken for its members to enter into an alternative job</string>
+    <string name="any_linkage_established_with_service_providers_like_financial_institutions_employers_government_officials_private_officials_training_organizations_ngo">Any linkage established with service providers like financial institutions, employers government officials; private officials; training organizations; NGO</string>
+    <string name="post_training_does_the_women_members_shown_interest_in_taking_up_the_leadership_role">Post training, does the women members shown interest in taking up the leadership role</string>
+    <string name="no_of_capacity_building_trainings_held_for_women_managers">No. of capacity building trainings held for women managers</string>
+    <string name="women_trained_to_manage_the_books_in_collectives_and_bank_transactions">Women trained to manage the books in collectives and bank transactions</string>
+    <string name="are_the_members_of_the_group_gender_sensitive_and_are_able_to_solve_issues_pertaining_it">Are the members of the group gender sensitive and are able to solve issues pertaining it</string>
+    <string name="group_s_corpus_fund_status">Group’s corpus fund status</string>
+    <string name="management_of_internal_loan">Management of internal loan</string>
+    <string name="members_are_self_sustaining_in_managing_the_group_affairs">Members are self sustaining in managing the group affairs</string>
+    <string name="any_exposure_cross_visit_planned_to_other_collectives_enterprises_ecosystem_actors">Any exposure/cross visit planned to other collectives/enterprises/ecosystem actors</string>
+    <string name="no_of_visits_planned_executed">No. of visits planned/executed</string>
+    <string name="name_of_the_organization_collective_enterprise_to_which_exposure_visit_was_planned">Name of the organization/collective/enterprise to which exposure visit was planned</string>
+    <string name="no_of_members_participated">No. of members participated</string>
+    <string name="purpose_of_the_visit">Purpose of the visit</string>
+    <string name="no_of_women_members_able_to_articulated_their_needs_with_ecosystem_actors_post_visit">No. of women members able to articulated their needs with ecosystem actors post visit</string>
+    <string name="no_of_ecosystem_actors_enterprises_organizations_provided_platforms_to_women_to_communicate_their_needs_effectively">No. of ecosystem actors/enterprises/organizations provided platforms to women to communicate their needs effectively</string>
+    <string name="as_a_collective_any_schemes_were_mobilized">As a collective, any schemes were mobilized?</string>
+    <string name="no_of_schemes_mobilized">No. of schemes mobilized</string>
+    <string name="any_bank_accounts_of_the_members_opened">Any bank accounts of the members opened?</string>
+    <string name="no_of_bank_accounts_opened">No.of bank accounts opened</string>
+    <string name="are_the_members_especially_women_able_to_access_collective_financial_resources_post_opening_of_bank_account">Are the members especially women able to access collective financial resources post opening of bank account</string>
+
+    <string name="Member_strength">Member Strength</string>
+    <string name="effectiveness_1">Effectiveness-1</string>
+    <string name="effectiveness_2">Effectiveness-2</string>
+    <string name="sustainability">Sustainability</string>
+    <string name="access_to_schemes">Access to Schemes</string>
+    <string name="meeting_details">Meeting Details</string>
+
+    <string name="Supervising_fc">Supervising FC</string>
+    <string name="name_of_person_filling_the_form">Name of person filling the form</string>
+    <string name="name_of_training_module">Name of the training module</string>
+    <string name="training_location">Training Location</string>
+    <string name="date_of_form_filling">Date of filling the form</string>
+    <string name="name_of_community">Name of the Community</string>
+    <string name="group_batch_id">Group/Batch ID(to be filled from attendance)</string>
+    <string name="total_no_of_participants">Total no. of participants</string>
+    <string name="no_of_female_participants">No. of female participants</string>
+    <string name="male_paticipants">No. of Male participants</string>
+    <string name="pre_post_assessment">Pre Post Assessment</string>
+    <string name="pre_post_assessment_list">Pre Post Assessment List</string>
+    <string name="please_select_valid_answer">Please select valid answer</string>
+    <string name="please_select_pre_test_post_test">Please select Pre Test or Post Test </string>
+    <string name="please_select_group_batch_id">Please select group/batch ID</string>
+
+    <string name="date_form">Date from</string>
+    <string name="date_to">Date to</string>
+    <string name="transgender">Transgender</string>
+    <string name="subdashboard">Sub Dashboard</string>
+
+    <string name="unsynchronized_data">Unsynchronized Data</string>
+    <string name="close">Close</string>
+    <string name="unsynchronized">Unsynchronized</string>
+    <string name="total">Total</string>
+    <string name="nothingupload">Nothing to Upload</string>
+    <string name="uploadf">Upload Failed</string>
+    <string name="uploads">Upload Successful</string>
+    <string name="downf">Download Failed</string>
+    <string name="downs">Download Successful</string>
+    <string name="uploaddatafirst">Upload Pending Data First</string>
+
+    <string name="SignUp">Sign Up</string>
+    <string name="form_name">Form Name</string>
+    <string name="collective_prog_tracker">Collective Outcome Tracker</string>
+    <string name="home_screen">Home Screen</string>
+    <string name="focus_area_select">Select your focus area</string>
+    <string name="are_you_sure_log_out">Are you sure you want to log out?</string>
+    <string name="sync">Sync</string>
+    <string name="psychometric">Psychometric</string>
+    <string name="psychometric_list">Psychometric List</string>
+    <string name="collective_prog_tracker_list">Collective Progress Tracker List</string>
+    <string name="name">Name</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="documents">Documents</string>
+    <string name="buisness_planning">Business planning</string>
+    <string name="buisness_set_up_run">Business set up and running</string>
+    <string name="primary_data_">Primary data</string>
+    <string name="pending">Pending</string>
+    <string name="recommended">Recommended</string>
+
+    <string name="rejected">Rejected</string>
+    <string name="approved">Approved</string>
+    <string name="discription">Description</string>
+    <string name="do_you_want_to_delete">Do you want to Delete?</string>
+    <string name="age_">Age</string>
+    <string name="upload_data">Upload Data</string>
+    <string name="download_data">Download All Data</string>
+    <string name="download_status">Download Status</string>
+    <string name="download_master">Download Master</string>
+    <string name="reports">Reports</string>
+    <string name="wp">WP</string>
+    <string name="nwp">NWP</string>
+    <string name="hhm">HHM</string>
+    <string name="netwrk_available">Network is available : true</string>
+    <string name="unknown_view_model_class">Unknown View Model Class</string>
+    <string name="im_profile_list">IM Profile List</string>
+    <string name="welcome">Welcome!</string>
+
+    <string name="add_progress">Add Progress</string>
+    <string name="validation">Validated</string>
+    <string name="delete_record">This record is already uploaded. You can not delete this record</string>
+
+    <string name="training_module">Training Module</string>
+    <string name="trainer_name">Trainer Name</string>
+    <string name="coll_notcomplete_prf">You can not add new Profile,please complete the previous profile</string>
+
+
+    <string name="please_wait">Please wait&#8230;</string>
+    <string name="no_internet">No internet connection!</string>
+    <string name="settings">Settings</string>
+    <string name="back_again_to_exit">Please click BACK again to exit</string>
+
+    <string name="name_of_the_ongoing_business"><b>Q1. </b>Name of the ongoing business</string>
+    <string name="stage_of_the_ongoing_business"><b>Q2. </b>Stage of the ongoing business before CARE India support</string>
+    <string name="please_specify_other_third"><b>Q3. </b>Please specify others</string>
+    <string name="mode_of_investment"><b>Q4. </b>Mode of Investment</string>
+    <string name="please_specify_other_fifth"><b>Q5. </b>Please specify others</string>
+    <string name="amount_invested_through_self"><b>Q6. </b>Amount invested through self (in INR)</string>
+    <string name="purpose_of_taking_loan"><b>Q7. </b>Purpose of taking the loan</string>
+    <string name="is_repayment_of_loan_happening"><b>Q8. </b>Is repayment of loan happening?</string>
+    <string name="loan_amount_returned_very_month"><b>Q9. </b>Loan amount returned every month and at what rate of interest (%)</string>
+    <string name="amount"><b>a) </b>Amount (in INR)</string>
+    <string name="rate_of_interest"><b>b) </b>Rate of interest (%)</string>
+    <string name="what_is_reason_of_non_repayment"><b>Q10. </b>What is the reason of non-repayment</string>
+    <string name="business_support_from_care_india"><b>Q11. </b>Business support from CARE India</string>
+    <string name="please_specify_other_twelve"><b>Q12. </b>Please specify others</string>
+    <string name="what_kind_of_asset_support_you_got"><b>Q13. </b>What kind of Asset Support you got?</string>
+    <string name="cost_of_the_asset"><b>Q13a. </b>Cost of the Asset (in INR)</string>
+    <string name="nature_of_skill_training_you_acquired"><b>Q14. </b>Nature of Skill Training you acquired</string>
+    <string name="please_specify_other_forteen"><b>Q14a. </b>Please specify others</string>
+    <string name="total_cost_of_training"><b>Q14b. </b>Total cost of the training (in INR)</string>
+    <string name="how_did_the_training_helped_you_in_starting_business"><b>Q15. </b>How did the training/s helped you in starting the business in terms of developing products/procuring raw materials/marketing/selling of their products and services</string>
+    <string name="what_kind_of_support_you_got_for_market_linkage"><b>Q16. </b>What kind of support you got for market linkage</string>
+    <string name="please_specify_other_sixteen"><b>Q16a. </b>Please specify others</string>
+    <string name="any_cost_involved_if_yes_what_is_amount"><b>Q16b. </b>Any cost involved, if yes what is the amount? (in INR)</string>
+    <string name="what_kind_of_branding_support_you_got"><b>Q17. </b>What kind of branding support you got?</string>
+    <string name="please_specify_other_seventeen"><b>Q17a. </b>Please specify others</string>
+    <string name="any_cost_involved_if_yes_what_is_amount_seventeen"><b>Q17b. </b>Any cost involved, if yes what is the amount? (in INR)</string>
+    <string name="expenses_per_month"><b>Q18. </b>Expenses per month</string>
+    <string name="sales_per_month"><b>Q19. </b>Sales per month</string>
+    <string name="profit_per_month"><b>Q20. </b>Profit per month</string>
+    <string name="money_invested_in_business_from_profit_per_month"><b>Q21. </b>Money invested in business from Profit per month</string>
+    <string name="net_saving_month"><b>Q22. </b>Net Savings/month</string>
+    <string name="source_of_finance_support_post"><b>Q1. </b>Source of finance support post CARE India\'s Intervention</string>
+    <string name="purpose_of_taking_the_loan"><b>Q2. </b>Purpose of taking the loan</string>
+    <string name="amount_of_loan_taken"><b>Q2a. </b>Amount of Loan taken (in INR)</string>
+    <string name="loan_repayment_at_what_rate_of_interest"><b>Q2b. </b>Loan repayment at what rate of interest(%)</string>
+    <string name="is_your_business_running_smoothly"><b>Q3. </b>Is your business running smoothly (as per your planning)?</string>
+    <string name="if_no_reasons"><b>Q3a. </b>If No, reasons</string>
+    <string name="please_specify_other_thirda"><b>Q3b. </b>Please specify others</string>
+    <string name="what_three_things_would_you_attribute_to_successful_running_of_business"><b>Q4. </b>If Yes, what three things would you attribute to the successful running of business</string>
+    <string name="micro_enterprise_development_phase_1_first">Development Tracking-Phase 1(1st)</string>
+    <string name="micro_enterprise_development_phase_1_second">Development Tracking-Phase 1(2nd)</string>
+    <string name="micro_enterprise_development_phase_2">Development Tracking-Phase 2</string>
+
+    <string name="aadhar12digit">12 digit Aadhar card no.</string>
+    <string name="add_im">Add IM</string>
+    <string name="household_unique_id">Household Unique ID</string>
+
 </resources>

@@ -1,6 +1,8 @@
 package com.careindia.lifeskills.viewmodel
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.careindia.lifeskills.entity.CollectiveEntity
 import com.careindia.lifeskills.entity.MstDistrictEntity
 import com.careindia.lifeskills.repository.CollectiveRepository
@@ -9,7 +11,9 @@ import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.views.base.BaseViewModel
 import com.careindia.lifeskills.views.collectiveProfile.*
 import kotlinx.android.synthetic.main.activity_collective_profile_fifth.*
+import kotlinx.android.synthetic.main.activity_collective_profile_first.*
 import kotlinx.android.synthetic.main.activity_collective_profile_fourth.*
+import kotlinx.android.synthetic.main.activity_collective_profile_second.*
 import kotlinx.android.synthetic.main.activity_collective_profile_sixth.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -20,7 +24,6 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
 
     val collectiveData = collectiveRepository.getallCollectivedata()
 
-    val Date = MutableLiveData<String?>()
 
     var CrpName = MutableLiveData<String?>()
     val SfcName = MutableLiveData<String?>()
@@ -31,13 +34,11 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
     val localityName = MutableLiveData<String?>()
     val collectiveId = MutableLiveData<String?>()
     val groupName = MutableLiveData<String?>()
-    val Formationdate = MutableLiveData<String?>()
     val Grouptype = MutableLiveData<Int?>()
     val Specifyothergroup = MutableLiveData<String?>()
     val Groupregistered = MutableLiveData<Int?>()
     val Specifygroupregistered = MutableLiveData<String?>()
     val Headgroupname = MutableLiveData<String?>()
-    val objective = MutableLiveData<String?>()
     val Headsex = MutableLiveData<Int?>()
     val Totalmember = MutableLiveData<String?>()
     val Totalmale = MutableLiveData<String?>()
@@ -57,7 +58,8 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
     val Otherfrequency1 = MutableLiveData<String?>()
     val Fromwhereloan = MutableLiveData<Int?>(0)
     val OtherSpecify = MutableLiveData<String?>()
-    val LoanChallange = MutableLiveData<String?>()
+
+    //    val LoanChallange = MutableLiveData<String?>()
     val meetingschedule = MutableLiveData<Int?>()
     val FrequencyMeeting = MutableLiveData<Int?>(0)
     val Specifyoth = MutableLiveData<String?>()
@@ -67,23 +69,19 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
     val Enterprise = MutableLiveData<Int?>()
 
     val Other1 = MutableLiveData<String?>()
-    val Service = MutableLiveData<String?>()
-    val ServiceAvailing = MutableLiveData<String?>()
-    val ServiceProvider = MutableLiveData<String?>()
     val Other2 = MutableLiveData<String?>()
 
     val saveandnextText = MutableLiveData<String>()
 
-    var recordbookupdate = 0
+
     var collectivelinkage = ""
     var collectiveplanbuisness = ""
 
     fun collectDataSix(
-        rg_record_book_update: Int,
         chk_options_below: String,
         chk_collective_plan: String,
     ) {
-        recordbookupdate = rg_record_book_update
+
         collectivelinkage = chk_options_below
         collectiveplanbuisness = chk_collective_plan
     }
@@ -99,21 +97,22 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
     fun saveandUpdateCollectiveProfile(collectiveProfileActivity: CollectiveProfileActivity,initials:String) {
         var Ward1 = 0
         var PWCode = ""
-        val District1 = returnDistrictID(District.value, 10)
+        val District1 =
+            returnDistrictID(collectiveProfileActivity.spin_district_name.selectedItemPosition, 10)
         val Zone1: Int = collectiveProfileActivity.returnZoneID(
-            ZoneName.value,
+            collectiveProfileActivity.spin_zone_name.selectedItemPosition,
             District1
         )
 
         if (Zone1 > 0) {
             Ward1 = collectiveProfileActivity.returnWardID(
-                WardName.value,
+                collectiveProfileActivity.spin_ward_name.selectedItemPosition,
                 Zone1
             )
             PWCode = "W"
         } else {
             Ward1 = collectiveProfileActivity.returnPanchayatID(
-                PanchayatName.value,
+                collectiveProfileActivity.spin_panchayat_name.selectedItemPosition,
                 District1
             )
             PWCode = "P"
@@ -133,10 +132,13 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
                     Ward1,
                     PWCode,
                     localityName.value,
-                    Date.value,
-                    collectiveId.value,
+                    collectiveProfileActivity.et_landmark.text.toString(),
+                    collectiveProfileActivity.et_pincode.text.toString(),
+                    validate!!.getDaysfromdates(collectiveProfileActivity.et_date_of_filling.text.toString(), 1),
+//                    collectiveId.value,
+                    collectiveProfileActivity.et_collective_id.text.toString(),
                     groupName.value,
-                    "",
+                    0,
                     0,
                     "",
                     0,
@@ -180,34 +182,63 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
                     -1,
                     "",
                     "",
-                    "",
+                    validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+                    validate!!.getDaysfromdates(validate!!.currentdatetime, 2),
                     0,
-                    "",
+                    0,
                     0,
                     0,
                     validate!!.RetriveSharepreferenceInt(AppSP.CRPID),
-                    validate!!.RetriveSharepreferenceInt(AppSP.FCID),initials,1
+                    validate!!.RetriveSharepreferenceInt(AppSP.FCID), initials, "", 1
                 )
             )
         } else if (validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!.length > 0) {
             update(
                 validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!,
-                Date.value!!,
+                validate!!.getDaysfromdates(collectiveProfileActivity.et_date_of_filling.text.toString(), 1),
                 groupName.value!!,
                 Ward1!!,
                 localityName.value!!,
-                collectiveId.value!!,
+//                collectiveId.value!!,
+                collectiveProfileActivity.et_collective_id.text.toString(),
                 Zone1!!,
-                District1!!,Ward1,
-                PWCode,initials,1
+                District1, Ward1,
+                PWCode, initials, 1,
+                collectiveProfileActivity.et_landmark.text.toString(),
+                collectiveProfileActivity.et_pincode.text.toString(),
+                validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+                validate!!.getDaysfromdates(validate!!.currentdatetime, 2)
+
             )
         }
     }
 
     fun returnDistrictID(pos: Int?, StateCode: Int): Int {
+        var list: List<String>? = null
+        if (validate?.RetriveSharepreferenceString(AppSP.DistrictIn)!!.contains(",")) {
+            list = validate?.RetriveSharepreferenceString(AppSP.DistrictIn)
+                ?.split(",")?.let {
+                    listOf(
+                        *it
+                            .toTypedArray()
+                    )
+                }
+        } else {
+            list = null
+        }
+
+
         var data: List<MstDistrictEntity>? = null
-        data =
+        data = if (!list.isNullOrEmpty()) {
+            list.let {
+                collectiveRepository.getMstDist(
+                    StateCode,
+                    list
+                )
+            }
+        } else {
             collectiveRepository.getMstDist(StateCode)
+        }
 
         var id = 0
 
@@ -221,22 +252,35 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
         return id
     }
 
-    fun updatecollectiveprofilesecond(collectiveProfileActivitySec: CollectiveProfileActivitySec) {
+    fun updatecollectiveprofilesecond(
+        collectiveProfileActivitySec: CollectiveProfileActivitySec,
+        mstLookupViewModel: MstLookupViewModel,
+        iLanguageID: Int
+    ) {
 
         val langID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
         updatecollectivesecond(
             validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!,
-            Formationdate.value!!,
+            validate!!.getDaysfromdates(collectiveProfileActivitySec.et_date_of_group_formation.text.toString(),1),
             collectiveProfileActivitySec.returnID(Grouptype.value!!, 18, langID),
             Specifyothergroup.value!!,
             collectiveProfileActivitySec.returnID(Groupregistered.value!!, 19, langID),
-            Specifygroupregistered.value!!, objective.value!!,
+            Specifygroupregistered.value!!, validate!!.getschemes(
+                collectiveProfileActivitySec.et_objective1,
+                collectiveProfileActivitySec.et_objective2,
+                collectiveProfileActivitySec.et_objective3,
+                collectiveProfileActivitySec.et_objective4,
+                collectiveProfileActivitySec.et_objective5
+            ),
             Headgroupname.value!!,
             collectiveProfileActivitySec.returnID(Headsex.value!!, 1, langID),
             validate!!.returnIntegerValue(Totalmember.value),
             validate!!.returnIntegerValue(Totalmale.value),
             validate!!.returnIntegerValue(Totalfemale.value),
-            validate!!.returnIntegerValue(Totaltransgender.value),1
+            validate!!.returnIntegerValue(Totaltransgender.value),
+            validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+            validate!!.getDaysfromdates(validate!!.currentdatetime, 2),
+            1
         )
     }
 
@@ -249,12 +293,9 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
             validate!!.GetAnswerTypeRadioButtonID(collectiveProfileActivityFourth.rg_rotation_of_roles),
             validate!!.GetAnswerTypeRadioButtonID(collectiveProfileActivityFourth.rg_office_bearer),
             Electionfrequency.value!!,
-            validate!!.GetAnswerTypeRadioButtonID(collectiveProfileActivityFourth.rg_bank_account),
-            collectiveProfileActivityFourth.returnID(Groupsaving.value!!, 20, langID),
-            Otherinr.value!!,
-            collectiveProfileActivityFourth.returnID(Frequencygroupsaving.value!!, 21, langID),
-            Otherfreq.value!!,
-            cBank.value!!,1
+            validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+            validate!!.getDaysfromdates(validate!!.currentdatetime, 2),
+            1
         )
 
 
@@ -269,12 +310,26 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
             validate!!.GetAnswerTypeRadioButtonID(collectiveProfileActivityFifth.rg_easily_avial_loan),
             collectiveProfileActivityFifth.returnID(Fromwhereloan.value!!, 23, langID),
             OtherSpecify.value!!,
-            LoanChallange.value!!,
+            validate!!.getAgenda(
+                collectiveProfileActivityFifth.et_challenges1,
+                collectiveProfileActivityFifth.et_challenges2,
+                collectiveProfileActivityFifth.et_challenges3,
+            ),
             validate!!.GetAnswerTypeRadioButtonID(collectiveProfileActivityFifth.rg_meeting_conducted),
             collectiveProfileActivityFifth.returnID(FrequencyMeeting.value!!, 24, langID),
             Specifyoth.value!!,
             collectiveProfileActivityFifth.returnID(RegularityMeeting.value!!, 11, langID),
             validate!!.GetAnswerTypeRadioButtonID(collectiveProfileActivityFifth.rg_meeting_schedule),
+            validate!!.GetAnswerTypeRadioButtonID(collectiveProfileActivityFifth.rg_bank_account),
+            collectiveProfileActivityFifth.returnID(Groupsaving.value!!, 20, langID),
+            Otherinr.value!!,
+            collectiveProfileActivityFifth.returnID(Frequencygroupsaving.value!!, 21, langID),
+            Otherfreq.value!!,
+            cBank.value!!,
+            validate!!.GetAnswerTypeRadioButtonID(collectiveProfileActivityFifth.rg_record_book),
+            validate!!.GetAnswerTypeRadioButtonID(collectiveProfileActivityFifth.rg_record_book_update),
+            validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+            validate!!.getDaysfromdates(validate!!.currentdatetime, 2),
             1
         )
     }
@@ -282,15 +337,33 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
     fun updatecollectiveprofileSix(collectiveProfileActivitySixth: CollectiveProfileActivitySixth) {
         updatecollectivesix(
             validate!!.RetriveSharepreferenceString(AppSP.CollectiveGUID)!!,
-            Service.value,
-            ServiceAvailing.value,
-            ServiceProvider.value,
-            validate!!.GetAnswerTypeRadioButtonID(collectiveProfileActivitySixth.rg_record_book),
-            validate!!.GetAnswerTypeRadioButtonID(collectiveProfileActivitySixth.rg_record_book_update),
+            validate!!.getschemes(
+                collectiveProfileActivitySixth.et_other_q501b1,
+                collectiveProfileActivitySixth.et_other_q501b2,
+                collectiveProfileActivitySixth.et_other_q501b3,
+                collectiveProfileActivitySixth.et_other_q501b4,
+                collectiveProfileActivitySixth.et_other_q501b5
+            ),
+            validate!!.getschemes(
+                collectiveProfileActivitySixth.et_details_service1,
+                collectiveProfileActivitySixth.et_details_service2,
+                collectiveProfileActivitySixth.et_details_service3,
+                collectiveProfileActivitySixth.et_details_service4,
+                collectiveProfileActivitySixth.et_details_service5
+            ),
+            validate!!.getschemes(
+                collectiveProfileActivitySixth.et_service_provider1,
+                collectiveProfileActivitySixth.et_service_provider2,
+                collectiveProfileActivitySixth.et_service_provider3,
+                collectiveProfileActivitySixth.et_service_provider4,
+                collectiveProfileActivitySixth.et_service_provider5
+            ),
             validate!!.GetAnswerTypeRadioButtonID(collectiveProfileActivitySixth.rg_services_schemes),
             validate!!.GetAnswerTypeRadioButtonID(collectiveProfileActivitySixth.rg_enterprise_business),
             collectivelinkage,
-            collectiveplanbuisness, Other1.value!!, Other2.value!!,1
+            collectiveplanbuisness, Other1.value!!, Other2.value!!,
+            validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+            validate!!.getDaysfromdates(validate!!.currentdatetime, 2), 1
         )
     }
 
@@ -299,12 +372,13 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
         Service: String?,
         ServiceAvailing: String?,
         ServiceProvider: String?,
-        recordbook: Int,
-        recordbookupdate: Int,
         serviceschemes: Int,
         enterprisebuisness: Int,
         collectivelinkage: String,
-        collectiveplanbuisness: String, Linkages_oth: String, Collective_opp_Other: String,IsEdited:Int
+        collectiveplanbuisness: String, Linkages_oth: String, Collective_opp_Other: String,
+        updatedBy: Int?,
+        updated_on: Long?,
+        IsEdited: Int
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             collectiveRepository.updatecollectivesix(
@@ -312,16 +386,16 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
                 Service,
                 ServiceAvailing,
                 ServiceProvider,
-                recordbook,
-                recordbookupdate,
                 serviceschemes,
                 enterprisebuisness,
                 collectivelinkage,
-                collectiveplanbuisness, Linkages_oth, Collective_opp_Other,IsEdited
+                collectiveplanbuisness, Linkages_oth, Collective_opp_Other,
+                updatedBy,
+                updated_on,
+                IsEdited
             )
         }
     }
-
 
     fun insert(collectiveEntity: CollectiveEntity) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -330,26 +404,34 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
     }
 
     fun update(
-        guid: String, date: String,
+        guid: String, date: Long?,
         groupName: String,
         wardname: Int,
         localityname: String,
         collectiveid: String,
         zonename: Int,
         districcode: Int,
-        panchayatcode: Int,pw_code:String,initials:String,IsEdited:Int
+        panchayatcode: Int, pw_code: String, initials: String, IsEdited: Int,
+        LandMark: String?,
+        PinCode: String?,
+        updatedBy: Int?,
+        updated_on: Long?
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             collectiveRepository.update(
                 guid, date, groupName, wardname, localityname,
-                collectiveid, zonename, districcode, panchayatcode,pw_code,initials,IsEdited
+                collectiveid, zonename, districcode, panchayatcode, pw_code, initials, IsEdited,
+                LandMark,
+                PinCode,
+                updatedBy,
+                updated_on
             )
         }
     }
 
     fun updatecollectivesecond(
         guid: String,
-        formationdate: String,
+        formationdate: Long?,
         Type: Int,
         TypeOther: String,
         Registration: Int,
@@ -360,7 +442,9 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
         totalmale: Int,
         totalfemale: Int,
         totaltrangender: Int,
-        IsEdited:Int
+        updatedBy: Int?,
+        updated_on: Long?,
+        IsEdited: Int
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             collectiveRepository.updatecollectivesecond(
@@ -375,6 +459,8 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
                 totalmale,
                 totalfemale,
                 totaltrangender,
+                updatedBy,
+                updated_on,
                 IsEdited
             )
         }
@@ -385,13 +471,9 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
         tenure: String, Rolerotation: Int,
         electionob: Int,
         electionfreq: String,
-        bankac: Int,
-        groupsaving: Int,
-        otherinr: String,
-        freqsaving: Int,
-        othersaving: String,
-        cbank: String,
-        IsEdited:Int
+        updatedBy: Int?,
+        updated_on: Long?,
+        IsEdited: Int
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             collectiveRepository.updatecollectivefourth(
@@ -399,12 +481,8 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
                 tenure, Rolerotation,
                 electionob,
                 electionfreq,
-                bankac,
-                groupsaving,
-                otherinr,
-                freqsaving,
-                othersaving,
-                cbank,
+                updatedBy,
+                updated_on,
                 IsEdited
             )
         }
@@ -417,7 +495,18 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
         LoanChallange: String,
         Meetingconducted: Int,
         FrequencyMeeting: Int, FrequencyMeetingOther: String,
-        RegularityMeeting: Int, meetingschedule: Int,IsEdited:Int
+        RegularityMeeting: Int, meetingschedule: Int,
+        bankac: Int,
+        groupsaving: Int,
+        otherinr: String,
+        freqsaving: Int,
+        othersaving: String,
+        cbank: String,
+        recordbook: Int,
+        recordbookupdate: Int,
+        updatedBy: Int?,
+        updated_on: Long?,
+        IsEdited: Int
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             collectiveRepository.updatecollectivefive(
@@ -427,7 +516,18 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
                 LoanChallange,
                 Meetingconducted,
                 FrequencyMeeting, FrequencyMeetingOther,
-                RegularityMeeting, meetingschedule,IsEdited
+                RegularityMeeting, meetingschedule,
+                bankac,
+                groupsaving,
+                otherinr,
+                freqsaving,
+                othersaving,
+                cbank,
+                recordbook,
+                recordbookupdate,
+                updatedBy,
+                updated_on,
+                IsEdited
             )
         }
     }
@@ -437,16 +537,30 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
         return collectiveRepository.getCollectivedatabyGuid(guid)
     }
 
-    fun getCommWData(izone: Int, iward: Int): LiveData<List<CollectiveEntity>> {
-        return collectiveRepository.getCommWData(izone, iward)
+    fun getCommWData(iDisCode: Int, izone: Int, iward: Int): LiveData<List<CollectiveEntity>> {
+        return collectiveRepository.getCommWData(iDisCode, izone, iward)
     }
 
-    fun getCommZData(izone: Int): LiveData<List<CollectiveEntity>> {
-        return collectiveRepository.getCommZData(izone)
+     fun getcollectiveData(iDisCode: Int, izone: Int, iward: Int):List<CollectiveEntity> {
+        return collectiveRepository.getcollectiveData(iDisCode, izone, iward)
     }
 
-    fun getCommPData(iPanchayat: Int): LiveData<List<CollectiveEntity>> {
-        return collectiveRepository.getCommPData(iPanchayat)
+
+    fun getCommWData(iDisCode: Int, izone: Int): LiveData<List<CollectiveEntity>> {
+        return collectiveRepository.getCommWData(iDisCode, izone)
+    }
+
+    fun getCommWData(iDisCode: Int): LiveData<List<CollectiveEntity>> {
+        return collectiveRepository.getCommWData(iDisCode)
+    }
+
+
+    fun getCommPData(iDisCode: Int, iPanchayat: Int): LiveData<List<CollectiveEntity>> {
+        return collectiveRepository.getCommPData(iDisCode, iPanchayat)
+    }
+
+    fun getCommPData(iDisCode: Int): LiveData<List<CollectiveEntity>> {
+        return collectiveRepository.getCommPData(iDisCode)
     }
 
     fun deletecollective(collectiveEntity: CollectiveEntity) {
@@ -455,8 +569,8 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
         }
     }
 
-    fun getMstDist(StateCode: Int): List<MstDistrictEntity> {
-        return collectiveRepository.getMstDist(StateCode)
+    fun getMstDist(StateCode: Int, DistrictIn: List<String>): List<MstDistrictEntity> {
+        return collectiveRepository.getMstDist(StateCode, DistrictIn)
     }
 
     fun getCommunityCount(): Int {
@@ -466,5 +580,10 @@ class CollectiveViewModel(private val collectiveRepository: CollectiveRepository
     fun getCommunityID(CollectiveID: String): Int {
         return collectiveRepository!!.getCommunityID(CollectiveID)
     }
+
+    fun getCollectiveDataByCollectiveGuid(collectiveGuid: String): List<CollectiveEntity> {
+        return collectiveRepository.getCollectiveDataByCollectiveGuid(collectiveGuid)
+    }
+
 
 }

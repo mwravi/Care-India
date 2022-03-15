@@ -29,7 +29,9 @@
             style="@style/ScrolllViewStyle"
             android:layout_margin="@dimen/_10sdp"
             android:layout_weight="1"
-            android:scrollbars="none">
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical"
+            >
 
             <LinearLayout
                 style="@style/LinearLayoutStyle"
@@ -213,69 +215,12 @@
                     android:layout_marginBottom="@dimen/_5sdp"
                     android:background="#D8D6D6" />
 
-                <LinearLayout
-                    android:id="@+id/lay_availed_services_past"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/availed_services_past" />
-
-
-                    </TableRow>
-
-
-                    <RadioGroup
-                        android:id="@+id/rg_availed_services_past"
-                        style="@style/radioGroupStyle" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="@dimen/_5sdp"
-                    android:background="#D8D6D6" />
-
-                <LinearLayout
-                    android:id="@+id/lay_et_service_provider_department"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-
-                        <TextView style="@style/AsterikStyle" />
-
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/service_provider_department" />
-
-
-                    </TableRow>
-
-                    <EditText
-                        android:id="@+id/et_service_provider_department"
-                        style="@style/EditTextStyleNew"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
-                        android:hint="@string/type_here"
-                        android:inputType="text"
-                        android:text="@={individualProfileViewModel.DetailServiceProviderDep}" />
-
-                </LinearLayout>
-
-
             </LinearLayout>
 
         </ScrollView>
 
         <TableRow
+            android:id="@+id/btn_bottom"
             style="@style/TableRowStyle"
             android:layout_margin="@dimen/_10sdp">
 

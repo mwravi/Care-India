@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:viewBindingIgnore="true">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <include layout="@layout/topnavigation_collective_tracker"/>
+
+    <ScrollView
+        style="@style/ScrolllViewStyle"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:overScrollMode="always"
+        android:scrollbarSize="@dimen/_10sdp"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            style="@style/LinearLayoutStyle"
+            android:background="@drawable/box_background"
+            android:padding="@dimen/_10sdp">
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/group_s_corpus_fund_status" />
+                </TableRow>
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_status"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/fequency_of_repayment" />
+                </TableRow>
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_repayment"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/management_of_internal_loan" />
+                </TableRow>
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_internalloan"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik"
+                        android:text="*" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/members_are_self_sustaining_in_managing_the_group_affairs" />
+                </TableRow>
+
+                <RadioGroup
+                    android:id="@+id/rg_affairs"
+                    style="@style/radioGroupStyle"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView
+                        style="@style/TextViewStylestrik"
+                        android:text="*" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/any_exposure_cross_visit_planned_to_other_collectives_enterprises_ecosystem_actors" />
+                </TableRow>
+
+                <RadioGroup
+                    android:id="@+id/rg_actors"
+                    style="@style/radioGroupStyle"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow
+                    style="@style/TableRowStyle"
+                    android:minHeight="0dp">
+
+                    <TextView style="@style/AsterikStyle" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/no_of_visits_planned_executed" />
+
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_visits_no"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="number"
+                    android:maxLength="3" />
+
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow
+                    style="@style/TableRowStyle"
+                    android:minHeight="0dp">
+
+                    <TextView style="@style/AsterikStyle" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/name_of_the_organization_collective_enterprise_to_which_exposure_visit_was_planned" />
+
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_org_name"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow
+                    style="@style/TableRowStyle"
+                    android:minHeight="0dp">
+
+                    <TextView style="@style/AsterikStyle" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/no_of_members_participated" />
+
+
+                </TableRow>
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/LinearLayoutStyle"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                    android:layout_width="0dp"
+                    android:layout_weight="1">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/male" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_male"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="3" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    style="@style/LinearLayoutStyle"
+                    android:layout_width="0dp"
+                    android:layout_weight="1">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView style="@style/TextViewStylestrik" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/female" />
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_female"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="3" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow
+                    style="@style/TableRowStyle"
+                    android:minHeight="0dp">
+
+                    <TextView style="@style/AsterikStyle" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/purpose_of_the_visit" />
+
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_purpose1"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/et_purpose2"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+                <EditText
+                    android:id="@+id/et_purpose3"
+                    style="@style/EditTextStyleNew"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    android:hint="@string/type_here"
+                    android:inputType="text" />
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow
+                    style="@style/TableRowStyle"
+                    android:minHeight="0dp">
+
+                    <TextView style="@style/AsterikStyle" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/no_of_women_members_able_to_articulated_their_needs_with_ecosystem_actors_post_visit" />
+
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_women_no"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="number"
+                    android:maxLength="3" />
+
+
+            </LinearLayout>
+
+            <LinearLayout style="@style/LinearLayoutStyle">
+
+                <TableRow
+                    style="@style/TableRowStyle"
+                    android:minHeight="0dp">
+
+                    <TextView style="@style/AsterikStyle" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/no_of_ecosystem_actors_enterprises_organizations_provided_platforms_to_women_to_communicate_their_needs_effectively" />
+
+
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_ecosystem_no"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="number"
+                    android:maxLength="3" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TableRow
+        android:id="@+id/btn_bottom"
+        style="@style/TableRowStyle"
+        android:layout_margin="@dimen/_10sdp">
+
+        <include layout="@layout/buttons_save_cancel" />
+
+    </TableRow>
+</LinearLayout>

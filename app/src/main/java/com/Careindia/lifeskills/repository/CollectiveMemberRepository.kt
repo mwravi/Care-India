@@ -4,6 +4,7 @@ package com.careindia.lifeskills.repository
 import androidx.lifecycle.LiveData
 import com.careindia.lifeskills.dao.CollectiveMemberDao
 import com.careindia.lifeskills.entity.CollectiveMemberEntity
+import com.careindia.lifeskills.entity.HouseholdProfileEntity
 
 
 class CollectiveMemberRepository(private val collectiveMemberDao: CollectiveMemberDao) {
@@ -19,9 +20,11 @@ class CollectiveMemberRepository(private val collectiveMemberDao: CollectiveMemb
     fun update(
         guid: String,
         collGuid: String,
+        hhid:String,
         memberId: String,
         memberName: String,
         membersex: Int,
+        Category: Int,
         memberage: Int,
         memberpos: String,
         memberacc: Int,
@@ -34,9 +37,11 @@ class CollectiveMemberRepository(private val collectiveMemberDao: CollectiveMemb
         collectiveMemberDao.updatecollectiveMember(
             guid,
             collGuid,
+            hhid,
             memberId,
             memberName,
             membersex,
+            Category,
             memberage,
             memberpos,
             memberacc,
@@ -58,7 +63,20 @@ class CollectiveMemberRepository(private val collectiveMemberDao: CollectiveMemb
     fun getCommunityCount():Int{
         return collectiveMemberDao!!.getCommunityCount()
     }
-    fun getMemberID(MemberID:String):Int{
-        return collectiveMemberDao!!.getMemberID(MemberID)
+    fun getMemberID(MemberID:String,collguid:String):Int{
+        return collectiveMemberDao!!.getMemberID(MemberID,collguid)
     }
+
+    fun getCommunity(guid:String):String{
+        return collectiveMemberDao!!.getCommunity(guid)
+    }
+
+    fun gethhProfileDataWard(ZoneCode: Int, WardCode: Int): List<HouseholdProfileEntity> {
+        return collectiveMemberDao.gethhProfileDataWard(ZoneCode, WardCode)
+    }
+
+    fun gethhProfileDataPanchayat(PanchayatCode: Int): List<HouseholdProfileEntity> {
+        return collectiveMemberDao.gethhProfileDataPanchayat(PanchayatCode)
+    }
+
 }

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1091219274079",
+    "project_id": "care-india-d1de5",
+    "storage_bucket": "care-india-d1de5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091219274079:android:9cfaa06414934ffc1bdeea",
+        "android_client_info": {
+          "package_name": "com.careindia.lifeskills"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091219274079-6crm1aj850mrj2ud6824k5m5ubr5c2e3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.careindia.lifeskills",
+            "certificate_hash": "9f442aff8e1c66c9e6ab557b1c96ac630f3e3f76"
+          }
+        },
+        {
+          "client_id": "1091219274079-cfqpjvqahr0nvdjdcem43v26v0abbd2d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzZz2gHzaWRbW7pnJe1qtv0lLHn19bC1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091219274079-cfqpjvqahr0nvdjdcem43v26v0abbd2d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

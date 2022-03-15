@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+<data>
+
+    <variable
+        name="primaryDataViewModel"
+        type="com.careindia.lifeskills.viewmodel.PrimaryDataViewModel" />
+</data>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_layout" />
+    <include layout="@layout/primary_data_tab" />
+    <ScrollView
+        style="@style/ScrolllViewStyle"
+        android:layout_margin="@dimen/_5sdp"
+        android:layout_weight="1"
+        android:scrollbarSize="@dimen/_10sdp"
+        android:scrollbars="vertical"
+        >
+
+        <LinearLayout
+            style="@style/LinearLayoutStyle"
+            android:background="@drawable/box_background"
+            android:padding="@dimen/_5sdp">
+
+
+            <LinearLayout
+                android:id="@+id/lay_stage_of_self_employment"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/stage_of_self_employment_enterprise_idea" />
+                </TableRow>
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_stage_of_self_employment"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_stage_other"
+                android:visibility="gone"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/please_specify_self_employment" />
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_stage_other"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_what_kind_of_businesss"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/in_what_kind_of_bussiness_you_have_invested_edp" />
+                </TableRow>
+
+
+                <LinearLayout
+                    android:id="@+id/check_business_invested"
+                    style="@style/CheckBox"
+                    android:orientation="vertical" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="#CDCBCB" />
+
+            <LinearLayout
+                android:id="@+id/lay_business_invest_other"
+                android:visibility="gone"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+                    <TextView
+                        style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/please_specify_business_invest" />
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_business_invest_other"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/lay_how_much_they_invested"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/how_much_amount_you_have_invested" />
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_how_much_they_invested"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="number"
+                    android:maxLength="9"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_business_registered"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/have_you_registered_your_business" />
+                </TableRow>
+
+                <RadioGroup
+                    android:id="@+id/rg_business_registered"
+                    style="@style/radioGroupStyle" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="#CDCBCB" />
+
+
+            <LinearLayout
+                android:id="@+id/lay_source_income"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/how_did_you_source_their_investment" />
+                </TableRow>
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_source_income"
+                    style="@style/SpinnerViewNew"
+                    />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_loans_availed_already"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/are_they_availing_loans_already" />
+                </TableRow>
+
+                <RadioGroup
+                    android:id="@+id/rg_loans_availed_already"
+                    style="@style/radioGroupStyle">
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="#CDCBCB" />
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/lay_from_where_availed_loans"
+                style="@style/LinearLayoutStyle">
+
+
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/from_where_have_availed_loans" />
+                </TableRow>
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_availed_loan"
+                    style="@style/SpinnerViewNew" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_expecting_financial_assistance"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/are_they_expecting_any_financial_assistance" />
+                </TableRow>
+
+                <RadioGroup
+                    android:id="@+id/rg_expecting_financial_assistance"
+                    style="@style/radioGroupStyle">
+
+                </RadioGroup>
+
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="#CDCBCB" />
+
+            <LinearLayout
+                android:visibility="gone"
+                android:id="@+id/lay_amt_financial_assistance"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/amount_of_financial_assistance_required_in_rs" />
+                </TableRow>
+
+                <fr.ganfra.materialspinner.MaterialSpinner
+                    android:id="@+id/spin_amt_financial_asistnc"
+                    style="@style/SpinnerViewNew"
+                    />
+
+
+            </LinearLayout>
+
+<!--            <LinearLayout-->
+<!--                android:id="@+id/lay_amt_financial_asistnc_other"-->
+<!--                android:visibility="gone"-->
+<!--                style="@style/LinearLayoutStyle">-->
+
+<!--                <TableRow style="@style/TableRowStyle">-->
+
+<!--                    <TextView-->
+<!--                        style="@style/TextViewStylestrik" />-->
+
+<!--                    <TextView-->
+<!--                        style="@style/TextViewStyleNew"-->
+<!--                        android:text="@string/please_specify_business_pdc" />-->
+<!--                </TableRow>-->
+
+<!--                <EditText-->
+<!--                    android:id="@+id/et_amt_financial_asistnc_other"-->
+<!--                    style="@style/EditTextStyleNew"-->
+<!--                    android:hint="@string/type_here"-->
+<!--                    android:inputType="text"-->
+<!--                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"-->
+<!--                    />-->
+
+<!--            </LinearLayout>-->
+
+
+            <LinearLayout
+                android:id="@+id/lay_expecting_support"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/are_you_expecting_any_support" />
+                </TableRow>
+
+<!--                <fr.ganfra.materialspinner.MaterialSpinner-->
+<!--                    android:id="@+id/spin_expecting_support"-->
+<!--                    style="@style/SpinnerViewNew"-->
+<!--                    />-->
+
+                <LinearLayout
+                    android:id="@+id/check_expecting_support"
+                    style="@style/CheckBox"
+                    android:orientation="vertical" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:background="#CDCBCB" />
+
+
+            <LinearLayout
+                android:id="@+id/lay_support_other"
+                android:visibility="gone"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/please_specify_expecting_support" />
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_support_other"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <TableRow
+        android:id="@+id/btn_bottom"
+        style="@style/TableRowStyle"
+        android:layout_margin="@dimen/_10sdp">
+
+        <include layout="@layout/buttons_save_cancel" />
+
+    </TableRow>
+
+</LinearLayout>
+</layout>

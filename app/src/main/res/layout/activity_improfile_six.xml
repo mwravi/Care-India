@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="individualProfileViewModel"
+            type="com.careindia.lifeskills.viewmodel.IndividualProfileViewModel" />
+    </data>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        tools:context=".views.improfile.IMProfileSixActivity">
+
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar_layout" />
+
+        <include
+            android:id="@+id/includetop"
+            layout="@layout/bottomnavigationtab" />
+
+
+        <ScrollView
+            style="@style/ScrolllViewStyle"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                style="@style/LinearLayoutStyle"
+                android:background="@drawable/box_background"
+                android:padding="@dimen/_10sdp">
+
+
+                <LinearLayout
+                    style="@style/CheckBox"
+                    android:background="@drawable/box_background"
+                    android:orientation="vertical">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/skills_jobs_picking" />
+
+
+                    </TableRow>
+
+                    <LinearLayout
+                        android:id="@+id/skills_jobs_picking"
+                        style="@style/CheckBox"
+                        android:orientation="vertical" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:background="#CDCBCB" />
+
+                <LinearLayout
+                    android:id="@+id/lay_et_specify"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/please_specify_skill_job_idv" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_skills_jobs_picking"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:text="@={individualProfileViewModel.SpecifySkillJob}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_spin_new_jobs_business"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/new_jobs_business" />
+
+
+                    </TableRow>
+
+
+                    <RadioGroup
+                        android:id="@+id/rg_new_jobs_business"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#D8D6D6" />
+
+                <LinearLayout
+                    android:id="@+id/lay_spin_alternative_get_opportunity"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/alternative_get_opportunity" />
+
+
+                    </TableRow>
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_Job_Business"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_et_specify_laboure"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView
+                            style="@style/AsterikStyle"
+                            android:visibility="invisible" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/specify_labour" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_specify_laboure"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_et_specify_business"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView
+                            style="@style/AsterikStyle"
+                            android:visibility="invisible" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/specify_business" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_specify_business"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                         />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_et_specify_job"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView
+                            style="@style/AsterikStyle"
+                            android:visibility="invisible" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/specify_job" />
+
+
+                    </TableRow>
+
+                    <EditText
+                        android:id="@+id/et_specify_job"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:text="@={individualProfileViewModel.SpecifyJobBusiness}"/>
+
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_spin_member_cig_shg"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/member_CIG_SHG" />
+
+
+                    </TableRow>
+
+                    <RadioGroup
+                        android:id="@+id/rg_member_cig_shg"
+                        style="@style/radioGroupStyle" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#D8D6D6" />
+
+
+                <LinearLayout
+                    android:id="@+id/lay_et_name_collective_part"
+                    style="@style/LinearLayoutStyle"
+                    android:visibility="gone">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/name_collective_part" />
+
+
+                    </TableRow>
+
+
+                    <EditText
+                        android:id="@+id/et_name_collective_part"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:inputType="text"
+                        android:text="@={individualProfileViewModel.CollectiveMember}" />
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <TableRow
+            android:id="@+id/btn_bottom"
+            style="@style/TableRowStyle"
+            android:layout_margin="@dimen/_10sdp">
+
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
+
+            <Button
+                android:id="@+id/btn_prev"
+                style="@style/ButtonTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:text="@string/previous" />
+
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
+
+            <Button
+                android:id="@+id/btn_save"
+                style="@style/ButtonTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_weight="1"
+                android:text="@string/save_close" />
+
+            <TextView
+                style="@style/NewSimpleTextMargin"
+                android:layout_weight=".1" />
+
+        </TableRow>
+
+    </LinearLayout>
+
+</layout>

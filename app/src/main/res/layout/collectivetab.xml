@@ -29,7 +29,7 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_collective_prf_icon" />
+                    android:src="@drawable/collective_progress" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -54,14 +54,14 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_collective_prf_icon" />
+                    android:src="@drawable/collective_progress" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:fontFamily="@font/firasans_regular"
-                    android:text="@string/group_details"
+                    android:text="@string/profile"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
 
@@ -78,7 +78,7 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_collective_prf_icon" />
+                    android:src="@drawable/collective_progress" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -103,14 +103,14 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_collective_prf_icon" />
+                    android:src="@drawable/collective_progress" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:fontFamily="@font/firasans_regular"
-                    android:text="Fourth"
+                    android:text="@string/election_details"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
 
@@ -128,14 +128,14 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_collective_prf_icon" />
+                    android:src="@drawable/collective_progress" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:fontFamily="@font/firasans_regular"
-                    android:text="Fifth"
+                    android:text="@string/group_details"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
 
@@ -153,14 +153,14 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_collective_prf_icon" />
+                    android:src="@drawable/collective_progress" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:fontFamily="@font/firasans_regular"
-                    android:text="Sixth"
+                    android:text="@string/linkages_schemes"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
 

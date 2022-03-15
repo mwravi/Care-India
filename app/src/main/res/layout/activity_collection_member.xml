@@ -20,7 +20,9 @@
             android:layout_margin="@dimen/_5sdp"
             android:layout_weight="1"
             android:background="@drawable/box_background"
-            android:scrollbars="none">
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical"
+            >
 
             <LinearLayout
                 style="@style/LinearLayoutStyle"
@@ -51,8 +53,56 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/lay_hh_id"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik"
+                            />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/hh_id" />
+
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_hh_id"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/lay_im_id"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik"
+                            />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/individual_member_id" />
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_im_id"
+                        style="@style/SpinnerViewNew" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_member_id"
                     style="@style/LinearLayoutStyle">
 
@@ -73,7 +123,7 @@
                             style="@style/EditTextStyleNew"
                             android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
                             android:inputType="text"
-                            android:maxLength="14"
+                            android:maxLength="15"
                             android:enabled="false"
                             android:layout_width="0dp"
                             android:layout_weight="1.5"
@@ -110,6 +160,29 @@
                         android:id="@+id/spin_member_sex"
                         style="@style/SpinnerViewNew"
                         android:selectedItemPosition="@={collectiveMemberViewModel.Membersex}" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/lay_wp_nwp"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow style="@style/TableRowStyle">
+
+                        <TextView
+                            style="@style/TextViewStylestrik"
+                            />
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/category" />
+
+                    </TableRow>
+
+                    <fr.ganfra.materialspinner.MaterialSpinner
+                        android:id="@+id/spin_wp_nwp"
+                        style="@style/SpinnerViewNew"
+                        />
 
                 </LinearLayout>
 
@@ -231,8 +304,7 @@
                         android:id="@+id/et_aadhar_card"
                         style="@style/EditTextStyleNew"
                         android:inputType="number"
-                        android:maxLength="12"
-                        android:text="@={collectiveMemberViewModel.Aadhar}" />
+                        android:maxLength="12"/>
 
                 </LinearLayout>
 
@@ -241,6 +313,7 @@
         </ScrollView>
 
         <TableRow
+            android:id="@+id/btn_bottom"
             style="@style/TableRowStyle"
             android:layout_margin="@dimen/_10sdp">
 

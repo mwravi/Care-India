@@ -5,6 +5,8 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -26,14 +28,18 @@ import com.careindia.lifeskills.repository.CollectiveRepository
 import com.careindia.lifeskills.utils.AppSP
 import com.careindia.lifeskills.utils.Validate
 import com.careindia.lifeskills.viewmodel.CollectiveViewModel
+import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodelfactory.CollectiveViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_collective_profile_sixth.*
-import kotlinx.android.synthetic.main.buttons_save_cancel.*
-import kotlinx.android.synthetic.main.toolbar_layout.*
-import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
+import kotlinx.android.synthetic.main.activity_collective_profile_sixth.*
+import kotlinx.android.synthetic.main.activity_collective_profile_sixth.btn_bottom
+import kotlinx.android.synthetic.main.activity_improfile_demographic.*
+import kotlinx.android.synthetic.main.buttons_save_cancel.*
+import kotlinx.android.synthetic.main.buttons_save_cancel.btn_prev
+import kotlinx.android.synthetic.main.buttons_save_cancel.btn_save
 import kotlinx.android.synthetic.main.collectivetab.*
+import kotlinx.android.synthetic.main.toolbar_layout.*
 
 
 class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
@@ -80,6 +86,280 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
         initializeController()
         bottomCLick()
 
+        //Q501b...//
+
+        et_other_q501b1.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_other_q501b2.isEnabled = true
+                } else {
+                    et_other_q501b2.isEnabled = false
+                    et_other_q501b2.setText("")
+                }
+            }
+        })
+
+        et_other_q501b2.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_other_q501b3.isEnabled = true
+                } else {
+                    et_other_q501b3.isEnabled = false
+                    et_other_q501b3.setText("")
+                }
+            }
+        })
+        et_other_q501b3.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_other_q501b4.isEnabled = true
+                } else {
+                    et_other_q501b4.isEnabled = false
+                    et_other_q501b4.setText("")
+                }
+
+            }
+        })
+        et_other_q501b4.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_other_q501b5.isEnabled = true
+                } else {
+                    et_other_q501b5.isEnabled = false
+                    et_other_q501b5.setText("")
+                }
+            }
+        })
+
+        //..Q502a..//
+
+
+        et_details_service1.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_details_service2.isEnabled = true
+                } else {
+                    et_details_service2.isEnabled = false
+                    et_details_service2.setText("")
+                }
+            }
+        })
+
+        et_details_service2.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_details_service3.isEnabled = true
+                } else {
+                    et_details_service3.isEnabled = false
+                    et_details_service3.setText("")
+                }
+            }
+        })
+
+        et_details_service3.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_details_service4.isEnabled = true
+                } else {
+                    et_details_service4.isEnabled = false
+                    et_details_service4.setText("")
+                }
+
+            }
+        })
+
+
+        et_details_service4.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_details_service5.isEnabled = true
+                } else {
+                    et_details_service5.isEnabled = false
+                    et_details_service5.setText("")
+                }
+            }
+        })
+
+        //..Q502b..//
+
+        et_service_provider1.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_service_provider2.isEnabled = true
+                } else {
+                    et_service_provider2.isEnabled = false
+                    et_service_provider2.setText("")
+                }
+            }
+        })
+
+        et_service_provider2.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_service_provider3.isEnabled = true
+                } else {
+                    et_service_provider3.isEnabled = false
+                    et_service_provider3.setText("")
+                }
+            }
+        })
+
+        et_service_provider3.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_service_provider4.isEnabled = true
+                } else {
+                    et_service_provider4.isEnabled = false
+                    et_service_provider4.setText("")
+                }
+
+            }
+        })
+        et_service_provider4.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_service_provider5.isEnabled = true
+                } else {
+                    et_service_provider5.isEnabled = false
+                    et_service_provider5.setText("")
+                }
+            }
+        })
+
     }
 
 
@@ -92,16 +372,7 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
         btn_save.setOnClickListener(this)
         btn_prev.setOnClickListener(this)
 
-        rg_record_book.setOnCheckedChangeListener { radioGroup, i ->
 
-            val lookupCode = validate!!.GetAnswerTypeRadioButtonIDNew(rg_record_book)
-            if (lookupCode == 1) {
-                lay_record_book_update.visibility = VISIBLE
-            } else {
-                lay_record_book_update.visibility = GONE
-                rg_record_book_update.clearCheck()
-            }
-        }
 
         rg_services_schemes.setOnCheckedChangeListener { radioGroup, i ->
             val lookupCode = validate!!.GetAnswerTypeRadioButtonIDNew(rg_services_schemes)
@@ -111,9 +382,18 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
             } else {
                 lay_details_service.visibility = GONE
                 lay_service_provider.visibility = GONE
-                et_details_service.setText("")
-                et_service_provider.setText("")
+                et_details_service1.setText("")
+                et_details_service2.setText("")
+                et_details_service3.setText("")
+                et_details_service4.setText("")
+                et_details_service5.setText("")
+                et_service_provider1.setText("")
+                et_service_provider2.setText("")
+                et_service_provider3.setText("")
+                et_service_provider4.setText("")
+                et_service_provider5.setText("")
             }
+            validate!!.hideSoftKeyboard(this, radioGroup)
         }
 
         rg_enterprise_business.setOnCheckedChangeListener { radioGroup, i ->
@@ -123,6 +403,7 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
             } else {
                 lay_others_q602.visibility = GONE
             }
+            validate!!.hideSoftKeyboard(this, radioGroup)
         }
 
     }
@@ -150,24 +431,6 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
     fun fillspinner() {
 
 
-        validate!!.fillradio(
-            this,
-            rg_record_book,
-            -1,
-            mstLookupViewModel,
-            3,
-            iLanguageID
-        )
-
-        validate!!.fillradioNew(
-            this,
-            rg_record_book_update,
-            -1,
-            mstLookupViewModel,
-            3,
-            iLanguageID
-        )
-
         validate!!.fillradioNew(
             this,
             rg_services_schemes,
@@ -193,7 +456,9 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
             26,
             iLanguageID,
             et_other_q501a,
-            lay_other_q501a, et_other_q501b, lay_other_q501b
+            lay_other_q501a, et_other_q501b1, et_other_q501b2,
+            et_other_q501b3, et_other_q501b4,
+            et_other_q501b5, lay_other_q501b
         )
 
         validate!!.dynamicMultiCheckChange(
@@ -214,21 +479,45 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
         collectiveViewModel.getCollectivedatabyGuid(validate!!.returnStringValue(collectiveGuid))
             .observe(this, Observer {
                 if (it != null && it.size > 0) {
-
-                    validate!!.SetAnswerTypeRadioButton(
-                        rg_record_book,
-                        it.get(0).Register_maintained!!
-                    )
-                    validate!!.SetAnswerTypeRadioButton(
-                        rg_record_book_update,
-                        it.get(0).Register_regular!!
-                    )
-
+                    if(it.get(0).IsEdited == 0 && it.get(0).Status == 0){
+                        btn_bottom.visibility = View.GONE
+                    }else{
+                        btn_bottom.visibility = View.VISIBLE
+                    }
 
                     et_other_q501a.setText(it.get(0).Linkages_oth)
-                    et_other_q501b.setText(validate!!.returnStringValue(it.get(0).Linkage_Services.toString()))
-                    et_details_service.setText(validate!!.returnStringValue(it.get(0).Services_availed.toString()))
-                    et_service_provider.setText(validate!!.returnStringValue(it.get(0).Services_dept.toString()))
+
+                    it.get(0).Linkage_Services?.let { it1 ->
+                        validate!!.setSchemes(
+                            et_other_q501b1, et_other_q501b2, et_other_q501b3, et_other_q501b4,
+                            et_other_q501b5,
+                            it1
+                        )
+                    }
+
+                    it.get(0).Services_availed?.let { it1 ->
+                        validate!!.setSchemes(
+                            et_details_service1,
+                            et_details_service2,
+                            et_details_service3,
+                            et_details_service4,
+                            et_details_service5,
+                            it1
+                        )
+                    }
+
+                    it.get(0).Services_dept?.let { it1 ->
+                        validate!!.setSchemes(
+                            et_service_provider1,
+                            et_service_provider2,
+                            et_service_provider3,
+                            et_service_provider4,
+                            et_service_provider5,
+                            it1
+                        )
+                    }
+
+
                     et_others_q602a.setText(it.get(0).Collective_opp_Other)
 
 
@@ -279,7 +568,6 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
 
     fun senddata() {
         collectiveViewModel.collectDataSix(
-            validate!!.GetAnswerTypeRadioButtonID(rg_record_book_update),
             validate!!.GetAnswerTypeCheckBoxButtonID(chk_options_below),
             validate!!.GetAnswerTypeCheckBoxButtonID(chk_collective_plan),
         )
@@ -287,20 +575,8 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
 
     fun checkValidation(): Int {
 
-        var iValue = 0;
-        if (rg_record_book.checkedRadioButtonId == -1) {
-            iValue = 1
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q405_does_your_sangha_group_collective_have_a_record_book_check_for_the_record_book),
-            )
-        } else if (rg_record_book_update.checkedRadioButtonId == -1 && lay_record_book_update.visibility == VISIBLE) {
-            iValue = 1
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q406_is_the_record_book_register_updated_in_every_meeting),
-            )
-        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(chk_options_below).equals("")) {
+        var iValue = 0
+        if (validate!!.GetAnswerTypeCheckBoxButtonID(chk_options_below).equals("")) {
             iValue = 1
             validate!!.CustomAlert(
                 this,
@@ -313,11 +589,11 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
                 et_other_q501a,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q501a_please_specify_the_others),
             )
-        } else if (et_other_q501b.text.toString().length == 0 && lay_other_q501b.visibility == VISIBLE) {
+        } else if (et_other_q501b1.text.toString().length == 0 && lay_other_q501b.visibility == VISIBLE) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
-                et_other_q501b,
+                et_other_q501b1,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q501b_what_service_services_you_are_getting_through_this_linkage_more_than_one_response_upto_three_is_possible),
             )
         } else if (rg_services_schemes.checkedRadioButtonId == -1) {
@@ -326,18 +602,18 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
                 this,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q502_is_your_sangha_collective_currently_availing_any_services_schemes),
             )
-        } else if (et_details_service.text.toString().length == 0 && lay_details_service.visibility == VISIBLE) {
+        } else if (et_details_service1.text.toString().length == 0 && lay_details_service.visibility == VISIBLE) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
-                et_details_service,
+                et_details_service1,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q502a_please_provide_details_of_the_service_scheme_that_you_are_availing_more_than_one_response_upto_three_is_possible),
             )
-        } else if (et_service_provider.text.toString().length == 0 && lay_service_provider.visibility == VISIBLE) {
+        } else if (et_service_provider1.text.toString().length == 0 && lay_service_provider.visibility == VISIBLE) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
-                et_service_provider,
+                et_service_provider1,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q502b_from_which_department_service_provider_you_are_availing_this_scheme_service),
             )
         } else if (rg_enterprise_business.checkedRadioButtonId == -1) {
@@ -362,10 +638,11 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q602a_please_specify_others),
             )
         }
-        return iValue;
+        return iValue
     }
 
     fun bottomCLick() {
+        autoSmoothScroll()
         lay_first.setBackgroundColor(resources.getColor(R.color.back))
         lay_secnd.setBackgroundColor(resources.getColor(R.color.back))
         ll_third.setBackgroundColor(resources.getColor(R.color.back))
@@ -407,9 +684,9 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
 
     override fun onBackPressed() {
         //super.onBackPressed()
-        val intent = Intent(this, CollectiveProfileListActivity::class.java)
-        startActivity(intent)
-        finish()
+        /*   val intent = Intent(this, CollectiveProfileListActivity::class.java)
+           startActivity(intent)
+           finish()*/
     }
 
 
@@ -428,10 +705,10 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
         dialog.setContentView(view)
         dialog.window!!.setBackgroundDrawable(ColorDrawable(0))
         val layoutParams = WindowManager.LayoutParams()
-        layoutParams.copyFrom(dialog.getWindow()?.getAttributes())
+        layoutParams.copyFrom(dialog.window?.attributes)
         layoutParams.width = WindowManager.LayoutParams.MATCH_PARENT
         layoutParams.height = WindowManager.LayoutParams.WRAP_CONTENT
-        dialog.getWindow()?.setAttributes(layoutParams)
+        dialog.window?.attributes = layoutParams
         val txtTitle = dialog
             .findViewById<View>(R.id.txt_alert_message) as TextView
         txtTitle.text = msg
@@ -448,4 +725,12 @@ class CollectiveProfileActivitySixth : BaseActivity(), View.OnClickListener {
         // Display the dialog
         dialog.show()
     }
+
+    fun autoSmoothScroll() {
+//        val hsv = view.findViewById(R.id.horizontalScroll) as HorizontalScrollView
+        horizontalScroll.postDelayed({ //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+            horizontalScroll.smoothScrollBy(2000, 0)
+        }, 100)
+    }
+
 }

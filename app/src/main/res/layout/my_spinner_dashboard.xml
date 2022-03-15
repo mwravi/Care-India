@@ -4,6 +4,7 @@
     style="@style/SpinnerTextDashboard"
     android:layout_width="match_parent"
     android:textSize="@dimen/_12ssp"
-    android:layout_height="@dimen/_30sdp"
+    android:minHeight="@dimen/_30sdp"
+    android:layout_marginEnd="@dimen/_4sdp"
     android:fontFamily="@font/firasans_regular"
-    android:paddingLeft="@dimen/_10sdp" />
+     />

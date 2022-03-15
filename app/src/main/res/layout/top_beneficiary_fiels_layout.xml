@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/back"
+    android:orientation="vertical">
+
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/lay_first"
+                style="@style/Tablerow"
+                android:gravity="center"
+                android:minWidth="@dimen/_103sdp"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_18ssp"
+                    android:layout_height="@dimen/_18ssp"
+                    android:src="@drawable/ic_individual_prf" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/firasans_regular"
+                    android:text="@string/collectivedetails"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/lay_secnd"
+                style="@style/Tablerow"
+                android:gravity="center"
+                android:minWidth="@dimen/_103sdp"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_18ssp"
+                    android:layout_height="@dimen/_18ssp"
+                    android:src="@drawable/ic_individual_prf" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/firasans_regular"
+                    android:text="@string/life_skill_assessment"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_third"
+                style="@style/Tablerow"
+                android:gravity="center"
+                android:minWidth="@dimen/_103sdp"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_18ssp"
+                    android:layout_height="@dimen/_18ssp"
+                    android:src="@drawable/ic_individual_prf" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/firasans_regular"
+                    android:text="@string/life_skill_plus_assessment"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/ll_forth"
+                style="@style/Tablerow"
+                android:gravity="center"
+                android:minWidth="@dimen/_103sdp"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_18ssp"
+                    android:layout_height="@dimen/_18ssp"
+                    android:src="@drawable/ic_individual_prf" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/firasans_regular"
+                    android:text="@string/edp_training_assessment"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_schemess"
+                style="@style/Tablerow"
+                android:gravity="center"
+                android:minWidth="@dimen/_103sdp"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_18ssp"
+                    android:layout_height="@dimen/_18ssp"
+                    android:src="@drawable/ic_individual_prf" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/firasans_regular"
+                    android:text="@string/Linkage_ecosystem_institutions"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_other_detailss"
+                style="@style/Tablerow"
+                android:gravity="center"
+                android:minWidth="@dimen/_103sdp"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_18ssp"
+                    android:layout_height="@dimen/_18ssp"
+                    android:src="@drawable/ic_individual_prf" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/firasans_regular"
+                    android:text="@string/collective"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+
+</LinearLayout>

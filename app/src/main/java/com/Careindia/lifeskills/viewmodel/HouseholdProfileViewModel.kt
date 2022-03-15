@@ -16,6 +16,8 @@ import com.careindia.lifeskills.views.base.BaseViewModel
 import com.careindia.lifeskills.views.householdscreen.HouseholdProfileFirstActivity
 import com.careindia.lifeskills.views.householdscreen.HouseholdProfileThirdActivity
 import kotlinx.android.synthetic.main.activity_household_profile_first.*
+import kotlinx.android.synthetic.main.activity_household_profile_first.et_landmark
+import kotlinx.android.synthetic.main.activity_household_profile_first.et_pincode
 import kotlinx.android.synthetic.main.activity_household_profile_third.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,7 +30,7 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
 
 
     val hhProfileData = hhrepository.hhProfileData
-    val Date = MutableLiveData<String?>()
+//    val Date = MutableLiveData<String?>()
     val saveandnextText = MutableLiveData<String>()
     val CrpName = MutableLiveData<String>()
     val SuperverCor = MutableLiveData<String>()
@@ -71,26 +73,27 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
 
     fun saveandUpdateHHProfile(
         householdProfileFirstActivity: HouseholdProfileFirstActivity,
-        initials: String
+        initials: String,
+        iLanguageID: Int
     ) {
         var Ward1 = 0
         var PWCode = ""
-        val date: String = Date.value!!
+//        val date: String = Date.value!!
         val District1 =
-            returnDistrictID(district.value, validate!!.RetriveSharepreferenceInt(AppSP.StateCode))
+            returnDistrictID(householdProfileFirstActivity.spin_districtname.selectedItemPosition, validate!!.RetriveSharepreferenceInt(AppSP.StateCode))
         val Zone1 = householdProfileFirstActivity.returnZoneID(
-            zone.value,
+            householdProfileFirstActivity.spin_zone.selectedItemPosition,
             District1
         )
         if (Zone1 > 0) {
             Ward1 = householdProfileFirstActivity.returnWardID(
-                ward.value,
+                householdProfileFirstActivity.spin_bbmp.selectedItemPosition,
                 Zone1
             )
             PWCode = "W"
         } else {
             Ward1 = householdProfileFirstActivity.returnPanchayatID(
-                panchayat.value,
+                householdProfileFirstActivity.spin_panchayatname.selectedItemPosition,
                 District1
             )
             PWCode = "P"
@@ -113,10 +116,12 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
                     Ward1,
                     PWCode,
                     Locality.value,
-                    date,
+                    householdProfileFirstActivity.et_landmark.text.toString(),
+                    householdProfileFirstActivity.et_pincode.text.toString(),
+                    validate!!.getDaysfromdates(householdProfileFirstActivity.et_formfillingDate.text.toString(), 1),
                     householdProfileFirstActivity.et_hh_unique_id.text.toString(),
                     hh_name.value,
-                    hh_sex.value,
+                    householdProfileFirstActivity.returnID(householdProfileFirstActivity.spin_sex.selectedItemPosition,1,iLanguageID),
                     -1,
                     -1,
                     -1,
@@ -135,13 +140,13 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
                     -1,
                     "",
                     validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
-                    validate!!.currentdatetime,
+                    validate!!.getDaysfromdates(validate!!.currentdatetime, 2),
                     0,
-                    "",
+                    0,
                     0,
                     0,
                     1,
-                    initials
+                    initials,""
                 )
             )
         } else {
@@ -155,12 +160,16 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
                 Ward1,
                 PWCode,
                 Locality.value,
-                date,
+                validate!!.getDaysfromdates(householdProfileFirstActivity.et_formfillingDate.text.toString(), 1),
                 hh_name.value,
-                hh_sex.value,
+                householdProfileFirstActivity.returnID(householdProfileFirstActivity.spin_sex.selectedItemPosition,1,iLanguageID),
                 validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
                 1,
-                initials
+                initials,
+                validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+                validate!!.getDaysfromdates(validate!!.currentdatetime, 2),
+                householdProfileFirstActivity.et_landmark.text.toString(),
+                householdProfileFirstActivity.et_pincode.text.toString()
 
             )
         }
@@ -183,12 +192,16 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
         Panchayat_Ward: Int?,
         PWCode: String?,
         Localitycode: String?,
-        Dateform: String?,
+        Dateform: Long?,
         Name: String?,
         Gender: Int?,
         iUserID: Int,
-        IsEdited:Int,
-        initials:String?
+        IsEdited: Int,
+        initials: String?,
+        UpdatedBy: Int?,
+        UpdatedOn: Long?,
+        LandMark: String?,
+        PinCode: String?
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             hhrepository.update_hh_first_data(
@@ -206,7 +219,11 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
                 Gender,
                 iUserID,
                 IsEdited,
-                initials
+                initials,
+                UpdatedBy,
+                UpdatedOn,
+                LandMark,
+                PinCode
             )
         }
     }
@@ -225,10 +242,15 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
             validate!!.returnIntegerValue(total_children.value),
             validate!!.returnIntegerValue(male_children.value),
             validate!!.returnIntegerValue(female_children.value),
+            validate!!.returnIntegerValue(total_earning_members.value),
+            validate!!.returnIntegerValue(earning_male.value),
+            validate!!.returnIntegerValue(earning_female.value),
             validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
-            1
+            1,
+            validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+            validate!!.getDaysfromdates(validate!!.currentdatetime, 2)
 
-        )
+            )
     }
 
     fun updatehhsecond(
@@ -242,8 +264,13 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
         No_Children: Int?,
         No_Children_M: Int?,
         No_Children_F: Int?,
+        No_Earningmembers: Int?,
+        No_Earningmembers_M: Int?,
+        No_Earningmembers_F: Int?,
         iUserID: Int,
-        IsEdited:Int
+        IsEdited: Int,
+        UpdatedBy: Int?,
+        UpdatedOn: Long?
 
 
     ) {
@@ -259,8 +286,13 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
                 No_Children,
                 No_Children_M,
                 No_Children_F,
+                No_Earningmembers,
+                No_Earningmembers_M,
+                No_Earningmembers_F,
                 iUserID,
-                IsEdited
+                IsEdited,
+                UpdatedBy,
+                UpdatedOn
 
             )
         }
@@ -271,9 +303,6 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
 
         updatehhthird(
             validate!!.RetriveSharepreferenceString(AppSP.HHGUID),
-            validate!!.returnIntegerValue(total_earning_members.value),
-            validate!!.returnIntegerValue(earning_male.value),
-            validate!!.returnIntegerValue(earning_female.value),
             householdProfileThirdActivity.returnID(
                 dwelling.value!!,
                 2,
@@ -288,7 +317,9 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
             ),
             other_ration.value!!,
             validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
-            1
+            1,
+            validate!!.RetriveSharepreferenceInt(AppSP.iUserID),
+            validate!!.getDaysfromdates(validate!!.currentdatetime, 2)
 
 
         )
@@ -297,31 +328,29 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
 
     fun updatehhthird(
         HHGUID: String?,
-        No_Earningmembers: Int?,
-        No_Earningmembers_M: Int?,
-        No_Earningmembers_F: Int?,
         Dwelling_type: Int?,
         Dwelling_Oth: String?,
         Dwelling_Registered: Int?,
         Type_Ration: Int?,
         other_ration: String,
         iUserID: Int,
-        IsEdited:Int
+        IsEdited: Int,
+        UpdatedBy: Int?,
+        UpdatedOn: Long?
 
     ) {
         viewModelScope.launch(Dispatchers.IO) {
             hhrepository.updatehh_third(
                 HHGUID,
-                No_Earningmembers,
-                No_Earningmembers_M,
-                No_Earningmembers_F,
                 Dwelling_type,
                 Dwelling_Oth,
                 Dwelling_Registered,
                 Type_Ration,
                 other_ration,
                 iUserID,
-                IsEdited
+                IsEdited,
+                UpdatedBy,
+                UpdatedOn
             )
         }
     }
@@ -349,9 +378,34 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
 
 
     fun returnDistrictID(pos: Int?, StateCode: Int): Int {
+        var list: List<String>? = null
+        if (validate?.RetriveSharepreferenceString(AppSP.DistrictIn)!!.contains(",")) {
+            list = validate?.RetriveSharepreferenceString(AppSP.DistrictIn)
+                ?.split(",")?.let {
+                    listOf(
+                        *it
+                            .toTypedArray()
+                    )
+                }
+        } else {
+            list = null
+        }
+
+
         var data: List<MstDistrictEntity>? = null
-        data =
+        data = if (!list.isNullOrEmpty()) {
+            list.let {
+                hhrepository.getMstDist(
+                    StateCode,
+                    list
+                )
+            }
+        } else {
+
+
             hhrepository.getMstDist(StateCode)
+
+        }
 
         var id = 0
 
@@ -376,8 +430,8 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
         return hhrepository.gethhdatabyGuid(guid)
     }
 
-    fun getMstDist(StateCode: Int): List<MstDistrictEntity> {
-        return hhrepository.getMstDist(StateCode)
+    fun getMstDist(StateCode: Int,DistrictIn:List<String>): List<MstDistrictEntity> {
+        return hhrepository.getMstDist(StateCode,DistrictIn)
     }
 
     fun getHHIdData(): LiveData<List<HouseholdProfileEntity>> {
@@ -388,7 +442,7 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
         return hhrepository.getHHCount()
     }
 
-    fun getIndividualID(HHCode:String): Int {
+    fun getIndividualID(HHCode: String): Int {
         return hhrepository.getIndividualID(HHCode)
     }
 
@@ -396,8 +450,20 @@ class HouseholdProfileViewModel(private val hhrepository: HouseholdProfileReposi
         return hhrepository.getHHZData(izone)
     }
 
-    fun getHHWData(izone: Int, iward: Int): LiveData<List<HouseholdProfileEntity>> {
-        return hhrepository.getHHWData(izone, iward)
+    fun getHHWData(iDisCode:Int,izone: Int, iward: Int): LiveData<List<HouseholdProfileEntity>> {
+        return hhrepository.getHHWData(iDisCode,izone, iward)
+    }
+
+    fun getHHWData(iDisCode: Int, iZoneCode: Int): LiveData<List<HouseholdProfileEntity>> {
+        return hhrepository.getHHWData(iDisCode, iZoneCode)
+    }
+
+    fun getHHWData(iDisCode: Int): LiveData<List<HouseholdProfileEntity>> {
+        return hhrepository.getHHWData(iDisCode)
+    }
+
+    fun getHHPData(iDisCode:Int,iPanchayat: Int): LiveData<List<HouseholdProfileEntity>> {
+        return hhrepository.getHHPData(iDisCode,iPanchayat)
     }
 
     fun getHHPData(iPanchayat: Int): LiveData<List<HouseholdProfileEntity>> {

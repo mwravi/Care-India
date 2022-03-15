@@ -22,7 +22,9 @@
             android:layout_margin="@dimen/_5sdp"
             android:layout_weight="1"
             android:background="@drawable/box_background"
-            android:scrollbars="none">
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical"
+            >
 
             <LinearLayout
                 style="@style/LinearLayoutStyle"
@@ -217,7 +219,7 @@
                     <EditText
                         android:id="@+id/et_place"
                         style="@style/EditTextStyleNew"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890 "
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
                         android:inputType="text"
                         android:maxLength="50" />
@@ -275,7 +277,10 @@
 
                 </LinearLayout>
 
-                <LinearLayout style="@style/LinearLayoutStyle">
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/lay_purpose_meeting"
+                    style="@style/LinearLayoutStyle">
 
                     <TableRow style="@style/TableRowStyle">
 
@@ -327,6 +332,7 @@
         </ScrollView>
 
         <TableRow
+            android:id="@+id/btn_bottom"
             style="@style/TableRowStyle"
             android:layout_margin="@dimen/_10sdp">
 

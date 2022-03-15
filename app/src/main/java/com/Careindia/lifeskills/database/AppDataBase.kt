@@ -10,7 +10,8 @@ import com.careindia.lifeskills.entity.*
 @Database(
     entities = [HouseholdProfileEntity::class, IndividualProfileEntity::class, CollectiveEntity::class, CollectiveMemberEntity::class
         ,MstStateEntity::class,MstDistrictEntity::class,MstZoneEntity::class,MstPanchayat_WardEntity::class,MstLocalityEntity::class,MstLookupEntity::class,MstUserEntity::class,PrimaryDataEntity::class,
-        PsychometricEntity::class,CollectiveMeetingEntity::class],
+        PsychometricEntity::class,CollectiveMeetingEntity::class,BeneficiaryEntity::class,BeneficiaryDetailEntity::class, CollectiveProgressTrackerEntity::class,AssessmentDetailEntity::class,AssessmentEntity::class,MstAssessmentEntity::class,
+        TrainingEntity::class,ParticipantAttendanceDetailEntity::class,MstTrainerEntity::class,TrainingParticipantDetailEntity::class],
     version = 1
 )
 
@@ -29,6 +30,18 @@ abstract class AppDataBase : RoomDatabase() {
     abstract fun primaryDataDao(): PrimaryDataDao
     abstract fun psychometricDao(): PsychometricDao
     abstract fun collectiveMeetingDao(): CollectiveMeetingDao
+    abstract fun collectiveProgressTrackerDao(): CollectiveProgressTrackerDao
+    abstract fun assessmentDetailDao(): AssessmentDetailDao
+    abstract fun assessmentDao(): AssessmentDao
+    abstract fun mstAssessmentDao(): MstAssessmentDao
+    abstract fun beneficiaryTrackerDetailDao(): BeneficiaryTrackerDetailDao
+    abstract fun beneficiaryDao(): BeneficiaryProgressDao
+    abstract fun trainingDao(): TrainingDao
+    abstract fun participantAttendanceDetailDao(): ParticipantAttendanceDetailDao
+    abstract fun mstTrainerDao(): MstTrainerDao
+    abstract fun trainingParticipantDetailDao(): TrainingParticipantDetailDao
+
+
 
 
     companion object {

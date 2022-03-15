@@ -65,20 +65,14 @@ class IndividualProfileRepository(
         Zone1: Int?,
         Ward1: Int?,
         Panchayat1: String?,
-        dateform: String?,
+        dateform: Long?,
         hhuid: String?,
-        name: String?,
-        gender: Int?,
-        age: Int?,
-        caste: Int?,
-        marital_status: Int?,
-        contact: String?,
-        StateID: Int?,
-        StateOther: String,
-        ResidingSince: Int?,
-        initials:String,
-        UpdatedOn: String?,
-        IsEdited:Int
+        imuid: String?,
+        initials: String,
+        locality: String,
+        updatedBy: Int?,
+        UpdatedOn: Long?,
+        IsEdited: Int
     ) {
         imProfileDao.updateIMProfileData(
             IndGUID,
@@ -90,16 +84,52 @@ class IndividualProfileRepository(
             Panchayat1,
             dateform,
             hhuid,
+            imuid,
+            initials,
+            locality,
+            updatedBy,
+            UpdatedOn,
+            IsEdited
+        )
+    }
+
+    internal fun updateIMProfileDemographicData(
+        IndGUID: String,
+        name: String?,
+        gender: Int?,
+        age: Int?,
+        caste: Int?,
+        marital_status: Int?,
+        contact: String?,
+        alter_contact: String?,
+        StateID: Int?,
+        StateOther: String,
+        ResidingSince: Int?,
+        Read_Write: Int?,
+        Education: Int??,
+        Smartphone: Int?,
+        MobileData: Int?,
+        Updatedby: Int?,
+        UpdatedOn: Long?,
+        IsEdited: Int
+    ) {
+        imProfileDao.updateIMProfileDemographicData(
+            IndGUID,
             name,
             gender,
             age,
             caste,
             marital_status,
             contact,
+            alter_contact,
             StateID,
             StateOther,
             ResidingSince,
-            initials,
+            Read_Write,
+            Education,
+            Smartphone,
+            MobileData,
+            Updatedby,
             UpdatedOn,
             IsEdited
         )
@@ -107,10 +137,6 @@ class IndividualProfileRepository(
 
     internal fun updateIMProfileSecondData(
         IndGUID: String,
-        Read_Write: Int?,
-        Education: Int??,
-        Smartphone: Int?,
-        MobileData: Int?,
         Languages_Read: String?,
         Languages_Write: String?,
         Languages_Speak: String?,
@@ -121,15 +147,12 @@ class IndividualProfileRepository(
         PreferredLanguage_Communication: String?,
         preferredLanguage_mobile: String?,
         preferMobile_other: String?,
-        UpdatedOn: String?,
-        IsEdited:Int
+        updatedBy: Int?,
+        UpdatedOn: Long?,
+        IsEdited: Int
     ) {
         imProfileDao.updateIMProfileSecondData(
             IndGUID,
-            Read_Write,
-            Education,
-            Smartphone,
-            MobileData,
             Languages_Read,
             Languages_Write,
             Languages_Speak,
@@ -140,6 +163,7 @@ class IndividualProfileRepository(
             PreferredLanguage_Communication,
             preferredLanguage_mobile,
             preferMobile_other,
+            updatedBy,
             UpdatedOn,
             IsEdited
         )
@@ -149,16 +173,31 @@ class IndividualProfileRepository(
         return imProfileDao.getIdvProfiledatabyGuid(guid)
     }
 
-    fun getIdvProfiledatabyGuidNew(guid: String): List<IndividualProfileEntity>{
+    fun getIdvProfiledatabyGuidNew(guid: String): List<IndividualProfileEntity> {
         return imProfileDao.getIdvProfiledatabyGuidNew(guid)
+    }
+
+    fun gethhByGUIDDataZone(HHGUID: String?,zoneCode: Int, ward: Int): List<HouseholdProfileEntity> {
+        return imProfileDao.gethhByGUIDDataZone(HHGUID,zoneCode, ward)
+    }
+
+    fun gethhByGUIDDataPanchayat(HHGUID: String?,panchayat: Int): List<HouseholdProfileEntity> {
+        return imProfileDao.gethhByGUIDDataPanchayat(HHGUID,panchayat)
     }
 
     fun gethhProfileData(): LiveData<List<HouseholdProfileEntity>> {
         return imProfileDao.gethhProfileData()
     }
 
+    fun gethhByGUIDProfileDataWard(HHGUID: String?,ZoneCode: Int, WardCode: Int): List<HouseholdProfileEntity> {
+        return imProfileDao.gethhByGUIDProfileDataWard(HHGUID,ZoneCode, WardCode)
+    }
+
+    fun gethhByGUIDProfileDataPanchayat(HHGUID: String?,PanchayatCode: Int): List<HouseholdProfileEntity> {
+        return imProfileDao.gethhByGUIDProfileDataPanchayat(HHGUID,PanchayatCode)
+    }
     fun gethhProfileDataWard(ZoneCode: Int, WardCode: Int): List<HouseholdProfileEntity> {
-        return imProfileDao.gethhProfileDataWard(ZoneCode,WardCode)
+        return imProfileDao.gethhProfileDataWard(ZoneCode, WardCode)
     }
 
     fun gethhProfileDataPanchayat(PanchayatCode: Int): List<HouseholdProfileEntity> {
@@ -170,7 +209,7 @@ class IndividualProfileRepository(
         wp_category: Int?,
         emp_type: Int?,
         waste_type: String?,
-        waste_disposal: Int?,
+        waste_disposal: String?,
         dispose_other: String?,
         primary_Occuptn: Int?,
         primary_occo_other: String?,
@@ -181,8 +220,9 @@ class IndividualProfileRepository(
         secondry_occup_other: String?,
         secondary_wd: Int?,
         secondary_inc: Int?,
-        updated_on: String?,
-        IsEdited:Int
+        updatedBy: Int?,
+        updated_on: Long?,
+        IsEdited: Int
     ) {
         imProfileDao.updateIMProfileThirdData(
             IndGUID,
@@ -200,6 +240,7 @@ class IndividualProfileRepository(
             secondry_occup_other,
             secondary_wd,
             secondary_inc,
+            updatedBy,
             updated_on,
             IsEdited
         )
@@ -214,10 +255,9 @@ class IndividualProfileRepository(
         income_certificate: Int?,
         caste_certificate: Int?,
         bank_account: Int?,
-        schemes_availed: Int?,
-        scheme_details: String?,
-        updated_on: String?,
-        IsEdited:Int
+        updatedBy: Int?,
+        updated_on: Long?,
+        IsEdited: Int
     ) {
         imProfileDao.updateIMProfileForthData(
             IndGUID,
@@ -227,8 +267,7 @@ class IndividualProfileRepository(
             income_certificate,
             caste_certificate,
             bank_account,
-            schemes_availed,
-            scheme_details,
+            updatedBy,
             updated_on,
             IsEdited
         )
@@ -236,27 +275,57 @@ class IndividualProfileRepository(
 
     internal fun updateIMProfileFifthData(
         IndGUID: String,
+        schemes_availed: Int?,
+        scheme_details: String?,
+        scheme_sp: String?,
         schemes_availed_cur: Int?,
         scheme_details_cur: String?,
+        schemesp_Cur: String?,
+        updatedBy: Int?,
+        updated_on: Long?,
+        IsEdited: Int
+    ) {
+        imProfileDao.updateIMProfileFifthData(
+            IndGUID,
+            schemes_availed,
+            scheme_details,
+            scheme_sp,
+            schemes_availed_cur,
+            scheme_details_cur,
+            schemesp_Cur,
+            updatedBy,
+            updated_on,
+            IsEdited
+        )
+    }
+
+    internal fun updateIMProfileSixData(
+        IndGUID: String,
         schemeSP_cur: String?,
         jobs: String?,
         interested_job: Int?,
         interested_jobDetail: String?,
+        job: String?,
         member_collective: Int?,
         collective_name: String?,
-        updated_on: String?,
-        IsEdited:Int
+        laboure_oth: String?,
+        business_oth: String?,
+        updatedBy: Int?,
+        updated_on: Long?,
+        IsEdited: Int
     ) {
-        imProfileDao.updateIMProfileFifthData(
+        imProfileDao.updateIMProfileSixData(
             IndGUID,
-            schemes_availed_cur,
-            scheme_details_cur,
             schemeSP_cur,
             jobs,
             interested_job,
             interested_jobDetail,
+            job,
             member_collective,
             collective_name,
+            laboure_oth,
+            business_oth,
+            updatedBy,
             updated_on,
             IsEdited
         )
@@ -270,6 +339,10 @@ class IndividualProfileRepository(
         return imProfileDao.getIndividualID(IndvCode)
     }
 
+    fun getMstDist(StateCode: Int, DistrictIn: List<String>): List<MstDistrictEntity> {
+        return mstDistrictDao.getMstDist(StateCode, DistrictIn)
+    }
+
     fun getMstDist(StateCode: Int): List<MstDistrictEntity> {
         return mstDistrictDao.getMstDist(StateCode)
     }
@@ -277,5 +350,25 @@ class IndividualProfileRepository(
     fun delete(individualProfileEntity: IndividualProfileEntity) {
         return imProfileDao.deleteindividualProfiledata(individualProfileEntity)
     }
+
+    fun getIDPDisData(iPanchayat: Int, idiscode: Int,HHGUID:String?): LiveData<List<IndividualProfileEntity>> {
+        return imProfileDao.getIDPDisData(iPanchayat, idiscode,HHGUID)
+    }
+    fun getIDDisWData(idis: Int, izone: Int, iward: Int,HHGUID:String?): LiveData<List<IndividualProfileEntity>> {
+        return imProfileDao.getIDDisWData(idis, izone, iward,HHGUID)
+    }
+    fun getIDDisWData(idis: Int, izone: Int, iward: Int): LiveData<List<IndividualProfileEntity>> {
+        return imProfileDao.getIDDisWData(idis, izone, iward)
+    }
+
+    fun getIDZData(idiscode: Int, izone: Int): LiveData<List<IndividualProfileEntity>> {
+        return imProfileDao.getIDZData(idiscode, izone)
+    }
+
+
+    fun getIDDistrictData(idiscode: Int): LiveData<List<IndividualProfileEntity>> {
+        return imProfileDao.getIDDistrictData(idiscode)
+    }
+
 
 }

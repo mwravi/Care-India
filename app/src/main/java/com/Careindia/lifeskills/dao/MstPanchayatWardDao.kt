@@ -21,9 +21,21 @@ interface MstPanchayatWardDao {
     @Query("DELETE FROM mst_4panchayat_ward")
     fun deleteAll()
 
-    @Query("select * from mst_4panchayat_ward where  DistrictCode=:disCode order by PWName")
+    @Query("select * from mst_4panchayat_ward where  DistrictCode=:disCode   and pwcode in (:WardIn) order by PWName")
+    fun getMstPanchayat(disCode: Int,WardIn: List<String>): List<MstPanchayat_WardEntity>
+
+    @Query("select * from mst_4panchayat_ward where  DistrictCode=:disCode  order by PWName")
     fun getMstPanchayat(disCode: Int): List<MstPanchayat_WardEntity>
 
-    @Query("select * from mst_4panchayat_ward where  ZoneCode=:ZoneCode order by PWName")
+    @Query("select * from mst_4panchayat_ward where  ZoneCode=:ZoneCode   and pwcode in (:PanchayatIn) order by PWName")
+    fun getMstWard(ZoneCode: Int,PanchayatIn: List<String>): List<MstPanchayat_WardEntity>
+
+    @Query("select * from mst_4panchayat_ward where  ZoneCode=:ZoneCode   order by PWName")
     fun getMstWard(ZoneCode: Int): List<MstPanchayat_WardEntity>
+
+    @Query("select PWName from mst_4panchayat_ward where  ZoneCode=:ZoneCode and pwcode=:WardCode   order by PWName")
+    fun getMstWard(ZoneCode: Int,WardCode:Int): String
+
+    @Query("select PWName from mst_4panchayat_ward where  DistrictCode=:disCode and pwcode=:WardCode  order by PWName")
+    fun getMstPanchayat(disCode: Int,WardCode:Int): String
 }

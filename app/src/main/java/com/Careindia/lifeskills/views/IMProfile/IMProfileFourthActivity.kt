@@ -19,7 +19,9 @@ import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
+import kotlinx.android.synthetic.main.activity_household_profile_second.*
 import kotlinx.android.synthetic.main.activity_improfile_fourth.*
+import kotlinx.android.synthetic.main.activity_improfile_fourth.btn_bottom
 import kotlinx.android.synthetic.main.bottomnavigationtab.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
@@ -84,7 +86,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
                 finish()
             }
             R.id.img_back -> {
-                val intent = Intent(this, IMProfileThirdActivity::class.java)
+                val intent = Intent(this, IMProfileListActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -163,14 +165,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
             3,
             iLanguageID
         )
-        validate!!.fillradio(
-            this,
-            rg_availed_services_past,
-            -1,
-            mstLookupViewModel,
-            3,
-            iLanguageID
-        )
+
 
     }
 
@@ -179,8 +174,11 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
         imProfileViewModel.getIdvProfiledatabyGuid(validate!!.returnStringValue(idvProfileGuid))
             .observe(this, Observer {
                 if (it != null && it.size > 0) {
-
-                    et_service_provider_department.setText(validate!!.returnStringValue(it.get(0).SchemeDetails))
+                    if(it.get(0).IsEdited == 0 && it.get(0).Status == 0){
+                        btn_bottom.visibility = View.GONE
+                    }else{
+                        btn_bottom.visibility = View.VISIBLE
+                    }
 
                     (it.get(0).Aadhaar?.let { it1 ->
                         validate!!.SetAnswerTypeRadioButton(
@@ -218,12 +216,7 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
                             it1
                         )
                     })
-                    (it.get(0).SchemesAvailed?.let { it1 ->
-                        validate!!.SetAnswerTypeRadioButton(
-                            rg_availed_services_past,
-                            it1
-                        )
-                    })
+
 
                 }
             })
@@ -244,7 +237,6 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
             validate!!.GetAnswerTypeRadioButtonID(rg_have_income),
             validate!!.GetAnswerTypeRadioButtonID(rg_have_caste),
             validate!!.GetAnswerTypeRadioButtonID(rg_svg_bank_act),
-            validate!!.GetAnswerTypeRadioButtonID(rg_availed_services_past)
         )
     }
 
@@ -287,25 +279,10 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.plz_ans_bank_acct)
             )
             value = 0
-        } else if (rg_availed_services_past.checkedRadioButtonId == -1) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.plz_services_past_month)
-            )
-            value = 0
-
-        } else if (et_service_provider_department.text.toString().isEmpty()) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_service_provider_department,
-                resources.getString(R.string.plz_detail_srvic_provider)
-            )
-            value = 0
 
         }
         return value
     }
-
 
     fun topLayClick() {
         autoSmoothScroll()
@@ -313,7 +290,9 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
         lay_secnd.setBackgroundColor(resources.getColor(R.color.back))
         ll_third.setBackgroundColor(resources.getColor(R.color.back))
         ll_forth.setBackgroundColor(resources.getColor(R.color.color_darkgrey))
-        ll_fifth.setBackgroundColor(resources.getColor(R.color.back))
+        ll_schemess.setBackgroundColor(resources.getColor(R.color.back))
+        lay_demographic.setBackgroundColor(resources.getColor(R.color.back))
+        ll_other_detailss.setBackgroundColor(resources.getColor(R.color.back))
 
         lay_first.setOnClickListener {
 
@@ -343,19 +322,44 @@ class IMProfileFourthActivity : BaseActivity(), View.OnClickListener {
                 finish()
             }
         }
-        ll_fifth.setOnClickListener {
+
+        lay_demographic.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileDemographicActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        ll_schemess.setOnClickListener {
             if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
                 val intent = Intent(this, IMProfileFifthActivity::class.java)
                 startActivity(intent)
                 finish()
             }
         }
+
+        ll_other_detailss.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileSixActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
     }
 
     fun autoSmoothScroll() {
 //        val hsv = view.findViewById(R.id.horizontalScroll) as HorizontalScrollView
         horizontalScroll.postDelayed({ //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
-            horizontalScroll.smoothScrollBy(700, 0)
+            horizontalScroll.smoothScrollBy(1000, 0)
         }, 100)
+    }
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
+//        val intent = Intent(this, IMProfileListActivity::class.java)
+//        startActivity(intent)
+//        finish()
     }
 }

@@ -26,7 +26,9 @@ xmlns:tools="http://schemas.android.com/tools">
         style="@style/ScrolllViewStyle"
         android:layout_margin="@dimen/_10sdp"
         android:layout_weight="1"
-        android:scrollbars="none">
+        android:scrollbarSize="@dimen/_10sdp"
+        android:scrollbars="vertical"
+        >
 
 
 
@@ -57,11 +59,12 @@ xmlns:tools="http://schemas.android.com/tools">
                 <fr.ganfra.materialspinner.MaterialSpinner
                     android:id="@+id/spin_emp_category"
                     style="@style/SpinnerViewNew"
-                    android:selectedItemPosition="@={psychometricViewModel.EmpCategory}"/>
+                   />
 
             </LinearLayout>
 
             <LinearLayout
+                android:visibility="gone"
                 android:id="@+id/lay_year_exp"
                 style="@style/LinearLayoutStyle">
 
@@ -108,6 +111,33 @@ xmlns:tools="http://schemas.android.com/tools">
                     android:id="@+id/spin_stage_emp"
                     style="@style/SpinnerViewNew"
                     android:selectedItemPosition="@={psychometricViewModel.StageEmp}"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/lay_stage_emp_other"
+                android:visibility="gone"
+                style="@style/LinearLayoutStyle">
+
+                <TableRow style="@style/TableRowStyle">
+
+
+                    <TextView
+
+                        style="@style/TextViewStylestrik" />
+
+                    <TextView
+                        style="@style/TextViewStyleNew"
+                        android:text="@string/please_specify_stage_emp" />
+                </TableRow>
+
+                <EditText
+                    android:id="@+id/et_stage_emp_other"
+                    style="@style/EditTextStyleNew"
+                    android:hint="@string/type_here"
+                    android:inputType="text"
+                    android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                    />
 
             </LinearLayout>
 
@@ -193,6 +223,7 @@ xmlns:tools="http://schemas.android.com/tools">
     </ScrollView>
 
     <TableRow
+        android:id="@+id/btn_bottom"
         style="@style/TableRowStyle"
         android:layout_margin="@dimen/_10sdp">
 
@@ -218,7 +249,7 @@ xmlns:tools="http://schemas.android.com/tools">
             android:layout_width="0dp"
             android:layout_height="@dimen/_30sdp"
             android:layout_weight="1"
-            android:text="@string/next" />
+            android:text="@string/save_and_next" />
 
         <TextView
             style="@style/NewSimpleTextMargin"

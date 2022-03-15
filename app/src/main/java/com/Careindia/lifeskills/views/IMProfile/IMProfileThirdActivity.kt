@@ -22,7 +22,9 @@ import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
+import kotlinx.android.synthetic.main.activity_household_profile_second.*
 import kotlinx.android.synthetic.main.activity_improfile_third.*
+import kotlinx.android.synthetic.main.activity_improfile_third.btn_bottom
 import kotlinx.android.synthetic.main.activity_improfile_third.btn_prev
 import kotlinx.android.synthetic.main.activity_improfile_third.btn_save
 import kotlinx.android.synthetic.main.bottomnavigationtab.*
@@ -90,7 +92,7 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
             }
 
             R.id.img_back -> {
-                val intent = Intent(this, IMProfileTwoActivity::class.java)
+                val intent = Intent(this, IMProfileListActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -136,7 +138,9 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
             3,
             1
         )
-
+        rg_type_emp.setOnCheckedChangeListener {radioGroup,i ->
+            validate!!.hideSoftKeyboard(this, radioGroup)
+        }
     }
 
     fun showLiveData() {
@@ -144,7 +148,11 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
         imProfileViewModel.getIdvProfiledatabyGuid(validate!!.returnStringValue(idvProfileGuid))
             .observe(this, Observer {
                 if (it != null && it.size > 0) {
-
+                    if(it.get(0).IsEdited == 0 && it.get(0).Status == 0){
+                        btn_bottom.visibility = View.GONE
+                    }else{
+                        btn_bottom.visibility = View.VISIBLE
+                    }
                     et_specify_source_secondary_income.setText(validate!!.returnStringValue(it.get(0).Sec_Inc_Other))
                     et_specif_source_income.setText(validate!!.returnStringValue(it.get(0).Primary_Inc_Other))
                     et_specify_sell_waste_collect.setText(validate!!.returnStringValue(it.get(0).Dispose_Other))
@@ -154,15 +162,8 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
                     setDefBlank(et_no_days_job, it.get(0).Primary_WD!!)
                     setDefBlank(et_days_secondary_job,it.get(0).Secondary_WD!!)
                     setDefBlank(et_avg_daily_secondry_income,it.get(0).Secondary_Inc!!)
-                    spin_sell_waste_collect.setSelection(
-                        returnpos(
-                            validate!!.returnIntegerValue(
-                                it.get(
-                                    0
-                                ).Waste_Disposal.toString()
-                            ), 12
-                        )
-                    )
+
+                    validate!!.SetAnswerTypeCheckBoxButton(chk_sell_waste_collect, it.get(0).Waste_Disposal)
                     spin_source_income.setSelection(
                         returnpos(
                             validate!!.returnIntegerValue(it.get(0).Primary_Occupation.toString()),
@@ -214,7 +215,7 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
     fun fillSpinner() {
         fillSpinner("Select", spin_cate_picker_belong, 10, iLanguageID)
         fillSpinner("Select", spin_source_income, 13, iLanguageID)
-        fillSpinner("Select", spin_sell_waste_collect, 12, iLanguageID)
+        validate!!.dynamicMultiCheckChange(this,chk_sell_waste_collect,mstLookupViewModel,12,iLanguageID,et_specify_sell_waste_collect,lay_et_specify_sell_waste_collect)
         fillSpinner("Select", spin_what_secondary_income, 14, iLanguageID)
     }
 
@@ -229,23 +230,6 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
 
     fun hideShowView() {
 
-        imProfileViewModel.WASTEDISPOSAL.observe(this, Observer {
-            val lookupCode = validate!!.returnLookupCode(
-                spin_sell_waste_collect,
-                mstLookupViewModel,
-                12,
-                iLanguageID
-            )
-            if (lookupCode == 99) {
-                lay_et_specify_sell_waste_collect.visibility = View.VISIBLE
-            } else {
-                lay_et_specify_sell_waste_collect.visibility = View.GONE
-                et_specify_sell_waste_collect.setText("")
-            }
-
-        })
-
-
         imProfileViewModel.PrimaryOccup.observe(this, Observer {
             val lookupCode = validate!!.returnLookupCode(
                 spin_source_income,
@@ -255,8 +239,53 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
             )
             if (lookupCode == 99) {
                 lay_et_specif_source_income.visibility = View.VISIBLE
-            } else {
+            } else if (lookupCode == 1) {
+                lay_et_no_days_job.visibility = View.VISIBLE
+                lay_et_avg_daily_income.visibility = View.VISIBLE
+                lay_secondary_income.visibility = View.VISIBLE
                 lay_et_specif_source_income.visibility = View.GONE
+                et_specif_source_income.setText("")
+            } else if (lookupCode == 2) {
+                lay_et_no_days_job.visibility = View.VISIBLE
+                lay_et_avg_daily_income.visibility = View.VISIBLE
+                lay_secondary_income.visibility = View.VISIBLE
+                lay_et_specif_source_income.visibility = View.GONE
+                et_specif_source_income.setText("")
+            } else if (lookupCode == 3) {
+                lay_et_no_days_job.visibility = View.VISIBLE
+                lay_et_avg_daily_income.visibility = View.VISIBLE
+                lay_secondary_income.visibility = View.VISIBLE
+                lay_et_specif_source_income.visibility = View.GONE
+                et_specif_source_income.setText("")
+            } else if (lookupCode == 4) {
+                lay_et_no_days_job.visibility = View.VISIBLE
+                lay_et_avg_daily_income.visibility = View.VISIBLE
+                lay_secondary_income.visibility = View.VISIBLE
+                lay_et_specif_source_income.visibility = View.GONE
+                et_specif_source_income.setText("")
+            } else if (lookupCode == 5) {
+                lay_et_no_days_job.visibility = View.VISIBLE
+                lay_et_avg_daily_income.visibility = View.VISIBLE
+                lay_secondary_income.visibility = View.VISIBLE
+                lay_et_specif_source_income.visibility = View.GONE
+                et_specif_source_income.setText("")
+            } else if (lookupCode == 6) {
+                lay_et_no_days_job.visibility = View.VISIBLE
+                lay_et_avg_daily_income.visibility = View.VISIBLE
+                lay_secondary_income.visibility = View.VISIBLE
+                lay_et_specif_source_income.visibility = View.GONE
+                et_specif_source_income.setText("")
+            } else if (lookupCode == 8) {
+                lay_et_no_days_job.visibility = View.VISIBLE
+                lay_et_avg_daily_income.visibility = View.VISIBLE
+                lay_secondary_income.visibility = View.VISIBLE
+                lay_et_specif_source_income.visibility = View.GONE
+                et_specif_source_income.setText("")
+            } else {
+                lay_et_no_days_job.visibility = View.GONE
+                lay_et_avg_daily_income.visibility = View.GONE
+                lay_et_specif_source_income.visibility = View.GONE
+                lay_secondary_income.visibility = View.GONE
                 et_specif_source_income.setText("")
             }
 
@@ -271,7 +300,9 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
                 lay_spin_what_secondary_income.visibility = View.GONE
                 lay_et_days_secondary_job.visibility = View.GONE
                 lay_et_avg_daily_secondry_income.visibility = View.GONE
+                lay_et_specify_source_secondary_income.visibility = View.GONE
             }
+            validate!!.hideSoftKeyboard(this, radioGroup)
         }
 
         imProfileViewModel.SecSourceIncom.observe(this, Observer {
@@ -290,7 +321,48 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
 
         })
 
+
+        imProfileViewModel.WastePick.observe(this) {
+
+
+            val lookupCode = validate!!.returnLookupCode(
+                spin_cate_picker_belong,
+                mstLookupViewModel,
+                10,
+                iLanguageID
+            )
+            if (lookupCode > 0) {
+
+                if (lookupCode == 1) {
+                    lay_type_emp.visibility = View.VISIBLE
+                    lay_et_waste_pick.visibility = View.VISIBLE
+                    lay_spin_sell_waste_collect.visibility = View.VISIBLE
+                } else if (lookupCode == 2) {
+                    lay_type_emp.visibility = View.VISIBLE
+                    lay_et_waste_pick.visibility = View.VISIBLE
+                    lay_spin_sell_waste_collect.visibility = View.VISIBLE
+                } else if (lookupCode == 3) {
+                    lay_type_emp.visibility = View.VISIBLE
+                    lay_et_waste_pick.visibility = View.VISIBLE
+                    lay_spin_sell_waste_collect.visibility = View.VISIBLE
+                } else if (lookupCode == 4) {
+                    lay_type_emp.visibility = View.VISIBLE
+                    lay_et_waste_pick.visibility = View.VISIBLE
+                    lay_spin_sell_waste_collect.visibility = View.VISIBLE
+                } else {
+                    lay_type_emp.visibility = View.GONE
+                    lay_et_waste_pick.visibility = View.GONE
+                    et_waste_pick.setText("")
+                    validate!!.SetAnswerTypeRadioButton(rg_type_emp, 0)
+                    validate!!.SetAnswerTypeCheckBoxButton(chk_sell_waste_collect, "")
+                    lay_spin_sell_waste_collect.visibility = View.GONE
+                }
+            }
+        }
+
+
     }
+
 
     private fun checkValidation(): Int {
         var value = 1
@@ -302,13 +374,15 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.plz_select_waste_pickr)
             )
             value = 0
-        } else if (rg_type_emp.checkedRadioButtonId == -1) {
+        } else if (rg_type_emp.checkedRadioButtonId == -1 && lay_type_emp.visibility == View.VISIBLE) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.plz_select_employmentr)
             )
             value = 0
-        } else if (et_waste_pick.text.toString().isEmpty()) {
+        } else if (et_waste_pick.text.toString()
+                .isEmpty() && lay_et_waste_pick.visibility == View.VISIBLE
+        ) {
             validate!!.CustomAlertEdit(
                 this,
                 et_waste_pick,
@@ -316,10 +390,9 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-        } else if (spin_sell_waste_collect.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
+        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(chk_sell_waste_collect).length == 0 && lay_spin_sell_waste_collect.visibility == View.VISIBLE) {
+            validate!!.CustomAlert(
                 this,
-                spin_sell_waste_collect,
                 resources.getString(R.string.plz_select_dispose_wastes)
             )
             value = 0
@@ -349,90 +422,111 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.plz_enter_source_income)
             )
             value = 0
-        } else if (et_no_days_job.text.toString().isEmpty()) {
+        } else if (et_no_days_job.text.toString().isEmpty() && lay_et_no_days_job.visibility == View.VISIBLE) {
             validate!!.CustomAlertEdit(
                 this,
                 et_no_days_job,
                 resources.getString(R.string.plz_select_working_days)
             )
             value = 0
-        } else if (Integer.parseInt(et_no_days_job.text.toString()) < 1 || Integer.parseInt(
+
+        }else if(lay_et_no_days_job.visibility == View.VISIBLE && validate!!.returnIntegerValue(et_no_days_job.text.toString()) < 1 || validate!!.returnIntegerValue(
                 et_no_days_job.text.toString()
-            ) > 29
-        ) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_no_days_job,
-                resources.getString(R.string.please_entr_input_months)
-            )
-            value = 0
-        } else if (et_avg_daily_income.text.toString().isEmpty()) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_avg_daily_income,
-                resources.getString(R.string.plz_select_avg_daily_income)
-            )
-            value = 0
+            ) > 29) {
 
-        } else if (rg_secondary_income.checkedRadioButtonId == -1) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.secondary_income)
-            )
-            value = 0
-        } else if (validate!!.GetAnswerTypeRadioButtonID(rg_secondary_income) == 1 && spin_what_secondary_income.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_what_secondary_income,
-                resources.getString(R.string.plz_select_secondary_income)
-            )
-            value = 0
-
-        } else if (et_specify_source_secondary_income.text.toString().length == 0 && lay_et_specify_source_secondary_income.visibility == View.VISIBLE) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_specify_source_secondary_income,
-                resources.getString(R.string.plz_enter_secondary_income)
-            )
-            value = 0
-
-        }else  if (et_days_secondary_job.text.toString().isEmpty() && lay_et_days_secondary_job.visibility == View.VISIBLE) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_days_secondary_job,
-                resources.getString(R.string.plz_select_wrking_days_months)
-            )
-            value = 0
-        } else if (lay_et_days_secondary_job.visibility == View.VISIBLE) {
-            if(Integer.parseInt(et_days_secondary_job.text.toString()) < 1 || Integer.parseInt(
-                    et_days_secondary_job.text.toString()
-                ) > 29) {
                 validate!!.CustomAlertEdit(
                     this,
-                    et_days_secondary_job,
+                    et_no_days_job,
                     resources.getString(R.string.please_entr_input_months)
                 )
                 value = 0
             }
-        } else if (et_avg_daily_secondry_income.text.toString().isEmpty() && lay_et_avg_daily_secondry_income.visibility == View.VISIBLE) {
-            validate!!.CustomAlertEdit(
-                this,
-                et_avg_daily_secondry_income,
-                resources.getString(R.string.plz_select_avg_daily_socndry_incm)
-            )
-            value = 0
-        } else if (lay_et_avg_daily_secondry_income.visibility == View.VISIBLE) {
-            if (Integer.parseInt(et_avg_daily_secondry_income.text.toString()) < 50 || Integer.parseInt(
-                    et_avg_daily_secondry_income.text.toString()
+         else if (lay_et_avg_daily_income.visibility==View.VISIBLE && et_avg_daily_income.text.toString().isEmpty()) {
+                validate!!.CustomAlertEdit(
+                    this,
+                    et_avg_daily_income,
+                    resources.getString(R.string.plz_select_avg_daily_income)
+                )
+                value = 0
+            } else if (lay_et_avg_daily_income.visibility==View.VISIBLE && validate!!.returnIntegerValue(et_avg_daily_income.text.toString()) < 50 || validate!!.returnIntegerValue(
+                    et_avg_daily_income.text.toString()
                 ) > 9999
             ) {
                 validate!!.CustomAlertEdit(
                     this,
-                    et_avg_daily_secondry_income,
+                    et_avg_daily_income,
                     resources.getString(R.string.please_entr_input_daily)
                 )
                 value = 0
-            }
+
+            } else if (rg_secondary_income.checkedRadioButtonId == -1 && lay_secondary_income.visibility == View.VISIBLE) {
+                validate!!.CustomAlert(
+                    this,
+                    resources.getString(R.string.please_enter) + " " + resources.getString(R.string.secondary_income)
+                )
+                value = 0
+            } else if (validate!!.GetAnswerTypeRadioButtonID(rg_secondary_income) == 1 && spin_what_secondary_income.selectedItemPosition == 0) {
+                validate!!.CustomAlertSpinner(
+                    this,
+                    spin_what_secondary_income,
+                    resources.getString(R.string.plz_select_secondary_income)
+                )
+                value = 0
+
+            } else if (et_specify_source_secondary_income.text.toString().length == 0 && lay_et_specify_source_secondary_income.visibility == View.VISIBLE) {
+                validate!!.CustomAlertEdit(
+                    this,
+                    et_specify_source_secondary_income,
+                    resources.getString(R.string.plz_enter_secondary_income)
+                )
+                value = 0
+
+            } else if (et_days_secondary_job.text.toString()
+                    .isEmpty() && lay_et_days_secondary_job.visibility == View.VISIBLE
+            ) {
+                validate!!.CustomAlertEdit(
+                    this,
+                    et_days_secondary_job,
+                    resources.getString(R.string.plz_select_wrking_days_months)
+                )
+                value = 0
+
+            } else if (lay_et_days_secondary_job.visibility == View.VISIBLE) {
+                if (Integer.parseInt(et_days_secondary_job.text.toString()) < 1 || Integer.parseInt(
+                        et_days_secondary_job.text.toString()
+                    ) > 29
+                ) {
+
+                    validate!!.CustomAlertEdit(
+                        this,
+                        et_days_secondary_job,
+                        resources.getString(R.string.please_entr_input_months)
+                    )
+                    value = 0
+                } else if (et_avg_daily_secondry_income.text.toString()
+                        .isEmpty() && lay_et_avg_daily_secondry_income.visibility == View.VISIBLE
+                ) {
+                    validate!!.CustomAlertEdit(
+                        this,
+                        et_avg_daily_secondry_income,
+                        resources.getString(R.string.plz_select_avg_daily_socndry_incm)
+                    )
+                    value = 0
+
+                } else if (validate!!.returnIntegerValue(et_avg_daily_secondry_income.text.toString()) < 50 ||
+                        validate!!.returnIntegerValue(et_avg_daily_secondry_income.text.toString()
+                    ) > 9999 && lay_et_avg_daily_secondry_income.visibility == View.VISIBLE
+                ) {
+
+                    validate!!.CustomAlertEdit(
+                        this,
+                        et_avg_daily_secondry_income,
+                        resources.getString(R.string.please_entr_input_daily)
+                    )
+                    value = 0
+
+                }
+
         }
         return value
     }
@@ -470,7 +564,9 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
         lay_secnd.setBackgroundColor(resources.getColor(R.color.back))
         ll_third.setBackgroundColor(resources.getColor(R.color.color_darkgrey))
         ll_forth.setBackgroundColor(resources.getColor(R.color.back))
-        ll_fifth.setBackgroundColor(resources.getColor(R.color.back))
+        ll_schemess.setBackgroundColor(resources.getColor(R.color.back))
+        lay_demographic.setBackgroundColor(resources.getColor(R.color.back))
+        ll_other_detailss.setBackgroundColor(resources.getColor(R.color.back))
 
         lay_first.setOnClickListener {
 
@@ -500,13 +596,31 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
                 finish()
             }
         }
-        ll_fifth.setOnClickListener {
+
+        lay_demographic.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileDemographicActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        ll_schemess.setOnClickListener {
             if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
                 val intent = Intent(this, IMProfileFifthActivity::class.java)
                 startActivity(intent)
                 finish()
             }
         }
+
+        ll_other_detailss.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileSixActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
     }
 
 
@@ -539,7 +653,14 @@ class IMProfileThirdActivity : BaseActivity(), View.OnClickListener {
     fun autoSmoothScroll() {
 //        val hsv = view.findViewById(R.id.horizontalScroll) as HorizontalScrollView
         horizontalScroll.postDelayed({ //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
-            horizontalScroll.smoothScrollBy(200, 200)
+            horizontalScroll.smoothScrollBy(600, 0)
         }, 100)
+    }
+
+    override fun onBackPressed() {
+//        super.onBackPressed()
+//        val intent = Intent(this, IMProfileListActivity::class.java)
+//        startActivity(intent)
+//        finish()
     }
 }

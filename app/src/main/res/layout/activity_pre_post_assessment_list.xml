@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_layout" />
+
+    <LinearLayout
+       android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
+        android:orientation="horizontal"
+        style="@style/LinearLayoutStyle">
+
+
+
+        <LinearLayout
+            android:id="@+id/lay_formdate"
+            style="@style/LinearLayoutStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1">
+
+            <TableRow style="@style/TableRowStyle">
+
+<!--                <TextView style="@style/TextViewStylestrik" />-->
+
+                <TextView
+                    android:id="@+id/tv_formdate"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/date_form" />
+
+
+            </TableRow>
+
+            <EditText
+                android:id="@+id/et_dateform"
+                style="@style/EditTextStyleNew"
+                android:clickable="false"
+                android:drawableEnd="@drawable/ic_calender"
+                android:focusable="false"
+                android:hint="@string/enter_date"
+                android:inputType="date" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/lay_todate"
+            style="@style/LinearLayoutStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1">
+
+            <TableRow style="@style/TableRowStyle">
+
+<!--                <TextView-->
+<!--                    style="@style/TextViewStylestrik" />-->
+
+                <TextView
+                    android:id="@+id/tv_todate"
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/date_to" />
+
+
+            </TableRow>
+
+            <EditText
+                android:id="@+id/et_todate"
+                style="@style/EditTextStyleNew"
+                android:clickable="false"
+                android:drawableEnd="@drawable/ic_calender"
+                android:focusable="false"
+                android:hint="@string/enter_date"
+                android:inputType="date" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/LinearLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_10sdp"
+        android:orientation="vertical">
+
+
+       <androidx.core.widget.NestedScrollView
+           android:layout_width="match_parent"
+           android:layout_height="0dp"
+           android:layout_weight="1">
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/rv_list"
+               android:layout_width="match_parent"
+               android:layout_height="match_parent" />
+       </androidx.core.widget.NestedScrollView>
+
+        <TableRow
+            android:visibility="gone"
+            style="@style/TableRowStyle"
+            android:gravity="end">
+
+            <TextView
+                style="@style/TextViewStyleNew"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:text="@string/add_assessment" />
+
+            <ImageView
+                android:id="@+id/btn_add"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="end"
+                android:background="@drawable/ic_add_circle" />
+        </TableRow>
+
+    </LinearLayout>
+</LinearLayout>

@@ -24,7 +24,7 @@ import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_psychometric_second.*
 import kotlinx.android.synthetic.main.activity_psychometric_second.btn_prev
 import kotlinx.android.synthetic.main.activity_psychometric_second.btn_save
-import kotlinx.android.synthetic.main.bottomnavigationtab.*
+import kotlinx.android.synthetic.main.bottom_nav_psycho_layout.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class PsychometricSecondActivity : BaseActivity(), View.OnClickListener {
@@ -33,19 +33,21 @@ class PsychometricSecondActivity : BaseActivity(), View.OnClickListener {
     lateinit var mstLookupViewModel: MstLookupViewModel
     lateinit var psychometricViewModel: PsychometricViewModel
     var iLanguageID: Int = 0
+    var paricipantAge: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_psychometric_second)
         validate = Validate(this)
-        tv_title.text = "Psychometric"
+        tv_title.text = resources.getString(R.string.psychometric)
 
         mstLookupViewModel =
             ViewModelProviders.of(this).get(MstLookupViewModel::class.java)
 
         val psychometricdao = CareIndiaApplication.database?.psychometricDao()
-        val psychometricRepository = PsychometricRepository(psychometricdao!!)
+        val mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()!!
+        val psychometricRepository = PsychometricRepository(psychometricdao!!,mstDistrictDao)
         psychometricViewModel = ViewModelProvider(
             this,
             PsychometricViewModelFactory(psychometricRepository)
@@ -54,6 +56,7 @@ class PsychometricSecondActivity : BaseActivity(), View.OnClickListener {
         binding.psychometricViewModel = psychometricViewModel
         binding.lifecycleOwner = this
         iLanguageID = validate!!.RetriveSharepreferenceInt(AppSP.iLanguageID)
+        paricipantAge = validate!!.RetriveSharepreferenceInt(AppSP.PSYAGE)
 
 
         initializeController()
@@ -64,6 +67,7 @@ class PsychometricSecondActivity : BaseActivity(), View.OnClickListener {
         applyClickOnView()
         //fillSpinnner
         fillSpinner()
+
         topLayClick()
 
         if (validate!!.RetriveSharepreferenceString(AppSP.PATGUID) != null && validate!!.RetriveSharepreferenceString(
@@ -72,6 +76,9 @@ class PsychometricSecondActivity : BaseActivity(), View.OnClickListener {
         ) {
             showLiveData()
         }
+
+        hideShowView()
+
     }
 
 
@@ -103,7 +110,7 @@ class PsychometricSecondActivity : BaseActivity(), View.OnClickListener {
                 finish()
             }
             R.id.img_back -> {
-                val intent = Intent(this, PsychometricFirstActivity::class.java)
+                val intent = Intent(this, PsychometricListActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -118,6 +125,7 @@ class PsychometricSecondActivity : BaseActivity(), View.OnClickListener {
 
     }
 
+
     fun fillSpinner() {
         fillSpinner(resources.getString(R.string.select), spin_min_age_limit, 35, iLanguageID)
         fillSpinner(resources.getString(R.string.select), spin_educ_applicant, 36, iLanguageID)
@@ -125,18 +133,39 @@ class PsychometricSecondActivity : BaseActivity(), View.OnClickListener {
         fillSpinner(resources.getString(R.string.select), spin_economic_category, 38, iLanguageID)
     }
 
+
+    fun hideShowView(){
+
+        if((paricipantAge > 17) && (paricipantAge < 25)){
+            spin_min_age_limit.setSelection(returnpos(4,35))
+        }else if((paricipantAge > 24) && (paricipantAge < 35)){
+            spin_min_age_limit.setSelection(returnpos(3,35))
+        }else if((paricipantAge > 34) && (paricipantAge < 45)){
+            spin_min_age_limit.setSelection(returnpos(2,35))
+        }else if(paricipantAge > 44){
+            spin_min_age_limit.setSelection(returnpos(1,35))
+        }
+        spin_min_age_limit.isEnabled = false
+
+    }
+
     fun showLiveData() {
         val patGuid = validate!!.RetriveSharepreferenceString(AppSP.PATGUID)
         psychometricViewModel.getPsychometricbyGuid(validate!!.returnStringValue(patGuid))
             .observe(this, Observer {
                 if (it != null && it.size > 0) {
+                    if(it.get(0).IsEdited == 0 && it.get(0).Status == 0){
+                        btn_bottom.visibility = View.GONE
+                    }else{
+                        btn_bottom.visibility = View.VISIBLE
+                    }
+//                    spin_min_age_limit.setSelection(
+//                        returnpos(
+//                            validate!!.returnIntegerValue(it.get(0).min_age_applicant.toString()),
+//                            35
+//                        )
+//                    )
 
-                    spin_min_age_limit.setSelection(
-                        returnpos(
-                            validate!!.returnIntegerValue(it.get(0).min_age_applicant.toString()),
-                            35
-                        )
-                    )
                     spin_educ_applicant.setSelection(
                         returnpos(
                             validate!!.returnIntegerValue(
@@ -155,6 +184,10 @@ class PsychometricSecondActivity : BaseActivity(), View.OnClickListener {
                             ), 37
                         )
                     )
+
+                    et_cast_belong.setText( it.get(
+                        0
+                    ).CastBelong)
                     spin_economic_category.setSelection(
                         returnpos(
                             validate!!.returnIntegerValue(
@@ -232,11 +265,17 @@ class PsychometricSecondActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.psy_plz_ans_socily_cate)
             )
             value = 0
+        } else if (et_cast_belong.text.toString().length==0) {
+            validate!!.CustomAlert(
+                this,
+                resources.getString(R.string.psy_plz_ans_econmic_cate)
+            )
+            value = 0
         } else if (spin_economic_category.selectedItemPosition == 0) {
             validate!!.CustomAlertSpinner(
                 this,
                 spin_economic_category,
-                resources.getString(R.string.psy_plz_ans_econmic_cate)
+                resources.getString(R.string.psy_plz_ans_castte)
             )
             value = 0
         }
@@ -304,4 +343,8 @@ class PsychometricSecondActivity : BaseActivity(), View.OnClickListener {
         }, 100)
     }
 
+
+    override fun onBackPressed() {
+
+    }
 }

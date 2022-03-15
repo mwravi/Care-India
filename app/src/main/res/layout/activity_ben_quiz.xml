@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+ >
+    <include layout="@layout/toolbar_layout" />
+    <TextView
+        android:id="@+id/idformName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:minHeight="40dp"
+        android:text="Form Name"
+        android:textStyle="bold"
+        android:textSize="@dimen/_13sdp"
+        android:textColor="@color/colorPrimary" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+       <!-- <ScrollView
+            android:id="@+id/lyStatic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvState"
+                    style="@style/SimpleTextGreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/state"
+                    android:visibility="gone" />
+
+                <Spinner
+                    android:id="@+id/spinState"
+                    style="@style/SpinnerAppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:minWidth="200dp"
+                    android:visibility="gone"></Spinner>
+
+                <TextView
+                    android:id="@+id/tvDistrict"
+                    style="@style/SimpleTextGreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/district"
+                    android:visibility="gone" />
+
+                <Spinner
+                    android:id="@+id/spinDistrict"
+                    style="@style/SpinnerAppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:minWidth="200dp"
+                    android:visibility="gone"></Spinner>
+
+                <TextView
+                    android:id="@+id/tvBlock"
+                    style="@style/SimpleTextGreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/block"
+                    android:visibility="gone" />
+
+                <Spinner
+                    android:id="@+id/spinBlock"
+                    style="@style/SpinnerAppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:minWidth="200dp"
+                    android:visibility="gone"></Spinner>
+
+                <TextView
+                    android:id="@+id/tvPanchayat"
+                    style="@style/SimpleTextGreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/panchayat"
+                    android:visibility="gone" />
+
+                <Spinner
+                    android:id="@+id/spinPanchayat"
+                    style="@style/SpinnerAppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:minWidth="200dp"
+                    android:visibility="gone"></Spinner>
+
+                <TextView
+                    android:id="@+id/tvVillage"
+                    style="@style/SimpleTextGreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/village"
+                    android:visibility="gone" />
+
+                <Spinner
+                    android:id="@+id/spinVillage"
+                    style="@style/SpinnerAppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:minWidth="200dp"
+                    android:visibility="gone"></Spinner>
+
+                <TextView
+                    android:id="@+id/tvWard"
+                    style="@style/SimpleTextGreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ward"
+                    android:visibility="gone" />
+
+                <Spinner
+                    android:id="@+id/spinWard"
+                    style="@style/SpinnerAppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:minWidth="200dp"
+                    android:visibility="gone"></Spinner>
+
+                <TextView
+                    android:id="@+id/tvCHC"
+                    style="@style/SimpleTextGreen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ward"
+                    android:visibility="gone" />
+
+                <Spinner
+                    android:id="@+id/spinCHC"
+                    style="@style/SpinnerAppTheme"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="10dp"
+                    android:minWidth="200dp"
+                    android:visibility="gone"></Spinner>
+
+            </LinearLayout>
+        </ScrollView>-->
+
+    <!--    <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/gridQues"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+
+        />-->
+
+        <ScrollView
+            android:id="@+id/lldynamic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5sdp"
+            android:background="@drawable/box_background"
+            android:scrollbarSize="@dimen/_10sdp"
+            >
+
+            <LinearLayout
+                android:id="@+id/linearQues"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:orientation="vertical">
+
+
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+
+    <TableRow
+        style="@style/TableRowStyle"
+        android:layout_margin="@dimen/_10sdp">
+
+        <TextView
+            style="@style/NewSimpleTextMargin"
+            android:layout_weight=".1" />
+
+        <Button
+            android:id="@+id/btn_prev"
+            style="@style/ButtonTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_weight="1"
+            android:text="@string/previous" />
+
+        <TextView
+            style="@style/NewSimpleTextMargin"
+            android:layout_weight=".1" />
+
+        <Button
+            android:id="@+id/btn_save"
+            style="@style/ButtonTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_weight="1"
+            android:text="@string/next" />
+
+        <TextView
+            style="@style/NewSimpleTextMargin"
+            android:layout_weight=".1" />
+
+    </TableRow>
+</LinearLayout>

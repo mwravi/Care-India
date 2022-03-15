@@ -2,7 +2,6 @@ package com.careindia.lifeskills.views.improfile
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.EditText
@@ -23,12 +22,12 @@ import com.careindia.lifeskills.viewmodel.MstLookupViewModel
 import com.careindia.lifeskills.viewmodelfactory.IndividualViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
-import kotlinx.android.synthetic.main.activity_collective_profile_second.*
-import kotlinx.android.synthetic.main.activity_household_profile_third.*
+import kotlinx.android.synthetic.main.activity_household_profile_second.*
 import kotlinx.android.synthetic.main.activity_improfile_two.*
+import kotlinx.android.synthetic.main.activity_improfile_two.btn_bottom
+import kotlinx.android.synthetic.main.bottomnavigationtab.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.btn_prev
 import kotlinx.android.synthetic.main.buttons_save_cancel.btn_save
-import kotlinx.android.synthetic.main.bottomnavigationtab.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
@@ -39,6 +38,9 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
     lateinit var mstLookupViewModel: MstLookupViewModel
 
     var imProfileGUID = ""
+    var readWrite =0
+    var smartphone =0
+    var accessmobile =0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +56,9 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         val improfiledao = CareIndiaApplication.database?.imProfileDao()
         val mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()!!
         val improfileRepository = IndividualProfileRepository(improfiledao!!, mstDistrictDao)
-
+        readWrite =  validate!!.RetriveSharepreferenceInt(AppSP.READWRITE)
+        smartphone =  validate!!.RetriveSharepreferenceInt(AppSP.SMARTPHONE)
+        accessmobile =  validate!!.RetriveSharepreferenceInt(AppSP.ACESSMOBILE)
         imProfileViewModel = ViewModelProvider(
             this,
             IndividualViewModelFactory(improfileRepository)
@@ -74,12 +78,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         //apply click on view
         applyClickOnView()
         topLayClick()
-        // fill spinner/radio/multicheck view
-        fillSpinnerView()
-        fillRadio()
         fillMultiCheck()
-
-
 
         if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID) != null && validate!!.RetriveSharepreferenceString(
                 AppSP.IndividualProfileGUID
@@ -143,42 +142,6 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
 
     }
 
-    fun fillRadio() {
-
-        validate!!.fillradio(
-            this,
-            rg_can_read,
-            -1,
-            mstLookupViewModel,
-            3,
-            iLanguageID
-        )
-
-        validate!!.fillradio(
-            this,
-            rg_access_sphone,
-            -1,
-            mstLookupViewModel,
-            3,
-            iLanguageID
-        )
-        validate!!.fillradio(
-            this,
-            rg_acess_mob_data,
-            -1,
-            mstLookupViewModel,
-            3,
-            iLanguageID
-        )
-
-    }
-
-    fun fillSpinnerView() {
-//        bindCommonTable("Select", spin_state, 7,iLanguageID)
-
-        fillSpinner("Select", spin_education, 8, iLanguageID)
-    }
-
 
     /**
      * Click on view
@@ -203,13 +166,13 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
                 }
             }
             R.id.btn_prev -> {
-                var intent = Intent(this, IMProfileOneActivity::class.java)
+                var intent = Intent(this, IMProfileDemographicActivity::class.java)
                 startActivity(intent)
                 finish()
             }
 
             R.id.img_back -> {
-                val intent = Intent(this, IMProfileOneActivity::class.java)
+                val intent = Intent(this, IMProfileListActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -229,29 +192,22 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         imProfileViewModel.getIdvProfiledatabyGuid(validate!!.returnStringValue(idvProfileGuid))
             .observe(this, Observer {
                 if (it != null && it.size > 0) {
-
+                    if(it.get(0).IsEdited == 0 && it.get(0).Status == 0){
+                        btn_bottom.visibility = View.GONE
+                    }else{
+                        btn_bottom.visibility = View.VISIBLE
+                    }
                     et_specify.setText(validate!!.returnStringValue(it.get(0).Speak_Other))
                     et_specifyread.setText(validate!!.returnStringValue(it.get(0).Read_Other))
                     et_specifywrite.setText(validate!!.returnStringValue(it.get(0).Write_Other))
-                    et_specifyprefer.setText(validate!!.returnStringValue(it.get(0).Perfer_Commu_Other))
+                    et_specifyprefer.setText(validate!!.returnStringValue(it.get(0).Prefer_Commu_Other))
                     et_specify_perfer_mob.setText(validate!!.returnStringValue(it.get(0).Mobile_Other))
-
-                    spin_education.setSelection(
-                        returnpos(
-                            validate!!.returnIntegerValue(it.get(0).Education.toString()),
-                            8
-                        )
-                    )
 
                     (validate!!.SetAnswerTypeCheckBoxButton(
                         lang_prefer_mobile_use,
                         it.get(0).PreferredLanguage_Mobile
                     ))
 
-
-                    validate!!.SetAnswerTypeRadioButton(rg_access_sphone, it.get(0).Smartphone)
-                    validate!!.SetAnswerTypeRadioButton(rg_acess_mob_data, it.get(0).MobileData)
-                    validate!!.SetAnswerTypeRadioButton(rg_can_read, it.get(0).Read_Write)
 
                     (validate!!.SetAnswerTypeCheckBoxButton(spaekCheck, it.get(0).Languages_Speak))
                     (validate!!.SetAnswerTypeCheckBoxButton(
@@ -269,6 +225,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             })
 
     }
+
     fun setDefBlank(edi: EditText, data: Int) {
         if (data < 0) edi.setText("")
         else edi.setText(data.toString())
@@ -287,43 +244,33 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
 
 
     fun hideShowView() {
+        if(readWrite == 1){
+            lay_language_read.visibility = View.VISIBLE
+            lay_language_write.visibility = View.VISIBLE
+
+        }else{
+            lay_language_read.visibility = View.GONE
+            lay_language_write.visibility = View.GONE
+        }
 
 
+        if(smartphone == 1){
+            if(accessmobile == 1){
+                lay_language_mobile.visibility = View.VISIBLE
+            }else{
+                lay_language_mobile.visibility = View.GONE
+            }
+
+        }else{
+            lay_language_mobile.visibility = View.GONE
+        }
 
     }
 
     private fun checkValidation(): Int {
         var value = 1
 
-        if (rg_can_read.checkedRadioButtonId == -1) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.plz_read_write)
-            )
-            value = 0
-        } else if (spin_education.selectedItemPosition == 0) {
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_education,
-                resources.getString(R.string.plz_select_education)
-            )
-            value = 0
-        } else if (rg_access_sphone.checkedRadioButtonId == -1) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.plz_select_smartphone)
-            )
-
-            value = 0
-
-        } else if (rg_acess_mob_data.checkedRadioButtonId == -1) {
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.plz_select_mobiledata)
-            )
-            value = 0
-
-        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(spaekCheck).isEmpty()) {
+        if (validate!!.GetAnswerTypeCheckBoxButtonID(spaekCheck).isEmpty()) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.plz_select_speack_lang)
@@ -336,7 +283,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.plz_enter_speak)
             )
             value = 0
-        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(multiCheck_lang_read).isEmpty()) {
+        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(multiCheck_lang_read).isEmpty() && lay_language_read.visibility == View.VISIBLE) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.plz_select_read_lang)
@@ -350,7 +297,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.plz_enter_read)
             )
             value = 0
-        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(lang_write).isEmpty()) {
+        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(lang_write).isEmpty() && lay_language_write.visibility == View.VISIBLE) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.plz_select_write_lang)
@@ -380,7 +327,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
             )
             value = 0
 
-        }else if (validate!!.GetAnswerTypeCheckBoxButtonID(lang_prefer_mobile_use).isEmpty()) {
+        } else if (validate!!.GetAnswerTypeCheckBoxButtonID(lang_prefer_mobile_use).isEmpty() && lay_language_mobile.visibility == View.VISIBLE) {
             validate!!.CustomAlert(
                 this,
                 resources.getString(R.string.plz_select_mobiledata_lang)
@@ -403,7 +350,7 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         flag: Int,
         iLanguageID: Int
     ) {
-        mstLookupViewModel!!.getMstLookup(flag, iLanguageID)
+        mstLookupViewModel.getMstLookup(flag, iLanguageID)
             .observe(this, androidx.lifecycle.Observer {
                 if (it != null) {
                     val iGen = it.size
@@ -431,7 +378,9 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         lay_secnd.setBackgroundColor(resources.getColor(R.color.color_darkgrey))
         ll_third.setBackgroundColor(resources.getColor(R.color.back))
         ll_forth.setBackgroundColor(resources.getColor(R.color.back))
-        ll_fifth.setBackgroundColor(resources.getColor(R.color.back))
+        ll_schemess.setBackgroundColor(resources.getColor(R.color.back))
+        lay_demographic.setBackgroundColor(resources.getColor(R.color.back))
+        ll_other_detailss.setBackgroundColor(resources.getColor(R.color.back))
 
         lay_first.setOnClickListener {
 
@@ -461,13 +410,31 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
                 finish()
             }
         }
-        ll_fifth.setOnClickListener {
+
+        lay_demographic.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileDemographicActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
+        ll_schemess.setOnClickListener {
             if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
                 val intent = Intent(this, IMProfileFifthActivity::class.java)
                 startActivity(intent)
                 finish()
             }
         }
+
+        ll_other_detailss.setOnClickListener {
+            if (validate!!.RetriveSharepreferenceString(AppSP.IndividualProfileGUID)!!.length > 0) {
+                val intent = Intent(this, IMProfileSixActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+
     }
 
 
@@ -498,7 +465,6 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
     }
 
 
-
     fun autoSmoothScroll() {
 //        val hsv = view.findViewById(R.id.horizontalScroll) as HorizontalScrollView
         horizontalScroll.postDelayed({ //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
@@ -506,5 +472,12 @@ class IMProfileTwoActivity : BaseActivity(), View.OnClickListener {
         }, 100)
     }
 
-//    Integer.parseInt(et_long_stay.text.toString()) <= 0 || Integer.parseInt(et_long_stay.text.toString()) >= 99 ||
+    //    Integer.parseInt(et_long_stay.text.toString()) <= 0 || Integer.parseInt(et_long_stay.text.toString()) >= 99 ||
+    override fun onBackPressed() {
+//        super.onBackPressed()
+//        val intent = Intent(this, IMProfileListActivity::class.java)
+//        startActivity(intent)
+//        finish()
+    }
+
 }

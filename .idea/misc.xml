@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/border_white.xml" value="0.12263513513513513" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/box_background.xml" value="0.18177083333333333" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/box_blue.xml" value="0.1195945945945946" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/box_orange_white.xml" value="0.13074324324324324" />
@@ -10,77 +11,144 @@
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/button_color.xml" value="0.18177083333333333" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/dashboard_top_bg.xml" value="0.12162162162162163" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/dashborad_dark_bg.xml" value="0.18177083333333333" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/downloadimg.xml" value="0.11554054054054054" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/green_circle.xml" value="0.13074324324324324" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/home.xml" value="0.11925675675675676" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/ic_add_circle.xml" value="0.18177083333333333" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/ic_baseline_info_24.xml" value="0.14290540540540542" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/ic_calender.xml" value="0.190625" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/ic_checkbox_checked.xml" value="0.190625" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/ic_collective_prf_icon.xml" value="0.12263513513513513" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/ic_lock.xml" value="0.14375" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/ic_next.xml" value="0.18177083333333333" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/ic_setting.xml" value="0.18177083333333333" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/orange_circle.xml" value="0.13074324324324324" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/rectangle_bg.xml" value="0.10675675675675676" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/sheet1.xml" value="0.11554054054054054" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/sheet2.xml" value="0.11554054054054054" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/tile_bg.xml" value="0.18177083333333333" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/unsyncimg.xml" value="0.11554054054054054" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/uploadimg.xml" value="0.11554054054054054" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/vertical_scrollview_thumb.xml" value="0.190625" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/vertical_scrollview_track.xml" value="0.190625" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/white_custom.xml" value="0.16927083333333334" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/drawable/yellow_circle.xml" value="0.13074324324324324" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_ben_quiz.xml" value="0.11987704918032786" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_beneficiary_progress_list.xml" value="0.22" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_benificiary_progress_details.xml" value="0.14" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collection_member.xml" value="0.1" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collection_profile_list.xml" value="0.16145833333333334" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collective.xml" value="0.11851092896174864" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collective_details.xml" value="0.17" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collective_profile.xml" value="0.159375" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collective_profile_fifth.xml" value="0.1" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collective_profile_first.xml" value="0.22" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collective_profile_fourth.xml" value="0.1746268656716418" />
-        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collective_profile_second.xml" value="0.1" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collective_profile_second.xml" value="0.12" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collective_profile_sixth.xml" value="0.15" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collective_profile_third.xml" value="0.22" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collectivemeeting.xml" value="0.17" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collectivemeeting_fourth.xml" value="0.18" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collectivemeetingsec.xml" value="0.18" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_collectivemeetingthird.xml" value="0.18" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_detail_form.xml" value="0.165625" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_eco_system_first.xml" value="0.13243243243243244" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_edptraining_first.xml" value="0.13243243243243244" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_edptraining_four.xml" value="0.12331081081081081" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_edptraining_second.xml" value="0.12331081081081081" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_edptraining_third.xml" value="0.13243243243243244" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_home.xml" value="0.14635416666666667" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_home_dashboard.xml" value="0.16" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_household_profile_first.xml" value="0.15" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_household_profile_list.xml" value="0.1" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_household_profile_second.xml" value="0.22" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_household_profile_third.xml" value="0.18" />
-        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_improfile_fifth.xml" value="0.18" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_improfile_demographic.xml" value="0.16" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_improfile_fifth.xml" value="0.16" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_improfile_fourth.xml" value="0.16" />
-        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_improfile_list.xml" value="0.18" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_improfile_list.xml" value="0.16" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_improfile_one.xml" value="0.18" />
-        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_improfile_six.xml" value="0.11756756756756757" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_improfile_schemes.xml" value="0.11013513513513513" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_improfile_six.xml" value="0.18" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_improfile_third.xml" value="0.18" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_improfile_two.xml" value="0.156984785615491" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_life_skill_first.xml" value="0.25" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_life_skill_plus_first.xml" value="0.11216216216216217" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_life_skill_plus_second.xml" value="0.10304054054054054" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_life_skills_plus_second.xml" value="0.1253415300546448" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_life_skills_second.xml" value="0.10304054054054054" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_login.xml" value="0.18" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_login.xml.url" value="0.13243243243243244" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_main.xml" value="0.15719063545150502" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_meetinglist.xml" value="0.10574324324324325" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_ppa_life_skill.xml" value="0.15" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_ppa_life_skill_second.xml" value="0.1" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_pre_post_assessment_list.xml" value="0.1" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_primary_data.xml" value="0.1375" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_primary_data_fifth.xml" value="0.9717741935483871" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_primary_data_first.xml" value="0.16" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_primary_data_forth.xml" value="0.1" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_primary_data_fourth.xml" value="0.15" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_primary_data_list.xml" value="0.1" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_primary_data_second.xml" value="0.18" />
-        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_primary_data_third.xml" value="0.15" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_primary_data_third.xml" value="0.18" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_psychometric.xml" value="0.11486486486486487" />
-        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_psychometric_first.xml" value="0.14" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_psychometric_first.xml" value="0.17" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_psychometric_forth.xml" value="0.1" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_psychometric_list.xml" value="0.1222972972972973" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_psychometric_second.xml" value="0.11486486486486487" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_psychometric_third.xml" value="0.11475409836065574" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_quiz.xml" value="0.1" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_signup.xml" value="0.22" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_splash.xml" value="0.16571130797290257" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_sub_dashboard.xml" value="0.10878378378378378" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_sync_dashboard.xml" value="0.18" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/activity_webview_login.xml" value="0.1043918918918919" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/bottom_nav_psycho_layout.xml" value="0.10810810810810811" />
-        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/bottomnavigationtab.xml" value="0.11114864864864865" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/bottomnavigationtab.xml" value="0.17" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/buttons_next.xml" value="0.165625" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/buttons_save_cancel.xml" value="0.17447916666666666" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/buttons_save_cancel1.xml" value="0.17447916666666666" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/check_box_type.xml" value="0.1" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/coll_prog_tracker_fifth.xml" value="0.13243243243243244" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/coll_prog_tracker_first.xml" value="0.22" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/coll_prog_tracker_fourth.xml" value="0.15" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/coll_prog_tracker_list.xml" value="0.11987704918032786" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/coll_prog_tracker_list_item.xml" value="0.11216216216216217" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/coll_prog_tracker_second.xml" value="0.1" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/coll_prog_tracker_seventh.xml" value="0.1" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/coll_prog_tracker_sixth.xml" value="0.18" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/coll_prog_tracker_third.xml" value="0.18" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/collective_meeting_item.xml" value="0.21" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/collective_profile2.xml" value="0.146875" />
-        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/collective_profile_item_row.xml" value="0.1" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/collective_profile_item_row.xml" value="0.18" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/collective_profilemem_item_row.xml" value="0.22" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/collectivetab.xml" value="0.15" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/delete_dialog_layout (1).xml" value="0.12704918032786885" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/delete_dialog_layout.xml" value="0.18" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/dialog_layout.xml" value="0.15" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/dialog_unsync.xml" value="0.21" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/hhnavigationtab.xml" value="0.1" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/homescreen.xml" value="0.11993243243243243" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/household_profile_item_row.xml" value="0.17447916666666666" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/job_business_item.xml" value="0.22" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/legend_view.xml" value="0.10777027027027027" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/my_spinner_dashboard.xml" value="0.20416666666666666" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/my_spinner_space_dashboard.xml" value="0.20416666666666666" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/my_spinner_space_psy_layout.xml" value="0.10810810810810811" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/new_login_layout.xml" value="0.17" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/pre_post_assessment_list_item.xml" value="0.11168032786885246" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/pregress.xml" value="0.1043918918918919" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/primary_data_tab.xml" value="0.1" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/row_beneficiary_progress_layout.xml" value="0.17" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/row_edp_prf_items.xml" value="0.11475409836065574" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/row_hhprofile_item.xml" value="0.21" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/row_invprofile_item.xml" value="0.22" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/row_psychometric_item.xml" value="0.17" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/toolbar_layout.xml" value="0.1431159420289855" />
         <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/toolbar_layout1.xml" value="0.165625" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/top_beneficiary_fiels_layout.xml" value="0.11216216216216217" />
+        <entry key="..\:/Project Care India/Care india/app/src/main/res/layout/topnavigation_collective_tracker.xml" value="0.12363387978142076" />
         <entry key="..\:/Project Care India/app/src/main/res/drawable/btn_background.xml" value="0.2203125" />
         <entry key="..\:/Project Care India/app/src/main/res/drawable/button_color.xml" value="0.2203125" />
         <entry key="..\:/Project Care India/app/src/main/res/drawable/button_custom.xml" value="0.2203125" />

@@ -2,7 +2,6 @@ package com.careindia.lifeskills.repository
 
 
 import androidx.lifecycle.LiveData
-import androidx.room.Query
 import com.careindia.lifeskills.dao.HouseholdProfileDao
 import com.careindia.lifeskills.dao.MstDistrictDao
 import com.careindia.lifeskills.entity.HouseholdProfileEntity
@@ -30,12 +29,16 @@ class HouseholdProfileRepository(
         Panchayat_Ward: Int?,
         PWCode: String?,
         Localitycode: String?,
-        Dateform: String?,
+        Dateform: Long?,
         Name: String?,
         Gender: Int?,
         iUserID:Int,
         IsEdited:Int,
-        initials:String?
+        initials:String?,
+        UpdatedBy: Int?,
+        UpdatedOn: Long?,
+        LandMark: String?,
+        PinCode: String?
     ) {
         hhdao.update_hh_first_data(
             HHGUID,
@@ -52,7 +55,11 @@ class HouseholdProfileRepository(
             Gender,
             iUserID,
             IsEdited,
-            initials
+            initials,
+            UpdatedBy,
+            UpdatedOn,
+            LandMark,
+            PinCode
 
         )
     }
@@ -69,8 +76,13 @@ class HouseholdProfileRepository(
         No_Children: Int?,
         No_Children_M: Int?,
         No_Children_F: Int?,
+        No_Earningmembers: Int?,
+        No_Earningmembers_M: Int?,
+        No_Earningmembers_F: Int?,
         iUserID:Int,
-        IsEdited:Int
+        IsEdited:Int,
+        UpdatedBy: Int?,
+        UpdatedOn: Long?
     ) {
         hhdao.update_hh_second_data(
             HHGUID,
@@ -83,37 +95,40 @@ class HouseholdProfileRepository(
             No_Children,
             No_Children_M,
             No_Children_F,
+            No_Earningmembers,
+            No_Earningmembers_M,
+            No_Earningmembers_F,
             iUserID,
-            IsEdited
+            IsEdited,
+            UpdatedBy,
+            UpdatedOn
         )
     }
 
 
     internal fun updatehh_third(
         HHGUID: String?,
-        No_Earningmembers: Int?,
-        No_Earningmembers_M: Int?,
-        No_Earningmembers_F: Int?,
         Dwelling_type: Int?,
         Dwelling_Oth: String?,
         Dwelling_Registered: Int?,
         Type_Ration: Int?,
         other_ration:String,
         iUserID:Int,
-        IsEdited:Int
+        IsEdited:Int,
+        UpdatedBy: Int?,
+        UpdatedOn: Long?
     ) {
         hhdao.updatehh_third(
             HHGUID,
-            No_Earningmembers,
-            No_Earningmembers_M,
-            No_Earningmembers_F,
             Dwelling_type,
             Dwelling_Oth,
             Dwelling_Registered,
             Type_Ration,
             other_ration,
             iUserID,
-            IsEdited
+            IsEdited,
+            UpdatedBy,
+            UpdatedOn
         )
     }
 
@@ -135,11 +150,15 @@ class HouseholdProfileRepository(
         return hhdao.gethhdatabyGuid(guid)
     }
 
-    fun getMstDistrict(StateCode:Int): LiveData<List<MstDistrictEntity>> {
-        return mstDistrictDao!!.getMstDistrict(StateCode)
+    fun getMstDistrict(StateCode:Int,DistrictIn:List<String>): LiveData<List<MstDistrictEntity>> {
+        return mstDistrictDao.getMstDistrict(StateCode,DistrictIn)
     }
+    fun getMstDist(StateCode:Int,DistrictIn:List<String>): List<MstDistrictEntity> {
+        return mstDistrictDao.getMstDist(StateCode,DistrictIn)
+    }
+
     fun getMstDist(StateCode:Int): List<MstDistrictEntity> {
-        return mstDistrictDao!!.getMstDist(StateCode)
+        return mstDistrictDao.getMstDist(StateCode)
     }
     fun getHHIdData(): LiveData<List<HouseholdProfileEntity>> {
         return hhdao.getHHIdData()
@@ -155,8 +174,20 @@ class HouseholdProfileRepository(
     fun getHHZData(izone:Int): LiveData<List<HouseholdProfileEntity>> {
         return hhdao.getHHZData(izone)
     }
-    fun getHHWData(izone:Int,iward:Int): LiveData<List<HouseholdProfileEntity>> {
-        return hhdao.getHHWData(izone,iward)
+    fun getHHWData(iDisCode:Int,izone:Int,iward:Int): LiveData<List<HouseholdProfileEntity>> {
+        return hhdao.getHHWData(iDisCode,izone,iward)
+    }
+
+    fun getHHWData(iDisCode:Int,iZoneCode:Int): LiveData<List<HouseholdProfileEntity>> {
+        return hhdao.getHHWData(iDisCode, iZoneCode)
+    }
+
+    fun getHHWData(iDisCode:Int): LiveData<List<HouseholdProfileEntity>> {
+        return hhdao.getHHWData(iDisCode)
+    }
+
+    fun getHHPData(iDisCode:Int,iPanchayat:Int): LiveData<List<HouseholdProfileEntity>> {
+        return hhdao.getHHPData(iDisCode,iPanchayat)
     }
 
     fun getHHPData(iPanchayat:Int): LiveData<List<HouseholdProfileEntity>> {

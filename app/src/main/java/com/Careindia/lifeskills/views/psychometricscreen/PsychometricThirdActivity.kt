@@ -3,6 +3,7 @@ package com.careindia.lifeskills.views.psychometricscreen
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.databinding.DataBindingUtil
@@ -21,8 +22,12 @@ import com.careindia.lifeskills.viewmodel.PsychometricViewModel
 import com.careindia.lifeskills.viewmodelfactory.PsychometricViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
+
 import kotlinx.android.synthetic.main.activity_psychometric_third.*
-import kotlinx.android.synthetic.main.bottomnavigationtab.*
+import kotlinx.android.synthetic.main.activity_psychometric_third.btn_bottom
+import kotlinx.android.synthetic.main.activity_psychometric_third.btn_prev
+import kotlinx.android.synthetic.main.activity_psychometric_third.btn_save
+import kotlinx.android.synthetic.main.bottom_nav_psycho_layout.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
 class PsychometricThirdActivity : BaseActivity(), View.OnClickListener {
@@ -37,13 +42,14 @@ class PsychometricThirdActivity : BaseActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_psychometric_third)
         validate = Validate(this)
-        tv_title.text = "Psychometric"
+        tv_title.text = resources.getString(R.string.psychometric)
 
         mstLookupViewModel =
             ViewModelProviders.of(this).get(MstLookupViewModel::class.java)
 
         val psychometricdao = CareIndiaApplication.database?.psychometricDao()
-        val psychometricRepository = PsychometricRepository(psychometricdao!!)
+        val mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()!!
+        val psychometricRepository = PsychometricRepository(psychometricdao!!,mstDistrictDao)
         psychometricViewModel = ViewModelProvider(
             this,
             PsychometricViewModelFactory(psychometricRepository)
@@ -61,6 +67,7 @@ class PsychometricThirdActivity : BaseActivity(), View.OnClickListener {
         applyClickOnView()
         //fillSpinnner
         fillSpinner()
+        hideShowView()
         topLayClick()
 
         if (validate!!.RetriveSharepreferenceString(AppSP.PATGUID) != null && validate!!.RetriveSharepreferenceString(
@@ -87,7 +94,7 @@ class PsychometricThirdActivity : BaseActivity(), View.OnClickListener {
         when (view?.id) {
             R.id.btn_save -> {
                 if (checkValidation() == 1) {
-                    psychometricViewModel.updateSaveThirdData(this)
+                    psychometricViewModel.updateSaveThirdData(this,mstLookupViewModel)
                     var intent = Intent(this, PsychometricForthActivity::class.java)
                     startActivity(intent)
                     finish()
@@ -100,7 +107,7 @@ class PsychometricThirdActivity : BaseActivity(), View.OnClickListener {
                 finish()
             }
             R.id.img_back -> {
-                val intent = Intent(this, PsychometricSecondActivity::class.java)
+                val intent = Intent(this, PsychometricListActivity::class.java)
                 startActivity(intent)
                 finish()
             }
@@ -130,6 +137,11 @@ class PsychometricThirdActivity : BaseActivity(), View.OnClickListener {
         psychometricViewModel.getPsychometricbyGuid(validate!!.returnStringValue(patGuid))
             .observe(this, Observer {
                 if (it != null && it.size > 0) {
+                    if(it.get(0).IsEdited == 0 && it.get(0).Status == 0){
+                        btn_bottom.visibility = View.GONE
+                    }else{
+                        btn_bottom.visibility = View.VISIBLE
+                    }
                     spin_emp_category.setSelection(
                         returnpos(
                             validate!!.returnIntegerValue(it.get(0).self_emp_exp.toString()),
@@ -177,6 +189,7 @@ class PsychometricThirdActivity : BaseActivity(), View.OnClickListener {
                 }
             })
     }
+
     fun topLayClick() {
         autoSmoothScroll()
         lay_first.setBackgroundColor(resources.getColor(R.color.back))
@@ -214,6 +227,70 @@ class PsychometricThirdActivity : BaseActivity(), View.OnClickListener {
         }
 
     }
+    fun hideShowView(){
+
+//        spin_stage_emp.onItemSelectedListener = object :
+//            AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(
+//                parentView: AdapterView<*>?,
+//                selectedItemView: View?,
+//                position: Int,
+//                id: Long
+//            ) {
+//                if (position > 0) {
+//                    val ID = validate!!.returnID(
+//                        spin_stage_emp,
+//                        mstLookupViewModel,
+//                        41,
+//                        iLanguageID
+//                    )
+//                    if (ID == 99) {
+//                        lay_stage_emp_other.visibility = View.VISIBLE
+//                    } else {
+//                        lay_stage_emp_other.visibility = View.GONE
+//                        et_stage_emp_other.setText("")
+//                    }
+//
+//                }
+//
+//            }
+//
+//            override fun onNothingSelected(parentView: AdapterView<*>?) {
+//                // your code here
+//            }
+//        }
+
+        spin_emp_category.onItemSelectedListener = object :
+            AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parentView: AdapterView<*>?,
+                selectedItemView: View?,
+                position: Int,
+                id: Long
+            ) {
+                if (position > 0) {
+                    val ID = validate!!.returnID(
+                        spin_emp_category,
+                        mstLookupViewModel,
+                        39,
+                        iLanguageID
+                    )
+                    if (ID == 4) {
+                        lay_year_exp.visibility = View.GONE
+                    } else {
+                        lay_year_exp.visibility = View.VISIBLE
+                    }
+
+                }
+
+            }
+
+            override fun onNothingSelected(parentView: AdapterView<*>?) {
+                // your code here
+            }
+        }
+
+    }
 
     private fun checkValidation(): Int {
         var value = 1
@@ -225,7 +302,7 @@ class PsychometricThirdActivity : BaseActivity(), View.OnClickListener {
                 resources.getString(R.string.psy_plz_ans_epm_cate)
             )
             value = 0
-        } else if (spin_year_exp.selectedItemPosition == 0) {
+        } else if (spin_year_exp.selectedItemPosition == 0 && lay_year_exp.visibility == View.VISIBLE) {
             validate!!.CustomAlertSpinner(
                 this,
                 spin_year_exp,
@@ -323,4 +400,27 @@ class PsychometricThirdActivity : BaseActivity(), View.OnClickListener {
             horizontalScroll.smoothScrollBy(500, 0)
         }, 100)
     }
+
+
+    fun returnIDPsychoSpin(
+        spin: Spinner, mstLookupViewModel: MstLookupViewModel?,
+        flag: Int, iLanguage: Int
+    ): Int {
+        var data: List<MstLookupEntity>? = null
+        data =
+            mstLookupViewModel!!.getLookup(flag, iLanguage)
+        var pos = spin.getSelectedItemPosition()
+        var id = 0
+
+        if (!data.isNullOrEmpty()) {
+            if (pos > 0) id = data.get(pos - 1).LookupCode!!
+        }
+        return id
+    }
+
+    override fun onBackPressed() {
+
+    }
+
+
 }

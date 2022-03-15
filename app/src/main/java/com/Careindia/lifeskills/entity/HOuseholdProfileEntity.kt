@@ -17,7 +17,9 @@ data class HouseholdProfileEntity(
     @ColumnInfo(name = "Panchayat_Ward") val Panchayat_Ward: Int?,
     @ColumnInfo(name = "PWCode") val PWCode: String? = "",
     @ColumnInfo(name = "Locality") val Locality: String? = "",
-    @ColumnInfo(name = "Dateform") val Dateform: String? = "",
+    @ColumnInfo(name = "LandMark") val LandMark: String? = "",
+    @ColumnInfo(name = "PinCode") val PinCode: String? = "",
+    @ColumnInfo(name = "Dateform") val Dateform: Long?,
     @ColumnInfo(name = "HHCode") val HHCode: String? = "",
     @ColumnInfo(name = "Name") val Name: String? = "",
     @ColumnInfo(name = "Gender") val Gender: Int?,
@@ -39,12 +41,13 @@ data class HouseholdProfileEntity(
     @ColumnInfo(name = "Type_Ration") val Type_Ration: Int?,
     @ColumnInfo(name = "Other_Ration") val Other_Ration: String?,
     @ColumnInfo(name = "CreatedBy") val CreatedBy: Int?,
-    @ColumnInfo(name = "CreatedOn") val CreatedOn: String? = "",
+    @ColumnInfo(name = "CreatedOn") val CreatedOn: Long?,
     @ColumnInfo(name = "UpdatedBy") val UpdatedBy: Int?,
-    @ColumnInfo(name = "UpdatedOn") val UpdatedOn:String?="",
+    @ColumnInfo(name = "UpdatedOn") val UpdatedOn:Long?,
     @ColumnInfo(name = "Status") val Status: Int?,
     @ColumnInfo(name = "Actionby") val Actionby: Int?,
-    @ColumnInfo(name = "IsEdited") val IsEdited: Int?,
-    @ColumnInfo(name = "Initials") val Initials: String = ""
+    @ColumnInfo(name = "IsEdited") val IsEdited: Int =0,
+    @ColumnInfo(name = "Initials") val Initials: String? = "",
+    @ColumnInfo(name = "Remarks") val Remarks: String? = ""
 )
 

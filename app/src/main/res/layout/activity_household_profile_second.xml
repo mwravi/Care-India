@@ -23,7 +23,9 @@
             style="@style/ScrolllViewStyle"
             android:layout_margin="@dimen/_10sdp"
             android:layout_weight="1"
-            android:scrollbars="none">
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical"
+            >
 
             <LinearLayout
                 android:id="@+id/lay_inner_details"
@@ -284,6 +286,84 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:id="@+id/lay_totalearningMember"
+                    style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik"
+                            android:text="*"
+                            />
+                        <TextView
+                            android:id="@+id/tv_totalearningMember"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/total_earning_member" />
+                    </TableRow>
+                    <EditText
+                        android:id="@+id/et_totalEarningMember"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@={householdProfileViewModel.total_earning_members}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_maleearningMember"
+                    style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik"
+                            android:text="*"
+                            />
+                        <TextView
+                            android:id="@+id/tv_maleearningMember"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/male_earning_member" />
+                    </TableRow>
+                    <EditText
+                        android:id="@+id/et_maleearningmember"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@={householdProfileViewModel.earning_male}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_femaleearningMember"
+                    style="@style/LinearLayoutStyle">
+                    <TableRow style="@style/TableRowStyle">
+
+
+                        <TextView
+
+                            style="@style/TextViewStylestrik"
+                            android:text="*"
+                            />
+                        <TextView
+                            android:id="@+id/tv_femaleearningMember"
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/female_earning_member" />
+                    </TableRow>
+                    <EditText
+                        android:id="@+id/et_femaleearningmember"
+                        style="@style/EditTextStyleNew"
+                        android:hint="@string/type_here"
+                        android:inputType="number"
+                        android:maxLength="2"
+                        android:text="@={householdProfileViewModel.earning_female}" />
+
+                </LinearLayout>
+
             </LinearLayout>
 
         </ScrollView>
@@ -292,7 +372,9 @@
             style="@style/TableRowStyle"
             android:layout_margin="@dimen/_10sdp">
 
-            <include layout="@layout/buttons_save_cancel" />
+            <include
+                android:id="@+id/btn_bottom"
+                layout="@layout/buttons_save_cancel" />
 
         </TableRow>
     </LinearLayout>

@@ -29,14 +29,14 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle" />
+                    android:src="@drawable/ic_collective_meeting_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:fontFamily="@font/firasans_regular"
-                    android:text="First"
+                    android:text="@string/details"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
 
@@ -54,14 +54,14 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle" />
+                    android:src="@drawable/ic_collective_meeting_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:fontFamily="@font/firasans_regular"
-                    android:text="Second"
+                    android:text="@string/attendance"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
 
@@ -78,14 +78,38 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle" />
+                    android:src="@drawable/ic_collective_meeting_icon" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:fontFamily="@font/firasans_regular"
-                    android:text="Third"
+                    android:text="@string/agenda"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp" />
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_fourth"
+                style="@style/Tablerow"
+                android:gravity="center"
+                android:minWidth="@dimen/_103sdp"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_18ssp"
+                    android:layout_height="@dimen/_18ssp"
+                    android:src="@drawable/ic_collective_meeting_icon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/firasans_regular"
+                    android:text="@string/collections"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
 

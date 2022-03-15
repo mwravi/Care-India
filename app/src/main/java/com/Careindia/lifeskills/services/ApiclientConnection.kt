@@ -1,7 +1,6 @@
-package com.mamta.sabal.service
+package com.careindia.lifeskills.services
 
 import com.careindia.lifeskills.utils.extentions.Config
-import com.mamta.sabal.callback.ApiCallback
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

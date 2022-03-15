@@ -22,7 +22,9 @@
             android:layout_margin="@dimen/_5sdp"
             android:layout_weight="1"
             android:background="@drawable/box_background"
-            android:scrollbars="none">
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical"
+            >
 
             <LinearLayout
                 style="@style/LinearLayoutStyle"
@@ -52,7 +54,8 @@
                         android:drawableEnd="@drawable/ic_calender"
                         android:focusable="false"
                         android:hint="@string/enter_date"
-                        android:text="@={collectiveViewModel.Formationdate}" />
+                        android:inputType="date"
+                        />
 
                 </LinearLayout>
 
@@ -179,13 +182,48 @@
                     </TableRow>
 
                     <EditText
-                        android:id="@+id/et_objective"
+                        android:id="@+id/et_objective1"
                         style="@style/EditTextStyleNew"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
                         android:inputType="text"
-                        android:maxLength="50"
-                        android:text="@={collectiveViewModel.objective}" />
+                      />
+
+                    <EditText
+                        android:id="@+id/et_objective2"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="text"
+                        />
+
+                    <EditText
+                        android:id="@+id/et_objective3"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="text"
+                        />
+
+                    <EditText
+                        android:id="@+id/et_objective4"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="text"
+                        />
+
+                    <EditText
+                        android:id="@+id/et_objective5"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:enabled="false"
+                        android:inputType="text"
+                        />
 
                 </LinearLayout>
 
@@ -239,6 +277,8 @@
                         android:selectedItemPosition="@={collectiveViewModel.Headsex}" />
 
                 </LinearLayout>
+
+
 
                 <LinearLayout
                     android:id="@+id/lay_total_no_of_members"
@@ -354,6 +394,7 @@
 
         </ScrollView>
         <TableRow
+            android:id="@+id/btn_bottom"
             style="@style/TableRowStyle"
             android:layout_margin="@dimen/_10sdp">
 

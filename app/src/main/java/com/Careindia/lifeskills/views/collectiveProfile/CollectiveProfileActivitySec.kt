@@ -1,14 +1,17 @@
 package com.careindia.lifeskills.views.collectiveProfile
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Spinner
+import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -29,6 +32,8 @@ import kotlinx.android.synthetic.main.activity_collective_profile_second.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
 import kotlinx.android.synthetic.main.collectivetab.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class CollectiveProfileActivitySec : BaseActivity(), View.OnClickListener {
     private lateinit var binding: ActivityCollectiveProfileSecondBinding
@@ -36,7 +41,7 @@ class CollectiveProfileActivitySec : BaseActivity(), View.OnClickListener {
     lateinit var mstLookupViewModel: MstLookupViewModel
     lateinit var collectiveViewModel: CollectiveViewModel
     var iLanguageID = 0
-
+    var formattedDate = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_collective_profile_second)
@@ -74,20 +79,135 @@ class CollectiveProfileActivitySec : BaseActivity(), View.OnClickListener {
         initializeController()
         bottomCLick()
 
+
+        //..Q117..//
+
+        et_objective1.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_objective2.isEnabled = true
+                } else {
+                    et_objective2.isEnabled = false
+                    et_objective2.setText("")
+                }
+            }
+        })
+
+        et_objective2.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_objective3.isEnabled = true
+                } else {
+                    et_objective3.isEnabled = false
+                    et_objective3.setText("")
+                }
+            }
+        })
+
+        et_objective3.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_objective4.isEnabled = true
+                } else {
+                    et_objective4.isEnabled = false
+                    et_objective4.setText("")
+                }
+
+            }
+        })
+
+
+        et_objective4.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(
+                s: CharSequence, start: Int,
+                count: Int, after: Int
+            ) {
+
+
+            }
+
+            override fun onTextChanged(
+                s: CharSequence, start: Int,
+                before: Int, count: Int
+            ) {
+                if (s.length > 0) {
+                    et_objective5.isEnabled = true
+                } else {
+                    et_objective5.isEnabled = false
+                    et_objective5.setText("")
+                }
+            }
+        })
+
+
     }
 
     override fun initializeController() {
-        et_date_of_group_formation.setOnClickListener {
-            validate!!.datePickerwithmindate(
-                validate!!.Daybetweentime("01-01-1990"),
-                et_date_of_group_formation
-            )
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            GetdateBeforeFiveDays()
         }
+//        et_date_of_group_formation.setOnClickListener {
+//            validate!!.datePickerwithmindate(
+//                validate!!.Daybetweentime("01-01-1900"),
+//                et_date_of_group_formation
+//            )
+//        }
+
 
         fillSpinner()
         applyClickOnView()
 
+        et_date_of_group_formation.setOnClickListener {
+            validate!!.datePickerwithmindate(
+                validate!!.DaybetweentimeBefore(formattedDate),
+                et_date_of_group_formation
+            )
+        }
+        et_date_of_group_formation.setText(validate!!.currentdatetimeNew)
+
     }
+
 
     private fun applyClickOnView() {
         btn_save.setOnClickListener(this)
@@ -130,7 +250,11 @@ class CollectiveProfileActivitySec : BaseActivity(), View.OnClickListener {
         when (view?.id) {
             R.id.btn_save -> {
                 if (checkValidation() == 0) {
-                    collectiveViewModel.updatecollectiveprofilesecond(this)
+                    collectiveViewModel.updatecollectiveprofilesecond(
+                        this,
+                        mstLookupViewModel,
+                        iLanguageID
+                    )
                     val intent = Intent(this, CollectiveProfileActivityThird::class.java)
                     startActivity(intent)
                     finish()
@@ -151,7 +275,18 @@ class CollectiveProfileActivitySec : BaseActivity(), View.OnClickListener {
         collectiveViewModel.getCollectivedatabyGuid(validate!!.returnStringValue(collectiveGuid))
             .observe(this, Observer {
                 if (it != null && it.size > 0) {
-                    et_date_of_group_formation.setText(validate!!.returnStringValue(it.get(0).Date_formation))
+                    if (it.get(0).IsEdited == 0 && it.get(0).Status == 0) {
+                        btn_bottom.visibility = View.GONE
+                    } else {
+                        btn_bottom.visibility = View.VISIBLE
+                    }
+//                    et_date_of_group_formation.setText(it.get(0).Date_formation?.let { it1 ->
+//                        validate!!.addDays(
+//                            it1.toInt()
+//                        )
+//                    })
+
+                    et_date_of_group_formation.setText(validate!!.addDays(it.get(0).Date_formation!!.toInt()))
                     spin_collective_group.setSelection(returnpos(it[0].Type, 18, iLanguageID))
                     et_specify_others_group.setText(it[0].TypeOther)
                     spin_group_registered.setSelection(
@@ -162,13 +297,21 @@ class CollectiveProfileActivitySec : BaseActivity(), View.OnClickListener {
                         )
                     )
                     spin_head_group_sex.setSelection(returnpos(it[0].Head_gender, 1, iLanguageID))
+
                     et_specify_others_group_registered.setText(it[0].RegistrationOther)
-                    et_objective.setText(it.get(0).Objective)
+                    validate!!.setSchemes(
+                        et_objective1,
+                        et_objective2,
+                        et_objective3,
+                        et_objective4,
+                        et_objective5,
+                        it.get(0).Objective!!
+                    )
                     et_head_group_name.setText(validate!!.returnStringValue(it.get(0).Head_name))
-                    setDefBlank(et_total_no_of_members,it.get(0).NoMembers!!)
-                    setDefBlank(et_male_members,it.get(0).NoMembers_M!!)
-                    setDefBlank(et_female_members,it.get(0).NoMembers_F!!)
-                    setDefBlank(et_transgender_members,it.get(0).NoMembers_T!!)
+                    setDefBlank(et_total_no_of_members, it.get(0).NoMembers!!)
+                    setDefBlank(et_male_members, it.get(0).NoMembers_M!!)
+                    setDefBlank(et_female_members, it.get(0).NoMembers_F!!)
+                    setDefBlank(et_transgender_members, it.get(0).NoMembers_T!!)
                 }
             })
     }
@@ -243,11 +386,11 @@ class CollectiveProfileActivitySec : BaseActivity(), View.OnClickListener {
                 et_specify_others_group_registered,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.please_specify_others_registered),
             )
-        } else if (et_objective.text.toString().isEmpty()) {
+        } else if (et_objective1.text.toString().isEmpty()) {
             iValue = 1
             validate!!.CustomAlertEdit(
                 this,
-                et_objective,
+                et_objective1,
                 resources.getString(R.string.please_enter) + " " + resources.getString(R.string.what_is_the_objective_of_group),
             )
         } else if (et_head_group_name.text.toString().length == 0) {
@@ -331,6 +474,7 @@ class CollectiveProfileActivitySec : BaseActivity(), View.OnClickListener {
     }
 
     fun bottomCLick() {
+        autoSmoothScroll()
         lay_first.setBackgroundColor(resources.getColor(R.color.back))
         lay_secnd.setBackgroundColor(resources.getColor(R.color.color_darkgrey))
         ll_third.setBackgroundColor(resources.getColor(R.color.back))
@@ -415,13 +559,27 @@ class CollectiveProfileActivitySec : BaseActivity(), View.OnClickListener {
         return pos
     }
 
+    fun autoSmoothScroll() {
+//        val hsv = view.findViewById(R.id.horizontalScroll) as HorizontalScrollView
+        horizontalScroll.postDelayed({ //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+            horizontalScroll.smoothScrollBy(400, 0)
+        }, 100)
+    }
 
     override fun onBackPressed() {
         //super.onBackPressed()
-        val intent = Intent(this, CollectiveProfileListActivity::class.java)
-        startActivity(intent)
-        finish()
+        /*   val intent = Intent(this, CollectiveProfileListActivity::class.java)
+           startActivity(intent)
+           finish()*/
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun GetdateBeforeFiveDays() {
+        val date: LocalDate = LocalDate.now()
+        val dateMinus7Days: LocalDate = date.minusDays(0)
+        //Format and display date
+        formattedDate = dateMinus7Days.format(DateTimeFormatter.ISO_LOCAL_DATE)
+//        Log.i("MyTag","$formattedDate")
 
+    }
 }

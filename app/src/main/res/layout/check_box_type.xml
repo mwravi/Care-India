@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/multi_check"
+style="@style/CheckBox"
+android:background="@drawable/box_background"
+android:orientation="vertical">
+
+
+</LinearLayout>

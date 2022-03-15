@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TimePicker
+            android:id="@+id/idfordate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner"
+            android:layout_gravity="center" />
+
+        <TableRow
+            style="@style/TableRowStyle">
+
+            <Button
+                android:id="@+id/btnset"
+                style="@style/ButtonTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/set"
+                android:textAppearance="?android:attr/textAppearanceButton" />
+
+            <Button
+                android:id="@+id/btnclear"
+                style="@style/ButtonTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/clear"
+                android:textAppearance="?android:attr/textAppearanceButton" />
+
+            <Button
+                android:id="@+id/btncancel"
+                style="@style/ButtonTextStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/can_cel"
+                android:textAppearance="?android:attr/textAppearanceButton" />
+        </TableRow>
+    </LinearLayout>
+</LinearLayout>

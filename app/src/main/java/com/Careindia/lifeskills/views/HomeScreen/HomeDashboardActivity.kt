@@ -20,12 +20,12 @@ import com.careindia.lifeskills.views.collectivemeeting.CollectiveMeetingListAct
 import com.careindia.lifeskills.views.householdscreen.HouseholdProfileListActivity
 import com.careindia.lifeskills.views.improfile.IMProfileListActivity
 import com.careindia.lifeskills.views.loginscreen.LoginActivity
+import com.careindia.lifeskills.views.prepostassessment.PrePostAssessmentListActivity
 import com.careindia.lifeskills.views.primarydatascreen.PrimaryDataListActivity
 import com.careindia.lifeskills.views.psychometricscreen.PsychometricListActivity
 import com.careindia.lifeskills.views.synchronization.SyncronizationActivity
 import kotlinx.android.synthetic.main.activity_home_dashboard.*
 import kotlinx.android.synthetic.main.homescreen.*
-import kotlinx.android.synthetic.main.logout.*
 
 class HomeDashboardActivity : BaseActivity(), View.OnClickListener {
 
@@ -36,9 +36,9 @@ class HomeDashboardActivity : BaseActivity(), View.OnClickListener {
         validate = Validate(this)
         validate!!.SaveSharepreferenceInt(AppSP.iLanguageID, 1)
         initializeController()
-        tv_title.text = "Home Screen"
+        tv_title.text = resources.getString(R.string.home_screen)
         img_logout.setOnClickListener {
-            CustomAlert("Are you sure you want to log out?")
+            CustomAlert(resources.getString(R.string.are_you_sure_log_out))
         }
     }
 
@@ -54,30 +54,49 @@ class HomeDashboardActivity : BaseActivity(), View.OnClickListener {
         ll_collective_meeting.setOnClickListener(this)
         ll_sync.setOnClickListener(this)
         ll_psychometric.setOnClickListener(this)
+        ll_pre_post_assessment.setOnClickListener(this)
 
     }
 
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.linear_household -> {
+
+                validate!!.SaveSharepreferenceInt(AppSP.DistrictFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.ZoneFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.WardFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.PanchayatFilter, 0)
                 val intent = Intent(this, HouseholdProfileListActivity::class.java)
                 startActivity(intent)
                 finish()
             }
 
             R.id.linear_individual -> {
+                validate!!.SaveSharepreferenceInt(AppSP.DistrictFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.ZoneFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.WardFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.PanchayatFilter, 0)
+                validate!!.SaveSharepreferenceString(AppSP.IMClick,"Dashboard")
                 val intent = Intent(this, IMProfileListActivity::class.java)
                 startActivity(intent)
                 finish()
             }
 
             R.id.ll_progress -> {
+                validate!!.SaveSharepreferenceInt(AppSP.DistrictFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.ZoneFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.WardFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.PanchayatFilter, 0)
                 val intent = Intent(this, PrimaryDataListActivity::class.java)
                 startActivity(intent)
                 finish()
             }
 
             R.id.ll_collective -> {
+                validate!!.SaveSharepreferenceInt(AppSP.DistrictFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.ZoneFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.WardFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.PanchayatFilter, 0)
                 val intent = Intent(this, CollectiveProfileListActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -90,6 +109,10 @@ class HomeDashboardActivity : BaseActivity(), View.OnClickListener {
             }
 
             R.id.ll_psychometric -> {
+                validate!!.SaveSharepreferenceInt(AppSP.DistrictFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.ZoneFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.WardFilter, 0)
+                validate!!.SaveSharepreferenceInt(AppSP.PanchayatFilter, 0)
                 val intent = Intent(this, PsychometricListActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -97,6 +120,11 @@ class HomeDashboardActivity : BaseActivity(), View.OnClickListener {
 
             R.id.ll_sync -> {
                 val intent = Intent(this, SyncronizationActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+            R.id.ll_pre_post_assessment -> {
+                val intent = Intent(this, PrePostAssessmentListActivity::class.java)
                 startActivity(intent)
                 finish()
             }

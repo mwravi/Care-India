@@ -21,13 +21,26 @@ class MstPanchayatWardRepository {
     }
 
 
+    fun getMstWard(ZoneCode: Int,PanchayatIn: List<String>): List<MstPanchayat_WardEntity> {
+        return mstPanchayatWardDao!!.getMstWard(ZoneCode,PanchayatIn)
+    }
+
     fun getMstWard(ZoneCode: Int): List<MstPanchayat_WardEntity> {
         return mstPanchayatWardDao!!.getMstWard(ZoneCode)
+    }
+
+    fun getMstPanchayat(disCode: Int,WardIn: List<String>): List<MstPanchayat_WardEntity> {
+        return mstPanchayatWardDao!!.getMstPanchayat(disCode,WardIn)
     }
 
     fun getMstPanchayat(disCode: Int): List<MstPanchayat_WardEntity> {
         return mstPanchayatWardDao!!.getMstPanchayat(disCode)
     }
 
-
+    fun getMstWard(ZoneCode: Int,WardCode:Int): String {
+        return mstPanchayatWardDao!!.getMstWard(ZoneCode,WardCode)
+    }
+    fun getMstPanchayat(disCode: Int,WardCode:Int): String {
+        return mstPanchayatWardDao!!.getMstPanchayat(disCode,WardCode)
+    }
 }

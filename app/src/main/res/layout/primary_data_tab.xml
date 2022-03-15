@@ -8,10 +8,10 @@
 
 
     <HorizontalScrollView
-        android:scrollbars="none"
         android:id="@+id/horizontalScroll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -29,14 +29,14 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle" />
+                    android:src="@drawable/edp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:fontFamily="@font/firasans_regular"
-                    android:text="First"
+                    android:text="@string/personal_details"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
 
@@ -54,14 +54,14 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle" />
+                    android:src="@drawable/edp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:fontFamily="@font/firasans_regular"
-                    android:text="Second"
+                    android:text="@string/documents"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
 
@@ -78,14 +78,114 @@
                 <ImageView
                     android:layout_width="@dimen/_18ssp"
                     android:layout_height="@dimen/_18ssp"
-                    android:src="@drawable/ic_add_circle" />
+                    android:src="@drawable/edp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_3sdp"
                     android:fontFamily="@font/firasans_regular"
-                    android:text="Third"
+                    android:text="@string/buisness_planning"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_fourth"
+                style="@style/Tablerow"
+                android:gravity="center"
+                android:minWidth="@dimen/_103sdp"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_18ssp"
+                    android:layout_height="@dimen/_18ssp"
+                    android:src="@drawable/edp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/firasans_regular"
+                    android:text="@string/buisness_set_up_run"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_fifth"
+                style="@style/Tablerow"
+                android:gravity="center"
+                android:minWidth="@dimen/_103sdp"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_18ssp"
+                    android:layout_height="@dimen/_18ssp"
+                    android:src="@drawable/edp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/firasans_regular"
+                    android:text="@string/micro_enterprise_development_phase_1_first"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_sixth"
+                style="@style/Tablerow"
+                android:gravity="center"
+                android:minWidth="@dimen/_103sdp"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_18ssp"
+                    android:layout_height="@dimen/_18ssp"
+                    android:src="@drawable/edp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/firasans_regular"
+                    android:text="@string/micro_enterprise_development_phase_1_second"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_seventh"
+                style="@style/Tablerow"
+                android:gravity="center"
+                android:minWidth="@dimen/_103sdp"
+                android:orientation="vertical"
+                android:padding="@dimen/_5sdp">
+
+                <ImageView
+                    android:layout_width="@dimen/_18ssp"
+                    android:layout_height="@dimen/_18ssp"
+                    android:src="@drawable/edp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:fontFamily="@font/firasans_regular"
+                    android:text="@string/micro_enterprise_development_phase_2"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp" />
 

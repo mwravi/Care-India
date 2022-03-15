@@ -11,6 +11,94 @@
 
         <include layout="@layout/toolbar_layout" />
 
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp">
+
+            <TextView
+                android:id="@+id/tv_DistricName"
+                style="@style/TextViewStyleNew"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:text="@string/district"
+                android:textStyle="bold"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_NameofZone"
+                style="@style/TextViewStyleNew"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:text="@string/zone"
+                android:textStyle="bold"
+                android:visibility="gone"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_bbmpName"
+                style="@style/TextViewStyleNew"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:text="@string/bbmp_ward"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tv_panchayatName"
+                style="@style/TextViewStyleNew"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:text="@string/panchayat"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </TableRow>
+
+        <TableRow
+            style="@style/TableRowStyle"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="@dimen/_5sdp">
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_districtname"
+                style="@style/SpinnerViewNew"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+
+                />
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_zone"
+                style="@style/SpinnerViewNew"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:visibility="gone" />
+
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_bbmp"
+                style="@style/SpinnerViewNew"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:visibility="gone" />
+
+
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_panchayatname"
+                style="@style/SpinnerViewNew"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:visibility="gone" />
+        </TableRow>
+
+
 
         <LinearLayout
             style="@style/LinearLayoutStyle"
@@ -18,23 +106,38 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_weight="1">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvList"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
+           <androidx.core.widget.NestedScrollView
+               android:layout_width="match_parent"
+               android:layout_height="0dp"
+               android:layout_weight="1">
 
 
-            </androidx.recyclerview.widget.RecyclerView>
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/rvList"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                  >
+
+
+               </androidx.recyclerview.widget.RecyclerView>
+           </androidx.core.widget.NestedScrollView>
 
             <TableRow
+                android:id="@+id/lay_addbtn"
                 style="@style/TableRowStyle"
                 android:gravity="end">
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:text="@string/add_assessment" />
 
                 <ImageView
                     android:id="@+id/img_add"
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:layout_gravity="end"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:background="@drawable/ic_add_circle" />

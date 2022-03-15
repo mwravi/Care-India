@@ -25,7 +25,11 @@ import com.careindia.lifeskills.viewmodelfactory.CollectiveViewModelFactory
 import com.careindia.lifeskills.views.base.BaseActivity
 import com.careindia.lifeskills.views.homescreen.HomeDashboardActivity
 import kotlinx.android.synthetic.main.activity_collective_profile_fourth.*
+import kotlinx.android.synthetic.main.activity_collective_profile_fourth.btn_bottom
+import kotlinx.android.synthetic.main.activity_improfile_demographic.*
 import kotlinx.android.synthetic.main.buttons_save_cancel.*
+import kotlinx.android.synthetic.main.buttons_save_cancel.btn_prev
+import kotlinx.android.synthetic.main.buttons_save_cancel.btn_save
 import kotlinx.android.synthetic.main.collectivetab.*
 import kotlinx.android.synthetic.main.toolbar_layout.*
 
@@ -69,6 +73,7 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
         ) {
             showLiveData()
         }
+
         initializeController()
         bottomCLick()
     }
@@ -81,32 +86,11 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
     private fun applyClickOnView() {
         btn_save.setOnClickListener(this)
         btn_prev.setOnClickListener(this)
-        collectiveViewModel.Groupsaving.observe(this, Observer {
-            val lookupCode =
-                validate!!.returnLookupCode(spin_group_savings, mstLookupViewModel, 20, iLanguageID)
-            if (lookupCode == 99) {
-                lay_other_inr.visibility = VISIBLE
-            } else {
-                lay_other_inr.visibility = GONE
-                et_other_inr.setText("")
-            }
-        })
 
-        collectiveViewModel.Frequencygroupsaving.observe(this, Observer {
-            val lookupCode = validate!!.returnLookupCode(
-                spin_frequency_group_savings,
-                mstLookupViewModel,
-                21,
-                iLanguageID
-            )
-            if (lookupCode == 99) {
-                lay_other_frequency.visibility = VISIBLE
-            } else {
-                lay_other_frequency.visibility = GONE
-                et_other_frequency.setText("")
-            }
-        })
+        rg_rotation_of_roles.setOnCheckedChangeListener{radioGroup,i->
 
+            validate!!.hideSoftKeyboard(this, radioGroup)
+        }
 
         rg_office_bearer.setOnCheckedChangeListener { radioGroup, i ->
 
@@ -117,38 +101,10 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
                 lay_bearer_happens.visibility = GONE
                 et_bearer_happens.setText("")
             }
+            validate!!.hideSoftKeyboard(this, radioGroup)
         }
 
-        rg_bank_account.setOnCheckedChangeListener { radioGroup, i ->
-            val lookupcode = validate!!.GetAnswerTypeRadioButtonIDNew(rg_bank_account)
-            if (lookupcode == 0) {
-                lay_cbank_account.visibility = VISIBLE
-                lay_group_savings.visibility = GONE
-                et_other_inr.setText("")
-                et_other_frequency.setText("")
-                lay_other_inr.visibility = GONE
-                lay_frequency_group_savings.visibility = GONE
-                lay_other_frequency.visibility = GONE
-                spin_group_savings.setSelection(0)
-                spin_frequency_group_savings.setSelection(0)
-            } else if (lookupcode == 1) {
-                lay_group_savings.visibility = VISIBLE
-                lay_frequency_group_savings.visibility = VISIBLE
-                lay_cbank_account.visibility = GONE
-                et_cbank_account.setText("")
-            } else {
-                lay_cbank_account.visibility = GONE
-                lay_group_savings.visibility = GONE
-                lay_other_inr.visibility = GONE
-                et_other_inr.setText("")
-                lay_frequency_group_savings.visibility = GONE
-                lay_other_frequency.visibility = GONE
-                et_cbank_account.setText("")
-                et_other_frequency.setText("")
-                spin_group_savings.setSelection(0)
-                spin_frequency_group_savings.setSelection(0)
-            }
-        }
+
 
     }
 
@@ -177,27 +133,18 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
         collectiveViewModel.getCollectivedatabyGuid(validate!!.returnStringValue(collectiveGuid))
             .observe(this, Observer {
                 if (it != null && it.size > 0) {
+                    if(it.get(0).IsEdited == 0 && it.get(0).Status == 0){
+                        btn_bottom.visibility = View.GONE
+                    }else{
+                        btn_bottom.visibility = View.VISIBLE
+                    }
                     setDefBlank(et_tenure, it.get(0).Tenure_President!!)
                     setDefBlank(et_bearer_happens, it.get(0).Election_Freq!!)
-                    setDefBlank(et_other_inr, it.get(0).Savings_Oth!!)
+
                     validate!!.SetAnswerTypeRadioButton(rg_rotation_of_roles, it[0].Rolerotation)
                     validate!!.SetAnswerTypeRadioButton(rg_office_bearer, it[0].Elections)
-                    validate!!.SetAnswerTypeRadioButton(rg_bank_account, it[0].IsBank)
-                    et_cbank_account.setText(validate!!.returnStringValue(it.get(0).Bank_Challenges.toString()))
-                    spin_group_savings.setSelection(
-                        returnpos(
-                            validate!!.returnIntegerValue(it.get(0).Savings.toString()),
-                            20, iLanguageID
-                        )
-                    )
-                    spin_frequency_group_savings.setSelection(
-                        returnpos(
-                            validate!!.returnIntegerValue(
-                                it.get(0).Savings_Freq.toString()
-                            ), 21, iLanguageID
-                        )
-                    )
-                    et_other_frequency.setText(validate!!.returnStringValue(it.get(0).Savings_FreqOth.toString()))
+
+
                 }
             })
     }
@@ -242,14 +189,7 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
 
         validate!!.fillradio(this, rg_rotation_of_roles, -1, mstLookupViewModel, 3, iLanguageID)
         validate!!.fillradio(this, rg_office_bearer, -1, mstLookupViewModel, 3, iLanguageID)
-        validate!!.fillradio(this, rg_bank_account, -1, mstLookupViewModel, 3, iLanguageID)
-        fillSpinner(resources.getString(R.string.select), spin_group_savings, 20, iLanguageID)
-        fillSpinner(
-            resources.getString(R.string.select),
-            spin_frequency_group_savings,
-            21,
-            iLanguageID
-        )
+
 
     }
 
@@ -303,47 +243,6 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
                 et_bearer_happens,
                 resources.getString(R.string.valid_frequency_the_election_for_office_bearer_happens_in_complete_years),
             )
-        } else if (rg_bank_account.checkedRadioButtonId == -1) {
-            iValue = 1
-            validate!!.CustomAlert(
-                this,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q305_does_your_sangha_have_a_common_group_bank_account),
-            )
-        } else if (et_cbank_account.text.toString().length == 0 && lay_cbank_account.visibility == VISIBLE) {
-            iValue = 1
-            validate!!.CustomAlertEdit(
-                this,
-                et_cbank_account,
-                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q305a_what_are_the_challenges_in_opening_bank_account),
-            )
-        } else if (spin_group_savings.selectedItemPosition == 0 && lay_group_savings.visibility == VISIBLE) {
-            iValue = 1
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_group_savings,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q306_how_much_does_each_member_contribute_to_group_savings),
-            )
-        } else if (et_other_inr.text.toString().length == 0 && lay_other_inr.visibility == VISIBLE) {
-            iValue = 1
-            validate!!.CustomAlertEdit(
-                this,
-                et_other_inr,
-                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q306a_please_specify_the_others_in_inr),
-            )
-        } else if (spin_frequency_group_savings.selectedItemPosition == 0 && lay_frequency_group_savings.visibility == VISIBLE) {
-            iValue = 1
-            validate!!.CustomAlertSpinner(
-                this,
-                spin_frequency_group_savings,
-                resources.getString(R.string.please_select) + " " + resources.getString(R.string.q307_in_what_frequency_the_members_contribute_to_the_group_savings),
-            )
-        } else if (et_other_frequency.text.toString().length == 0 && lay_other_frequency.visibility == VISIBLE) {
-            iValue = 1
-            validate!!.CustomAlertEdit(
-                this,
-                et_other_frequency,
-                resources.getString(R.string.please_enter) + " " + resources.getString(R.string.q307a_please_specify_others),
-            )
         }
         return iValue
     }
@@ -375,6 +274,7 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
     }
 
     fun bottomCLick() {
+        autoSmoothScroll()
         lay_first.setBackgroundColor(resources.getColor(R.color.back))
         lay_secnd.setBackgroundColor(resources.getColor(R.color.back))
         ll_third.setBackgroundColor(resources.getColor(R.color.back))
@@ -431,11 +331,16 @@ class CollectiveProfileActivityFourth : BaseActivity(), View.OnClickListener {
         else edi.setText(data.toString())
 
     }
-
+    fun autoSmoothScroll() {
+//        val hsv = view.findViewById(R.id.horizontalScroll) as HorizontalScrollView
+        horizontalScroll.postDelayed({ //hsv.fullScroll(HorizontalScrollView.FOCUS_RIGHT);
+            horizontalScroll.smoothScrollBy(1000, 0)
+        }, 100)
+    }
     override fun onBackPressed() {
         //super.onBackPressed()
-        val intent = Intent(this, CollectiveProfileListActivity::class.java)
+      /*  val intent = Intent(this, CollectiveProfileListActivity::class.java)
         startActivity(intent)
-        finish()
+        finish()*/
     }
 }

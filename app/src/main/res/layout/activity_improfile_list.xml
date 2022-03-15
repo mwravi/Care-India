@@ -14,6 +14,16 @@
             android:layout_marginLeft="@dimen/_5sdp"
             android:layout_marginRight="@dimen/_5sdp">
 
+            <TextView
+                android:id="@+id/tv_DistricName"
+                style="@style/TextViewStyleNew"
+                android:layout_width="0dp"
+                android:layout_marginStart="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:text="@string/district"
+                android:textStyle="bold"
+
+                />
 
             <TextView
                 android:id="@+id/tv_NameofZone"
@@ -21,8 +31,9 @@
                 android:layout_width="0dp"
                 android:layout_marginStart="@dimen/_2sdp"
                 android:layout_weight="1"
-                android:text="@string/select_zone"
+                android:text="@string/zone"
                 android:textStyle="bold"
+                android:visibility="gone"
 
                 />
 
@@ -32,8 +43,9 @@
                 android:layout_width="0dp"
                 android:layout_marginStart="@dimen/_2sdp"
                 android:layout_weight="1"
-                android:text="@string/select_bbmp_ward"
-                android:textStyle="bold" />
+                android:text="@string/bbmp_ward"
+                android:textStyle="bold"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/tv_panchayatName"
@@ -41,8 +53,9 @@
                 android:layout_width="0dp"
                 android:layout_marginStart="@dimen/_2sdp"
                 android:layout_weight="1"
-                android:text="@string/select_panchayat"
-                android:textStyle="bold" />
+                android:text="@string/panchayat"
+                android:textStyle="bold"
+                android:visibility="gone" />
         </TableRow>
 
         <TableRow
@@ -51,165 +64,111 @@
             android:layout_marginTop="0dp"
             android:layout_marginRight="@dimen/_5sdp">
 
-
             <fr.ganfra.materialspinner.MaterialSpinner
-                android:id="@+id/spin_zone"
+                android:id="@+id/spin_districtname"
                 style="@style/SpinnerViewNew"
                 android:layout_width="0dp"
                 android:layout_weight="1"
 
                 />
 
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_zone"
+                style="@style/SpinnerViewNew"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:visibility="gone" />
+
 
             <fr.ganfra.materialspinner.MaterialSpinner
                 android:id="@+id/spin_bbmp"
                 style="@style/SpinnerViewNew"
                 android:layout_width="0dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:visibility="gone" />
 
 
             <fr.ganfra.materialspinner.MaterialSpinner
                 android:id="@+id/spin_panchayatname"
                 style="@style/SpinnerViewNew"
                 android:layout_width="0dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:visibility="gone" />
         </TableRow>
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginBottom="@dimen/_10sdp"-->
-<!--            android:gravity="end"-->
-<!--            android:orientation="vertical">-->
+        <LinearLayout
+            android:id="@+id/lay_houseid"
+            android:visibility="gone"
+            style="@style/LinearLayoutStyle">
 
-<!--            <TextView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginEnd="@dimen/_10sdp"-->
-<!--                android:fontFamily="@font/firasans_regular"-->
-<!--                android:gravity="end"-->
-<!--                android:text="Legend View"-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="@dimen/_10ssp" />-->
+            <TableRow
+                style="@style/TableRowStyle"
+                android:minHeight="0dp">
 
+                <TextView
+                    style="@style/AsterikStyle"
+                    android:visibility="invisible" />
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:background="@drawable/box_background"-->
-<!--                android:gravity="center"-->
-<!--                android:orientation="horizontal">-->
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:text="@string/household_unique_id"
+                    android:textStyle="bold" />
 
 
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/lay_first"-->
-<!--                    style="@style/Tablerowchange"-->
-<!--                    android:gravity="center"-->
-<!--                    android:minWidth="@dimen/_30sdp"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:padding="@dimen/_5sdp">-->
+            </TableRow>
 
-<!--                    <ImageView-->
-<!--                        android:layout_width="@dimen/_15ssp"-->
-<!--                        android:layout_height="@dimen/_15ssp"-->
-<!--                        android:src="@drawable/orange_circle" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="@dimen/_2sdp"-->
-<!--                        android:fontFamily="@font/firasans_regular"-->
-<!--                        android:text="Pending"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textSize="@dimen/_8ssp" />-->
+            <fr.ganfra.materialspinner.MaterialSpinner
+                android:id="@+id/spin_hhid"
+                style="@style/SpinnerViewNew"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_5sdp" />
 
 
-<!--                </LinearLayout>-->
-
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/lay_sec"-->
-<!--                    style="@style/Tablerowchange"-->
-<!--                    android:gravity="center"-->
-<!--                    android:minWidth="@dimen/_30sdp"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:padding="@dimen/_5sdp">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="@dimen/_15ssp"-->
-<!--                        android:layout_height="@dimen/_15ssp"-->
-<!--                        android:src="@drawable/yellow_circle" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="@dimen/_2sdp"-->
-<!--                        android:fontFamily="@font/firasans_regular"-->
-<!--                        android:text="Recommended"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textSize="@dimen/_8ssp" />-->
-
-
-<!--                </LinearLayout>-->
-
-
-<!--                <LinearLayout-->
-<!--                    android:id="@+id/lay_third"-->
-<!--                    style="@style/Tablerowchange"-->
-<!--                    android:gravity="center"-->
-<!--                    android:minWidth="@dimen/_30sdp"-->
-<!--                    android:orientation="vertical"-->
-<!--                    android:padding="@dimen/_5sdp">-->
-
-<!--                    <ImageView-->
-<!--                        android:layout_width="@dimen/_15ssp"-->
-<!--                        android:layout_height="@dimen/_15ssp"-->
-<!--                        android:src="@drawable/green_circle" />-->
-
-<!--                    <TextView-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:layout_marginTop="@dimen/_2sdp"-->
-<!--                        android:fontFamily="@font/firasans_regular"-->
-<!--                        android:text="Approved"-->
-<!--                        android:textColor="@color/black"-->
-<!--                        android:textSize="@dimen/_8ssp" />-->
-
-
-<!--                </LinearLayout>-->
-
-<!--            </LinearLayout>-->
-
-<!--        </LinearLayout>-->
-
-
+        </LinearLayout>
         <LinearLayout
             style="@style/LinearLayoutStyle"
             android:layout_height="0dp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_weight="1">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvList"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1">
+          <androidx.core.widget.NestedScrollView
+              android:layout_width="match_parent"
+              android:layout_height="0dp"
+              android:layout_weight="1">
+
+              <androidx.recyclerview.widget.RecyclerView
+                  android:id="@+id/rvList"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
 
 
-            </androidx.recyclerview.widget.RecyclerView>
+              </androidx.recyclerview.widget.RecyclerView>
+          </androidx.core.widget.NestedScrollView>
+
+
+
 
             <TableRow
+                android:id="@+id/tbl_add_im"
                 style="@style/TableRowStyle"
                 android:gravity="end">
+                <TextView
+                    style="@style/TextViewStyleNew"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:text="@string/add_individual" />
 
                 <ImageView
                     android:id="@+id/img_add"
-                    android:layout_width="@dimen/_30sdp"
-                    android:layout_height="@dimen/_30sdp"
+                    android:layout_width="@dimen/_40sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:layout_gravity="end"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:background="@drawable/ic_add_circle" />
             </TableRow>
+
             <include layout="@layout/legend_view" />
         </LinearLayout>
 

@@ -18,6 +18,7 @@
         <include
             android:id="@+id/include"
             layout="@layout/toolbar_layout" />
+
         <include
             android:id="@+id/includetop"
             layout="@layout/bottom_nav_psycho_layout" />
@@ -26,7 +27,8 @@
             style="@style/ScrolllViewStyle"
             android:layout_margin="@dimen/_10sdp"
             android:layout_weight="1"
-            android:scrollbars="none">
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical">
 
             <LinearLayout
                 style="@style/LinearLayoutStyle"
@@ -54,7 +56,6 @@
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_min_age_limit"
-                        android:selectedItemPosition="@={psychometricViewModel.MinAgeLimit}"
                         style="@style/SpinnerViewNew" />
 
                 </LinearLayout>
@@ -80,8 +81,8 @@
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_educ_applicant"
-                        android:selectedItemPosition="@={psychometricViewModel.EducationAppli}"
-                        style="@style/SpinnerViewNew" />
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={psychometricViewModel.EducationAppli}" />
 
                 </LinearLayout>
 
@@ -106,8 +107,37 @@
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_socially_category"
-                        android:selectedItemPosition="@={psychometricViewModel.WomenSCate}"
-                        style="@style/SpinnerViewNew" />
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={psychometricViewModel.WomenSCate}" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/lay_cast_belong"
+                    style="@style/LinearLayoutStyle">
+
+                    <TableRow
+                        style="@style/TableRowStyle"
+                        android:minHeight="0dp">
+
+                        <TextView style="@style/AsterikStyle" />
+
+                        <TextView
+                            style="@style/TextViewStyleNew"
+                            android:text="@string/cast_belong" />
+
+
+                    </TableRow>
+
+
+                    <EditText
+                        android:id="@+id/et_cast_belong"
+                        style="@style/EditTextStyleNew"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
+                        android:hint="@string/type_here"
+                        android:text="@={psychometricViewModel.CastBelong}"
+                        android:inputType="text"
+                        />
 
                 </LinearLayout>
 
@@ -132,8 +162,8 @@
 
                     <fr.ganfra.materialspinner.MaterialSpinner
                         android:id="@+id/spin_economic_category"
-                        android:selectedItemPosition="@={psychometricViewModel.WomenEcoCate}"
-                        style="@style/SpinnerViewNew" />
+                        style="@style/SpinnerViewNew"
+                        android:selectedItemPosition="@={psychometricViewModel.WomenEcoCate}" />
 
                 </LinearLayout>
 
@@ -141,6 +171,7 @@
         </ScrollView>
 
         <TableRow
+            android:id="@+id/btn_bottom"
             style="@style/TableRowStyle"
             android:layout_margin="@dimen/_10sdp">
 
@@ -166,7 +197,7 @@
                 android:layout_width="0dp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_weight="1"
-                android:text="@string/next" />
+                android:text="@string/save_and_next" />
 
             <TextView
                 style="@style/NewSimpleTextMargin"

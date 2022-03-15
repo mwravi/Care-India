@@ -29,119 +29,15 @@
             style="@style/ScrolllViewStyle"
             android:layout_margin="@dimen/_10sdp"
             android:layout_weight="1"
-            android:scrollbars="none">
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical"
+            >
 
             <LinearLayout
                 style="@style/LinearLayoutStyle"
                 android:background="@drawable/box_background"
                 android:padding="@dimen/_10sdp">
 
-
-
-                <LinearLayout
-                    android:id="@+id/lay_can_read"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-                        <TextView style="@style/AsterikStyle" />
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/read_write" />
-
-
-
-                    </TableRow>
-
-                    <RadioGroup
-                        android:id="@+id/rg_can_read"
-                        style="@style/radioGroupStyle"/>
-
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#D8D6D6" />
-
-                <LinearLayout
-                    android:id="@+id/lay_spin_education"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-                        <TextView style="@style/AsterikStyle" />
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/highest_education" />
-
-
-
-                    </TableRow>
-
-                    <fr.ganfra.materialspinner.MaterialSpinner
-                        android:id="@+id/spin_education"
-                        style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={individualProfileViewModel.EDUCATION}" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/lay_access_sphone"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-                        <TextView style="@style/AsterikStyle" />
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/acess_smart_phone" />
-
-
-
-                    </TableRow>
-
-                    <RadioGroup
-                        android:id="@+id/rg_access_sphone"
-                        style="@style/radioGroupStyle" />
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#D8D6D6" />
-
-                <LinearLayout
-                    android:id="@+id/lay_acess_mob_data"
-                    style="@style/LinearLayoutStyle">
-
-                    <TableRow
-                        style="@style/TableRowStyle"
-                        android:minHeight="0dp">
-                        <TextView style="@style/AsterikStyle" />
-                        <TextView
-                            style="@style/TextViewStyleNew"
-                            android:text="@string/acess_mobile_data" />
-
-
-                    </TableRow>
-
-                    <RadioGroup
-                        android:id="@+id/rg_acess_mob_data"
-                        style="@style/radioGroupStyle" />
-
-
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="#D8D6D6" />
 
                 <LinearLayout
                     style="@style/TablerowNew"
@@ -203,6 +99,8 @@
 
 
                 <LinearLayout
+                    android:id="@+id/lay_language_read"
+                    android:visibility="gone"
                     style="@style/TablerowNew"
                     android:orientation="vertical">
 
@@ -262,6 +160,8 @@
 
 
                 <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/lay_language_write"
                     style="@style/TablerowNew"
                     android:orientation="vertical">
 
@@ -378,6 +278,8 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/lay_language_mobile"
                     style="@style/CheckBox"
                     android:background="@drawable/box_background"
                     android:orientation="vertical">
@@ -439,6 +341,7 @@
         </ScrollView>
 
         <TableRow
+            android:id="@+id/btn_bottom"
             style="@style/TableRowStyle"
             android:layout_margin="@dimen/_10sdp">
 

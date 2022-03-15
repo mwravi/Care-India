@@ -12,8 +12,11 @@ interface MstDistrictDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertWithCondition(entity: List<MstDistrictEntity>?)
 
-    @Query("select * from mst_2District where StateCode=:StateCode")
-    fun getMstDistrict(StateCode: Int): LiveData<List<MstDistrictEntity>>
+    @Query("select * from mst_2District where StateCode=:StateCode and DistrictCode in (:DistrictIn)")
+    fun getMstDistrict(StateCode: Int,DistrictIn:List<String>): LiveData<List<MstDistrictEntity>>
+
+    @Query("select * from mst_2District where StateCode=:StateCode  and DistrictCode in (:DistrictIn)")
+    fun getMstDist(StateCode: Int,DistrictIn: List<String>): List<MstDistrictEntity>
 
     @Query("select * from mst_2District where StateCode=:StateCode")
     fun getMstDist(StateCode: Int): List<MstDistrictEntity>
@@ -26,4 +29,10 @@ interface MstDistrictDao {
 
     @Query("select DistrictCode from mst_2District limit 1")
     fun getDisCode(): Int
+
+    @Query("select * from mst_2District")
+    fun getMstDistrict(): List<MstDistrictEntity>
+
+    @Query("select DistrictName from mst_2District where StateCode=:StateCode and DistrictCode=:DistrictCode")
+    fun getMstDistrict(StateCode:Int,DistrictCode:Int): String
 }

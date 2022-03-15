@@ -20,6 +20,8 @@
     <color name="button_bgcolor">#FEAE1E</color>
     <color name="btnPressed">#23B574</color>
     <color name="blue">#0067b8</color>
+    <color name="blue_dark">#0181ff</color>
+    <color name="blue_vali">#4309C8</color>
     <color name="darkgrey">#808080</color>
     <color name="LightGrey">#e1e1e1</color>
     <color name="red">#FC6042</color>

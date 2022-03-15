@@ -13,12 +13,23 @@ class MstDistrictRepository {
         mstDistrictDao = CareIndiaApplication.database?.mstDistrictDao()
     }
 
-    fun getMstDistrictLive(StateCode:Int): LiveData<List<MstDistrictEntity>> {
-        return mstDistrictDao!!.getMstDistrict(StateCode)
+    fun getMstDistrictLive(StateCode:Int,DistrictIn:List<String>): LiveData<List<MstDistrictEntity>> {
+        return mstDistrictDao!!.getMstDistrict(StateCode,DistrictIn)
+    }
+
+    fun getMstDistrict(StateCode:Int,DistrictIn:List<String>): List<MstDistrictEntity> {
+        return mstDistrictDao!!.getMstDist(StateCode,DistrictIn)
     }
 
     fun getMstDistrict(StateCode:Int): List<MstDistrictEntity> {
         return mstDistrictDao!!.getMstDist(StateCode)
+    }
+    fun getMstDistrict(): List<MstDistrictEntity> {
+        return mstDistrictDao!!.getMstDistrict()
+    }
+
+    fun getMstDistrict(StateCode:Int,DistrictCode:Int): String {
+        return mstDistrictDao!!.getMstDistrict(StateCode,DistrictCode)
     }
 
 }

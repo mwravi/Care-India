@@ -28,7 +28,9 @@
             style="@style/ScrolllViewStyle"
             android:layout_margin="@dimen/_10sdp"
             android:layout_weight="1"
-            android:scrollbars="none">
+            android:scrollbarSize="@dimen/_10sdp"
+            android:scrollbars="vertical"
+            >
 
             <LinearLayout
                 style="@style/LinearLayoutStyle"
@@ -62,6 +64,7 @@
 
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_type_emp"
                     style="@style/LinearLayoutStyle">
 
@@ -86,6 +89,7 @@
 
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_waste_pick"
                     style="@style/LinearLayoutStyle">
 
@@ -113,6 +117,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_spin_sell_waste_collect"
                     style="@style/LinearLayoutStyle">
 
@@ -128,10 +133,11 @@
 
                     </TableRow>
 
-                    <fr.ganfra.materialspinner.MaterialSpinner
-                        android:id="@+id/spin_sell_waste_collect"
-                        style="@style/SpinnerViewNew"
-                        android:selectedItemPosition="@={individualProfileViewModel.WASTEDISPOSAL}"/>
+                    <LinearLayout
+                        android:id="@+id/chk_sell_waste_collect"
+                        style="@style/CheckBox"
+                        android:background="@drawable/box_background"
+                        android:orientation="vertical" />
 
                 </LinearLayout>
 
@@ -212,6 +218,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_no_days_job"
                     style="@style/LinearLayoutStyle">
                     <TableRow
@@ -239,6 +246,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:visibility="gone"
                     android:id="@+id/lay_et_avg_daily_income"
                     style="@style/LinearLayoutStyle">
 
@@ -340,7 +348,7 @@
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ "
                         android:hint="@string/type_here"
                         android:text="@={individualProfileViewModel.specifySecondaryIncome}"
-                        android:inputType="text" />
+                        android:inputType="textVisiblePassword" />
 
                 </LinearLayout>
 
@@ -369,8 +377,7 @@
                         android:digits="0123456789"
                         android:hint="@string/type_here"
                         android:inputType="number"
-                        android:maxLines="1"
-                        android:singleLine="true"
+                        android:maxLength="2"
                         android:text="@={individualProfileViewModel.WorkingDaysSecondaryJob}" />
 
                 </LinearLayout>
@@ -399,7 +406,7 @@
                         android:digits="0123456789"
                         android:hint="@string/type_here"
                         android:inputType="number"
-                        android:maxLines="1"
+                        android:maxLength="4"
                         android:singleLine="true"
                         android:text="@={individualProfileViewModel.AvgDailySecIncome}" />
 
@@ -412,6 +419,7 @@
         </ScrollView>
 
         <TableRow
+            android:id="@+id/btn_bottom"
             style="@style/TableRowStyle"
             android:layout_margin="@dimen/_10sdp">
 

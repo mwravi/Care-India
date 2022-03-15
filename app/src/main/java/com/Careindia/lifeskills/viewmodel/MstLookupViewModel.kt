@@ -25,6 +25,10 @@ class MstLookupViewModel : AndroidViewModel {
         return mstLookupRepository!!.getMstDataLookup(flag, iLanguage)
     }
 
+    fun getMstAllDataNew(flag: Int, iLanguage: Int,id:Int): List<MstLookupEntity> {
+        return mstLookupRepository!!.getMstAllDataNew(flag, iLanguage,id)
+    }
+
     fun getMstLookupFlag(flag: Int): List<MstLookupEntity> {
         return mstLookupRepository!!.getMstLookupdata(flag)
     }
@@ -32,4 +36,8 @@ class MstLookupViewModel : AndroidViewModel {
     fun getMstUser(flag: Int, iLanguage: Int): LiveData<List<MstLookupEntity>> {
         return mstLookupRepository!!.getMstLookup(flag, iLanguage)
     }
+    fun getDescription(LookupFlag: Int,LanguageID:Int,ID:Int): String {
+        return mstLookupRepository!!.getDescription(LookupFlag, LanguageID,ID)
+    }
+
 }

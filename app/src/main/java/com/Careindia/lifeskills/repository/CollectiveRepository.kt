@@ -18,18 +18,26 @@ class CollectiveRepository(
     }
 
     fun update(
-        guid: String, date: String,
+        guid: String, date: Long?,
         groupName: String,
         wardname: Int,
         localityname: String,
         collectiveid: String,
         zonename: Int,
         districcode: Int,
-        panchayatcode: Int,pw_code:String,initials:String,IsEdited:Int
+        panchayatcode: Int,pw_code:String,initials:String,IsEdited:Int,
+        LandMark: String?,
+        PinCode: String?,
+        updatedBy:Int?,
+        updated_on:Long?
     ) {
         collectiveDao.updateCollectiveData(
             guid, date, groupName, wardname, localityname,
-            collectiveid, zonename, districcode, panchayatcode,pw_code,initials,IsEdited
+            collectiveid, zonename, districcode, panchayatcode,pw_code,initials,IsEdited,
+            LandMark,
+            PinCode,
+            updatedBy,
+            updated_on
         )
     }
 
@@ -41,16 +49,35 @@ class CollectiveRepository(
     fun getCollectivedatabyGuid(guid: String): LiveData<List<CollectiveEntity>> {
         return collectiveDao.getCollectivedatabyGuid(guid)
     }
-    fun getCommWData(izone: Int, iward: Int): LiveData<List<CollectiveEntity>> {
-        return collectiveDao.getCommWData(izone, iward)
+
+    fun getColldatabyGuid(guid: String): List<CollectiveEntity> {
+        return collectiveDao.getColldatabyGuid(guid)
     }
 
-    fun getCommZData(izone: Int): LiveData<List<CollectiveEntity>> {
-        return collectiveDao.getCommZData(izone)
+    fun getCommWData(iDisCode:Int,izone: Int, iward: Int): LiveData<List<CollectiveEntity>> {
+        return collectiveDao.getCommWData(iDisCode,izone, iward)
     }
 
-    fun getCommPData(iPanchayat: Int): LiveData<List<CollectiveEntity>> {
-        return collectiveDao.getCommPData(iPanchayat)
+  fun getcollectiveData(iDisCode:Int,izone: Int, iward: Int): List<CollectiveEntity> {
+        return collectiveDao.getcollectiveData(iDisCode,izone, iward)
+    }
+
+    fun getCommWData(iDisCode:Int,izone: Int): LiveData<List<CollectiveEntity>> {
+        return collectiveDao.getCommWData(iDisCode,izone)
+    }
+
+    fun getCommWData(iDisCode:Int): LiveData<List<CollectiveEntity>> {
+        return collectiveDao.getCommWData(iDisCode)
+    }
+
+
+
+    fun getCommPData(iDisCode:Int,iPanchayat: Int): LiveData<List<CollectiveEntity>> {
+        return collectiveDao.getCommPData(iDisCode,iPanchayat)
+    }
+
+    fun getCommPData(iDisCode:Int): LiveData<List<CollectiveEntity>> {
+        return collectiveDao.getCommPData(iDisCode)
     }
     fun delete(collectiveEntity: CollectiveEntity) {
         return collectiveDao.deleteCollectivedata(collectiveEntity)
@@ -58,7 +85,7 @@ class CollectiveRepository(
 
     fun updatecollectivesecond(
         guid: String,
-        formationdate: String, Type: Int,
+        formationdate: Long?, Type: Int,
         TypeOther: String,
         Registration: Int,
         RegistrationOther: String, Objective: String,
@@ -68,6 +95,8 @@ class CollectiveRepository(
         totalmale: Int,
         totalfemale: Int,
         totaltrangender: Int,
+        updatedBy:Int?,
+        updated_on: Long?,
         IsEdited:Int
     ) {
         collectiveDao.updatecollectivesecond(
@@ -75,7 +104,10 @@ class CollectiveRepository(
             TypeOther,
             Registration,
             RegistrationOther, Objective, headgroupname, headsex, totalmember,
-            totalmale, totalfemale, totaltrangender,IsEdited
+            totalmale, totalfemale, totaltrangender,
+            updatedBy,
+            updated_on,
+            IsEdited
         )
     }
 
@@ -84,12 +116,8 @@ class CollectiveRepository(
         tenure: String,Rolerotation:Int,
         electionob: Int,
         electionfreq: String,
-        bankac: Int,
-        groupsaving: Int,
-        otherinr: String,
-        freqsaving: Int,
-        othersaving: String,
-        cbank: String,
+        updatedBy:Int?,
+        updated_on: Long?,
         IsEdited:Int
     ) {
         collectiveDao.updateCollectivefour(
@@ -97,12 +125,8 @@ class CollectiveRepository(
             tenure,Rolerotation,
             electionob,
             electionfreq,
-            bankac,
-            groupsaving,
-            otherinr,
-            freqsaving,
-            othersaving,
-            cbank,
+            updatedBy,
+            updated_on,
             IsEdited
         )
     }
@@ -114,7 +138,18 @@ class CollectiveRepository(
         loanChallange: String,
         meetingconducted: Int,
         frequencyMeeting: Int,FrequencyMeetingOther:String,
-        regularityMeeting: Int,meetingschedule:Int,IsEdited:Int
+        regularityMeeting: Int,meetingschedule:Int,
+        bankac: Int,
+        groupsaving: Int,
+        otherinr: String,
+        freqsaving: Int,
+        othersaving: String,
+        cbank: String,
+        recordbook: Int,
+        recordbookupdate: Int,
+        updatedBy:Int?,
+        updated_on: Long?,
+        IsEdited:Int
     ) {
         collectiveDao.updateCollectivefive(
             guid,
@@ -123,7 +158,18 @@ class CollectiveRepository(
             loanChallange,
             meetingconducted,
             frequencyMeeting,FrequencyMeetingOther,
-            regularityMeeting,meetingschedule,IsEdited
+            regularityMeeting,meetingschedule,
+            bankac,
+            groupsaving,
+            otherinr,
+            freqsaving,
+            othersaving,
+            cbank,
+            recordbook,
+            recordbookupdate,
+            updatedBy,
+            updated_on,
+            IsEdited
         )
     }
 
@@ -132,29 +178,35 @@ class CollectiveRepository(
         service: String?,
         serviceAvailing: String?,
         serviceProvider: String?,
-        recordbook: Int,
-        recordbookupdate: Int,
         serviceschemes: Int,
         enterprisebuisness: Int,
         collectivelinkage: String,
-        collectiveplanbuisness: String,Linkages_oth:String,Collective_opp_Other:String,IsEdited:Int
+        collectiveplanbuisness: String,Linkages_oth:String,Collective_opp_Other:String,
+        updatedBy:Int?,
+        updated_on: Long?,
+        IsEdited:Int
     ) {
         collectiveDao.updateCollectiveSix(
             guid,
             service,
             serviceAvailing,
             serviceProvider,
-            recordbook,
-            recordbookupdate,
             serviceschemes,
             enterprisebuisness,
             collectivelinkage,
-            collectiveplanbuisness,Linkages_oth,Collective_opp_Other,IsEdited
+            collectiveplanbuisness,Linkages_oth,Collective_opp_Other,
+            updatedBy,
+            updated_on,
+            IsEdited
         )
     }
 
+    fun getMstDist(StateCode: Int,DistrictIn: List<String>): List<MstDistrictEntity> {
+        return mstDistrictDao.getMstDist(StateCode,DistrictIn)
+    }
+
     fun getMstDist(StateCode: Int): List<MstDistrictEntity> {
-        return mstDistrictDao!!.getMstDist(StateCode)
+        return mstDistrictDao.getMstDist(StateCode)
     }
 
     fun getCommunityCount():Int{
@@ -163,4 +215,9 @@ class CollectiveRepository(
     fun getCommunityID(CollectiveID:String):Int{
         return collectiveDao!!.getCommunityID(CollectiveID)
     }
+
+    fun getCollectiveDataByCollectiveGuid(collectiveGuid: String): List<CollectiveEntity> {
+        return collectiveDao!!.getCollectiveDataByCollectiveGuid(collectiveGuid)
+    }
+
 }

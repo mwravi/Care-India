@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import com.careindia.lifeskills.R
 import com.careindia.lifeskills.views.loginscreen.LoginActivity
+import com.careindia.lifeskills.views.loginscreen.WebviewLoginActivity
 
 
 class SplashActivity : AppCompatActivity() {

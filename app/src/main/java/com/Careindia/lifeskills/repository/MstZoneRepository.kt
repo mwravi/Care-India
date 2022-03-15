@@ -19,8 +19,15 @@ class MstZoneRepository {
         return mstZoneDao!!.getMstZoneLive(DistrictCode)
     }
 
+    fun getMstZone(DistrictCode:Int,ZoneIn: List<String>): List<MstZoneEntity> {
+        return mstZoneDao!!.getMstZone(DistrictCode,ZoneIn)
+    }
+
     fun getMstZone(DistrictCode:Int): List<MstZoneEntity> {
         return mstZoneDao!!.getMstZone(DistrictCode)
+    }
+    fun getMstZone(DistrictCode:Int,ZoneCode:Int): String{
+        return mstZoneDao!!.getMstZone(DistrictCode,ZoneCode)
     }
 
 }
